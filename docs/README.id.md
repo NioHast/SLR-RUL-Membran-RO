@@ -17,3 +17,4 @@ Berisi keluaran utama (hasil akhir), bukan data mentah:
 - `FULLTEXT_SCREENING_LOG.txt` - log screening full-text + PRISMA.
 - `PLAN_PHASE5.txt` - rencana analisis mendalam per paper (Phase 5).
 - `KAGGLE_PHASES_REPORT.txt` - laporan pipeline Kaggle.
+- `AI_USAGE.md` / `AI_USAGE.id.md` - keterbukaan penggunaan AI: AI dipakai untuk apa, model/lingkungan, verifikasi manusia.

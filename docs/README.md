@@ -17,3 +17,4 @@ Contains the main outputs (final results), not raw data:
 - `FULLTEXT_SCREENING_LOG.txt` - full-text screening log + PRISMA.
 - `PLAN_PHASE5.txt` - plan for in-depth per-paper analysis (Phase 5).
 - `KAGGLE_PHASES_REPORT.txt` - Kaggle pipeline report.
+- `AI_USAGE.md` / `AI_USAGE.id.md` - AI-use disclosure: what AI was used for, model/environment, human verification.

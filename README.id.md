@@ -62,4 +62,4 @@ Mirror data: lihat `mirror_data/README.md`.
 - **Data/artikel pihak ketiga: tetap lisensinya** (SCImago = CC BY-NC; artikel OA sesuai lisensinya) - lihat `NOTICE`.
 - Ringkas: *Kode & konten saya: MIT-0/CC0 (tanpa atribusi). Data pihak ketiga (SCImago, artikel OA) tetap lisensinya.*
 
-> This is a research artifact. Issues/PRs may not be monitored.
+> Ini adalah artefak penelitian. Issues/PRs mungkin tidak dipantau secara berkala.

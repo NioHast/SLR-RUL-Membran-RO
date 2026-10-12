@@ -1,8 +1,43 @@
+"""
+make_kernel.py - Build the Kaggle *pilot* kernel (notebook + metadata).
+
+Purpose:
+    Generate, on the local machine, the two files Kaggle needs to push the pilot
+    full-text extraction kernel: the notebook (`slr_pilot.ipynb`) and its
+    `kernel-metadata.json`. The notebook itself installs `marker-pdf` + `pymupdf`
+    on the Kaggle GPU, runs `marker_single` on each PDF, and crops figures with
+    PyMuPDF. This script only *writes* those files; it does not upload them.
+
+INPUT:
+    - No input file is read; the notebook cells are embedded below as strings.
+
+OUTPUT:
+    - <K>/slr_pilot.ipynb          : the generated pilot notebook.
+    - <K>/kernel-metadata.json     : the Kaggle kernel metadata (id, dataset, GPU on).
+
+How to run:
+        python3 make_kernel.py
+
+NOTE:
+    Paths are absolute: K="/tmp/opencode/kaggle_pilot/kernel" MUST be adjusted to
+    your own working location. The other phase2/phase5 scripts use
+    ROOT="/home/nioha/Downloads/SLR", which also MUST be adjusted.
+"""
+
 import json, os
-K="/tmp/opencode/kaggle_pilot/kernel"; os.makedirs(K, exist_ok=True)
+
+# --- Output folder for the generated kernel files ---
+K = "/tmp/opencode/kaggle_pilot/kernel"
+os.makedirs(K, exist_ok=True)
+
+
 def cell(src):
-    return {"cell_type":"code","metadata":{},"execution_count":None,"outputs":[],
-            "source":[l+"\n" for l in src.split("\n")]}
+    """Wrap a raw source string into a Jupyter notebook `code` cell dict."""
+    return {"cell_type": "code", "metadata": {}, "execution_count": None, "outputs": [],
+            "source": [l + "\n" for l in src.split("\n")]}
+
+
+# --- Cell 1: environment check + install marker-pdf/pymupdf ---
 c1 = '''import subprocess, sys
 print(subprocess.run(["nvidia-smi"],capture_output=True,text=True).stdout[:500])
 print("=== install marker-pdf + pymupdf ===")
@@ -14,6 +49,8 @@ try:
     print("marker OK")
 except Exception as e:
     print("marker import err", e)'''
+
+# --- Cell 2: run marker on every pilot PDF + crop figures, then zip the output ---
 c2 = '''import os, glob, subprocess, shutil, zipfile, re, fitz
 IN="/kaggle/input/slr-pilot-pdfs"
 OUT="/kaggle/working/out"; os.makedirs(OUT, exist_ok=True)
@@ -72,13 +109,18 @@ print("OUT:", os.listdir("/kaggle/working"))
 print("TREE:")
 for root,dirs,files in os.walk(OUT):
     print(root.replace(OUT,""), "|", files[:8])'''
-nb={"cells":[cell(c1),cell(c2)],
-    "metadata":{"kernelspec":{"name":"python3","display_name":"Python 3","language":"python"},"language_info":{"name":"python"}},
-    "nbformat":4,"nbformat_minor":5}
-json.dump(nb, open(os.path.join(K,"slr_pilot.ipynb"),"w"))
-meta={"id":"muhammadnioh/slr-pilot-marker","title":"SLR Pilot Marker","code_file":"slr_pilot.ipynb",
-      "language":"python","kernel_type":"notebook","is_private":True,
-      "enable_gpu":True,"enable_internet":True,"dataset_sources":["muhammadnioh/slr-pilot-pdfs"],
-      "competition_sources":[],"kernel_sources":[]}
-json.dump(meta, open(os.path.join(K,"kernel-metadata.json"),"w"), indent=1)
+
+# --- Assemble the notebook JSON (2 code cells) and write it ---
+nb = {"cells": [cell(c1), cell(c2)],
+      "metadata": {"kernelspec": {"name": "python3", "display_name": "Python 3", "language": "python"}, "language_info": {"name": "python"}},
+      "nbformat": 4, "nbformat_minor": 5}
+json.dump(nb, open(os.path.join(K, "slr_pilot.ipynb"), "w"))
+
+# --- Kaggle kernel metadata: pilot dataset, GPU + internet enabled ---
+meta = {"id": "muhammadnioh/slr-pilot-marker", "title": "SLR Pilot Marker", "code_file": "slr_pilot.ipynb",
+        "language": "python", "kernel_type": "notebook", "is_private": True,
+        "enable_gpu": True, "enable_internet": True, "dataset_sources": ["muhammadnioh/slr-pilot-pdfs"],
+        "competition_sources": [], "kernel_sources": []}
+json.dump(meta, open(os.path.join(K, "kernel-metadata.json"), "w"), indent=1)
+
 print("kernel folder:", os.listdir(K))

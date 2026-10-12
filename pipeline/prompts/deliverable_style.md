@@ -28,7 +28,7 @@
 - Sort by quartile then year; highlight the reference paper (Gao); D1-D8 as a checkmark matrix.
 
 ## Presentation (`SLR_Presentasi.html` + PDF)
-- **reveal.js 5.x** bundled **inline** in the HTML (or from the local `assets/`) - **no CDN**; must open fully offline. **16:9**, dark academic theme (not plain default).
+- **reveal.js 5.x** bundled **inline** in the HTML - **no CDN**; must open fully offline. **16:9**, dark academic theme (not plain default).
 - Palette: deep blue `#1F4E78`, gray, orange accent. Font: Inter/Arial (sans-serif).
 - Progress bar + slide numbers; smooth transitions; keyboard navigation; offline-safe.
 - Every slide has short **speaker notes** in `<aside class="notes">`; <= 6 points per slide.

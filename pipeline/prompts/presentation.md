@@ -36,5 +36,5 @@
 15. **Penutup**: thanks / Q&A + contact.
 
 ## Output
-- One self-contained HTML file with **reveal.js bundled inline** (JS + CSS + notes) - **no CDN, no external requests**; opens fully offline with no build step. (Reference: local `pipeline/4_build_deliverables/assets/`.)
+- One self-contained HTML file with **reveal.js bundled inline** (JS + CSS + notes) - **no CDN, no external requests**; opens fully offline with no build step.
 - For visual style (theme, palette, 16:9, fonts, progress bar, speaker-note format) follow `deliverable_style.md`.

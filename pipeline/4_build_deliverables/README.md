@@ -51,7 +51,6 @@ build_article_docx.py  ->  SLR_Artikel_Jurnal.docx
 - `report.md` - report template containing markers (filled by `fill_report.py`).
 - `synthesis.json` - narrative synthesis per dimension + research gap + theory + concepts.
 - `article.md` - journal article manuscript (separated by `<!--BODY-->`).
-- `assets/` - reveal.js files (`reveal.js`, `reveal.css`, `notes.js`) for the slideshow.
 - The presentation prompt now lives in [`../prompts/presentation.md`](../prompts/presentation.md).
 
 > **NOTE:** Scripts in this folder use **ABSOLUTE** paths. `BASE="/tmp/opencode/slr"`

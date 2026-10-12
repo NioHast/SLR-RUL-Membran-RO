@@ -43,5 +43,5 @@ versioned in [`pipeline/prompts/`](../pipeline/prompts/README.md).
 > drafting, and repository documentation. All study-selection decisions, quality appraisal, and final
 > content were reviewed and approved by the author, who takes full responsibility for the work.
 
-Cite as: Hastungkoro, M. N. (2026). *SLR: RUL Prediction of Reverse Osmosis Membranes* (v1.0.0).
+Cite as: Hastungkoro, M. N. (2026). *SLR: RUL Prediction of Reverse Osmosis Membranes*.
 GitHub. https://github.com/NioHast/SLR-RUL-Membran-RO - see `docs/AI_USAGE.md`.

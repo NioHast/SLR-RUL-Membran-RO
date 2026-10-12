@@ -43,5 +43,5 @@ berversi ada di [`pipeline/prompts/`](../pipeline/prompts/README.id.md).
 > penulisan draf, dan dokumentasi repositori. Seluruh keputusan seleksi studi, penilaian kualitas,
 > dan isi akhir ditinjau serta disetujui oleh penulis, yang bertanggung jawab penuh atas karya ini.
 
-Sitasi: Hastungkoro, M. N. (2026). *SLR: Prediksi RUL Membran Reverse Osmosis* (v1.0.0).
+Sitasi: Hastungkoro, M. N. (2026). *SLR: Prediksi RUL Membran Reverse Osmosis*.
 GitHub. https://github.com/NioHast/SLR-RUL-Membran-RO - lihat `docs/AI_USAGE.id.md`.

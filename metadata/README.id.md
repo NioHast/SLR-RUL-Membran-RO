@@ -9,5 +9,9 @@ JSON untuk menjalankan pipeline & dokumentasi korpus:
 - `scopus_official.json` - kuartil resmi SCImago (SJR Best Quartile) per DOI.
 - `scopus_check.json` - kuartil estimasi (SJR 2024) per DOI.
 - `harvest_stats.json` - statistik pencarian (angka PRISMA).
-- `pool.json`, `ranked.json`, `selected*.json`, `replacement_pool.json`, `oa_*.json`, `core_*.json` - kandidat & proses seleksi.
+- `pool.json`, `ranked.json`, `selected*.json` - kandidat & funnel seleksi.
+- `oa_core_filtered.json`, `oa_replacements.json`, `replacement_pool.json`, `core_replacements_detail.json`,
+  `core_failed_downloads.json` - set kandidat OA/pengganti & provenansnya.
+  `oa_replacements.json` menggabungkan `oa_core_replacement.json` + `oa_core_replacement2.json` +
+  `oa_replacement.json` menjadi satu file (dedup per DOI; tiap baris menyimpan field `batch`).
 - `phase5_gugur.json` - daftar paper gugur (final: kosong).

@@ -1,0 +1,44 @@
+PAPER 041 - Kiswanto et al. (2020)
+Judul   : Treatment of Coal Mine Acid Water Using NF270 Membrane as Environmentally Friendly Technology
+Jurnal  : Jurnal Pendidikan IPA Indonesia | Scopus Q3 (SCImago SJR Best Quartile) | DOI 10.15294/jpii.v9i3.23310
+Pilar   : G. Konteks Indonesia/Air
+Relevansi: Konteks
+
+KARAKTERISTIK STUDI
+Studi eksperimental penerapan membran nanofiltrasi NF270 (dipandang sebagai "loose RO") untuk mengolah air asam tambang batubara PT Bukit Asam menjadi air yang memenuhi baku mutu air minum Permenkes 492/2010. Fokus pada pengaruh tekanan operasi terhadap kinerja membran (fluks dan rejeksi), bukan pada prediksi umur.
+
+METODE
+- Filtrasi cross-flow dengan membran NF270 (polyamide composite, DOW Filmtec), tekanan 4, 5, dan 6 bar, tiap percobaan 120 menit.
+- Umpan: larutan tunggal (COD/humic acid, TSS/kaolin, TDS/NaCl, Fe/FeCl3), larutan campuran, air asam tambang sintetik, dan sampel nyata PTBA.
+- Fluks dihitung J=V/(A.t) (Eq. 1); rejeksi R=1-Cp/Cf (Eq. 2); pengukuran parameter mengikuti SNI 06-6989 dan AAS; fouling dikarakterisasi dengan SEM.
+
+DATA
+Satu jenis membran, tiga tingkat tekanan, satu sumber air (PTBA) plus umpan sintetik. Fluks air suling 42,72/70,71/92,03 L/m2h pada 4/5/6 bar. Profil fluks dicatat tiap 15 menit selama 120 menit. Tidak ada replikasi/error bar.
+
+TEMUAN UTAMA
+- Tekanan optimum 6 bar; fluks meningkat dengan tekanan.
+- Rejeksi pada 4-6 bar: COD 56,4-93,1%, TSS 78,5-100%, TDS 43-69,3%, Fe 67-100%.
+- Fluks turun tajam pada 15 menit pertama lalu stabil; disebabkan fouling irreversible (lapisan gel/cake humic acid) dan polarisasi konsentrasi (reversibel).
+- SEM mengonfirmasi fouling pada membran sintetik maupun PTBA; struktur fouling PTBA lebih inkompresibel.
+
+RELEVANSI KE TESIS
+Konteks domain: memperlihatkan bahwa degradasi membran (penurunan fluks karena fouling) adalah proses time-dependent dan terukur, yang menjadi landasan fisik bagi RUL. Namun studi ini tidak memodelkan RUL, tidak menangani data tersensor, dan tidak menyusun keputusan perawatan, sehingga hanya berperan sebagai latar domain (bukan Inti-Metode maupun Inti-Domain).
+
+JUSTIFIKASI DIMENSI (per d1-d8)
+- d1 = 1: data deret waktu fluks per 15 menit selama 120 menit (profil J/Jo) plus beberapa parameter kualitas air.
+- d2 = "" : tidak ada definisi RUL/kegagalan/ambang degradasi; hanya baku mutu air minum.
+- d3 = "" : tidak ada model survival/Weibull/hazard/cure maupun data tersensor.
+- d4 = "" : tidak ada model prediktif spesifik; analisis eksperimental.
+- d5 = "" : tidak ada CI/interval/posterior; hanya angka titik.
+- d6 = "" : tidak mengusulkan/menganalisis keputusan perawatan.
+- d7 = 1: objek membran NF270 dan fenomena fouling dalam pengolahan air.
+- d8 = "" : tidak ada small-data/transfer/hierarchical.
+
+KUALITAS (skor 5/10)
+Q1=1 (tujuan jelas), Q2=0,5 (desain eksperimen dijelaskan namun tanpa replikasi), Q3=0,5 (data disajikan tabel namun validitas terbatas), Q4=0,5 (cukup detail, tanpa data mentah), Q5=0,5 (metrik ada, tanpa baseline model), Q6=N/A, Q7=0 (tidak melaporkan ketidakpastian), Q8=N/A. Jumlah 3,0/6 -> 5.
+
+LIMITASI
+Tanpa replikasi/error bar; satu membran dan satu sumber air; fouling hanya deskriptif; tidak ada prediksi umur atau keputusan perawatan.
+
+BUKTI
+Eq. (1) fluks; Eq. (2) rejeksi; Table 3-5 (rejeksi single/mixed/AMD); Table 6 (sintetik vs PTBA); Fig. 6 (profil fluks PTBA); Fig. 7 (SEM fouling). Figur tidak dibuka karena caption dan tabel dalam teks sudah memadai.

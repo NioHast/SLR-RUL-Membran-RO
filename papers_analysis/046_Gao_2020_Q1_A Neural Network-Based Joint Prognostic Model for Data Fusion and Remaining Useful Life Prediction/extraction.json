@@ -1,0 +1,82 @@
+{
+  "no": 35,
+  "judul": "A Neural Network-Based Joint Prognostic Model for Data Fusion and Remaining Useful Life Prediction",
+  "penulis": "Yuanyuan Gao, Yuxin Wen, Jianguo Wu",
+  "tahun": 2020,
+  "jurnal": "IEEE Transactions on Neural Networks and Learning Systems",
+  "doi": "10.1109/TNNLS.2020.2977132",
+  "kuartil": "Scopus Q1 (SCImago SJR Best Quartile)",
+  "pilar": "B. Deep Learning RUL",
+  "ringkasan": "Artikel ini mengusulkan Joint Prognostic Model (JPM) yang menggabungkan model linear Bayesian untuk setiap sinyal sensor (mixed-effects) dengan Artificial Neural Network untuk memetakan hubungan nonlinier antara parameter degradasi multi-sensor dan life percentage. Skema Bayesian updating menghitung distribusi posterior parameter setiap sensor untuk in-service unit, lalu menghasilkan posterior predictive distribution RUL. Metode divalidasi pada C-MAPSS FD001/FD003.",
+  "kontribusi": "Menyediakan kerangka Bayesian + NN yang menghasilkan distribusi prediktif RUL (bukan hanya titik) dan menangani heterogenitas antar-unit via mixed-effects. Relevan ke tesis pada sumbu ketidakpastian (d5) dan struktur hierarkis (d8), namun tanpa pemodelan penyensoran/survival—menegaskan celah penggabungan survival tersensor dengan prediksi nonlinier.",
+  "temuan_kunci": [
+    "JPM (fusi 5 sinyal terpilih) memiliki galat prediksi jauh lebih rendah daripada model satu-sinyal tunggal (Fig. 10).",
+    "Posterior predictive distribution RUL bersifat sempit dan akurat, bahkan saat prediksi dilakukan pada tahap awal siklus hidup (Fig. 8).",
+    "JPM mengungguli NN1, NN2, HI_2013, HI_kernel, dan LSTM pada sebagian besar epoch prediksi (Fig. 11-12), terutama pada tahap awal.",
+    "Pendekatan posterior mean/MAP dan rata-rata distribusi prediktif menghasilkan titik estimasi yang tidak berbeda signifikan.",
+    "JPM tidak berlaku ketika beberapa kondisi operasi tercampur (FD002/FD004) karena tren degradasi tidak jelas."
+  ],
+  "dimensi": {
+    "d1": "1",
+    "d2": "1",
+    "d3": "",
+    "d4": "1",
+    "d5": "1",
+    "d6": "",
+    "d7": "",
+    "d8": "1"
+  },
+  "alasan_dimensi": {
+    "d1": "Input multi-sensor runtun waktu: 5 sinyal terpilih (Nc, T24, BPR, htBleed, T30) pada tiap epoch observasi (Section III-B, Fig. 5-6).",
+    "d2": "RUL didefinisikan sebagai first passage time ketika sinyal degradasi sejati menyentuh failure threshold; HI tersembunyi punya threshold (Section II-B, III-A).",
+    "d3": "Tidak memodelkan data tersensor/survival/hazard; meski C-MAPSS test terpotong, metode sendiri tidak menangani penyensoran (hanya menyitir Tian et al. yang memakai suspension histories).",
+    "d4": "Model spesifik: Artificial Neural Network 3 lapis, Bayesian linear mixed-effects model, LSTM sebagai pembanding.",
+    "d5": "Mengkuantifikasi ketidakpastian: posterior predictive distribution RUL/life percentage dihitung via Monte Carlo (Eq. 11-12, Fig. 8).",
+    "d6": "Tidak ada model keputusan pemeliharaan; hanya motivasi prognostics/predictive maintenance.",
+    "d7": "Bukan domain membran/RO/desalinasi; objek mesin turbofan (C-MAPSS).",
+    "d8": "Struktur hierarkis/mixed-effects: parameter per-unit beta_ij ~ N(mu0, sigma^2 Sigma0) dengan hyperparameter dari populasi unit historis; online updating memakai seluruh data historis + unit berjalan (Eq. 2, 8-10)."
+  },
+  "relevansi": "Pendukung",
+  "kualitas": {
+    "skor": 9,
+    "rincian": {
+      "Q1": "1",
+      "Q2": "1",
+      "Q3": "1",
+      "Q4": "0.5",
+      "Q5": "1",
+      "Q6": "N/A",
+      "Q7": "1",
+      "Q8": "0.5"
+    },
+    "catatan": "RQ dan kontribusi jelas. Metode memadai dan terperinci (Bayesian mixed-effects + NN, derivasi posterior). Data benchmark C-MAPSS FD001/FD003 dengan validasi silang 5-fold; cakupan sengaja dibatasi ke kondisi operasi tunggal. Evaluasi kuat (metrik alpha-lambda dan mean absolute percentage error, banyak pembanding). Reproduksibilitas sedang (struktur NN & hyperparameter diberi, tanpa kode). Penyensoran N/A. Pelaporan ketidakpastian sangat baik (distribusi prediktif posterior). Kaitan keputusan pemeliharaan hanya motivasi."
+  },
+  "data_kuantitatif": {
+    "dataset": "NASA C-MAPSS FD001 dan FD003",
+    "ukuran": "Masing-masing 100 unit latih + 100 unit uji; 21 sinyal output, 14 dipakai, 5 terpilih setelah hierarchical clustering (threshold korelasi 0,75)",
+    "metrik": "alpha-lambda metric (alpha=15%), mean absolute percentage error, perbandingan dgn NN1/NN2/HI_2013/HI_kernel/LSTM"
+  },
+  "metode": "Joint Prognostic Model: model linear Bayesian (mixed-effects, noise variance acak inverse-Gamma) per sensor + estimasi hyperparameter dua-tahap MLE + Bayesian updating online (posterior multivariate-t) + ANN 3 lapis (6-3 neuron hidden, tanh/sigmoid) yang memetakan parameter degradasi & waktu t ke life percentage; RUL = (1-p_t)/p_t * t; posterior predictive via Monte Carlo.",
+  "limitasi": [
+    "Tidak menangani kondisi operasi campuran (FD002/FD004 tidak dipakai).",
+    "Tidak memodelkan data tersensor/suspensi secara eksplisit.",
+    "Struktur NN sederhana dan pemilihan waktu latih (10 epoch per unit) dapat mengorbankan detail awal.",
+    "Ketergantungan pada transformasi log & asumsi polinomial kuadratik untuk sinyal.",
+    "Tidak ada keputusan pemeliharaan yang diusulkan."
+  ],
+  "funding_coi": "Didanai Natural Science Foundation of China (Grant 51875003 dan 71932006). Tidak ditemukan pernyataan konflik kepentingan.",
+  "status_inklusi": "diterima",
+  "figur_dibaca": [
+    {"file": "figures/_page_3_Picture_13.jpeg", "isi": "Fig. 3 struktur NN JPM: input layer (t, a1,b1,c1, a2,b2,c2, a3,b3,c3 = 10 node) -> 2 hidden layer (4 lalu 3 node) -> output p_t (life percentage)."},
+    {"file": "figures/_page_7_Figure_2.jpeg", "isi": "Fig. 8 distribusi prediktif posterior life percentage untuk 6 unit uji (x: p_t 0-1; y: densitas 0-0.3); puncak tajam dan garis putus-putus merah (nilai sebenarnya) dekat puncak."},
+    {"file": "figures/_page_6_Figure_4.jpeg", "isi": "Fig. 7 Bayesian updating parameter beta untuk T30 (atas) dan htBleed (bawah): prior lebar, posterior t=30 menyempit, posterior t=179 makin mendekati nilai sebenarnya."}
+  ],
+  "bukti": [
+    "Abstrak + Index Terms: Bayesian inference, joint prognostic model, NN, RUL.",
+    "Section II-A: model linear Bayesian/mixed-effects (Eq. 1-6).",
+    "Section II-B: definisi RUL first passage time & fungsi g (Eq. 7).",
+    "Section II-C: posterior multivariate-t (Eq. 8-10), RUL=(1-p_t)/p_t t (Eq. 11), posterior predictive (Eq. 12).",
+    "Section III-B: pemilihan sinyal via hierarchical clustering (Fig. 5), 5 sinyal dipilih.",
+    "Section III-C: hasil & perbandingan (Fig. 8-12, Eq. 13)."
+  ]
+}

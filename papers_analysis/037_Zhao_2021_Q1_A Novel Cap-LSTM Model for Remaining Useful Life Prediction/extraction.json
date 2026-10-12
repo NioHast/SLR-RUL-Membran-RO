@@ -1,0 +1,47 @@
+{
+ "no": 44,
+ "judul": "A Novel Cap-LSTM Model for Remaining Useful Life Prediction",
+ "penulis": "Chengying Zhao, Xianzhen Huang, Yuxiong Li, Shangjie Li",
+ "tahun": 2021,
+ "jurnal": "IEEE Sensors Journal",
+ "doi": "10.1109/JSEN.2021.3109623",
+ "kuartil": "Scopus Q1 (SCImago SJR Best Quartile)",
+ "pilar": "B. Deep Learning RUL",
+ "ringkasan": "Studi mengusulkan model hybrid dua kanal Cap-LSTM untuk prediksi RUL, menggabungkan Capsule Neural Network (kanal spasial, menggantikan pooling CNN dengan routing-by-agreement) dan LSTM (kanal temporal untuk dependensi jangka panjang). Data multisensor deret waktu C-MAPSS (14 sensor terseleksi) diproses dengan sliding time window dan label RUL piece-wise linear (knee point 125). Cap-LSTM mencapai RMSE terbaik pada FD001-FD004 (12,27/17,79/12,55/22,05) dibanding CNN, LSTM, BiLSTM, dan CNN+FNN.",
+ "kontribusi": "Preseden arsitektur deep learning RUL (capsule + LSTM) dengan evaluasi ablation dan metrik RMSE/Score pada benchmark publik, relevan sebagai pembanding metode bagi tesis; namun tidak menangani survival/penyensoran dan bukan domain membran, sehingga Pendukung.",
+ "temuan_kunci": [
+  "Cap-LSTM mencapai RMSE 12,27 (FD001), 17,79 (FD002), 12,55 (FD003), 22,05 (FD004), mengungguli MLP, SVR, RVR, CNN, MODBNE, LSTM, BiLSTM, CNN+FNN.",
+  "Skor (scoring function PHM 2008) Cap-LSTM terendah: 2,60x10^2 / 1,85x10^3 / 2,17x10^2 / 4,57x10^3.",
+  "Ablation: Cap-LSTM lebih baik dari Capsule saja dan LSTM saja (RMSE & Score).",
+  "Jendela waktu lebih panjang meningkatkan akurasi dalam batas tertentu; dropout 0,2 optimal; Adam terbaik (RMSE 12,27).",
+  "FD002/FD004 (6 kondisi operasi) lebih sulit daripada FD001/FD003 (1 kondisi)."
+ ],
+ "dimensi": {"d1": "1", "d2": "1", "d3": "", "d4": "1", "d5": "", "d6": "", "d7": "", "d8": ""},
+ "alasan_dimensi": {
+  "d1": "Memakai data multisensor deret waktu C-MAPSS: 14 sensor dari 21 (7 sensor bernilai konstan dibuang), tiap unit punya rangkaian siklus operasi; input 3D (cycle x sensor) dipotong sliding time window.",
+  "d2": "Mendefinisikan target RUL eksplisit via fungsi piece-wise linear (Eq. 15, knee point k=c_max-125) dan ambang maksimum RUL 125 untuk turbofan engine yang diamati run-to-failure.",
+  "d3": "Tidak memodelkan data tersensor/survival/Weibull/hazard; label RUL diketahui langsung dari simulasi run-to-failure.",
+  "d4": "Memakai arsitektur spesifik: Capsule Neural Network (primary/digit capsule, dynamic routing, squash) dan LSTM (100 neuron), digabung fully-connected; Adam optimizer, dropout, L2.",
+  "d5": "Tidak mengkuantifikasi ketidakpastian; menuliskan kuantifikasi ketidakpastian prediksi RUL sebagai pekerjaan masa depan, dan hanya melaporkan RMSE/Score titik.",
+  "d6": "Menyebut RUL untuk 'scheduling maintenance and production activities' dan early warning, tetapi tidak mengusulkan/menganalisis model, jadwal, atau biaya keputusan perawatan.",
+  "d7": "Objek penelitian adalah turbofan engine, bukan membran/RO/desalinasi.",
+  "d8": "Tidak menangani small-data/transfer/hierarchical/all-censored; dataset benchmark publik standar."
+ },
+ "relevansi": "Pendukung",
+ "kualitas": {"skor": 8, "rincian": {"Q1": 1, "Q2": 1, "Q3": 1, "Q4": 1, "Q5": 1, "Q6": "N/A", "Q7": 0, "Q8": "N/A"}, "catatan": "Arsitektur dan hyperparameter dijabarkan lengkap (jumlah filter, capsule, dropout 0,2, L2 0,0001, Adam lr 0,001, mini-batch 256, early stopping) dan dievaluasi pada benchmark publik dengan 8 model pembanding dan ablation (window/dropout/optimizer). Kelemahan utama: tidak ada kuantifikasi ketidakpastian (disebut sebagai future work), sehingga Q7=0. Q6 (censoring) dan Q8 (keputusan perawatan) tidak berlaku."},
+ "data_kuantitatif": {"dataset": "NASA C-MAPSS (FD001-FD004)", "ukuran": "Train/test trajectory: FD001 100/100, FD002 260/259, FD003 100/100, FD004 249/248; 21 sensor (14 dipakai); time window FD001 30, FD002 21, FD003 36, FD004 18; stride 1", "metrik": "RMSE Cap-LSTM 12,27/17,79/12,55/22,05 (FD001-FD004); Score 2,60e2/1,85e3/2,17e2/4,57e3"},
+ "metode": "Model hybrid dua kanal: (1) kanal capsule (conv ReLU 32 filter 3x3 -> 4 primary capsule -> 10 digit capsule 8-dimensi, dynamic routing 2 iterasi, squash) mengekstraksi fitur spasial; (2) kanal LSTM 100 neuron mengekstraksi dependensi temporal; output digabung (concatenate) -> fully-connected 100 -> dropout -> regresi RUL. Label RUL piece-wise linear, sliding time window, z-score, Adam, MSE loss, early stopping.",
+ "limitasi": [
+  "Tidak ada kuantifikasi ketidakpastian prediksi RUL (future work).",
+  "Hanya dataset simulasi turbofan engine (C-MAPSS); tidak divalidasi pada domain lain.",
+  "Tidak menangani data tersensor atau kelangkaan data kegagalan.",
+  "Kode/model tidak dilampirkan meski hyperparameter lengkap."
+ ],
+ "funding_coi": "Didanai National Natural Science Foundation of China (51975110), Liaoning Revitalization Talents Program (XLYC1907171), dan Fundamental Research Funds for the Central Universities (N2003005, N2103005); tidak ada pernyataan konflik kepentingan.",
+ "status_inklusi": "diterima",
+ "figur_dibaca": [
+  {"file": "figures/_page_4_Figure_2.jpeg", "isi": "Arsitektur Cap-LSTM: input multi-sensor time-series (cycle x sensor) -> dua kanal paralel (ReLU Conv1 -> Primary Capsule 30 -> Digit Capsule 10x8 -> flatten; LSTM 100 dengan gate f/i/z/o) -> concatenate -> fully-connected 100 -> dropout -> output RUL; mengonfirmasi d4."},
+  {"file": "figures/_page_5_Figure_2.jpeg", "isi": "Flowchart pelatihan Cap-LSTM: seleksi data C-MAPSS -> normalisasi -> sliding window sampling (train/test) + label RUL -> split train/valid -> build model -> training backprop mini-batch -> loop epoch -> validasi -> early stopping -> evaluasi -> simpan model -> output RUL; mengonfirmasi alur metode."}
+ ],
+ "bukti": ["Fig. 1: proses capsule network + dynamic routing", "Fig. 3: arsitektur Cap-LSTM", "Fig. 4: flowchart pelatihan", "Fig. 6: fungsi piece-wise linear RUL", "Table II: dataset C-MAPSS", "Table IV: perbandingan RMSE 9 model", "Table V: perbandingan Score", "Table VI: pengaruh optimizer", "Eq. (1)-(17), Table I routing"]
+}

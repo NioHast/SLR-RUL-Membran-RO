@@ -1,0 +1,9 @@
+SUMBER FULL-TEXT (Open Access)
+============================
+Judul   : An insight into real-time monitoring and predictive modelling of ultrafiltration pretreatment for flow rate and fouling mitigation in seawater desalination
+DOI     : 10.1016/j.dwt.2025.101386
+Status  : gold (Open Access)
+Lisensi : cc-by, cc-by-sa
+
+Catatan : Open Access berlisensi Creative Commons; boleh didistribusikan ulang DENGAN ATRIBUSI
+kepada penulis/penerbit asli. Diverifikasi via Unpaywall (https://unpaywall.org).

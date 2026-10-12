@@ -1,0 +1,48 @@
+ANALISIS PAPER 038 — Coutinho, Moreira, Pereira & Gonçalves (2025), SN Computer Science
+Judul: Survival Analysis-Based System for Predictive Maintenance Optimization
+DOI: 10.1007/s42979-025-04291-9 | Kuartil: Scopus Q2 | Pilar indeks: F. DSS & Predictive Maintenance (IS)
+
+KARAKTERISTIK STUDI
+Studi paling dekat dengan tema tesis di batch ini. Membangun kerangka predictive maintenance (PdM) modular berbasis survival analysis untuk estimasi RUL komponen industri, lalu mengintegrasikannya dengan optimasi penjadwalan pemeliharaan. Mengkritik sistem PdM yang memisahkan prediksi RUL dari penjadwalan dan memakai ambang deterministik. Domain: elektroda las industri (nyata) dan mesin sintetis Microsoft Azure. Tier Inti-Metode (RUL + survival/censoring).
+
+METODE
+Kerangka 4 modul (Fig. 4):
+1) Data acquisition & pre-processing: agregasi fitur per siklus operasi (mean & std sensor), feature engineering (TTF, counter siklus, jam kumulatif).
+2) RUL Prediction: survival analysis (Cox PH, Random Survival Forest, Gradient Boosting Survival Analysis, Survival SVM); target = status (Operating/Failure) + TTF; split 80/20; grid-search 5-fold CV (scikit-survival).
+3) Maintenance Scheduling Optimization: simulasi produksi + Simulated Annealing; interval pemeliharaan I_c, downtime D = union interval; cost=|D|; menyelaraskan perawatan antar-komponen.
+4) Maintenance Activities.
+
+DATA
+Spot welding (nyata): 70.971 siklus, 5 fitur, 248 event kegagalan (629.444 sampel arus; 96.869 data rotary). Microsoft Azure PdM sintetis: 50.407 siklus, 16 fitur, 4 komponen per mesin.
+
+TEMUAN UTAMA
+- GBSA paling robust (paling tahan overfitting; C-index train=test=0,789 pada data las); Cox PH overfit; Survival SVM lemah (~0,50-0,55 pada sintetis).
+- Survival function S(t)=P(T>t) menggantikan laju degradasi tetap, mengakomodasi data tersensor.
+- Ambang pemeliharaan berbasis probabilitas survival (0,1985-0,20).
+- Optimasi SA menurunkan downtime 25% vs urutan produksi tak teroptimasi (3 event pemeliharaan vs 4).
+
+RELEVANSI KE TESIS
+Inti. Paper ini memvalidasi bahwa survival analysis dengan data tersensor layak untuk RUL industri dan dapat dihubungkan ke keputusan pemeliharaan—langsung mendukung proposal tesis. Celah yang ditegaskan: belum ada penerapan pada membran/RO, dan belum memakai deep learning survival (DeepSurv/DeepHit) maupun fusi data sensor kompleks pada data membran tersensor.
+
+JUSTIFIKASI DIMENSI (d1-d8)
+- d1 = "1": runtun waktu fitur sensor per siklus (mean/std arus las atau voltage/rotation/pressure/vibration) + counter & jam kumulatif.
+- d2 = "1": TTF/RUL eksplisit; survival function; ambang pemeliharaan probabilitas survival 0,1985-0,20 (Eq. 1).
+- d3 = "1": AKTIF menangani data tersensor — kontribusi menyatakan integrasi censored data; model survival (Cox PH, RSF, GBSA, Survival SVM) memproses observasi right-censored (Gap Analysis, Survival SVM).
+- d4 = "1": Cox PH, RSF, GBSA, Survival SVM.
+- d5 = "1": survival function probabilistik S(t) mengkuantifikasi risiko gagal sepanjang waktu (alternatif terhadap point estimate).
+- d6 = "1": keputusan pemeliharaan konkret via Simulated Annealing (minimize downtime), Eq. interval & cost (Fig. 6, 9, 10).
+- d7 = "": domain elektroda las/mesin, bukan membran/RO.
+- d8 = "": tanpa small-data/transfer/hierarchical/all-censored spesifik.
+
+KUALITAS (skor 8/10)
+Q1=1; Q2=1; Q3=0.5 (dua dataset, praproses baik, tetapi generalisasi/C-index sintetis lemah dan skenario penjadwalan dibangun tangan); Q4=1 (kode GitHub tersedia); Q5=0.5 (RUL hanya C-index; penjadwalan satu skenario); Q6=1 (penanganan penyensoran eksplisit, inti kontribusi); Q7=0.5 (survival function probabilistik, bukan CI eksplisit); Q8=1 (keputusan pemeliharaan kuat). num_applicable=8, jumlah=6.5 -> skor = round(6.5/8*10) = 8.
+
+LIMITASI
+Penjadwalan diuji pada satu skenario sintetis; C-index beberapa komponen sintetis rendah; evaluasi RUL hanya C-index; ambang & durasi pemeliharaan disimplifikasi; bukan membran/RO; tanpa deep learning survival.
+
+BUKTI
+- Abstrak + 3 kontribusi (integrasi censored data; simulasi produksi; validasi dua dataset).
+- Gap Analysis (survival vs point estimate & censored data).
+- Eq. 1-2 (survival & hazard); Tabel 1 (review), Tabel 2 (hyperparameter), Tabel 3-4 (C-index).
+- Section Maintenance Scheduling (interval, cost, SA); hasil -25% downtime.
+- Fig. 4 (arsitektur), Fig. 7 (survival GBSA), Fig. 9-10 (jadwal optimasi vs non-optimasi).

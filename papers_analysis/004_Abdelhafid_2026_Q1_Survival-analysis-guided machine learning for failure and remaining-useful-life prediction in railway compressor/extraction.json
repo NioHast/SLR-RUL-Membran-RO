@@ -1,0 +1,45 @@
+{
+ "no": 9,
+ "judul": "Survival-analysis-guided machine learning for failure and remaining-useful-life prediction in railway compressor",
+ "penulis": "Hamdi Alaoui Abdelhafid, Anwar Meddaoui, Adil Hachmoud",
+ "tahun": 2026,
+ "jurnal": "Scientific Reports",
+ "doi": "10.1038/s41598-026-65271-4",
+ "kuartil": "Scopus Q1 (Scimago SJR Best Quartile)",
+ "pilar": "A. Survival Analysis & Censored Data",
+ "ringkasan": "Studi menyajikan kerangka predictive maintenance yang dapat diinterpretasi di mana Cox proportional hazards (Cox-PH) dipakai untuk mengidentifikasi variabel operasional paling terkait risiko kegagalan dan memandu pembangunan model data-driven. Divvalidasi pada dataset riil MetroPT-3 (kompresor udara kereta) dengan tanggal kegagalan dari operator untuk membentuk label event biner dan target proxy RUL. Empat keluarga model (ANN, RF, XGBoost, LSTM) dievaluasi untuk dua tugas: klasifikasi event kegagalan dan regresi proxy RUL. Model sekuensial (LSTM) unggul untuk deteksi event, sedangkan model pohon nonlinier lebih robust untuk proxy RUL.",
+ "kontribusi": "Sangat relevan ke tesis: menggabungkan Cox-PH survival analysis (hazard/censoring) sebagai lapisan seleksi fitur terarah dengan machine learning (ANN/RF/XGBoost/LSTM) untuk kegagalan dan RUL, ditambah implikasi keputusan pemeliharaan (kebijakan alarm). Namun domainnya kompresor kereta, bukan membran/RO, dan tanpa komponen Weibull eksplisit.",
+ "temuan_kunci": [
+  "Cox-PH (~C-index 0,79) mengalahkan PCA untuk seleksi variabel: event F1 0,770 vs 0,599; proxy RUL R^2 0,81 vs 0,69.",
+  "Faktor risiko dominan: suhu oli (bobot 29,7%), lalu tekanan katup DV, tekanan reservoir, tekanan TP3 (masing-masing ~17%).",
+  "LSTM terbaik untuk deteksi event (ROC-AUC 0,96; sensitivitas >95%; spesifisitas ~0,95 dengan variabel penuh); tetap baik dengan 4 variabel pilihan Cox.",
+  "Proxy RUL (berbasis waktu antar-event, berulang/non-stasioner) membuat regresi kontinu sulit: XGBoost R^2 0,40; LSTM R^2 negatif."
+ ],
+ "dimensi": {"d1": "1", "d2": "1", "d3": "1", "d4": "1", "d5": "", "d6": "1", "d7": "", "d8": "1"},
+ "alasan_dimensi": {
+  "d1": "Dataset MetroPT-3 multivariat (tekanan TP2/TP3/H1/DVP, suhu oli, arus motor, sensor logika), direkam 1 Hz >1 juta baris (versi tereduksi 65536 baris) sebagai deret waktu.",
+  "d2": "Mendefinisikan event kegagalan biner dan target proxy RUL (waktu menuju event berikutnya) dari tanggal kegagalan operator.",
+  "d3": "Memakai Cox proportional hazards survival model (waktu operasi = elapsed cycles, event = kegagalan); abstrak menegaskan kondisi 'censored observations', dan Cox partial likelihood menangani censoring.",
+  "d4": "Model spesifik: Cox-PH, ANN/MLP, Random Forest, XGBoost, dan LSTM.",
+  "d5": "Melaporkan C-index (diskriminasi) tetapi tidak memberikan interval kepercayaan/posterior atas RUL atau interval prediksi; kuantifikasi ketidakpastian tidak dilakukan.",
+  "d6": "Menyusun implikasi keputusan pemeliharaan konkret: kebijakan alarm dua-tingkat (advisory vs intervensi), pemilihan threshold pada trade-off sensitivitas/spesifisitas, penjadwalan jendela pemeliharaan dan prioritas aset.",
+  "d7": "Objek adalah kompresor udara kereta, bukan membran/RO/desalinasi.",
+  "d8": "Menangani pelabelan kegagalan terbatas, observasi tersensor, dan dataset kecil (65536 baris); rekomendasi future work berupa data augmentation untuk memperbesar dataset."
+ },
+ "relevansi": "Inti-Metode",
+ "kualitas": {"skor": 9, "rincian": {"Q1": 1, "Q2": 1, "Q3": 0.5, "Q4": 1, "Q5": 1, "Q6": 1, "Q7": 0.5, "Q8": 1}, "catatan": "Sangat lengkap: pipeline Cox-guided + empat model, dua tugas, protokol evaluasi kronologis anti-leakage, metrik beragam (ROC-AUC/PR-AUC/F1/sensitivitas/spesifisitas; MAE/RMSE/R^2) dan baseline PCA. Kelemahan: target proxy RUL artifisial (R^2 rendah) dan tanpa interval ketidakpastian. Jumlah 7,0/8 -> 9."},
+ "data_kuantitatif": {"dataset": "MetroPT-3 (UCI ML Repository, Ribeiro & Guedes 2020); kompresor udara kereta Porto, multivariat analog+digital, 1 Hz", "ukuran": ">1 juta baris; versi tereduksi 65536 baris; split kronologis 80/20; Cox-PH 7 variabel signifikan; skenario 4 variabel dominan", "metrik": "Cox-PH: accuracy 0,96, AUC 0,974, F1 0,770; PCA: 0,94/0,941/0,599; Proxy RUL Cox-PH R^2 0,81 vs PCA 0,69; LSTM full ROC-AUC 0,961, sens 0,951, spes 0,945; XGBoost RUL R^2 0,40; C-index 0,79"},
+ "metode": "Cox-PH untuk seleksi variabel terarah (dibanding PCA) + empat model ML/DL (ANN, RF, XGBoost, LSTM); protokol evaluasi kronologis anti-leakage; dua tugas (klasifikasi event, regresi proxy RUL); analisis implikasi keputusan.",
+ "limitasi": [
+  "Target proxy RUL bersifat artifisial (berbasis waktu antar-event, berulang/non-stasioner) - regresi kontinu sulit (R^2 rendah).",
+  "Naskah masih 'Article in Press' (unedited) sehingga dapat berubah.",
+  "Cox-guided reduction menurunkan akurasi regresi RUL (trade-off task-dependent).",
+  "Tanpa interval ketidakpastian pada RUL."
+ ],
+ "funding_coi": "Tidak menerima dana/dukungan (The authors declare that no funds, grants, or other support were received); penulis menyatakan tidak ada konflik kepentingan.",
+ "status_inklusi": "diterima",
+ "figur_dibaca": [
+  {"file": "_page_6_Figure_9.jpeg", "isi": "Fig. 2 kerangka penelitian 5 tahap: (1) persiapan data, (2) studi kegagalan & Proxy_RUL, (3) pelatihan model (ML: ANN/RF/XGBoost/LSTM; hybrid: statistik+ML dengan variabel tereduksi), (4) prediksi & evaluasi (split 80/20, watermark 'ACCEPTED'), (5) reliabilitas model jangka panjang."}
+ ],
+ "bukti": ["Table 1: kontribusi relatif variabel via Cox-PH (suhu oli 29,65%, DV_pressure 17,48%, dst.)", "Table 2: bobot PCA", "Table 3: Cox-PH vs PCA untuk Event (accuracy/AUC/F1)", "Table 4: Cox-PH vs PCA untuk Proxy RUL (MAE/RMSE/R^2)", "Table 5: metrik prediksi kegagalan (LSTM/XGBoost/RF/ANN)", "Table 6: metrik proxy RUL", "Bagian 'Practical implications for railway compressor maintenance' (kebijakan alarm)", "C-index 0,79"]
+}

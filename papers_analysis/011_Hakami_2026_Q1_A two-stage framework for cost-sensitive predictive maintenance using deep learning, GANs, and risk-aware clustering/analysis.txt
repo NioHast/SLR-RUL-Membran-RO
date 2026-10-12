@@ -1,0 +1,38 @@
+PAPER 93: A two-stage framework for cost-sensitive predictive maintenance using deep learning, GANs, and risk-aware clustering
+Penulis: Ali Hakami (2026)
+Jurnal: Scientific Reports | Scopus Q1 (SCImago SJR Best Quartile) | DOI 10.1038/s41598-026-42910-4
+Pilar: F. DSS & Predictive Maintenance (IS) | Relevansi: Inti-Domain | Skor kualitas: 8/10
+
+KARAKTERISTIK STUDI
+Studi pengembangan kerangka predictive maintenance (PdM) dua tahap yang berorientasi keputusan biaya. Alih-alih berhenti pada akurasi RUL, penelitian ini menghubungkan prediksi RUL per komponen dengan keputusan penjadwalan perawatan. Domain empirisnya pabrik air minum kemasan (water bottling plant), bukan membran.
+
+METODE
+Tahap 1: LSTM per komponen memprediksi RUL dari sekuens run-to-failure multivariat, dengan augmentasi data memakai WGAN-GP (gradient penalty 10, critic 5x per generator, rasio augmentasi 15) untuk mengatasi kelangkaan kegagalan. Distribusi lifetime (Weibull, eksponensial, gamma, lognormal, inverse Gaussian, Gompertz, fatigue-life) difit ke prediksi RUL dan diubah menjadi survival index SI serta proxy risiko (Eq. 2-3). Tahap 2: DBSCAN mengelompokkan komponen dengan RUL mirip; ambang waktu perawatan optimal per klaster dicari via grid search atas fungsi biaya preventif/korektif/downtime (Eq. 4); dilakukan analisis sensitivitas biaya dan perbandingan dengan kebijakan random dan fixed-percentile.
+
+DATA
+Log per jam dari 16 komponen selama 3.319 jam operasi; fitur: throughput gross/net, failure time/type, line speed, ukuran botol (SKU), age at repair, throughput deficit. Split 70% latih, 20% uji, 10% validasi per komponen.
+
+TEMUAN UTAMA
+Model ber-augmentasi GAN mencapai R2 hingga 0,9989 dan Within+-10 sampai ~97%, sedangkan tanpa augmentasi banyak komponen memperoleh R2 negatif karena sparsity ekstrem. DBSCAN (epsilon 65,14 jam) menghasilkan klaster koheren (silhouette 0,579 dengan GAN). Strategi berbasis klaster memberi biaya ternormalisasi terendah (~1490) dibanding fixed-percentile (~1685) dan random (~1705), dan ambang optimal stabil terhadap variasi parameter biaya.
+
+RELEVANSI KE TESIS
+Relevan kuat pada sumbu domain "small-data" dan pada kaitan RUL ke keputusan perawatan: GAN untuk data kegagalan langka dan optimasi biaya adalah pola yang bisa diadopsi tesis. Namun paper ini tidak melakukan survival analysis/pencensoringan (penulis menyatakannya sebagai future work) dan objeknya bukan membran/RO. Jadi menyumbang Domain (small-data) dan cetak biru DSS, bukan Metode survival.
+
+JUSTIFIKASI DIMENSI
+d1 = 1: deret waktu per jam multivariat 16 komponen; sekuens run-to-failure.
+d2 = 1: RUL per komponen dan ambang perawatan t_k; survival index dan proxy risiko.
+d3 = "": penulis menyatakan distribusi yang difit menggambarkan distribusi nilai RUL prediksi, bukan proses waktu-kegagalan; tidak ada censoring; survival analysis diusulkan sebagai kerja masa depan.
+d4 = 1: LSTM, WGAN-GP, DBSCAN.
+d5 = "": tidak ada interval kepercayaan/posterior prediksi; hanya sensitivitas biaya.
+d6 = 1: optimasi keputusan perawatan konkret (ambang per klaster, perawatan oportunistik, perbandingan kebijakan).
+d7 = "": domain pabrik air minum kemasan, bukan membran.
+d8 = 1: menangani data kecil via augmentasi WGAN-GP pada riwayat kegagalan yang sangat langka.
+
+KUALITAS (8/10)
+Q1 = 1, Q2 = 1, Q3 = 0,5 (satu pabrik; uji K-S menunjukkan perbedaan distribusi sintetis vs asli), Q4 = 1 (kode publik GitHub), Q5 = 0,5 (baseline ada, tetapi tabel metrik RUL tidak lengkap/ambigu), Q6 = N/A, Q7 = N/A, Q8 = 1. Total 5/6 berlaku = 8,33 dibulatkan 8.
+
+LIMITASI
+Proxy risiko bukan probabilitas waktu-kegagalan nyata; komponen dengan riwayat sangat sedikit tetap dijadwalkan terpisah; satu pabrik; data mentah tidak publik; kualitas data sintetis dipertanyakan oleh uji K-S.
+
+BUKTI
+Eq (2) survival index, Eq (3) proxy risiko, Eq (4) fungsi biaya, Tabel 1 statistik run, Tabel 2 uji K-S, Tabel 3 metrik RUL, Tabel 4 distribusi terpilih, Tabel 5 dan Gambar 4 clustering, Gambar 5-10 sensitivitas biaya dan perbandingan strategi.

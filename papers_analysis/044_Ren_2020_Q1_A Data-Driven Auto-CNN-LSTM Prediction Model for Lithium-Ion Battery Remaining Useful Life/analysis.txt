@@ -1,0 +1,51 @@
+PAPER 88 | no=88 | Relevansi: Inti-Domain | Skor kualitas: 6/10 | Dimensi: d1,d2,d4,d8
+Judul: A Data-Driven Auto-CNN-LSTM Prediction Model for Lithium-Ion Battery Remaining Useful Life
+Penulis: Lei Ren, Jiabao Dong, Xiaokang Wang, Zihao Meng, Li Zhao, M. Jamal Deen (2020)
+Jurnal: IEEE Transactions on Industrial Informatics | Scopus Q1 | DOI 10.1109/TII.2020.3008223
+
+KARAKTERISTIK STUDI
+Model data-driven Auto-CNN-LSTM untuk RUL baterai Li-ion. Motivasi utama: jumlah data degradasi terbatas dan model-driven tidak stabil terhadap faktor eksternal. Solusi: autoencoder memperbesar dimensi data agar CNN/LSTM dilatih lebih efektif, digabung dengan post-smoothing filter untuk prediksi yang kontinu.
+
+METODE
+- Ekstraksi fitur: autoencoder memperbesar vektor 21-D menjadi 50-D.
+- Ekspansi fitur paralel: CNN (informasi kedalaman) + LSTM (informasi temporal) -> konkatenasi vektor 484-D.
+- Prediksi: DNN 7-lapis (dropout, L2) + filter smoothing orde pertama (dipilih dari tanpa/linear/orde 2/orde 3).
+- Normalisasi Min-Max; optimizer Adam.
+
+DATA
+- NASA PcoE battery dataset: training #5, #6, #25-#27; test #7, #28.
+- 168 siklus (#5-#7), 28 siklus (#25-#28); vektor fitur 21-D.
+- Ambang umur: kapasitas turun ke 70%.
+
+TEMUAN UTAMA
+- Auto-CNN-LSTM: RMSE 5,03% / akurasi 94,97% (tanpa filter); filter linear 4,84% / 95,16%.
+- Unggul atas ADNN (11,80%) dan SVM (18,23%).
+- Dimensi encoder optimal 50; filter orde pertama paling halus/stabil.
+
+RELEVANSI KE TESIS
+Inti pada sumbu small-data: menunjukkan augmentasi dimensi via autoencoder sebagai strategi menghadapi data degradasi terbatas — berguna untuk tesis karena data RUL membran juga langka. Namun tidak memakai survival analysis/data tersensor, tidak memberi ketidakpastian, dan bukan domain membran. Pipeline hibrida CNN+LSTM dapat menjadi pembanding arsitektur.
+
+JUSTIFIKASI DIMENSI
+- d1=1: data siklus charge-discharge berupa deret waktu multivariabel (21-D: tegangan, arus, suhu).
+- d2=1: definisi umur/kegagalan eksplisit (kapasitas turun ke 70%).
+- d3="": tanpa survival/Weibull/hazard/cure/censoring.
+- d4=1: autoencoder, CNN, LSTM, DNN.
+- d5="": tanpa kuantifikasi ketidakpastian (paper justru mengkritik kekurangan ini tetapi tidak memperbaikinya).
+- d6="": menyebut pengurangan maintenance, tanpa model keputusan.
+- d7="": domain baterai Li-ion.
+- d8=1: augmentasi dimensi untuk mengatasi keterbatasan data degradasi (small-data).
+
+KUALITAS (6/10)
+Q1=1; Q2=1; Q3=0,5 (hanya 2 baterai uji); Q4=0,5; Q5=1 (metrik + ablasi + pembanding); Q6=N/A; Q7=0; Q8=0. skor = round(4/7×10) = 6.
+
+LIMITASI
+- Data uji sangat kecil (2 baterai).
+- Tanpa ketidakpastian prediksi.
+- Overfitting ringan (RMSE train 3,52% vs test 5,03%).
+- Domain baterai; tanpa keputusan pemeliharaan.
+
+BUKTI
+- "an autoencoder is utilized to augment the dimensions of data for more effective training of CNN and LSTM".
+- "The experiment will end when the LIB life ends, that is, its capacity drops to 70%".
+- Tabel III: Auto-CNN-LSTM 5,03% vs ADNN 11,80% vs SVM 18,23%.
+Gambar dibaca: _page_1_Figure_6.jpeg (kerangka Auto-CNN-LSTM), _page_4_Figure_2.jpeg (struktur DNN 7-lapis).

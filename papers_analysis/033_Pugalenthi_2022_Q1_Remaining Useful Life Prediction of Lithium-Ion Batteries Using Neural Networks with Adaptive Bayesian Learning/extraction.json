@@ -1,0 +1,48 @@
+{
+ "no": 43,
+ "judul": "Remaining Useful Life Prediction of Lithium-Ion Batteries Using Neural Networks with Adaptive Bayesian Learning",
+ "penulis": "Karkulali Pugalenthi, Hyunseok Park, Shaista Hussain, Nagarajan Raghavan",
+ "tahun": 2022,
+ "jurnal": "Sensors (MDPI)",
+ "doi": "10.3390/s22103803",
+ "kuartil": "Scopus Q1 (SCImago SJR Best Quartile)",
+ "pilar": "C. Bayesian & Uncertainty",
+ "ringkasan": "Studi mengusulkan framework prognostik dua tahap: pelatihan adaptive Bayesian (particle filter) untuk mengestimasi parameter (bobot dan bias) MLP, lalu prognosis RUL memakai MLP terkonfigurasi. Kontribusi utamanya adalah weight regularization lewat particle roughening (menambahkan Gaussian jitter kecil pada partikel yang terdegradasi) untuk mengatasi particle degeneracy/impoverishment. Diuji pada data degradasi kapasitas baterai lithium-ion CALCE dan NASA; particle roughening memberi RMSE 0,04 (CALCE) dan 0,24 (NASA) dengan tingkat iterasi sukses 98%.",
+ "kontribusi": "Menunjukkan estimasi RUL probabilistik (distribusi posterior parameter dan RUL) dengan Bayesian/particle filter pada data deret waktu degradasi, relevan sebagai preseden kuantifikasi ketidakpastian (d5) bagi tesis; namun tidak memodelkan penyensoran/survival dan domainnya baterai, sehingga bersifat Pendukung.",
+ "temuan_kunci": [
+  "Adaptive Bayesian learning (PF) mengatasi keterbatasan backpropagation (local minima) dan mengurangi kebutuhan data latih besar.",
+  "Systematic resampling (SyR) terbaik di antara MR/StR/SyR: RMSE CALCE 0,05, NASA 0,27, iterasi sukses 96-98%.",
+  "Particle roughening menambah biaya komputasi 8-10x namun mengeliminasi particle impoverishment; RMSE CALCE 0,04, NASA 0,24.",
+  "Metrik: RMSE, Relative Accuracy (RA), waktu komputasi, dan persentase iterasi sukses; dibandingkan dengan dua karya sebelumnya (RMSE 0,040 vs 0,050/0,2698 pada CALCE).",
+  "Distribusi RUL disajikan sebagai box plot (varians/interval antar-repetisi) di tiga titik awal prediksi."
+ ],
+ "dimensi": {"d1": "1", "d2": "1", "d3": "", "d4": "1", "d5": "1", "d6": "", "d7": "", "d8": "1"},
+ "alasan_dimensi": {
+  "d1": "Memakai data deret waktu degradasi kapasitas baterai per siklus (cycle) sebagai input; satu variabel degradasi (capacity) terhadap waktu siklik untuk beberapa sel baterai.",
+  "d2": "Mendefinisikan RUL dan ambang kegagalan eksplisit: End-of-Life (EoL) pada 0,88 Ah (CALCE CS) dan 1 Ah (NASA); RUL dihitung sampai ambang tersebut.",
+  "d3": "Tidak memodelkan data tersensor/survival/Weibull/hazard; PF adalah estimasi keadaan Bayesian, bukan analisis survival dengan censoring.",
+  "d4": "Memakai model spesifik: dua-layer MLP (feedforward, sigmoid + linear), particle filter (particle update/resampling/state estimation), tiga strategi resampling (MR/StR/SyR), dan pemilihan model via BIC.",
+  "d5": "Mengkuantifikasi ketidakpastian: distribusi posterior parameter NN (weight/bias) dan box plot RUL vs true RUL yang menunjukkan sebaran/varians prediksi di tiga titik awal (Fig. 15-16).",
+  "d6": "Tidak mengusulkan/menganalisis keputusan perawatan; predictive maintenance hanya motivasi pada pendahuluan, tanpa jadwal/biaya/DSS.",
+  "d7": "Objek penelitian adalah baterai lithium-ion, bukan membran/RO/desalinasi.",
+  "d8": "Menangani keterbatasan data/transfer: menyatakan model data-driven terbatas oleh kebutuhan data latih besar dan mengatasinya via Bayesian inference; parameter PF yang diestimasi dari satu perangkat dipakai sebagai inisialisasi NN untuk perangkat lain dalam lot (transfer antar-perangkat)."
+ },
+ "relevansi": "Pendukung",
+ "kualitas": {"skor": 8, "rincian": {"Q1": 1, "Q2": 1, "Q3": 0.5, "Q4": 0.5, "Q5": 1, "Q6": "N/A", "Q7": 1, "Q8": "N/A"}, "catatan": "Framework jelas (Fig. 5), metode Bayesian/PF rinci dengan persamaan, evaluasi kuat (3 strategi resampling + roughening + 2 karya sebelumnya, 50 repetisi, 3 titik awal). Kelemahan: hanya 2 baterai uji per dataset, jumlah partikel/ambang ESS tidak sepenuhnya dilaporkan, dan tidak ada analisis censoring. Q6/Q8 tidak berlaku. Q7 mendapat nilai penuh karena ketidakpastian dilaporkan (posterior + boxplot)."},
+ "data_kuantitatif": {"dataset": "CALCE (LiCoO2, sel prismatik CS, 1,1 Ah) dan NASA Ames (sel LiCoO2, 2,1 Ah, Random Walk cycling)", "ukuran": "CALCE: latih CS-36, uji CS-37/CS-38 (EoL 112 siklus); NASA: latih RW10, uji RW11; 50 repetisi prediksi per skenario", "metrik": "RMSE (CALCE 0,04; NASA 0,24 dengan roughening), Relative Accuracy (0,95-0,96), waktu komputasi (343 s CALCE; 255 s NASA), iterasi sukses (94-98%)"},
+ "metode": "Framework dua tahap: (A) adaptive Bayesian learning via particle filter mengestimasi parameter MLP (state transition = model MLP; measurement = g((w,b),k)), dengan state estimation, resampling (MR/StR/SyR) dan particle roughening (Gaussian jitter) sebagai weight regularization; BIC memilih 3 hidden neuron; (B) MLP dengan parameter awal hasil PF dilatih (Levenberg-Marquardt) untuk memprediksi degradasi sampai EoL dan RUL.",
+ "limitasi": [
+  "Hanya dua baterai uji (CS-37/CS-38, RW11); generalisasi antar-dataset terbatas.",
+  "Jumlah partikel dan ambang ESS tidak dilaporkan lengkap (reproduksibilitas parsial).",
+  "Particle roughening menambah waktu komputasi 8-10x.",
+  "Tidak menangani data tersensor/survival; hanya run-to-failure.",
+  "Tidak ada analisis keputusan perawatan."
+ ],
+ "funding_coi": "Dibiayai A*STAR Explainable Physics based AI Program (ePAI) Grant A20H5b0142; penulis menyatakan tidak ada konflik kepentingan. (Penulis pertama didukung beasiswa MOE Singapura.)",
+ "status_inklusi": "diterima",
+ "figur_dibaca": [
+  {"file": "figures/_page_9_Figure_2.jpeg", "isi": "Flowchart framework dua tahap: Stage A (Data Preprocessing via curve fitting/BIC/model selection -> Particle Filters: state model, measurement function, particle update, resampling, state estimation -> Weight Regularization: resampling + roughening) dan Stage B (MLP -> training LM -> state prediction -> RUL estimation); mengonfirmasi d4 dan alur metode."},
+  {"file": "figures/_page_16_Figure_5.jpeg", "isi": "Box plot RUL terprediksi vs True RUL untuk CALCE CS-37 pada tiga titik awal (120/185/240 siklus) untuk MR, StR, SyR, dan particle roughening; menunjukkan sebaran/IQR dan kedekatan median ke garis True RUL, menopang d5 (kuantifikasi ketidakpastian) dan d2."}
+ ],
+ "bukti": ["Fig. 1: kurva degradasi kapasitas CALCE & NASA (ambang EoL)", "Fig. 3: degenerasi/impoverishment partikel", "Fig. 5: framework prognostik", "Fig. 15-16: box plot RUL vs true", "Table 1: batas standar deviasi roughening", "Table 2: metrik per strategi", "Table 3: perbandingan RMSE dengan Ref.[26],[35]", "Eq. (1)-(12)"]
+}

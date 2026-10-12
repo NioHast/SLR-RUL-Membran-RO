@@ -1,0 +1,50 @@
+{
+  "no": 97,
+  "judul": "Remaining Useful Life Prediction Based on the Bayesian Regularized Radial Basis Function Neural Network for an External Gear Pump",
+  "penulis": "Rui Guo, Yongtao Li, Lijiang Zhao, Jingyi Zhao, Dianrong Gao",
+  "tahun": 2020,
+  "jurnal": "IEEE Access",
+  "doi": "10.1109/ACCESS.2020.3001013",
+  "kuartil": "Scopus Q1 (ScImago SJR Best Quartile)",
+  "pilar": "C. Bayesian & Uncertainty",
+  "ringkasan": "Studi mengusulkan prediksi RUL pompa roda gigi eksternal memakai Bayesian regularized RBF neural network (Trainbr-RBFNN). Sinyal vibrasi dari accelerated life test didenoise dengan VMD-Hilbert (dibandingkan EEMD/MEEMD), lalu fitur time/frequency/time-frequency domain difusikan dengan factor analysis menjadi degradation fusion index; indeks ini diprediksi dengan Holt two-parameter smoothing dan dilatih ke Trainbr-RBFNN untuk menaksir waktu kegagalan. Distribusi Weibull dua parameter dipakai untuk menaksir parameter keandalan dan RUL di bawah tegangan normal.",
+  "kontribusi": "Menunjukkan pemanfaatan Bayesian-regularized neural network untuk RUL plus pemodelan distribusi waktu-kegagalan Weibull dua parameter dengan MLE dan acceleration model - kombinasi jaringan + Weibull yang dekat dengan kerangka tesis, tetapi tanpa pencensoringan eksplisit dan domainnya pompa, bukan membran.",
+  "temuan_kunci": [
+    "VMD-Hilbert mengalahkan EEMD dan MEEMD dalam denoising (SNR 15,43 dB, RMSE 0,13 vs MEEMD 12,24/0,18 dan EEMD 3,58/0,95).",
+    "Degradation fusion index dari FA mencapai cumulative contribution rate 96% pada vektor pertama.",
+    "Trainbr-RBFNN memiliki MSE terkecil (3,7843e-04) dibanding RBFNN (0,0069), ANFIS (0,0034), dan Trainbr-BP (9,9903e-04).",
+    "Prediksi degradation fusion index dengan Holt dua-parameter error ~1% pada Fase 600-1000 jam.",
+    "Parameter Weibull: riil m=1,47; eta=9316,8; MTTF=8430 jam vs prediksi m=1,34; eta=9032,7; MTTF=8298 jam (relative error ~1,5%)."
+  ],
+  "dimensi": {"d1": "1", "d2": "1", "d3": "1", "d4": "1", "d5": "", "d6": "", "d7": "", "d8": ""},
+  "alasan_dimensi": {
+    "d1": "Mengumpulkan sinyal deret waktu multi-sensor: vibrasi tiga arah (x/y/z), torsi, kecepatan, dan aliran pada accelerated life test (sampling tiap 10 menit).",
+    "d2": "Mendefinisikan kegagalan secara eksplisit (efisiensi volumetrik < 82% menurut standar JBT7014.2-2018) dan RUL terhadap ambang tersebut; juga menaksir MTTF.",
+    "d3": "Memodelkan waktu-ke-kegagalan dengan distribusi Weibull dua parameter (Eq 18-20: fungsi distribusi, pdf, MTTF) diestimasi via maximum likelihood dari data ALT, lalu diekstrapolasi ke tegangan normal dengan acceleration model (Eq 21-22).",
+    "d4": "Model spesifik: Bayesian regularized RBF neural network (Trainbr-RBFNN), dibandingkan dengan RBFNN, ANFIS, dan Trainbr-BP.",
+    "d5": "Tidak melaporkan interval kepercayaan/posterior atas prediksi RUL; hanya MSE dan relative error (kerangka Bayesian dipakai untuk regularisasi bobot, bukan untuk kuantifikasi ketidakpastian keluaran).",
+    "d6": "Menyebut fault prediction dan health management serta makna prediksi umur, tetapi tidak menyusun/menganalisis model keputusan pemeliharaan konkret.",
+    "d7": "Objek penelitian adalah pompa roda gigi eksternal (hydraulic gear pump), bukan membran/RO/desalinasi.",
+    "d8": "Tidak ada teknik khusus data-kecil/transfer/hierarki/all-censored; meskipun sampel kecil (4 pompa), metodologi tidak dirancang sebagai small-data/transfer (disebut hanya sebagai keunggulan citasi)."
+  },
+  "relevansi": "Inti-Metode",
+  "kualitas": {"skor": 5, "rincian": {"Q1": 1, "Q2": 1, "Q3": 0.5, "Q4": 0.5, "Q5": 0.5, "Q6": 0.5, "Q7": 0, "Q8": 0}, "catatan": "Pipeline jelas dan rinci (VMD-Hilbert, factor analysis, Holt smoothing, Trainbr-RBFNN, Weibull MLE + acceleration model) dan diuji melawan tiga pembanding. Kelemahan: data ALT sendiri yang kecil (4 pompa, hanya No.2 dianalisis rinci), tidak publik, serta evaluasi memakai satu unit tanpa pengulangan/uji signifikansi. Q6=0,5 karena distribusi Weibull dimodelkan tetapi pencensoringan tidak ditangani (data ALT lengkap via quantitative truncation). Q7=0 (tanpa CI/posterior). Q8=0 (tanpa model keputusan perawatan)."},
+  "data_kuantitatif": {"dataset": "Accelerated life test (step-stress) sendiri pada 4 pompa roda gigi Hefei Changyuan CBW-F304; tekanan 23-27 MPa; sampling tiap 10 menit; sensor vibrasi x/y/z, torsi, kecepatan, aliran", "ukuran": "4 pompa (analisis rinci No.2), runtun 0-1000 jam; latih 0-650 jam, uji 650-1000 jam", "metrik": "Denoising SNR/RMSE (VMD 15,43/0,13); MSE Trainbr-RBFNN 3,7843e-04; error indeks ~1%; Weibull m riil 1,47 vs prediksi 1,34, eta 9316,8 vs 9032,7, MTTF 8430 vs 8298 jam (error ~1,5%)"},
+  "metode": "Accelerated life test step-stress dengan quantitative truncation; denoising VMD + Hilbert envelope demodulation (dibanding EEMD/MEEMD); ekstraksi fitur time/frequency/time-frequency domain; fusi multi-fitur dengan factor analysis (FA) menjadi degradation fusion index; smoothing & prediksi indeks dengan Holt two-parameter exponential smoothing; prediksi RUL dengan Bayesian regularized RBFNN (Trainbr, performance function f(w)=V E_w + beta E_d, posterior weight (Eq 11-14)); pemodelan keandalan Weibull dua parameter (MLE) dan acceleration model untuk ekstrapolasi ke tegangan normal.",
+  "limitasi": [
+    "Data ALT sendiri, kecil (4 pompa) dan tertutup; hanya No.2 dianalisis rinci.",
+    "Tidak menangani pencensoringan secara eksplisit (mengandalkan quantitative truncation/run-to-failure).",
+    "Tidak melaporkan ketidakpastian prediksi (CI/posterior).",
+    "Domain pompa hidraulis, bukan membran/RO.",
+    "Evaluasi tanpa pengulangan/uji signifikansi statistik."
+  ],
+  "funding_coi": "Didukung National Key R&D Program of China (2019YFB2005204), NSFC (51675461, 11673040), dan Open Foundation of State Key Laboratory of Fluid Power and Mechatronic Systems (GZKF-201922). Tidak ada pernyataan konflik kepentingan dalam teks yang diekstraksi.",
+  "status_inklusi": "diterima",
+  "figur_dibaca": [
+    {"file": "_page_2_Figure_2.jpeg", "isi": "Topologi RBF neural network: lapisan input (x1..xn), lapisan hidden dengan pusat c1..ch (fungsi Gaussian), lapisan output (penjumlahan berbobot Sigma dengan aktivasi linear)."},
+    {"file": "_page_3_Figure_2.jpeg", "isi": "Skema test bench accelerated life test: empat pompa paralel dengan sensor vibrasi tiga arah (x/y/z), torsi, kecepatan, aliran, terhubung ke NI PXIe-1082."},
+    {"file": "_page_7_Figure_14.jpeg", "isi": "Pompa No.2: (a) kurva debit menurun dari ~5,4 ke ~4,3 L/min dengan dua garis putus-putus ambang kegagalan; (b) degradation fusion index hasil FA di sepanjang 0-1000 jam yang meningkat di tahap akhir."},
+    {"file": "_page_9_Figure_2.jpeg", "isi": "Perbandingan nilai aliran aktual vs prediksi Trainbr-RBFNN (650-1000 jam) dengan dua garis ambang; kurva prediksi mengikuti tren degradasi aktual hingga mendekati ambang."}
+  ],
+  "bukti": ["Eq (1)-(7): VMD", "Eq (8)-(9): output RBFNN Gaussian", "Eq (10)-(14): Bayesian regularization (Trainbr)", "Eq (17): korelasi koefisien IMF", "Eq (18)-(20): distribusi Weibull dua parameter, pdf, MTTF", "Eq (21)-(22): acceleration model Arrhenius/inverse power law", "Tabel 2: SNR/RMSE denoising", "Tabel 3: cumulative contribution rate FA", "Tabel 4: MSE empat algoritma", "Tabel 5: parameter keandalan (m, eta, MTTF)"]
+}

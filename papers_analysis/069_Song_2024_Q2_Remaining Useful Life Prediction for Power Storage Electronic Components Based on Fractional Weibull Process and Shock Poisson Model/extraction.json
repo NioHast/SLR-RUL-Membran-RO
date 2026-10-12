@@ -1,0 +1,49 @@
+{
+ "no": 71,
+ "judul": "Remaining Useful Life Prediction for Power Storage Electronic Components Based on Fractional Weibull Process and Shock Poisson Model",
+ "penulis": "Wanqing Song, Xianhua Yang, Wujin Deng, Piercarlo Cattani, Francesco Villecco",
+ "tahun": 2024,
+ "jurnal": "Fractal and Fractional",
+ "doi": "10.3390/fractalfract8080485",
+ "kuartil": "Scopus Q2 (SCImago SJR Best Quartile)",
+ "pilar": "A. Survival Analysis & Censored Data",
+ "ringkasan": "Studi mengusulkan model degradation-threshold-shock (DTS) untuk memprediksi RUL komponen penyimpanan daya (baterai LiFePO4 dan superkapasitor). Proses steady degradation dimodelkan dengan fractional Weibull process (fWp) yang memiliki long-range dependence dan heavy tail, sedangkan guncangan acak (shock) dimodelkan dengan non-homogeneous compound Poisson process (NHCP) berintensitas naik; koefisien drift dan diffusion diperbarui secara acak untuk menangkap gangguan lingkungan. RUL dihitung via Monte Carlo sebagai waktu first-passage melewati failure threshold (FT), dan model mengalahkan CNN, EMD-GRU, DTS-BM, serta adaptive FBM pada protokol DST dan UDDS.",
+ "kontribusi": "Memberi preseden model degradasi stokastik berbasis Weibull + ambang kegagalan (first-passage) untuk RUL sebagai alternatif dari deep learning - relevan dengan pilar A (analisis failure-time) pada tesis, tetapi tidak memodelkan data tersensor dan domainnya komponen penyimpanan daya, bukan membran.",
+ "temuan_kunci": [
+  "Model DTS berbasis adaptive fWp + NHCP mencapai akurasi tertinggi: superkapasitor DST MAE 6,748 / RMSE 7,216 / SOA 0,8132; LIB UDDS MAE 7,053 / RMSE 8,421 / SOA 0,7968.",
+  "Model mengalahkan CNN (RMSE 14,852) dan EMD-GRU (12,769) pada DST, serta DTS-BM (13,847) dan adaptive FBM (14,639) pada UDDS.",
+  "Karakteristik fraktal terverifikasi: Hurst 0,9522 (superkapasitor) dan 0,7375 (LIB) menunjukkan long-range dependence; kurtosis 11,79 dan 6,81 menunjukkan heavy tail.",
+  "Pemisahan data steady-degradation dan shock memakai prinsip three-sigma dengan asumsi semi-Gaussian; fractal parameter optimal 0,02 (DST) dan 0,04 (UDDS) dari uji goodness-of-fitting.",
+  "Failure threshold ditetapkan pada tegangan terminal 95% (LIB) dan kapasitansi 80% (superkapasitor)."
+ ],
+ "dimensi": {"d1": "1", "d2": "1", "d3": "", "d4": "1", "d5": "", "d6": "1", "d7": "", "d8": ""},
+ "alasan_dimensi": {
+  "d1": "Menggunakan sinyal tegangan dan arus (negatif saat discharge, positif saat charge) yang direkam deret waktu dengan sampling 1 detik pada protokol DST dan UDDS; tegangan dipilih sebagai health indicator LIB dan kapasitansi sebagai SOH superkapasitor.",
+  "d2": "Mendefinisikan RUL dan end-of-life secara eksplisit: first-passage time melewati failure threshold L(t)=inf{t: X(t)>=w | X(t-1)<w} (Eq. 9); FT = 95% tegangan terminal maksimum untuk LIB dan 80% kapasitansi rated untuk superkapasitor.",
+  "d3": "Tidak memodelkan data tersensor: tidak ada indikator censoring, fungsi survival/hazard, atau cure model. Fractional Weibull di sini dipakai sebagai distribusi increment proses degradasi (bukan distribusi waktu-hidup), sehingga pemodelan failure-time/censoring tidak diterapkan.",
+  "d4": "Menggunakan model spesifik: stochastic degradation model DTS dengan fWp + NHCP; baseline pembanding CNN dan EMD-GRU (deep learning) serta DTS-BM dan adaptive FBM (stochastic process).",
+  "d5": "Tidak melaporkan interval kepercayaan/posterior RUL. Monte Carlo dipakai tetapi hanya nilai mode sebagai titik prediksi dan std sebagai metrik galat; tidak ada interval/kuantifikasi ketidakpastian prediktif formal.",
+  "d6": "Menganalisis keputusan pemeliharaan: menyatakan RUL harus diprediksi untuk menginstruksikan preventive maintenance dan menentukan komponen rentan yang memicu penjadwalan maintenance pada sistem hybrid (superkapasitor pada DST, LIB pada UDDS); namun tanpa model penjadwalan/biaya formal.",
+  "d7": "Objek penelitian bukan membran/RO/desalinasi, melainkan baterai lithium-ion dan superkapasitor.",
+  "d8": "Tidak menerapkan small-data/transfer/hierarchical/all-censored; hanya satu komponen per protokol operasi tanpa skema transfer atau agregasi hierarkis."
+ },
+ "relevansi": "Inti-Metode",
+ "kualitas": {"skor": 8, "rincian": {"Q1": 1, "Q2": 1, "Q3": 0.5, "Q4": 1, "Q5": 1, "Q6": "N/A", "Q7": 0.5, "Q8": 0.5}, "catatan": "Rumusan masalah dan desain model stokastik jelas, parameter (k, lambda, delta, kappa) diestimasi via MLE dengan data publik dan perbandingan empat baseline; evaluasi memakai empat metrik. Kelemahan: hanya satu unit komponen per protokol (tanpa pengulangan lintas-unit), tanpa interval ketidakpastian prediktif, dan tidak membahas pencensoringan. Q6 tidak berlaku karena tidak ada pemodelan kelangsungan/censoring."},
+ "data_kuantitatif": {"dataset": "Data degradasi LIB LiFePO4 (IFP-1665130-10Ah) dan superkapasitor Maxwell BCAP3000 (data publik Wang et al., Data in Brief 2017, DOI 10.1016/j.dib.2017.01.019) pada suhu ruang, sampling 1 s", "ukuran": "Dua protokol: DST (superkapasitor mencapai FT 1664 s; LIB 7469 s) dan UDDS (superkapasitor 995 s; LIB 313 s); fractal parameter 0,02 (DST)/0,04 (UDDS); S=297/912 shock; t*=8079/4864 s", "metrik": "Superkapasitor DST: MAE 6,748; RMSE 7,216; SOA 0,8132; std 0,0324 (proposed) vs CNN 13,123/14,852/0,5784/0,1254 dan EMD-GRU 10,478/12,769/0,7231/0,0876. LIB UDDS: proposed 7,053/8,421/0,7968/0,0423 vs DTS-BM 12,949/13,847/0,6125/0,1143 dan adaptive FBM 13,792/14,639/0,5263/0,1420"},
+ "metode": "Model degradation-threshold-shock: steady degradation via fractional Weibull process (fWp) dengan drift/diffusion diperbarui acak (Gaussian white noise); shock via non-homogeneous compound Poisson process (NHCP) berintensitas H(t)=kappa*t; pemisahan data steady/shock via prinsip three-sigma; estimasi parameter shape k dan scale lambda via maximum likelihood; RUL via Monte Carlo first-passage terhadap failure threshold.",
+ "limitasi": [
+  "Hanya satu unit komponen per protokol operasi; tidak ada validasi lintas-unit atau lintas-sistem.",
+  "Tidak memodelkan data tersensor maupun fungsi kelangsungan hidup.",
+  "Tidak melaporkan interval kepercayaan/posterior atas prediksi RUL (std hanya metrik galat).",
+  "Implementasi Monte Carlo tanpa pembahasan konvergensi/beban komputasi.",
+  "Domain komponen penyimpanan daya, bukan membran/RO."
+ ],
+ "funding_coi": "Dibiayai Major Project of Science and Technology of Quanzhou (No. 2022GZ8) dan Technology Innovation Project of Minnan University of Science and Technology (No. 23XTD113); penulis menyatakan tidak ada konflik kepentingan.",
+ "status_inklusi": "diterima",
+ "figur_dibaca": [
+  {"file": "_page_5_Figure_14.jpeg", "isi": "Flowchart model RUL: set jumlah prediksi n, pemisahan data degradasi mentah, estimasi parameter, generate fWp, update drift & diffusion coefficient, simulasi shock, hitung EOL ke-i, iterasi sampai n, lalu Monte Carlo."},
+  {"file": "_page_13_Figure_3.jpeg", "isi": "Distribusi probabilitas RUL (hasil Monte Carlo) untuk superkapasitor protokol DST: kurva proposed (hitam) lebih sempit/tegas dibanding CNN (merah putus) dan EMD-GRU (hijau); sumbu prediction time, RUL/s, probability."},
+  {"file": "_page_10_Figure_1.jpeg", "isi": "Kurva degradasi tegangan LIB (SOH/p.u.) dengan garis FT=0,95 untuk protokol DST (mencapai FT ~8000 s) dan UDDS (tegangan jatuh cepat lalu fluktuatif di sekitar FT)."}
+ ],
+ "bukti": ["Eq. (1),(5),(6): model DTS dengan fWp dan NHCP", "Eq. (4): fractional Weibull distribution", "Eq. (9): definisi RUL/first-passage (failure threshold)", "Eq. (10)-(14): estimasi parameter MLE & intensitas H(t)", "Table 1: perbandingan model", "Table 2: RMSE estimasi fractal parameter", "Table 3: Hurst & kurtosis", "Table 4: estimasi slope kappa", "Table 5-6: metrik evaluasi DST & UDDS", "Fig. 5, 12, 16"]
+}

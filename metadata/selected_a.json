@@ -1,0 +1,1180 @@
+[
+ {
+  "id": "https://openalex.org/W7155398643",
+  "doi": "https://doi.org/10.1016/j.ceja.2026.101217",
+  "title": "AI-based remaining useful life prediction of seawater desalination membranes",
+  "year": 2026,
+  "authors": [
+   "Hussam Ahmad Alshraideh",
+   "Fajer Al Ali",
+   "Mahmoud Awad",
+   "Amani Al–Othman"
+  ],
+  "venue": "Chemical Engineering Journal Advances",
+  "host": "Elsevier BV",
+  "cites": 0,
+  "type": "article",
+  "oa": true,
+  "abstract": "• An AI-based predictive model is proposed for RO membranes Remaining Useful Life (RUL). • Full list of the desalination system operational variables were considered including: SDI, water temperature, pump speed, and membrane age. • The model achieved an exceptional R² coefficient of 0.984. • Infuential variable identified through SHAP analysis were: SDI, water temperature, pump speed, and the membrane age. Remaining Useful Life (RUL) of Reverse Osmosis (RO) membranes is defined as the anticipated time until the RO membrane reaches a specified performance threshold, triggering maintenance actions to enhance system longevity and efficiency. We propose an artificial intelligence-based predictive model for modelling and estimating the RUL of RO membranes. Literature on the prediction of RUL for RO membranes is limited, solely based on historical water production data and does not incorporate operational conditions and parameters. We consider a detailed list of sensor and laboratory based system operational parameters such as Silt Density Index (SDI), water temperature, pump speed, and the water production history at the different stages of the desalination process to model and predict the membranes RUL. A case study from a local RO plant in the UAE is used to demonstrate the proposed work. Four machine learning based predictive models were examined. Random Forest algorithm demonstrated the best performance, achieving R² of 0.984, RMSE of 0.136, and MAE of 0.0997 indicating exceptional RUL prediction performance. SHapley Additive exPlanations (SHAP) importance analysis identified SDI, water temperature, pump speed, and the membrane age as the top RUL influential parameters. Understanding these key variables can provide valuable insights into optimizing operational conditions, thus extending membrane lifespan. Implementation of this AI-driven model optimizes clean-in-place scheduling maximizing the longevity and performance of membranes. Findings enhance the understanding of necessary operating conditions for effective seawater treatment and contribute to the broader literature on predictive maintenance in desalination, supporting more efficient and sustainable water production practices.",
+  "topics": [
+   "Membrane Separation Technologies",
+   "Fault Detection and Control Systems",
+   "Reliability and Maintenance Optimization"
+  ],
+  "_queries": [
+   "reverse osmosis membrane remaining useful life",
+   "desalination predictive maintenance machine learning"
+  ],
+  "_score": 44.0,
+  "pillars": [
+   "E",
+   "F"
+  ],
+  "idx": 1
+ },
+ {
+  "id": "https://openalex.org/W7108445439",
+  "doi": "https://doi.org/10.1109/tase.2025.3640217",
+  "title": "A Neural Network-Based Survival Analysis Model Considering Censored Data for Failure Prediction",
+  "year": 2025,
+  "authors": [
+   "Yuanyuan Gao",
+   "Shuo Li",
+   "Di Wang",
+   "Jianming Mao",
+   "Linhan Ouyang"
+  ],
+  "venue": "IEEE Transactions on Automation Science and Engineering",
+  "host": "Institute of Electrical and Electronics Engineers",
+  "cites": 2,
+  "type": "article",
+  "oa": false,
+  "abstract": "With the rapid development of sensor and information technology, multi-sensor data related to system degradation processes are now readily available for condition monitoring and remaining useful life (RUL) prediction. However, this process is often complicated by the presence of censored sensor data. In this article, we propose a novel method called Bayesian LSTM-SURV, which integrates Survival Analysis (SA) with Neural Networks (NNs) to model the nonlinear relationship between degradation signals and RUL. This method addresses censored signals and the lack of RUL labels through a novel loss function. Additionally, we employ a Bayesian procedure to transfer information from the training data, enhancing the accuracy of predictions for the test data and maximizing the utilization of existing data. Instead of directly predicting RUL values, we assume that the lifetime follows a Weibull distribution. By modeling the lifetime distribution and survival function, we can calculate and predict RUL values while quantifying the uncertainty of these predictions. The advantageous features of the proposed method are demonstrated through simulation studies and its application to a high-fidelity gas turbine engine dataset.",
+  "topics": [
+   "Machine Fault Diagnosis Techniques",
+   "Reliability and Maintenance Optimization",
+   "Fault Detection and Control Systems"
+  ],
+  "_queries": [
+   "remaining useful life survival analysis",
+   "remaining useful life censored"
+  ],
+  "_score": 35.1,
+  "pillars": [
+   "A",
+   "B",
+   "C"
+  ],
+  "idx": 2
+ },
+ {
+  "id": "https://openalex.org/W4412044079",
+  "doi": "https://doi.org/10.36001/ijphm.2025.v16i2.4260",
+  "title": "LSTM and Transformers based methods for Remaining Useful Life Prediction considering Censored Data",
+  "year": 2025,
+  "authors": [
+   "Jean-Pierre Noot",
+   "Mikaël Martin",
+   "Étienne Birmelé"
+  ],
+  "venue": "International Journal of Prognostics and Health Management",
+  "host": "The Prognostics and Health Management Society",
+  "cites": 4,
+  "type": "article",
+  "oa": true,
+  "abstract": "Predictive maintenance deals with the timely replacement of industrial components relatively to their failure. It allows to prevent shutdowns as in reactive maintenance and reduces the costs compared to preventive maintenance. As a consequence, Remaining Useful Life (RUL) prediction of industrial components has become a key challenge for condition-based monitoring. In many applications, in particular those for which preventive maintenance is the general rule, the prediction problem is made harder by the rarity of failing instances. Indeed, the interruption of data acquisition before the occurrence of the event of interest leads to right censored data. Recent deep-learning architectures, that show the best results of the literature for complete-life data, most often do not consider censoring, even though its rate in the industrial environment may be high.The present article introduces a method which considers censored data for the Dual Aspect Self-Attention based on a Transformer proposed by (Z. Zhang, Song, & Li, 2022), and puts it into competition a modified version of the ordinal regression-based LSTMof (Vishnu, Malhotra, Vig, & Shroff, 2019). The evaluation of the resulting method on the CMAPSS and N-CMAPSS benchmark dataset shows that it is competitive compared to the state-of-the-art RUL prediction methods for a low censoring rate and more efficient for a high rate of censoring in large enough data sets. Finally, conformal prediction is used to estimate confidence intervals for the predictions.",
+  "topics": [
+   "Machine Fault Diagnosis Techniques",
+   "Reliability and Maintenance Optimization",
+   "Fault Detection and Control Systems"
+  ],
+  "_queries": [
+   "remaining useful life censored",
+   "remaining useful life censored data deep learning",
+   "predictive maintenance censored data"
+  ],
+  "_score": 27.6,
+  "pillars": [
+   "A",
+   "B",
+   "C",
+   "F"
+  ],
+  "idx": 3
+ },
+ {
+  "id": "https://openalex.org/W7138863801",
+  "doi": "https://doi.org/10.3390/s26061915",
+  "title": "Survival Models for Predictive Maintenance and Remaining Useful Life in Sensor-Enabled Smart Energy Networks: A Review",
+  "year": 2026,
+  "authors": [
+   "Mohammad Reza Shadi",
+   "Hamid Mirshekali",
+   "Maryamsadat Tahavori",
+   "Hamid Reza Shaker"
+  ],
+  "venue": "Sensors",
+  "host": "Multidisciplinary Digital Publishing Institute",
+  "cites": 1,
+  "type": "article",
+  "oa": true,
+  "abstract": "Smart energy networks, including electricity distribution and district heating, are increasingly operated as sensor-enabled infrastructures where maintenance decisions must be made under heterogeneous and time-varying operating conditions. In these settings, time-to-event data are rarely complete; preventive actions and limited observation horizons routinely introduce censoring and truncation, so models and validation procedures must account for partially observed lifetimes to avoid biased inference and misleading performance estimates. This review surveys survival models for predictive maintenance (PdM) and remaining useful life (RUL) estimation, spanning non-parametric, semi-parametric, parametric, and learning-based approaches, with emphasis on censoring-aware formulations and the use of static and time-varying covariates derived from sensor, inspection, and contextual information. A structured taxonomy and a systematic mapping of model families to data types, core assumptions (proportional hazards versus parametric distributional structure), and decision-oriented outputs such as risk ranking, horizon failure probabilities, and RUL distributions are presented. Evaluation practice is also synthesized by covering discrimination metrics, censoring-aware RUL accuracy measures, and probabilistic assessment via proper scoring rules, including the time-dependent Brier score and Integrated Brier Score (IBS). The review provides researchers and practitioners with a practical guide to selecting, fitting, and evaluating survival models for risk-informed maintenance planning in smart energy networks.",
+  "topics": [
+   "Reliability and Maintenance Optimization",
+   "Power System Reliability and Maintenance",
+   "Statistical Distribution Estimation and Applications"
+  ],
+  "_queries": [
+   "remaining useful life censored",
+   "predictive maintenance censored data"
+  ],
+  "_score": 22.7,
+  "pillars": [
+   "A",
+   "C",
+   "F"
+  ],
+  "idx": 4
+ },
+ {
+  "id": "https://openalex.org/W4386608111",
+  "doi": "https://doi.org/10.36948/ijfmr.2023.v05i05.6214",
+  "title": "Performance Analysis of Reverse Osmosis Desalination Plant, Study Case of BBRI Plant",
+  "year": 2023,
+  "authors": [
+   "Faizur Al Muhajir",
+   "Widayat Widayat",
+   "Sri Widodo Agung Suedi -"
+  ],
+  "venue": "International Journal For Multidisciplinary Research",
+  "host": null,
+  "cites": 0,
+  "type": "article",
+  "oa": true,
+  "abstract": "Desalination using seawater resources has been a cornerstone in meeting both human and industrial water demands for several decades. Some well-known methods are thermal desalination and membrane desalination. Among these, membrane desalination stands out, employing reverse osmosis (RO) technology, wherein seawater is pressurized and forced through a semi-permeable membrane to produce purified water. Black Bear Resources Indonesia (BBRI), which operates in the chemical industry relies on RO technology to cater its desalination requirements within the manufacturing facility. Notably, BBRI's desalination plant is equipped with both Seawater Reverse Osmosis (SWRO) and Brackish Water Reverse Osmosis (BWRO) modules. In the SWRO unit, the Hydranautic SWC-6 Max membrane is employed, while the BWRO unit features the Hydranautic ESPA-2 LD membrane. Both modules adopt the spiral wound configuration utilizing polyamide composite material. To determine the reliability of factory operations and dependability, a comprehensive performance analysis of the SWRO and BWRO units is imperative. This analysis encompasses critical parameters such as Recovery Rate, Membrane Flux, Percent Rejection, Concentration Rejection, and Specific Energy Consumption (SEC). Notably, performance degradation in both SWRO and BWRO systems primarily stems from membrane fouling, scaling phenomena, and the natural aging of the membranes.",
+  "topics": [],
+  "_queries": [
+   "desalination Indonesia membrane"
+  ],
+  "_score": 36.0,
+  "pillars": [
+   "E",
+   "G"
+  ],
+  "idx": 5
+ },
+ {
+  "id": "https://openalex.org/W3183233499",
+  "doi": "https://doi.org/10.4236/gep.2021.97004",
+  "title": "Performance Prediction of a Reverse Osmosis Desalination System Using Machine Learning",
+  "year": 2021,
+  "authors": [
+   "Divas Karimanzira",
+   "Thomas Rauschenbach"
+  ],
+  "venue": "Journal of Geoscience and Environment Protection",
+  "host": "Scientific Research Publishing",
+  "cites": 18,
+  "type": "article",
+  "oa": true,
+  "abstract": "One of the major challenges that membrane manufacturers, commercial enterprises and the scientific community in the field of membrane-based filtration or reverse osmosis (RO) desalination have to deal with is system performance retardation due to membrane fouling. In this respect, the prediction of fouling or system performance in membrane-based systems is the key to determining the mid and long-term plant operating conditions and costs. Despite major research efforts in the field, effective methods for the estimation of fouling in RO desalination plants are still in infancy, for example, most of the existing methods, neither consider the characteristics of the membranes such as the spacer geometry, nor the efficiency and the day to day chemical cleanings. Furthermore, most studies focus on predicting a single fouling indicator, e.g., flux decline. Faced with the limits of mathematical or numerical approach, in this paper, machine learning methods based on Multivariate Temporal Convolutional Neural networks (MTCN), which take into account the membrane characteristics, feed water quality, RO operation data and management practice such as Cleaning In Place (CIP) will be considered to predict membrane fouling using measurable multiple indicators. The temporal convolution model offers one the capability to explore the temporal dependencies among a remarkably long historical period and has potential use for operational diagnostics, early warning and system optimal control. Data collected from a Desalination RO plant will be used to demonstrate the capabilities of the prediction system. The method achieves remarkable predictive accuracy (root mean square error) of 0.023, 0.012 and 0.007 for the relative differential pressure and permeates Total Dissolved solids (TDS) and the feed pressure, respectively.",
+  "topics": [
+   "Membrane Separation Technologies",
+   "Membrane-based Ion Separation Techniques",
+   "Hydrological Forecasting Using AI"
+  ],
+  "_queries": [
+   "reverse osmosis membrane fouling prediction machine learning",
+   "membrane fouling prediction machine learning"
+  ],
+  "_score": 33.9,
+  "pillars": [
+   "B",
+   "E",
+   "F",
+   "G"
+  ],
+  "idx": 6
+ },
+ {
+  "id": "https://openalex.org/W2892070662",
+  "doi": "https://doi.org/10.1007/s13201-018-0821-8",
+  "title": "Design and development of reverse osmosis (RO) plant status monitoring system for early fault prediction and predictive maintenance",
+  "year": 2018,
+  "authors": [
+   "Satyam Srivastava",
+   "Saikrishna Vaddadi",
+   "Pankaj Kumar",
+   "Shashikant Sadistap"
+  ],
+  "venue": "Applied Water Science",
+  "host": "Springer Nature",
+  "cites": 25,
+  "type": "article",
+  "oa": true,
+  "abstract": "Automation and reliability are the crucial elements of any advance reverse osmosis plant to meet the environmental and economic demands. Early fault indication, diagnosis and regular maintenance are the key challenges with most of the reverse osmosis plants in the Indian scenario. The present work introduces a modern reverse osmosis (RO) plant status monitoring unit to monitor different plant parameters in real time and early prediction for faults and maintenance. Developed RO plant status monitoring unit consists of a touch screen-based embedded monitoring unit, water quality sensors (pH, TDS), sampling chamber for controlled water flow, flow sensors, pressure and level sensors. The present system has been developed in a modular fashion so that it could be integrated with any capacity of RO plant units. Developed embedded system monitors various parameters of the plant such as input power, efficiency of the plant, level of input and output water tank and also guides operator with instructions for plant operation. Other than this, a dedicated smartphone app interface has been developed for the operator to acquire data from status monitoring unit, storage on smartphone, and transfer it to the cloud. The developed smartphone-based app also provides facility to integrate plant data with Google map with location information for easy understanding and quick action. The system has also a backup facility to transfer data to the server using 2G GSM module during the unavailability of the operator. A dedicated centralized Web server has been developed for real-time visualization of all installed RO plant status monitoring units. Different machine learning techniques have been implemented on acquired sensors data to predict early warnings related to power failure, membrane fouling and scaling, input water shortage, pipe, tank leakage, water quality sensors damage, non-operation or wrong operation of the plant along with different maintenance actions such as membrane water and chemical wash. Developed RO status monitoring unit has been tested with various RO plants having capacity from 500 LPH to 2000 LPH and deployed at various nearby villages of Rajasthan.",
+  "topics": [
+   "Fault Detection and Control Systems",
+   "Membrane Separation Technologies",
+   "Industrial Automation and Control Systems"
+  ],
+  "_queries": [
+   "reverse osmosis membrane fouling prediction machine learning"
+  ],
+  "_score": 33.3,
+  "pillars": [
+   "E",
+   "F"
+  ],
+  "idx": 7
+ },
+ {
+  "id": "https://openalex.org/W7169550097",
+  "doi": "https://doi.org/10.1016/j.jwpe.2026.110543",
+  "title": "Mechanism-aligned machine learning for membrane fouling prediction and process control in pressure-driven water treatment membranes: A review",
+  "year": 2026,
+  "authors": [
+   "Xiaomin Yang",
+   "Jundong Zhao",
+   "Junzhao Zhuang",
+   "Songlin Guan",
+   "C Wang",
+   "Kenglin Huang",
+   "Lele Liu",
+   "Yunan Gao"
+  ],
+  "venue": "Journal of Water Process Engineering",
+  "host": "Elsevier BV",
+  "cites": 0,
+  "type": "article",
+  "oa": true,
+  "abstract": "Pressure-driven membrane processes are essential for water reclamation, drinking-water treatment, industrial wastewater reuse and resource recovery. However, their long-term stability is limited by membrane fouling, which is governed by hydraulic history, influent variability, organic-inorganic interactions, biofilm growth and localized scaling. This review develops a mechanism-aligned machine-learning framework for fouling prediction and process control in ultrafiltration, nanofiltration and reverse osmosis systems. The framework links dominant fouling mechanisms with data structures, model architectures and practical control actions. Gated recurrent unit models are discussed for ultrafiltration systems with high-frequency hydraulic signals and rapid cake-layer development, where they can support adaptive flux regulation, air-scouring adjustment and backwash scheduling. Regularized XGBoost models are evaluated for nanofiltration systems with multicollinear water-quality variables and coupled organic-inorganic fouling, where they can guide pretreatment optimization, coagulant dosing and chemical-dose reduction. Hybrid convolutional neural network-gated recurrent unit models combined with SHAP are examined for reverse osmosis systems with spatially heterogeneous biofouling and scaling, where they can support early-warning diagnosis, pH correction, antiscalant control, targeted cleaning and biocide zoning. The review also discusses benchmarking, SCADA noise, data sparsity, fallback control, edge deployment and operator interpretability. Future work should prioritize plant-scale validation, physics-informed learning, digital twins and federated learning to support safer and more deployable artificial intelligence in water-treatment facilities.",
+  "topics": [
+   "Membrane Separation Technologies",
+   "Wastewater Treatment and Reuse",
+   "Hydrological Forecasting Using AI"
+  ],
+  "_queries": [
+   "reverse osmosis membrane fouling prediction machine learning",
+   "membrane fouling prediction machine learning"
+  ],
+  "_score": 33.0,
+  "pillars": [
+   "B",
+   "E"
+  ],
+  "idx": 8
+ },
+ {
+  "id": "https://openalex.org/W7133547668",
+  "doi": "https://doi.org/10.46604/peti.2025.15348",
+  "title": "Improved CNN-LSTM Bearing Remaining Useful Life Prediction Based on the Weibull Loss Function",
+  "year": 2026,
+  "authors": [
+   "Yanping Zhang",
+   "Kho Lee Chin",
+   "Xiaozheng Li",
+   "Mingqiang Zhang",
+   "Dongfeng Yuan",
+   "Annie Joseph"
+  ],
+  "venue": "Proceedings of Engineering and Technology Innovation",
+  "host": "Taiwan Association of Engineering and Technology Innovation",
+  "cites": 0,
+  "type": "article",
+  "oa": true,
+  "abstract": "The prediction of the remaining useful life (RUL) of rolling bearings is a critical task in predictive maintenance. This paper presents a deep learning model named knowledge-driven convolutional neural network–long short-term memory (KCNN-LSTM), enhanced by the Weibull-based loss function tailored with historical bearing failure data. By incorporating a probabilistic Weibull modeling mechanism, the model can accurately capture the uncertainty and accelerated degradation trend of bearing failure over time. The prognostics and health management (PHM) 2012 and XJTU-SY bearing datasets are utilized to evaluate the proposed KCNN-LSTM model. The results indicate that the proposed KCNN-LSTM achieves superior performance compared with the conventional CNN-LSTM model, leading to a 10.2% improvement in the score metric and a notable reduction in prediction error. The proposed model offers a practical and effective approach for enhancing predictive maintenance in high-reliability industrial systems.",
+  "topics": [
+   "Machine Fault Diagnosis Techniques",
+   "Reliability and Maintenance Optimization",
+   "Gear and Bearing Dynamics Analysis"
+  ],
+  "_queries": [
+   "Weibull degradation remaining useful life"
+  ],
+  "_score": 33.0,
+  "pillars": [
+   "A",
+   "B",
+   "C",
+   "F"
+  ],
+  "idx": 9
+ },
+ {
+  "id": "https://openalex.org/W7135078545",
+  "doi": "https://doi.org/10.1109/lsens.2026.3673123",
+  "title": "A Multisensor Cross-Modal Attention Framework for Weibull-Driven RUL Estimation for Liner Using Real-World Industrial Data",
+  "year": 2026,
+  "authors": [
+   "Hari Vilas Reddy",
+   "Rantu Buragohain",
+   "Karan Nathwani"
+  ],
+  "venue": "IEEE Sensors Letters",
+  "host": "Institute of Electrical and Electronics Engineers",
+  "cites": 1,
+  "type": "article",
+  "oa": false,
+  "abstract": "Accurate estimation of Remaining Useful Life (RUL) is critical for ensuring reliability, safety, and proactive maintenance of industrial machinery. Modern assets typically generate heterogeneous sensor streams-such as vibration, gap displacement, and temperature, each capturing different aspects of degradation. The proximity-based gap sensor provides high-resolution geometric measurement of liner wear and misalignment for early degradation detection, while an industrial IoT gateway ensures reliable, synchronized acquisition of multi-modal sensor data under highly vibratory and noisy operation conditions. However, fusing such multi-modal data is challenging due to varying temporal dynamics, noise levels, and the presence of right-censored observations where actual failure times are partially unknown. To address these challenges, we propose a Cross-Modal Attention-Weibull Fusion Transformer (CMA-WFT), a novel architecture that integrates temporal encoders with cross-modal attention and survival-based Weibull statistical modeling. Each sensor modality is first encoded using a modality-specific temporal encoder, after which cross-modal attention dynamically learns inter-sensor dependencies to produce a unified degradation representation. A parametric Weibull survival head then predicts the shape and scale parameters governing the time-to-failure distribution, enabling both pointRULestimation and reliability curve generation. Experiments conducted on synthetically generated multi-sensor degradation data and real-world operational patterns demonstrate that the proposed method outperforms existing deep learningRULmodels in terms of accuracy, stability, and early-warning capability. The ability to explicitly model uncertainty and handle censored samples makesCMA-WFTparticularly suitable for industrial prognostics and condition monitoring applications.",
+  "topics": [
+   "Machine Fault Diagnosis Techniques",
+   "Reliability and Maintenance Optimization",
+   "Fault Detection and Control Systems"
+  ],
+  "_queries": [
+   "remaining useful life censored",
+   "predictive maintenance censored data",
+   "Weibull degradation remaining useful life"
+  ],
+  "_score": 32.7,
+  "pillars": [
+   "A",
+   "B",
+   "C"
+  ],
+  "idx": 10
+ },
+ {
+  "id": "https://openalex.org/W4378901905",
+  "doi": "https://doi.org/10.1016/j.mlwa.2023.100475",
+  "title": "Intelligent framework for coagulant dosing optimization in an industrial-scale seawater reverse osmosis desalination plant",
+  "year": 2023,
+  "authors": [
+   "Muhammad Ghifari Ridwan",
+   "Thomas Altmann",
+   "Ahmed Yousry",
+   "Ratul Das"
+  ],
+  "venue": "Machine Learning with Applications",
+  "host": "Elsevier BV",
+  "cites": 17,
+  "type": "article",
+  "oa": true,
+  "abstract": "Efficient and reliable desalination through seawater reverse osmosis (SWRO) mandates optimized pre-treatment strategies to minimize organic and inorganic fouling. Coagulation, the process of agglomerating colloidal particles using chemical coagulants, in combination with media filtration to reduce colloidal fouling on reverse osmosis membranes is commonly used in seawater pretreatment. Due to its inherent complexity and the absence of physical models to quantify the efficiency of coagulation, overdosing of coagulants is ubiquitously observed to maintain filtered water quality. To address this problem, we use Artificial neural networks (ANNs) to optimize coagulant dosing by predicting the SDI after chemical dosing. The model is developed by using large-scale plant data comprising of different seawater physical parameters and plant operational data including pH, SDI, turbidity, coagulant dosing rate, and flocculant dosing rate. By using feature engineering, selection, and our domain knowledge, new input parameters are derived, irrelevant parameters are eliminated, and these are used as inputs to train the model. The developed ANNs model achieved a prediction accuracy of 95% also outperforms other machine learning methods, and upon industrialization it reduced annual coagulant consumption by 11.7% when implemented in a commercial SWRO plant producing 216,000 m3/day of desalinated water.",
+  "topics": [
+   "Membrane Separation Technologies",
+   "Coagulation and Flocculation Studies",
+   "Water and Wastewater Treatment"
+  ],
+  "_queries": [
+   "reverse osmosis membrane fouling prediction machine learning"
+  ],
+  "_score": 31.9,
+  "pillars": [
+   "B",
+   "E"
+  ],
+  "idx": 11
+ },
+ {
+  "id": "https://openalex.org/W4294363408",
+  "doi": "https://doi.org/10.1007/s00521-022-07667-7",
+  "title": "Weibull recurrent neural networks for failure prognosis using histogram data",
+  "year": 2022,
+  "authors": [
+   "Maharshi Harshadbhai Dhada",
+   "Ajith Kumar Parlikad",
+   "Olof Steinert",
+   "Tony Lindgren"
+  ],
+  "venue": "Neural Computing and Applications",
+  "host": "Springer Science+Business Media",
+  "cites": 13,
+  "type": "article",
+  "oa": true,
+  "abstract": "Abstract Weibull time-to-event recurrent neural networks (WTTE-RNN) is a simple and versatile prognosis algorithm that works by optimising a Weibull survival function using a recurrent neural network. It offers the combined benefits of the sequential nature of the recurrent neural network, and the ability of the Weibull loss function to incorporate censored data. The goal of this paper is to present the first industrial use case of WTTE-RNN for prognosis. Prognosis of turbocharger conditions in a fleet of heavy-duty trucks is presented here, where the condition data used in the case study were recorded as a time series of sparsely sampled histograms. The experiments include comparison of the prediction models trained using data from the entire fleet of trucks vs data from clustered sub-fleets, where it is concluded that clustering is only beneficial as long as the training dataset is large enough for the model to not overfit. Moreover, the censored data from assets that did not fail are also shown to be incorporated while optimising the Weibull loss function and improve prediction performance. Overall, this paper concludes that WTTE-RNN-based failure predictions enable predictive maintenance policies, which are enhanced by identifying the sub-fleets of similar trucks.",
+  "topics": [
+   "Reliability and Maintenance Optimization",
+   "Machine Fault Diagnosis Techniques",
+   "Fault Detection and Control Systems"
+  ],
+  "_queries": [
+   "predictive maintenance censored data"
+  ],
+  "_score": 31.6,
+  "pillars": [
+   "A",
+   "B",
+   "F"
+  ],
+  "idx": 12
+ },
+ {
+  "id": "https://openalex.org/W4413160777",
+  "doi": "https://doi.org/10.1016/j.dwt.2025.101386",
+  "title": "An insight into real-time monitoring and predictive modelling of ultrafiltration pretreatment for flow rate and fouling mitigation in seawater desalination",
+  "year": 2025,
+  "authors": [
+   "Kamil Kayode Katibi",
+   "Azimov Abdugani Mutalovich",
+   "Nazmi Mat Nawi",
+   "Gani Moldakulovich Iztleuov",
+   "M.I. Satayev",
+   "Muhammad Adib Mohd Nasir"
+  ],
+  "venue": "Desalination and Water Treatment",
+  "host": "Taylor & Francis",
+  "cites": 8,
+  "type": "article",
+  "oa": true,
+  "abstract": "The growing demand for freshwater, driven by population growth, industrialization, and climate change, has increased global reliance on seawater desalination. While reverse osmosis (RO) remains the primary technology for salt removal, ultrafiltration (UF) plays a critical role as a pretreatment stage by reducing suspended solids, colloids, and microorganisms contributing to RO membrane fouling. This study focuses exclusively on the predictive modelling and real-time optimization of a UF system operating as a pretreatment component in a seawater desalination plant. Using 426 days of operational data, four Machine learning (ML) models: Tree Regression (TR), Ensemble Learning (ENS), Neural Networks (NN), and Gaussian Process Regression (GPR) were trained to predict UF flow rates and membrane resistance in real time. ENS achieved the best performance with an R² of 0.99 and Root Mean Square Error (RMSE) of 3.08 L/min, closely followed by TR (R² = 0.99, RMSE = 3.27 L/min). NN and GPR yielded R² of 0.98 (RMSE = 4.69 L/min) and R² of 0.97 (RMSE = 5.98 L/min), respectively. Adaptive backwash control guided by these predictions reduced average TMP excursions by 18 % and decreased backwash frequency from one event every 6 h to one every 8 h, improving operational stability and cutting maintenance costs by 12 %. This framework presents a scalable, intelligent approach to fouling mitigation in seawater desalination pretreatment. • Effects of time, temperature, pressure, pH, and ORP on ultrafiltration performance were investigated. • Ensemble learning and tree regression predicted flow rate with R² = 0.99 and RMSE = 3.08 L/min. • A 426-day seawater UF dataset enabled robust long-term model training and validation. • Real-time sensors improved fouling detection, backwash timing, and energy efficiency. • The ML framework allowed adaptive control of TMP and flow rate, scalable to other membrane systems.",
+  "topics": [
+   "Membrane Separation Technologies",
+   "Membrane-based Ion Separation Techniques",
+   "Freezing and Crystallization Processes"
+  ],
+  "_queries": [
+   "reverse osmosis membrane fouling prediction machine learning",
+   "desalination predictive maintenance machine learning"
+  ],
+  "_score": 31.2,
+  "pillars": [
+   "B",
+   "E",
+   "F"
+  ],
+  "idx": 13
+ },
+ {
+  "id": "https://openalex.org/W7133128175",
+  "doi": "https://doi.org/10.3390/eng7030106",
+  "title": "Prediction of Reverse Osmosis Membrane Fouling Using Machine Learning: MLR, ANN, and SVM at a Seawater Desalination Plant",
+  "year": 2026,
+  "authors": [
+   "Siham Kherraf",
+   "Fatima-Zahra Abahdou",
+   "Maria Benbouzid",
+   "Zakaria Izouaouen",
+   "Abdellatif Aarfane",
+   "Abdoullatif Baraket",
+   "Hamid Nasrellah",
+   "Meryem Bensemlali",
+   "Soumia Ziti",
+   "Najoua Labjar",
+   "Souad El Hajjaji"
+  ],
+  "venue": "Eng—Advances in Engineering",
+  "host": "Multidisciplinary Digital Publishing Institute",
+  "cites": 7,
+  "type": "article",
+  "oa": true,
+  "abstract": "Membrane fouling remains a major obstacle to the performance of the reverse osmosis (RO) desalination processes. Artificial intelligence (AI) is now a promising approach for the reliable modeling of these complex systems. This study evaluates three modeling techniques—multiple linear regression (MLR), artificial neural networks (ANNs), and support vector regression (SVR)—for predicting transmembrane pressure (TMP) at the Boujdour desalination plant, based on five input parameters: temperature, turbidity, pH, conductivity, and feedflow. The analysis is based on an original dataset of 195 daily measurements, and due to the absence of timestamps, the study focuses on state-to-TMP prediction rather than chronological forecasting, with no temporal generalization claimed. Approximately 2000 augmented training samples generated using a conservative SMOGN approach were used for model development, while performance evaluation relied exclusively on 39 independent real test observations. Two modeling strategies were adopted: (i) a minimalist approach based on significant variables identified by an ordinary least squares (OLS) model (pH and conductivity), and (ii) a multivariate approach integrating all parameters to capture non-linear interactions. A rigorous validation framework was put in place to avoid information leakage and ensure the robustness and generalizability of the models. Performance was evaluated using R2, RMSE, and MAE metrics, supplemented by robustness and significance analyses including bootstrap confidence intervals, paired statistical comparisons, and interpretability analyses based on permutation importance, partial dependence plots (PDPs), and individual conditional expectation (ICE) curves. The results indicate that the SVR model achieves the best average predictive accuracy among the tested models, albeit with moderate explanatory power.",
+  "topics": [
+   "Membrane Separation Technologies",
+   "Hydrological Forecasting Using AI",
+   "Water Quality Monitoring and Analysis"
+  ],
+  "_queries": [
+   "reverse osmosis membrane fouling prediction machine learning",
+   "membrane fouling prediction machine learning"
+  ],
+  "_score": 31.1,
+  "pillars": [
+   "B",
+   "E"
+  ],
+  "idx": 14
+ },
+ {
+  "id": "https://openalex.org/W7117306018",
+  "doi": "https://doi.org/10.14456/scitechasia.2025.79",
+  "title": "Predictive Modeling of Brackish Surface Water Quality for Reverse Osmosis Desalination Plants Using Advanced Machine Learning Techniques",
+  "year": 2025,
+  "authors": [
+   "Cherki Lahlou"
+  ],
+  "venue": "Science & Technology Asia",
+  "host": "Thammasat University",
+  "cites": 0,
+  "type": "article",
+  "oa": true,
+  "abstract": "Artificial intelligence (AI) has proven highly effective in optimizing water treatment processes, particularly for monitoring reverse osmosis (RO) desalination plants treating brackish surface water. These systems face complex, non-linear variations in feed water quality, making real-time monitoring crucial to avoid performance loss and membrane fouling. This study presents a machine learning (ML)–based framework to predict the water quality index (WQI) and enable rapid decision-making by classifying water quality (WQC) into four actionable categories: Excellent, Good, Poor, and Unsuitable. Using 11 key water quality parameters, the model provides an efficient and reliable approach for prediction and classification. Among tested algorithms, the multi-layer perceptron (MLP) achieved the best WQI prediction performance, with an R2 of 98.19%, a mean absolute error (MAE) of 0.0182, and a mean squared error (MSE) of 0.0043. For WQC, the XGBoost algorithm outperformed others, reaching 99.84% accuracy. The results demonstrate the strong potential of ML techniques to enhance water quality monitoring and management in RO desalination plants, supporting efficient operation and timely intervention.",
+  "topics": [
+   "Hydrological Forecasting Using AI",
+   "Water Quality Monitoring and Analysis",
+   "Water Quality and Pollution Assessment"
+  ],
+  "_queries": [
+   "reverse osmosis membrane fouling prediction machine learning"
+  ],
+  "_score": 31.0,
+  "pillars": [
+   "E"
+  ],
+  "idx": 15
+ },
+ {
+  "id": "https://openalex.org/W4320917402",
+  "doi": "https://doi.org/10.3390/separations10020134",
+  "title": "Multiscale Analysis of Permeable and Impermeable Wall Models for Seawater Reverse Osmosis Desalination",
+  "year": 2023,
+  "authors": [
+   "Qingqing Yang",
+   "Yi Heng",
+   "Ying Jiang",
+   "Jiu Li Luo"
+  ],
+  "venue": "Separations",
+  "host": "Multidisciplinary Digital Publishing Institute",
+  "cites": 7,
+  "type": "article",
+  "oa": true,
+  "abstract": "In recent years, high permeability membranes (HPMs) have attracted wide attention in seawater reverse osmosis (SWRO) desalination. However, the limitation of hydrodynamics and mass transfer characteristics for conventional spiral wound modules defeats the advantage of HPMs. Feed spacer design is one of the effective ways to improve module performance by enhancing permeation flux and mitigating membrane fouling. Herein, we propose a multiscale modeling framework that integrates a three-dimensional multi-physics model with a permeable wall and an impermeable wall, respectively, at a sub-millimeter scale and a system-level model at a meter scale. Using the proposed solution framework, a thorough quantitative analysis at different scales is conducted and it indicates that the average errors of the friction coefficient and the Sherwood number using the impermeable wall model are less than 2% and 9%, respectively, for commercial SWRO membrane (water permeability 1 L m−2 h−1 bar−1) and HPMs (3 L m−2 h−1 bar−1, 5 L m−2 h−1 bar−1 and 10 L m−2 h−1 bar−1) systems, compared to the predictions using the permeable wall model. Using both the permeable and impermeable wall models, the system-level simulations, e.g., specific energy consumption, average permeation flux, and the maximum concentration polarization factor at the system inlet are basically the same (error < 2%), while the impermeable wall model has a significant advantage in computational efficiency. The multiscale framework coupling the impermeable wall model can be used to guide the efficient and accurate optimal spacer design and system design for HPMs using, e.g., a machine learning approach.",
+  "topics": [
+   "Membrane Separation Technologies",
+   "Membrane-based Ion Separation Techniques",
+   "Freezing and Crystallization Processes"
+  ],
+  "_queries": [
+   "reverse osmosis membrane fouling prediction machine learning"
+  ],
+  "_score": 29.1,
+  "pillars": [
+   "B",
+   "E"
+  ],
+  "idx": 16
+ },
+ {
+  "id": "https://openalex.org/W2902443160",
+  "doi": "https://doi.org/10.3390/app8122416",
+  "title": "Transfer Learning with Deep Recurrent Neural Networks for Remaining Useful Life Estimation",
+  "year": 2018,
+  "authors": [
+   "Ansi Zhang",
+   "Honglei Wang",
+   "Shaobo Li",
+   "Yuxin Cui",
+   "Zhonghao Liu",
+   "Guanci Yang",
+   "Jianjun Hu"
+  ],
+  "venue": "Applied Sciences",
+  "host": "Multidisciplinary Digital Publishing Institute",
+  "cites": 182,
+  "type": "article",
+  "oa": true,
+  "abstract": "Prognostics, such as remaining useful life (RUL) prediction, is a crucial task in condition-based maintenance. A major challenge in data-driven prognostics is the difficulty of obtaining a sufficient number of samples of failure progression. However, for traditional machine learning methods and deep neural networks, enough training data is a prerequisite to train good prediction models. In this work, we proposed a transfer learning algorithm based on Bi-directional Long Short-Term Memory (BLSTM) recurrent neural networks for RUL estimation, in which the models can be first trained on different but related datasets and then fine-tuned by the target dataset. Extensive experimental results show that transfer learning can in general improve the prediction models on the dataset with a small number of samples. There is one exception that when transferring from multi-type operating conditions to single operating conditions, transfer learning led to a worse result.",
+  "topics": [
+   "Machine Fault Diagnosis Techniques",
+   "Reliability and Maintenance Optimization",
+   "Fault Detection and Control Systems"
+  ],
+  "_queries": [
+   "remaining useful life transfer learning"
+  ],
+  "_score": 29,
+  "pillars": [
+   "B",
+   "D",
+   "F"
+  ],
+  "idx": 17
+ },
+ {
+  "id": "https://openalex.org/W4404459570",
+  "doi": "https://doi.org/10.1016/j.jwpe.2024.106532",
+  "title": "Applications of artificial intelligence for membrane separation: A review",
+  "year": 2024,
+  "authors": [
+   "Mehryar Jafari",
+   "Christina Tzirtzipi",
+   "Bernardo Castro Dominguez"
+  ],
+  "venue": "Journal of Water Process Engineering",
+  "host": "Elsevier BV",
+  "cites": 43,
+  "type": "article",
+  "oa": true,
+  "abstract": "The incorporation of Artificial Intelligence (AI) techniques into membrane-based systems has transformed their design, optimization, and management in various fields, notably, Reverse Osmosis (RO) and Ultrafiltration (UF). This comprehensive review evaluates the strategic application of AI methodologies across different membrane separation processes, furnishing practical insights for methodology selection and refinement. Ranging from predictive Machine Learning (ML) models for microfiltration to sophisticated neural networks for fouling alleviation in ultrafiltration, this review elucidates the alignment of AI approaches with specific application requisites. Despite persistent challenges such as data scarcity, interpretability of models, and computational demands, promising frontiers are emerging, including the amalgamation of AI with sensor technologies for real-time monitoring and control, and the utilization of generative adversarial networks for membrane material innovation. As the domain of AI in membrane separation progresses, interdisciplinary collaboration becomes paramount in surmounting existing obstacles and exploiting nascent prospects. This review underscores the necessity of comprehending AI methodologies tailored to diverse membrane separation context, steering future investigations towards heightened efficacy, sustainability, and ingenuity. • AI can enhance performance and sustainability in membrane separation processes. • ML models predict permeate flux, rejection rates, and fouling with high accuracy. • AI optimization reduces energy use and fouling in membrane separation processes. • Hybrid models improve the accuracy and interpretability of AI predictions. • Explainable AI and new applications drive future membrane technology advancements.",
+  "topics": [
+   "Membrane Separation Technologies",
+   "Hydrological Forecasting Using AI",
+   "Membrane-based Ion Separation Techniques"
+  ],
+  "_queries": [
+   "reverse osmosis membrane fouling prediction machine learning"
+  ],
+  "_score": 28.8,
+  "pillars": [
+   "B",
+   "E"
+  ],
+  "idx": 18
+ },
+ {
+  "id": "https://openalex.org/W7133323869",
+  "doi": "https://doi.org/10.1016/j.advmem.2026.100219",
+  "title": "Hybrid models, digital twins, and digital shadows for sustainable membrane technologies: A critical review",
+  "year": 2026,
+  "authors": [
+   "Kamran Ghasemzadeh",
+   "Mostafa Jafari",
+   "Tara Torabi",
+   "Amirpiran Amiri",
+   "Adolfo Iulianelli"
+  ],
+  "venue": "Advanced Membranes",
+  "host": "Elsevier BV",
+  "cites": 12,
+  "type": "article",
+  "oa": true,
+  "abstract": "Membrane separation technologies are essential for water purification, wastewater treatment, gas separation, hydrogen (H 2 ) production, and carbon (CO & CO 2 ) capture. Despite their wide applicability, large-scale adoption is limited by significant technical challenges, including fouling, the permeability–selectivity trade-off, high energy consumption, and the durability required for long term operation. Integrating machine learning (ML) and artificial intelligence (AI) with the physics-based models, as a hybrid mode, digital shadows (DSs), and digital twins (DTs), offers a promising pathway to overcome these limitations. Hybrid modeling combines physics-based simulations with data-driven learning to produce fast and accurate predictive tools for membrane processes. DSs extend this capability by creating passively updated virtual representations of membrane systems from real-time data, thereby enabling soft sensing, performance forecasting, and anomaly detection. DTs further advance these functions through bi-directional connectivity and higher-fidelity physical models, supporting adaptive control, predictive maintenance, and system-level optimization. This review examines recent applications of hybrid models, DSs, and DTs across major membrane technologies, including desalination and water treatment, membrane bioreactors, gas separation for CO 2 and H 2 , O 2 /N 2 separation, catalytic membrane reactors (CMRs), and proton-exchange membrane fuel cells. The role of computational fluid dynamics (CFD) in generating synthetic data, enhancing mechanistic understanding, and supporting model development is also discussed. Case studies demonstrate improvements in fouling prediction, energy-efficient operating set points, reduced operational costs, and real-time decision support at both module and plant scales. Collectively, hybrid modeling enables high-fidelity predictions, DSs support continuous monitoring, and DTs provide a pathway toward intelligent, self-optimizing, and sustainable membrane-based separation systems, bridging the gap between laboratory innovation and industrial deployment. • Hybrid ML models enhance membrane performance by combining physics-based simulations with data-driven learning. • Digital twins/ Digital shadows enable real-time monitoring, soft sensing, and performance forecasting in membrane systems. • Digital twins support adaptive control, predictive maintenance, and system-level optimization. • CFD-generated synthetic data strengthe",
+  "topics": [
+   "Membrane Separation Technologies",
+   "Membrane Separation and Gas Transport",
+   "Membrane-based Ion Separation Techniques"
+  ],
+  "_queries": [
+   "desalination predictive maintenance machine learning"
+  ],
+  "_score": 28.6,
+  "pillars": [
+   "E",
+   "F"
+  ],
+  "idx": 19
+ },
+ {
+  "id": "https://openalex.org/W2993254510",
+  "doi": "https://doi.org/10.2175/193864711802713513",
+  "title": "Microfiltration and Reverse Osmosis Membrane Replacement Understanding Operating Process Data and Autopsy Data Projection of Useful Remaining Life",
+  "year": 2011,
+  "authors": [
+   "Al Bazzi",
+   "Slavica D. Hammond",
+   "Kenneth Redd",
+   "Michael J. Sarullo",
+   "Roshanak Aflaki",
+   "Dawn Guendert"
+  ],
+  "venue": "Proceedings of the Water Environment Federation",
+  "host": "Water Environment Federation",
+  "cites": 4,
+  "type": "article",
+  "oa": false,
+  "abstract": "Microfiltration and Reverse Osmosis Membrane Replacement Understanding Operating Process Data and Autopsy Data Projection of Useful Remaining LifeMembranes are used more and more often for the creation of process water and water for in direct potable use from wastewater. The useful life expectancy of the microfiltration (MF) and reverse osmosis (RO) membranes is projected and planed in general for 5 years, which is consistent with the manufacturers' warranties for membrane systems operating in this type of application where membranes are...Author(s)Al BazziSlavica HammondKenneth ReddMichael SarulloRoshanak AflakiDawn GuendertSourceProceedings of the Water Environment FederationSubjectSession 37: Advanced Treatment and Nutrient RemovalDocument typeConference PaperPublisherWater Environment FederationPrint publication date Jan, 2011ISSN1938-6478SICI1938-6478(20110101)2011:15L.2097;1-DOI10.2175/193864711802713513Volume / Issue2011 / 15Content sourceWEFTECFirst / last page(s)2097 - 2119Copyright2011Word count190Subject keywordsAdvanced wastewater treatmentMicrofilttration (MF)Reverse Osmosis (RO)membranesuseful life expectancyuseful remaining lifereplacement",
+  "topics": [
+   "Membrane Separation Technologies",
+   "Wastewater Treatment and Reuse",
+   "Membrane-based Ion Separation Techniques"
+  ],
+  "_queries": [
+   "reverse osmosis membrane remaining useful life"
+  ],
+  "_score": 28.6,
+  "pillars": [
+   "E"
+  ],
+  "idx": 20
+ },
+ {
+  "id": "https://openalex.org/W2920927808",
+  "doi": "https://doi.org/10.5004/dwt.2019.23444",
+  "title": "Enhancing accuracy of membrane fouling prediction using hybrid machine learning models",
+  "year": 2019,
+  "authors": [
+   "Seung Ji Lim",
+   "Young Mi Kim",
+   "Hosik Park",
+   "Seojin Ki",
+   "Kwanho Jeong",
+   "Jangwon Seo",
+   "Sung Ho Chae",
+   "Joon Ha Kim"
+  ],
+  "venue": "Desalination and Water Treatment",
+  "host": "Taylor & Francis",
+  "cites": 25,
+  "type": "article",
+  "oa": true,
+  "abstract": "Membrane fouling significantly affects membrane performance, but cleaning and replacement schedules are often set at regular time intervals, regardless of the extent of deterioration in performance. The aim of this study is to develop an improved prediction model for membrane fouling in the seawater reverse osmosis (SWRO) process using a hybrid machine learning approach. A Kalman filter (KF) was combined with either an artificial neural network (ANN) or a support vector machine (SVM)-a family of machine learning models-in series. The performance of these integrated models was evaluated with training and testing data sets compiled from the Fujairah SWRO plant over a period of 18 months. Our findings showed that the SVM alone provided, on average, slightly better prediction of membrane resistance (an indirect indicator of membrane fouling) than a single ANN during training and testing sets. However, hybrid machine learning methods consistently outperformed any single model, with the combination of the KF and SVM exhibiting better performance than that of the KF and ANN, except for one special case in which the accuracy of a single SVM already exceeded 0.8 for both Nash-Sutcliffe model efficiency and R 2 . Taken together, our results demonstrated that the hybrid machine learning approach not only enhanced the prediction ability of membrane resistance in classical fouling and machine learning models, but could also be used to adjust cleaning and replacement schedules correctly in response to progressive deterioration in membrane performance during operation.",
+  "topics": [
+   "Membrane Separation Technologies",
+   "Hydrological Forecasting Using AI",
+   "Membrane-based Ion Separation Techniques"
+  ],
+  "_queries": [
+   "reverse osmosis membrane fouling prediction machine learning",
+   "membrane fouling prediction machine learning",
+   "membrane replacement prediction"
+  ],
+  "_score": 28.3,
+  "pillars": [
+   "B",
+   "E"
+  ],
+  "idx": 21
+ },
+ {
+  "id": "https://openalex.org/W4280595834",
+  "doi": "https://doi.org/10.1038/s41598-022-12572-z",
+  "title": "Prognostic modeling of predictive maintenance with survival analysis for mobile work equipment",
+  "year": 2022,
+  "authors": [
+   "Zhen Yang",
+   "Juho Kanniainen",
+   "Tomi R. Krogerus",
+   "Frank Emmert‐Streib"
+  ],
+  "venue": "Scientific Reports",
+  "host": "Nature Portfolio",
+  "cites": 21,
+  "type": "article",
+  "oa": true,
+  "abstract": "In recent years there is a data surge of industrial and business data. This posses opportunities and challenges at the same time because the wealth of information is usually buried in complex and frequently disconnected data sets. Predictive maintenance utilizes such data for developing prognostic and diagnostic models that allow the optimization of the life cycle of machine components. In this paper, we address the modeling of the prognostics of machine components from mobile work equipment. Specifically, we are estimating survival curves and hazard rates using parametric and non-parametric models to characterize time dependent failure probabilities of machine components. As a result, we find the presence of different types of censoring masking the presence of different populations that can cause severe problems for statistical estimators and the interpretations of results. Furthermore, we show that the obtained hazard functions for different machine components are complex and versatile and are best modeled via non-parametric estimators. However, notable exceptions for individual machine components can be found amenable for a Generalized-gamma and Weibull model.",
+  "topics": [
+   "Reliability and Maintenance Optimization",
+   "Machine Fault Diagnosis Techniques",
+   "Statistical Distribution Estimation and Applications"
+  ],
+  "_queries": [
+   "predictive maintenance censored data"
+  ],
+  "_score": 28.1,
+  "pillars": [
+   "A",
+   "F"
+  ],
+  "idx": 22
+ },
+ {
+  "id": "https://openalex.org/W4411436438",
+  "doi": "https://doi.org/10.30564/jees.v7i6.8630",
+  "title": "Membrane Fouling Prediction and Control Using AI and Machine Learning: A Comprehensive Review",
+  "year": 2025,
+  "authors": [
+   "Doaa Salim Musallam Samhan Al-Kathiri",
+   "Gaddala Babu Rao",
+   "Noor Mohammed Said Qahoor",
+   "Saikat Banerjee",
+   "Naladi Ram Babu",
+   "Gadidamalla Kavitha",
+   "Nageswara Rao Lakkimsetty",
+   "Rakesh Namdeti"
+  ],
+  "venue": "Journal of Environmental & Earth Sciences",
+  "host": "Bilingual Publishing",
+  "cites": 19,
+  "type": "article",
+  "oa": true,
+  "abstract": "Membrane fouling is a persistent challenge in membrane-based technologies, significantly impacting efficiency, operational costs, and system lifespan in applications like water treatment, desalination, and industrial processing. Fouling, caused by the accumulation of particulates, organic compounds, and microorganisms, leads to reduced permeability, increased energy demands, and frequent maintenance. Traditional fouling control approaches, relying on empirical models and reactive strategies, often fail to address these issues efficiently. In this context, artificial intelligence (AI) and machine learning (ML) have emerged as innovative tools offering predictive and proactive solutions for fouling management. By utilizing historical and real-time data, AI/ML techniques such as artificial neural networks, support vector machines, and ensemble models enable accurate prediction of fouling onset, identification of fouling mechanisms, and optimization of control measures. This review provides a detailed examination of the integration of AI/ML in membrane fouling prediction and mitigation, discussing advanced algorithms, the role of sensor-based monitoring, and the importance of robust datasets in enhancing predictive accuracy. Case studies highlighting successful AI/ML applications across various membrane processes are presented, demonstrating their transformative potential in improving system performance. Emerging trends, such as hybrid modeling and IoT-enabled smart systems, are explored, alongside a critical analysis of research gaps and opportunities. This review emphasizes AI/ML as a cornerstone for sustainable, cost-effective membrane operations.",
+  "topics": [
+   "Membrane Separation Technologies",
+   "Hydrological Forecasting Using AI",
+   "Membrane-based Ion Separation Techniques"
+  ],
+  "_queries": [
+   "membrane fouling prediction machine learning",
+   "desalination predictive maintenance machine learning"
+  ],
+  "_score": 28.0,
+  "pillars": [
+   "B",
+   "E",
+   "F"
+  ],
+  "idx": 23
+ },
+ {
+  "id": "https://openalex.org/W3008143440",
+  "doi": "https://doi.org/10.1109/access.2020.2976595",
+  "title": "A Bayesian Optimization AdaBN-DCNN Method With Self-Optimized Structure and Hyperparameters for Domain Adaptation Remaining Useful Life Prediction",
+  "year": 2020,
+  "authors": [
+   "Jialin Li",
+   "David He"
+  ],
+  "venue": "IEEE Access",
+  "host": "Institute of Electrical and Electronics Engineers",
+  "cites": 44,
+  "type": "article",
+  "oa": true,
+  "abstract": "The prediction of remaining useful life (RUL) of mechanical equipment provides a timely understanding of the equipment degradation and is critical for predictive maintenance of the equipment. In recent years, the applications of deep learning (DL) methods to predict equipment RUL have attracted much attention. There are two major challenges when applying the DL methods for RUL prediction: (1) It is difficult to select the prediction model structure and hyperparameters such as network depth, learning rate, batch size, and etc. (2) The developed prediction model is domain dependent, i.e., it can only give good prediction performance in one data domain (one particular type of working conditions and fault modes). In order to meet the challenges, a novel RUL prediction method developed using a deep convolutional neural network (DCNN) combined with Bayesian optimization and adaptive batch normalization (AdaBN) is presented in this paper. The proposed RUL prediction model is validated by the turbofan engine degradation simulation dataset provided by NASA. The prediction results show that the proposed prediction model provides better prediction results than model structures obtained by random search and grid search. The results also show that the domain adaptation capability of the prediction model has been improved.",
+  "topics": [
+   "Machine Fault Diagnosis Techniques",
+   "Reliability and Maintenance Optimization",
+   "Fault Detection and Control Systems"
+  ],
+  "_queries": [
+   "remaining useful life Bayesian neural network"
+  ],
+  "_score": 27.8,
+  "pillars": [
+   "B",
+   "C",
+   "D",
+   "F"
+  ],
+  "idx": 24
+ },
+ {
+  "id": "https://openalex.org/W4312641439",
+  "doi": "https://doi.org/10.1109/access.2022.3226780",
+  "title": "Data-Efficient Estimation of Remaining Useful Life for Machinery With a Limited Number of Run-to-Failure Training Sequences",
+  "year": 2022,
+  "authors": [
+   "German Sternharz",
+   "Ayman Elhalwagy",
+   "Tatiana Kalganova"
+  ],
+  "venue": "IEEE Access",
+  "host": "Institute of Electrical and Electronics Engineers",
+  "cites": 13,
+  "type": "article",
+  "oa": true,
+  "abstract": "Prognostics and Health Monitoring (PHM) of machinery is a research area with great relevance to industrial applications as it can serve as a foundation for safer, more cost-efficient operation and maintenance. The prediction of Remaining Useful Life (RUL) plays an important part in this field and has seen significant advances from the introduction of machine learning methods. However, these methods typically require model training with a large number of run-to-failure sequences, which are often not feasible to obtain due to the required time and cost investments. The present study addresses this issue by introducing a novel methodology, which first quantifies the deviation from the machine’s health and fault state and then calculates a machine Health Index (HI) prior to the prediction of RUL. In addition, the start of a degradation state is determined. Alternative implementations of the proposed methodology are compared utilising several methods, including Support Vector Regression (SVR), Long Short-Term Memory (LSTM) Neural Network (NN), Mahalanobis Distance (MD), and LSTM Autoencoder (AE) NN. The methodology is applied to the open turbofan degradation (C-MAPSS) and bearing vibration (FEMTO-ST PROGNOSTIA) datasets. When a reduced subset of training sequences is used, the prediction results demonstrate that the proposed methodology largely outperforms the baseline method without HI generation. For example, when comparing prediction errors of the C-MAPSS dataset at a reduction of the available number of training sequences to 5%, the proposed method shows an average prediction improvement by 6.5% - 19.2% relative to the baseline method. The presented approach is therefore suitable to improve model generalisation for cases with a limited number of training sequences. When the full training set is utilised, the most resource-saving variant of the proposed approach achieves an average training duration of 8.9% compared to the baseline method. Hence, an additional contribution of the presented data-efficient approach is the reduction of required computing resources, which has implications on training time, energy consumption, and environmental impact.",
+  "topics": [],
+  "_queries": [
+   "remaining useful life limited data"
+  ],
+  "_score": 27.6,
+  "pillars": [
+   "B",
+   "F"
+  ],
+  "idx": 25
+ },
+ {
+  "id": "https://openalex.org/W2942214939",
+  "doi": "https://doi.org/10.21595/vp.2019.20617",
+  "title": "Remaining useful life (RUL) prediction of bearing by using regression model and principal component analysis (PCA) technique",
+  "year": 2019,
+  "authors": [
+   "Apakrita Tayade",
+   "Sangram S. Patil",
+   "Vikas M. Phalle",
+   "Faruk Kazi",
+   "Satvasheel Powar"
+  ],
+  "venue": "Vibroengineering PROCEDIA",
+  "host": "JVE International",
+  "cites": 32,
+  "type": "article",
+  "oa": true,
+  "abstract": "A wind turbine works under variable load and environmental conditions because of which failure rate has been on the rise. Failure of a gearbox, an integral part of producing wind energy, contributes to 80 % of the total downtime for the wind turbine. For ensuring better utilization of the wind turbines, Fault prognosis and condition monitoring of bearings are of utmost importance as it helps to reduce the downtime by early detection of faults which further increases the power output. In this paper, vibration signals produced and machine learning approach to determine the Remaining Useful Life (RUL) for a degraded bearing is studied. The methodology includes statistical feature extraction analysis with regression models. Further the feature selection is done using Principal Component Analysis (PCA) technique which produces training and testing sets which acts as an input parameter for regression models such as Support Vector Regressor (SVR) and Random Forest (RF). Weibull Hazard Rate Function is used for calculating the RUL of the bearing. Results This study shows the potential application of regression model as an effective tool for degradation performance prediction of bearing.",
+  "topics": [
+   "Machine Fault Diagnosis Techniques",
+   "Reliability and Maintenance Optimization",
+   "Gear and Bearing Dynamics Analysis"
+  ],
+  "_queries": [
+   "Weibull degradation remaining useful life"
+  ],
+  "_score": 27.5,
+  "pillars": [
+   "A"
+  ],
+  "idx": 26
+ },
+ {
+  "id": "https://openalex.org/W4409409392",
+  "doi": "https://doi.org/10.3390/w17081169",
+  "title": "Artificial Intelligence Applications in Water Treatment and Desalination: A Comprehensive Review",
+  "year": 2025,
+  "authors": [
+   "Anwur Alenezi",
+   "Yousef Alabaiadly"
+  ],
+  "venue": "Water",
+  "host": "Multidisciplinary Digital Publishing Institute",
+  "cites": 31,
+  "type": "article",
+  "oa": true,
+  "abstract": "This paper examines the application of artificial intelligence (AI) in desalination. The study explored AI techniques, including machine learning, neural networks, and genetic algorithms, to enhance system efficiency and reduce energy costs. Case studies assessed the impact of AI on desalination systems, including those powered by renewable energy sources. Key findings revealed that AI-driven systems improved water quality, reduced energy consumption by up to 50%, and enabled predictive maintenance, minimizing downtime. Challenges in integrating AI with renewable energy-powered water treatment and desalination systems were addressed by analyzing hybrid setups combining solar, wind, and battery storage with reverse osmosis (RO) and multi-stage flash (MSF) technologies. These systems demonstrated critical improvements in energy efficiency, making desalination more viable for arid and remote areas. Fault detection algorithms and predictive maintenance emerged as pivotal AI applications, significantly reducing maintenance costs and enhancing reliability. This study was concluded by identifying challenges such as the intermittent nature of renewable energy and the complexities of designing scalable hybrid AI systems. Future research should further refine AI techniques, advancing sustainable and energy-efficient water treatment solutions.",
+  "topics": [
+   "Membrane Separation Technologies",
+   "Water and Wastewater Treatment",
+   "Membrane-based Ion Separation Techniques"
+  ],
+  "_queries": [
+   "desalination predictive maintenance machine learning",
+   "water treatment predictive maintenance"
+  ],
+  "_score": 27.5,
+  "pillars": [
+   "B",
+   "E",
+   "F"
+  ],
+  "idx": 27
+ },
+ {
+  "id": "https://openalex.org/W4392745394",
+  "doi": "https://doi.org/10.1109/jiot.2024.3376715",
+  "title": "Predictive Maintenance Scheduling for Aircraft Engines Based on Remaining Useful Life Prediction",
+  "year": 2024,
+  "authors": [
+   "Lubing Wang",
+   "Ying Chen",
+   "Xufeng Zhao",
+   "Jiawei Xiang"
+  ],
+  "venue": "IEEE Internet of Things Journal",
+  "host": "Institute of Electrical and Electronics Engineers",
+  "cites": 77,
+  "type": "article",
+  "oa": false,
+  "abstract": "This paper presents a novel data-driven predictive maintenance scheduling framework for aircraft engines based on remaining useful life (RUL) prediction. First, a deep learning ensemble model is proposed to effectively predict aircraft engine RUL, including a one-dimensional convolutional neural network (CNN) and a bidirectional long short-term memory network with an attention mechanism (Bi-LSTM-AM). Second, we propose a Bayesian optimization method to optimize the hyperparameters in the deep learning ensemble model to further improve RUL prediction performance. As the aircraft engine RUL decreases over time and eventually triggers a maintenance alarm threshold. The maintenance scheduling task is initiated after the aircraft engine maintenance alert threshold has been triggered. To effectively implement the maintenance scheduling plan, we develop a novel and effective mixed-integer linear programming (MILP) model to cope with aircraft engine maintenance scheduling, which aims to minimize the maximum maintenance time. Finally, experimental results show that our proposed data-driven predictive maintenance scheduling framework can monitor the running status of aircraft engines in real time and reduce their maintenance time.",
+  "topics": [
+   "Machine Fault Diagnosis Techniques",
+   "Reliability and Maintenance Optimization",
+   "Technical Engine Diagnostics and Monitoring"
+  ],
+  "_queries": [
+   "remaining useful life Bayesian neural network"
+  ],
+  "_score": 27.4,
+  "pillars": [
+   "B",
+   "C",
+   "F"
+  ],
+  "idx": 28
+ },
+ {
+  "id": "https://openalex.org/W3011621977",
+  "doi": "https://doi.org/10.1109/tnnls.2020.2977132",
+  "title": "A Neural Network-Based Joint Prognostic Model for Data Fusion and Remaining Useful Life Prediction",
+  "year": 2020,
+  "authors": [
+   "Yuanyuan Gao",
+   "Yuxin Wen",
+   "Jianguo Wu"
+  ],
+  "venue": "IEEE Transactions on Neural Networks and Learning Systems",
+  "host": "Institute of Electrical and Electronics Engineers",
+  "cites": 76,
+  "type": "article",
+  "oa": false,
+  "abstract": "With the rapid development of sensor and information technology, now multisensor data relating to the system degradation process are readily available for condition monitoring and remaining useful life (RUL) prediction. The traditional data fusion and RUL prediction methods are either not flexible enough to capture the highly nonlinear relationship between the health condition and the multisensor data or have not fully utilized the past observations to capture the degradation trajectory. In this article, we propose a joint prognostic model (JPM), where Bayesian linear models are developed for multisensor data, and an artificial neural network is proposed to model the nonlinear relationship between the residual life, the model parameters of each sensor data, and the observation epoch. A Bayesian updating scheme is developed to calculate the posterior distributions of the model parameters of each sensor data, which are further used to estimate the posterior predictive distributions of the residual life. The effectiveness and advantages of the proposed JPM are demonstrated using the commercial modular aero-propulsion system simulation data set.",
+  "topics": [
+   "Machine Fault Diagnosis Techniques",
+   "Reliability and Maintenance Optimization",
+   "Fault Detection and Control Systems"
+  ],
+  "_queries": [
+   "remaining useful life Bayesian neural network"
+  ],
+  "_score": 27.3,
+  "pillars": [
+   "B",
+   "C"
+  ],
+  "idx": 29
+ },
+ {
+  "id": "https://openalex.org/W4292976134",
+  "doi": "https://doi.org/10.1109/tim.2022.3200667",
+  "title": "Domain Adaptive Remaining Useful Life Prediction With Transformer",
+  "year": 2022,
+  "authors": [
+   "Xinyao Li",
+   "Jingjing Li",
+   "Lin Zuo",
+   "Lei Zhu",
+   "Heng Tao Shen"
+  ],
+  "venue": "IEEE Transactions on Instrumentation and Measurement",
+  "host": "Institute of Electrical and Electronics Engineers",
+  "cites": 72,
+  "type": "article",
+  "oa": false,
+  "abstract": "Prognostic health management (PHM) has become a crucial part in building highly automated systems, whose primary task is to precisely predict the remaining useful life (RUL) of the system. Recently, deep models including convolutional neural network (CNN) and long short-term memory (LSTM) have been widely-used to predict RUL. However, these models generally require sufficient labeled training data to guarantee fair performance, whereas a limited amount of labeled data overwhelmed by the abundance of unlabeled ones is the normality in industry, and the cost of full data annotation can be unaffordable. To attack this challenge, domain adaptation seeks to transfer the knowledge from a well-labeled source domain to another unlabeled target domain by mitigating their domain gap. In this paper, we leverage domain adaptation for RUL prediction and propose a novel method by aligning distributions at both the feature level and the semantic level. The proposed method facilitates a large improvement of model performance as well as faster convergence. Besides, we propose to use Transformer as backbone, which can capture long-term dependency more efficiently than the widely-used recurrent neural network (RNN), and is thus critical for boosting the robustness of the model. We test our model on CMAPSS dataset and its newly published variant N-CMAPSS provided by NASA, achieving state-of-the-art results on both source-only RUL prediction and domain adaptive RUL prediction tasks.",
+  "topics": [],
+  "_queries": [
+   "remaining useful life limited data"
+  ],
+  "_score": 27.3,
+  "pillars": [
+   "B",
+   "D",
+   "F"
+  ],
+  "idx": 30
+ },
+ {
+  "id": "https://openalex.org/W4226373360",
+  "doi": "https://doi.org/10.1109/tte.2022.3161140",
+  "title": "A Bayesian Mixture Neural Network for Remaining Useful Life Prediction of Lithium-Ion Batteries",
+  "year": 2022,
+  "authors": [
+   "Shuxin Zhang",
+   "Zhitao Liu",
+   "Hongye Su"
+  ],
+  "venue": "IEEE Transactions on Transportation Electrification",
+  "host": "Institute of Electrical and Electronics Engineers",
+  "cites": 67,
+  "type": "article",
+  "oa": false,
+  "abstract": "Remaining useful life (RUL) is one of the essential ingredients in the battery management system. However, due to the characteristic of the dynamic and time-varying electrochemical system with nonlinear and complicated internal mechanisms, the uncertainty of RUL estimation has been expanded, and it is difficult to give an accurate time to reach the end of life. This article proposes the Bayesian mixture neural network (BMNN), a probabilistic deep learning method, to obtain more accurate RUL prediction and provide uncertainty estimation, while the quasi-Gramian angular field (Q-GAF) beneficial to identify prior distribution is utilized to transform time-series sequence into temporal images. BMNN consists of the Bayesian convolutional neural network (BCNN) extracting features in temporal images and Bayesian long short-term memory (B-LSTM) learning correlation between retention capacity and other degradation inducements. After concatenating two terms, the variational Bayesian neural network outputs the distribution of prediction results. In the experimental stage, the performance of the proposed method is validated on four different lithium-ion battery datasets and demonstrates higher stability, lower uncertainty, and more accuracy than other methods.",
+  "topics": [
+   "Advanced Battery Technologies Research",
+   "Advancements in Battery Materials",
+   "Machine Fault Diagnosis Techniques"
+  ],
+  "_queries": [
+   "remaining useful life Bayesian neural network"
+  ],
+  "_score": 27.2,
+  "pillars": [
+   "B",
+   "C"
+  ],
+  "idx": 31
+ },
+ {
+  "id": "https://openalex.org/W4413496954",
+  "doi": "https://doi.org/10.1007/s42979-025-04291-9",
+  "title": "Survival Analysis-Based System for Predictive Maintenance Optimization",
+  "year": 2025,
+  "authors": [
+   "Beatriz Coutinho",
+   "Margarida Moreira",
+   "Eliseu Pereira",
+   "Gil Gonçalves"
+  ],
+  "venue": "SN Computer Science",
+  "host": "Springer Nature",
+  "cites": 8,
+  "type": "article",
+  "oa": true,
+  "abstract": "Abstract The adoption of predictive maintenance (PdM) in Industry 4.0 has become essential for optimizing operational efficiency and reducing downtime. Traditional maintenance approaches, such as reactive and preventive maintenance, often result in inefficiencies, highlighting the need for more proactive and data-driven strategies. This paper presents a modular PdM framework that uses survival analysis methods to estimate the remaining useful life (RUL) of industrial components and integrates a Simulated Annealing (SA)-based optimization algorithm to schedule maintenance interventions dynamically. Four survival models—Cox Proportional Hazards (Cox PH), Random Survival Forests (RSF), Gradient Boosting Survival Analysis (GBSA), and Survival Support Vector Machines (Survival SVM)—were evaluated to predict components’ failure, with GBSA emerging as the most robust model due to its resistance to overfitting and ability to capture non-linear degradation patterns. The maintenance scheduling optimization algorithm minimizes downtime by aligning maintenance windows with non-linear degradation/survival functions and production requirements, achieving a 25% reduction in downtime compared to non-optimized methods. The framework was validated on real-world welding electrode degradation data and a synthetic Microsoft Azure PdM dataset, demonstrating its adaptability to heterogeneous industrial environments. Unifying survival analysis with production-aware scheduling optimization enabled cost-effective, risk-informed decision-making for Industry 4.0 applications.",
+  "topics": [
+   "Reliability and Maintenance Optimization",
+   "Machine Fault Diagnosis Techniques",
+   "Fault Detection and Control Systems"
+  ],
+  "_queries": [
+   "remaining useful life survival analysis"
+  ],
+  "_score": 27.2,
+  "pillars": [
+   "A",
+   "F"
+  ],
+  "idx": 32
+ },
+ {
+  "id": "https://openalex.org/W2947621394",
+  "doi": "https://doi.org/10.1109/access.2019.2919566",
+  "title": "A Directed Acyclic Graph Network Combined With CNN and LSTM for Remaining Useful Life Prediction",
+  "year": 2019,
+  "authors": [
+   "Jialin Li",
+   "Xueyi Li",
+   "David He"
+  ],
+  "venue": "IEEE Access",
+  "host": "Institute of Electrical and Electronics Engineers",
+  "cites": 258,
+  "type": "article",
+  "oa": true,
+  "abstract": "Accurate and timely prediction of remaining useful life (RUL) of a machine enables the machine to have an appropriate operation and maintenance decision. Data-driven RUL prediction methods are more attractive to researchers because they can be deployed quicker and cheaper compared to other approaches. The existing deep neural network (DNN) models proposed for the applications of RUL prediction are mostly single-path and top-down propagation. In order to improve the prognostic accuracy of the network, this paper proposes a directed acyclic graph (DAG) network that combines long short term memory (LSTM) and a convolutional neural network (CNN) to predict the RUL. Different from the existing prediction models combined with CNN and LSTM, the method proposed in this paper combines CNN and LSTM organically instead of just using CNN for feature extraction. Moreover, when a single timestamp is used as an input, padding the signals in the same training batch would affect the prediction ability of the developed model. To overcome this drawback, the proposed method generates a short-term sequence by sliding the time window (TW) with one step size. In addition, based on the degradation mechanism, the piece-wise RUL function is used instead of the traditional linear function. In the experimental test, the turbofan engine degradation simulation dataset provided by NASA is used to validate the proposed RUL prediction model. By comparing with the existing methods using the same dataset, it can be concluded that the prediction method proposed in this paper has better prediction capability.",
+  "topics": [
+   "Machine Fault Diagnosis Techniques",
+   "Reliability and Maintenance Optimization",
+   "Technical Engine Diagnostics and Monitoring"
+  ],
+  "_queries": [
+   "remaining useful life LSTM prediction"
+  ],
+  "_score": 27,
+  "pillars": [
+   "B"
+  ],
+  "idx": 33
+ },
+ {
+  "id": "https://openalex.org/W2905189977",
+  "doi": "https://doi.org/10.1109/tmech.2020.2971503",
+  "title": "A Deep Learning-Based Remaining Useful Life Prediction Approach for Bearings",
+  "year": 2020,
+  "authors": [
+   "Cheng Cheng",
+   "Guijun Ma",
+   "Yong Zhang",
+   "Mingyang Sun",
+   "Fei Teng",
+   "Han Ding",
+   "Ye Yuan"
+  ],
+  "venue": "IEEE/ASME Transactions on Mechatronics",
+  "host": "Institute of Electrical and Electronics Engineers",
+  "cites": 239,
+  "type": "article",
+  "oa": true,
+  "abstract": "In industrial applications, nearly half the failures of motors are caused by the degradation of rolling element bearings (REBs). Therefore, accurately estimating the remaining useful life (RUL) for REBs is of crucial importance to ensure the reliability and safety of mechanical systems. To tackle this challenge, model-based approaches are limited by the complexity of mathematical modeling. Conventional data-driven approaches, on the other hand, require massive efforts to extract the degradation features and construct the health index. In this article, a novel data-driven framework is proposed to exploit the adoption of deep convolutional neural networks (CNNs) in predicting the RULs of bearings. More concretely, raw vibrations of training bearings are first processed using the Hilbert–Huang transform to construct a novel nonlinear degradation energy indicator which can be used as the training label. The CNN is then employed to identify the hidden pattern between the extracted degradation energy indicator and the raw vibrations of training bearings, which makes it possible to estimate the degradation of the test bearings automatically. Finally, testing bearings’ RULs are predicted through using an$\\epsilon$-support vector regression model. The superior performance of the proposed RUL estimation framework, compared with the state-of-the-art approaches, is demonstrated through the experimental results. The generality of the proposed CNN model is also validated by performance test on other bearings undergoing different operating conditions.",
+  "topics": [],
+  "_queries": [
+   "remaining useful life limited data"
+  ],
+  "_score": 27,
+  "pillars": [
+   "B"
+  ],
+  "idx": 34
+ },
+ {
+  "id": "https://openalex.org/W7203868727",
+  "doi": "https://doi.org/10.11113/jamst.v30n2.348",
+  "title": "Machine Learning in Membrane Distillation for Pulp and Paper Wastewater Treatment: A Review",
+  "year": 2026,
+  "authors": [
+   "N. S. N. Shahrudin",
+   "N. Septari",
+   "N. Mokhtar",
+   "S. A. Rahman"
+  ],
+  "venue": "Journal of Applied Membrane Science & Technology",
+  "host": null,
+  "cites": 0,
+  "type": "article",
+  "oa": true,
+  "abstract": "Membrane distillation (MD) is a promising thermally driven separation technology for treating high-strength industrial wastewater, particularly from the pulp and paper industry. However, its performance is constrained by complex and nonlinear interactions among operating conditions, feed characteristics, and membrane properties, leading to challenges such as fouling, membrane wetting, and flux decline. Conventional modelling approaches are often inadequate in capturing these dynamic behaviours, resulting in limited predictive reliability. This review focuses on the application of machine learning (ML), with particular emphasis on artificial neural networks (ANNs), in enhancing MD performance prediction and optimization. ANN models have demonstrated strong capability in modelling nonlinear relationships and accurately predicting key performance indicators, including permeate flux, rejection efficiency, and fouling behaviour. Special attention is given to recent developments integrating ANN models with advanced membrane materials, such as polyvinylidene fluoride/cellulose nanocrystal (PVDF/CNC) composite membranes, to improve system efficiency and stability. Furthermore, probabilistic approaches, including Bayesian neural networks and Monte Carlo simulations, are discussed for uncertainty quantification and risk-informed decision-making. Key challenges, including data scarcity, model interpretability, and generalizability, are critically evaluated alongside emerging solutions such as explainable AI and digital twin systems. Overall, ANN-driven approaches offer significant potential to transform MD into a predictive, reliable, and intelligent wastewater treatment technology.",
+  "topics": [
+   "Membrane Separation Technologies",
+   "Membrane-based Ion Separation Techniques",
+   "Hydrological Forecasting Using AI"
+  ],
+  "_queries": [
+   "membrane fouling prediction machine learning"
+  ],
+  "_score": 27.0,
+  "pillars": [
+   "B",
+   "C",
+   "E"
+  ],
+  "idx": 35
+ },
+ {
+  "id": "https://openalex.org/W3090331263",
+  "doi": "https://doi.org/10.15294/jpii.v9i3.23310",
+  "title": "Treatment of Coal Mine Acid Water Using Nf270 Membrane as Environmentally Friendly Technology",
+  "year": 2020,
+  "authors": [
+   "K. Kiswanto",
+   "Heru Susanto",
+   "S Sudarno"
+  ],
+  "venue": "Jurnal Pendidikan IPA Indonesia",
+  "host": "State University of Semarang",
+  "cites": 6,
+  "type": "article",
+  "oa": true,
+  "abstract": "Ex-mining pond water is widely used for the daily needs of the people these days, such as bathing, washing, and even drinking. Over time, it turns out that coal mine acid water has polluted the environment. The use of membrane technology to produce water that meets drinking water quality standards by the Minister of Health Regulation No. 492 of 2010 can be a solution to this problem. The NF270 membrane is a membrane process between reverse osmosis and ultrafiltration, which has a lower flux and operating pressure below 0.2-1.53 Mpa compared to reverse osmosis. Membrane NF270 is used for the reclamation of wastewater, water purification and softening, seawater desalination, and others. Its high rejection of organic molecules with a molecular weight of 200-2000 Da ions and multivalent can remove suspended solids, natural organic matter, bacteria, viruses, salts, and divalent ions contained in water, including coal mine acid water. The purpose of treating acid mine drainage with the NF270 membrane is to remove COD, TSS, TDS, and Fe metals. The NF270 membrane was used in this study to treat the coal mine acid water of PT. Bukit Asam. The performance of the NF270 process was assessed from the effect of pressure (4, 5, and 6 bar) on the flux and rejection rate of each parameter in a single solution, mixed and aqueous coal mine acid solution. The optimum pressure of the NF270 membrane for all parameters was 6 bar. This optimum pressure was then used to compare the phenomenon of flux that occurred and the level of rejection produced in the original sample of coal mine acid water. In the original coal mine acid water, there was a significant decrease in flux due to fouling deposition on the membrane surface. This phenomenon of decreasing flux was caused by fouling and polarization concentration. The rejection rates produced for the parameters of COD, TSS, TDS, and Fe with NF270 membranes were 56.4-93.1%; 78.5-100%; 43-69.3%; 67-100% respectively. Treated coal mine acid water using NF270 membrane technology can be used as drinking water that meets the standards of the Indonesian Ministry of Health Regulation. Thus, NF270 membrane technology can be used to process coal mine acid water into environmentally friendly drinking water.",
+  "topics": [],
+  "_queries": [
+   "desalination Indonesia membrane"
+  ],
+  "_score": 26.9,
+  "pillars": [
+   "E",
+   "G"
+  ],
+  "idx": 36
+ }
+]

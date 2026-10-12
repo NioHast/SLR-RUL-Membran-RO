@@ -1,0 +1,48 @@
+PAPER 56 — Kumar et al. (2026)
+Judul : Graph neural network-based remaining useful life prediction of milling tools using multi-sensor data
+Jurnal: Discover Applied Sciences | Scopus Q2 | DOI 10.1007/s42452-026-08390-x | Pilar: B. Deep Learning RUL
+
+KARAKTERISTIK STUDI
+Pipeline deep learning berbasis graph untuk prediksi keausan/RUL pahat milling CNC dari sinyal multi-sensor. Mengubah fitur time- dan frequency-domain menjadi graph (sisi korelasi + temporal) dan membandingkan tiga keluarga GNN (GCN, GRN, GAT) dengan Random Forest Regressor sebagai kepala regresi, plus hyperparameter tuning Optuna dan Bayesian Optimization.
+
+METODE
+- Sinyal: getaran spindle/meja (X,Y,Z), spindle load/current, gaya potong 3-komponen; sampling 25 kHz; sliding window.
+- Fitur: time-domain (mean, std, skewness, kurtosis, RMS, crest) + frequency-domain (FFT, PSD, dominan frekuensi); seleksi fitur dengan RFR.
+- Graph: node = fitur per time step; edge = korelasi Pearson (rho>0,8) + temporal (antar time window).
+- Model: GCN (2 layer), GRN (GNN+GRU), GAT (8 head multi-head attention); regressor RFR (100 trees, depth 10).
+- HPO: Optuna-TPE (20 trials) dan Bayesian Optimization; split 80/10/10 per run untuk hindari leakage; Docker.
+
+DATA
+Dataset primer CNC Jyoti VMC NVU PX 100, workpiece D3 steel, pahat coated tungsten carbide. 120 run pemesinan (9 konfigurasi parameter). Keausan diukur dengan mikroskop (ISO 8688/3685); ambang max flank wear 0,30 mm.
+
+TEMUAN UTAMA
+- GRN time-domain (Optuna): RMSE 3,68; MAE 2,65; R2 0,9963.
+- GAT frequency-domain (Bayes): RMSE 13,50; R2 0,9487 (evaluasi awal RMSE 0,875-0,913, R2 ~0,92).
+- Threshold korelasi rho=0,8 terbaik; graph denser (0,3/0,5) menurunkan akurasi.
+- GRN unggul untuk dependensi temporal; GAT unggul untuk fitur spektral.
+- Memisahkan representasi (GNN) dari regresi (RFR) meningkatkan robustness & explainability.
+
+RELEVANSI KE TESIS
+Pendukung. Contoh mutakhir bagaimana struktur dependensi antar-sensor dan temporal dimodelkan dengan GNN — berguna sebagai komponen prediktif pada data multi-sensor RUL membran dan sebagai baseline non-survival. Namun tidak menyinggung survival/censoring, tidak menyentuh domain membran, dan tidak melakukan analisis keputusan maintenance. Menegaskan kembali celah metodologis yang tesis isi.
+
+JUSTIFIKASI DIMENSI
+- d1 = "1": multi-sensor deret waktu (getaran 3-arah, spindle load, gaya potong 3-komponen, 25 kHz).
+- d2 = "1": RUL = waktu pahat berfungsi sebelum patah; ambang kegagalan max flank wear 0,30 mm (ISO 3685); label keausan per pass.
+- d3 = "": tidak ada survival/Weibull/hazard/censoring.
+- d4 = "1": GCN, GRN (GRU), GAT (multi-head attention) + RFR.
+- d5 = "": tanpa CI/posterior/interval; hanya metrik titik.
+- d6 = "": hanya menyebut predictive maintenance, tanpa keputusan/jadwal/biaya konkret.
+- d7 = "": domain pahat milling, bukan membran/RO/desalinasi.
+- d8 = "": bukan small-data/transfer/hierarchical secara metodologis (transfer learning hanya future work).
+
+KUALITAS (skor 6/10)
+Q1=1, Q2=1, Q3=0,5 (dataset kecil single-lab), Q4=1 (Docker, PyTorch, detail arsitektur), Q5=1 (RMSE/MAE/MSE/R2, ablasi threshold, actual-vs-predicted), Q6=N/A (tak ada censoring), Q7=0 (tak ada uncertainty), Q8=0 (tak ada keputusan maintenance). Skor = 4,5/7*10 ≈ 6.
+
+LIMITASI
+Dataset 120 run single-lab tanpa validasi eksternal; tanpa survival/censoring; tanpa uncertainty; tanpa keputusan maintenance; biaya komputasi graph tidak dikuantifikasi.
+
+BUKTI
+- 'Optuna tuning enabled GRN to achieve the strongest time-domain performance (RMSE = 3.68, R2 = 0.9963), while Bayesian Optimization yielded... GAT (RMSE = 13.50, R2 = 0.9487).'
+- 'The maximum flank wear allowed for the tests was 0.30 mm, which is in agreement with the requirements of ISO 3685.'
+- 'RUL prediction, which is the estimate of how long a component and tool will continue functioning before breaking.'
+- 'If rho was higher than a threshold of rho > 0.8, an edge was added to the graph.'

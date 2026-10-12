@@ -1,0 +1,48 @@
+ANALISIS PAPER 032 — Sternharz, Elhalwagy & Kalganova (2022), IEEE Access
+Judul: Data-Efficient Estimation of Remaining Useful Life for Machinery With a Limited Number of Run-to-Failure Training Sequences
+DOI: 10.1109/ACCESS.2022.3226780 | Kuartil: Scopus Q1 | Pilar indeks: D. Small-data/Transfer/Hierarchical
+
+KARAKTERISTIK STUDI
+Studi prognostik RUL berorientasi efisiensi data. Alih-alih memerlukan banyak runtun run-to-failure, metodologi memanfaatkan data kondisi biner (sehat X_h dan rusak X_f) yang jauh lebih mudah diperoleh, lalu menurunkan Health Index (HI) dan mendeteksi onset degradasi per unit. Domain aplikasi: mesin turbofan (C-MAPSS) dan bearing (FEMTO). Klaster small-data/transfer karena fokus data terbatas dan reduksi biaya/waktu latih.
+
+METODE
+Tiga tahap (Fig. 3):
+1) Machine condition deviation: model "sehat" dan "rusak" dibangun dari X_h dan X_f memakai (a) Mahalanobis Distance atau (b) LSTM Autoencoder; deviasi d_h dan d_f dihitung dari selisih rekonstruksi/distance. Subset fitur dioptimasi oleh Genetic Algorithm untuk memaksimalkan separasi MD (Eq. 13).
+2) HI calculation (Eq. 14): HI = d_f/(d_h+d_f), dinormalkan min-max + moving average; deteksi awal degradasi via threshold 3 standar deviasi sampel sehat awal + toleransi 5 sampel.
+3) RUL prediction: tiga opsi — quadratic polynomial Least Squares (MD-QPoly, tanpa data latih), Support Vector Regression RBF (MD-SVR, AE-SVR, dengan HI offset -50 sebagai fitur kedua), dan LSTM (MD-LSTM). Baseline = LSTM langsung dari fitur mentah dengan relabel RUL maksimum 125.
+
+DATA
+C-MAPSS: 4 sub-dataset (FD001 1 kondisi/1 fault; FD002 6/1; FD003 1/2; FD004 6/2), 26 fitur per sampel. FEMTO-ST (IEEE PHM 2012): 6 runtun latih, 11 uji, 3 kondisi beban, fitur statistik dari accelerometer 2 arah. Protokol: sub-sampling persentase runtun latih (0-100%), 30 kali pengulangan latih/uji untuk tiap konfigurasi, uji signifikansi p-value.
+
+TEMUAN UTAMA
+- Rezim data kecil: pada <20% runtun, MD-LSTM konsisten mengalahkan baseline LSTM dan punya variansi RMSE terendah. Pada FD004 dengan 5% data, RMSE turun 19,2% (32,8 vs 40,6).
+- Trade-off akurasi vs komputasi: HI berbasis AE (AE-SVR) paling akurat (~16 pada 100% FD001) tetapi boros; MD-SVR mencapai 8,9% waktu latih baseline pada set penuh (reduksi 91%), dengan kenaikan RMSE ~14%.
+- Deteksi onset degradasi mencegah prediksi RUL non-bermakna pada fase sehat, dan bersifat per-unit (bukan relabel global 125).
+- FEMTO: hasil kurang konklusif (runtun sedikit, fitur berkorelasi tinggi); MD-LSTM unggul hanya pada 100% data.
+- Kritik metodologis: banyak publikasi C-MAPSS melaporkan satu kali evaluasi, mengabaikan variansi stokastik.
+
+RELEVANSI KE TESIS
+Relevan sebagai pembanding pada sumbu data kecil dan representasi kondisi (HI/onset detection). Tesis memakai survival analysis + deep learning dengan data tersensor untuk RUL membran RO. Paper ini menunjukkan arsitektur hemat data tetapi sama sekali tidak menangani penyensoran (justru mencatat bahwa metode SVM yang mengeluarkan survival probability terbatas pada 9 nilai diskret). Karena itu ia menegaskan celah: penggabungan HI/small-data dengan model survival tersensor di domain membran masih belum ada.
+
+JUSTIFIKASI DIMENSI (d1-d8)
+- d1 = "1": multi-sensor runtun waktu (C-MAPSS 21 sensor; FEMTO accelerometer 2 arah) — Tabel 3, Tabel 6.
+- d2 = "1": RUL eksplisit + deteksi awal degradasi via threshold 3σ (Section IV-B-1, Fig. 13).
+- d3 = "": tidak ada pemodelan tersensor/survival/hazard di metodologi sendiri.
+- d4 = "1": LSTM, LSTM Autoencoder, SVR(RBF), MD, polynomial LS (Tabel 1).
+- d5 = "": tidak ada interval prediktif/posterior; hanya sebaran RMSE empiris 30 pengulangan.
+- d6 = "": keputusan pemeliharaan hanya disebut sebagai latar, bukan dimodelkan.
+- d7 = "": domain turbofan/bearing, bukan membran/RO/desalinasi.
+- d8 = "1": fokus eksplisit data latih terbatas (5%-100%) dan efisiensi data (green AI).
+
+KUALITAS (skor 8/10)
+Q1=1; Q2=1; Q3=1 (dua benchmark terbuka, protokol pengulangan + signifikansi); Q4=0.5 (hyperparameter lengkap, tanpa kode); Q5=1 (RMSE + variansi + p-value + dua dataset); Q6=N/A; Q7=0.5 (variansi empiris, bukan interval prediktif); Q8=0.5 (tautan keputusan hanya motivasi). Applicable = 7, jumlah = 5.5 -> skor = round(5.5/7*10) = 8.
+
+LIMITASI
+Tidak memodelkan penyensoran; asumsi data run-to-failure penuh (meski sedikit); FEMTO tidak konklusif; butuh data kondisi sehat & rusak; tanpa kuantifikasi ketidakpastian prediktif formal.
+
+BUKTI
+- Abstrak + 4 kontribusi.
+- Tabel 1 (konfigurasi), Tabel 2-3 (C-MAPSS), Tabel 6 (FEMTO).
+- Eq. 12-14 (AE deviasi, HI), Section IV-B-1 (threshold degradasi).
+- Tabel 5 (RMSE seluruh dataset), Fig. 20-24 (box-whisker + signifikansi), Fig. 21 (durasi latih relatif), Tabel 8 (FEMTO).
+- Fig. 3 (overview), Fig. 13 (HI + degradation start).

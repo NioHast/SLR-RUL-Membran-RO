@@ -1,0 +1,46 @@
+PAPER 090 - Kitai et al. (2021)
+Judul   : A Framework for Predicting Remaining Useful Life Curve of Rolling Bearings Under Defect Progression Based on Neural Network and Bayesian Method
+Jurnal  : IEEE Access | Scopus Q1 (ScImago SJR Best Quartile) | DOI 10.1109/ACCESS.2021.3073945
+Pilar   : C. Bayesian & Uncertainty
+Relevansi: Inti-Domain (RUL + small-data/hierarchical Bayesian + ketidakpastian; tanpa survival/Weibull/censoring, domain bantalan)
+
+KARAKTERISTIK STUDI
+Mengatasi dua masalah prediksi RUL bantalan gelinding pada defek yang berkembang: (1) fluktuasi fitur vibrasi yang non-monoton di tahap lanjut, dan (2) perbedaan individual RUL antar-bantalan. Solusinya adalah kerangka dua lapis: FFN berbasis CNN untuk memprediksi RUL/Defect Size, lalu HBR untuk menghasilkan kurva RUL monoton beserta distribusi posterior. Menekankan bahwa sebagian bantalan tetap dipakai meski sudah ada defek, sehingga prediksi RUL ke batas operasional menjadi kebutuhan.
+
+METODE
+- Input berupa spektrogram vibrasi (STFT, sliding window, 128x128, window 0,02 s, 0-8000 Hz, Hanning) dari arah vertikal dan horizontal.
+- Feature Fusion Network (FFN): CNN Unit 1 (fitur konvolusi present), CNN Unit 2 (prediksi nilai RUL/DS ternormalisasi min-max dari spektrogram present+past), Degradation Index Vector (vid, kondisi degradasi sekarang + m kondisi masa lalu), DIV Unit (fully connected 24-48), Fusion Unit yang menggabungkan f_conv + f_div.
+- Hierarchical Bayesian Regression (HBR): Level 1 y_i ~ StudentT(mu_i, sigma_y, nu_y), mu_i = delta_i(alpha + beta/ds); Level 2 prior alpha,beta ~ Normal(0,100), sigma_y ~ HalfCauchy(5), nu_y ~ Exponential(0,03), delta_i ~ Lognormal(0,sigma_delta); Level 3 sigma_delta ~ Lognormal(0,100). Inferensi posterior via MCMC.
+- Pembanding: RF (252 fitur), CNN (tanpa DIV), RF+HBR, CNN+HBR, dan metode HBR [13].
+
+DATA
+Data eksperimen sendiri: bantalan rol silindris NU224, 500 rpm, beban radial 90 kN, vibrasi vertikal+horizontal sampling 50 kHz selama 20 detik, 33 sampel bantalan, 51-129 snapshot/sampel. Defek = flaking pada inner ring. Batas operasional DS = 12 mm. Evaluasi leave-one(out)-bearing-out cross-validation.
+
+TEMUAN UTAMA
+- Normalisasi min-max RUL/DS menaikkan R2 median dari 0,82 ke 0,93 dan mengurangi variasi (terutama untuk RUL).
+- Penambahan DIV memperbaiki akurasi: median R2 S_Late naik ~0,6 dari CNN; m=1 terbaik di tahap awal, m=3 terbaik di tahap akhir.
+- FFN+HBR terbaik lintas tahap; median R2 S_Late FFN+HBR 0,12 lebih tinggi dari FFN; variasi mengecil dan kurva RUL monoton.
+- Dibanding metode HBR [13], error absolut rata-rata lebih kecil 4,6 jam; pada 20% data error median turun ~8,5 jam (~32%).
+- Interval kredibel 50%/95% menyempit seiring bertambahnya pengukuran (Gambar 12).
+
+RELEVANSI KE TESIS
+Inti-Domain (sumbu domain: small-data/hierarchical). Ini contoh kuat "probabilistic RUL": regresi Bayesian hierarkis menghasilkan kurva RUL + interval kredibel per-unit dan menyerap heterogenitas antar-unit (data eksperimen kecil, 33 bantalan, leave-one-bearing-out CV) - berguna bagi tesis ketika ingin melaporkan ketidakpastian pada data terbatas. Namun tidak ada survival/Weibull/hazard, tidak ada data tersensor, dan domainnya bantalan (bukan membran/RO). Karena itu masuk Inti-Domain (sumbu small-data/hierarchical), bukan Inti-Metode (sumbu survival/censoring tidak terpenuhi).
+
+JUSTIFIKASI DIMENSI (d1-d8)
+- d1 = 1: sinyal vibrasi deret waktu dua arah -> spektrogram (STFT) sebagai input.
+- d2 = 1: RUL didefinisikan terhadap batas operasional DS = 12 mm; ada pembagian tahap S_Early/S_Late/S_All.
+- d3 = "": tidak memodelkan data tersensor/survival; Weibull hanya disebut sebagai konsep L10 life pada TBM, bukan dimodelkan.
+- d4 = 1: model spesifik FFN (CNN) + Hierarchical Bayesian Regression; baseline RF/CNN.
+- d5 = 1: distribusi posterior + interval kredibel 50% dan 95%.
+- d6 = "": menyebut TBM/CBM, biaya perawatan, dan rencana pemeliharaan, tetapi tidak ada model/model keputusan pemeliharaan yang disusun atau dianalisis.
+- d7 = "": domain bantalan gelinding, bukan membran/RO/desalinasi.
+- d8 = 1: struktur hierarki Bayesian untuk perbedaan individual + data eksperimen kecil (33 sampel) dengan leave-one-out CV.
+
+KUALITAS (skor 8/10)
+Q1=1 (RQ/tujuan jelas); Q2=1 (metode memadai & rinci); Q3=0,5 (data eksperimen sendiri, tidak publik, 33 sampel); Q4=0,5 (arsitektur & persamaan lengkap, tetapi data tidak publik dan tanpa kode); Q5=0,5 (multi baseline + LOO CV, tetapi metrik R2 tanpa CI/uji signifikansi); Q6=N/A; Q7=1 (distribusi posterior & interval kredibel); Q8=N/A. Total = 4,5/6 -> dibulatkan 8.
+
+LIMITASI
+Data eksperimen kecil & tertutup; tanpa survival/censoring; tanpa uji signifikansi pada metrik; DS non-observe saat operasi; domain bantalan; perbandingan metode [13] terbatas karena biaya komputasi.
+
+BUKTI (fig/tabel/persamaan)
+Eq (1)-(2) normalisasi & vid; Eq (3)-(10) HBR; Eq (11) R2; Fig 3 variasi RUL 33 sampel; Fig 12 kurva RUL + interval kredibel 50%/95%; Tabel 3 arsitektur FFN; Tabel 4 efek m. Figure dibaca: _page_3_Figure_2 (alur), _page_4_Figure_2 (arsitektur FFN), _page_5_Figure_2 (konsep HBR), _page_8_Figure_12 (R2 kerangka usulan).

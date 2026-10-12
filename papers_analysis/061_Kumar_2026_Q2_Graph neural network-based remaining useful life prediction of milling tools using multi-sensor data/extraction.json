@@ -1,0 +1,90 @@
+{
+  "no": 56,
+  "judul": "Graph neural network-based remaining useful life prediction of milling tools using multi-sensor data",
+  "penulis": "Satish Kumar, Dhruvi Ramaiya, Sameer Sayyad, Arunkumar Bongale, Vivek Warke, Vaibhav Joshi",
+  "tahun": 2026,
+  "jurnal": "Discover Applied Sciences",
+  "doi": "10.1007/s42452-026-08390-x",
+  "kuartil": "Scopus Q2 (SCImago SJR 2024)",
+  "pilar": "B. Deep Learning RUL",
+  "ringkasan": "Paper mengusulkan pipeline deep learning berbasis graph untuk prediksi RUL/keausan pahat milling CNC memakai sinyal getaran, beban spindel, dan gaya potong. Fitur time-domain dan frequency-domain diubah menjadi graph dengan sisi korelasi dan temporal, lalu tiga arsitektur GNN (GCN, GRN, GAT) dilatih dengan Random Forest Regressor dan hyperparameter tuning Optuna/Bayesian Optimization pada 120 run pemesinan.",
+  "kontribusi": "Menyediakan kerangka evaluasi terpadu GNN (GCN/GRN/GAT) untuk RUL pahat milling dengan konstruksi graph korelasi-temporal yang lebih sparse dan interpretable; relevan bagi tesis sebagai contoh model representasi struktur/temporal dan sebagai pembanding non-survival.",
+  "temuan_kunci": [
+    "GRN tertinggi pada time-domain dengan tuning Optuna: RMSE 3,68; MAE 2,65; R2 0,9963 (Pearson >0,99)",
+    "GAT terbaik pada frequency-domain: dengan Bayesian Optimization RMSE 13,50; R2 0,9487; pada evaluasi awal RMSE 0,875-0,913",
+    "Ablasi threshold korelasi: rho=0,8 menghasilkan performa terbaik (graph lebih sparse mengalahkan denser rho=0,3/0,5)",
+    "GRN unggul memodelkan dependensi temporal; GAT unggul pada fitur spektral (multi-head attention)",
+    "Optuna lebih cocok untuk model dengan dependensi temporal kuat (GRN); Bayesian optimization lebih baik untuk domain frekuensi (GAT)",
+    "Pemisahan representasi (GNN) dari regresi (RFR) meningkatkan robustness dan explainability"
+  ],
+  "dimensi": {
+    "d1": "1",
+    "d2": "1",
+    "d3": "",
+    "d4": "1",
+    "d5": "",
+    "d6": "",
+    "d7": "",
+    "d8": ""
+  },
+  "alasan_dimensi": {
+    "d1": "Data multi-sensor deret waktu: getaran 3 arah (X,Y,Z tabel/spindel), spindle load/current, gaya potong 3 komponen, direkam pada 25 kHz dengan sliding window.",
+    "d2": "RUL didefinisikan sebagai durasi pahat masih berfungsi sebelum patah, dengan ambang kegagalan max flank wear 0,30 mm (ISO 3685); label keausan per pass untuk supervised RUL modeling.",
+    "d3": "Tidak memodelkan data tersensor; tidak ada survival/Weibull/hazard. Seluruh run diamati hingga ambang keausan.",
+    "d4": "Model spesifik: GCN, GRN (GNN+GRU), GAT (multi-head attention), dengan Random Forest Regressor sebagai regression head.",
+    "d5": "Tidak melaporkan ketidakpastian prediktif (tanpa CI/posterior/interval); hanya metrik titik (RMSE/MAE/MSE/R2).",
+    "d6": "Tidak mengusulkan keputusan maintenance konkret (jadwal/biaya/DSS); hanya menyebut predictive maintenance dan pengurangan downtime secara umum.",
+    "d7": "Domain pahat milling CNC/logam, bukan membran/RO/desalinasi/fouling.",
+    "d8": "Bukan small-data/transfer/hierarchical/all-censored secara metodologis; transfer learning hanya disebut sebagai future work dan dataset 120 run dipakai tanpa mekanisme transfer."
+  },
+  "relevansi": "Pendukung",
+  "kualitas": {
+    "skor": 6,
+    "rincian": {
+      "Q1": 1,
+      "Q2": 1,
+      "Q3": 0.5,
+      "Q4": 1,
+      "Q5": 1,
+      "Q6": "N/A",
+      "Q7": 0,
+      "Q8": 0
+    },
+    "catatan": "RQ jelas (bandingkan keluarga GNN untuk RUL pahat), metode mumpuni (tiga GNN, graph korelasi-temporal, HPO Optuna/Bayes, RFR head), evaluasi kuat (RMSE/MAE/MSE/R2 + ablasi threshold + actual-vs-predicted). Reproducibility baik (Python/PyTorch, Docker, detail arsitektur). Data primer 120 run namun single-lab tanpa validasi eksternal (Q3 0,5). Tidak menangani censoring (N/A), tidak melaporkan uncertainty, dan tanpa keputusan maintenance konkret. Skor = 4,5/7*10 ≈ 6."
+  },
+  "data_kuantitatif": {
+    "dataset": "Dataset milling multi-sensor primer (CNC Jyoti VMC NVU PX 100; workpiece D3 steel)",
+    "ukuran": "120 run pemesinan, 9 konfigurasi parameter; sampling 25 kHz; split 80/10/10 per run",
+    "metrik": "GRN time-domain (Optuna): RMSE 3,68; MAE 2,65; R2 0,9963. GAT frequency-domain (Bayes): RMSE 13,50; R2 0,9487. Awal: GCN R2 0,9202; GRN 0,9377; GAT 0,9120"
+  },
+  "metode": "Pipeline graph-based: ekstraksi fitur time-domain (mean, std, skewness, kurtosis, RMS, crest) dan frequency-domain (FFT, PSD, dominant frequency); graph dengan sisi korelasi (rho>0,8) dan temporal; tiga GNN (GCN 2 layer, GRN dengan GRU, GAT 8 head) + Random Forest Regressor (100 trees, depth 10); hyperparameter tuning Optuna-TPE dan Bayesian Optimization.",
+  "limitasi": [
+    "Dataset kecil dan single-lab (120 run) tanpa validasi eksternal",
+    "Tidak menangani data tersensor / survival analysis",
+    "Tidak melaporkan ketidakpastian prediksi",
+    "Tidak mengusulkan keputusan maintenance/kebijakan penggantian konkret",
+    "Tidak menghitung biaya komputasi secara rinci meski arsitektur graph mahal"
+  ],
+  "funding_coi": "Artikel Open Access (CC BY-NC-ND 4.0). Tidak ditemukan pernyataan pendanaan atau konflik kepentingan eksplisit pada teks yang dibaca; kode dikontainerisasi dengan Docker untuk reproducibility.",
+  "status_inklusi": "diterima",
+  "figur_dibaca": [
+    {
+      "file": "_page_7_Figure_6.jpeg",
+      "isi": "Fig 1 pipeline: akuisisi real-time (spindle/work-table vibration, Force X/Y/Z, current clamp) -> preprocessing (missing values, normalisasi min-max) -> ekstraksi fitur (spectral, wavelet, FFT) -> seleksi fitur domain waktu (RFR recursive) & frekuensi (RFR sequential) -> konstruksi graph (node=fitur per time step; edge temporal & korelasi) -> GNN (GRN 1 node, GCN/GAT 3 node per fitur) -> prediksi tool wear + metrik R2/RMSE/MAE."
+    },
+    {
+      "file": "_page_11_Figure_16.jpeg",
+      "isi": "Fig 5 arsitektur GAT: input graph (correlation + temporal edges) -> dua GATConv (output_dim 20, LeakyReLU, 4 head) dengan loss MSE -> regression head MLP (FC1 hidden 64 ReLU; FC2 output 1) -> prediksi skalar."
+    },
+    {
+      "file": "_page_16_Figure_5.jpeg",
+      "isi": "Fig 7 prediksi time-domain actual vs predicted: sumbu X sample index 0-100, sumbu Y wear value ~45-160. GCN RMSE 17,90/R2 0,9202; GRN 15,02/0,9377 (terbaik); GAT 17,85/0,9120 (terlemah). Garis prediksi mengikuti tren aktual dengan fluktuasi frekuensi tinggi."
+    }
+  ],
+  "bukti": [
+    "Abstract: 'Optuna tuning enabled GRN to achieve the strongest time-domain performance (RMSE = 3.68, R2 = 0.9963), while Bayesian Optimization yielded improved frequency-domain performance for GAT (RMSE = 13.50, R2 = 0.9487).'",
+    "Failure threshold: 'The maximum flank wear allowed for the tests was 0.30 mm, which is in agreement with the requirements of ISO 3685'.",
+    "RUL definition: 'RUL prediction, which is the estimate of how long a component and tool will continue functioning before breaking'.",
+    "Graph construction: 'Feature correlation edges: ...If rho was higher than a threshold of rho > 0.8, an edge was added... Temporal edges: Every feature node was connected to its counterpart in the preceding and the succeeding time window.'"
+  ]
+}

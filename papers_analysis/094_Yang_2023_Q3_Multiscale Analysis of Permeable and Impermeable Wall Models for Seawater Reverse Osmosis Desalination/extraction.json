@@ -1,0 +1,45 @@
+{
+ "no": 24,
+ "judul": "Multiscale Analysis of Permeable and Impermeable Wall Models for Seawater Reverse Osmosis Desalination",
+ "penulis": "Qingqing Yang, Yi Heng, Ying Jiang, Jiu Luo",
+ "tahun": 2023,
+ "jurnal": "Separations",
+ "doi": "10.3390/separations10020134",
+ "kuartil": "Scopus Q3 (SCImago SJR Best Quartile)",
+ "pilar": "E. Membrane/RO/Desalination",
+ "ringkasan": "Studi mengusulkan kerangka pemodelan multiskala yang menggabungkan model 3D multi-fisika (dinding permeabel dan dinding impermeabel) pada skala sub-milimeter dengan model sistem pada skala meter untuk desalinasi SWRO. Analisis kuantitatif menunjukkan galat rata-rata koefisien gesek dan bilangan Sherwood memakai model dinding impermeabel < 2 % (gesek) dan < 9 % (Sherwood) dibanding model dinding permeabel, sementara model dinding impermeabel 3x lebih efisien komputasi (25,3 jam vs 77,8 jam).",
+ "kontribusi": "Menyediakan latar fisik domain (desain feed spacer, mitigasi fouling, concentration polarization) yang menjelaskan mekanisme degradasi membran SWRO; tidak melakukan prediksi berbasis data, RUL, atau survival, sehingga hanya bersifat konteks.",
+ "temuan_kunci": [
+  "Model dinding impermeabel (one-way coupling) mereproduksi hasil model permeabel dengan galat sistem < 2 % (SEC, permeate flux, CPF).",
+  "Galat bilangan Sherwood memakai dinding impermeabel 6,47-8,46 % (di inlet sistem 0,27-9,51 %).",
+  "Efek fluks permeasi terhadap kecepatan silang dapat diabaikan (fluks ~10^-5 m/s jauh lebih kecil dari kecepatan umpan).",
+  "Pada fluks tinggi (HPM), faktor concentration polarization maksimum dapat mencapai ~1,50 sehingga desain spacer penting untuk mitigasi fouling."
+ ],
+ "dimensi": {"d1": "", "d2": "", "d3": "", "d4": "", "d5": "", "d6": "", "d7": "1", "d8": ""},
+ "alasan_dimensi": {
+  "d1": "Tidak menggunakan data sensor multi-saluran atau deret waktu; ini simulasi CFD/finite-element deterministik pada geometri spacer, bukan pemantauan time-series.",
+  "d2": "Tidak mendefinisikan RUL, kegagalan, atau ambang degradasi; menyebut CP/fouling secara kualitatif tanpa threshold keputusan.",
+  "d3": "Tidak ada model survival/hazard/Weibull/cure dan tidak ada pencensoringan.",
+  "d4": "Tidak memakai model machine learning spesifik; yang dipakai adalah solver FEM/CFD (Navier-Stokes + konveksi-difusi) dan model sistem ODE. Machine learning hanya disebut sebagai arah kerja masa depan.",
+  "d5": "Melaporkan galat relatif (%) antar-model, bukan interval kepercayaan/posterior.",
+  "d6": "Mengusulkan perbaikan desain spacer sebagai strategi mitigasi fouling, tetapi tidak menyusun keputusan/jadwal/biaya pemeliharaan.",
+  "d7": "Objek adalah membran reverse osmosis air laut (SWRO), feed spacer, dan mitigasi fouling/scaling.",
+  "d8": "Tidak menerapkan small-data/transfer/hierarchical/censoring."
+ },
+ "relevansi": "Konteks",
+ "kualitas": {"skor": 8, "rincian": {"Q1": 1, "Q2": 1, "Q3": 1, "Q4": 0.5, "Q5": 0.5, "Q6": "N/A", "Q7": "N/A", "Q8": "N/A"}, "catatan": "Kerangka multiskala jelas, model matematis lengkap (Eq. 1-15), mesh besar (1.477.393 elemen) dengan referensi analisis mesh, dan validasi silang permeable vs impermeable. Kelemahan: tanpa validasi eksperimental langsung dalam artikel, data/kode tidak publik (on request), dan tanpa kuantifikasi ketidakpastian. Q6-Q8 tidak berlaku."},
+ "data_kuantitatif": {"dataset": "Simulasi CFD + model sistem SWRO (Studi kasus 1-4: Lp = 1, 3, 5, 10 L/m2/h/bar)", "ukuran": "Mesh 1.477.393 elemen; D_H 1,058 mm; porositas 0,90; domain 16,864 x 3,3729 x 0,853 mm", "metrik": "Galat f 0,12-1,17 %; galat Sh 6,47-8,46 %; galat sistem (SEC, Jw, CPF) < 2 %; waktu komputasi 25,3 h (impermeabel) vs 77,8 h (permeabel)"},
+ "metode": "Model multiskala: CFD 3D FEM (COMSOL Multiphysics) dengan kondisi batas dinding permeabel (J_w = G1(Lp,P,c); J_s = G2(B,J_w,c)) vs dinding impermeabel (J_w=0; c_w=c_w,0); korelasi f-Re dan Sh-Re (Eq. 5-6); koreksi Sherwood (Eq. 11-12); digabung ke model sistem skala meter (Eq. 13-15).",
+ "limitasi": [
+  "Model dinding impermeabel tidak dapat memprediksi CP lokal secara akurat (asumsi konsentrasi konstan di dinding).",
+  "Koreksi km,imp -> km,per hanya valid bila J_w/k_m,imp < 20.",
+  "Validasi terbatas pada perbandingan antar-model; data tidak publik.",
+  "Tidak ada prediksi berbasis data, RUL, atau survival."
+ ],
+ "funding_coi": "Didanai Key-Area R&D Program Guangdong (2021B0101190003), Natural Science Foundation Guangdong (2022A1515011514), Zhujiang Talent Program (2017GC010576), dan China Postdoctoral Science Foundation (2022M723674); penulis menyatakan tidak ada konflik kepentingan.",
+ "status_inklusi": "diterima",
+ "figur_dibaca": [
+  {"file": "_page_2_Figure_5.jpeg", "isi": "Kerangka multiskala: skala sub-milimeter dengan model dinding permeabel (fluks air Jw=G1, fluks garam Js=G2; korelasi f_par=k1Re^t1, Sh_par=k2Re^t2) dan dinding impermeabel (Jw=0, c_w=c_w,0; f_imp=k1'Re^t1', Sh_imp=k2'Re^t2') yang keduanya diumpankan ke model sistem skala meter; panah Sh_imp -> Sh_par menghubungkan kedua deskripsi."}
+ ],
+ "bukti": ["Eq. (1)-(4): N-S, kontinuitas, konveksi-difusi + kondisi batas", "Eq. (5)-(12): korelasi f-Re/Sh-Re & koreksi Sherwood", "Eq. (13)-(15): model sistem skala meter", "Table 1: geometri spacer", "Table 2: parameter input sistem", "Table 3: hasil & galat sistem (M1 vs M2)", "Fig. 1: kerangka multiskala", "Fig. 4-11: distribusi kecepatan/tekanan/flux & hasil sistem"]
+}

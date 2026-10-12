@@ -1,0 +1,43 @@
+PAPER 045 - Ma & Mao (2020)
+Judul   : Deep-Convolution-Based LSTM Network for Remaining Useful Life Prediction
+Jurnal  : IEEE Transactions on Industrial Informatics | Scopus Q1 (SCImago SJR Best Quartile) | DOI 10.1109/TII.2020.2991796
+Pilar   : B. Deep Learning RUL
+Relevansi: Pendukung
+
+KARAKTERISTIK STUDI
+Studi pengembangan model RUL untuk bearing mesin rotasi dalam kerangka PHM, dengan kontribusi utama CLSTM (convolutional LSTM) yang mengonvolusi transisi LSTM untuk menangkap fitur time-frequency sekaligus temporal. Divalidasi dengan uji run-to-failure nyata.
+
+METODE
+- STFT mengubah sinyal vibrasi menjadi fitur time-frequency (matriks 2D) per time step.
+- CLSTM: operasi konvolusi (*) pada transisi input-to-state dan state-to-state (Eq. 11-19), berbeda dari CNN+LSTM seri. Arsitektur encoding-forecasting: dua layer CLSTM -> flatten -> fully-connected ReLU -> regresi linear RUL.
+- Loss MSE, BPTT, optimizer Adam (lr 0,001). Hyperparameter: input 6x165x41, hidden 110, filter 5x4, batch 10.
+
+DATA
+Uji run-to-failure dua bearing (A dan B) pada test rig; rotary 2500 rpm, beban radial 12 kN; vibrasi 20.480 Hz (32.768 titik/set, tiap 5 menit); 4 termokopel. Bearing A 4071 dataset (test 100, train 301); bearing B 763 dataset (test 50, train 207). Kegagalan ditandai kenaikan suhu.
+
+TEMUAN UTAMA
+- CLSTM terbaik: RMSE/MAE 29,7/23,5 (A), 10,8/6,0 (B); deep CNN 47,9/40,1 dan 18,2/12,6; deep LSTM 40,7/35,2 dan 15,6/9,7.
+- Fitur time-frequency lebih informatif daripada fitur statistik.
+- Waktu pelatihan CLSTM lebih lama.
+
+RELEVANSI KE TESIS
+Pendukung: pembanding arsitektur RUL deep learning (convolutional LSTM) dengan data run-to-failure nyata. Tidak ada survival/penyensoran (SUMBU METODE gagal) dan bukan membran (SUMBU DOMAIN gagal). Berguna untuk menggambarkan lanskap model RUL non-survival.
+
+JUSTIFIKASI DIMENSI (per d1-d8)
+- d1 = 1: sinyal vibrasi deret waktu + 4 sensor suhu.
+- d2 = 1: RUL eksplisit + ambang kegagalan (suhu).
+- d3 = "" : tanpa survival/censoring; RUL dilabeli dari siklus hidup penuh.
+- d4 = 1: CLSTM (convolutional LSTM) 2 lapis + fully connected.
+- d5 = "" : tanpa CI/ketidakpastian.
+- d6 = "" : maintenance/replacement hanya disebut sebagai framing.
+- d7 = "" : objek bearing.
+- d8 = "" : tanpa small-data/transfer.
+
+KUALITAS (skor 7/10)
+Q1=1, Q2=1, Q3=0,5 (2 bearing, test kecil), Q4=1 (hyperparameter lengkap), Q5=0,5 (hanya 2 baseline), Q6=N/A, Q7=0, Q8=N/A. Jumlah 4,0/6 -> 7.
+
+LIMITASI
+Test kecil; baseline terbatas; pelatihan mahal; tanpa ketidakpastian; tanpa censoring.
+
+BUKTI
+Fig. 1-3; Table I-III; Eq. (1)-(27). Fig. 2 (struktur CLSTM) dan Fig. 3 (deep CLSTM) dibuka untuk verifikasi d4.

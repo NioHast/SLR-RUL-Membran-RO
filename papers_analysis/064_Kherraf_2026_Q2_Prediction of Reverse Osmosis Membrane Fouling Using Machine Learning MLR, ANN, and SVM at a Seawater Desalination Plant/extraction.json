@@ -1,0 +1,47 @@
+{
+ "no": 22,
+ "judul": "Prediction of Reverse Osmosis Membrane Fouling Using Machine Learning: MLR, ANN, and SVM at a Seawater Desalination Plant",
+ "penulis": "Siham Kherraf, Fatima-Zahra Abahdou, Maria Benbouzid, Zakaria Izouaouen, Abdellatif Aarfane, Abdoullatif Baraket, Hamid Nasrellah, Meryem Bensemlali, Soumia Ziti, Najoua Labjar, Souad El Hajjaji",
+ "tahun": 2026,
+ "jurnal": "Eng (Advances in Engineering)",
+ "doi": "10.3390/eng7030106",
+ "kuartil": "Scopus Q2 (SCImago SJR 2024)",
+ "pilar": "E. Membrane/RO/Desalination",
+ "ringkasan": "Studi membandingkan MLR, ANN, dan SVR untuk memprediksi transmembrane pressure (TMP, indikator fouling) di pabrik desalinasi air laut Boujdour dari lima parameter input (temperatur, turbiditas, pH, konduktivitas, laju alir umpan). Dataset asli 195 pengamatan harian; karena tidak ada stempel waktu, masalah dibingkai sebagai state-to-TMP (bukan peramalan kronologis). SMOGN menambah data latih menjadi ~1961 sampel dengan set uji 39 observasi nyata yang bebas kebocoran; SVR memberi akurasi terbaik (R2 test=0,435) namun dengan interval bootstrap 95 % yang lebar.",
+ "kontribusi": "Menegaskan bahwa prediksi fouling/tekanan membran di domain RO masih terbatas oleh ukuran data dan tidak adanya indeks waktu, dan menyoroti pentingnya kuantifikasi ketidakpastian serta kontrol kebocoran data; tidak memakai survival/pencensoringan maupun RUL.",
+ "temuan_kunci": [
+  "SVR terbaik pada set uji nyata (R2=0,4347; RMSE=0,3226; MAE=0,2530), namun dengan overfitting (delta R2 ~ 0,25).",
+  "Interval kepercayaan bootstrap 95 % untuk R2 SVR lebar [0,1022; 0,6421], menandakan generalisasi tidak stabil pada n kecil (39 uji).",
+  "Pendekatan 2 (kelima variabel) konsisten mengalahkan pendekatan 1 (hanya pH & konduktivitas yang signifikan OLS).",
+  "Permutation importance: pH paling dominan, disusul feedflow dan temperatur; turbiditas hampir nol."
+ ],
+ "dimensi": {"d1": "", "d2": "", "d3": "", "d4": "1", "d5": "1", "d6": "", "d7": "1", "d8": "1"},
+ "alasan_dimensi": {
+  "d1": "Secara eksplisit tidak ada stempel waktu, sehingga penulis menyatakan studi ini adalah state-to-TMP (regresi non-kronologis) dan bukan peramalan deret waktu; tidak ada data multi-sensor berurutan yang dimodelkan sebagai seri waktu.",
+  "d2": "Tidak mendefinisikan RUL atau ambang kegagalan/degradasi membran; TMP dipakai sebagai indikator fouling tanpa threshold keputusan.",
+  "d3": "Tidak ada model survival/hazard/Weibull/cure dan tidak ada pencensoringan.",
+  "d4": "Tiga model spesifik: MLR (Ridge), ANN (MLP), dan SVR (RBF) di scikit-learn.",
+  "d5": "Melaporkan interval kepercayaan bootstrap 95 % untuk R2/RMSE/MAE dan band 5-95 % pada PDP/ICE, serta uji permutasi berpasangan.",
+  "d6": "Hanya menyebut SVR 'promising tool for decision support' untuk mengantisipasi fouling; tidak ada jadwal/biaya/model keputusan konkret.",
+  "d7": "Objek adalah membran reverse osmosis pabrik desalinasi air laut Boujdour (fouling/TMP).",
+  "d8": "Menghadapi keterbatasan small-data: hanya 195 observasi nyata (156 latih), diatasi dengan augmentasi SMOGN yang menjaga set uji 100 % nyata."
+ },
+ "relevansi": "Inti-Domain",
+ "kualitas": {"skor": 8, "rincian": {"Q1": 1, "Q2": 1, "Q3": 0.5, "Q4": 1, "Q5": 0.5, "Q6": "N/A", "Q7": 1, "Q8": "N/A"}, "catatan": "Kerangka anti-kebocoran yang ketat, analisis interpretabilitas (PDP/ICE, permutation importance), dan kuantifikasi ketidakpastian (bootstrap CI, uji berpasangan) — metodologi transparan. Kelemahan: hanya 195 observasi dari satu pabrik, tanpa stempel waktu, akurasi moderat (R2~0,43) dengan overfitting, dan tanpa RUL/censoring. Q6/Q8 tidak berlaku."},
+ "data_kuantitatif": {"dataset": "Data operasional harian pabrik desalinasi air laut Boujdour, Maroko (5 input -> TMP)", "ukuran": "195 observasi (156 latih / 39 uji), augmentasi SMOGN menjadi ~1961 sampel latih; test 100 % nyata", "metrik": "SVR R2 test 0,4347 RMSE 0,3226 MAE 0,2530; CI95 R2 [0,1022;0,6421]; Ridge R2 0,306; ANN R2 0,281; deltaR2 SVR 0,246"},
+ "metode": "MLR (Ridge), ANN (MLP), dan SVR (RBF) di Python 3.11 scikit-learn; GridSearchCV, augmentasi SMOGN (k-NN k=3, perturbasi 1%) hanya pada latih; validasi anti-kebocoran, bootstrap, repeated K-fold, Diebold-Mariano, permutasi fitur, PDP/ICE.",
+ "limitasi": [
+  "Ukuran sampel kecil (195 observasi nyata) dan tanpa stempel waktu (bukan peramalan temporal).",
+  "SVR overfitting (delta R2 ~ 0,25) dan interval kepercayaan lebar; perbedaan antar-model sebagian tidak signifikan.",
+  "Satu pabrik; ekstrapolasi ke rezim/kondisi lain tidak didukung.",
+  "Tidak ada RUL, survival, atau pencensoringan."
+ ],
+ "funding_coi": "Didanai proyek nasional Maroko AVENIR-ESEF (A. Aarfane dan H. Nasrellah), High School of Education and Training El Jadida, Chouaib Doukkali University; penulis menyatakan tidak ada konflik kepentingan.",
+ "status_inklusi": "diterima",
+ "figur_dibaca": [
+  {"file": "_page_9_Figure_2.jpeg", "isi": "Tiga panel kinerja SVR pada set uji: KDE distribusi TMP (observed vs predicted), histogram residu terpusat di nol, dan scatter observed vs predicted dengan R2=0,435, RMSE=0,323, MAE=0,253."},
+  {"file": "_page_9_Figure_6.jpeg", "isi": "Diagnostik overfitting dalam delta R2 (=R2 train - R2 test): SVR ~ +0,24 (overfit), RIDGE ~ -0,07 (underfit), ANN ~ +0,07."},
+  {"file": "_page_13_Figure_2.jpeg", "isi": "PDP/ICE SVR untuk konduktivitas (naik lalu turun, puncak ~45.000) dan pH (naik lalu stabil ~7,5); garis merah = PDP rata-rata, band pink = interval 5-95 %, garis abu = kurva ICE per sampel."}
+ ],
+ "bukti": ["Table 1: komposisi dataset & augmentasi", "Table 2: statistik variabel", "Table 3: OLS (pH & konduktivitas signifikan)", "Table 4: hyperparameter", "Table 5: metrik train/test 6 konfigurasi", "Table 6: bootstrap CI 95 %", "Table 7: uji permutasi berpasangan", "Fig. 1: permutation importance", "Fig. 2-6: kinerja SVR, overfitting, learning curve, ACF, PDP/ICE"]
+}

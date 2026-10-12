@@ -1,0 +1,9 @@
+SUMBER FULL-TEXT (Open Access)
+============================
+Judul   : A two-stage framework for cost-sensitive predictive maintenance using deep learning, GANs, and risk-aware clustering
+DOI     : 10.1038/s41598-026-42910-4
+Status  : gold (Open Access)
+Lisensi : cc-by, cc-by-sa
+
+Catatan : Open Access berlisensi Creative Commons; boleh didistribusikan ulang DENGAN ATRIBUSI
+kepada penulis/penerbit asli. Diverifikasi via Unpaywall (https://unpaywall.org).

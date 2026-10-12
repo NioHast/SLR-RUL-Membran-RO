@@ -1,0 +1,53 @@
+PAPER 89 | no=89 | Relevansi: Inti-Domain | Skor kualitas: 8/10 | Dimensi: d1,d2,d4,d8
+Judul: Predicting Remaining Useful Life of Rolling Bearings Based on Deep Feature Representation and Transfer Learning
+Penulis: Wentao Mao, Jianliang He, Ming J. Zuo (2019)
+Jurnal: IEEE Transactions on Instrumentation and Measurement | Scopus Q1 | DOI 10.1109/TIM.2019.2917735
+
+KARAKTERISTIK STUDI
+Kerangka prediksi RUL bearing yang menggabungkan representasi fitur dalam (Contractive Denoising Autoencoder, CDAE) dengan transfer learning (Transfer Component Analysis, TCA). Dua tahap (off-line dan online) mengatasi dua masalah: representasi fitur yang lemah dan perbedaan distribusi data antar-bearing yang melanggar asumsi i.i.d.
+
+METODE
+- Preprocessing: hilangkan komponen DC, transformasi Hilbert-Huang untuk marginal spectrum (input ke DL).
+- Ekstraksi fitur dalam: CDAE (1 lapisan tersembunyi 50 neuron).
+- Penilaian status kesehatan: korelasi Pearson (ambang 0,95) memisahkan normal vs fast-degradation.
+- Adaptasi domain: TCA (kernel RBF, output 25-D) menyelaraskan distribusi fitur target-auxiliary.
+- Prediksi RUL: LSSVM (dibanding LSR, GPR, SVM) dan dibanding tiga metode state-of-the-art.
+
+DATA
+- IEEE PHM Challenge 2012 (PRONOSTIA), 7 bearing kondisi 1; 6 untuk training, 1 untuk test bergilir.
+- Sinyal getaran (25,6 kHz) dan suhu (10 Hz); tiap sampel 10 s.
+- Metrik: RMSE, MAPE (rata-rata 20 run untuk stabilitas).
+
+TEMUAN UTAMA
+- Fitur dalam CDAE lebih representatif dari fitur statistik (RMSE lebih rendah).
+- TCA menurunkan MAPE di keempat regresor dan menurunkan standar deviasi (stabilitas).
+- Fitur hasil TCA lebih linear -> regresor sederhana memadai.
+- Metode usulan unggul: RMSE 50,09 / MAPE 0,2399 vs Ren (3430,43/0,5320), Wu (73,57/0,3158), Liu (56,55/0,3462).
+
+RELEVANSI KE TESIS
+Inti pada sumbu small-data/transfer. Transfer learning untuk mengatasi perbedaan distribusi antar-unit dan data skala kecil sangat relevan untuk tesis yang punya sedikit unit membran dan heterogenitas kondisi operasi. Namun tidak memakai survival analysis/data tersensor, tidak memberi interval prediksi, dan bukan domain membran. Berguna sebagai rujukan arsitektur representasi fitur + domain adaptation.
+
+JUSTIFIKASI DIMENSI
+- d1=1: sinyal getaran dan suhu berupa deret waktu (marginal spectrum HHT sebagai input).
+- d2=1: RUL didefinisikan eksplisit (RUL = T2 - T1, ambang amplitudo mis. 20 g); status kesehatan dipisah.
+- d3="": tanpa survival/Weibull/hazard/cure/censoring.
+- d4=1: CDAE, TCA, LSSVM/GPR/LSR/SVM.
+- d5="": tanpa interval kepercayaan; hanya std dev MAPE.
+- d6="": konteks PHM/CBM tanpa model keputusan.
+- d7="": domain bearing.
+- d8=1: transfer learning (TCA) + data skala kecil sebagai inti.
+
+KUALITAS (8/10)
+Q1=1; Q2=1 (kerangka lengkap, banyak pembanding); Q3=1 (benchmark PHM 2012, 7 bearing, 20 run); Q4=0,5 (tanpa kode/data); Q5=1 (RMSE/MAPE + std dev + beberapa metode pembanding); Q6=N/A; Q7=0,5 (stabilitas run-to-run, bukan interval); Q8=0,5. skor = round(5,5/7×10) = 8.
+
+LIMITASI
+- Tidak menangani data tersensor/survival.
+- Tanpa interval kepercayaan prediksi.
+- Negative transfer pada LIBSVM/LSSVM.
+- Domain bearing; bukan membran/RO.
+
+BUKTI
+- "a new RUL prediction method based on deep feature representation and transfer learning".
+- "Results using the PHM Challenging 2012 data set show a significant performance improvement ... predictive accuracy and numerical stability".
+- "RUL = T2 - T1, where T2 is the time at which the prefixed breakdown threshold is reached and T1 is the time point to start prediction".
+Gambar dibaca: _page_2_Figure_6.jpeg (flowchart metode), _page_10_Figure_4.jpeg (prediksi RUL CDAE vs TCA).

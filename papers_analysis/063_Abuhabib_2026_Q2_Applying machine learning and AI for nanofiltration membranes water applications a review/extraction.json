@@ -1,0 +1,86 @@
+{
+  "no": 54,
+  "judul": "Applying machine learning and AI for nanofiltration membranes water applications: a review",
+  "penulis": "Azzam Abuhabib, Ahmed Albahnasavi, Heba Isawi, Law Yong Ng, Abdul Wahab Mohammad, Sofiah Hamzah",
+  "tahun": 2026,
+  "jurnal": "Water Science & Technology",
+  "doi": "10.2166/wst.2026.234",
+  "kuartil": "Scopus Q2 (SCImago SJR Best Quartile)",
+  "pilar": "E. Membrane/RO/Desalination",
+  "ringkasan": "Review penerapan machine learning (ML)/AI pada membran nanofiltrasi (NF) untuk aplikasi air, dengan menganalisis 100 publikasi NF-ML selama 10 tahun. Membahas tiga domain: optimasi fabrikasi, prediksi kinerja (flux, rejection, permeability), dan diagnosis/mitigasi fouling. Menyoroti tantangan kelangkaan dan heterogenitas data, kurangnya validasi eksternal, dan prospek reinforcement learning untuk kontrol adaptif real-time serta kerangka hybrid ML-mekanistik.",
+  "kontribusi": "Memetakan algoritma ML yang berlaku untuk membran (NF/RO): RF, XGBoost, CNN, LSTM, RL, ANFIS, GP; serta menegaskan kelangkaan data, transferabilitas, dan kuantifikasi ketidakpastian sebagai celah riset. Relevan bagi tesis yang menerapkan ML pada RUL membran dan menghadapi small-data.",
+  "temuan_kunci": [
+    "ML menangani hubungan non-linear membran (flux, rejection, fouling) yang sulit dijelaskan model mekanistik solution-diffusion",
+    "Model tree-based ensemble (RF/XGBoost) dan shallow ANN mendominasi karena performa baik pada data tabular kecil-menengah",
+    "DL (LSTM/GRU/CNN) unggul untuk dinamika fouling temporal dan analisis berbasis citra (mis. Abdu 2025 R2 > 0,95 untuk flux/rejection NF-RO)",
+    "RL (deep RL) menjadwalkan pembersihan dan mengoptimalkan tekanan/aerasi, menggeser operasi dari reaktif ke predictive maintenance",
+    "Tantangan utama: dataset kecil/heterogen single-lab, kurang validasi eksternal, data leakage, dan kuantifikasi ketidakpastian yang jarang",
+    "Transfer learning dan hybrid physics-ML direkomendasikan untuk mengatasi kelangkaan data dan interpretabilitas"
+  ],
+  "dimensi": {
+    "d1": "1",
+    "d2": "",
+    "d3": "",
+    "d4": "1",
+    "d5": "1",
+    "d6": "1",
+    "d7": "1",
+    "d8": "1"
+  },
+  "alasan_dimensi": {
+    "d1": "Data membran bersifat deret waktu multi-sensor: LSTM untuk flux decline/fouling thickness vs waktu, TMP evolution, serta data pilot NF/RO (permeate conductivity, flow rate, recovery, tekanan).",
+    "d2": "Tidak mendefinisikan RUL/ambang kegagalan secara formal. Membahas penurunan flux dan titik balik kinerja (fouling), tetapi tanpa definisi RUL atau threshold kegagalan yang dioperasionalkan.",
+    "d3": "Tidak memodelkan data tersensor; tidak ada survival/Weibull/hazard/cure model.",
+    "d4": "Model spesifik dibahas dan dibandingkan: RF, XGBoost/LightGBM/CatBoost/GBR, SVM/SVR, ANN/BPNN, CNN, RNN/LSTM/GRU, ANFIS, RVM, deep RL, serta generative (VAE/GAN).",
+    "d5": "Kuantifikasi ketidakpastian dibahas sebagai kebutuhan kritis; contoh Abba et al. (2023) memakai LSTM-CSA dengan Monte Carlo untuk 'quantifying uncertainty'; review menandai 'scarce uncertainty quantification' sebagai kelemahan.",
+    "d6": "Menganalisis keputusan maintenance konkret: predictive maintenance (prediksi fouling hari/minggu ke depan), penjadwalan pembersihan via RL (Park 2022), optimasi tekanan/waktu bersih, dan digital twin untuk keputusan otonom.",
+    "d7": "Domain inti: membran nanofiltrasi (NF) dan tekanan-driven process terkait (RO/UF/FO) untuk desalinasi dan pengolahan air; fouling membran menjadi tema sentral.",
+    "d8": "Menekankan kelangkaan data dan heterogenitas sebagai tantangan utama; membahas data augmentation dan merekomendasikan transfer learning serta hybrid physics-ML untuk dataset kecil."
+  },
+  "relevansi": "Konteks",
+  "kualitas": {
+    "skor": 8,
+    "rincian": {
+      "Q1": 1,
+      "Q2": 1,
+      "Q3": 0.5,
+      "Q4": 0.5,
+      "Q5": 0.5,
+      "Q6": "N/A",
+      "Q7": 1,
+      "Q8": 1
+    },
+    "catatan": "Review komprehensif 100 publikasi NF-ML dengan RQ jelas dan kriteria inklusi/eksklusi. Tanpa dataset primer (Q3 0,5) dan tanpa artefak reproduksibilitas (Q4 0,5). Pembahasan evaluasi lintas-studi memadai namun tidak seragam (Q5 0,5). Tidak menyentuh censoring (N/A). Kuat pada ketidakpastian (Q7=1) dan keterkaitan keputusan maintenance/predictive maintenance (Q8=1). Skor = 5,5/7*10 ≈ 8."
+  },
+  "data_kuantitatif": {
+    "dataset": "Review (100 publikasi NF-ML, 10 tahun); mengompilasi studi pilot/lab (mis. pilot NF/RO seawater, NF-CCr)",
+    "ukuran": "Publikasi NF meningkat 432 (2015) -> 1.332 (2025); NF-ML ~10% dari total membrane-ML",
+    "metrik": "Dilaporkan dari studi: R2 > 0,95 (CNN NF/RO flux/rejection); akurasi prediksi rejection/permeability; RMSE; SHAP untuk pentingnya fitur"
+  },
+  "metode": "Review sistematis-naratif: pencarian Web of Science/Scopus dengan keyword NF, membrane, desalination, wastewater, ML, ANN, DL, modelling; taksonomi supervised/unsupervised/RL; analisis komparatif model (data kecil vs besar, akurasi, interpretabilitas) dan representasi roadmap ML untuk NF.",
+  "limitasi": [
+    "Bukan studi primer; tanpa data eksperimen sendiri",
+    "Tidak mendefinisikan RUL dan tidak menyentuh survival/censoring",
+    "Studi yang direview mayoritas skala lab/pilot; validasi eksternal dan generalisasi terbatas",
+    "Data leakage dan validasi tak seragam antar studi",
+    "Kuantifikasi ketidakpastian masih jarang di literatur NF-ML"
+  ],
+  "funding_coi": "Artikel Open Access CC BY 4.0. Tidak ada pernyataan konflik kepentingan yang eksplisit pada teks yang dibaca; tidak ditemukan pernyataan pendanaan spesifik pada bagian yang tersedia.",
+  "status_inklusi": "diterima",
+  "figur_dibaca": [
+    {
+      "file": "_page_12_Figure_8.jpeg",
+      "isi": "Flowchart alur kerja ML generik: Collect Data -> Clean/Preprocess -> Split Train/Test -> Select Model -> Train Model -> Deploy Model; dengan loop evaluasi (Satisfactory -> Deploy; Needs Improvement -> Tune & Improve -> Re-evaluate/Retrain)."
+    },
+    {
+      "file": "_page_23_Figure_5.jpeg",
+      "isi": "Diagram konseptual komparatif Data-driven Modelling vs Mechanistic Modelling (dua cincin bertaut dengan badge 'VS'): data-driven = menangkap non-linearitas, adaptif, akurasi tinggi, pakai data historis/real-time; mekanistik = berbasis prinsip fisika, kurang fleksibel, butuh asumsi penyederhanaan, parameter tetap."
+    }
+  ],
+  "bukti": [
+    "Abstract: 'This review addresses this gap by comprehensively assessing the integration of machine learning (ML) and artificial intelligence (AI) across three critical domains: fabrication optimisation, performance prediction, and fouling diagnosis and mitigation, through the analysis of 100 NF-ML publications over the past 10 years.'",
+    "Uncertainty: 'persistent methodological challenges are evident, including reliance on limited and heterogeneous datasets... and scarce uncertainty quantification.'",
+    "Predictive maintenance: 'utilising DL time-series models to predict fouling events days or weeks in advance, allowing for cleaning protocols to initiate proactively, thus extending membrane lifespan.'",
+    "Small data/transfer: 'some studies (Cao et al. 2024) have suggested that transfer learning pre-training DL models on large general datasets and fine-tuning them for NF applications could be an effective strategy to overcome small datasets.'"
+  ]
+}

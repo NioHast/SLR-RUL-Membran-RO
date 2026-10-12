@@ -1,0 +1,47 @@
+{
+ "no": 29,
+ "judul": "Prognostic modeling of predictive maintenance with survival analysis for mobile work equipment",
+ "penulis": "Zhen Yang, Juho Kanniainen, Tomi Krogerus, Frank Emmert-Streib",
+ "tahun": 2022,
+ "jurnal": "Scientific Reports",
+ "doi": "10.1038/s41598-022-12572-z",
+ "kuartil": "Scopus Q1 (SCImago SJR Best Quartile)",
+ "pilar": "A. Survival Analysis & Censored Data",
+ "ringkasan": "Studi menyusun kerangka survival analysis untuk prognostik pemeliharaan prediktif komponen alat kerja bergerak (mobile work equipment). Dari catatan pemeliharaan nyata (7.896 event, 658 mesin, 12 komponen), penulis mengidentifikasi campuran jenis pencensoringan (kiri, interval, kanan) dan menyaring hanya data tersensor-kanan; lalu mengestimasi fungsi survival Kaplan-Meier, hazard non-parametrik (kernel/Nelson-Aalen), serta lima model parametrik (Exponential, Weibull, Log-logistic, Log-normal, Generalized-gamma). Hazard bersifat kompleks; non-parametrik umumnya terbaik, dengan Generalized-gamma sebagai parametrik unggulan.",
+ "kontribusi": "Preseden metodologis kuat untuk pemodelan data tersensor (survival/hazard/Weibull) yang menjadi inti metode tesis, termasuk penanganan tiga jenis pencensoringan dan pemilihan parametrik vs non-parametrik; namun domainnya alat berat (bukan membran) dan tanpa kovariat/sensor.",
+ "temuan_kunci": [
+  "Data pemeliharaan memuat campuran pencensoringan kiri, interval, dan kanan; setelah penyaringan hanya tersisa catatan tersensor-kanan (dan tak tersensor).",
+  "Tingkat pencensoringan sangat tinggi (74-96 %), memberi tantangan pada estimator.",
+  "Bentuk hazard sangat beragam (decaying, gamma-shaped, oscillating, increasing); model non-parametrik paling mampu menangkapnya.",
+  "Generalized-gamma konsisten mengalahkan empat model parametrik lain menurut AIC/LLV (mis. Transmission line C: AIC 476 vs Weibull 671)."
+ ],
+ "dimensi": {"d1": "", "d2": "1", "d3": "1", "d4": "1", "d5": "1", "d6": "1", "d7": "", "d8": ""},
+ "alasan_dimensi": {
+  "d1": "Tidak menggunakan data multi-sensor/deret waktu; penulis secara eksplisit tidak memakai kovariat dan hanya memakai data time-to-event (tanggal instalasi & pemeliharaan).",
+  "d2": "Mendefinisikan event kegagalan/penggantian komponen dan mengestimasi fungsi survival S(t) serta hazard h(t) sebagai probabilitas kegagalan bergantung waktu.",
+  "d3": "Secara eksplisit memodelkan data tersensor: mengidentifikasi pencensoringan kiri/interval/kanan, menyaring hanya tersensor-kanan, dan memakai estimator yang menangani pencensoringan (Kaplan-Meier, Nelson-Aalen, model parametrik berbasis full log-likelihood dengan censoring).",
+  "d4": "Model spesifik: Kaplan-Meier, kernel hazard (Nelson-Aalen + Epanechnikov), serta lima model parametrik (Exponential, Weibull, Log-logistic, Log-normal, Generalized-gamma).",
+  "d5": "Melaporkan standard error parameter untuk setiap model parametrik (nilai +/-), mis. Weibull gamma = 1,275 +/- 0,12, sebagai kuantifikasi ketidakpastian estimasi.",
+  "d6": "Kerangka prognostic untuk pemeliharaan prediktif: tujuan menyusun jadwal pemeliharaan preventif, mengurangi downtime/biaya, dan kategorisasi komponen untuk organisasi rantai pasok suku cadang.",
+  "d7": "Objek adalah komponen alat kerja bergerak (mobile work equipment), bukan membran/RO/desalinasi.",
+  "d8": "Tidak menerapkan small-data/transfer/hierarchical; dataset besar (7.896 event) dan meski pencensoringan tinggi, tidak sepenuhnya all-censored."
+ },
+ "relevansi": "Inti-Metode",
+ "kualitas": {"skor": 8, "rincian": {"Q1": 1, "Q2": 1, "Q3": 0.5, "Q4": 0.5, "Q5": 0.5, "Q6": 1, "Q7": 1, "Q8": 0.5}, "catatan": "Penanganan pencensoringan yang sangat teliti (identifikasi & penyaringan tiga jenis censoring), perbandingan 5 model parametrik vs non-parametrik dengan AIC/LLV, dan pelaporan standard error. Kelemahan: tanpa kovariat/sensor, satu jenis alat kerja, tanpa validasi prediktif (holdout), dan kategori komponen/atribusi sebab kegagalan terbatas. Q3/Q4/Q5 rendah, Q8 sebagian (kerangka prediktif, bukan optimasi biaya formal)."},
+ "data_kuantitatif": {"dataset": "Catatan pemeliharaan alat kerja bergerak dari Cargotec (658 mesin unik, 12 komponen)", "ukuran": "7.896 event (tak tersensor + tersensor-kanan); pencensoringan 74-96 %; 1st maintenance 987 event, 2nd 252, 3rd+ 148", "metrik": "AIC/LLV; mis. Transmission line C Generalized-gamma AIC 476 (LLV -235) vs Weibull AIC 671; parameter +/- SE (Weibull gamma 0,647-2,247)"},
+ "metode": "Survival analysis: Kaplan-Meier untuk fungsi survival; kernel hazard non-parametrik (Nelson-Aalen + Epanechnikov, R muhaz); lima model parametrik (Exponential, Weibull, Log-logistic, Log-normal, Generalized-gamma; R flexsurv) via maximum likelihood; seleksi model dengan AIC & LLV; praproses penyaringan censoring.",
+ "limitasi": [
+  "Tanpa kovariat/sensor (hanya time-to-event), sehingga faktor risiko individual tidak dimodelkan.",
+  "Hanya satu jenis alat kerja; generalisasi terbatas.",
+  "Penyaringan censoring kiri/interval membuang informasi dan dapat menyisakan campuran populasi.",
+  "Periode pemeliharaan dihitung dengan asumsi jadwal operasi serupa; tanpa validasi prediktif.",
+  "Domain non-membran."
+ ],
+ "funding_coi": "Tidak ada pernyataan pendanaan yang disebutkan; penulis menyatakan tidak ada competing interests.",
+ "status_inklusi": "diterima",
+ "figur_dibaca": [
+  {"file": "_page_5_Figure_1.jpeg", "isi": "Ilustrasi lima tipe observasi: A = lengkap (event terjadi), B & C = tersensor-kanan (event di luar jendela/tak diketahui), D = tersensor-kiri (mulai tak diketahui), E = tersensor-interval (waktu event ada di antara checkpoint C0-C3)."},
+  {"file": "_page_10_Figure_1.jpeg", "isi": "Kurva survival Kaplan-Meier 12 komponen (sumbu: probability 0-1 vs time 0-2000) dengan tabel number-at-risk (semua mulai 658 di t=0); Control device B/Electrical unit turun paling curam, Sensor B/Transmission line A paling tinggi."}
+ ],
+ "bukti": ["Eq. (1)-(11): definisi survival, hazard, Nelson-Aalen, Kaplan-Meier, kernel hazard, AIC", "Fig. 1: lima model parametrik (f, S, h)", "Fig. 2: jenis pencensoringan", "Fig. 3: diagram praproses", "Fig. 4-5: histogram maintenance/censoring", "Fig. 6: kurva survival", "Fig. 7-11: hazard parametrik vs non-parametrik", "Table 1: parameter + SE", "Table 2: AIC/LLV"]
+}

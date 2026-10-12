@@ -1,0 +1,46 @@
+PAPER 029 - Yang et al. (2022)
+Judul   : Prognostic modeling of predictive maintenance with survival analysis for mobile work equipment
+Jurnal  : Scientific Reports | Scopus Q1 (SCImago SJR Best Quartile) | DOI 10.1038/s41598-022-12572-z
+Pilar   : A. Survival Analysis & Censored Data
+Relevansi: Inti-Metode
+
+KARAKTERISTIK STUDI
+Kerangka survival analysis untuk prognostik pemeliharaan prediktif komponen alat kerja bergerak, dengan penekanan pada identifikasi jenis pencensoringan dan pemilihan model hazard parametrik vs non-parametrik.
+
+METODE
+- Kaplan-Meier untuk fungsi survival; kernel hazard non-parametrik (smoothing increment Nelson-Aalen + kernel Epanechnikov, R 'muhaz').
+- Lima model parametrik: Exponential, Weibull, Log-logistic, Log-normal, Generalized-gamma (R 'flexsurv'), estimasi via maksimum likelihood.
+- Seleksi/goodness-of-fit dengan AIC dan LLV; grafik parametrik vs non-parametrik.
+- Praproses: mengidentifikasi pencensoringan kiri/interval/kanan dan menyaring hanya tersensor-kanan.
+
+DATA
+Catatan pemeliharaan Cargotec: 658 mesin unik, 12 komponen, total 7.896 event (tak tersensor + tersensor-kanan). Pencensoringan 74-96 %. Event: 1st maintenance 987, 2nd 252, 3rd+ 148.
+
+TEMUAN UTAMA
+- Data memuat campuran tiga jenis pencensoringan; hanya tersensor-kanan yang dipertahankan.
+- Tingkat pencensoringan sangat tinggi (74-96 %) -> tantangan estimator.
+- Hazard sangat beragam: decaying, gamma-shaped, oscillating, increasing; non-parametrik paling mampu.
+- Generalized-gamma unggul di antara parametrik (AIC/LLV), mis. Transmission line C AIC 476 vs Weibull 671.
+- Rekomendasi: generalisasi prematur; perhatikan jenis censoring sebelum menerapkan ML+survival.
+
+RELEVANSI KE TESIS
+Init metode: memodelkan data tersensor (survival/hazard/Weibull/gamma) secara eksplisit dan mendalam — pola yang dapat ditransfer ke RUL membran. Domainnya bukan membran dan tanpa kovariat/sensor, dan tidak ada RUL bersensori; karena itu Inti-Metode (bukan Inti-Metode+Domain).
+
+JUSTIFIKASI DIMENSI (d1-d8)
+- d1 = "" : hanya data time-to-event, tanpa kovariat/sensor/deret waktu (dinyatakan penulis).
+- d2 = 1: mendefinisikan event kegagalan/penggantian; estimasi S(t) dan h(t).
+- d3 = 1: memodelkan data tersensor (identifikasi & penanganan censoring kiri/interval/kanan; estimator survival/parametrik berbasis likelihood dengan censoring).
+- d4 = 1: Kaplan-Meier, kernel hazard, serta 5 model parametrik (Weibull, Generalized-gamma, dst.).
+- d5 = 1: standard error parameter dilaporkan (+/-).
+- d6 = 1: kerangka pemeliharaan prediktif (jadwal preventif, pengurangan downtime/biaya, kategorisasi komponen untuk rantai pasok).
+- d7 = "" : bukan membran/RO/desalinasi.
+- d8 = "" : 7.896 event; pencensoringan tinggi namun tidak all-censored; tanpa transfer/hierarchical.
+
+KUALITAS (skor 8/10)
+Q1=1; Q2=1; Q3=0,5 (data industri nyata tetapi tanpa kovariat, satu jenis alat); Q4=0,5 (paket R terdokumentasi, data tidak publik); Q5=0,5 (goodness-of-fit, tanpa validasi prediktif); Q6=1 (censoring); Q7=1 (SE parameter); Q8=0,5 (kerangka prediktif, bukan optimasi biaya). Jumlah 6/8 -> 8.
+
+LIMITASI
+Tanpa kovariat; satu jenis alat; penyaringan censoring kehilangan informasi; tanpa validasi prediktif; domain non-membran.
+
+BUKTI (fig/table/eq)
+Eq. (1)-(11); Fig. 1 (model parametrik); Fig. 2 (jenis censoring); Fig. 3-5 (praproses); Fig. 6 (KM); Fig. 7-11 (hazard); Table 1 (parameter+SE); Table 2 (AIC/LLV).

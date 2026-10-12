@@ -1,0 +1,45 @@
+{
+ "no": 6,
+ "judul": "Uncertainty in Prognostics and Systems Health Management",
+ "penulis": "Shankar Sankararaman, Kai Goebel",
+ "tahun": 2015,
+ "jurnal": "International Journal of Prognostics and Health Management",
+ "doi": "10.36001/ijphm.2015.v6i4.2319",
+ "kuartil": "Scopus Q2 (SCImago SJR Best Quartile)",
+ "pilar": "C. Bayesian & Uncertainty",
+ "ringkasan": "Artikel ulasan ini memaparkan berbagai aspek kuantifikasi dan manajemen ketidakpastian pada prognostik dan systems health management. Penulis membedakan interpretasi ketidakpastian pada testing-based dan condition-based health management, menunjukkan bahwa prediksi RUL lebih bermakna pada condition-based monitoring dan harus diperlakukan sebagai masalah propagasi ketidakpastian. Empat aktivitas diuraikan: representasi/interpretasi, kuantifikasi, propagasi, dan manajemen ketidakpastian, dilengkapi contoh numerik dan analisis sensitivitas global.",
+ "kontribusi": "Kerangka konseptual untuk menginterpretasi, mengkuantifikasi, dan mempropagasi ketidakpastian dalam RUL - relevan sebagai landasan pilar C dan justifikasi mengapa distribusi RUL tidak boleh diasumsikan (mis. Gaussian). Tidak memodelkan data tersensor dan bukan studi empiris domain.",
+ "temuan_kunci": [
+  "RUL tidak dapat dihitung analitis bahkan pada model state linear, threshold sederhana, dan satu variabel Gaussian; distribusinya non-parametrik sehingga memerlukan metode propagasi ketidakpastian numerik.",
+  "Interpretasi frequentist hanya berlaku pada testing-based health management; condition-based health management hanya cocok dengan interpretasi Bayesian (subjektif).",
+  "Empat sumber ketidakpastian: present state, future, modeling, dan prediction-method uncertainty.",
+  "Analisis sensitivitas global (first-order & total-effects index) mengidentifikasi laju degradasi (a) sebagai kontributor utama ketidakpastian RUL."
+ ],
+ "dimensi": {"d1": "", "d2": "1", "d3": "", "d4": "", "d5": "1", "d6": "", "d7": "", "d8": ""},
+ "alasan_dimensi": {
+  "d1": "Tidak ada dataset pemantauan multi-sensor; contoh numerik bersifat sintetis (waktu-ke-gagal dan model degradasi konseptual).",
+  "d2": "Mendefinisikan RUL, end-of-life via fungsi threshold Boolean, dan mengaitkannya dengan distribusi waktu-ke-gagal.",
+  "d3": "Tidak memodelkan data tersensor secara riil; hanya menyebut secara konseptual bahwa data interval dapat dimasukkan ke likelihood. Tidak ada penerapan model survival/Weibull/hazard.",
+  "d4": "Bersifat ulasan/konseptual; tidak menerapkan model ML/DL spesifik pada data (model degradasi linear hanya ilustrasi).",
+  "d5": "Inti artikel: kuantifikasi ketidakpastian (CI frequentist & distribusi posterior Bayesian), propagasi ketidakpastian, dan analisis sensitivitas global.",
+  "d6": "Membahas 'uncertainty management' dan penggunaan informasi ketidakpastian untuk pengambilan keputusan (risk, CBM), namun tidak menyusun model keputusan/jadwal konkret.",
+  "d7": "Bukan studi membran/RO/desalinasi; contoh mencakup crack growth, bearing, UAV power system.",
+  "d8": "Tidak menerapkan strategi small-data/transfer/hierarchical; keterbatasan data dibahas konseptual (efek jumlah sampel pada lebar CI)."
+ },
+ "relevansi": "Pendukung",
+ "kualitas": {"skor": 6, "rincian": {"Q1": 1, "Q2": 1, "Q3": 0.5, "Q4": 0.5, "Q5": 0.5, "Q6": 0, "Q7": 1, "Q8": 0.5}, "catatan": "Kuat sebagai kerangka konseptual kuantifikasi/manajemen ketidakpastian (Q7=1) dan argumentasi metodologis. Namun bukan studi empiris: contoh sintetis, tanpa validasi data nyata, tanpa pencensoringan. Jumlah 5,0/8 -> 6."},
+ "data_kuantitatif": {"dataset": "Tanpa dataset riil; contoh numerik sintetis (waktu-ke-gagal Gaussian; model degradasi x(k+1)=a.x(k)+b; UAV power system)", "ukuran": "Contoh: n=10 waktu-ke-gagal; 5000 sampel Monte Carlo; 1000 sampel double-loop MC untuk indeks sensitivitas", "metrik": "CI 95% mean [93,98;106,22] & std [6,79;18,02]; indeks sensitivitas first-order a=0,92, x(0)=0,025, b=9,6e-5, l=0,015"},
+ "metode": "Ulasan konseptual + contoh numerik: MLE likelihood, CI frequentist, distribusi posterior Bayesian, propagasi ketidakpastian (Monte Carlo, FORM/SORM, Latin hypercube), analisis sensitivitas global (first-order & total-effects index).",
+ "limitasi": [
+  "Bukan studi empiris; contoh sepenuhnya sintetis.",
+  "Tidak menangani data tersensor secara terapan.",
+  "Tidak menyediakan model keputusan pemeliharaan operasional.",
+  "Manajemen ketidakpastian masih berupa arah riset ke depan."
+ ],
+ "funding_coi": "Didanai sebagian oleh NASA System-wide Safety Assurance Technologies (SSAT) dan NASA Automated Cryogenic Loading Operations (ACLO); tidak ada pernyataan konflik kepentingan.",
+ "status_inklusi": "diterima",
+ "figur_dibaca": [
+  {"file": "_page_8_Figure_1.jpeg", "isi": "Fig. 5 diagram pohon empat sumber ketidakpastian: Present State Uncertainty (sensor noise/gain/bias, data processing, filtering), Future Uncertainty (loading, environmental, operating), Modeling Uncertainty (input-output model, EOL threshold, model form, model parameters), Prediction Method Uncertainty (sampling errors, model approximations)."}
+ ],
+ "bukti": ["Eq. (1)-(3): likelihood & distribusi posterior parameter", "Eq. (6)-(9): definisi RUL sebagai fungsi threshold", "Eq. (12)-(14): propagasi & analisis sensitivitas global", "Table 1: indeks sensitivitas RUL", "Fig. 5: sumber ketidakpastian", "Fig. 6/7: PDF RUL & RUL multimoda"]
+}

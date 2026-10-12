@@ -1,0 +1,49 @@
+PAPER 58 — Zhang et al. (2020)
+Judul: Attention-Based LSTM Network for Rotatory Machine Remaining Useful Life Prediction
+Jurnal: IEEE Access | Q1 (SCImago SJR Best Quartile) | DOI 10.1109/ACCESS.2020.3010066
+Pilar: B. Deep Learning RUL | Relevansi: Pendukung | Skor kualitas: 9/10
+
+KARAKTERISTIK STUDI
+Studi RUL prediction untuk komponen rotasi (bearing) berbasis deep learning. Kritik terhadap model machine learning tradisional yang lemah pada sinyal non-linear kompleks. Menggabungkan ekstraksi fitur lokal (CNN) dengan pemodelan temporal berlapis (stacked LSTM) dan attention untuk menyorot informasi penting.
+
+METODE
+- TLSTM-A = 1-D CNN + dua lapis LSTM + attention mechanism + fully connected.
+- CNN: 16 kernel, ukuran 64, aktivasi ReLU, max-pooling step 2 (ekstraksi fitur lokal dari sinyal getaran 1-D).
+- Stacked LSTM: dua lapisan, 128 neuron per lapisan; output hidden diteruskan ke sel tetangga dan ke lapisan berikutnya.
+- Attention: skor s = h_t * h_s, bobot alfa_ij = softmax; context vector c_i = sum alfa_ij h_j; bobot jaringan dimodulasi oleh beta.
+- Pelatihan: loss RMSE, optimizer Adam, lr awal 0,005, normalisasi min-max RUL.
+- Diskusi arsitektur: panjang input 1000, lr 0,005, 128 neuron LSTM-Attention dipilih.
+
+DATA
+Dataset bearing XJTU-SY (Xi'an Jiaotong University & Changxing Sumyoung Technology): 3 kondisi operasi, 15 bearing, run-to-failure. Diuji pada Bearing1_1, Bearing1_5, Bearing2_4. Fokus prediksi pada tahap failure (amplitude naik signifikan).
+
+TEMUAN UTAMA
+- TLSTM-A mengungguli CNN, CNN_SVR, CNN_MLP, RNN, OLSTM, TLSTM, OLSTM-A pada RMSE, MAE, dan Score.
+- RMSE TLSTM-A: 102,36 / 258,19 / 183,74; MAE: 75,54 / 157,82 / 120,71; Score: 0,895 / 0,752 / 0,784.
+- Dua lapis LSTM > satu lapis; attention meningkatkan akurasi.
+- Panjang input >1000 tidak lagi menurunkan RMSE; lr 0,005 terbaik.
+
+RELEVANSI KE TESIS
+Baseline arsitektur deep learning RUL point-estimate dari sinyal sensor. Tidak menyentuh censoring maupun uncertainty quantification, sehingga memperjelas celah yang hendak diisi tesis (RUL membran dengan data tersensor + survival). Posisi: Pendukung.
+
+JUSTIFIKASI DIMENSI
+- d1=1: sinyal getaran deret waktu multi-titik sebagai input runtun.
+- d2=1: RUL didefinisikan eksplisit pada tahap failure, target supervised.
+- d3="": tanpa data tersensor/survival/Weibull/hazard/cure (semua bearing gagal).
+- d4=1: 1-D CNN + stacked LSTM + attention (TLSTM-A).
+- d5="": hanya point estimate (RMSE/MAE/Score); tanpa CI/posterior/interval.
+- d6="": tanpa analisis keputusan maintenance.
+- d7="": domain bearing, bukan membran/RO/desalinasi/fouling.
+- d8="": bukan small-data/transfer/hierarchical/all-censored.
+Bukti kunci: "Two-layer LSTM with attention mechanism ... learns higher level representations"; tabel RMSE/MAE/Score TLSTM-A terbaik.
+
+KUALITAS (9/10)
+Q1 jelas (1); Q2 memadai + ablasi arsitektur (1); Q3 dataset XJTU-SY publik (1); Q4 parameter dijelaskan tanpa kode (0,5); Q5 evaluasi multi-metrik + baseline (1); Q6-Q8 N/A. Skor = round(4.5/5*10) = 9.
+
+LIMITASI
+Point estimate tanpa ketidakpastian; tanpa censoring; bearing uji sedikit + perlu smoothing; tanpa model keputusan maintenance.
+
+BUKTI (kutipan)
+- "a novel prediction framework for RUL of rotatory machine based on deep learning is proposed" (Abstract).
+- "Two-layer LSTM with attention mechanism ... learns higher level representations" (Prediction Network).
+- Tabel 4/5/6: TLSTM-A terbaik pada RMSE, MAE, Score di ketiga dataset.

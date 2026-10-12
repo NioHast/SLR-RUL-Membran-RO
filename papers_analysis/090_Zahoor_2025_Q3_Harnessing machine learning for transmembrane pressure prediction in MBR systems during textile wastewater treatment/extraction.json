@@ -1,0 +1,81 @@
+{
+ "no": 61,
+ "judul": "Harnessing machine learning for transmembrane pressure prediction in MBR systems during textile wastewater treatment",
+ "penulis": "Onaira Zahoor, Sher Jamal Khan, Muhammad Usama, Henry J. Tanudjaja, Noreddine Ghaffour, Muhammad Saqib Nawaz",
+ "tahun": 2025,
+ "jurnal": "Desalination and Water Treatment",
+ "doi": "10.1016/j.dwt.2025.101238",
+ "kuartil": "Scopus Q3 (SCImago SJR Best Quartile)",
+ "pilar": "E. Membrane/RO/Desalination",
+ "ringkasan": "Studi memprediksi transmembrane pressure (TMP) sebagai proksi pemicu fouling membran pada MBR skala bench yang mengolah air limbah tekstil sintetik. Tiga model regresi (Random Forest, Support Vector Regression, dan Lasso) dilatih dengan lima parameter lumpur (B_Car, MLSS, SOUR, DSVI, PSD) dari 58 observasi harian pada tiga siklus membran 19-21 hari, memakai pembagian data kronologis untuk menghindari kebocoran informasi. Random Forest terbaik dengan R2 0,95/0,83 dan RMSE 1,75/3,3 kPa (train/test); B_Car (EPS karbohidrat terikat) adalah prediktor paling penting, dan model dilengkapi interval prediksi 80%.",
+ "kontribusi": "Menunjukkan bahwa regresi ML dengan data kecil (n=58) dapat memetakan TMP membran MBR dan memberi peringkat parameter lumpur, sebagai jembatan domain (membran/fouling) tanpa memodelkan RUL atau penyensoran. Relevan bagi tesis sebagai baseline domain bahwa proksi degradasi (TMP) dapat diprediksi, namun belum ada formalisasi waktu-ke-gagal/penyensoran.",
+ "temuan_kunci": [
+  "Random Forest mengungguli SVR dan Lasso: R2 0,95 (train) dan 0,83-0,86 (test), RMSE 1,75 kPa (train) / 3,3 kPa (test).",
+  "Bound EPS karbohidrat (B_Car) paling berpengaruh terhadap TMP (korelasi 0,83; kenaikan MSE ~60%), diikuti DSVI (0,76).",
+  "PDP menunjukkan ambang DSVI ~68-70 mL/g dan tren TMP naik tajam terhadap B_Car (24-32 mg/L).",
+  "Interval prediksi 80% (bootstrap) disertakan; SVR cenderung konservatif pada nilai ekstrem, RF dan Lasso lebih akurat pada nilai tinggi.",
+  "Membran fouling setiap 19-21 hari pada ambang TMP 30 kPa; siklus bersih dapat diperpanjang via optimasi parameter lumpur."
+ ],
+ "dimensi": {
+  "d1": "1",
+  "d2": "1",
+  "d3": "",
+  "d4": "1",
+  "d5": "1",
+  "d6": "1",
+  "d7": "1",
+  "d8": "1"
+ },
+ "alasan_dimensi": {
+  "d1": "Dataset berupa deret waktu harian TMP dan lima parameter lumpur selama 20 hari/siklus; penulis melaporkan autokorelasi lag-1 TMP = 0,745 (p<0,05) dan memakai pemisahan kronologis, sehingga sifat multi-variabel time-series eksplisit.",
+  "d2": "Studi mendefinisikan ambang gagal fungsional membran: 'membrane was functional till the TMP reached 30 kPa' dan 'membrane fouled every 19-21 days', yaitu ambang pemicu pembersihan/penggantian.",
+  "d3": "Tidak ada pemodelan data tersensor; tidak menggunakan survival/Weibull/hazard/cure. Interval prediksi bukan model pengamatan tersensor.",
+  "d4": "Menggunakan model spesifik: Random Forest (Eq.1), Support Vector Regression (Eq.2), dan Lasso/L1 regression (Eq.3).",
+  "d5": "Ada kuantifikasi ketidakpastian: interval prediksi 80% berbasis variabilitas antar-pohon (RF) dan bootstrap 100 iterasi (SVR/Lasso), plus analisis ketidakpastian hyperparameter via grid search.",
+  "d6": "Ada keputusan pemeliharaan konkret: PDP digunakan sebagai 'decision-support framework' dan 'adaptive cleaning plan' untuk memperpanjang siklus membran dan menurunkan biaya energi/pembersihan.",
+  "d7": "Objek langsung membran/fouling: MBR dengan membran hollow fiber PVDF 0,1 mikron; TMP dan fouling membran adalah fokus utama.",
+  "d8": "Small-data: hanya 58 observasi (60 dataset, 360 titik data) dan satu MBR skala bench; keterbatasan data kecil diakui eksplisit dan ditangani dengan model sederhana."
+ },
+ "relevansi": "Inti-Domain",
+ "kualitas": {
+  "skor": 8,
+  "rincian": {
+   "Q1": 1,
+   "Q2": 0.5,
+   "Q3": 0.5,
+   "Q4": 0.5,
+   "Q5": 1,
+   "Q6": "N/A",
+   "Q7": 1,
+   "Q8": 1
+  },
+  "catatan": "RQ jelas (prediksi TMP + ranking parameter lumpur). Metode memadai namun terbatas pada model ML klasik dan data sangat kecil (n=58). Validitas data terbatas: satu sistem bench, tanpa replikasi independen. Reproduksibilitas sedang (hyperparameter disebut, data tidak publik). Evaluasi kuat (R2/RMSE train-test-validasi, perbandingan literatur, interval prediksi). Penyensoran tidak relevan (N/A). Pelaporan ketidakpastian dan tautan ke keputusan pemeliharaan relatif kuat untuk paper Q3."
+ },
+ "data_kuantitatif": {
+  "dataset": "MBR skala bench dengan membran hollow fiber PVDF (luas 0,2 m2) mengolah air limbah tekstil sintetik; dipantau 60 hari (tiga siklus membran), data dianalisis 58 observasi.",
+  "ukuran": "58 observasi harian; 60 dataset (5 input + 1 output) = 360 titik data; tiga siklus 19-21 hari.",
+  "metrik": "R2 (0,95 train / 0,83-0,86 test), RMSE (1,75 kPa train / 3,3 kPa test), interval prediksi 80%."
+ },
+ "metode": "Random Forest Regression, Support Vector Regression, dan Lasso/L1 Regression, dengan seleksi variabel (efek >=0,3), uji multikolinearitas, split kronologis 80/20, grid search hyperparameter (ntree=500, mtry=2, cost=1, gamma=0,1, lambda via CV), analisis partial dependence (PDP), serta deteksi bias nilai ekstrem.",
+ "limitasi": [
+  "Data sangat kecil (58 observasi, satu MBR skala bench) sehingga generalisasi ke skala penuh terbatas.",
+  "Hanya model ML klasik; tidak ada model deret waktu temporal (mis. LSTM/RNN) atau survival.",
+  "Tidak memprediksi waktu-ke-gagal/RUL secara langsung maupun menangani penyensoran.",
+  "Sistem dan kondisi operasi tunggal; parameter eksternal (suhu, beban) tidak bervariasi."
+ ],
+ "funding_coi": "Tidak ada pernyataan dana spesifik; hanya dukungan teknis laboratorium NUST Islamabad. Declaration of Competing Interest: penulis menyatakan tidak ada konflik kepentingan (Sher Jamal Khan tercatat 'Funding acquisition').",
+ "status_inklusi": "diterima",
+ "figur_dibaca": [
+  {"file": "_page_4_Figure_12.jpeg", "isi": "Schematic tiga model: (a) arsitektur Random Forest (Dataset -> N Decision Tree -> Mean Regression -> Final Output), (b) hyperplane/max margin SVM, (c) ruang parameter Lasso dengan constraint L1 berbentuk diamond; tanpa nilai numerik."},
+  {"file": "_page_6_Figure_10.jpeg", "isi": "Scatter actual vs predicted TMP (kPa, skala 0-30) dengan garis 1:1 dan error bar interval (Training biru, Testing hijau); titik mengumpul di dekat diagonal, error bar melebar pada TMP tinggi."},
+  {"file": "_page_7_Figure_2.jpeg", "isi": "Enam panel partial dependence plots (heatmap grayscale) TMP terhadap pasangan predictor (B_Car, DSVI, MLSS, SOUR); TMP (skala 10-24) naik seiring B_Car dan DSVI."}
+ ],
+ "bukti": [
+  "Abstract: 'The random forest model attained an R2 of 0.95 and 0.86 and RMSE values of 1.75 kPa and 3.3 kPa for the training and test datasets'.",
+  "Section 2.3: 'The membrane was functional till the TMP reached 30 kPa ... The membrane fouled every 19-21 days on average.'",
+  "Section 3: 'a time series dataset of 58 observations ... lag-one autocorrelation coefficient of 0.745, statistically significant at the 5% level'.",
+  "Section 3.5: 'Grid search was employed to quantify hyperparameter uncertainty'; 'Fig. 4 uses prediction intervals ... with 80% confidence'.",
+  "Section 4.1.1: 'The PDPs provide a decision-support framework for optimizing MBR operations'.",
+  "Section 3.6: 'an adaptive cleaning plan can take place to mitigate severe fouling and prolong membrane operational time'."
+ ]
+}

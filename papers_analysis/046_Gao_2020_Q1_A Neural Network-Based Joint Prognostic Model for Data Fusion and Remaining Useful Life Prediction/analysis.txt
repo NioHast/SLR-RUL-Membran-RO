@@ -1,0 +1,46 @@
+ANALISIS PAPER 035 — Gao, Wen & Wu (2020), IEEE Transactions on Neural Networks and Learning Systems
+Judul: A Neural Network-Based Joint Prognostic Model for Data Fusion and Remaining Useful Life Prediction
+DOI: 10.1109/TNNLS.2020.2977132 | Kuartil: Scopus Q1 | Pilar indeks: B. Deep Learning RUL
+
+KARAKTERISTIK STUDI
+Studi metodologis prognostik RUL yang menggabungkan pemodelan statistik Bayesian dengan neural network untuk fusi data multi-sensor. Menargetkan dua kelemahan: (1) fusi linear yang gagal menangkap nonlinier, (2) NN konvensional yang tidak memanfaatkan observasi historis. Domain: mesin turbofan (C-MAPSS). Klaster "Pendukung": metode RUL umum dengan kuantifikasi ketidakpastian, tanpa penyensoran/survival maupun domain membran.
+
+METODE
+Joint Prognostic Model (JPM) dua tahap:
+- Offline: model linear Bayesian (mixed-effects) untuk tiap sinyal sensor, s = Xβ + ε dengan β~N(μ0, σ²Σ0) dan σ²~IG(α1,α2); estimasi hyperparameter dua-tahap (MLE per unit lalu MLE populasi). ANN 3 lapis (input: parameter degradasi β & waktu t; output: occurred life percentage p_t) dilatih dengan backpropagation, 5-fold CV, 10^4 inisialisasi bobot.
+- Online: Bayesian updating konjugat menghasilkan posterior multivariate-t untuk β; posterior mean dimasukkan ke NN; RUL = (1-p_t)/p_t · t; distribusi prediktif posterior via Monte Carlo (Eq. 12).
+Pemilihan sinyal: 14 sinyal bertren → hierarchical clustering (threshold korelasi 0,75) → 5 sinyal (Nc, T24, BPR, htBleed, T30).
+
+DATA
+C-MAPSS FD001 (1 mode kegagalan, 1 kondisi operasi) dan FD003 (2 mode kegagalan, 1 kondisi). Masing-masing 100 unit latih + 100 uji. FD002/FD004 sengaja tidak dipakai karena kondisi operasi campuran merusak tren degradasi.
+
+TEMUAN UTAMA
+- Fusi 5 sinyal jauh lebih akurat daripada satu sinyal saja (Fig. 10).
+- Distribusi prediktif posterior RUL sempit dan akurat, bahkan pada tahap awal siklus (Fig. 8) — mengatasi kelemahan LSTM/HI pada fase awal.
+- JPM mengungguli NN1, NN2, HI_2013, HI_kernel, LSTM pada sebagian besar epoch (Fig. 11-12).
+- Posterior mean/MAP ≈ rata-rata distribusi prediktif.
+
+RELEVANSI KE TESIS
+Pendukung metodologis untuk dua sumbu tesis: (1) kuantifikasi ketidakpastian RUL melalui distribusi prediktif posterior (d5) dan (2) struktur hierarkis mixed-effects yang berbagi kekuatan antar-unit (d8). Namun tidak memodelkan penyensoran/survival dan bukan domain membran. Celah: penggabungan survival analysis data tersensor dengan fusi data nonlinier + ketidakpastian penuh pada membran RO belum ada.
+
+JUSTIFIKASI DIMENSI (d1-d8)
+- d1 = "1": multi-sensor time series (5 sinyal pada tiap epoch) — Section III-B, Fig. 5-6.
+- d2 = "1": RUL = first passage time ke failure threshold HI; threshold tersembunyi (Section II-B, III-A).
+- d3 = "": tanpa pemodelan tersensor/survival/hazard.
+- d4 = "1": ANN 3 lapis + Bayesian linear mixed-effects + LSTM pembanding.
+- d5 = "1": posterior predictive distribution RUL via Monte Carlo (Eq. 11-12, Fig. 8).
+- d6 = "": tidak ada keputusan pemeliharaan.
+- d7 = "": domain turbofan.
+- d8 = "1": hierarkis/mixed-effects (β_ij ~ N(μ0, σ²Σ0) dengan hyperparameter populasi; Eq. 2, 8-10).
+
+KUALITAS (skor 9/10)
+Q1=1; Q2=1; Q3=1 (benchmark C-MAPSS, CV 5-fold, cakupan dijustifikasi); Q4=0.5 (struktur & hyperparameter diberi, tanpa kode); Q5=1 (metrik alpha-lambda + MAPE + banyak pembanding, dua dataset); Q6=N/A; Q7=1 (distribusi prediktif posterior dilaporkan); Q8=0.5 (motivasi pemeliharaan saja). Applicable = 7, jumlah = 6.0 -> skor = round(6.0/7*10) = 9.
+
+LIMITASI
+Tidak menangani kondisi operasi campuran; tanpa pemodelan penyensoran; NN sederhana; asumsi log/kuadratik; tanpa keputusan pemeliharaan.
+
+BUKTI
+- Abstrak + Index Terms.
+- Eq. 1-6 (mixed-effects/Bayesian linear), Eq. 7 (NN loss), Eq. 8-11 (posterior & RUL), Eq. 12 (posterior predictive).
+- Section III-B (pemilihan sinyal), Fig. 5-6.
+- Fig. 7 (Bayesian updating), Fig. 8 (posterior predictive), Fig. 9-12 (perbandingan), Eq. 13 (MAPE).

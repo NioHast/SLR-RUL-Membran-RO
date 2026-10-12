@@ -1,0 +1,45 @@
+PAPER 026 - Jafari et al. (2024)
+Judul   : Applications of artificial intelligence for membrane separation: A review
+Jurnal  : Journal of Water Process Engineering | Scopus Q1 (SCImago SJR Best Quartile) | DOI 10.1016/j.jwpe.2024.106532
+Pilar   : E. Membrane/RO/Desalination
+Relevansi: Konteks
+
+KARAKTERISTIK STUDI
+Tinjauan bibliometrik penerapan AI pada proses separasi membran (2013-2023) dengan protokol PRISMA, mencakup MF, UF, NF, RO, FO, MBR, MD, dan gas separation. Fokus pada pemetaan algoritma, aplikasi, dan akurasi.
+
+METODE
+- Pengambilan data dari Scopus/Web of Science; 409 artikel -> 313 setelah pra-screening -> analisis.
+- Analisis co-occurrence kata kunci dengan VOSviewer; taksonomi algoritma supervised/unsupervised/reinforcement.
+- Rangkuman kelebihan/kekurangan dan rata-rata R2 per algoritma & jenis membran (Table 1).
+
+DATA
+Literatur (bukan dataset eksperimen). >50 algoritma AI terdokumentasi. Distribusi platform: MATLAB ~38 %, Python ~24 %, tidak disebut ~34 %, R ~4 %, Statistica ~1 %.
+
+TEMUAN UTAMA
+- ANN paling dominan (>150 penggunaan); RF & SVM paling banyak di ML.
+- DL umumnya R2 lebih tinggi (CNN ~0,98; ANN ~0,94) dibanding ML (LR ~0,58).
+- Fouling jadi fokus utama AI pada membran.
+- Pemeliharaan prediktif RO: Srivastava et al. ANN R2=99,99 % dengan 75 sampel (risiko overfitting).
+- Tantangan: data scarcity, interpretabilitas, beban komputasi; arah: kontrol real-time, XAI, model hibrida.
+
+RELEVANSI KE TESIS
+Konteks pemetaan metode AI untuk membran (termasuk RO/fouling). Tidak menyediakan survival/pencensoringan maupun model RUL; berguna untuk memilih arsitektur dan memahami kesenjangan (data scarcity) tesis. Diklasifikasikan Konteks (review).
+
+JUSTIFIKASI DIMENSI (d1-d8)
+- d1 = "" : review tanpa data deret waktu miliknya; mayoritas studi steady-state.
+- d2 = "" : tanpa definisi RUL/ambang kegagalan.
+- d3 = "" : tanpa survival/pencensoringan.
+- d4 = 1: inti review membandingkan algoritma spesifik (ANN, CNN, RF, SVM, XGBoost, GP/GPR, LSTM, ANFIS).
+- d5 = "" : menyebut 'uncertainty estimates' GP, tanpa analisis/pelaporan.
+- d6 = "" : menyebut kendali/pemeliharaan prediktif sebagai arah, tanpa keputusan konkret.
+- d7 = 1: subjek review adalah membran (RO/UF/NF/MF/FO/MBR/MD) dan fouling.
+- d8 = "" : data scarcity dibahas sebagai tantangan, bukan metode.
+
+KUALITAS (skor 9/10)
+Q1=1; Q2=1; Q3=1; Q4=1 (protokol PRISMA & basis data terdokumentasi); Q5=0,5 (tinjauan, tanpa validasi baru); Q6=N/A; Q7=N/A; Q8=N/A. Jumlah 4,5/5 -> 9.
+
+LIMITASI
+Hanya tinjauan; tanpa eksperimen; cakupan terbatas 2013-2023 Scopus/WoS; tanpa survival/RUL; tanpa sintesis keputusan berbasis biaya.
+
+BUKTI (fig/table/eq)
+Table 1; Fig. 1 (tren & co-occurrence); Fig. 2 (klasifikasi & frekuensi algoritma); Fig. 4 (R2); Fig. 5-7 (jenis membran, tujuan, input/output).

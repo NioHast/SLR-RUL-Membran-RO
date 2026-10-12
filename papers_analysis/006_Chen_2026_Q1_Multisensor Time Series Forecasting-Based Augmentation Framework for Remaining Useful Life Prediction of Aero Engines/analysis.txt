@@ -1,0 +1,55 @@
+PAPER 70: Multisensor Time Series Forecasting-Based Augmentation Framework for Remaining Useful Life Prediction of Aero Engines
+Penulis: Ziyi Chen, Dingcheng Zhang, Chenyang Jiao (2026)
+Jurnal: IEEE Transactions on Instrumentation and Measurement | Scopus Q1 | DOI 10.1109/tim.2026.3684677 | Pilar: D. Small-data/Transfer/Hierarchical
+
+KARAKTERISTIK STUDI
+Studi prognostik RUL aero engine yang secara eksplisit menangani data tersensor (censored/truncated) dan ketidakseimbangan data (long-tail): data degradasi fase akhir langka karena mesin menjalani maintenance terjadwal sebelum gagal. Solusinya: melengkapi data tersensor via forecasting, menyaring sampel via Wasserstein distance, lalu melatih model RUL.
+
+METODE
+Kerangka MSFA: (1) MSMCT - dekomposisi sinyal jadi trend (moving average), periodic (FFT top-K), residual; tiga modul transformer spesifik-komponen dengan downsampling multiskala {1,2,4}; base transformer memakai Conv Embedding + Time2Vec pseudo-timestamp + multi-head attention. Rolling forecasting melengkapi data tersensor sampai ambang gagal Tf. (2) Selektor berbasis Wasserstein distance untuk memilih sampel augmentasi yang distribusinya konsisten. (3) DGSTN - dynamic learnable graph + GCNEncoder + TopKPooling + CNNDecoder (dilated conv) + regressor. Loss MSMCT kombinasi MAE+envelope+FFT.
+
+DATA
+C-MAPSS FD001-FD004; 14 kanal sensor dari 21. Partisi: unit dengan umur terpendek (10-30%) = run-to-failure; sisanya data tersensor (ambang maintenance tau=150). Window forecasting W=90; window RUL Ws=30/20/30/15. Normalisasi hanya dari data run-to-failure (mencegah look-ahead bias).
+
+TEMUAN UTAMA
+- MSFA unggul di semua rasio data (10-30%) atas CNN-1D, CNN-LSTM, BiLSTM-ED, STAE, GCN-PR.
+- Peningkatan RMSE 20,3% / Score 60,3% (FD002) dan 10,4% / 22,4% (FD004).
+- RMSE FD001-004: 11,60 / 12,12 / 12,04 / 14,20; S-Score 187,34 / 556,04 / 209,22 / 1219,24.
+- MSMCT merekonstruksi segmen degradasi lanjut dengan fidelity tinggi (KL rata-rata 0,068-0,0295).
+- Augmentasi menurunkan bias over-estimasi RUL: RMSE -17,3%, S-Score -27,7% (FD002).
+
+RELEVANSI KE TESIS
+Inti-Metode+Domain. Sangat relevan: (a) menangani data tersensor secara substantif (melengkapi segmen tak teramati) dan (b) data kecil/tak seimbang - dua tantangan inti tesis. Memberi alternatif penanganan penyensoran selain survival analysis (forecasting-completion + seleksi distribusi), plus arsitektur graph spatio-temporal yang dapat diadaptasi ke jaringan sensor membran.
+
+JUSTIFIKASI DIMENSI
+- d1=1: time series multisensor 14 kanal x window (C-MAPSS).
+- d2=1: failure threshold Tf, pseudo-RUL label, maintenance threshold tau=150.
+- d3="": tidak memakai survival/Weibull/hazard/cure formal. Menangani data tersensor via forecasting (bukan model survival), sehingga menurut definisi ketat d3 tidak terpenuhi.
+- d4=1: MSMCT (Transformer) + DGSTN (GCN + dilated CNN).
+- d5="": tidak ada kuantifikasi ketidakpastian prediksi (Wasserstein/KL = kesamaan distribusi, bukan uncertainty).
+- d6="": tidak ada model keputusan pemeliharaan; S-Score hanya penalti keterlambatan prediksi.
+- d7="": bukan membran/RO.
+- d8=1: data tak seimbang/terbatas + censored dominan + augmentasi -> sumbu small-data/all-censored.
+
+KUALITAS (skor 7)
+Q1=1; Q2=1; Q3=0,5 (data simulasi + partisi buatan); Q4=0,5; Q5=1 (banyak baseline + ablation + rasio data); Q6=1 (penanganan data tersensor jelas); Q7=0 (tanpa ketidakpastian); Q8=0,5 (hanya S-Score konservatif). Sum applicable 5,5/8 -> 6,875 ~ 7.
+
+LIMITASI
+Skalabilitas kuadratik MSMCT; asumsi data lengkap/teratur; hanya C-MAPSS; tanpa kuantifikasi ketidakpastian.
+
+FUNDING/COI
+Sichuan Provincial Major S&T Special Project (2025ZDZX0055). Tidak ada pernyataan konflik kepentingan eksplisit.
+
+BUKTI
+- "a multisensor forecasting-based augmentation (MSFA) framework ... MSMCT ... completing censored data" (Abstract)
+- "data with failure times exceeding the maintenance threshold, termed censored data ... censored data substantially outnumber run-to-failure data" (Sec. I)
+- "a fixed maintenance threshold tau=150 is defined" (Sec. III-B)
+- "improvements of 20.3% and 60.3% on the FD002 ... and 10.4% and 22.4% on the FD004" (Sec. III-D)
+- "KL divergence ... 0.068, 0.0072, 0.0295, and 0.0139" (Sec. III-D)
+- "a 17.3% improvement in RMSE and ... a 27.7% reduction in S-Score on the FD002 subset" (Sec. III-D)
+
+FIGUR DIBACA
+- _page_1_Figure_2.jpeg: flowchart MSFA (akuisisi -> forecasting MSMCT -> augmentasi Wasserstein -> DGSTN).
+- _page_2_Figure_2.jpeg: arsitektur MSMCT (dekomposisi + transformer multiskala).
+- _page_5_Figure_2.jpeg: arsitektur DGSTN (GCNEncoder + CNNDecoder + Regressor).
+- _page_9_Figure_7.jpeg: bar chart RMSE vs rasio data (Proposed Model terendah di semua set).

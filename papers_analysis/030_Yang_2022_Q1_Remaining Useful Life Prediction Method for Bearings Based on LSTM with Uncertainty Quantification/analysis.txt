@@ -1,0 +1,44 @@
+PAPER 008 - Yang et al. (2022)
+Judul   : Remaining Useful Life Prediction Method for Bearings Based on LSTM with Uncertainty Quantification
+Jurnal  : Sensors | Scopus Q1 | DOI 10.3390/s22124549
+Pilar   : B. Deep Learning RUL
+Relevansi: Pendukung (DL + kuantifikasi ketidakpastian RUL; tanpa survival/censoring, domain bearing)
+
+KARAKTERISTIK STUDI
+Prediksi RUL rolling bearing berbasis LSTM dengan kuantifikasi ketidakpastian. Motivasi: degradasi internal sulit dipantau real-time dan ketidakpastian eksternal signifikan; estimasi titik tanpa ketidakpastian kurang memberi panduan pemeliharaan.
+
+METODE
+- Praproses: ekstraksi 52 fitur (10 time-domain + 16 wavelet packet energy, arah H & V), penyaringan via indeks komprehensif Ce = 0,2Corr + 0,5Mon + 0,3Rob (Eq. 6), z-score standardization (Eq. 7), sliding window (panjang 25).
+- Model: 2 layer LSTM + fully connected + dropout (0,5). Dropout aktif saat pengujian untuk aproksimasi Bayesian (epistemic uncertainty).
+- Ketidakpastian: input ke model 1000 kali; mean = estimasi titik; nonparametric kernel density estimation menghasilkan distribusi kernel RUL; interval kepercayaan 95%.
+
+DATA
+PHM2012: latih Bearing1_1 & 1_2 (lifecycle), uji Bearing1_3 (lifecycle). 2803 titik/bearing, window 25 -> 2779 sampel. 9 fitur terpilih.
+
+TEMUAN UTAMA
+- Penyaringan fitur penting: RMSE 0,0567 (terpilih) vs 0,2463 (fitur acak).
+- LSTM mengungguli CNN (RMSE 0,1613) dan adaptive Kalman filter (0,0775).
+- Kinerja terbaik pada stadium degradasi stabil; distribusi kernel menyempit di stadium ini.
+- Interval kepercayaan 95% menyempit lalu melebar seiring waktu.
+
+RELEVANSI KE TESIS
+Relevan untuk komponen kuantifikasi ketidakpastian prediksi RUL (dropout Bayesian + KDE) dan rekayasa fitur degradasi. Namun tidak menangani data tersensor dan domainnya bearing, sehingga Pendukung.
+
+JUSTIFIKASI DIMENSI (d1-d8)
+- d1=1: sinyal vibrasi multi-arah + suhu; 52 fitur deret waktu.
+- d2=1: target RUL (label menurun linear).
+- d3="": tanpa survival/hazard/Weibull/cure; dropout bukan pencensoringan.
+- d4=1: LSTM + dropout.
+- d5=1: epistemic uncertainty via dropout, distribusi RUL via KDE, CI 95%.
+- d6="": hanya menyebut uncertainty-based decisions; tanpa model keputusan konkret.
+- d7="": objek bearing.
+- d8="": memakai subset PHM2012 penuh; tanpa transfer/hierarchical.
+
+KUALITAS (skor 6/10)
+Q1=1; Q2=1; Q3=0,5 (satu bearing uji, satu kondisi); Q4=0,5 (arsitektur rinci, data publik, tanpa kode); Q5=1 (pembanding fitur acak, CNN, Kalman); Q6=0 (tanpa censoring); Q7=1; Q8=0. Jumlah 5,0/8 -> 6.
+
+LIMITASI
+Satu bearing uji; performa buruk tahap awal/akhir; tanpa pencensoringan; parameter empiris.
+
+BUKTI (fig/table/eq)
+Eq. (6); Table 2; Table 7; Fig. 7-8; Fig. 9-11; Fig. 12-13.

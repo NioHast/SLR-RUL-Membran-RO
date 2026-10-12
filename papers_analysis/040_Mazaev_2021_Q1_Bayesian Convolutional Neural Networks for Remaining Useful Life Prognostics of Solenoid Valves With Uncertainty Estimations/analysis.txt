@@ -1,0 +1,47 @@
+PAPER 074 - Mazaev et al. (2021)
+Judul   : Bayesian Convolutional Neural Networks for Remaining Useful Life Prognostics of Solenoid Valves With Uncertainty Estimations
+Jurnal  : IEEE Transactions on Industrial Informatics | Scopus Q1 (SCImago SJR Best Quartile) | DOI 10.1109/tii.2021.3078193
+Pilar   : C. Bayesian & Uncertainty
+Relevansi: Pendukung  (RUL + Bayesian DL + kuantifikasi ketidakpastian; tanpa survival/censoring, domain solenoid valve)
+
+KARAKTERISTIK STUDI
+Prediksi RUL langsung (direct) solenoid valve berbasis Bayesian CNN dari representasi citra sinyal arus, diperkaya dua fitur fisik (shading ring force, Coulomb friction) dari model elektromekanis. Motivasi: sebagian besar DL prognostik hanya memberi prediksi deterministik tanpa menangkap ketidakpastian; padahal decision-making prognostik membutuhkan credible interval yang terkalibrasi.
+
+METODE
+- Representasi data: setiap citra = 30 akuisisi sinyal arus (tiap sinyal 200 nilai) -> matriks [200x30]; diperluas menjadi [202x30] dengan 2 fitur fisik per akuisisi; pelabelan RUL pada akuisisi terakhir; sliding window step 17 akuisisi.
+- FCNN: baseline prediksi titik (ReLU output, Adam, lr 0,001, batch 64, early stopping patience 8).
+- BCNN MC dropout: dropout 0,2 sebelum conv + dense; 40 stochastic forward pass saat inferensi -> distribusi RUL (Gaussian terpangkas).
+- BCNN MFVI: dense split menjadi dua subnetwork yang memprediksi mean (mu_hat_RUL) dan std (sigma_hat_RUL) distribusi Gaussian terpangkas; dilatih via variational inference (ELBO, prior N(0,1), Flipout untuk dekorrelasi gradien).
+- Evaluasi: MAE per valve, MAE pada 70% degradasi, calibration curves, occlusion feature attribution, paired t-test (+ Shapiro-Wilk).
+
+DATA
+Setup uji umur dipercepat: 48 solenoid valve (Burkert Type 6014, direct acting 3/2 way normally closed) diswitch 1 Hz selama 6 minggu; akuisisi per jam; tegangan 110 V AC 50 Hz; udara 8 bar; suhu 25 C. Sensor: arus (LEM CTSR 0.3-P), suhu (Pt100), tekanan (GEMS 3100), thermal mass flow (IST AG FS7). Total 1487 citra; 40 valve mencapai EOL dan dievaluasi; leave-one-out CV (35 latih/4 validasi/1 uji).
+
+TEMUAN UTAMA
+- Semua CNN yang diusulkan mengalahkan baseline: penurunan MAE RUL ~40% (p~0) vs AdaNet, Linear regression, GBRT.
+- Fitur fisik memberi perbaikan ~20% (p<0,01); menambahkan sinyal arus di samping fitur fisik tidak menambah performa (p>0,05).
+- BCNN MFVI terkalibrasi baik (calibration curve mendekati garis ideal), sedangkan MC dropout meremehkan ketidakpastian secara signifikan.
+- Occlusion menunjukkan pergeseran atribusi fitur dari positif (awal) ke negatif (menjelang EOL); puncak atribusi positif saat shading ring force drop ke nol.
+- 8 dari 48 valve tidak mencapai EOL (implisit right-censored) dan dikecualikan.
+
+RELEVANSI KE TESIS
+Relevan sebagai rujukan kuantifikasi ketidakpastian berprinsip (BCNN MFVI, credible interval, kalibrasi) yang menjadi komponen "uncertainty" pada tesis. Namun tidak memodelkan data tersensor (justru mengecualikan valve yang belum EOL) dan domainnya solenoid valve. Karena itu only Pendukung untuk axis RUL umum.
+
+JUSTIFIKASI DIMENSI (per d1-d8)
+- d1 = 1: sinyal arus multi-saluran deret waktu (citra [200x30]) + suhu/tekanan/flow + 2 fitur fisik.
+- d2 = 1: RUL diprediksi dari faulty pertama hingga EOL; EOL terdefinisi (plunger macet, lonjakan suhu, penurunan aliran).
+- d3 = "" : tanpa survival/hazard/Weibull/censoring; 8 valve non-EOL dikecualikan.
+- d4 = 1: Bayesian CNN (MC dropout & MFVI) + FCNN.
+- d5 = 1: distribusi prediktif RUL, credible interval 90%, calibration curves.
+- d6 = "" : hanya menyebut decision-making/strategi maintenance; tanpa model keputusan konkret.
+- d7 = "" : objek solenoid valve, bukan membran.
+- d8 = "" : LOOCV pada 40 unit tetapi tanpa small-data/transfer/hierarchical.
+
+KUALITAS (skor 9/10)
+Q1=1; Q2=1; Q3=1 (uji umur dipercepat 48 valve, LOOCV); Q4=0,5 (arsitektur & hyperparameter rinci, data industri tidak publik); Q5=1 (MAE, kalibrasi, t-test, baseline); Q6=N/A (tanpa pemodelan censoring); Q7=1 (calibration + credible interval); Q8=0,5 (motivasi decision-making tanpa model keputusan). Total 7 item, jumlah 6,0 -> 9.
+
+LIMITASI
+Data tidak publik; 8 valve non-EOL dikecualikan; window heuristik; tanpa model keputusan; domain bukan membran.
+
+BUKTI (fig/table/eq)
+Eq. (1)-(5); Table I, II; Fig. 1 (setup), Fig. 2 (evolusi sinyal), Fig. 3 (citra & fitur), Fig. 4 (arsitektur FCNN/BCNN), Fig. 5-7 (RUL), Fig. 8 (kalibrasi), Fig. 9 (attribution).

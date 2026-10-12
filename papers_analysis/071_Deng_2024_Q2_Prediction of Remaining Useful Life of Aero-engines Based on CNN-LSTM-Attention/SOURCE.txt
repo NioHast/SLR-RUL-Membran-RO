@@ -1,0 +1,9 @@
+SUMBER FULL-TEXT (Open Access)
+============================
+Judul   : Prediction of Remaining Useful Life of Aero-engines Based on CNN-LSTM-Attention
+DOI     : 10.1007/s44196-024-00639-w
+Status  : gold (Open Access)
+Lisensi : cc-by, cc-by-sa
+
+Catatan : Open Access berlisensi Creative Commons; boleh didistribusikan ulang DENGAN ATRIBUSI
+kepada penulis/penerbit asli. Diverifikasi via Unpaywall (https://unpaywall.org).

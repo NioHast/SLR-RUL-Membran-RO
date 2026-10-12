@@ -1,0 +1,780 @@
+{
+ "10.1109/access.2019.2919566": {
+  "scopus": true,
+  "title": "IEEE Access",
+  "sjr": "0.884",
+  "year": "2025",
+  "q": 2
+ },
+ "10.1109/tmech.2020.2971503": {
+  "scopus": true,
+  "title": "IEEE/ASME Transactions on Mechatronics",
+  "sjr": "2.094",
+  "year": "2025",
+  "q": 1
+ },
+ "10.3390/app8122416": {
+  "scopus": true,
+  "title": "Applied Sciences (Switzerland)",
+  "sjr": "0.555",
+  "year": "2025",
+  "q": 2
+ },
+ "10.3390/electronics10030285": {
+  "scopus": true,
+  "title": "Electronics (Switzerland)",
+  "sjr": "0.623",
+  "year": "2025",
+  "q": 2
+ },
+ "10.1109/jiot.2024.3376715": {
+  "scopus": true,
+  "title": "IEEE Internet of Things Journal",
+  "sjr": "2.144",
+  "year": "2025",
+  "q": 1
+ },
+ "10.1109/tnnls.2020.2977132": {
+  "scopus": true,
+  "title": "IEEE Transactions on Neural Networks and Learning Systems",
+  "sjr": "3.153",
+  "year": "2025",
+  "q": 1
+ },
+ "10.1109/tim.2022.3200667": {
+  "scopus": true,
+  "title": "IEEE Transactions on Instrumentation and Measurement",
+  "sjr": "1.527",
+  "year": "2025",
+  "q": 1
+ },
+ "10.1109/tte.2022.3161140": {
+  "scopus": true,
+  "title": "IEEE Transactions on Transportation Electrification",
+  "sjr": "2.567",
+  "year": "2025",
+  "q": 1
+ },
+ "10.1109/jsen.2021.3109623": {
+  "scopus": true,
+  "title": "IEEE Sensors Journal",
+  "sjr": "0.947",
+  "year": "2025",
+  "q": 1
+ },
+ "10.1016/j.jwpe.2024.106532": {
+  "scopus": true,
+  "title": "Journal of Water Process Engineering",
+  "sjr": "1.229",
+  "year": "2025",
+  "q": 1
+ },
+ "10.3390/w17081169": {
+  "scopus": true,
+  "title": "Water (Switzerland)",
+  "sjr": "0.807",
+  "year": "2025",
+  "q": 1
+ },
+ "10.5004/dwt.2019.23444": {
+  "scopus": true,
+  "title": "Desalination and Water Treatment",
+  "sjr": "0.52",
+  "year": "2025",
+  "q": 3
+ },
+ "10.30564/jees.v7i6.8630": {
+  "scopus": true,
+  "title": "Journal of Environmental and Earth Sciences (discontinued)",
+  "sjr": "",
+  "year": "2025",
+  "q": 4
+ },
+ "10.1016/j.advmem.2026.100219": {
+  "scopus": true,
+  "title": "Advanced Membranes",
+  "sjr": "1.723",
+  "year": "2025",
+  "q": 1
+ },
+ "10.1109/access.2020.2976595": {
+  "scopus": true,
+  "title": "IEEE Access",
+  "sjr": "0.884",
+  "year": "2025",
+  "q": 2
+ },
+ "10.21595/vp.2019.20617": {
+  "scopus": false
+ },
+ "10.3390/s22103803": {
+  "scopus": true,
+  "title": "Sensors",
+  "sjr": "0.802",
+  "year": "2025",
+  "q": 2
+ },
+ "10.1038/s41598-022-12572-z": {
+  "scopus": true,
+  "title": "Scientific Reports",
+  "sjr": "0.893",
+  "year": "2025",
+  "q": 1
+ },
+ "10.4236/gep.2021.97004": {
+  "scopus": false
+ },
+ "10.1016/j.mlwa.2023.100475": {
+  "scopus": true,
+  "title": "Machine Learning with Applications",
+  "sjr": "1.225",
+  "year": "2025",
+  "q": null
+ },
+ "10.1109/access.2022.3226780": {
+  "scopus": true,
+  "title": "IEEE Access",
+  "sjr": "0.884",
+  "year": "2025",
+  "q": 2
+ },
+ "10.1177/14759217251333056": {
+  "scopus": true,
+  "title": "Structural Health Monitoring",
+  "sjr": "1.364",
+  "year": "2025",
+  "q": 1
+ },
+ "10.1016/j.dwt.2025.101386": {
+  "scopus": true,
+  "title": "Desalination and Water Treatment",
+  "sjr": "0.52",
+  "year": "2025",
+  "q": 3
+ },
+ "10.1007/s42979-025-04291-9": {
+  "scopus": true,
+  "title": "SN Computer Science",
+  "sjr": "0.445",
+  "year": "2025",
+  "q": 2
+ },
+ "10.3390/eng7030106": {
+  "scopus": true,
+  "title": "Eng",
+  "sjr": "0.59",
+  "year": "2025",
+  "q": 3
+ },
+ "10.1007/s13201-018-0821-8": {
+  "scopus": true,
+  "title": "Applied Water Science",
+  "sjr": "1.197",
+  "year": "2025",
+  "q": 1
+ },
+ "10.1007/s00521-022-07667-7": {
+  "scopus": true,
+  "title": "Neural Computing and Applications",
+  "sjr": "1.067",
+  "year": "2025",
+  "q": 1
+ },
+ "10.36001/ijphm.2025.v16i2.4260": {
+  "scopus": true,
+  "title": "International Journal of Prognostics and Health Management",
+  "sjr": "0.374",
+  "year": "2025",
+  "q": 3
+ },
+ "10.3390/separations10020134": {
+  "scopus": true,
+  "title": "Separations",
+  "sjr": "0.579",
+  "year": "2025",
+  "q": 2
+ },
+ "10.15294/jpii.v9i3.23310": {
+  "scopus": true,
+  "title": "Jurnal Pendidikan IPA Indonesia",
+  "sjr": "0.333",
+  "year": "2025",
+  "q": 2
+ },
+ "10.1109/tase.2025.3640217": {
+  "scopus": true,
+  "title": "IEEE Transactions on Automation Science and Engineering",
+  "sjr": "2.122",
+  "year": "2025",
+  "q": 1
+ },
+ "10.1109/lsens.2026.3673123": {
+  "scopus": true,
+  "title": "IEEE Sensors Letters",
+  "sjr": "0.53",
+  "year": "2025",
+  "q": 2
+ },
+ "10.3390/s26061915": {
+  "scopus": true,
+  "title": "Sensors",
+  "sjr": "0.802",
+  "year": "2025",
+  "q": 2
+ },
+ "10.2175/193864711802713513": {
+  "scopus": false
+ },
+ "10.36948/ijfmr.2023.v05i05.6214": {
+  "scopus": false
+ },
+ "10.14456/scitechasia.2025.79": {
+  "scopus": true,
+  "title": "Science and Technology Asia",
+  "sjr": "0.168",
+  "year": "2025",
+  "q": 4
+ },
+ "10.46604/peti.2025.15348": {
+  "scopus": true,
+  "title": "Proceedings of Engineering and Technology Innovation",
+  "sjr": "0.244",
+  "year": "2025",
+  "q": 3
+ },
+ "10.1016/j.ceja.2026.101217": {
+  "scopus": true,
+  "title": "Chemical Engineering Journal Advances",
+  "sjr": "1.291",
+  "year": "2025",
+  "q": 1
+ },
+ "10.1016/j.jwpe.2026.110543": {
+  "scopus": true,
+  "title": "Journal of Water Process Engineering",
+  "sjr": "1.229",
+  "year": "2025",
+  "q": 1
+ },
+ "10.11113/jamst.v30n2.348": {
+  "scopus": false
+ },
+ "10.1109/tii.2020.2991796": {
+  "scopus": true,
+  "title": "IEEE Transactions on Industrial Informatics",
+  "sjr": "2.983",
+  "year": "2025",
+  "q": 1
+ },
+ "10.1016/j.jom.2007.01.021": {
+  "scopus": true,
+  "title": "Journal of Operations Management",
+  "sjr": "5.334",
+  "year": "2025",
+  "q": 1
+ },
+ "10.1109/tim.2022.3167778": {
+  "scopus": true,
+  "title": "IEEE Transactions on Instrumentation and Measurement",
+  "sjr": "1.527",
+  "year": "2025",
+  "q": 1
+ },
+ "10.1109/access.2020.3010066": {
+  "scopus": true,
+  "title": "IEEE Access",
+  "sjr": "0.884",
+  "year": "2025",
+  "q": 2
+ },
+ "10.1109/tim.2020.3031113": {
+  "scopus": true,
+  "title": "IEEE Transactions on Instrumentation and Measurement",
+  "sjr": "1.527",
+  "year": "2025",
+  "q": 1
+ },
+ "10.1016/j.jmsy.2020.11.005": {
+  "scopus": true,
+  "title": "Journal of Manufacturing Systems",
+  "sjr": "3.304",
+  "year": "2025",
+  "q": 1
+ },
+ "10.1109/jsen.2023.3261874": {
+  "scopus": true,
+  "title": "IEEE Sensors Journal",
+  "sjr": "0.947",
+  "year": "2025",
+  "q": 1
+ },
+ "10.1002/stc.2811": {
+  "scopus": true,
+  "title": "Structural Control and Health Monitoring",
+  "sjr": "1.147",
+  "year": "2025",
+  "q": 1
+ },
+ "10.1002/er.7548": {
+  "scopus": true,
+  "title": "International Journal of Energy Research",
+  "sjr": "0.755",
+  "year": "2025",
+  "q": 2
+ },
+ "10.1108/imds-03-2019-0195": {
+  "scopus": true,
+  "title": "Industrial Management and Data Systems",
+  "sjr": "1.263",
+  "year": "2025",
+  "q": 1
+ },
+ "10.3390/environments10070127": {
+  "scopus": true,
+  "title": "Environments - MDPI",
+  "sjr": "0.927",
+  "year": "2025",
+  "q": 1
+ },
+ "10.1109/tec.2021.3116423": {
+  "scopus": true,
+  "title": "IEEE Transactions on Energy Conversion",
+  "sjr": "2.297",
+  "year": "2025",
+  "q": 1
+ },
+ "10.1002/qre.3308": {
+  "scopus": true,
+  "title": "Quality and Reliability Engineering International",
+  "sjr": "0.603",
+  "year": "2025",
+  "q": 2
+ },
+ "10.1177/16878132241239802": {
+  "scopus": true,
+  "title": "Advances in Mechanical Engineering",
+  "sjr": "0.402",
+  "year": "2025",
+  "q": 2
+ },
+ "10.3390/batteries10030106": {
+  "scopus": true,
+  "title": "Batteries",
+  "sjr": "0.921",
+  "year": "2025",
+  "q": 1
+ },
+ "10.1109/jsen.2024.3402660": {
+  "scopus": true,
+  "title": "IEEE Sensors Journal",
+  "sjr": "0.947",
+  "year": "2025",
+  "q": 1
+ },
+ "10.1016/j.inffus.2025.102972": {
+  "scopus": true,
+  "title": "Information Fusion",
+  "sjr": "4.197",
+  "year": "2025",
+  "q": 1
+ },
+ "10.1155/2017/8927937": {
+  "scopus": true,
+  "title": "Shock and Vibration",
+  "sjr": "0.342",
+  "year": "2025",
+  "q": 3
+ },
+ "10.3390/en15238918": {
+  "scopus": true,
+  "title": "Energies",
+  "sjr": "0.748",
+  "year": "2025",
+  "q": 2
+ },
+ "10.1016/j.rineng.2022.100611": {
+  "scopus": true,
+  "title": "Results in Engineering",
+  "sjr": "1.24",
+  "year": "2025",
+  "q": 1
+ },
+ "10.1002/qre.3151": {
+  "scopus": true,
+  "title": "Quality and Reliability Engineering International",
+  "sjr": "0.603",
+  "year": "2025",
+  "q": 2
+ },
+ "10.1115/1.4052838": {
+  "scopus": true,
+  "title": "Journal of Computing and Information Science in Engineering",
+  "sjr": "0.69",
+  "year": "2025",
+  "q": 2
+ },
+ "10.1784/insi.2020.62.12.710": {
+  "scopus": true,
+  "title": "Insight: Non-Destructive Testing and Condition Monitoring",
+  "sjr": "0.223",
+  "year": "2025",
+  "q": 4
+ },
+ "10.3390/fractalfract8080485": {
+  "scopus": true,
+  "title": "Fractal and Fractional",
+  "sjr": "0.714",
+  "year": "2025",
+  "q": 2
+ },
+ "10.2166/wst.2026.234": {
+  "scopus": true,
+  "title": "Water Science and Technology",
+  "sjr": "0.664",
+  "year": "2025",
+  "q": 2
+ },
+ "10.1115/1.4001580": {
+  "scopus": true,
+  "title": "Journal of Manufacturing Science and Engineering",
+  "sjr": "0.72",
+  "year": "2025",
+  "q": 2
+ },
+ "10.1115/1.4051314": {
+  "scopus": true,
+  "title": "Journal of Nondestructive Evaluation, Diagnostics and Prognostics of Engineering Systems",
+  "sjr": "0.444",
+  "year": "2025",
+  "q": 2
+ },
+ "10.3390/membranes11010054": {
+  "scopus": true,
+  "title": "Membranes",
+  "sjr": "0.694",
+  "year": "2025",
+  "q": 2
+ },
+ "10.36001/ijphm.2019.v10i4.2612": {
+  "scopus": true,
+  "title": "International Journal of Prognostics and Health Management",
+  "sjr": "0.374",
+  "year": "2025",
+  "q": 3
+ },
+ "10.1155/2020/8829823": {
+  "scopus": true,
+  "title": "Shock and Vibration",
+  "sjr": "0.342",
+  "year": "2025",
+  "q": 3
+ },
+ "10.3390/machines13090789": {
+  "scopus": true,
+  "title": "Machines",
+  "sjr": "0.591",
+  "year": "2025",
+  "q": 2
+ },
+ "10.1021/acs.est.5c15320": {
+  "scopus": true,
+  "title": "Environmental Science and Technology",
+  "sjr": "3.776",
+  "year": "2025",
+  "q": 1
+ },
+ "10.3103/s0146411623010030": {
+  "scopus": true,
+  "title": "Automatic Control and Computer Sciences",
+  "sjr": "0.195",
+  "year": "2025",
+  "q": 4
+ },
+ "10.1088/1361-6501/ae0e3e": {
+  "scopus": true,
+  "title": "Measurement Science and Technology",
+  "sjr": "0.582",
+  "year": "2025",
+  "q": 2
+ },
+ "10.1109/tim.2026.3684677": {
+  "scopus": true,
+  "title": "IEEE Transactions on Instrumentation and Measurement",
+  "sjr": "1.527",
+  "year": "2025",
+  "q": 1
+ },
+ "10.2118/1221-0054-jpt": {
+  "scopus": true,
+  "title": "Journal of Petroleum Technology",
+  "sjr": "0.104",
+  "year": "2023",
+  "q": null
+ },
+ "10.33366/rekabuana.v10i1.6651": {
+  "scopus": false
+ },
+ "10.56294/dm20251102": {
+  "scopus": true,
+  "title": "Data and Metadata (discontinued)",
+  "sjr": "",
+  "year": "2025",
+  "q": 4
+ },
+ "10.1007/s42452-026-08390-x": {
+  "scopus": true,
+  "title": "Discover Applied Sciences",
+  "sjr": "0.573",
+  "year": "2025",
+  "q": 2
+ },
+ "10.52783/cana.v32.6568": {
+  "scopus": true,
+  "title": "Communications on Applied Nonlinear Analysis (discontinued)",
+  "sjr": "",
+  "year": "2025",
+  "q": 4
+ },
+ "10.1109/tii.2020.3008223": {
+  "scopus": true,
+  "title": "IEEE Transactions on Industrial Informatics",
+  "sjr": "2.983",
+  "year": "2025",
+  "q": 1
+ },
+ "10.1109/tim.2019.2917735": {
+  "scopus": true,
+  "title": "IEEE Transactions on Instrumentation and Measurement",
+  "sjr": "1.527",
+  "year": "2025",
+  "q": 1
+ },
+ "10.1016/j.promfg.2020.06.015": {
+  "scopus": false
+ },
+ "10.1109/tim.2021.3055788": {
+  "scopus": true,
+  "title": "IEEE Transactions on Instrumentation and Measurement",
+  "sjr": "1.527",
+  "year": "2025",
+  "q": 1
+ },
+ "10.1016/j.dss.2019.113100": {
+  "scopus": true,
+  "title": "Decision Support Systems",
+  "sjr": "2.079",
+  "year": "2025",
+  "q": 1
+ },
+ "10.1007/s44196-024-00639-w": {
+  "scopus": true,
+  "title": "International Journal of Computational Intelligence Systems",
+  "sjr": "0.786",
+  "year": "2025",
+  "q": 2
+ },
+ "10.1109/tii.2021.3078193": {
+  "scopus": true,
+  "title": "IEEE Transactions on Industrial Informatics",
+  "sjr": "2.983",
+  "year": "2025",
+  "q": 1
+ },
+ "10.1021/acs.est.4c12835": {
+  "scopus": true,
+  "title": "Environmental Science and Technology",
+  "sjr": "3.776",
+  "year": "2025",
+  "q": 1
+ },
+ "10.1016/j.geits.2025.100291": {
+  "scopus": true,
+  "title": "Green Energy and Intelligent Transportation",
+  "sjr": "3.375",
+  "year": "2025",
+  "q": 1
+ },
+ "10.1016/j.asoc.2022.109630": {
+  "scopus": true,
+  "title": "Applied Soft Computing",
+  "sjr": "1.456",
+  "year": "2025",
+  "q": 1
+ },
+ "10.3390/s25020554": {
+  "scopus": true,
+  "title": "Sensors",
+  "sjr": "0.802",
+  "year": "2025",
+  "q": 2
+ },
+ "10.1088/1361-6501/ad006d": {
+  "scopus": true,
+  "title": "Measurement Science and Technology",
+  "sjr": "0.582",
+  "year": "2025",
+  "q": 2
+ },
+ "10.1016/j.jwpe.2024.106479": {
+  "scopus": true,
+  "title": "Journal of Water Process Engineering",
+  "sjr": "1.229",
+  "year": "2025",
+  "q": 1
+ },
+ "10.3390/pr13082352": {
+  "scopus": true,
+  "title": "Processes",
+  "sjr": "0.576",
+  "year": "2025",
+  "q": 2
+ },
+ "10.3390/e20120944": {
+  "scopus": true,
+  "title": "Entropy",
+  "sjr": "0.475",
+  "year": "2025",
+  "q": 2
+ },
+ "10.1115/1.4050886": {
+  "scopus": true,
+  "title": "Journal of Fuel Cell Science and Technology",
+  "sjr": "0.256",
+  "year": "2018",
+  "q": null
+ },
+ "10.1109/tia.2022.3170525": {
+  "scopus": true,
+  "title": "IEEE Transactions on Industry Applications",
+  "sjr": "1.685",
+  "year": "2025",
+  "q": 1
+ },
+ "10.1177/1350650119874560": {
+  "scopus": true,
+  "title": "Proceedings of the Institution of Mechanical Engineers, Part J: Journal of Engineering Tribology",
+  "sjr": "0.412",
+  "year": "2025",
+  "q": 2
+ },
+ "10.36001/ijphm.2022.v13i1.3072": {
+  "scopus": true,
+  "title": "International Journal of Prognostics and Health Management",
+  "sjr": "0.374",
+  "year": "2025",
+  "q": 3
+ },
+ "10.3390/sym14061111": {
+  "scopus": true,
+  "title": "Symmetry",
+  "sjr": "0.424",
+  "year": "2025",
+  "q": 2
+ },
+ "10.1109/access.2021.3073945": {
+  "scopus": true,
+  "title": "IEEE Access",
+  "sjr": "0.884",
+  "year": "2025",
+  "q": 2
+ },
+ "10.1155/2020/8814658": {
+  "scopus": true,
+  "title": "Wireless Communications and Mobile Computing (discontinued)",
+  "sjr": "",
+  "year": "2023",
+  "q": null
+ },
+ "10.1016/j.clwat.2024.100041": {
+  "scopus": true,
+  "title": "Cleaner Water",
+  "sjr": "0.953",
+  "year": "2025",
+  "q": null
+ },
+ "10.5829/ije.2023.36.04a.09": {
+  "scopus": true,
+  "title": "International Journal of Engineering, Transactions A: Basics",
+  "sjr": "0.356",
+  "year": "2025",
+  "q": 3
+ },
+ "10.13031/trans.56.10021": {
+  "scopus": true,
+  "title": "Transactions of the ASABE",
+  "sjr": "0.319",
+  "year": "2021",
+  "q": null
+ },
+ "10.3390/s23125669": {
+  "scopus": true,
+  "title": "Sensors",
+  "sjr": "0.802",
+  "year": "2025",
+  "q": 2
+ },
+ "10.1002/qre.3757": {
+  "scopus": true,
+  "title": "Quality and Reliability Engineering International",
+  "sjr": "0.603",
+  "year": "2025",
+  "q": 2
+ },
+ "10.1080/00986445.2025.2611396": {
+  "scopus": true,
+  "title": "Chemical Engineering Communications",
+  "sjr": "0.396",
+  "year": "2025",
+  "q": 3
+ },
+ "10.33263/briac142.029": {
+  "scopus": true,
+  "title": "Biointerface Research in Applied Chemistry",
+  "sjr": "0.363",
+  "year": "2025",
+  "q": 3
+ },
+ "10.59888/ajosh.v3i7.549": {
+  "scopus": false
+ },
+ "10.29303/empd.v3i2.5429": {
+  "scopus": false
+ },
+ "10.1299/jamdsm.2025jamdsm0044": {
+  "scopus": true,
+  "title": "Journal of Advanced Mechanical Design, Systems and Manufacturing",
+  "sjr": "0.284",
+  "year": "2025",
+  "q": 3
+ },
+ "10.59324/stss.2026.3(1).09": {
+  "scopus": false
+ },
+ "10.30693/smj.2026.15.1.30": {
+  "scopus": false
+ },
+ "10.48084/etasr.15186": {
+  "scopus": true,
+  "title": "Engineering, Technology and Applied Science Research",
+  "sjr": "0.35",
+  "year": "2025",
+  "q": 3
+ },
+ "10.1038/s41598-026-42910-4": {
+  "scopus": true,
+  "title": "Scientific Reports",
+  "sjr": "0.893",
+  "year": "2025",
+  "q": 1
+ },
+ "10.19965/j.cnki.iwt.2024-0719": {
+  "scopus": false
+ },
+ "10.1002/qre.70386": {
+  "scopus": true,
+  "title": "Quality and Reliability Engineering International",
+  "sjr": "0.603",
+  "year": "2025",
+  "q": 2
+ }
+}

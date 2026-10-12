@@ -1,0 +1,45 @@
+{
+ "no": 2,
+ "judul": "Thermal Cycling Life Prediction of Sn-3.0Ag-0.5Cu Solder Joint Using Type-I Censored Data",
+ "penulis": "Jinhua Mi, Yan-Feng Li, Yuan-Jian Yang, Weiwen Peng, Hong-Zhong Huang",
+ "tahun": 2014,
+ "jurnal": "The Scientific World Journal",
+ "doi": "10.1155/2014/807693",
+ "kuartil": "Scopus Q2 (SCImago SJR Best Quartile)",
+ "pilar": "A. Survival Analysis & Censored Data",
+ "ringkasan": "Studi memprediksi umur lelah sambungan solder Sn-3.0Ag-0.5Cu (SAC305) BGA dan FBGA dari uji thermal cycling dipercepat. Data waktu-ke-gagal diproses sebagai data tersensor interval Tipe-I dengan estimasi maksimum likelihood (MLE) dua-parameter Weibull; hasilnya dibandingkan dengan model Engelmaier yang dimodifikasi dan perangkat lunak Minitab/Matlab. Metode data tersensor Tipe-I memberi umur paling tinggi dan akurat (Nf BGA 3104,5; FBGA 3185 siklus) serta panduan pemeliharaan/penggantian.",
+ "kontribusi": "Memberi contoh lengkap formulasi likelihood untuk data tersensor Tipe-I (indikator delta_i) dengan Weibull pada uji life-test dipercepat - inti metodologis pilar A tesis. Namun tidak ada machine learning, tidak ada RUL probabilistik, dan domainnya elektronik (bukan membran/RO).",
+ "temuan_kunci": [
+  "Likelihood data tersensor Tipe-I dengan Weibull (Eq. 6-9) menghasilkan eta=3104,5 / m=1,1 (BGA) dan eta=3185 / m=1,44 (FBGA).",
+  "Metode data tersensor Tipe-I memberi Nf lebih tinggi daripada Engelmaier (BGA 3104,5 vs 2146,2; FBGA 3185 vs 2375), mendekati Minitab (3002,4/3052) dan Matlab (2919,4/3073).",
+  "Model Engelmaier bersifat lebih konservatif; faktor akelerasi model Pan dihitung ≈ 35,5.",
+  "Kurva fitting Weibull Matlab memberi R^2 tinggi (BGA 0,9709; FBGA 0,9947)."
+ ],
+ "dimensi": {"d1": "", "d2": "1", "d3": "1", "d4": "1", "d5": "1", "d6": "", "d7": "", "d8": ""},
+ "alasan_dimensi": {
+  "d1": "Data berupa jumlah siklus ke kegagalan per spesimen (life-test), bukan pemantauan multi-sensor deret waktu kontinu.",
+  "d2": "Mendefinisikan kriteria kegagalan sambungan (area dyed >= 30% atau >= 10% sambungan gagal) dan memprediksi umur/waktu-ke-gagal.",
+  "d3": "Inti studi: data tersensor interval Tipe-I dengan indikator censoring delta_i (Eq. 4) dan likelihood tersensor (Eq. 6-7) memakai distribusi Weibull dua-parameter.",
+  "d4": "Memakai model spesifik: distribusi Weibull dua-parameter (MLE) dan model kelelahan Engelmaier yang dimodifikasi (Eq. 2-3, 12-13).",
+  "d5": "Melaporkan interval kepercayaan 95%: plot kegagalan kumulatif 95% CI, prediction bounds 95% Matlab, dan CI parameter bentuk m BGA (1,087-2,229).",
+  "d6": "Pemeliharaan/penggantian hanya disebut sebagai implikasi ('suggestions for regular maintenance, replacement of substructure'); tidak ada model keputusan.",
+  "d7": "Objek penelitian sambungan solder elektronik (BGA/FBGA), bukan membran/RO/desalinasi.",
+  "d8": "Tidak menerapkan small-data/transfer/hierarchical; data tersensor Tipe-I bukan skenario all-censored (sebagian kegagalan teramati)."
+ },
+ "relevansi": "Inti-Metode",
+ "kualitas": {"skor": 6, "rincian": {"Q1": 1, "Q2": 1, "Q3": 0.5, "Q4": 0.5, "Q5": 0.5, "Q6": 1, "Q7": 0.5, "Q8": 0}, "catatan": "Penanganan data tersensor Tipe-I + Weibull MLE adalah kekuatan (Q6=1) dan contoh langsung pilar A. Namun validasi terbatas pada dua tipe kemasan, data mentah tidak publik, dan tidak ada pembanding metode prediktif modern. Jumlah 5,0/8 -> 6."},
+ "data_kuantitatif": {"dataset": "Uji accelerated temperature cycling (ATC) JEDEC JESD22-A104C, -40C..125C, 1 jam/siklus, kemasan BGA (34x34, 1155 bola) dan FBGA (8x17, 136 bola) SAC305", "ukuran": "Pengamatan siklus 0,250,500,750,1000,1500,2000,2500; 2 sampel tiap titik observasi", "metrik": "eta/m BGA 3104,5/1,1 vs FBGA 3185/1,44; Nf Engelmaier 2146,2/2375; Minitab 3002,4/3052; Matlab 2919,4/3073; AF_Pan=35,5; R^2 0,9709/0,9947"},
+ "metode": "Uji thermal cycling dipercepat + analisis kegagalan mikro-struktur (SEM); pemrosesan data tersensor interval Tipe-I via MLE Weibull; model kelelahan Engelmaier; faktor akelerasi model Pan; pembanding Minitab (MLE) & Matlab (Powell's Dogleg).",
+ "limitasi": [
+  "Data mentah tidak disediakan (reproducibility terbatas).",
+  "Hanya dua tipe kemasan (BGA, FBGA) pada satu kondisi uji.",
+  "Tidak ada model probabilistik RUL maupun machine learning.",
+  "Tidak ada pembanding metode prediktif modern."
+ ],
+ "funding_coi": "Didukung National Natural Science Foundation of China (No. 11272082) dan Fundamental Research Funds for the Central Universities (YBXSZC20131040); penulis menyatakan tidak ada konflik kepentingan.",
+ "status_inklusi": "diterima",
+ "figur_dibaca": [
+  {"file": "_page_9_Figure_3.jpeg", "isi": "Fig. 12 diagram batang perbandingan umur lelah (Nf 63,2%) BGA vs FBGA untuk empat metode: Engelmaier 2146,2/2375; data tersensor Tipe-I 3104,5/3185; Minitab 3002,4/3052; Matlab 2919,4/3073."}
+ ],
+ "bukti": ["Eq. (4): indikator censoring delta_i", "Eq. (6)-(9): likelihood & MLE Weibull data tersensor Tipe-I", "Eq. (10)-(11): model akelerasi Norris-Landzberg & Pan", "Table 2: data tersensor interval Tipe-I", "Table 4: hasil fitting Matlab (m, eta, SSE, R^2, RMSE)", "Fig. 12: perbandingan umur lelah"]
+}

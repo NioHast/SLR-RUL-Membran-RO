@@ -1,0 +1,43 @@
+{
+ "no": 41,
+ "judul": "Treatment of Coal Mine Acid Water Using NF270 Membrane as Environmentally Friendly Technology",
+ "penulis": "Kiswanto, H. Susanto, Sudarno",
+ "tahun": 2020,
+ "jurnal": "Jurnal Pendidikan IPA Indonesia",
+ "doi": "10.15294/jpii.v9i3.23310",
+ "kuartil": "Scopus Q3 (SCImago SJR Best Quartile)",
+ "pilar": "G. Konteks Indonesia/Air",
+ "ringkasan": "Studi eksperimental memakai membran nanofiltrasi NF270 (cross-flow) untuk mengolah air asam tambang batubara PT Bukit Asam menjadi air minum sesuai Permenkes 492/2010. Kinerja dinilai dari pengaruh tekanan (4, 5, 6 bar) terhadap fluks dan laju rejeksi COD, TSS, TDS, dan Fe pada larutan tunggal, campuran, dan sampel nyata. Tekanan optimum 6 bar; fluks turun tajam pada 15 menit pertama akibat fouling dan polarisasi konsentrasi yang dikonfirmasi SEM.",
+ "kontribusi": "Memberikan bukti domain bahwa degradasi kinerja membran (penurunan fluks karena fouling) adalah proses yang terukur terhadap waktu dan kualitas permeat, namun tidak memodelkan RUL, penyensoran, maupun prediksi sisa umur, sehingga hanya berperan sebagai konteks domain membran/desalinasi bagi tesis.",
+ "temuan_kunci": [
+  "Tekanan operasi optimum NF270 adalah 6 bar; fluks air suling naik dari 42,72 ke 92,03 L/m2h saat tekanan 4 ke 6 bar.",
+  "Laju rejeksi pada tekanan 4-6 bar: COD 56,4-93,1%, TSS 78,5-100%, TDS 43-69,3%, Fe 67-100%.",
+  "Flux PTBA turun tajam pada 15 menit pertama lalu stabil, disebabkan fouling irreversible (lapisan gel/cake humic acid) dan polarisasi konsentrasi yang reversibel.",
+  "SEM menunjukkan fouling pada membran setelah filtrasi air asam tambang sintetik dan PTBA; hanya TDS yang memenuhi baku mutu pada 6 bar, parameter lain memenuhi di semua tekanan."
+ ],
+ "dimensi": {"d1": "1", "d2": "", "d3": "", "d4": "", "d5": "", "d6": "", "d7": "1", "d8": ""},
+ "alasan_dimensi": {
+  "d1": "Mengukur fluks permeat sebagai deret waktu setiap 15 menit selama 120 menit pada tiap tekanan (profil J/Jo terhadap waktu, Gambar 3-5), serta beberapa parameter kualitas air (COD, TSS, TDS, Fe).",
+  "d2": "Tidak mendefinisikan RUL, kegagalan, atau ambang degradasi membran; hanya membandingkan kualitas permeat dengan baku mutu air minum, bukan ambang failure untuk prediksi umur.",
+  "d3": "Tidak ada model survival/Weibull/hazard/cure; data tidak dianalisis sebagai data tersensor.",
+  "d4": "Tidak memakai model prediktif spesifik (LSTM/CNN/Transformer/RF/SVM/GP); murni analisis eksperimental fluks dan rejeksi.",
+  "d5": "Tidak mengkuantifikasi ketidakpastian (tanpa CI/interval/posterior); nilai rejeksi dilaporkan sebagai angka titik tanpa error bar.",
+  "d6": "Tidak mengusulkan/menganalisis keputusan perawatan (jadwal, biaya, DSS); 'maintenance' hanya disebut sebagai kelemahan teknologi konvensional, bukan dianalisis.",
+  "d7": "Objek penelitian adalah membran nanofiltrasi NF270 (loose RO) dan fenomena fouling pada permukaannya dalam pengolahan air asam tambang.",
+  "d8": "Tidak menangani small-data/transfer/hierarchical/all-censored; hanya satu jenis membran dan satu sumber air."
+ },
+ "relevansi": "Konteks",
+ "kualitas": {"skor": 5, "rincian": {"Q1": 1, "Q2": 0.5, "Q3": 0.5, "Q4": 0.5, "Q5": 0.5, "Q6": "N/A", "Q7": 0, "Q8": "N/A"}, "catatan": "Tujuan dan prosedur eksperimen jelas dan terdokumentasi (tekanan, durasi, standar SNI). Namun tidak ada replikasi/error bar, tidak ada pembanding model, dan tidak ada pelaporan ketidakpastian; urutan penyajian hasil pada narasi sempat tidak konsisten dengan tabel. Q6 (censoring) dan Q8 (keputusan perawatan) tidak berlaku karena bukan studi prognostik."},
+ "data_kuantitatif": {"dataset": "Air asam tambang batubara PT Bukit Asam (Muara Enim) + larutan sintetik (humic acid, kaolin, NaCl, FeCl3)", "ukuran": "3 tekanan operasi (4, 5, 6 bar); setiap filtrasi 120 menit; fluks diukur tiap 15 menit; 3 jenis umpan (single, mixed, AMD) + sampel nyata PTBA", "metrik": "Fluks air suling 42,72/70,71/92,03 L/m2h (4/5/6 bar); rejeksi COD 56,4-93,1%, TSS 78,5-100%, TDS 43-69,3%, Fe 67-100%"},
+ "metode": "Eksperimen filtrasi membran cross-flow NF270 (DOW Filmtec) pada tekanan 4, 5, 6 bar selama 120 menit; pengukuran fluks dan laju rejeksi COD/TSS/TDS/Fe dengan SNI dan AAS; karakterisasi fouling via SEM sebelum-sesudah.",
+ "limitasi": [
+  "Tanpa replikasi dan tanpa pelaporan ketidakpastian (error bar/CI).",
+  "Hanya satu jenis membran (NF270) dan satu sumber air, generalisasi terbatas.",
+  "Fouling dideskripsikan kualitatif (SEM), tidak dimodelkan kuantitatif terhadap waktu.",
+  "Perbandingan sintetik vs nyata terbatas; tidak ada prediksi degradasi/umur."
+ ],
+ "funding_coi": "Didanai Hibah Penelitian Doktoral Kementerian Riset dan Teknologi RI; tidak ada pernyataan konflik kepentingan.",
+ "status_inklusi": "diterima",
+ "figur_dibaca": [],
+ "bukti": ["Eq. (1): fluks J=V/(A.t)", "Eq. (2): laju rejeksi R=1-Cp/Cf", "Table 3-5: rejeksi single/mixed/AMD per tekanan", "Table 6: rejeksi sintetik vs PTBA", "Fig. 6: profil fluks ternormalisasi air asam PTBA", "Fig. 7: SEM fouling (fresh, sintetik, PTBA)"]
+}

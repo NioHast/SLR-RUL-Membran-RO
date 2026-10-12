@@ -1,0 +1,59 @@
+PAPER 010 | no=10 | Relevansi: Inti-Domain | Skor kualitas: 9/10 | Dimensi: d1,d2,d4,d5,d6,d8
+Judul: Explainable Data-Driven Method Combined with Bayesian Filtering for Remaining Useful Lifetime Prediction of Aircraft Engines Using NASA CMAPSS Datasets
+Penulis: Faisal Maulana, Andrew Starr, Agusmian Partogi Ompusunggu
+Jurnal/tahun: Machines (MDPI), 11(2):163, 2023 | DOI 10.3390/machines11020163 | Quartile Q2
+
+KARAKTERISTIK STUDI
+Studi metodologis prognostik pada aset safety-critical (mesin pesawat) yang secara eksplisit menolak pendekatan deep learning "black box" tanpa kuantifikasi ketidakpastian. Kontribusi inti: alternatif explainable yang memadukan seleksi fitur metrik hibrida, estimasi Health Index, dan penyaringan Bayesian (UKF) untuk RUL beserta 90% confidence interval. Objek domain kedirgantaraan, bukan membran.
+
+METODE
+- Seleksi fitur: metrik Robustness, Monotonicity, Prognosability; Hybrid Metric HM = 1/3(Rob)+1/3(Mon)+1/3(Prog), threshold 0,8.
+- Health Index Estimation: regresi logistik/GLM (logit g(F) = sum beta_i F_i), pemilihan distribusi respons via RMSE -> Normal terpilih; 5 sampel sehat + 5 sampel gagal per kondisi.
+- Prognostik: Unscented Kalman Filter (UKF) memperbarui alpha_k, beta_k secara rekursif; 1000 lintasan acak -> distribusi EoL/RUL + CI 90%.
+- Tuning: parameter skala lambda (optimal 1e-2) dan EoL threshold (mean/max/SPC 1-3 sigma; optimal SPC 1-sigma).
+- Evaluasi: NASA score s, RMSE e, dan p-score gabungan.
+
+DATA
+- Dataset: NASA CMAPSS 2021 (N-CMAPSS) DS02 (benchmark) dan DS03 (state-of-the-art baru).
+- 46 parameter per engine, ~6-9 juta titik data per engine; test engine DS02 = 11,14,15; DS03 = 13,14,15.
+- Metrik: s & e per engine (lihat Table 2), p-score, CI 90%.
+
+TEMUAN UTAMA
+- Fitur terbaik: HPT_eff_mod (skor 0,87) pada DS02; tiga fitur pada DS03.
+- Prediksi RUL kompetitif dan lebih baik pada e-score untuk sebagian engine; RMSE 34,5-55,6% lebih baik dari baseline deep learning.
+- Ketidakpastian menurun seiring waktu; prediksi cenderung konservatif (di bawah ground truth).
+- UQ eksplisit sebagai diferensiasi utama dibanding literatur CMAPSS sebelumnya.
+
+RELEVANSI KE TESIS
+Inti-Domain: menyediakan RUL lengkap dengan dimensi small-data (d8) - pendekatan hanya butuh 5+5 sampel dan menargetkan keterbatasan run-to-fail. Namun tidak memodelkan data tersensor/survival (d3 kosong) dan bukan domain membran. Nilainya: template metodologis untuk UQ (CI 90%) dan penanganan data terbatas, yang dapat diadaptasi ke RUL membran RO; sekaligus bukti bahwa gap survival+censoring belum diisi oleh arsitektur ini.
+
+JUSTIFIKASI DIMENSI (d1-d8)
+- d1=1: 46 parameter multi-sensor deret waktu (altitude, fuel flow, health parameter) per siklus; analisis time-series (Sect. 2.2-2.3).
+- d2=1: mendefinisikan EoL dan threshold kegagalan (SPC 1-sigma), Health Index 0-1 (Sect. 2.5, 3.1).
+- d3="": hanya menyebut Weibull sebagai praktik existing, tidak dimodelkan; tanpa survival/hazard/cure/censoring.
+- d4=1: UKF (estimator Bayesian non-linear) + regresi logistik/GLM.
+- d5=1: 1000 trajektori, CI 90%, distribusi probabilitas RUL (Sect. 2.5, Figur 18-28).
+- d6=1: RUL dipetakan ke maintenance intervention/planning/scheduling/parts preparation + strategi CBM (Sect. 1.3, 3.2).
+- d7="": domain mesin pesawat, bukan membran/RO/desalination.
+- d8=1: small-data; hanya 5 sampel sehat + 5 gagal, menargetkan keterbatasan data run-to-fail (Sect. 3.2).
+
+KUALITAS (skor 9/10)
+Q1=1 (RQ & tujuan jelas); Q2=1 (metodologi 6 fase terstruktur); Q3=1 (dataset benchmark + perbandingan); Q4=0,5 (parameter transparan namun tanpa kode, uji terbatas 3 engine/dataset); Q5=1 (metrik standar + tolok ukur eksternal); Q6=N/A (tanpa censoring); Q7=1 (UQ rinci); Q8=1 (keputusan pemeliharaan dibahas konkret). Skor = round(6,5/7*10) = 9.
+
+LIMITASI
+(1) Tanpa anomaly/fault detection; (2) failure mode sub-sistem tidak dianalisis; (3) prediksi konservatif under-estimate; (4) ketidakpastian tinggi di awal (khususnya DS03); (5) hanya 3 engine uji per dataset; (6) fitur implisit/korelasi belum dieksplorasi.
+
+FUNDING/COI
+Funding: tidak ada dana eksternal. COI: tidak ada konflik kepentingan.
+
+BUKTI
+- Abstract: hybrid metrics + logistic regression + UKF untuk RUL rekursif.
+- Sect. 1.3: RUL -> maintenance intervention, planning and scheduling, parts preparation (d6).
+- Sect. 2.5: 1000 trajektori + 90% CI (d5).
+- Sect. 3.2: 5 sampel sehat + 5 sampel gagal -> small-data (d8).
+- Sect. 1.1/1.2: Weibull hanya sebagai praktik existing (d3 kosong).
+
+FIGUR DIBACA
+- _page_4_Figure_1.jpeg (Fig 2, methodology overview 6 fase).
+- _page_14_Figure_7.jpeg (Fig 18, EoL/RUL + CI 90%).
+- _page_1_Figure_3.jpeg (Fig 1, maintenance intervention).

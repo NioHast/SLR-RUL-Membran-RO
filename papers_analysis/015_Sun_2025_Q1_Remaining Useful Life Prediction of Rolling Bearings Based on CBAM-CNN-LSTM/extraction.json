@@ -1,0 +1,64 @@
+{
+  "no": 82,
+  "judul": "Remaining Useful Life Prediction of Rolling Bearings Based on CBAM-CNN-LSTM",
+  "penulis": "Bo Sun, Wenting Hu, Hao Wang, Lei Wang, Chengyang Deng",
+  "tahun": 2025,
+  "jurnal": "Sensors (MDPI)",
+  "doi": "10.3390/s25020554",
+  "kuartil": "Scopus Q1 (SCImago SJR Best Quartile)",
+  "pilar": "B. Deep Learning RUL",
+  "ringkasan": "Studi ini mengusulkan metode prediksi RUL bantalan gelinding berbasis CBAM-CNN-LSTM: sinyal vibrasi diproses FFT ke domain frekuensi, fitur diekstraksi CNN, dibobot oleh CBAM (channel attention lalu spatial attention secara seri), dan dependensi temporalnya dipelajari LSTM secara end-to-end dengan label RUL dinormalisasi ke rentang (0,1). Model diuji pada dataset publik PHM2012 dengan enam bantalan uji (1-3, 1-4, 1-5, 1-7, 2-3, 2-6) dan mengungguli CNN-LSTM, ECA-CNN-LSTM, serta dua metode literatur. Klaim utama: penurunan MSE 53%, MAE 16,87% (abstrak) / 9,75% (kesimpulan), dan RMSE 31,68% dibanding metode pembanding.",
+  "kontribusi": "Bagi tesis, paper ini menjadi bukti bahwa arsitektur CNN + atensi hibrida (channel+spatial) + LSTM adalah baseline kuat untuk point-prediction RUL di domain mekanikal, namun sama sekali tidak menangani data tersensor maupun survival analysis. Ini memperkuat gap tesis: integrasi survival analysis (censoring/Weibull/hazard) dengan deep learning masih terbuka, terlebih untuk objek membran/RO.",
+  "temuan_kunci": [
+    "Pada 6 bantalan uji PHM2012, CBAM-CNN-LSTM mencapai MSE 0,0047-0,0223; RMSE 0,069-0,148; MAE 0,037-0,112; R2 0,737-0,943 (R2 tertinggi 0,943 pada bantalan 1-3, diikuti 0,910 pada 1-4 dan 0,906 pada 2-6).",
+    "Pada bantalan 1-3, MSE 0,0047 vs ECA-CNN-LSTM 0,0203 dan CNN-LSTM 0,0152; klaim reduksi pada badan teks 76,85% dan 14,73% (MSE), 67,54% dan 66,36% (MAE), 51,74% dan 43,90% (RMSE), R2 naik 19,8% dan 13,4%.",
+    "Dibanding literatur (Table 4): bantalan 1-3 MSE 0,0047 vs 0,01 [21] dan 0,0054 [20]; RMSE 0,069 vs 0,101 [21]. Bantalan 2-6 MSE 0,0078 vs 0,042 [21] dan 0,0089 [20]; RMSE 0,088 vs 0,205 [21].",
+    "Klaim efisiensi: rata-rata 100 run, 19 menit (usulan) vs 18 menit (ECA-CNN-LSTM) dan 16 menit (CNN-LSTM); dinilai memenuhi kebutuhan prediksi real-time.",
+    "Sensitivitas jumlah layer konvolusi (3-6): R2 = 0,943; 0,924; 0,908; 0,9431; tiga layer dinilai optimal.",
+    "Pada mode kegagalan mendadak (bantalan 2-6) semua model overestimasi pada paruh kedua; CBAM-CNN-LSTM tetap paling akurat di semua tahap."
+  ],
+  "dimensi": {"d1": "1", "d2": "1", "d3": "", "d4": "1", "d5": "", "d6": "", "d7": "", "d8": ""},
+  "alasan_dimensi": {
+    "d1": "Sinyal vibrasi diakuisisi dari arah horizontal dan vertikal rig PRONOSTIA, setiap 10 s dengan sampling 25,6 kHz selama 0,1 s; data time-series full-life cycle 17 bantalan ('The vibration signals were acquired from the horizontal direction and the vertical direction of the PRONOSTIA test rig... data acquisition was carried out every 10 s with a sampling frequency of 25.6 kHz').",
+    "d2": "RUL didefinisikan eksplisit ('RUL prediction is used to estimate the normal use time of mechanical equipment or its key components in the current operating state') dan label RUL dinormalisasi ke rentang (0,1) ('defines the range of RUL label values as (0, 1)'); dibedakan dua mode kegagalan: degradasi bertahap (bantalan 1-3) dan kegagalan mendadak (bantalan 2-6).",
+    "d3": "Tidak ada bukti: tanpa survival analysis, Weibull, hazard, atau cure model; seluruh data adalah run-to-failure lengkap ('the data is a complete full-life degradation cycle data'), tidak ada unit tersensor.",
+    "d4": "Model spesifik: CBAM-CNN-LSTM (CNN 3 layer konvolusi + CBAM + LSTM 2 layer hidden 128 + FC), dengan pembanding ECA-CNN-LSTM dan CNN-LSTM (Table 2).",
+    "d5": "Tidak ada bukti: hanya metrik error point estimate (MSE, RMSE, MAE, R2); tidak ada confidence interval, posterior, maupun prediction interval.",
+    "d6": "Tidak ada bukti: kata 'maintenance' hanya sebagai motivasi ('optimize the subsequent management decisions', 'predictive maintenance'); tidak ada model keputusan, jadwal, atau analisis biaya pemeliharaan.",
+    "d7": "Tidak ada bukti: objek adalah rolling bearing pada rig PRONOSTIA (mekanikal), bukan membran/RO/desalinasi/fouling.",
+    "d8": "Tidak ada bukti: dataset lengkap (run-to-failure) dan tidak ada metode small-data/transfer learning/hierarchical/all-censored; meski teks menyebut training set PHM2012 punya 'a small amount of data', tidak ada teknik penanganannya."
+  },
+  "relevansi": "Pendukung",
+  "kualitas": {"skor": 7, "rincian": {"Q1": 1, "Q2": 1, "Q3": 0.5, "Q4": 0.5, "Q5": 0.5, "Q6": "N/A", "Q7": "N/A", "Q8": 0.5}, "catatan": "Q1: tujuan dan RQ jelas (atasi kelemahan CNN pada fitur channel/spasial via CBAM untuk RUL). Q2: desain dijelaskan memadai (arsitektur bertahap, Eq. 1-15, Table 2, flowchart Fig. 7), walau ada kontradiksi kecil (posisi CBAM 'di depan max pooling ketiga' vs diagram, 'dua' vs 'tiga' max pooling). Q3: dataset publik PHM2012 terstandar dan split disebutkan, tetapi pelaporan angka tidak konsisten (teks menyebut MSE bantalan 1-3 = 0,047 padahal Table 3 = 0,0047) dan deskripsi split train salah tulis (duplikasi '2-1'; klaim 'six sets'). Q4: hyperparameter rinci, data publik berlink, tetapi tanpa kode/repo; detail preprocessing (windowing, normalisasi label) tidak lengkap; versi 'Python3.4 + torch1.13' tidak kompatibel. Q5: metrik (MSE/RMSE/MAE/R2), baseline (CNN-LSTM, ECA-CNN-LSTM, literatur [20],[21]), 100 eksperimen dirata-rata, sensitivitas jumlah layer, dan waktu inferensi; namun tanpa uji signifikansi statistik dan klaim reduksi berbeda-beda antar bagian naskah (76,85%/67,54%/51,74% vs abstrak 53%/16,87%/31,68% vs kesimpulan 53%/9,75%/31,68%). Q6: N/A (tidak ada censoring); Q7: N/A (tidak ada kuantifikasi ketidakpastian); Q8 = 0,5 (RUL dikaitkan secara kualitatif dengan 'predictive maintenance'/keputusan operasi, tanpa model keputusan formal). Skor = round((1+1+0,5+0,5+0,5+0,5)/6*10) = 7."},
+  "data_kuantitatif": {"dataset": "PHM2012 (FEMTO-ST/PRONOSTIA), 17 bantalan, 3 kondisi operasi: Condition 1 (4000 N, 1800 r/min), Condition 2 (4200 N, 1650 r/min), Condition 3 (5000 N, 1500 r/min); vibrasi arah horizontal dan vertikal, akuisisi tiap 10 s @25,6 kHz selama 0,1 s; hanya arah horizontal yang dipakai untuk training/testing.", "ukuran": "12 bantalan diolah; latih 6 set (1-1, 1-2, 2-1, 2-1 [duplikat, kemungkinan 2-2], 3-1, 3-2); uji 6 set (1-3, 1-4, 1-5, 1-7, 2-3, 2-6); 100 eksperimen diulang dan dirata-ratakan; waktu komputasi 19 menit (usulan) vs 18 dan 16 menit (pembanding).", "metrik": "CBAM-CNN-LSTM pada 6 bantalan uji: MSE 0,0047-0,0223; RMSE 0,069-0,148; MAE 0,037-0,112; R2 0,737-0,943. Klaim reduksi vs metode existing: MSE 53%, MAE 16,87% (abstrak) / 9,75% (kesimpulan), RMSE 31,68%. Sensitivitas jumlah conv layer 3-6: R2 = 0,943; 0,924; 0,908; 0,9431."},
+  "metode": "CBAM-CNN-LSTM end-to-end: FFT mengubah sinyal vibrasi time-domain ke frequency-domain; CNN 3 layer konvolusi (16/32/64 filter; kernel 32/10/10; stride 2/1/1; ReLU) + max pooling + batch normalization; CBAM (CAM lebih dulu lalu SAM secara seri; kernel 7; reduction ratio 16) membobot fitur channel dan spasial; LSTM 2 layer hidden size 128 menangkap dependensi temporal; fully connected layer memetakan fitur ke RUL. Pelatihan: loss MSE, Adam, learning rate 0,001, batch size 128, 100 iterasi, CPU i5-8265U/8 GB RAM, torch 1.13. Pembanding: CNN-LSTM dan ECA-CNN-LSTM (serta literatur [20] dan [21]).",
+  "limitasi": [
+    "Tidak menangani data tersensor/survival analysis (Weibull/hazard); semua data run-to-failure lengkap sehingga tidak representatif untuk skenario pemantauan parsial.",
+    "Tidak ada kuantifikasi ketidakpastian (CI/prediction interval/posterior) — hanya point prediction dan metrik error.",
+    "Inkonsistensi pelaporan angka: MSE bantalan 1-3 ditulis 0,047 di teks vs 0,0047 di Table 3; klaim reduksi MAE 16,87% (abstrak) vs 9,75% (kesimpulan) vs 67,54% (badan teks untuk 1-3).",
+    "Deskripsi split data tidak konsisten (duplikasi '2-1', klaim 'six sets of bearing data', caption Figure 9 menulis 'Bearing 2-3' padahal konteksnya 2-6).",
+    "Detail reproduksibilitas kurang (tanpa kode; panjang window/segmentasi FFT, cara normalisasi label, dan pembagian validasi tidak dijelaskan; versi Python 3.4 + torch 1.13 tidak kompatibel).",
+    "Hanya menggunakan satu arah sinyal vibrasi (horizontal) meski data dua arah tersedia; verifikasi hanya pada satu dataset publik.",
+    "Tidak ada analisis keputusan pemeliharaan (jadwal/biaya/DSS); 'maintenance' hanya motivasi.",
+    "Model tidak melibatkan informasi multi-sumber (penulis sendiri menyebut ToMFIR untuk riset lanjutan)."
+  ],
+  "funding_coi": "Funding: proyek 2024JB401L07, 2023LY501L06, 2022JBD01L01, 2024JB401L30 (riset manajemen kesehatan peralatan numerik, digital twin, dan predictive maintenance). Conflict of interest: 'The authors declare no conflicts of interest.' Data: publik via GitHub wkzs111/phm-ieee-2012-data-challenge-dataset.",
+  "status_inklusi": "diterima",
+  "figur_dibaca": [
+    {"file": "_page_7_Picture_7.jpeg", "isi": "Gambar 6 - arsitektur CBAM-CNN-LSTM: Conv layer1 -> Max pooling layer1 -> Conv layer3 -> CBAM module -> Max pooling layer3 -> 'CBAM Weighted feature' -> LSTM layer -> Fully Connected Layer -> RUL."},
+    {"file": "_page_8_Figure_6.jpeg", "isi": "Gambar 7 - flowchart proses RUL: data preprocessing PRONOSTIA (foto rig + sinyal time-domain -> amplitudo FFT), panel Training Set dan Test Set, blok training model (Convolutional layer -> Pooling -> Convolutional -> Pooling -> CBAM block -> Attention weighting -> LSTM block -> RUL prediction), serta plot prediksi RUL bantalan 1_3 dan 2_6 (real vs CBAM vs ECA vs CNN-LSTM)."},
+    {"file": "_page_14_Figure_2.jpeg", "isi": "Gambar 11 - kurva RUL bantalan 1-3: real value (putus-putus merah) turun dari ~1,0 ke 0; prediksi CBAM paling mengikuti nilai real; ECA underestimasi di paruh awal; CNN-LSTM overestimasi besar (bertahan ~1,0 hingga t~500)."},
+    {"file": "_page_14_Figure_4.jpeg", "isi": "Gambar 12 - kurva RUL bantalan 2-6 (sudden failure): CBAM paling akurat di paruh awal; pada paruh kedua semua model overestimasi terhadap real value, CNN-LSTM paling besar; ECA di antara keduanya."},
+    {"file": "_page_10_Figure_5.jpeg", "isi": "Gambar 9 - sinyal vibrasi dua mode kegagalan: (a) bantalan 1-3 degradasi bertahap (amplitudo tumbuh progresif hingga lonjakan akhir); (b) bantalan 2-6 kegagalan mendadak (stabil ~+/-1 g, spike di t~450, lalu drop tajam di akhir)."}
+  ],
+  "bukti": [
+    "Table 3 - perbandingan CBAM-CNN-LSTM vs ECA-CNN-LSTM vs CNN-LSTM pada 6 bantalan uji (MSE, RMSE, MAE, R2); nilai terbaik CBAM pada semua bantalan.",
+    "Table 4 - perbandingan dengan literatur [20] dan [21]: bantalan 1-3 (0,0047/0,037/0,069) vs [21] (0,01/0,041/0,101); bantalan 2-6 (0,0078/0,069/0,088) vs [21] (0,042/0,083/0,205).",
+    "Table 2 - konfigurasi parameter CBAM-CNN-LSTM (Conv 1-3: 16/32/64 filter, kernel 32/10/10, stride 2/1/1; LSTM 128x2; CBAM kernel 7, reduction 16).",
+    "Table 1 - deskripsi dataset bantalan PHM2012 per kondisi operasi (4000 N/1800 rpm; 4200 N/1650 rpm; 5000 N/1500 rpm).",
+    "Eq. (3)-(6) - rumus CAM, SAM, dan CBAM; Eq. (16)-(19) - rumus MSE, RMSE, MAE, R2.",
+    "Figure 11 & 12 - kurva prediksi RUL bantalan 1-3 dan 2-6 untuk tiga model.",
+    "Figure 9 - sinyal vibrasi dua mode kegagalan (1-3 gradual vs 2-6 sudden).",
+    "Figure 7 - flowchart end-to-end: preprocessing FFT -> training model -> prediksi RUL."
+  ]
+}

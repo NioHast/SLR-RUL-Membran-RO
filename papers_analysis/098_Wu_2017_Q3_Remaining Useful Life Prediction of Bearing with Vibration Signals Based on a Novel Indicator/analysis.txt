@@ -1,0 +1,49 @@
+PAPER 59 — Wu et al. (2017)
+Judul: Remaining Useful Life Prediction of Bearing with Vibration Signals Based on a Novel Indicator
+Jurnal: Shock and Vibration (Hindawi) | Q2 (SCImago SJR Best Quartile) | DOI 10.1155/2017/8927937
+Pilar: A. Survival Analysis & Censored Data | Relevansi: Inti-Metode | Skor kualitas: 9/10
+
+KARAKTERISTIK STUDI
+Studi RUL bearing berbasis sinyal getaran dengan pendekatan hybrid: indikator degradasi baru + fungsi hazard keluarga Weibull + jaringan RBF. Bertujuan menekan downtime produksi dan biaya maintenance. Dua langkah utama: pemilihan indikator degradasi yang sensitif, lalu pembangunan model prediksi.
+
+METODE
+- Indikator: power value pada sensitive frequency band (SFB). SFB ditentukan dengan menghitung f_diff(q) (akumulasi selisih amplitudo FFT antar waktu) dan H(j) (jumlah kumulatif); pilih pita dengan kemiringan H(j) terbesar (kasus: 3000-5000 Hz).
+- Model degradasi: generalized Weibull failure rate function (WFRF): z(t)=beta/alpha*((t-gamma)/alpha)^(beta-1); bentuk umum z_hat(t)=H+K*(beta/alpha^beta)*t^(beta-1); parameter (H,K,alpha,beta) diestimasi dengan nonlinear least squares. Fungsi ini memfit deret SFB power untuk meredam noise/fluktuasi.
+- Prediksi: RBF neural network (hidden Gaussian) dengan input t_i, t_{i-1}, z_i, z_{i-1}; output life percentage p; RUL = t/p - t.
+- Seleksi indikator: metrik Corr, Mon, Rob, dan kriteria Cri (bobot 0,2/0,5/0,3) setelah normalisasi min-max.
+
+DATA
+Dataset bearing IMS (University of Cincinnati): 4 bearing Rexnord ZA-2115, 2000 rpm, 6000 lbs, sampling 20 kHz, 20480 titik tiap 10 menit. Dua kasus: Dataset 2 Bearing 1 (984 inspeksi, outer race) dan Dataset 1 Bearing 3 (2156 inspeksi, inner race). 500 pasang data latih, 100 pasang uji.
+
+TEMUAN UTAMA
+- SFB power value unggul (Mon tertinggi, Cri terbesar) atas RMS, kurtosis, skewness, peak-peak, variance, AADFSH, PC1.
+- Parameter WFRF: H=0,0083, K=1,32e-9, alpha=220, beta=16,09; deret fitted lebih monoton.
+- MSE test 2,45e-15; prediksi vs aktual life percentage hampir berimpit.
+- Akurasi RUL 99,28% (DS2B1) dan 99,42% (DS1B3), lebih tinggi dari tiga metode pembanding (95,9%-99,02%).
+- SFB tidak sensitif sebelum ~60% umur, tapi prediksi tahap akhir lebih penting untuk keputusan penggantian.
+
+RELEVANSI KE TESIS
+Preseden langsung penggunaan fungsi hazard keluarga Weibull sebagai model degradasi untuk RUL — sumbu metode survival yang menjadi inti tesis. Namun tanpa penanganan data tersensor (likelihood censoring) dan tanpa kuantifikasi ketidakpastian. Posisi: Inti-Metode.
+
+JUSTIFIKASI DIMENSI
+- d1=1: sinyal getaran deret waktu (984-2156 observasi FFT).
+- d2=1: RUL eksplisit via life percentage (failure saat p=100%).
+- d3=1: generalized Weibull failure rate function (hazard berbasis Weibull) dipakai sebagai model inti fitting degradasi; bukan sekadar menyebut kata. (Tanpa likelihood censoring karena data run-to-failure.)
+- d4=1: RBF neural network.
+- d5="": hanya akurasi/MSE point estimate; tanpa CI/posterior/interval.
+- d6="": tanpa analisis keputusan maintenance.
+- d7="": domain bearing, bukan membran/RO/desalinasi/fouling.
+- d8="": dataset lengkap, bukan small-data/transfer/hierarchical/all-censored.
+Bukti kunci: "generalized Weibull failure rate function (WFRF) ... z(t)=beta/alpha((t-gamma)/alpha)^(beta-1)"; Table 3 parameter WFRF; Table 4 akurasi 99,28%/99,42%.
+
+KUALITAS (9/10)
+Q1 jelas (1); Q2 memadai & lengkap (1); Q3 dataset IMS publik (1); Q4 parameter dijelaskan tanpa kode (0,5); Q5 evaluasi komparatif dengan 3 penelitian + MSE (1); Q6-Q8 N/A. Skor = round(4.5/5*10) = 9.
+
+LIMITASI
+Tanpa ketidakpastian; tanpa censoring; indikator tidak sensitif di awal; tanpa model keputusan maintenance; pemilihan SFB manual (ketergantungan pada analisis frekuensi).
+
+BUKTI (kutipan)
+- "a method combining the generalized Weibull failure rate function (WFRF) and radial basis function (RBF) neural network is developed" (Abstract).
+- Table 3: H=0.0083, K=1.32e-9, alpha=220, beta=16.09.
+- Table 4: akurasi 99.28% / 99.42%.
+- "The authors declare that there are no conflicts of interest" (Conflicts of Interest).

@@ -1,0 +1,96 @@
+{
+  "no": 10,
+  "judul": "Explainable Data-Driven Method Combined with Bayesian Filtering for Remaining Useful Lifetime Prediction of Aircraft Engines Using NASA CMAPSS Datasets",
+  "penulis": "Faisal Maulana, Andrew Starr, Agusmian Partogi Ompusunggu",
+  "tahun": 2023,
+  "jurnal": "Machines (MDPI), 11(2):163, ISSN 2075-1702",
+  "doi": "10.3390/machines11020163",
+  "kuartil": "Q2",
+  "pilar": "Prognostics & RUL prediction (Bayesian filtering, explainable data-driven)",
+  "ringkasan": "Paper ini mengembangkan metodologi dan algoritma prognostik explainable untuk memprediksi Remaining Useful Life (RUL) mesin pesawat memakai dataset terbaru NASA CMAPSS (N-CMAPSS) 2021 (DS02 dan DS03). Alur enam fase meliputi seleksi fitur metrik hibrida (robustness, monotonicity, prognosability), estimasi Health Index via regresi logistik (GLM), dan pembaruan model prognostik secara rekursif dengan Unscented Kalman Filter (UKF) untuk mengekstrapolasi EoL/RUL beserta kuantifikasi ketidakpastian (1000 lintasan, confidence interval 90%). Hasilnya memberi RMSE 34,5-55,6% lebih baik dibanding teknik black-box pada dataset yang sama, dengan transparansi dan UQ sebagai pembeda utama.",
+  "kontribusi": "Menyediakan alternatif prognostik yang transparan dan terkalibrasi ketidakpastiannya (90% CI) untuk data run-to-failure yang terbatas, mengisi celah antara metode deep learning black-box dan kebutuhan industri safety-critical. Meski domain aplikasinya kedirgantaraan (bukan membran), pendekatan hybrid filtering + UQ dapat ditransfer ke RUL membran RO, namun paper ini tidak memodelkan data tersensor (censoring) maupun survival/Weibull secara aktual.",
+  "temuan_kunci": [
+    "Algoritma enam fase (data acquisition, feature selection, health index estimation, RUL prediction, parameter tuning, performance test) menghasilkan prediksi RUL dengan NASA score dan RMSE yang kompetitif.",
+    "Metrik hibrida HM = 1/3(Rob) + 1/3(Mon) + 1/3(Prog) memilih HPT_eff_mod sebagai fitur terbaik (skor 0,87) pada DS02 dan tiga fitur (HPT_eff_mod, LPT_flow_mod, LPT_eff_mod) pada DS03.",
+    "UKF memperbarui koefisien logit (alpha_k, beta_k) secara rekursif; ketidakpastian menurun seiring waktu (CI 90% menyempit mendekati EoL).",
+    "Distribusi Normal terpilih untuk pemasangan GLM karena RMSE terendah konsisten di seluruh fleet pada DS02 & DS03.",
+    "Nilai lambda = 1e-2 dan EoL threshold SPC 1-sigma menghasilkan kinerja prediksi optimal; prediksi umumnya di bawah ground truth (konservatif, disengaja untuk aset kritis).",
+    "Skor evaluasi test engine: DS02 engine 11 (s=91,29, e=5,1), engine 14 (s=196,91, e=11,9), engine 15 (s=97,7, e=5,84); DS03 engine 13 (s=126,74, e=6,8), engine 14 (s=109,72, e=5,1), engine 15 (s=87,26, e=3,04).",
+    "Pendekatan hanya butuh 5 sampel kondisi sehat dan 5 sampel kondisi gagal, sehingga cocok untuk kondisi data run-to-fail terbatas."
+  ],
+  "dimensi": {
+    "d1": "1",
+    "d2": "1",
+    "d3": "",
+    "d4": "1",
+    "d5": "1",
+    "d6": "1",
+    "d7": "",
+    "d8": "1"
+  },
+  "alasan_dimensi": {
+    "d1": "Data multi-sensor deret waktu: dataset CMAPSS berisi 46 parameter (skenario, pengukuran, EoL, health parameter) seperti altitude dan fuel flow yang direkam per siklus penerbangan; analisis dilakukan pada data time-series per cycle.",
+    "d2": "Mendefinisikan EoL dan threshold kegagalan secara eksplisit (EoL threshold berbasis mean/max/SPC 1-sigma) serta memprediksi RUL; Health Index 0-1 dengan 0 = gagal.",
+    "d3": "Tidak memodelkan data tersensor. Weibull hanya disebut sebagai praktik statistik existing (Sect. 1.1), bukan dimodelkan; tidak ada survival/hazard/cure analysis.",
+    "d4": "Menggunakan model spesifik: Unscented Kalman Filter (estimator Bayesian non-linear) dan regresi logistik/GLM, keduanya termasuk keluarga model probabilistik/Bayesian.",
+    "d5": "Kuantifikasi ketidakpastian eksplisit: 1000 lintasan acak, confidence interval 90%, dan distribusi probabilitas RUL per siklus (Figur 18-28).",
+    "d6": "Menganalisis keputusan pemeliharaan: hasil RUL ditujukan untuk maintenance intervention, planning & scheduling, parts preparation, serta pengembangan strategi CBM per engine; operasi dapat merencanakan shop visit saat reliabilitas <= 25%.",
+    "d7": "Bukan membran/RO/desalination: objek adalah mesin pesawat (aircraft engine), tidak ada unsur fouling membran.",
+    "d8": "Small-data: menekankan keterbatasan data run-to-fail pada aset kritis dan hanya membutuhkan 5 sampel kondisi sehat + 5 sampel kondisi gagal untuk pelatihan."
+  },
+  "relevansi": "Inti-Domain",
+  "kualitas": {
+    "skor": 9,
+    "rincian": {
+      "Q1": 1,
+      "Q2": 1,
+      "Q3": 1,
+      "Q4": 0.5,
+      "Q5": 1,
+      "Q6": "N/A",
+      "Q7": 1,
+      "Q8": 1
+    },
+    "catatan": "RQ dan kontribusi sangat jelas (Q1=1). Metodologi enam fase terstruktur dan sesuai tujuan (Q2=1). Menggunakan dataset benchmark NASA CMAPSS terbaru dan membandingkan dengan pekerjaan sebelumnya (Q3=1). Transparansi parameter (lambda, threshold, distribusi, tabel alpha/beta) tinggi, namun tidak ada rilis kode dan hanya 3 engine uji per dataset (Q4=0.5). Evaluasi memakai metrik standar NASA score & RMSE serta tolok ukur eksternal (Q5=1). Censoring tidak ditangani (Q6=N/A). UQ dilaporkan rinci via 90% CI (Q7=1). Keterkaitan ke keputusan pemeliharaan dibahas konkret (Q8=1). Skor = round(6,5/7*10) = 9."
+  },
+  "data_kuantitatif": {
+    "dataset": "NASA CMAPSS 2021 (N-CMAPSS) Dataset 02 (DS02) dan Dataset 03 (DS03)",
+    "ukuran": "46 parameter per engine; sekitar 6-9 juta titik data per engine; test engine DS02 = 11,14,15 dan DS03 = 13,14,15; sisa engine untuk pelatihan",
+    "metrik": "NASA score (s), RMSE (e), gabungan p-score = 0,5*e_norm + 0,5*s_norm; confidence interval 90%"
+  },
+  "metode": "Data-driven explainable: (1) seleksi fitur metrik hibrida (Robustness, Monotonicity, Prognosability, HM equal-weight) dengan threshold 0,8; (2) estimasi Health Index via regresi logistik/GLM (fitur terpilih = prediktor, HI = respons); (3) model prognostik dengan Unscented Kalman Filter (UKF) untuk memperbarui parameter alpha_k, beta_k secara rekursif, ekstrapolasi EoL/RUL; (4) 1000 sampel lintasan acak untuk distribusi RUL + CI 90%; (5) tuning parameter lambda dan EoL threshold (mean/max/SPC); (6) uji performa dengan s dan e. Implementasi Python 3.9.7 dan Matlab R2021.",
+  "limitasi": [
+    "Tidak mencakup anomaly detection dan fault detection (di luar cakupan).",
+    "Failure mode sub-sistem/komponen tidak dianalisis (fokus pada engine sebagai sistem utuh).",
+    "Prediksi RUL umumnya lebih rendah dari ground truth (konservatif), sehingga s-score bisa terpenalti.",
+    "Ketidakpastian tinggi pada fase awal-tengah penerbangan, terutama pada DS03, sehingga sulit menentukan intervensi pemeliharaan di awal.",
+    "Hanya 3 engine uji per dataset, terbatas untuk generalisasi.",
+    "Fitur implisit dan korelasi antar-parameter tidak dieksplorasi."
+  ],
+  "funding_coi": "Funding: 'This research received no external funding.' Conflict of Interest: 'The authors declare no conflict of interest.'",
+  "status_inklusi": "diterima",
+  "figur_dibaca": [
+    {
+      "file": "figures/_page_4_Figure_1.jpeg",
+      "isi": "Figure 2 - Research Methodology Overview: flowchart tiga kolom (PHASE - KEY TASK - OUTPUT) dengan enam fase sekuensial: Data Acquisition -> Features Selection (Robustness/Monotonicity/Prognosability, bobot 1/3) -> Health Index Estimation (sampling, logistic regression, features fusion) -> RUL Prediction (distribusi GLM, estimasi parameter, UKF) -> Parameter Tuning (lambda, EoL threshold) -> Performance Test (NASA score s, RMSE e)."
+    },
+    {
+      "file": "figures/_page_14_Figure_7.jpeg",
+      "isi": "Figure 18 - EoL estimation (atas) dan RUL prediction (bawah) Engine 2 (DS02): kurva Health Index (ground truth, measured, UKF, logit, prognosis) dengan pita kuning = confidence interval 90%, garis merah = EoL threshold; plot bawah menunjukkan distribusi probabilitas EoL per siklus dengan spike titik prediksi sekitar siklus 75 dan sebaran probabilistik pada rentang siklus 65-100."
+    },
+    {
+      "file": "figures/_page_1_Figure_3.jpeg",
+      "isi": "Figure 1 - Maintenance Intervention: diagram dua panel membandingkan strategi reaktif (gagal sebelum planned maintenance, ditandai X merah) dengan intervensi prediktif (perbaikan dilakukan saat masih usable, memulihkan health dan mencegah kegagalan) - memotivasi prognostik untuk menentukan waktu pemeliharaan."
+    }
+  ],
+  "bukti": [
+    "Abstract & Sect. 1.3: 'The proposed algorithms use hybrid metrics for feature selection, employ logistic regression for health index estimation, and unscented Kalman filter (UKF) to update the prognostics model for predicting the RUL in a recursive fashion.'",
+    "Sect. 1.3: 'The RUL estimates can then be used for maintenance decisions, such as maintenance intervention, planning and scheduling, and parts preparation.' (dasar d6)",
+    "Sect. 2.5: 'Uncertainty is computed by generating 1000 random trajectory samples and calculating the predicted RUL. Then, the distribution of predicted RUL is presented with a 90% confidence interval.' (dasar d5)",
+    "Sect. 2.2: 'DS02 is the latest dataset in the current PHM challenge... DS03 provides higher complexity since it covers more engine data'.",
+    "Sect. 3.2: 'This approach only needs five samples of engine healthy state Fhealthy and five samples from failed state Ffailure. It is convenient if the available data is limited.' (dasar d8)",
+    "Sect. 1.2 & 1.3: Weibull disebut hanya sebagai praktik existing ('statistical by using Weibull analysis is also commonly used'), tidak dimodelkan (dasar d3 kosong).",
+    "Table 2: skor evaluasi test engine DS02 (11,14,15) dan DS03 (13,14,15).",
+    "Funding: 'This research received no external funding.'"
+  ]
+}

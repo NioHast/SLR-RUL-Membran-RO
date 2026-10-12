@@ -1,0 +1,9 @@
+SUMBER FULL-TEXT (Open Access)
+============================
+Judul   : A Directed Acyclic Graph Network Combined With CNN and LSTM for Remaining Useful Life Prediction
+DOI     : 10.1109/access.2019.2919566
+Status  : gold (Open Access)
+Lisensi : cc-by, cc-by-sa
+
+Catatan : Open Access berlisensi Creative Commons; boleh didistribusikan ulang DENGAN ATRIBUSI
+kepada penulis/penerbit asli. Diverifikasi via Unpaywall (https://unpaywall.org).

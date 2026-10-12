@@ -1,0 +1,9 @@
+SUMBER FULL-TEXT (Open Access)
+============================
+Judul   : Numerical Modelling Assisted Design of a Compact Ultrafiltration (UF) Flat Sheet Membrane Module
+DOI     : 10.3390/membranes11010054
+Status  : gold (Open Access)
+Lisensi : cc-by, cc-by-sa, other-oa
+
+Catatan : Open Access berlisensi Creative Commons; boleh didistribusikan ulang DENGAN ATRIBUSI
+kepada penulis/penerbit asli. Diverifikasi via Unpaywall (https://unpaywall.org).

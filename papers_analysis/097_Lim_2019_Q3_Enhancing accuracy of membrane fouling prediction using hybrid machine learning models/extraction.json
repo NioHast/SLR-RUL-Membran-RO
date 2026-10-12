@@ -1,0 +1,46 @@
+{
+ "no": 28,
+ "judul": "Enhancing accuracy of membrane fouling prediction using hybrid machine learning models",
+ "penulis": "Seung Ji Lim, Young Mi Kim, Hosik Park, Seojin Ki, Kwanho Jeong, Jangwon Seo, Sung Ho Chae, Joon Ha Kim",
+ "tahun": 2019,
+ "jurnal": "Desalination and Water Treatment",
+ "doi": "10.5004/dwt.2019.23444",
+ "kuartil": "Scopus Q3 (SCImago SJR Best Quartile)",
+ "pilar": "E. Membrane/RO/Desalination",
+ "ringkasan": "Studi mengembangkan model prediksi fouling membran SWRO dengan pendekatan machine learning hibrida: Kalman filter (KF) dirangkai seri dengan ANN atau SVM untuk memprediksi resistansi membran (indikator fouling), dilatih dan diuji pada data operasional pabrik Fujairah selama 18 bulan (522 catatan harian). Model hibrida secara konsisten mengungguli model tunggal; KF-SVM memberi akurasi terbaik (R2 uji 0,82; NSE uji 0,72) dan hasilnya diusulkan untuk menyesuaikan jadwal pembersihan/penggantian membran serta sistem peringatan dini fouling.",
+ "kontribusi": "Menunjukkan prediksi degradasi membran (resistansi/fouling) dan kaitannya dengan penyesuaian jadwal pembersihan/penggantian di domain SWRO; sangat relevan bagi domain dan dimensi keputusan pemeliharaan tesis, meski tanpa RUL formal, survival, atau pencensoringan.",
+ "temuan_kunci": [
+  "KF meningkatkan akurasi model tunggal; pada uji NSE naik dari ANN 0,45 -> KF-ANN 0,63 dan SVM 0,46 -> KF-SVM 0,72.",
+  "KF-SVM terbaik di tiap horizon peramalan (7 & 14 hari): R2 uji 0,82-0,89, NSE uji 0,72-0,77.",
+  "Model fouling klasik hanya mampu memprediksi tren peningkatan resistansi, bukan nilai aktual.",
+  "Model prediksi fouling dapat digunakan untuk sistem peringatan dini (early warning) dan penyesuaian jadwal pembersihan/penggantian."
+ ],
+ "dimensi": {"d1": "1", "d2": "", "d3": "", "d4": "1", "d5": "", "d6": "1", "d7": "1", "d8": ""},
+ "alasan_dimensi": {
+  "d1": "Menggunakan data operasional multivariat deret waktu dari 8 parameter (temperatur umpan; laju alir brine & permeat; tekanan umpan/brine/permeat; konsentrasi umpan & permeat) selama 18 bulan (522 catatan harian), dengan peramalan 7 dan 14 hari.",
+  "d2": "Resistansi membran dipakai sebagai indikator tak langsung fouling, tetapi tidak ada ambang kegagalan/RUL yang didefinisikan.",
+  "d3": "Tidak ada model survival/hazard/Weibull/cure maupun pencensoringan (KF menapis derau, bukan memodelkan data tersensor).",
+  "d4": "Dua model spesifik: ANN (tiga lapis) dan SVM (kernel, regression/SVR), digabung dengan Kalman filter menjadi KF-ANN dan KF-SVM.",
+  "d5": "Tidak melaporkan interval kepercayaan/posterior; hanya NSE dan R2 (kovariansi galat KF bersifat internal, tidak dilaporkan sebagai ketidakpastian prediksi).",
+  "d6": "Keputusan pemeliharaan konkret: hasil prediksi ditujukan untuk menyesuaikan jadwal pembersihan dan penggantian membran secara tepat serta membangun sistem peringatan dini.",
+  "d7": "Objek adalah membran reverse osmosis air laut (pabrik Fujairah SWRO) dan fouling membran.",
+  "d8": "Tidak menerapkan small-data/transfer/hierarchical/censoring; dataset 522 catatan dari satu pabrik."
+ },
+ "relevansi": "Inti-Domain",
+ "kualitas": {"skor": 8, "rincian": {"Q1": 1, "Q2": 1, "Q3": 1, "Q4": 0.5, "Q5": 0.5, "Q6": "N/A", "Q7": "N/A", "Q8": 1}, "catatan": "Data operasional nyata 18 bulan (522 catatan) memakai indikator fouling berbasis teori transport (resistansi), serta perbandingan model tunggal vs hibrida yang jelas. Kelemahan: tanpa validasi silang/eksternal, tanpa kuantifikasi ketidakpastian, dan data/kode tidak publik (data dari Doosan/Fujairah). Q6/Q7 tidak berlaku."},
+ "data_kuantitatif": {"dataset": "Data operasional pabrik Fujairah SWRO, Jan 2005-Jun 2006 (8 input -> resistansi membran)", "ukuran": "522 catatan harian (N=522); peramalan 7 dan 14 hari", "metrik": "KF-SVM uji R2 0,82 (NSE 0,72); KF-ANN uji R2 0,75 (NSE 0,63); ANN uji R2 0,50; SVM uji R2 0,76"},
+ "metode": "Kalman filter dirangkai seri dengan ANN (tiga lapis) atau SVM/SVR (kernel); resistansi membran dihitung dari teori transport (Eq. 3) dan model resistance-in-series (Eq. 1-2); evaluasi NSE dan R2; prediksi multi-langkah 7/14 hari.",
+ "limitasi": [
+  "Satu pabrik; dataset 522 catatan; tanpa validasi silang/eksternal.",
+  "Tanpa kuantifikasi ketidakpastian prediksi.",
+  "Resistansi membran hanyalah indikator tak langsung fouling; tanpa ambang kegagalan/RUL.",
+  "Tidak memodelkan pencensoringan/survival."
+ ],
+ "funding_coi": "Didanai grant (kode 16IFIP-C088924-03) dari Industrial Facilities and Infrastructure Research Program, Ministry of Land, Infrastructure and Transport Korea + Korea Agency for Infrastructure Technology Advancement; data eksperimen dari Doosan Heavy Industries. Tidak ada pernyataan konflik kepentingan.",
+ "status_inklusi": "diterima",
+ "figur_dibaca": [
+  {"file": "_page_3_Figure_9.jpeg", "isi": "Struktur dua model: (a) ANN dengan 8 input (T, Qb, Qp, Pf, Pb, Pp, Cf, Cp) -> hidden units -> output Rt (resistansi membran); (b) SVM dengan 8 input X, support vectors S1..Sg dan fungsi kernel K(X,Si) dijumlahkan -> output Y=Rt."},
+  {"file": "_page_5_Figure_7.jpeg", "isi": "Perbandingan ANN, KF-ANN, SVM, KF-SVM pada latih/uji untuk NSE dan R2: model hibrida (KF) selalu lebih baik, dengan keunggulan terbesar di tahap uji (KF-SVM tertinggi: NSE uji ~0,72; R2 uji ~0,82)."}
+ ],
+ "bukti": ["Table 1: statistik data operasional (N=522)", "Table 2: perbandingan NSE & R2", "Eq. (1)-(15): model resistance-in-series, KF, ANN, SVM", "Fig. 1: struktur ANN & SVM", "Fig. 2-4: estimasi KF & peramalan 14 hari", "Fig. 5: perbandingan kinerja"]
+}

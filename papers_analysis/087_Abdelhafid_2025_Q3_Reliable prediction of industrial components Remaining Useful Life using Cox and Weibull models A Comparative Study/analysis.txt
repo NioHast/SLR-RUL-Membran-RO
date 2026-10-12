@@ -1,0 +1,49 @@
+PAPER 55 — Abdelhafid et al. (2025)
+Judul : Reliable prediction of industrial components Remaining Useful Life using Cox and Weibull models: A Comparative Study
+Jurnal: Data and Metadata | Scopus Q3 | DOI 10.56294/dm20251102 | Pilar: A. Survival Analysis & Censored Data
+
+KARAKTERISTIK STUDI
+Studi komparatif analisis survival untuk RUL komponen industri: Cox Proportional Hazards (semi-parametrik) vs model Weibull (parametrik). Menggunakan dataset publik AI4I 2020 Predictive Maintenance, dengan kerangka validasi C-index, AIC, Kaplan-Meier, log-rank test, dan pemeriksaan asumsi proportional hazards.
+
+METODE
+- Cox PH: h(t|x) = h0(t)·exp(β1X1+...+βpXp); estimasi partial likelihood; Breslow untuk censoring; menghasilkan hazard ratio terinterpretasi.
+- Weibull: f(t;λ,β); estimasi MLE; parameter bentuk β=2,09 (hazard meningkat).
+- Kaplan-Meier + uji log-rank untuk membandingkan kurva survival antar tipe mesin (L/M/H).
+- Preprocessing: cek missing, deteksi outlier (IQR), penanganan right-censoring, one-hot encoding 'Type', standarisasi.
+- Seleksi fitur: matriks korelasi (Pearson) + VIF>5 + domain knowledge.
+- Validasi: stratified 5-fold CV, C-index, AIC, residual & Schoenfeld test; split 70/30.
+
+DATA
+AI4I 2020: 10.000 rekaman, 14 variabel. Fitur: air temperature, process temperature, rotational speed [rpm], torque [Nm], tool wear [min], machine failure (event indicator), dan lima jenis kegagalan (HDF, PF, OSF, RNF, TWF); tipe mesin L/M/H. Variabel waktu = Tool Wear; event = Machine Failure.
+
+TEMUAN UTAMA
+- Cox PH unggul: C-index 0,9148 vs 0,639; AIC 4184,44 vs 5915,87.
+- HR: Air Temp 1,63 (risiko naik), Process Temp 0,61 (protektif), Torque 1,22 (naik), Rot Speed 1,008 (kecil), Type L 1,70 (risiko 70% lebih tinggi).
+- Weibull: λ=639,09 menit; β=2,09 (hazard naik); median RUL tetap 500,03 menit.
+- Log-rank: L vs H signifikan (p=0,0057); M vs L borderline (0,0501); M vs H tidak signifikan (0,1046).
+- Right-censored observations ditangani eksplisit.
+
+RELEVANSI KE TESIS
+Inti-Metode. Ini salah satu acuan inti untuk lapisan survival tesis. Menunjukkan secara empiris bahwa Cox PH lebih tepat daripada Weibull saat ada banyak kovariat sensor dan data tersensor, dan bahwa RUL dapat diindividualisasi. Tesis dapat mengadopsi Cox PH (atau hibrida Cox + deep learning) sebagai tulang punggung survival, dengan domain membran sebagai pengganti komponen mesin.
+
+JUSTIFIKASI DIMENSI
+- d1 = "1": multi-sensor (air/process temp, rotational speed, torque, tool wear).
+- d2 = "1": RUL + event didefinisikan formal (Tool Wear = waktu; Machine Failure = event; median RUL = survival 0,5).
+- d3 = "1": memodelkan data tersensor eksplisit (Cox, Weibull, KM, log-rank; right-censoring ditangani).
+- d4 = "1": Cox PH dan model Weibull (+ KM, log-rank).
+- d5 = "1": 95% CI untuk log(HR); pita CI pada kurva survival/CDF.
+- d6 = "1": keputusan maintenance (minimalkan downtime, optimasi biaya, maintenance planning/RCM).
+- d7 = "": komponen mesin industri, bukan membran/RO/desalinasi.
+- d8 = "": bukan small-data/transfer/all-censored (10.000 rekaman, censoring sebagian).
+
+KUALITAS (skor 9/10)
+Q1=1, Q2=1, Q3=1, Q4=0,5 (lifelines; kode tak dibagikan), Q5=1 (C-index, AIC, Schoenfeld, 5-fold CV), Q6=1 (censoring), Q7=1 (CI), Q8=1 (maintenance). Semua 8 aspek berlaku. Skor = 7,5/8*10 ≈ 9.
+
+LIMITASI
+Asumsi proportional hazards harus divalidasi; sensitif multikolinearitas; Weibull bisa underfit pada sistem heterogen; bukan domain membran; tanpa kode; bukan deep learning (tapi dapat dihibridisasi).
+
+BUKTI
+- 'The results demonstrated that the Cox PH model outperforms the Weibull model in terms of flexibility, predictive accuracy, and the ability to handle multiple covariates.'
+- 'some observations were right-censored... These were appropriately handled by both the Cox and Weibull models.'
+- 'C-index of 0,9148 for the Cox model (excellent predictive ability), compared to 0,639 for the Weibull model'; AIC '4184,44 vs. 5915,87'.
+- 'the variable (Tool wear [min]) serves as the time variable... and the binary variable "Machine failure" acts as the event indicator.'

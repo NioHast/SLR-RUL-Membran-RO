@@ -1,0 +1,46 @@
+{
+ "no": 17,
+ "judul": "Improved CNN-LSTM Bearing Remaining Useful Life Prediction Based on the Weibull Loss Function",
+ "penulis": "Yanping Zhang, Kho Lee Chin, Xiaozheng Li, Mingqiang Zhang, Dongfeng Yuan, Annie Joseph",
+ "tahun": 2026,
+ "jurnal": "Proceedings of Engineering and Technology Innovation",
+ "doi": "10.46604/peti.2025.15348",
+ "kuartil": "Scopus Q3 (SCImago SJR 2024)",
+ "pilar": "B. Deep Learning RUL",
+ "ringkasan": "Studi mengusulkan KCNN-LSTM, model deep learning untuk prediksi RUL bantalan gelinding yang menggabungkan arsitektur CNN-LSTM dengan fungsi loss berbasis Weibull (knowledge-informed) dan health index (HI) eksponensial. Loss gabungan MSE + lambda*Weibull CDF memaksa prediksi mengikuti karakteristik degradasi fisik (accelerated wear). Dievaluasi pada PHM2012 dan XJTU-SY; model mengungguli CNN-LSTM, LSTM, Bi-LSTM, dan FNN berloss Weibull, mencapai RMSE 0,071 dan Score 0,821 (PHM2012) serta RMSE 0,054 (XJTU-SY).",
+ "kontribusi": "Menunjukkan integrasi pengetahuan fisik (distribusi Weibull) ke dalam loss deep learning RUL - pola 'knowledge-informed' yang relevan untuk tesis; namun domain bantalan (bukan membran) dan tidak menangani data tersensor.",
+ "temuan_kunci": [
+  "Loss gabungan MSE + Weibull CDF (lambda=2.28, beta=2.0) meningkatkan sensitivitas terhadap fase wear-out akseleratif bantalan.",
+  "KCNN-LSTM terbaik: PHM2012 RMSE 0,071 / Score 0,821 (bearing 1-3); XJTU-SY RMSE 0,054 / Score 0,779 - mengalahkan CNN-LSTM, LSTM, Bi-LSTM, dan FNN+Weibull.",
+  "Analisis sensitivitas: beta~2,0 dan lambda~2,28 memberi trade-off optimal antara akurasi dan stabilitas; beta=3 menurunkan Score sharply.",
+  "Health index eksponensial (HI = d - e^(tau*t+a), HI=1 sehat, HI=0 gagal) memberi target RUL ternormalisasi yang menangkap degradasi non-linear."
+ ],
+ "dimensi": {"d1": "1", "d2": "1", "d3": "1", "d4": "1", "d5": "", "d6": "", "d7": "", "d8": ""},
+ "alasan_dimensi": {
+  "d1": "Menggunakan data multidimensi deret waktu dari sensor (vibration, temperature, current) dengan fitur time-domain (std, kurtosis) dan frequency-domain (FFT/Hann window) sebagai input.",
+  "d2": "Mendefinisikan RUL sebagai waktu operasi sebelum kegagalan dan HI sebagai status kesehatan (0-1); label RUL(t)=HI(t).",
+  "d3": "Menggunakan modeling Weibull substantif: CDF F(t)=1-e^-(t/eta)^beta, parameter shape beta dan characteristic life eta, serta loss berbasis Weibull (Eq. 6, 7, 12). Catatan: data tersensor kanan disebut tetapi tidak dimodelkan (dikeluarkan), sehingga fokus pada penggunaan Weibull, bukan penanganan censoring.",
+  "d4": "Model spesifik: KCNN-LSTM (kurtosis convolution kernel + CNN-LSTM) dengan loss knowledge-informed; dibandingkan LSTM, Bi-LSTM, FNN.",
+  "d5": "Mengklaim modeling ketidakpastian via Weibull, tetapi tidak melaporkan CI/posterior/interval kuantitatif; hanya RMSE dan Score.",
+  "d6": "Hanya memotivasi predictive maintenance secara umum; tidak menganalisis keputusan pemeliharaan spesifik (jadwal/biaya/DSS).",
+  "d7": "Domain bantalan gelinding (rolling bearing) pada mesin industri; bukan membran/RO/desalinasi/fouling.",
+  "d8": "Menyadari data kegagalan tidak memadai dan memakai shape parameter bantalan standar (prior literatur), serta menyebut small-sample learning di tinjauan; namun tidak menerapkan metode small-data/transfer/hierarchical secara eksplisit."
+ },
+ "relevansi": "Inti-Metode",
+ "kualitas": {"skor": 8, "rincian": {"Q1": 1, "Q2": 1, "Q3": 1, "Q4": 0.5, "Q5": 1, "Q6": 0, "Q7": 0, "Q8": 0.5}, "catatan": "Metode dijelaskan baik (arsitektur, loss, HI, analisis sensitivitas) dan evaluasi pada dua dataset multi-kanal dengan banyak baseline. Kelemahan: tidak menangani data tersensor kanan (disebut tetapi dikeluarkan), tidak melaporkan ketidakpastian kuantitatif, kode tidak publik, dan keputusan pemeliharaan hanya konseptual (Q8=0,5)."},
+ "data_kuantitatif": {"dataset": "PHM2012 (FEMTO-ST, FEMTO/NASA) dan XJTU-SY bearing dataset", "ukuran": "PHM2012: 17 set siklus penuh (6 latih/6 uji utama, multi-kanal); ~1200 sampel/epoch; XJTU-SY tambahan", "metrik": "KCNN-LSTM RMSE 0,071 & Score 0,821 (PHM2012 bearing 1-3); RMSE 0,054 & Score 0,779 (XJTU-SY); training ~10 detik/epoch (RTX 4090)"},
+ "metode": "Deep learning knowledge-informed: KCNN-LSTM (CNN + LSTM) dengan loss gabungan MSE + lambda*Weibull CDF (shape beta, scale eta); health index eksponensial; evaluasi RMSE dan Score (penalti asimetris); analisis sensitivitas beta dan lambda; perbandingan CNN-LSTM (MSE/RMSLE), LSTM, Bi-LSTM, FNN+Weibull.",
+ "limitasi": [
+  "Data tersensor kanan tidak dimodelkan (dikeluarkan), meski disebut relevan.",
+  "Tidak ada pelaporan ketidakpastian kuantitatif (CI/interval).",
+  "Kode tidak dipublikasikan; hyperparameter arsitektur terbatas.",
+  "Domain bantalan, bukan membran; keputusan pemeliharaan tidak dianalisis."
+ ],
+ "funding_coi": "Didanai Key Research and Development Project of Shandong Province (Grant 2019TSLH0202, 2019JZZY01011) dan Guangdong Basic and Applied Basic Research Foundation (Grant 2021B1515120066); penulis menyatakan tidak ada konflik kepentingan.",
+ "status_inklusi": "diterima",
+ "figur_dibaca": [
+  {"file": "_page_5_Figure_6.jpeg", "isi": "Fig. 3 - diagram blok KCNN-LSTM: Input -> Convolutional/Pooling (CNN) -> LSTM layer1-3 -> Fully connected -> Output; panel kanan menunjukkan karakteristik fault bantalan (bathtub curve, Weibull CDF) dan loss = MSELoss + lambda*WeibullLoss dengan loop update."},
+  {"file": "_page_10_Figure_2.jpeg", "isi": "Fig. 4 - enam subplot hasil prediksi HI (Health Index 0-1) vs sampel untuk bearing 1-3,1-4,1-7,2-3,3-3 dan XJTU-SY 1-3; kurva 'Actual HI' (biru putus-putus) vs 'Predicted HI' (oranye); prediksi mengikuti tren degradasi meski bising di sekitar onset."}
+ ],
+ "bukti": ["Eq. (6): Weibull CDF", "Eq. (7): estimasi eta", "Eq. (12): loss MSE + lambda*Weibull", "Eq. (13)-(14): health index", "Eq. (8)-(11): RMSE & Score", "Table 3-5: sensitivitas & hasil RMSE/Score", "Fig. 3 (arsitektur), Fig. 4 (prediksi HI)"]
+}

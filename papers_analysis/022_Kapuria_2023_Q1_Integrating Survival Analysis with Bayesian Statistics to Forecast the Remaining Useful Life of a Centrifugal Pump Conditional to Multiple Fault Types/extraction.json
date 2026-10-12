@@ -1,0 +1,90 @@
+{
+  "no": 57,
+  "judul": "Integrating Survival Analysis with Bayesian Statistics to Forecast the Remaining Useful Life of a Centrifugal Pump Conditional to Multiple Fault Types",
+  "penulis": "Abhimanyu Kapuria, Daniel G. Cole",
+  "tahun": 2023,
+  "jurnal": "Energies (MDPI)",
+  "doi": "10.3390/en16093707",
+  "kuartil": "Scopus Q1 (SCImago SJR Best Quartile)",
+  "pilar": "A. Survival Analysis & Censored Data",
+  "ringkasan": "Paper mengintegrasikan analisis survival dengan Bayesian network untuk memperkirakan RUL pompa sentrifugal secara probabilistik dan terkondisi pada tipe kegagalan (operasi normal, kavitasi, poros bengkok). Data getaran diubah menjadi fitur (crest factor, skewness, kurtosis) yang menjadi evidence Bayesian network; fungsi survival Kaplan-Meier dan model Weibull per-tipe-fault dipakai untuk memprediksi RUL. Studi kasus menunjukkan diagnosis 95,8% kavitasi dan RUL yang mengikuti kurva kavitasi dengan deviasi akibat ketidakpastian.",
+  "kontribusi": "Menunjukkan cara mengondisikan RUL pada tipe fault via Bayesian network + survival analysis, sehingga RUL menjadi probabilistik dan dapat dipakai dalam kerangka keputusan maintenance. Ini pola yang dapat diadopsi tesis untuk mengondisikan RUL membran pada mode fouling yang berbeda.",
+  "temuan_kunci": [
+    "RUL terkondisi per tipe fault (cavitation λ=225,03/ρ=4,41; bent shaft λ=276,82/ρ=2,93)",
+    "Median life: kavitasi ~200 siklus operasi; poros bengkok ~220 siklus; pompa berjalan minimal 130 siklus sebelum risiko gagal naik",
+    "Diagnosis probabilistik: studi kasus memberi 95,8% kemungkinan kavitasi (bukan estimasi deterministik 100%)",
+    "RUL diestimasi dengan memadukan kurva survival per operasi; dengan 95,8% kavitasi, peluang survival melewati 450 siklus hanya ~4%",
+    "Fitur getaran (crest factor/skewness/kurtosis) menjadi evidence diagnostik dan memberi kanal ketidakpastian",
+    "Kerangka dapat diintegrasikan ke sistem keputusan maintenance probabilistik untuk NPP"
+  ],
+  "dimensi": {
+    "d1": "1",
+    "d2": "1",
+    "d3": "1",
+    "d4": "1",
+    "d5": "1",
+    "d6": "1",
+    "d7": "",
+    "d8": ""
+  },
+  "alasan_dimensi": {
+    "d1": "Data getaran/sensor deret waktu dari operasi pompa; fitur diekstraksi per sampel (10.000 titik getaran) dan digunakan sebagai evidence sepanjang siklus operasi.",
+    "d2": "RUL/life didefinisikan formal: umur pompa = umur impeller, gagal ketika keausan melewati ambang dan tidak memenuhi duty point; survival function S(t)=P(T>t).",
+    "d3": "Memodelkan waktu-ke-event secara eksplisit: Kaplan-Meier dan model Weibull per tipe fault; dinyatakan survival analysis memberi estimasi baik 'even with incomplete data sets'.",
+    "d4": "Model spesifik: Bayesian network (GeNIe/SMILE, CPT via EM), Weibull, Kaplan-Meier, dan analisis getaran berbasis fitur.",
+    "d5": "Mengkuantifikasi ketidakpastian secara sentral: output diagnosis berupa probabilitas (95,8% kavitasi), CPT, dan RUL sebagai distribusi survival (peluang survival 4% melewati 450 siklus).",
+    "d6": "Berorientasi keputusan maintenance konkret: mengoptimalkan jadwal maintenance, O&M NPP, koordinasi supply chain, dan kerangka asset management/keputusan probabilistik.",
+    "d7": "Domain pompa sentrifugal (feedwater NPP), bukan membran/RO/desalinasi/fouling.",
+    "d8": "Bukan small-data/transfer/hierarchical/all-censored secara metodologis; data lifetime sintetis lengkap (run-to-failure), tanpa transfer learning atau struktur hierarkis."
+  },
+  "relevansi": "Inti-Metode",
+  "kualitas": {
+    "skor": 8,
+    "rincian": {
+      "Q1": 1,
+      "Q2": 1,
+      "Q3": 0.5,
+      "Q4": 0.5,
+      "Q5": 0.5,
+      "Q6": 1,
+      "Q7": 1,
+      "Q8": 1
+    },
+    "catatan": "RQ jelas (RUL terkondisi fault), metode mumpuni (Bayesian network + survival/Weibull + analisis getaran), framework probabilistik kuat (Q7=1) dan kaitan maintenance jelas (Q8=1). Keterbatasan: data lifetime sintetis dari satu model fisika, validasi hanya satu studi kasus tanpa metrik akurasi kuantitatif menyeluruh (Q3 0,5; Q5 0,5), dan artefak/tools proprietary tanpa kode publik (Q4 0,5). Censoring ditangani dalam kerangka survival (Q6=1). Skor = 6,5/8*10 ≈ 8."
+  },
+  "data_kuantitatif": {
+    "dataset": "Data getaran sintetis dari model fisika pompa + data lifetime sintetis 100 pompa (run-to-failure)",
+    "ukuran": "100 pompa; tiap sampel 10.000 titik getaran; 3 mode operasi (normal/cavitation/bent shaft)",
+    "metrik": "Weibull cavitation λ=225,03, ρ=4,41; bent shaft λ=276,82, ρ=2,93; median life kavitasi ~200, bent shaft ~220 siklus; diagnosis studi kasus 95,8% kavitasi; survival 4% melewati 450 siklus"
+  },
+  "metode": "Bayesian network (GeNIe modeler, SMILE engine) dengan CPT dipelajari via EM; analisis getaran (FFT + fitur crest factor/skewness/kurtosis); survival analysis Kaplan-Meier + model Weibull (lifelines) per tipe fault; inferensi posterior mengondisikan RUL pada tipe fault.",
+  "limitasi": [
+    "Data bersifat sintetis (dibangkitkan dari model fisika pompa), bukan data lapangan nyata",
+    "Validasi hanya melalui satu studi kasus tanpa metrik kalibrasi/akurasi menyeluruh",
+    "Fault dimodelkan biner dengan magnitudo konstan (efek besaran fault belum ditangani)",
+    "Data tidak publik; bergantung pada tools proprietary (GeNIe/SMILE)",
+    "Bukan domain membran/RO"
+  ],
+  "funding_coi": "Didanai U.S. Department of Energy, Office of Nuclear Energy's Nuclear Energy University Program DE-NE0008909 (NEET Advanced Sensors and Instrumentation). Penulis menyatakan tidak ada konflik kepentingan. Data tersedia atas permintaan (tidak publik karena privasi).",
+  "status_inklusi": "diterima",
+  "figur_dibaca": [
+    {
+      "file": "_page_7_Figure_6.jpeg",
+      "isi": "Struktur Bayesian network: node akar Bent Shaft & Cavitation -> tiga fitur getaran (Crest factor, Kurtosis, Skewness) dan -> Pump RUL. Ada rantai Crest factor -> Kurtosis -> Skewness. Fault memengaruhi fitur getaran dan RUL secara langsung."
+    },
+    {
+      "file": "_page_11_Figure_1.jpeg",
+      "isi": "Kurva survival 'Pump RUL due to faults': sumbu X Time 0-450, sumbu Y Probability of Survival 0-1. Normal (biru) tetap ~1,0-0,98; Cavitation (hijau) jatuh tajam, melewati 0,5 pada ~175-180; Bent shaft (merah) turun lebih landai, melewati 0,5 pada ~250, mendekati 0 pada 450."
+    },
+    {
+      "file": "_page_12_Figure_6.jpeg",
+      "isi": "Studi kasus kavitasi: kurva survival kasus (hitam) mengikuti kurva kavitasi (melewati 0,5 pada ~175-180) namun sedikit di atasnya setelah Time 200 (mis. ~0,15 vs ~0,08 pada Time 300), berakhir ~0,05 pada 450 - konsisten dengan 95,8% kavitasi + ketidakpastian."
+    }
+  ],
+  "bukti": [
+    "Abstract: 'we integrate survival analysis with Bayesian statistics to forecast the health of the pump conditional to its current state... This solution provides an informed probabilistic viewpoint of the pumping system for the purpose of predictive maintenance.'",
+    "Survival rationale: 'Survival analysis is suitable for machine forecasting because it can provide acceptable estimates even with incomplete data sets... machine lifetime data is hard to obtain.'",
+    "Weibull params: 'The resulting λ and ρ values for the cavitation Weibull model are 225.03 and 4.41' and '...bent shaft Weibull model are 276.82 and 2.93'.",
+    "Case study: 'the Bayesian network infers that there is a 95.8% likelihood of cavitation' and 'the pump has a 4% likelihood of survival past 450 operational cycles'."
+  ]
+}

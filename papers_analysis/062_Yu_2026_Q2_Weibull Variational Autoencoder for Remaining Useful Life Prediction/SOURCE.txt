@@ -1,0 +1,9 @@
+SUMBER FULL-TEXT (Open Access)
+============================
+Judul   : Weibull Variational Autoencoder for Remaining Useful Life Prediction
+DOI     : 10.1002/qre.70386
+Status  : hybrid (Open Access)
+Lisensi : cc-by-nc-nd
+
+Catatan : Open Access berlisensi Creative Commons; boleh didistribusikan ulang DENGAN ATRIBUSI
+kepada penulis/penerbit asli. Diverifikasi via Unpaywall (https://unpaywall.org).

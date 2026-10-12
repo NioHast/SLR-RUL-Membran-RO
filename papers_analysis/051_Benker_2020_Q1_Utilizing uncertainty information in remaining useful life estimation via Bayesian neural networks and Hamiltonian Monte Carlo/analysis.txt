@@ -1,0 +1,50 @@
+PAPER 67: Utilizing uncertainty information in remaining useful life estimation via Bayesian neural networks and Hamiltonian Monte Carlo
+Penulis: Maximilian Benker, Lukas Furtner, Thomas Semm, Michael F. Zaeh (2020)
+Jurnal: Journal of Manufacturing Systems | Scopus Q1 | DOI 10.1016/j.jmsy.2020.11.005 | Pilar: C. Bayesian & Uncertainty
+
+KARAKTERISTIK STUDI
+Studi PHM yang menekankan kuantifikasi dan pemanfaatan ketidakpastian RUL. Membandingkan deep learning non-probabilistik dengan Bayesian deep learning (HMC dan VI), lalu mengubah ketidakpastian menjadi keputusan biaya.
+
+METODE
+Dua arsitektur: D3 (baseline 3 lapis FC 100 neuron) dan C2P2 (CNN 2 conv+pool). Empat skema inference: backpropagation (BP), HMC (H1/H2), dan variational inference (VI, Bayes by Backprop). Model Bayesian menghasilkan distribusi prediktif RUL; varians sigma_tau dipakai untuk menggeser RUL sebesar b*sigma demi meminimalkan total biaya terhadap score function asimetris s(tau). Metrik: MAE, RMSE, Score1 (tanpa pemanfaatan), Score2 (dengan pemanfaatan).
+
+DATA
+C-MAPSS (NASA) FD001-FD004; 100-260 unit train; 21 kanal sensor -> 14/24 fitur; label rectification maks 125 siklus; sliding window Lw = 30/20/30/15; data train terproses 17.731-57.763.
+
+TEMUAN UTAMA
+- Bayesian DL setara atau lebih baik dari DL non-probabilistik; pada Score1 Bayesian selalu unggul (regularisasi natural).
+- Pemanfaatan ketidakpastian menurunkan Score2 < Score1 di semua kasus (contoh c_total 1,43 -> 1,37).
+- Pada C2P2, HMC pra-pelatihan (H2) jauh lebih baik daripada H1/VI.
+- Subset dengan 6 kondisi operasi (FD002, FD004) paling sulit.
+- Distribusi Bayesian tidak selalu Gaussian/terkalibrasi (keterbatasan).
+
+RELEVANSI KE TESIS
+Pendukung. Sangat relevan untuk sumbu ketidakpastian dan pengambilan keputusan biaya (cost-aware DSS), tetapi tanpa survival/penyensoran dan bukan domain membran. Menjadi rujukan tentang bagaimana varians prediksi diterjemahkan menjadi margin keputusan maintenance.
+
+JUSTIFIKASI DIMENSI
+- d1=1: time series multisensor C-MAPSS (sliding window).
+- d2=1: RUL eksplisit + label rectification 125 siklus.
+- d3="": tidak ada survival/penyensoran (Bayesian NN bukan survival).
+- d4=1: Bayesian NN (D3, C2P2) dengan HMC/VI.
+- d5=1: posterior prediktif + varians sigma_tau.
+- d6=1: optimasi biaya (minimize c_total) -> DSS biaya-berbasis.
+- d7="": bukan membran/RO.
+- d8="": dataset benchmark lengkap.
+
+KUALITAS (skor 9)
+Q1=1; Q2=1; Q3=0,5 (data simulasi); Q4=0,5; Q5=1; Q6=N/A; Q7=1; Q8=1. Sum 6,0/7 -> 8,57 ~ 9.
+
+LIMITASI
+Kalibrasi ketidakpastian tidak selalu baik; asumsi error Gaussian; fungsi biaya tunggal; arsitektur LSTM/AE belum diuji.
+
+FUNDING/COI
+EU Horizon 2020 (grant 768575). Tidak ada konflik kepentingan.
+
+BUKTI
+- "inference is carried out via Hamiltonian Monte Carlo (HMC) and variational inference (VI)" (Abstract)
+- "the total cost c_total can be reduced by shifting the distribution of the estimated RUL" (Sec. 4.2)
+- "the Bayesian models outperform their counterparts in all experiments" (Score1, Sec. 5.4)
+- "All calculated score2 values are better than the initial score1 values" (Sec. 5.4)
+
+FIGUR DIBACA
+- _page_5_Figure_2.jpeg: pemanfaatan ketidakpastian (geser distribusi b*sigma; c_total 1,43 -> 1,37).

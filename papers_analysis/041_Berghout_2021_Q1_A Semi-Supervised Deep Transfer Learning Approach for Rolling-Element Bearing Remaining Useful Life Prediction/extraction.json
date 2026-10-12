@@ -1,0 +1,80 @@
+{
+ "no": 66,
+ "judul": "A Semi-Supervised Deep Transfer Learning Approach for Rolling-Element Bearing Remaining Useful Life Prediction",
+ "penulis": "Tarek Berghout, Leila-Hayet Mouss, Toufik Bentrcia, Mohamed Benbouzid",
+ "tahun": 2021,
+ "jurnal": "IEEE Transactions on Energy Conversion",
+ "doi": "10.1109/tec.2021.3116423",
+ "kuartil": "Scopus Q1 (Scimago SJR Best Quartile)",
+ "pilar": "D. Small-data/Transfer/Hierarchical",
+ "ringkasan": "Studi mengusulkan algoritma deep transfer learning semi-supervised berbasis LSTM untuk memprediksi RUL bantalan gelinding dari data kecil dan tak berlabel. Health index (HI) direkonstruksi sebagai fungsi eksponensial kumulatif dan health stage (HS) dipisahkan dengan Gaussian mixture model (GMM) secara unsupervised; pengetahuan dari siklus hidup bantalan lain ditransfer ke domain target. Transfer learning menurunkan RMSE test rata-rata menjadi 0,1888 (vs 0,3125 DL biasa) dan menaikkan akurasi klasifikasi HS menjadi 0,9044 (vs 0,7558).",
+ "kontribusi": "Memberikan contoh penanganan data kecil + tak berlabel melalui transfer learning dan pemisahan tahap degradasi (GMM), relevan untuk skenario tesis dengan histori kegagalan membran terbatas. Namun tidak memakai survival/penyensoran eksplisit dan bukan domain membran.",
+ "temuan_kunci": [
+  "Transfer learning (TL) menurunkan RMSE test rata-rata (0,1888 vs DL 0,3125) dan memperbaiki generalisasi.",
+  "TL lebih stabil dan konvergen lebih cepat; DL berfluktuasi karena sampel kurang.",
+  "Akurasi klasifikasi HS rata-rata test TL 0,9044 vs DL 0,7558.",
+  "HI direkonstruksi eksponensial (HI=1 sehat, HI=0 gagal); HS dipisah 3 fase (healthy, degradation, critical) via GMM dengan kriteria Silhouettes >= 0,90.",
+  "TL cenderung menghasilkan prediksi lebih lambat (later) sehingga perlu kehati-hatian; DL lebih aman tapi kurang akurat."
+ ],
+ "dimensi": {
+  "d1": "1",
+  "d2": "1",
+  "d3": "",
+  "d4": "1",
+  "d5": "",
+  "d6": "",
+  "d7": "",
+  "d8": "1"
+ },
+ "alasan_dimensi": {
+  "d1": "Data getaran berupa deret waktu frame-per-frame (PRONOSTIA) diproses sequence-by-sequence; fitur time-domain (standard deviation per frame) membentuk input deret waktu.",
+  "d2": "RUL didefinisikan melalui HI (HI=0 kegagalan) dan pemisahan HS (healthy/degradation/critical) dengan ambang tahap.",
+  "d3": "Tidak ada pemodelan data tersensor/survival; tidak ada Weibull/hazard/cure; penanganan keterbatasan data lewat transfer learning, bukan penyensoran.",
+  "d4": "Model spesifik: LSTM (komponen utama) + Gaussian Mixture Model (GMM) untuk clustering + skema transfer learning; arsitektur klasifikasi/regresi.",
+  "d5": "Tidak ada kuantifikasi ketidakpastian; evaluasi memakai titik RMSE dan skor akurasi.",
+  "d6": "Tidak menganalisis keputusan pemeliharaan; hanya menyebut bahwa penalti error membantu perencanaan maintenance tanpa model keputusan.",
+  "d7": "Bukan membran/RO/desalination; objek bantalan gelinding (PRONOSTIA).",
+  "d8": "Transfer learning untuk data kecil dan tak berlabel; secara eksplisit mengatasi 'lack of labels' dan 'small unlabeled life cycles' -> sumbu small-data/transfer."
+ },
+ "relevansi": "Inti-Domain",
+ "kualitas": {
+  "skor": 6,
+  "rincian": {
+   "Q1": 1,
+   "Q2": 1,
+   "Q3": 0.5,
+   "Q4": 0.5,
+   "Q5": 1,
+   "Q6": "N/A",
+   "Q7": 0,
+   "Q8": 0
+  },
+  "catatan": "RQ dan metode jelas (transfer learning + GMM + LSTM). Data berasal dari platform accelerated degradation (PRONOSTIA) dan tak berlabel -> validitas terbatas (Q3=0,5). Reproduksibilitas sedang (hyperparameter via grid search, arsitektur diberi, tetapi detail pelatihan terbatas). Evaluasi memadai (RMSE, score, classification rate, pembanding literatur). Tanpa kuantifikasi ketidakpastian (Q7=0) dan tanpa model keputusan pemeliharaan (Q8=0). Kelebihannya: strategi transfer untuk data kecil yang relevan dengan tesis."
+ },
+ "data_kuantitatif": {
+  "dataset": "PRONOSTIA (platform degradasi dipercepat), bantalan NSK 6804 DD; 17 bantalan tersebar pada 3 kondisi (1800/1650/1500 rpm; 4000/4200/5000 N).",
+  "ukuran": "Data frame tiap 10 s (periode 0,1 s, 25,6 kHz); subset Bearing1/2/3 (train & test); kandidat HS: Bearing1-1, 1-4, 2-5, 2-7.",
+  "metrik": "RMSE (test avg TL 0,1888 vs DL 0,3125), score (0,7307 vs 0,3096), classification rate (0,9044 vs 0,7558), Silhouettes (0,94-0,99)."
+ },
+ "metode": "Deep transfer learning semi-supervised; LSTM sebagai komponen utama (sumber & target); GMM untuk pemisahan health stage (unsupervised); rekonstruksi HI eksponensial; fine-tuning lapisan target dari bobot sumber; metrik RMSE, scoring function PHM 2012, classification rate, Silhouettes.",
+ "limitasi": [
+  "Data dari platform degradasi dipercepat dengan pola/tanpa label terbatas.",
+  "Kurang generalisasi distribusi antar siklus hidup; perlu transfer.",
+  "TL cenderung menghasilkan prediksi lambat (berisiko) sedangkan DL lebih aman tapi kurang akurat.",
+  "Ketidakpastian clustering sulit diukur tanpa label asli."
+ ],
+ "funding_coi": "Tidak ada pernyataan pendanaan atau konflik kepentingan eksplisit pada teks yang tersedia.",
+ "status_inklusi": "diterima",
+ "figur_dibaca": [
+  {"file": "_page_3_Figure_2.jpeg", "isi": "Flowchart metodologi 4 tahap: Preprocessing (upload getaran, ekstraksi fitur) -> Labeling (clustering HS & HI eksponensial) -> Training (klasifikasi/regresi + transfer learning, arsitektur LSTM 'to be trained'/'to be tuned') -> Validasi (HS predictor + HI estimator -> RUL)."},
+  {"file": "_page_3_Figure_8.jpeg", "isi": "Dua arsitektur DL: klasifikasi (LSTM 15 -> ReLU 15 -> FC 3 -> Softmax 3 -> 3 kelas) dan regresi (LSTM 15 -> ReLU 15 -> FC 1 -> output 1)."},
+  {"file": "_page_7_Figure_2.jpeg", "isi": "Empat subplot kurva fitting HI (DL vs TL vs Desired): TL mengikuti respons desired; DL gagal total pada (b) dan (d) (kolaps ke 0 terlalu awal)."}
+ ],
+ "bukti": [
+  "Abstract: 'a novel sequence-by-sequence deep learning algorithm able to expand the generalization capacity by transferring obtained knowledge from life cycles of similar systems is proposed'.",
+  "Sec. II-B: 'we have moved towards the use of Gaussian mixture model (GMM)'.",
+  "Table III: 'Average RMSE Train 0,0640 / Test 0,3125 (DL); Train 0,0686 / Test 0,1888 (TL)'.",
+  "Table V: 'Average accuracy Train 0,9596 / Test 0,7558 (DL); Train 0,7844 / Test 0,9044 (TL)'.",
+  "Sec. I: 'under the hypothesis of small sized bearing data with short unlabeled life cycles'."
+ ]
+}

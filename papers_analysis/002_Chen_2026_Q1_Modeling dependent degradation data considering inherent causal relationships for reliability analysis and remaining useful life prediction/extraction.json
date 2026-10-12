@@ -1,0 +1,83 @@
+{
+  "no": 101,
+  "judul": "Modeling dependent degradation data considering inherent causal relationships for reliability analysis and remaining useful life prediction",
+  "penulis": "Shi-Shun Chen, Xiao-Yang Li (Beihang University)",
+  "tahun": 2026,
+  "jurnal": "Reliability Engineering & System Safety",
+  "doi": "10.1016/j.ress.2026.113080",
+  "kuartil": "Q1",
+  "pilar": "A. Survival Analysis & Censored Data",
+  "ringkasan": "Artikel ini mengusulkan kerangka berbasis kausalitas untuk memodelkan data degradasi dependen pada sistem dengan beberapa indikator performa. Setiap indikator dimodelkan sebagai proses Wiener univariat dengan multi-sumber ketidakpastian, hubungan sebab-akibat antar jalur degradasi ditemukan via algoritma Stable-PC, dan efek kausal dikuantifikasi dengan neural network sadar-ketidakpastian lalu digabung dalam kerangka Bayes. Reliabilitas sistem dan RUL diturunkan melalui simulasi Monte Carlo dan divalidasi pada dataset C-MAPSS.",
+  "kontribusi": "Memberikan contoh bagaimana struktur kausalitas eksplisit dapat memperbaiki model degradasi dependen dan akurasi RUL dibanding pendekatan korelasi (kopula/kovarians). Bagi tesis, ini menawarkan alternatif/model acuan pemodelan dependensi multi-indikator yang dapat diadaptasi ke jalur fouling membran, sekaligus memperlihatkan teknik penggabungan prior proses stokastik dengan model pembelajaran.",
+  "temuan_kunci": [
+    "Memperhitungkan arah kausalitas antar jalur degradasi menghilangkan pola degradasi yang tidak fisibel dan menurunkan RMSE 30,2%, MAE 23,4%, CRPS 27,6% untuk prediksi degradasi U14 dibanding model korelasi terbaik.",
+    "Prediksi RUL unggul ~22% (RMSE), 29% (MAE), 35% (CRPS) dibanding model korelasi terbaik; hasil stabil bahkan ketika variabel anak (U14) tidak terukur (perubahan metrik < 0,1%).",
+    "Model korelasi (M1-M3) gagal menangkap dependensi; model independen pun mengalahkan model korelasi saat kedua indikator terukur, menunjukkan korelasi tidak cukup menggambarkan hubungan fisik.",
+    "Arah kausal U8 -> U14 (ditetapkan oleh pengetahuan domain) lebih akurat daripada arah terbalik, namun kerangka kausal tetap mengalahkan model korelasi walau arah dibalik."
+  ],
+  "dimensi": {
+    "d1": "1",
+    "d2": "1",
+    "d3": "",
+    "d4": "1",
+    "d5": "1",
+    "d6": "",
+    "d7": "",
+    "d8": ""
+  },
+  "alasan_dimensi": {
+    "d1": "Data berupa multivariate time-series: C-MAPSS FD001 dengan 14 sensor yang berubah sepanjang siklus operasi; studi memakai dua indikator U8 (rasio aliran bahan bakar) dan U14 (coolant bleed) sebagai jalur degradasi yang diamati sepanjang waktu (t_ij) untuk 100 mesin.",
+    "d2": "Mendefinisikan RUL secara eksplisit sebagai waktu hitting pertama T_RUL = inf{t>t_n | M(t)<=0} (Pers. 29), dengan margin performa M(t), ambang kegagalan Y_th, dan reliabilitas R(t)=Pr{M(t)>0}.",
+    "d3": "Tidak memodelkan data tersensor; seluruh data C-MAPSS digunakan run-to-failure (data uji pun dihentikan sebelum gagal namun tidak diperlakukan sebagai censoring). Tidak ada model survival/Weibull/hazard/cure; reliabilitas dihitung lewat Monte Carlo first-hitting-time, bukan estimasi hazard/censor.",
+    "d4": "Menggunakan model spesifik: proses Wiener univariat, causal discovery Stable-PC, uncertainty-aware neural network (mean+varians), dan fusion Bayes untuk posterior prediktif.",
+    "d5": "Mengkuantifikasi ketidakpastian: interval kredibel 95% pada prediksi degradasi dan RUL, distribusi posterior prediktif dengan varians, serta metrik probabilistik NLL dan CRPS.",
+    "d6": "Tidak mengusulkan maupun menganalisis keputusan pemeliharaan (jadwal/biaya/DSS); istilah condition-based maintenance hanya disebut sebagai motivasi di pendahuluan tanpa model keputusan.",
+    "d7": "Domain aplikasi adalah mesin turbofan (aero engine), bukan membran/RO/desalinasi/fouling; tidak ada pembahasan membran atau proses desalinasi.",
+    "d8": "Bukan small-data/transfer/hierarchical/all-censored: memakai benchmark standar C-MAPSS dengan 100 mesin (88 pengembangan, 12 uji); transfer learning hanya disinggung sebagai arah penelitian masa depan."
+  },
+  "relevansi": "Pendukung",
+  "kualitas": {
+    "skor": 9,
+    "rincian": {
+      "Q1": 1,
+      "Q2": 1,
+      "Q3": 1,
+      "Q4": 0.5,
+      "Q5": 1,
+      "Q6": "N/A",
+      "Q7": 1,
+      "Q8": "N/A"
+    },
+    "catatan": "RQ jelas dan solusi menyeluruh (Q1). Metode memadai: degradasi Wiener + Stable-PC + NN sadar-ketidakpastian + fusion Bayes, dengan derivasi log-likelihood lengkap (Q2). Data memakai benchmark publik C-MAPSS dengan pemisahan train/validasi/uji dan validitas lewat benchmark + ablation + sensitivitas hyperparameter & arah kausal (Q3). Reproduksibilitas parsial: persamaan, hyperparameter (lr 0.001, arsitektur 1 hidden layer 4 neuron, patience), dataset publik, dan kode TERIME tersedia, namun kode pipeline lengkap tidak dibagikan (Q4). Evaluasi memadai dengan RMSE/MAE/NLL/CRPS dan analisis ablation (Q5). Q6 N/A karena tidak ada pemodelan data tersensor. Pelaporan ketidakpastian kuat: interval kredibel 95%, NLL, CRPS, distribusi posterior (Q7). Q8 N/A karena tidak ada keputusan pemeliharaan yang dianalisis."
+  },
+  "data_kuantitatif": {
+    "dataset": "NASA C-MAPSS, subset FD001 (turbofan run-to-failure)",
+    "ukuran": "100 mesin; 88 untuk pengembangan (70 latih + 18 validasi) dan 12 uji; 14 sensor; 2 indikator terpilih (U8, U14); ~150-400 siklus per unit; N_T increment untuk causal discovery",
+    "metrik": "RMSE, MAE, NLL, CRPS, kurva reliabilitas; degradasi U14 (RMSE 0,074; MAE 0,059; CRPS 0,042) dan RUL (RMSE ~40,2; MAE ~25,2; CRPS ~19,0)"
+  },
+  "metode": "Proses Wiener univariat (tren deterministik + random effects + measurement error + variabilitas temporal) diestimasi via TERIME; causal discovery Stable-PC pada increment degradasi; uncertainty-aware neural network untuk efek kausal; fusion Bayes prior-populasi + informasi kausalitas; reliabilitas & RUL via Monte Carlo.",
+  "limitasi": [
+    "Dikembangkan di bawah asumsi Gaussian (proses Wiener); perlu generalisasi ke skenario non-Gaussian.",
+    "Mengasumsikan kausalitas kontemporer dan dependensi kausal stabil sepanjang waktu (steady-state), tidak cocok untuk sistem dengan time-delay/feedback kuat.",
+    "Kompleksitas causal discovery dan pemodelan dependensi meningkat tajam seiring jumlah variabel (cocok untuk jumlah indikator moderat).",
+    "Memerlukan observasi padat; performa berpotensi turun pada data sparse (transfer learning disarankan).",
+    "Ambang kegagalan diperlakukan deterministik, bukan acak.",
+    "Tidak menangani data tersensor; validasi pada data simulasi C-MAPSS sehingga proses Wiener bukan mekanisme fisis sebenarnya."
+  ],
+  "funding_coi": "Acknowledgement: Natural Science Foundation of Beijing Municipality [grant L252210]. Declarations of interest: None.",
+  "status_inklusi": "diterima",
+  "figur_dibaca": [
+    {"file": "_page_6_Figure_3.jpeg", "isi": "Fig. 1 kerangka metodologi: data multi-jalur Y1/Y2, pemodelan degradasi univariat (Wiener + multi-uncertainty), causal discovery, prior vs causal information, fusion Bayes, loss NLL, lalu reliabilitas R(t)=Pr{M(t)>0} dan T_RUL."},
+    {"file": "_page_29_Figure_0.jpeg", "isi": "Fig. 12 perbandingan prediksi degradasi U14 untuk 12 unit uji (#89-#100): metode usulan (oranye) paling mengikuti data sebenarnya; M1/M3 menyimpang, M2 terlalu datar pada unit lambat (#92,#94,#95,#96)."},
+    {"file": "_page_31_Figure_1.jpeg", "isi": "Fig. 14 kurva reliabilitas: model kausal usulan turun di bawah 0,9 pada siklus 159, lebih lambat dari model korelasi/independen; inset memperlihatkan urutan kurva pada knee 145-165 dan ekor 180-240."},
+    {"file": "_page_33_Figure_4.jpeg", "isi": "Fig. 16(a) perbandingan RUL prediksi vs sebenarnya untuk 12 unit uji (mulai siklus 100); metode usulan (oranye) paling dekat dengan RUL sebenarnya, M1-M4 bias pada unit derau (#92,#95,#96)."}
+  ],
+  "bukti": [
+    "Tabel 5: RMSE/MAE/CRPS metode usulan 0,074/0,059/0,042 vs korelasi terbaik (M2) 0,106/0,077/0,058 (reduksi 30,2%/23,4%/27,6%).",
+    "Tabel 7: RUL - metode usulan RMSE 40,16 MAE 25,19 CRPS 19,04 saat U14 terukur; tetap 40,17/25,21/19,05 saat U14 tak terukur.",
+    "Tabel 6: ablation M4 (independen) RMSE 0,619 vs usulan 0,074; M5 (tanpa model univariat) CRPS 0,048 vs usulan 0,042.",
+    "Tabel 4: Stable-PC mendeteksi keterkaitan U8-U14 100% pada 200 run, namun arah ditetapkan via domain knowledge (U8 -> U14).",
+    "Gambar 14: reliabilitas < 0,9 pada siklus 159 (usulan) vs 156 (M2), 153 (M3), 152 (independen), 151 (M1).",
+    "Tabel 9: arah U8->U14 (RMSE 40,16) lebih baik dari U14->U8 (RMSE 41,68), namun keduanya melampaui model korelasi."
+  ]
+}

@@ -1,0 +1,9 @@
+SUMBER FULL-TEXT (Open Access)
+============================
+Judul   : Integrating Survival Analysis with Bayesian Statistics to Forecast the Remaining Useful Life of a Centrifugal Pump Conditional to Multiple Fault Types
+DOI     : 10.3390/en16093707
+Status  : gold (Open Access)
+Lisensi : cc-by, cc-by-sa
+
+Catatan : Open Access berlisensi Creative Commons; boleh didistribusikan ulang DENGAN ATRIBUSI
+kepada penulis/penerbit asli. Diverifikasi via Unpaywall (https://unpaywall.org).

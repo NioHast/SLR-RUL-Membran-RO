@@ -1,0 +1,50 @@
+{
+  "no": 98,
+  "judul": "Nonlinear degradation modeling and remaining useful life prediction for electric drive system with multiple failure modes",
+  "penulis": "Zhen Wang, Yadong Li, Shuishi Li, Yandong Hou, Weimin Du, Lihui Zhao",
+  "tahun": 2025,
+  "jurnal": "Scientific Reports",
+  "doi": "10.1038/s41598-025-22866-7",
+  "kuartil": "Scopus Q1 (SCImago SJR Best Quartile)",
+  "pilar": "A. Survival Analysis & Censored Data",
+  "ringkasan": "Studi membangun kerangka prediksi RUL untuk electric drive system (EDS) dengan banyak mode kegagalan. Composite health indicator dibentuk dari fusi kontribusi kerusakan tiap komponen memakai entropy weight method, lalu lintasan degradasi dimodelkan secara nonlinier eksponensial dan dikoreksi dengan acceleration factor antara spektrum uji dipercepat dan spektrum pengguna. Parameter diestimasi dengan EM dan diperbarui secara Bayesian untuk memprediksi RUL beserta kuantifikasi ketidakpastian (distribusi RUL, interval 95%).",
+  "kontribusi": "Contoh mutakhir pemodelan degradasi nonlinier + estimasi EM + pembaruan Bayesian yang menghasilkan distribusi RUL dan interval kepercayaan (CIC) per pengguna - pola kuantifikasi ketidakpastian yang berguna bagi tesis; namun tidak memodelkan data tersensor/survival (Weibull/hazard) dan domainnya sistem penggerak listrik, bukan membran.",
+  "temuan_kunci": [
+    "Setelah ~20% umur pakai, error prediksi RUL stabil di bawah 10% (relative error); sebelum itu interval lebar akibat data historis terbatas.",
+    "Distribusi kepadatan RUL makin menyempit dan parameter model stabil setelah ~30 iterasi data terakumulasi.",
+    "Metode usulan mengalahkan Wiener dan CNN-LSTM: RMSE 3,70-5,88 vs CNN-LSTM 5,82-6,12 vs Wiener 24,53-35,45; CIC > 0,93.",
+    "Acceleration factor rata-rata tiga arah vibrasi = 8,7, dipakai mengoreksi laju degradasi uji dipercepat ke kondisi pengguna.",
+    "Entropy weight method konsisten dengan coefficient of variation dan CRITIC dalam membentuk composite health indicator (laju degradasi antar-pengguna stabil)."
+  ],
+  "dimensi": {"d1": "1", "d2": "1", "d3": "", "d4": "1", "d5": "1", "d6": "", "d7": "", "d8": "1"},
+  "alasan_dimensi": {
+    "d1": "Memakai data deret waktu multi-sensor: vibrasi (bearing Y, differential Y, gearbox Z), kecepatan putar, torsi, tegangan, arus, suhu oli sepanjang siklus pemakaian.",
+    "d2": "Mendefinisikan RUL sebagai waktu hingga composite health indicator mencapai failure threshold (delta_T=1,65 pada persentil ke-50); ambang kegagalan ditetapkan dari uji bench.",
+    "d3": "Tidak memakai survival/Weibull/hazard/cure maupun pencensoringan; RUL diturunkan dari first-passage-time proses degradasi eksponensial, bukan model survival/censoring.",
+    "d4": "Memakai model spesifik: model degradasi nonlinier eksponensial dengan estimasi EM dan pembaruan Bayesian atas parameter (lambda, beta); pembanding Wiener process dan CNN-LSTM.",
+    "d5": "Mengkuantifikasi ketidakpastian: distribusi posterior parameter, PDF/CDF RUL, interval kepercayaan 95%, dan metrik CIC (confidence interval coverage).",
+    "d6": "Menyebut predictive maintenance/optimized maintenance strategies/intelligent operation, tetapi tidak menyusun atau menganalisis model keputusan pemeliharaan konkret.",
+    "d7": "Objek penelitian adalah electric drive system kendaraan listrik, bukan membran/RO/desalinasi.",
+    "d8": "Memakai efek acak/hierarki (parameter lambda dan beta berdistribusi antar-pengguna) untuk variabilitas unit-ke-unit, serta koreksi transfer spektrum uji dipercepat ke spektrum pengguna lewat acceleration factor."
+  },
+  "relevansi": "Pendukung",
+  "kualitas": {"skor": 8, "rincian": {"Q1": 1, "Q2": 1, "Q3": 0.5, "Q4": 0.5, "Q5": 1, "Q6": "N/A", "Q7": 1, "Q8": 0.5}, "catatan": "Kerangka lengkap dan rinci (konstruksi HI, model degradasi nonlinier, EM, Bayesian update, turunan CDF/PDF RUL, algoritma) dengan evaluasi kuat (RMSE, MAE, CIC; pembanding Wiener dan CNN-LSTM; analisis sensitivitas hyperparameter; empat pengguna dan beberapa tahap siklus). Kelemahan: data operasional 30 kendaraan bersifat komersial/tertutup, tanpa kode (Q3, Q4=0,5); tidak ada pemodelan survival/censoring (Q6 N/A); kaitan keputusan pemeliharaan hanya motivasional (Q8=0,5)."},
+  "data_kuantitatif": {"dataset": "Data operasional 30 kendaraan satu model (1 tahun) + accelerated durability test bench EDS (3 prototipe; 100 siklus x 12 jam = 1200 jam; uji banding spektrum dipercepat 875 jam/350 siklus)", "ukuran": "30 pengguna; 4 pengguna representatif (persentil 25/50/75/95 Ds-CDF); life cycle dibagi 100 siklus operasi; 100.000 kombinasi hyperparameter dievaluasi", "metrik": "RMSE/MAE/CIC: metode usulan RMSE 3,70-5,88, CIC 0,93-0,97; CNN-LSTM RMSE 5,82-6,12, CIC 0,87-0,91; Wiener RMSE 24,53-35,45, CIC 0,67-0,89; relative error <10% setelah 20% umur; acceleration factor 8,7"},
+  "metode": "(1) Konstruksi composite health indicator via model fisika kegagalan (Basquin, ISO 6336, Lundberg-Palmgren L10, Arrhenius, Palmgren-Miner, rainflow counting) + entropy weight method; (2) model degradasi nonlinier eksponensial Y(t)=phi+theta*exp(beta t + eps - sigma^2/2), koreksi acceleration factor m=b_A/b_B; (3) estimasi parameter EM (E-step log-likelihood, M-step update) dan pembaruan posterior Bayesian bivariat (lambda, beta); (4) turunan CDF/PDF RUL berbasis first-passage-time (Eq 35-38), expected RUL (Eq 39), Monte Carlo untuk inherent uncertainty.",
+  "limitasi": [
+    "Data operasional bersifat komersial dan tidak dapat dibagikan; tanpa kode.",
+    "Tidak memodelkan data tersensor/survival (Weibull/hazard); hanya degradasi + first-passage-time.",
+    "Keputusan pemeliharaan tidak dimodelkan secara eksplisit.",
+    "Domain electric drive system kendaraan listrik, bukan membran/RO.",
+    "Bergantung pada koreksi acceleration factor dari uji bench, yang bisa berbeda dari kondisi lapangan."
+  ],
+  "funding_coi": "Didukung National Natural Science Foundation of China (Grant 62303162) dan Postdoctoral Fellowship Program of CPSF (GZC20251194). Penulis menyatakan tidak ada competing interests. Data tidak dapat dibagikan (kerja sama bisnis); tersedia atas permintaan.",
+  "status_inklusi": "diterima",
+  "figur_dibaca": [
+    {"file": "_page_2_Figure_11.jpeg", "isi": "Flowchart kerangka: (1) data operasional & segmentasi; (2) model fisika kegagalan komponen (shaft/gear/bearing/stator/rotor -> damage contribution DC-1..DC-5); (3) composite health indicator via entropy weight; (4) estimasi parameter EM & Bayesian updating; (5) prediksi RUL & kuantifikasi ketidakpastian; ditambah bench test, koreksi acceleration factor, dan lintasan degradasi nonlinier."},
+    {"file": "_page_18_Figure_1.jpeg", "isi": "Prediksi RUL pada empat tahap siklus layanan: panel atas kurva composite health indicator (model, nonlinear CHI, threshold, CI); panel bawah PDF RUL (predicted vs actual RUL, confidence interval). Interval menyempit dan PDF makin terpusat seiring siklus bertambah."},
+    {"file": "_page_19_Figure_1.jpeg", "isi": "Plot 3D PDF RUL target user sepanjang siklus: puncak PDF bergeser ke kiri dan menyempit seiring bertambahnya siklus; Actual RUL (garis merah) konsisten di dalam distribusi."},
+    {"file": "_page_19_Figure_2.jpeg", "isi": "Grafik relative error vs siklus: error besar di awal (~80%) lalu menurun drastis dan stabil dalam pita +-10% setelah ~20 siklus."}
+  ],
+  "bukti": ["Eq (1)-(5): model fisika kegagalan (shear stress, L10, stress rotor, Arrhenius)", "Eq (6)-(11): Palmgren-Miner, damage contribution, entropy weight, composite HI", "Eq (12)-(20): model degradasi linier/nonlinier, acceleration factor, F(t)", "Eq (21)-(32): estimasi EM dan posterior Bayesian", "Eq (35)-(39): CDF/PDF RUL dan expected RUL", "Eq (40)-(42): RMSE, MAE, CIC", "Tabel 1: parameter model per pengguna", "Tabel 2: perbandingan RMSE/MAE/CIC lintas model"]
+}

@@ -1,0 +1,792 @@
+[
+ {
+  "q": "Q1",
+  "doi": "10.1016/j.ymssp.2012.02.015",
+  "title": "Machine performance degradation assessment and remaining useful life prediction using proportional hazard model and support vector machine",
+  "journal": "Mechanical Systems and Signal Processing",
+  "year": 2012,
+  "cites": 249,
+  "pdf": "http://eprints.hud.ac.uk/id/eprint/16585/1/%282012-MSSP%29_Machine_Degradation_Assessment.pdf",
+  "authors": [
+   "Van Tung Tran",
+   "Hong Thom Pham",
+   "Bo‐Suk Yang",
+   "Tan Tien Nguyen"
+  ]
+ },
+ {
+  "q": "Q1",
+  "doi": "10.3390/s22124549",
+  "title": "Remaining Useful Life Prediction Method for Bearings Based on LSTM with Uncertainty Quantification",
+  "journal": "Sensors",
+  "year": 2022,
+  "cites": 94,
+  "pdf": "https://www.mdpi.com/1424-8220/22/12/4549/pdf?version=1655384494"
+ },
+ {
+  "q": "Q1",
+  "doi": "10.1109/access.2019.2937798",
+  "title": "Deep Learning Prognostics for Lithium-Ion Battery Based on Ensembled Long Short-Term Memory Networks",
+  "journal": "IEEE Access",
+  "year": 2019,
+  "cites": 76,
+  "pdf": "https://ieeexplore.ieee.org/ielx7/6287639/8600701/08815721.pdf",
+  "authors": [
+   "Yuefeng Liu",
+   "Guangquan Zhao",
+   "Xiyuan Peng"
+  ]
+ },
+ {
+  "q": "Q1",
+  "doi": "10.1016/j.ress.2016.07.019",
+  "title": "Remaining useful life estimation in heterogeneous fleets working under variable operating conditions",
+  "journal": "Reliability Engineering & System Safety",
+  "year": 2016,
+  "cites": 69,
+  "pdf": "https://hal.science/hal-01786958/document",
+  "authors": [
+   "Sameer Al‐Dahidi",
+   "Francesco Di Maio",
+   "Piero Baraldi",
+   "Enrico Zio"
+  ]
+ },
+ {
+  "q": "Q1",
+  "doi": "10.1002/stc.2647",
+  "title": "Mechanics‐based model updating for identification and virtual sensing of an offshore wind turbine using sparse measurements",
+  "journal": "Structural Control and Health Monitoring",
+  "year": 2020,
+  "cites": 56,
+  "pdf": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/stc.2647",
+  "authors": [
+   "Mansureh‐Sadat Nabiyan",
+   "Faramarz Khoshnoudian",
+   "Babak Moaveni",
+   "Hamed Ebrahimian"
+  ]
+ },
+ {
+  "q": "Q1",
+  "doi": "10.1109/access.2020.3001013",
+  "title": "Remaining Useful Life Prediction Based on the Bayesian Regularized Radial Basis Function Neural Network for an External Gear Pump",
+  "journal": "IEEE Access",
+  "year": 2020,
+  "cites": 27,
+  "pdf": "https://ieeexplore.ieee.org/ielx7/6287639/8948470/09112151.pdf"
+ },
+ {
+  "q": "Q1",
+  "doi": "10.1371/journal.pone.0236128",
+  "title": "Prediction of remaining useful life (RUL) of Komatsu excavator under reliability analysis in the Weibull-frailty model",
+  "journal": "PLoS ONE",
+  "year": 2020,
+  "cites": 13,
+  "pdf": "https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0236128&type=printable",
+  "authors": [
+   "Awat Ghomghaleh",
+   "Reza Khaloukakaie",
+   "Mohammad Ataei",
+   "Abbas Barabadi",
+   "Ali Nouri Qarahasanlou",
+   "Omeid Rahmani",
+   "Amin Beiranvand Pour"
+  ]
+ },
+ {
+  "q": "Q1",
+  "doi": "10.1109/access.2020.2987426",
+  "title": "Simulator Assessment Theory for Remaining Useful Life Prediction of Lithium-Ion Battery Under Multiple Uncertainties",
+  "journal": "IEEE Access",
+  "year": 2020,
+  "cites": 13,
+  "pdf": "https://ieeexplore.ieee.org/ielx7/6287639/8948470/09064548.pdf",
+  "authors": [
+   "Liang Zhao",
+   "Qiang Li",
+   "Bin Suo"
+  ]
+ },
+ {
+  "q": "Q1",
+  "doi": "10.3390/en15249447",
+  "title": "Remaining Useful Life Estimation for Underground Cable Systems Based on Historical Health Index",
+  "journal": "Energies",
+  "year": 2022,
+  "cites": 12,
+  "pdf": "https://www.mdpi.com/1996-1073/15/24/9447/pdf?version=1671512176",
+  "authors": [
+   "Tanachai Somsak",
+   "Thanapong Suwanasri",
+   "Cattareeya Suwanasri"
+  ]
+ },
+ {
+  "q": "Q1",
+  "doi": "10.1049/cim2.12021",
+  "title": "A comprehensive framework from real‐time prognostics to maintenance decisions",
+  "journal": "IET Collaborative Intelligent Manufacturing",
+  "year": 2021,
+  "cites": 10,
+  "pdf": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1049/cim2.12021",
+  "authors": [
+   "Amit Kumar Jain",
+   "Maharshi Harshadbhai Dhada",
+   "Marco Pérez Hernández",
+   "Manuel Herrera",
+   "Ajith Kumar Parlikad"
+  ]
+ },
+ {
+  "q": "Q1",
+  "doi": "10.1002/nav.70033",
+  "title": "A Robust Bayesian Framework for Degradation State Identification in the Presence of Outliers",
+  "journal": "Naval Research Logistics (NRL)",
+  "year": 2025,
+  "cites": 6,
+  "pdf": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/nav.70033",
+  "authors": [
+   "Ancha Xu",
+   "Juan Wang",
+   "Di Zhu",
+   "Zhen Chen",
+   "Yijun Wang"
+  ]
+ },
+ {
+  "q": "Q1",
+  "doi": "10.3390/s21051712",
+  "title": "Real-Time Prognostics of Engineered Systems under Time Varying External Conditions Based on the COX PHM and VARX Hybrid Approach",
+  "journal": "Sensors",
+  "year": 2021,
+  "cites": 5,
+  "pdf": "https://www.mdpi.com/1424-8220/21/5/1712/pdf?version=1614921036",
+  "authors": [
+   "Hongmin Zhu"
+  ]
+ },
+ {
+  "q": "Q1",
+  "doi": "10.3390/en18236087",
+  "title": "Modelling of Insulation Thermal Ageing: Historical Evolution from Fundamental Chemistry Towards Becoming an Electrical Machine Design Tool",
+  "journal": "Energies",
+  "year": 2025,
+  "cites": 5,
+  "pdf": "https://www.mdpi.com/1996-1073/18/23/6087/pdf?version=1763722332",
+  "authors": [
+   "Antonis Theofanous",
+   "Israr Ullah",
+   "Michael Galea",
+   "Paolo Giangrande",
+   "Vincenzo Madonna",
+   "Yatai Ji",
+   "John Licari",
+   "Maurice Apap"
+  ]
+ },
+ {
+  "q": "Q1",
+  "doi": "10.1371/journal.pone.0343872",
+  "title": "An integrated method for state of charge estimation, lifetime prediction, and reliability assessment of Lithium-ion batteries under thermal and dynamic conditions",
+  "journal": "PLoS ONE",
+  "year": 2026,
+  "cites": 3,
+  "pdf": "https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0343872&type=printable",
+  "authors": [
+   "Parisa Mobasheri",
+   "Ali Aranizadeh",
+   "Behrooz Vahidi"
+  ]
+ },
+ {
+  "q": "Q1",
+  "doi": "10.1016/j.ress.2026.113080",
+  "title": "Modeling dependent degradation data considering inherent causal relationships for reliability analysis and remaining useful life prediction",
+  "journal": "Reliability Engineering & System Safety",
+  "year": 2026,
+  "cites": 2,
+  "pdf": "https://arxiv.org/pdf/2609.31338",
+  "authors": [
+   "Shi-Shun Chen",
+   "Xiaoyang Li"
+  ]
+ },
+ {
+  "q": "Q1",
+  "doi": "10.1038/s41598-025-22866-7",
+  "title": "Nonlinear degradation modeling and remaining useful life prediction for electric drive system with multiple failure modes",
+  "journal": "Scientific Reports",
+  "year": 2025,
+  "cites": 1,
+  "pdf": "https://www.nature.com/articles/s41598-025-22866-7.pdf",
+  "authors": [
+   "Zhen Wang",
+   "Yadong Li",
+   "Shunjie Li",
+   "Yandong Hou",
+   "Weimin Du",
+   "Lihui Zhao"
+  ]
+ },
+ {
+  "q": "Q1",
+  "doi": "10.1038/s41598-026-63408-z",
+  "title": "A hybrid signal-dynamics health index fusion framework for prognostics of small-scale wind turbine blades",
+  "journal": "Scientific Reports",
+  "year": 2026,
+  "cites": 1,
+  "pdf": "https://www.nature.com/articles/s41598-026-63408-z_reference.pdf",
+  "authors": [
+   "Parisa Mobasheri",
+   "Ali Aranizadeh",
+   "Behrooz Vahidi"
+  ]
+ },
+ {
+  "q": "Q1",
+  "doi": "10.1038/s41598-026-65271-4",
+  "title": "Survival-analysis-guided machine learning for failure and remaining-useful-life prediction in railway compressor",
+  "journal": "Scientific Reports",
+  "year": 2026,
+  "cites": 0,
+  "pdf": "https://www.nature.com/articles/s41598-026-65271-4_reference.pdf",
+  "authors": [
+   "Hamdi Alaoui Abdelhafid",
+   "Anwar Meddaoui",
+   "Adil Hachmoud"
+  ]
+ },
+ {
+  "q": "Q1",
+  "doi": "10.3390/s26092592",
+  "title": "Interval Prediction of Remaining Useful Life Based on Uncertainty Quantification with Bayesian Convolutional Neural Networks Featuring Dual-Output Units",
+  "journal": "Sensors",
+  "year": 2026,
+  "cites": 0,
+  "pdf": "https://www.mdpi.com/1424-8220/26/9/2592/pdf?version=1776869194"
+ },
+ {
+  "q": "Q2",
+  "doi": "10.36001/ijphm.2015.v6i4.2319",
+  "title": "Uncertainty in Prognostics and Systems Health Management",
+  "journal": "International Journal of Prognostics and Health Management",
+  "year": 2020,
+  "cites": 52,
+  "pdf": "https://papers.phmsociety.org/index.php/ijphm/article/download/2319/1296",
+  "authors": [
+   "Shankar Sankararaman",
+   "Kai Goebel"
+  ]
+ },
+ {
+  "q": "Q2",
+  "doi": "10.1155/2014/807693",
+  "title": "Thermal Cycling Life Prediction of Sn-3.0Ag-0.5Cu Solder Joint Using Type-I Censored Data",
+  "journal": "The Scientific World JOURNAL",
+  "year": 2014,
+  "cites": 42,
+  "pdf": "https://downloads.hindawi.com/journals/tswj/2014/807693.pdf"
+ },
+ {
+  "q": "Q2",
+  "doi": "10.3390/batteries3030021",
+  "title": "On-Line Remaining Useful Life Prediction of Lithium-Ion Batteries Based on the Optimized Gray Model GM(1,1)",
+  "journal": "Batteries",
+  "year": 2017,
+  "cites": 39,
+  "pdf": "https://www.mdpi.com/2313-0105/3/3/21/pdf?version=1499495972",
+  "authors": [
+   "Dong Zhou",
+   "Xue Long",
+   "Yijia Song",
+   "Jiayu Chen"
+  ]
+ },
+ {
+  "q": "Q2",
+  "doi": "10.3390/machines11020163",
+  "title": "Explainable Data-Driven Method Combined with Bayesian Filtering for Remaining Useful Lifetime Prediction of Aircraft Engines Using NASA CMAPSS Datasets",
+  "journal": "Machines",
+  "year": 2023,
+  "cites": 35,
+  "pdf": "https://www.mdpi.com/2075-1702/11/2/163/pdf?version=1676004755",
+  "authors": [
+   "Faisal Maulana",
+   "Andrew G. Starr",
+   "Agusmian Partogi Ompusunggu"
+  ]
+ },
+ {
+  "q": "Q2",
+  "doi": "10.3390/batteries3040032",
+  "title": "Statistical Characterization of the State-of-Health of Lithium-Ion Batteries with Weibull Distribution Function—A Consideration of Random Effect Model in Charge Capacity Decay Estimation",
+  "journal": "Batteries",
+  "year": 2017,
+  "cites": 23,
+  "pdf": "https://www.mdpi.com/2313-0105/3/4/32/pdf?version=1508154069",
+  "authors": [
+   "Chinedu Ishiodu Ossai",
+   "Nagarajan Raghavan"
+  ]
+ },
+ {
+  "q": "Q2",
+  "doi": "10.17531/ein.2021.1.16",
+  "title": "Prognostics uncertainty reduction by right-time prediction of remaining useful life based on hidden Markov model and proportional hazard model",
+  "journal": "Eksploatacja i Niezawodnosc - Maintenance and Reliability",
+  "year": 2021,
+  "cites": 21,
+  "pdf": "https://ein.org.pl/pdf-158379-84679?filename=Prognostics uncertainty.pdf",
+  "authors": [
+   "Gao Zhiyong",
+   "Li Jiwu",
+   "Wang Rongxi"
+  ]
+ },
+ {
+  "q": "Q2",
+  "doi": "10.1088/1361-6501/ac3855",
+  "title": "Practical health indicator construction methodology for bearing ensemble remaining useful life prediction with ISOMAP-DE and ELM-WPHM",
+  "journal": "Measurement Science and Technology",
+  "year": 2021,
+  "cites": 15,
+  "pdf": "https://iopscience.iop.org/article/10.1088/1361-6501/ac3855/pdf",
+  "authors": [
+   "Yingkui Gu",
+   "Qingpeng Bi",
+   "Guangqi Qiu"
+  ]
+ },
+ {
+  "q": "Q2",
+  "doi": "10.1016/j.microrel.2021.114461",
+  "title": "Reliability analysis and condition monitoring of SAC+ solder joints under high thermomechanical stress conditions using neuronal networks",
+  "journal": "Microelectronics Reliability",
+  "year": 2022,
+  "cites": 14,
+  "pdf": "https://www.sciencedirect.com/science/article/pii/S0026271421004868/pdf",
+  "authors": [
+   "Andreas Zippelius",
+   "Alexander Hanß",
+   "Maximilian Schmid",
+   "Judith Pérez-Velázquez",
+   "Gordon Elger"
+  ]
+ },
+ {
+  "q": "Q2",
+  "doi": "10.3390/sym12081325",
+  "title": "Remaining Useful Life Prediction of an IGBT Module in Electric Vehicles Statistical Analysis",
+  "journal": "Symmetry",
+  "year": 2020,
+  "cites": 12,
+  "pdf": "https://www.mdpi.com/2073-8994/12/8/1325/pdf?version=1596891893",
+  "authors": [
+   "Huawei Wu",
+   "Congjin Ye",
+   "Yuanjin Zhang",
+   "Jingquan Nie",
+   "Kuang Yong",
+   "Zhixiong Li"
+  ]
+ },
+ {
+  "q": "Q2",
+  "doi": "10.3233/jifs-169550",
+  "title": "Canonical variate analysis, probability approach and support vector regression for fault identification and failure time prediction",
+  "journal": "Journal of Intelligent & Fuzzy Systems",
+  "year": 2018,
+  "cites": 12,
+  "pdf": "https://content.iospress.com:443/download/journal-of-intelligent-and-fuzzy-systems/ifs169550?id=journal-of-intelligent-and-fuzzy-systems%2Fifs169550",
+  "authors": [
+   "Xiaochuan Li",
+   "Fang Duan",
+   "I.J. Bennett",
+   "David Mba"
+  ]
+ },
+ {
+  "q": "Q2",
+  "doi": "10.3390/e25040646",
+  "title": "Multi-Fractal Weibull Adaptive Model for the Remaining Useful Life Prediction of Electric Vehicle Lithium Batteries",
+  "journal": "Entropy",
+  "year": 2023,
+  "cites": 11,
+  "pdf": "https://www.mdpi.com/1099-4300/25/4/646/pdf?version=1681376055",
+  "authors": [
+   "Wujin Deng",
+   "Yan Xia Gao",
+   "Jianxue Chen",
+   "Aleksey  A. Kudreyko",
+   "Carlo Cattani",
+   "Enrico Zio",
+   "Wanqing Song"
+  ]
+ },
+ {
+  "q": "Q2",
+  "doi": "10.1049/smt2.12215",
+  "title": "Rotating machine bearing health prognosis using a data driven approach based on KS‐density and BiLSTM",
+  "journal": "IET Science Measurement & Technology",
+  "year": 2024,
+  "cites": 9,
+  "pdf": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1049/smt2.12215",
+  "authors": [
+   "Houssem Habbouche",
+   "Tarak Benkedjouh",
+   "Yassine Amirat",
+   "Mohamed Benbouzid"
+  ]
+ },
+ {
+  "q": "Q2",
+  "doi": "10.36001/ijphm.2016.v7i2.2362",
+  "title": "An Inference-based Prognostic Framework for Health Management of Automotive Systems",
+  "journal": "International Journal of Prognostics and Health Management",
+  "year": 2020,
+  "cites": 8,
+  "pdf": "https://papers.phmsociety.org/index.php/ijphm/article/download/2362/1335",
+  "authors": [
+   "Chaitanya Sankavaram",
+   "Anuradha Kodali",
+   "Krishna Rao Pattipati",
+   "Satnam Singh",
+   "Yilu Zhang",
+   "Mutasim A. Salman"
+  ]
+ },
+ {
+  "q": "Q2",
+  "doi": "10.3389/fenrg.2025.1589782",
+  "title": "Embodiment of machine learning in biogas power industry: an opinion",
+  "journal": "Frontiers in Energy Research",
+  "year": 2025,
+  "cites": 7,
+  "pdf": "https://www.frontiersin.org/journals/energy-research/articles/10.3389/fenrg.2025.1589782/pdf",
+  "authors": [
+   "Spyridon Achinas",
+   "Marena Vitola Quintero",
+   "Gerrit Jan Willem Euverink"
+  ]
+ },
+ {
+  "q": "Q2",
+  "doi": "10.36001/ijphm.2021.v12i2.2777",
+  "title": "Fresh new look for system-level prognostics",
+  "journal": "International Journal of Prognostics and Health Management",
+  "year": 2021,
+  "cites": 7,
+  "pdf": "https://papers.phmsociety.org/index.php/ijphm/article/download/2777/1830",
+  "authors": [
+   "Ferhat Tamssaouet",
+   "Khanh T.P. Nguyen",
+   "Kamal Medjaher",
+   "Marcos E. Orchard"
+  ]
+ },
+ {
+  "q": "Q2",
+  "doi": "10.3390/machines11040418",
+  "title": "Optimizing Predictive Maintenance Decisions: Use of Non-Arbitrary Multi-Covariate Bands in a Novel Condition Assessment under a Machine Learning Approach",
+  "journal": "Machines",
+  "year": 2023,
+  "cites": 5,
+  "pdf": "https://www.mdpi.com/2075-1702/11/4/418/pdf?version=1680229895",
+  "authors": [
+   "David R. Godoy",
+   "Víctor Álvarez",
+   "Mónica López‐Campos"
+  ]
+ },
+ {
+  "q": "Q2",
+  "doi": "10.1155/2022/2383789",
+  "title": "A Hybrid Method to Predict the Remaining Useful Life of Scroll Wheel of Control Rod Drive Mechanism",
+  "journal": "Science and Technology of Nuclear Installations",
+  "year": 2022,
+  "cites": 5,
+  "pdf": "https://downloads.hindawi.com/journals/stni/2022/2383789.pdf",
+  "authors": [
+   "Kang Zhu",
+   "Xinwen Zhao",
+   "Liming Zhang",
+   "Hang Yu"
+  ]
+ },
+ {
+  "q": "Q2",
+  "doi": "10.3390/math11081837",
+  "title": "Prediction of Tool Remaining Useful Life Based on NHPP-WPHM",
+  "journal": "Mathematics",
+  "year": 2023,
+  "cites": 4,
+  "pdf": "https://www.mdpi.com/2227-7390/11/8/1837/pdf?version=1682046214",
+  "authors": [
+   "Yingzhi Zhang",
+   "Guiming Guo",
+   "Fang Yang",
+   "Yubin Zheng",
+   "Fenli Zhai"
+  ]
+ },
+ {
+  "q": "Q2",
+  "doi": "10.1007/s40192-026-00441-w",
+  "title": "Physics-Informed Deep Learning for Bearing Remaining Useful Life: Adaptive Paris-Law Regularization with Gaussian Processes",
+  "journal": "Integrating materials and manufacturing innovation",
+  "year": 2026,
+  "cites": 4,
+  "pdf": "https://link.springer.com/content/pdf/10.1007/s40192-026-00441-w.pdf",
+  "authors": [
+   "Khaled Dhibi",
+   "Hazem Numan Nounou",
+   "Fedwa El‐Mellouhi",
+   "Mohamed Numan Nounou"
+  ]
+ },
+ {
+  "q": "Q2",
+  "doi": "10.1108/jqme-04-2021-0030",
+  "title": "Development of an approach to incorporate proportional hazard modelling into a risk-based inspection methodology",
+  "journal": "Journal of Quality in Maintenance Engineering",
+  "year": 2022,
+  "cites": 3,
+  "pdf": "https://repository.up.ac.za/bitstream/2263/92825/1/Lelo_Development_2023.pdf",
+  "authors": [
+   "Nzita Alain Lelo",
+   "Philippus Stephan Heyns",
+   "Johann Wannenburg"
+  ]
+ },
+ {
+  "q": "Q2",
+  "doi": "10.3390/app152010972",
+  "title": "Unsupervised Convolutional Transformer Autoencoder for Robust Health Indicator Construction and RUL Prediction in Rotating Machinery",
+  "journal": "Applied Sciences",
+  "year": 2025,
+  "cites": 3,
+  "pdf": "https://www.mdpi.com/2076-3417/15/20/10972/pdf?version=1760349349",
+  "authors": [
+   "Amrit Dahal",
+   "Hong‐Zhong Huang",
+   "Cheng‐Geng Huang",
+   "Tudi Huang",
+   "Smaran Khanal",
+   "Sajawal Gul Niazi"
+  ]
+ },
+ {
+  "q": "Q2",
+  "doi": "10.1049/smt2.12235",
+  "title": "Mechanical performance degradation modelling and prognosis method of high‐voltage circuit breakers considering censored data",
+  "journal": "IET Science Measurement & Technology",
+  "year": 2025,
+  "cites": 3,
+  "pdf": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1049/smt2.12235"
+ },
+ {
+  "q": "Q2",
+  "doi": "10.2507/ijsimm24-4-740",
+  "title": "Uncertainty Quantification and Remaining Useful Life Prediction Using Deep Learning",
+  "journal": "International Journal of Simulation Modelling",
+  "year": 2025,
+  "cites": 1,
+  "pdf": "https://doi.org/10.2507/ijsimm24-4-740",
+  "authors": [
+   "C.-L. Yang",
+   "T. Y. Meles",
+   "K. S. Loke",
+   "Atinkut Atinafu Yilma",
+   "M. M. Teshome"
+  ]
+ },
+ {
+  "q": "Q2",
+  "doi": "10.1002/asmb.2829",
+  "title": "Examining the impact of critical attributes on hard drive failure times: Multi‐state models for left‐truncated and right‐censored semi‐competing risks data",
+  "journal": "Applied Stochastic Models in Business and Industry",
+  "year": 2023,
+  "cites": 1,
+  "pdf": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/asmb.2829",
+  "authors": [
+   "Jordan L. Oakley",
+   "Matthew Forshaw",
+   "Pete Philipson",
+   "Kevin J. Wilson"
+  ]
+ },
+ {
+  "q": "Q2",
+  "doi": "10.36001/ijphm.2025.v16i2.4262",
+  "title": "Analytical Health Indices: Towards Reliability-Informed Deep Learning for PHM",
+  "journal": "International Journal of Prognostics and Health Management",
+  "year": 2025,
+  "cites": 1,
+  "pdf": "https://papers.phmsociety.org/index.php/ijphm/article/download/4262/2622",
+  "authors": [
+   "Pierre Dersin",
+   "Dario Goglio",
+   "Kristupas Bajarunas",
+   "Manuel Arias Chao"
+  ]
+ },
+ {
+  "q": "Q2",
+  "doi": "10.3390/machines11010040",
+  "title": "Online System Prognostics with Ensemble Models and Evolving Clustering",
+  "journal": "Machines",
+  "year": 2022,
+  "cites": 1,
+  "pdf": "https://www.mdpi.com/2075-1702/11/1/40/pdf?version=1673579887",
+  "authors": [
+   "Fling Tseng",
+   "Dimitar Filev",
+   "Murat Yildirim",
+   "Ratna Babu Chinnam"
+  ]
+ },
+ {
+  "q": "Q2",
+  "doi": "10.1088/1361-6501/ae7109",
+  "title": "Generalization bounds and sample complexity for remaining useful life prediction from complete degradation trajectories",
+  "journal": "Measurement Science and Technology",
+  "year": 2026,
+  "cites": 0,
+  "pdf": "https://iopscience.iop.org/article/10.1088/1361-6501/ae7109/pdf",
+  "authors": [
+   "Huy Hoang Le",
+   "Kim‐Anh Nguyen"
+  ]
+ },
+ {
+  "q": "Q2",
+  "doi": "10.36001/ijphm.2026.v17i2.4735",
+  "title": "Hybrid Particle Filter-Weibull Approach for Probabilistic End-of-life Prediction of Industrial Machines Using Vibration Data",
+  "journal": "International Journal of Prognostics and Health Management",
+  "year": 2026,
+  "cites": 0,
+  "pdf": "https://papers.phmsociety.org/index.php/ijphm/article/download/4735/2989",
+  "authors": [
+   "Nagesh Dewangan",
+   "Amiya Ranjan Mohanty"
+  ]
+ },
+ {
+  "q": "Q3",
+  "doi": "10.1155/2018/3013684",
+  "title": "Remaining Useful Life Prediction Method of Rolling Bearings Based on Pchip‐EEMD‐GM(1, 1) Model",
+  "journal": "Shock and Vibration",
+  "year": 2018,
+  "cites": 10,
+  "pdf": "http://downloads.hindawi.com/journals/sv/2018/3013684.pdf",
+  "authors": [
+   "Fengtao Wang",
+   "Xiaofei Liu",
+   "Chenxi Liu",
+   "Hongkun Li",
+   "Qingkai Han"
+  ]
+ },
+ {
+  "q": "Q3",
+  "doi": "10.1299/jamdsm.2022jamdsm0001",
+  "title": "A method for predicting the remaining life of equipment based on WTTE-CNN-LSTM",
+  "journal": "Journal of Advanced Mechanical Design Systems and Manufacturing",
+  "year": 2021,
+  "cites": 5,
+  "pdf": "https://www.jstage.jst.go.jp/article/jamdsm/16/1/16_2022jamdsm0001/_pdf",
+  "authors": [
+   "Erbao Xu",
+   "Yan Li",
+   "Zhoupeng Han",
+   "Jingyi Du",
+   "Mingshun Yang",
+   "Xinqin Gao"
+  ]
+ },
+ {
+  "q": "Q3",
+  "doi": "10.32604/sdhm.2023.029331",
+  "title": "Predicting Reliability and Remaining Useful Life of Rolling Bearings Based on Optimized Neural Networks",
+  "journal": "Structural durability & health monitoring",
+  "year": 2023,
+  "cites": 3,
+  "pdf": "https://file.techscience.com/files/sdhm/2023/TSP_SDHM-17-5/TSP_SDHM_29331/TSP_SDHM_29331.pdf",
+  "authors": [
+   "Tiantian Liang",
+   "Runze Wang",
+   "Xuxiu Zhang",
+   "Yingdong Wang",
+   "Jianxiong Yang"
+  ]
+ },
+ {
+  "q": "Q3",
+  "doi": "10.21595/jve.2017.17864",
+  "title": "Reliability sequential compliance method for a partially observable gear system subject to vibration monitoring",
+  "journal": "Journal of Vibroengineering",
+  "year": 2017,
+  "cites": 3,
+  "pdf": "https://www.jvejournals.com/article/17864/pdf",
+  "authors": [
+   "Xin Li",
+   "Jing Cai",
+   "Hongfu Zuo",
+   "Xi Chen",
+   "Mao Huijie",
+   "Yutong Xu"
+  ]
+ },
+ {
+  "q": "Q3",
+  "doi": "10.3303/cet1333151",
+  "title": "Lifecycle Prognostic Algorithm Development and Application to Test Beds",
+  "journal": "Chemical engineering transactions",
+  "year": 2013,
+  "cites": 3,
+  "pdf": "http://www.aidic.it/cet/13/33/151.pdf",
+  "authors": [
+   "Alan Nam",
+   "Michael E. Sharp",
+   "W. Hines J",
+   "B. Upadhyaya"
+  ]
+ },
+ {
+  "q": "Q3",
+  "doi": "10.1088/2631-8695/ae4cf3",
+  "title": "Reliability evaluation of mechanical and electrical equipment based on probability statistical model",
+  "journal": "Engineering Research Express",
+  "year": 2026,
+  "cites": 2,
+  "pdf": "https://iopscience.iop.org/article/10.1088/2631-8695/ae4cf3/pdf",
+  "authors": [
+   "Duoni Fan"
+  ]
+ },
+ {
+  "q": "Q3",
+  "doi": "10.1088/2631-8695/ae56ce",
+  "title": "Towards predictive reliability: evaluating influential variables in centrifugal pumps’ MTBF for oil and gas applications",
+  "journal": "Engineering Research Express",
+  "year": 2026,
+  "cites": 1,
+  "pdf": "https://iopscience.iop.org/article/10.1088/2631-8695/ae56ce/pdf",
+  "authors": [
+   "Marc Vila Forteza",
+   "Diego Pascual Galar",
+   "Kai Goebel",
+   "Uday Kumar"
+  ]
+ },
+ {
+  "q": "Q3",
+  "doi": "10.3901/jme.2024.11.181",
+  "title": "Bayesian-LSTM Neural Network-based Remaining Useful Life Prediction and Uncertainty Estimation of Rollers in A Hot Strip Mill",
+  "journal": "Journal of Mechanical Engineering",
+  "year": 2024,
+  "cites": 0,
+  "pdf": "http://www.cjmenet.com.cn/CN/article/downloadArticleFile.do?attachType=PDF&id=27369"
+ }
+]

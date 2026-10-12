@@ -1,0 +1,9 @@
+SUMBER FULL-TEXT (Open Access)
+============================
+Judul   : Survival Analysis-Based System for Predictive Maintenance Optimization
+DOI     : 10.1007/s42979-025-04291-9
+Status  : hybrid (Open Access)
+Lisensi : cc-by
+
+Catatan : Open Access berlisensi Creative Commons; boleh didistribusikan ulang DENGAN ATRIBUSI
+kepada penulis/penerbit asli. Diverifikasi via Unpaywall (https://unpaywall.org).

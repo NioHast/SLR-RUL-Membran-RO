@@ -1,0 +1,9 @@
+SUMBER FULL-TEXT (Open Access)
+============================
+Judul   : Enhancing accuracy of membrane fouling prediction using hybrid machine learning models
+DOI     : 10.5004/dwt.2019.23444
+Status  : hybrid (Open Access)
+Lisensi : cc-by-nc-nd
+
+Catatan : Open Access berlisensi Creative Commons; boleh didistribusikan ulang DENGAN ATRIBUSI
+kepada penulis/penerbit asli. Diverifikasi via Unpaywall (https://unpaywall.org).

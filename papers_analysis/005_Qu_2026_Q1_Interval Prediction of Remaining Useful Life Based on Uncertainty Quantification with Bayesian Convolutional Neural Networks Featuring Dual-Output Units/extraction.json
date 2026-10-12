@@ -1,0 +1,46 @@
+{
+ "no": 5,
+ "judul": "Interval Prediction of Remaining Useful Life Based on Uncertainty Quantification with Bayesian Convolutional Neural Networks Featuring Dual-Output Units",
+ "penulis": "Zhendong Qu, Jialong He, Yan Liu, Song Mao, Xiaowu Han",
+ "tahun": 2026,
+ "jurnal": "Sensors",
+ "doi": "10.3390/s26092592",
+ "kuartil": "Scopus Q1 (Scimago SJR Best Quartile)",
+ "pilar": "C. Bayesian & Uncertainty",
+ "ringkasan": "Studi mengusulkan Bayesian convolutional neural network (BCNN) dengan unit dual-output untuk prediksi interval RUL. Parameter CNN diubah menjadi variabel acak dan dilatih dengan Bayes-by-backprop untuk menangkap epistemic uncertainty, sementara struktur dual-output memodelkan aleatoric uncertainty heteroskedastik melalui likelihood Gaussian dan loss negative log-likelihood. Validasi pada dataset IEEE PHM 2012 menunjukkan akurasi titik dan kuantifikasi ketidakpastian yang lebih baik daripada metode uncertainty-aware lain (PCIP 0,9628).",
+ "kontribusi": "Memberikan kerangka probabilistik terpadu untuk memisahkan aleatoric dan epistemic uncertainty pada prediksi RUL - berguna bagi komponen deep learning + kuantifikasi ketidakpastian tesis. Namun tidak menangani data tersensor dan domainnya bearing, bukan membran.",
+ "temuan_kunci": [
+  "Struktur dual-output + inferensi Bayesian memisahkan aleatoric dan epistemic uncertainty (Eq. 21, 24-25).",
+  "PCIP tertinggi 0,9628; akurasi 0,8061; RMSE 0,0894 pada bearing 1-6, mengalahkan dual-output CNN, single-output BCNN, MC-dropout BCNN, CNN-LSTM, Transformer-BiLSTM.",
+  "Memodelkan hanya satu jenis ketidakpastian (hanya aleatoric atau hanya epistemic) menghasilkan PCIP rendah.",
+  "Trade-off: MPIW lebih besar (0,3740) demi coverage interval tinggi, dinilai wajar untuk skenario keselamatan."
+ ],
+ "dimensi": {"d1": "1", "d2": "1", "d3": "", "d4": "1", "d5": "1", "d6": "", "d7": "", "d8": ""},
+ "alasan_dimensi": {
+  "d1": "Sinyal vibrasi horizontal/vertikal (sampling 25,6 kHz) dan suhu (0,1 Hz) dari platform PRONOSTIA; diproses spectral analysis + z-score sebagai input deret waktu.",
+  "d2": "Target RUL dilabeli menurun linear 0-1 sebagai label prediksi.",
+  "d3": "Tidak ada model survival/hazard/Weibull/cure; data tersensor tidak dimodelkan (semua trajektori run-to-failure). Teks tidak membahas censoring.",
+  "d4": "Model spesifik: Bayesian convolutional neural network dengan unit dual-output, dilatih Bayes-by-backprop dan local reparameterization trick.",
+  "d5": "Kuantifikasi eksplisit aleatoric + epistemic uncertainty; interval prediksi pada level kepercayaan (1-alpha) (Eq. 22) dievaluasi dengan PCIP dan MPIW.",
+  "d6": "Menyebut PHM sebagai decision-support system dan 'reliable decision support for practical applications', tetapi tidak menyusun/menganalisis keputusan pemeliharaan konkret (jadwal/biaya/DSS).",
+  "d7": "Objek penelitian rolling element bearings, bukan membran/RO/desalinasi.",
+  "d8": "Meski motivasi menyebut 'data scarcity', eksperimen memakai benchmark IEEE PHM 2012 lengkap; tidak ada transfer learning/hierarchical maupun demonstrasi skenario small-data."
+ },
+ "relevansi": "Pendukung",
+ "kualitas": {"skor": 7, "rincian": {"Q1": 1, "Q2": 1, "Q3": 0.5, "Q4": 1, "Q5": 1, "Q6": 0, "Q7": 1, "Q8": 0}, "catatan": "Metodologi kuat dan detail (arsitektur, hyperparameter, 7 pembanding) dengan kuantifikasi ketidakpastian unggul. Kelemahan: uji kontras kuantitatif hanya pada satu bearing (1-6), data on-request, tanpa pencensoringan, dan tanpa model keputusan. Jumlah 5,5/8 -> 7."},
+ "data_kuantitatif": {"dataset": "IEEE PHM 2012 (FEMTO-ST PRONOSTIA); bearing 1-6, 1-7, 2-6, 2-7 sebagai test", "ukuran": "vibrasi 25,6 kHz, 2560 titik/record, interval 10 s; split learning/test per kondisi operasi (Table 1)", "metrik": "RMSE 0,0894; Accuracy 0,8061; PCIP 0,9628; MPIW 0,3740 (bearing 1-6); FLOPs 10,176 M; Params 219,2 K"},
+ "metode": "Bayesian CNN (parameter acak) + unit dual-output (mean & variansi) + Bayes-by-backprop/variational inference, loss negative log-likelihood + KL divergence.",
+ "limitasi": [
+  "Tidak menangani data tersensor (semua trajektori run-to-failure).",
+  "Uji kontras kuantitatif hanya pada satu bearing uji (1-6).",
+  "MPIW relatif lebih besar sebagai trade-off terhadap PCIP.",
+  "Data tidak tersedia publik (on request); domain bearing, bukan membran."
+ ],
+ "funding_coi": "Tidak menerima dana eksternal (This research received no external funding); penulis menyatakan tidak ada konflik kepentingan.",
+ "status_inklusi": "diterima",
+ "figur_dibaca": [
+  {"file": "_page_6_Figure_2.jpeg", "isi": "Fig. 1 kerangka metode BCNN dual-output: (A) konstruksi & pelatihan model (BayesianCNN -> BayesianLinear -> output sigma^2 & RUL; prior p(w), posterior q_theta(w), KL; loss L=L1-L2); (B) persiapan data (FFT, normalisasi, pelabelan RUL); (C) pengujian & prediksi RUL + kuantifikasi ketidakpastian (fan plot + permukaan PDF 3D)."},
+  {"file": "_page_14_Figure_2.jpeg", "isi": "Fig. 7 pengukuran ketidakpastian empat bearing uji (1-6, 1-7, 2-6, 2-7): kurva var_total, var_aleatoric, var_epistemic vs running time; var_aleatoric mendominasi, var_epistemic kecil."}
+ ],
+ "bukti": ["Fig. 1: kerangka metode BCNN dual-output", "Eq. (21): dekomposisi variansi total (aleatoric + epistemic)", "Eq. (22): interval prediksi RUL", "Eq. (24)-(25): aleatoric & epistemic uncertainty", "Table 2: arsitektur jaringan", "Table 4: perbandingan model (RMSE/Accuracy/PCIP/MPIW)"]
+}

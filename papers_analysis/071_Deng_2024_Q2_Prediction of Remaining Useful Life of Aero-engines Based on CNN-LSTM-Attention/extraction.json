@@ -1,0 +1,63 @@
+{
+  "no": 83,
+  "judul": "Prediction of Remaining Useful Life of Aero-engines Based on CNN-LSTM-Attention",
+  "penulis": "Sizhe Deng, Jian Zhou",
+  "tahun": 2024,
+  "jurnal": "International Journal of Computational Intelligence Systems (Springer)",
+  "doi": "10.1007/s44196-024-00639-w",
+  "kuartil": "Scopus Q2 (SCImago SJR Best Quartile)",
+  "pilar": "B. Deep Learning RUL",
+  "ringkasan": "Penelitian ini mengusulkan metode prediksi Remaining Useful Life (RUL) mesin pesawat berbasis deep learning yang menggabungkan CNN untuk ekstraksi fitur lokal dari data sensor multivariabel, LSTM untuk pemodelan dependensi temporal, dan mekanisme self-attention agar LSTM lebih fokus pada fitur penting hasil rekonstruksi CNN. Model dilatih dan diuji pada empat subset dataset NASA C-MAPSS (FD001-FD004) dengan target RUL piecewise linear berambang 100 dan sliding window 40, lalu divalidasi melalui studi ablasi dan perbandingan model. Hasil terbaik diperoleh model usulan dengan RMSE 15.977 (FD001), 14.452 (FD002), 13.907 (FD003), dan 16.637 (FD004), mengungguli CNN, LSTM, CNN-LSTM, BP, GRU, CNN-GRU, DCNN, dan TCNN.",
+  "kontribusi": "Menunjukkan bahwa penambahan mekanisme self-attention pada arsitektur CNN-LSTM meningkatkan akurasi point-prediction RUL pada benchmark C-MAPSS, namun tanpa pemodelan data tersensor, kuantifikasi ketidakpastian, maupun keputusan pemeliharaan. Paper ini memperkuat argumen tesis bahwa integrasi survival analysis (censoring/hazard) dengan deep learning masih merupakan celah terbuka; domainnya aero-engine, bukan membran/RO.",
+  "temuan_kunci": [
+    "Akurasi pada empat subset: RMSE FD001=15.977 (MAPE 0.161), FD002=14.452 (0.139), FD003=13.907 (0.115), FD004=16.637 (0.130); terbaik pada FD003 dan terendah pada FD004.",
+    "Studi ablasi (FD002): CNN-LSTM-Attention (RMSE 14.452; MAPE 0.139) mengalahkan CNN (21.574; 0.232), LSTM (18.730; 0.189), dan CNN-LSTM (17.879; 0.183).",
+    "Perbandingan model (FD002): CNN-LSTM-Attention mengungguli BP (21.868; 0.262), GRU (21.762; 0.223), CNN-GRU (17.863; 0.178), DCNN (19.826; 0.193), dan TCNN (18.217; 0.187).",
+    "Ukuran sliding window ditetapkan 40 setelah pengujian 30/35/40/45; RMSE menurun signifikan dari window 35 ke 40, lalu hanya sedikit dari 40 ke 45, tetapi window terlalu besar berisiko menghilangkan informasi prediksi.",
+    "RUL direpresentasikan dengan model piecewise linear berambang 100 (nilai RUL di atas 100 dikap menjadi 100) untuk meningkatkan akurasi pelatihan.",
+    "Prediksi berfluktuasi besar pada fase awal operasi dan akurat pada fase degradasi; secara keseluruhan kurva prediksi mengikuti RUL aktual, terutama pada dataset dengan kondisi operasi bervariasi (FD002)."
+  ],
+  "dimensi": {"d1": "1", "d2": "1", "d3": "", "d4": "1", "d5": "", "d6": "", "d7": "", "d8": ""},
+  "alasan_dimensi": {
+    "d1": "Data deret waktu multi-sensor: dataset C-MAPSS memuat 21 parameter pemantauan kinerja (T2, T24, T30, T50, P2, P15, P30, NF, NC, EPR, PS30, PHI, NRF, NRC, BPR, FARB, HT_BLEED, NF_DMD, PCNFR_DMD, W31, W32) plus 3 parameter kondisi operasi (ketinggian terbang, Mach, sudut tuas dorong) pada setiap siklus mesin; diproses dengan standardisasi dan sliding window.",
+    "d2": "RUL didefinisikan dan diberi ambang secara eksplisit: target RUL memakai model piecewise linear dengan ambang 100 (RUL di atas 100 diganti 100, lalu menurun linear) pada Bagian 3.3.3 dan Fig. 5; label RUL test set digunakan untuk mengukur generalisasi.",
+    "d3": "Tidak memodelkan data tersensor: tidak ada analisis survival, distribusi Weibull, fungsi hazard, atau model cure di dalam metode. Weibull hanya dikutip pada tinjauan pustaka (Ben Ali et al.), bukan bagian dari pemodelan.",
+    "d4": "Menggunakan model spesifik CNN-LSTM-Attention: CNN 1D (36 kernel ukuran [3 1]) untuk ekstraksi fitur, LSTM (1 layer, hidden 64) untuk dependensi temporal, self-attention (32 neuron) untuk pembobotan fitur, dengan Dropout 0.8 dan early stopping (hyperparameter pada Table 3).",
+    "d5": "Tidak mengukur ketidakpastian: hanya keluaran prediksi titik dengan metrik RMSE dan MAPE; tidak ada interval kepercayaan/prediksi, posterior, atau analisis probabilistik.",
+    "d6": "Tidak mengusulkan atau menganalisis keputusan pemeliharaan secara konkret: jadwal, biaya, maupun DSS tidak dimodelkan; keterkaitan RUL dengan keputusan pemeliharaan hanya berupa pernyataan motivasi pada pendahuluan dan kesimpulan.",
+    "d7": "Tidak relevan dengan membran/RO/desalinasi/fouling: objek studi adalah mesin pesawat (aero-engine) pada dataset C-MAPSS.",
+    "d8": "Bukan small-data/transfer/hierarchical/all-censored: memakai dataset benchmark C-MAPSS dengan 100-260 unit latih per subset, tanpa pembelajaran transfer/hierarkis dan tanpa penanganan penyensoran."
+  },
+  "relevansi": "Pendukung",
+  "kualitas": {"skor": 8, "rincian": {"Q1": 1, "Q2": 1, "Q3": 1, "Q4": 0.5, "Q5": 1, "Q6": "N/A", "Q7": "N/A", "Q8": 0.5}, "catatan": "Q1=1: pertanyaan penelitian jelas (meningkatkan akurasi prediksi RUL mesin pesawat via CNN-LSTM-Attention). Q2=1: metode memadai, didukung ablasi komponen dan pemilihan hyperparameter (Table 3), serta flowchart Fig. 3. Q3=1: dataset benchmark publik C-MAPSS, protokol train/validasi/uji standar dengan empat subset dan label RUL piecewise; meski jumlah unit per subset tidak dirinci, data bersifat publik dan terstandar. Q4=0.5: hyperparameter lengkap (Table 3) dan dataset publik, tetapi tidak ada kode/repositori, optimizer, learning rate, atau framework; pernyataan ketersediaan data literal 'No datasets were generated or analyzed during the current study' tidak konsisten dengan penggunaan C-MAPSS. Q5=1: evaluasi memadai (RMSE dan MAPE; ablasi tiga baseline; perbandingan dengan lima model lain pada FD002). Q6=N/A (tidak ada censoring); Q7=N/A (tidak melaporkan ketidakpastian); Q8=0,5 (RUL dikaitkan secara kualitatif dengan 'optimizing maintenance decisions'/biaya operasi, tanpa model keputusan). Skor = round((1+1+1+0,5+1+0,5)/6*10) = 8."},
+  "data_kuantitatif": {"dataset": "NASA C-MAPSS (Commercial Modular Aero-Propulsion System Simulation), mesin turbofan FD001-FD004; 3 parameter kondisi operasi (ketinggian terbang, Mach, thrust lever angle) + 21 parameter pemantauan kinerja (mis. pada FD002).", "ukuran": "Empat subset: FD001 (1 kondisi operasi, 1 mode kegagalan), FD002 (6 kondisi, 1 mode), FD003 (1 kondisi, 2 mode), FD004 (6 kondisi, 2 mode); target RUL piecewise linear ambang 100; sliding window 40 (diuji 30/35/40/45), langkah 1; split latih/validasi/uji.", "metrik": "RMSE/MAPE model usulan: FD001 15.977/0.161; FD002 14.452/0.139; FD003 13.907/0.115; FD004 16.637/0.130. Ablasi FD002: CNN 21.574, LSTM 18.730, CNN-LSTM 17.879. Perbandingan FD002: BP 21.868, GRU 21.762, CNN-GRU 17.863, DCNN 19.826, TCNN 18.217."},
+  "metode": "CNN-LSTM-Attention: standardisasi fitur + perhitungan label RUL piecewise linear berambang 100 + sliding window 40; CNN 1D (36 kernel ukuran [3 1]) mengekstraksi fitur lokal dari data sensor; LSTM (1 layer, hidden 64) memodelkan dependensi temporal; self-attention (32 neuron, mekanisme Q/K/V dengan softmax) membobot fitur penting; Dropout 0.8 + early stopping mencegah overfitting; dievaluasi dengan ablasi (CNN/LSTM/CNN-LSTM) dan perbandingan (BP/GRU/CNN-GRU/DCNN/TCNN) pada C-MAPSS FD001-FD004.",
+  "limitasi": [
+    "Tidak memodelkan data tersensor/survival analysis; Weibull hanya muncul di tinjauan pustaka, bukan di metode.",
+    "Tanpa kuantifikasi ketidakpastian; evaluasi hanya RMSE dan MAPE (point prediction).",
+    "Tidak ada model keputusan pemeliharaan (jadwal/biaya/DSS); 'maintenance' hanya pernyataan motivasi.",
+    "Reproduksibilitas terbatas: tanpa kode/repositori, optimizer, learning rate, dan framework tidak dilaporkan.",
+    "Pernyataan 'Data availability: No datasets were generated or analyzed during the current study' tidak konsisten dengan penggunaan dataset C-MAPSS.",
+    "Prediksi berfluktuasi besar pada fase awal operasi (akurasi rendah di awal siklus).",
+    "Domain aero-engine turbofan, bukan membran/RO/desalinasi."
+  ],
+  "funding_coi": "Funding: Kashi University China-Pakistan Economic Corridor Research Center Foundation (grant number 2023HX0158); funders tidak berperan dalam desain/analisis. Data availability: 'No datasets were generated or analyzed during the current study' (tidak konsisten dengan penggunaan C-MAPSS). Conflict of interest: 'The authors declare that there are no competing interests.'",
+  "status_inklusi": "diterima",
+  "figur_dibaca": [
+    {"file": "_page_4_Picture_19.jpeg", "isi": "Gambar 2 - arsitektur model CNN-LSTM-Attention: aliran data dari input sensor -> layer CNN (ekstraksi fitur) -> LSTM (temporal) -> self-attention (pembobotan) -> output RUL."},
+    {"file": "_page_5_Figure_4.jpeg", "isi": "Gambar 3 - flowchart metodologi tiga tahap: praproses data (standardisasi + perhitungan/segmentasi RUL + sliding window) -> pembentukan model -> pelatihan & pengujian."},
+    {"file": "_page_7_Picture_9.jpeg", "isi": "Gambar 6 - diagram error sliding window (data hanya di figur): median RMSE menurun dari ~20,3 (window 25) ke ~14,2 (window 45); dasar pemilihan window 40."},
+    {"file": "_page_8_Figure_9.jpeg", "isi": "Gambar 7 - RUL aktual vs prediksi untuk 4 mesin pada FD002; prediksi mengikuti tren aktual dengan fluktuasi pada fase awal operasi."},
+    {"file": "_page_9_Figure_5.jpeg", "isi": "Gambar 8 - RUL aktual vs prediksi seluruh mesin uji pada FD002; prediksi konvergen ke RUL aktual meski ada penyimpangan di awal."}
+  ],
+  "bukti": [
+    "Table 4: RMSE/MAPE per subset (FD001 15.977/0.161; FD002 14.452/0.139; FD003 13.907/0.115; FD004 16.637/0.130).",
+    "Table 3: hyperparameter model (mis. attention neuron 32; dropout scale 0.8).",
+    "Ablasi FD002: CNN 21.574; LSTM 18.730; CNN-LSTM 17.879; CNN-LSTM-Attention 14.452.",
+    "Perbandingan FD002: BP 21.868; GRU 21.762; CNN-GRU 17.863; DCNN 19.826; TCNN 18.217.",
+    "Fig. 5: segmentasi RUL piecewise linear berambang 100.",
+    "Fig. 6: error (RMSE) sebagai fungsi ukuran sliding window.",
+    "Fig. 7 & 8: RUL aktual vs prediksi pada FD002.",
+    "Eq. (1)-(7): rumus CNN (konvolusi + ReLU), LSTM (gerbang), dan attention (Q/K/V, softmax)."
+  ]
+}

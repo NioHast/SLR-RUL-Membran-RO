@@ -1,0 +1,48 @@
+{
+ "no": 76,
+ "judul": "Degradation-Aware Remaining Useful Life Prediction With LSTM Autoencoder",
+ "penulis": "Ji-Yan Wu, Min Wu, Zhenghua Chen, Xiao-Li Li, Ruqiang Yan",
+ "tahun": 2021,
+ "jurnal": "IEEE Transactions on Instrumentation and Measurement",
+ "doi": "10.1109/tim.2021.3055788",
+ "kuartil": "Scopus Q1 (SCImago SJR Best Quartile)",
+ "pilar": "B. Deep Learning RUL",
+ "ringkasan": "Studi mengusulkan DELTA (degradation-aware LSTM autoencoder) untuk prediksi RUL yang sadar tahap degradasi. Tiga modul: (1) identifikasi tahap sehat via Hilbert-Huang transform (HHT) + klasifikasi SVM, (2) estimasi degradation factor dengan LSTM autoencoder (latent variable), dan (3) estimasi RUL via degradation similarity matching berbobot. Diuji pada dataset FEMTO/PRONOSTIA (bearing), DELTA mengalahkan MLP, XGBoost, RFR, CNN, LSTM, SVR, RNN, dan two-stage pada metrik RMSE dan Score.",
+ "kontribusi": "Memberi contoh pipeline DL (LSTM autoencoder + similarity matching) untuk RUL bearing dengan data multisensor - relevan sebagai pembanding metode DL RUL pada tesis, tetapi tidak memodelkan data tersensor, tidak mengkuantifikasi ketidakpastian, dan domainnya bearing.",
+ "temuan_kunci": [
+  "DELTA unggul pada FEMTO 1: RMSE 80,9-128,6 vs XGBoost 113,5-476,2 dan LSTM 108,7-512,6; Score 508,7-1817,4 terendah.",
+  "Pada FEMTO 2: DELTA mengalahkan semua baseline (RMSE 86,7-253,9; Score 397,5-987,2).",
+  "Ablation: modul healthy stage classification memberi kontribusi performa lebih besar daripada autoencoder.",
+  "Degradation factor meningkat seiring penurunan kondisi; pendekatan tidak bergantung pada asumsi tren degradasi eksponensial.",
+  "RUL PWL (piecewise linear) dengan max RUL 16000; EOL saat amplitudo getaran > 20g."
+ ],
+ "dimensi": {"d1": "1", "d2": "1", "d3": "", "d4": "1", "d5": "", "d6": "", "d7": "", "d8": ""},
+ "alasan_dimensi": {
+  "d1": "Data multisensor timeseries: sinyal getaran (sampling 25,6 kHz, 2560 titik per 0,1 s, tiap 10 s) dan suhu pada tiga kondisi operasi bearing.",
+  "d2": "Mendefinisikan RUL (piecewise linear dengan max RUL 16000) dan EOL ketika amplitudo getaran melebihi 20 g; tahap degradasi diidentifikasi via klasifikasi.",
+  "d3": "Tidak ada pemodelan data tersensor/survival/hazard/Weibull; pendekatan similarity matching + klasifikasi tahap, bukan model waktu-hidup.",
+  "d4": "Model spesifik: LSTM autoencoder (encoder-decoder) + SVM untuk klasifikasi tahap; baseline MLP, XGBoost, RFR, CNN, LSTM, SVR, RNN, two-stage.",
+  "d5": "Tidak mengkuantifikasi ketidakpastian prediktif; hanya nilai mean/smoothed dari prediksi tanpa interval kepercayaan/posterior.",
+  "d6": "Motivasi pengurangan biaya predictive maintenance dan condition-based maintenance, tetapi tanpa analisis/model keputusan pemeliharaan konkret.",
+  "d7": "Objek penelitian adalah ball bearing pada testbed PRONOSTIA, bukan membran/RO/desalinasi.",
+  "d8": "Tidak menerapkan small-data/transfer/hierarchical/all-censored; hanya rencana federated learning sebagai pekerjaan masa depan."
+ },
+ "relevansi": "Pendukung",
+ "kualitas": {"skor": 7, "rincian": {"Q1": 1, "Q2": 1, "Q3": 1, "Q4": 0.5, "Q5": 1, "Q6": "N/A", "Q7": 0, "Q8": 0.5}, "catatan": "Metode jelas dengan tiga modul dan ablation, evaluasi pada dua kondisi operasi FEMTO dengan 8 pembanding dan dua metrik. Kelemahan: tidak ada kuantifikasi ketidakpastian prediksi, tanpa pemodelan censoring, dan tidak ada pernyataan ketersediaan kode. Q6 tidak berlaku karena data run-to-failure tanpa censoring."},
+ "data_kuantitatif": {"dataset": "FEMTO/PRONOSTIA bearing accelerated degradation (open-source)", "ukuran": "FEMTO 1: latih Bearing 1-1,1-2; uji 1-3..1-7 (load 4000N, 1800 rpm). FEMTO 2: latih 2-1,2-2; uji 2-3..2-7 (load 4200N, 1650 rpm). 17 bearing diuji; sampling getaran 25,6 kHz", "metrik": "FEMTO 1 RMSE DELTA 80,9/112,3/127,5/113,6/128,6 (1-3..1-7) vs XGBoost 113,5/116,7/476,2/226,7/343,6 dan LSTM 108,7/145,3/512,6/363,7/387,5; FEMTO 1 Score DELTA 508,7/723,2/973,6/669,8/1817,4; FEMTO 2 RMSE DELTA 131,9/86,7/143,7/128,7/253,9"},
+ "metode": "DELTA: (1) identifikasi tahap sehat via HHT (EMD/IMF, Hilbert marginal spectrum pada frekuensi inner/outer race/ball) + klasifikasi SVM; (2) estimasi degradation factor via LSTM autoencoder (encoder-decoder + linear layer berbias, reconstruction error dinormalisasi, Eq. 13-14); (3) estimasi RUL via similarity matching berbobot (Eq. 15) dengan weighted moving average. Metrik: Score (Eq. 16) dan RMSE.",
+ "limitasi": [
+  "Tidak ada kuantifikasi ketidakpastian prediksi RUL.",
+  "Tidak menangani data tersensor.",
+  "Tidak ada pernyataan ketersediaan kode/reproducibility penuh.",
+  "Bergantung pada pemilihan IMF/frekuensi karakteristik dan klasifikasi tahap SVM.",
+  "Domain bearing, bukan membran/RO."
+ ],
+ "funding_coi": "Didukung A*STAR Industrial Internet of Things Research Program (RIE2020 IAF-PP, A1788a0023) dan National Natural Science Foundation of China (51835009); tidak ada pernyataan konflik kepentingan.",
+ "status_inklusi": "diterima",
+ "figur_dibaca": [
+  {"file": "_page_2_Figure_2.jpeg", "isi": "System design DELTA: (atas) Feature-based Healthy Stage Identification (HHT -> SVM -> Healthy Stage); (bawah) Degradation Factor Calculation with LSTM Autoencoder (encoder -> encoded vector -> decoder -> degradation factor); (kanan) RUL Estimator dengan stage classification (degradation/stationary) -> RUL."},
+  {"file": "_page_7_Figure_2.jpeg", "isi": "Hasil prediksi RUL mikroskopis untuk Bearing 1_3 dan 1_5: DELTA (a,e) mengikuti ground truth lebih dekat dengan variasi lebih rendah dibanding XGBoost (b,f) dan LSTM (c,g); (d,h) membandingkan smoothed value ketiganya."}
+ ],
+ "bukti": ["Eq. (1)-(7): EMD/IMF & Hilbert marginal spectrum (HHT)", "Eq. (8)-(12): klasifikasi tahap SVM", "Eq. (13)-(14): reconstruction error & degradation factor", "Eq. (15): weighted-average RUL (similarity matching)", "Eq. (16): Score metric", "Table I: dataset FEMTO", "Table II-V: RMSE & Score FEMTO 1 & 2", "Table VI: ablation", "Fig. 1 (system design), Fig. 2 (encoder-decoder), Fig. 4 (sinyal getaran), Fig. 5 (prediksi RUL)"]
+}

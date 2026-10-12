@@ -1,0 +1,191 @@
+{
+ "10.1016/j.ymssp.2012.02.015": {
+  "title": "Machine performance degradation assessment and remaining useful life prediction using proportional hazard model and support vector machine",
+  "authors": [
+   "Van Tung Tran",
+   "Hong Thom Pham",
+   "Bo‐Suk Yang",
+   "Tan Tien Nguyen"
+  ],
+  "year": 2012,
+  "journal": "Mechanical Systems and Signal Processing",
+  "issn_l": "0888-3270",
+  "issn": [
+   "0888-3270",
+   "1096-1216"
+  ],
+  "pdf": "http://eprints.hud.ac.uk/id/eprint/16585/1/%282012-MSSP%29_Machine_Degradation_Assessment.pdf",
+  "abstract": ""
+ },
+ "10.1155/2014/807693": {
+  "title": "Thermal Cycling Life Prediction of Sn-3.0Ag-0.5Cu Solder Joint Using Type-I Censored Data",
+  "authors": [
+   "Jinhua Mi",
+   "Yan‐Feng Li",
+   "Yuan‐Jian Yang",
+   "Weiwen Peng",
+   "Hong‐Zhong Huang"
+  ],
+  "year": 2014,
+  "journal": "The Scientific World JOURNAL",
+  "issn_l": "1537-744X",
+  "issn": [
+   "1537-744X",
+   "2356-6140"
+  ],
+  "pdf": "https://downloads.hindawi.com/journals/tswj/2014/807693.pdf",
+  "abstract": "Because solder joint interconnections are the weaknesses of microelectronic packaging, their reliability has great influence on the reliability of the entire packaging structure. Based on an accelerated life test the reliability assessment and life prediction of lead-free solder joints using Weibull distribution are investigated. The type-I interval censored lifetime data were collected from a thermal cycling test, which was implemented on microelectronic packaging with lead-free ball grid array (BGA) and fine-pitch ball grid array (FBGA) interconnection structures. The number of cycles to failure of lead-free solder joints is predicted by using a modified Engelmaier fatigue life model and a"
+ },
+ "10.3390/batteries3040032": {
+  "title": "Statistical Characterization of the State-of-Health of Lithium-Ion Batteries with Weibull Distribution Function—A Consideration of Random Effect Model in Charge Capacity Decay Estimation",
+  "authors": [
+   "Chinedu Ishiodu Ossai",
+   "Nagarajan Raghavan"
+  ],
+  "year": 2017,
+  "journal": "Batteries",
+  "issn_l": "2313-0105",
+  "issn": [
+   "2313-0105"
+  ],
+  "pdf": "https://www.mdpi.com/2313-0105/3/4/32/pdf?version=1508154069",
+  "abstract": "Effective prognosis of lithium-ion batteries involves the inclusion of the influences of uncertainties that can be incorporated through random effect parameters in a nonlinear mixed effect degradation model framework. This study is geared towards the estimation of the reliability of lithium-ion batteries, using parametric effects determination involving uncertainty, using a multiphase decay patterned sigmoidal model, experimental data and the Weibull distribution function. The random effect model, which uses Maximum Likelihood Estimation (MLE) and Stochastic Approximation Expectation Maximization (SAEM) algorithm to predict the parametric values, was found to estimate the remaining useful li"
+ },
+ "10.1016/j.ress.2016.07.019": {
+  "title": "Remaining useful life estimation in heterogeneous fleets working under variable operating conditions",
+  "authors": [
+   "Sameer Al‐Dahidi",
+   "Francesco Di Maio",
+   "Piero Baraldi",
+   "Enrico Zio"
+  ],
+  "year": 2016,
+  "journal": "Reliability Engineering & System Safety",
+  "issn_l": "0951-8320",
+  "issn": [
+   "0951-8320",
+   "1879-0836"
+  ],
+  "pdf": "https://hal.science/hal-01786958/document",
+  "abstract": ""
+ },
+ "10.3390/s26092592": {
+  "title": "Interval Prediction of Remaining Useful Life Based on Uncertainty Quantification with Bayesian Convolutional Neural Networks Featuring Dual-Output Units",
+  "authors": [
+   "Zhendong Qu",
+   "Jialong He",
+   "Yan Liu",
+   "Song Mao",
+   "Xiaowu Han"
+  ],
+  "year": 2026,
+  "journal": "Sensors",
+  "issn_l": "1424-8220",
+  "issn": [
+   "1424-8220"
+  ],
+  "pdf": "https://www.mdpi.com/1424-8220/26/9/2592/pdf?version=1776869194",
+  "abstract": "RUL prediction methods do not fully account for the uncertainties caused by data scarcity and inherent noise, and they also suffer from low reliability of RUL point estimates. To tackle these challenges, this paper proposes a Bayesian convolutional neural network with dual-output units for RUL interval predictions. The network employs the negative log-likelihood as the loss function. Thanks to its dual-output structure, it not only provides point estimates, but also quantifies the aleatoric uncertainty inherent in the data. During the training process, the CNN is reformulated using Bayesian principles, and the Bayes-by-backprop method is applied to train the network. This transformation conv"
+ },
+ "10.36001/ijphm.2015.v6i4.2319": {
+  "title": "Uncertainty in Prognostics and Systems Health Management",
+  "authors": [
+   "Shankar Sankararaman",
+   "Kai Goebel"
+  ],
+  "year": 2020,
+  "journal": "International Journal of Prognostics and Health Management",
+  "issn_l": "2153-2648",
+  "issn": [
+   "2153-2648"
+  ],
+  "pdf": "https://papers.phmsociety.org/index.php/ijphm/article/download/2319/1296",
+  "abstract": "This paper presents an overview of various aspects of uncertainty quantification and management in prognostics and systems health management. Prognostics deals with predicting possible future failures in different types of engineering systems. It is almost practically impossible to precisely predict future events; therefore, it is necessary to account for the differentsources of uncertainty that affect prognostics, and develop a systematic framework for uncertainty quantification and management in this context. Researchers have developed computational methods for prognostics, both in the context of testing-based health management and condition-based health management. This paper explains tha"
+ },
+ "10.1002/nav.70033": {
+  "title": "A Robust Bayesian Framework for Degradation State Identification in the Presence of Outliers",
+  "authors": [
+   "Ancha Xu",
+   "Juan Wang",
+   "Di Zhu",
+   "Zhen Chen",
+   "Yijun Wang"
+  ],
+  "year": 2025,
+  "journal": "Naval Research Logistics (NRL)",
+  "issn_l": "0894-069X",
+  "issn": [
+   "0894-069X",
+   "1520-6750"
+  ],
+  "pdf": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/nav.70033",
+  "abstract": "ABSTRACT Accurate degradation state estimation is critical for predictive maintenance, yet it is often compromised by measurement outliers and parameter uncertainty. Existing methods either assume Gaussian measurement errors, which are sensitive to outliers, or overlook parameter uncertainty, leading to overconfident predictions. To address these challenges, we propose a Bayesian online degradation state estimation framework that integrates robust error modeling with parameter uncertainty quantification. Specifically, we model measurement errors using a Student's‐ distribution to handle outliers and employ variational Bayes with Laplace and Gamma approximations to estimate posterior distribu"
+ },
+ "10.1049/cim2.12021": {
+  "title": "A comprehensive framework from real‐time prognostics to maintenance decisions",
+  "authors": [
+   "Amit Kumar Jain",
+   "Maharshi Harshadbhai Dhada",
+   "Marco Pérez Hernández",
+   "Manuel Herrera",
+   "Ajith Kumar Parlikad"
+  ],
+  "year": 2021,
+  "journal": "IET Collaborative Intelligent Manufacturing",
+  "issn_l": "2516-8398",
+  "issn": [
+   "2516-8398"
+  ],
+  "pdf": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1049/cim2.12021",
+  "abstract": "Abstract Studying the influence of imperfect prognostics information on maintenance decisions is an underexplored area. To bridge this gap, a new comprehensive maintenance support system is proposed. First, a survival theory‐based prognostics module employing the Weibull time‐to‐event recurrent neural network was deployed in which prognostics competence was enhanced by predicting the parameters of failure distribution. In conjunction with this, a new predictive maintenance (PdM) planning model was framed via a trade‐off between corrective maintenance and time lost due to PdM. This optimises maintenance time based on operational and maintenance cost parameters from the historical data. The pe"
+ },
+ "10.3390/s22124549": {
+  "title": "Remaining Useful Life Prediction Method for Bearings Based on LSTM with Uncertainty Quantification",
+  "authors": [
+   "Jinsong Yang",
+   "Yizhen Peng",
+   "Jingsong Xie",
+   "Pengxi Wang"
+  ],
+  "year": 2022,
+  "journal": "Sensors",
+  "issn_l": "1424-8220",
+  "issn": [
+   "1424-8220"
+  ],
+  "pdf": "https://www.mdpi.com/1424-8220/22/12/4549/pdf?version=1655384494",
+  "abstract": "To reduce the economic losses caused by bearing failures and prevent safety accidents, it is necessary to develop an effective method to predict the remaining useful life (RUL) of the rolling bearing. However, the degradation inside the bearing is difficult to monitor in real-time. Meanwhile, external uncertainties significantly impact bearing degradation. Therefore, this paper proposes a new bearing RUL prediction method based on long-short term memory (LSTM) with uncertainty quantification. First, a fusion metric related to runtime (or degradation) is proposed to reflect the latent degradation process. Then, an improved dropout method based on nonparametric kernel density is developed to i"
+ },
+ "10.1038/s41598-026-65271-4": {
+  "title": "Survival-analysis-guided machine learning for failure and remaining-useful-life prediction in railway compressor",
+  "authors": [
+   "Hamdi Alaoui Abdelhafid",
+   "Anwar Meddaoui",
+   "Adil Hachmoud"
+  ],
+  "year": 2026,
+  "journal": "Scientific Reports",
+  "issn_l": "2045-2322",
+  "issn": [
+   "2045-2322"
+  ],
+  "pdf": "https://www.nature.com/articles/s41598-026-65271-4_reference.pdf",
+  "abstract": "Predictive maintenance requires reliable failure detection and remaining useful life (RUL) estimation under conditions of noisy sensor data, censored observations, and limited failure labeling. This work presents an interpretable predictive maintenance framework in which a Cox proportional hazards model is used to identify the operational variables most strongly associated with failure risk and to guide the construction of data-driven predictive models. The framework is validated on the real-world MetroPT-3 railway air-compressor dataset, using failure dates reported by the operator to derive both the binary failure-event label and a proxy RUL target. Machine learning and deep learning appro"
+ },
+ "10.3390/machines11020163": {
+  "title": "Explainable Data-Driven Method Combined with Bayesian Filtering for Remaining Useful Lifetime Prediction of Aircraft Engines Using NASA CMAPSS Datasets",
+  "authors": [
+   "Faisal Maulana",
+   "Andrew G. Starr",
+   "Agusmian Partogi Ompusunggu"
+  ],
+  "year": 2023,
+  "journal": "Machines",
+  "issn_l": "2075-1702",
+  "issn": [
+   "2075-1702"
+  ],
+  "pdf": "https://www.mdpi.com/2075-1702/11/2/163/pdf?version=1676004755",
+  "abstract": "An aircraft engine is expected to have a high-reliability system as a safety-critical asset. A scheduled maintenance strategy based on statistical calculation has been employed as the current practice to achieve the reliability requirement. Any improvement to this maintenance interval is made after significant reliability issues arise (such as flight delays and high component removals). Several publications and research studies have been conducted related to this issue, one of them involves performing simulations and providing aircraft operation datasets. The recently published NASA CMAPPS datasets have been utilised in this paper since they simulate flight data recording from various measur"
+ }
+}

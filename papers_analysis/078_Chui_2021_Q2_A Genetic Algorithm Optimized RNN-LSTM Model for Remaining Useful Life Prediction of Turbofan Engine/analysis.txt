@@ -1,0 +1,45 @@
+PAPER 042 - Chui et al. (2021)
+Judul   : A Genetic Algorithm Optimized RNN-LSTM Model for Remaining Useful Life Prediction of Turbofan Engine
+Jurnal  : Electronics (MDPI) | Scopus Q2 (SCImago SJR Best Quartile) | DOI 10.3390/electronics10030285
+Pilar   : B. Deep Learning RUL
+Relevansi: Pendukung
+
+KARAKTERISTIK STUDI
+Studi pengembangan model prediksi RUL untuk turbofan engine, diposisikan sebagai alat predictive maintenance (PdM) untuk mengurangi downtime dan biaya perawatan. Fokus pada peningkatan akurasi prediksi (RMSE) melalui kombinasi ekstraksi fitur dan arsitektur hybrid deep learning, dievaluasi pada benchmark publik.
+
+METODE
+- Ekstraksi fitur dua tahap CEEMD-WPT: CEEMD mendekomposisi sinyal menjadi IMF + residual, lalu WPT mendekomposisi IMF menjadi approximation/detail coefficients; dihitung 6 fitur statistik (Shannon entropy, kurtosis, skewness, peak-to-peak, standar deviasi, mean).
+- Model RNN (Elman 3 lapis, aktivasi power-sigmoid/bipolar-sigmoid) untuk prediksi jangka pendek dan LSTM (forget/input/output gate, cell state) untuk jangka panjang.
+- Penggabungan terbobot y_RNN-LSTM = w_RNN.y_RNN + w_LSTM.y_LSTM; bobot dioptimasi NSGA-II dengan dua tujuan (minimasi RMSE F1 dan MAE F2), Algoritma 1.
+- Evaluasi 10-fold cross-validation.
+
+DATA
+Dataset benchmark NASA C-MAPSS-TD (FD001-FD004). Tiap record 26 kolom: ID engine, timestamp, 3 operational setting, 21 sensor. Jumlah unit 200-519; kondisi operasi 1 atau 6; mode kegagalan 1 atau 2. Urutan kesulitan FD004 > FD002 > FD003 > FD001.
+
+TEMUAN UTAMA
+- RMSE/MAE model usulan: FD001 11,19/10,28; FD002 19,33/18,50; FD003 11,47/10,66; FD004 19,74/18,82; rata-rata RMSE 17,2.
+- CEEMD-WPT menurunkan RMSE 5,14-27,15% vs 6 metode dekomposisi lain.
+- RNN-LSTM menurunkan RMSE 6,07-14,72% vs RNN/LSTM tunggal.
+- Dibanding karya terkait ber-k-fold CV, RMSE turun 12,95-39,32%.
+
+RELEVANSI KE TESIS
+Pendukung: preseden metodologis kuat untuk RUL berbasis deep learning (RNN/LSTM + optimisasi metaheuristik), lengkap dengan validasi silang dan banyak baseline. Namun tidak memakai survival analysis/penyensoran (SUMBU METODE tak terpenuhi) dan domainnya bukan membran/RO (SUMBU DOMAIN tak terpenuhi). Berguna sebagai pembanding arsitektur dan protokol evaluasi RUL, bukan sebagai irisan gap.
+
+JUSTIFIKASI DIMENSI (per d1-d8)
+- d1 = 1: data multisensor deret waktu C-MAPSS (21 sensor, 3 setting, per siklus).
+- d2 = 1: target RUL eksplisit sampai kegagalan (run-to-failure).
+- d3 = "" : tidak ada survival/Weibull/hazard/cure; bukan data tersensor.
+- d4 = 1: RNN + LSTM + CEEMD-WPT + NSGA-II.
+- d5 = "" : tanpa CI/posterior; hanya RMSE/MAE titik.
+- d6 = "" : predictive maintenance hanya motivasi, tidak ada model/analisis keputusan.
+- d7 = "" : objek turbofan engine.
+- d8 = "" : tidak menerapkan small-data/transfer; GAN hanya saran.
+
+KUALITAS (skor 8/10)
+Q1=1, Q2=1, Q3=1, Q4=0,5 (parameter NSGA-II/wavelet final tidak lengkap), Q5=0,5 (CV & baseline kuat namun tanpa uji signifikansi), Q6=N/A, Q7=0 (tanpa ketidakpastian), Q8=N/A. Jumlah 5,0/6 -> 8.
+
+LIMITASI
+Konfigurasi optimisasi/serta wavelet tidak lengkap; tanpa uji signifikansi; tanpa interval ketidakpastian; hanya domain turbofan; tidak menangani censoring.
+
+BUKTI
+Fig. 1 (system overview), Fig. 3 (arsitektur RNN/LSTM), Table 1-4, Eq. (1)-(27), Algorithm 1. Figur arsitektur dibuka untuk verifikasi d4.

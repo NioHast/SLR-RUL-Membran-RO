@@ -1,0 +1,45 @@
+{
+ "no": 15,
+ "judul": "Design and development of reverse osmosis (RO) plant status monitoring system for early fault prediction and predictive maintenance",
+ "penulis": "Satyam Srivastava, Saikrishna Vaddadi, Pankaj Kumar, Shashikant Sadistap",
+ "tahun": 2018,
+ "jurnal": "Applied Water Science",
+ "doi": "10.1007/s13201-018-0821-8",
+ "kuartil": "Scopus Q1 (SCImago SJR Best Quartile)",
+ "pilar": "F. DSS & Predictive Maintenance (IS)",
+ "ringkasan": "Penelitian merancang dan membangun unit pemantauan status plant reverse osmosis (RO) berbasis embedded system untuk deteksi dini kerusakan dan pemeliharaan prediktif. Unit memantau parameter real-time (pH, TDS, laju alir feed/produk, tekanan, level tangki, daya) via sensor, menyimpan data ke smartphone/cloud, dan memakai Jaringan Saraf Tiruan (ANN) untuk memprediksi efisiensi membran serta peristiwa fouling/scaling. Sistem menghasilkan peringatan dini dan merekomendasikan tindakan pemeliharaan (chemical wash, water wash, penggantian membran); diuji pada plant 2000 LPH dan 10 desa di Rajasthan.",
+ "kontribusi": "Menunjukkan implementasi nyata sistem pemantauan prediktif pada plant RO/desalinasi (domain tesis) dan mengaitkannya ke tindakan pemeliharaan membran; namun tidak memprediksi RUL dan tidak memakai survival analysis/censoring, sehingga berperan sebagai konteks domain dan DSS.",
+ "temuan_kunci": [
+  "ANN multi-input single-output memprediksi efisiensi membran dari 5 parameter plant (laju alir feed/produk, pH, TDS, frekuensi water wash, waktu operasi).",
+  "Training Bayesian regularization terbaik: R2=99,99% dengan hanya 5 neuron dan MSE 1,28e-10; Levenberg-Marquardt mencapai R2=100% dengan 4 neuron (MSE 1,14e-5).",
+  "Efisiensi plant RO menurun dari ~67,7% (hari 1) menjadi ~25,6% (hari 15); penurunan tajam setelah hari 10 menandai peristiwa scaling membran yang memicu chemical wash.",
+  "Sistem memberi peringatan dini dan rekomendasi tindakan pemeliharaan, serta dapat diintegrasikan dengan plant RO kapasitas apa pun (modular)."
+ ],
+ "dimensi": {"d1": "1", "d2": "1", "d3": "", "d4": "1", "d5": "", "d6": "1", "d7": "1", "d8": ""},
+ "alasan_dimensi": {
+  "d1": "Memakai data multi-sensor deret waktu real-time: pH, TDS, laju alir feed/produk, tekanan, level tangki input/output, daya input, efisiensi plant; sampling per menit.",
+  "d2": "Mendefinisikan ambang/set point operasional (batas atas-bawah pH/TDS/flow) yang memicu alarm, dan mendefinisikan peristiwa kegagalan membran (fouling/scaling event); bukan prediksi RUL.",
+  "d3": "Tidak ada model survival/hazard/Weibull/cure maupun penanganan data tersensor.",
+  "d4": "Menggunakan Jaringan Saraf Tiruan (ANN/MLP) spesifik dengan dua algoritma pelatihan: Levenberg-Marquardt dan Bayesian regularization.",
+  "d5": "Tidak mengkuantifikasi ketidakpastian prediksi (tanpa CI/posterior); 'Bayesian regularization' di sini adalah metode pelatihan, bukan pelaporan posterior.",
+  "d6": "Menganalisis keputusan pemeliharaan konkret: sistem merekomendasikan chemical wash, water wash, penggantian membran, shutdown darurat; menyediakan DSS dengan peringatan dini dan panduan operator.",
+  "d7": "Objek adalah membran reverse osmosis (RO) pada plant desalinasi/pengolahan air, fokus fouling dan scaling.",
+  "d8": "Dataset kecil (75 sampel) dan uji pada armada kecil, tetapi tidak menerapkan metode small-data/transfer/hierarchical/all-censored secara eksplisit."
+ },
+ "relevansi": "Konteks",
+ "kualitas": {"skor": 8, "rincian": {"Q1": 1, "Q2": 1, "Q3": 0.5, "Q4": 0.5, "Q5": 1, "Q6": "N/A", "Q7": "N/A", "Q8": 1}, "catatan": "Sistem lengkap dan implementatif (hardware + firmware + app + ANN + uji lapangan). Kelemahan: data sangat kecil (75 sampel, 7-15 hari), hanya efisiensi sebagai target, tanpa validasi eksternal/statistik, tanpa kuantifikasi ketidakpastian, dan desain tidak sepenuhnya reproducible. Domain RO kuat (d7)."},
+ "data_kuantitatif": {"dataset": "Data sensor real-time plant RO 2000 LPH (CSIR-CEERI) + uji lapangan 10 plant RO desa (500-2000 LPH) di Rajasthan", "ukuran": "75 sampel; split 70% latih / 15% uji / 15% validasi; akuisisi 7-15 hari", "metrik": "Bayesian regularization R2=99,99% (5 neuron, MSE 1,28e-10); Levenberg-Marquardt R2=100% (4 neuron, MSE 1,14e-5); efisiensi plant turun 67,7% -> 25,6% dalam 15 hari"},
+ "metode": "Embedded system (Raspberry Pi 3, sensor pH/TDS/flow/pressure/level, Bluetooth, 2G GSM, cloud + app Android) untuk pemantauan; ANN multi-input single-output di MATLAB untuk prediksi efisiensi membran & deteksi fouling/scaling; perbandingan dua algoritma pelatihan.",
+ "limitasi": [
+  "Dataset sangat kecil (75 sampel) dan periode uji singkat (7-15 hari); generalisasi terbatas.",
+  "Target hanya efisiensi membran, bukan RUL; tidak ada survival/censoring.",
+  "Tidak ada kuantifikasi ketidakpastian maupun uji statistik.",
+  "Desain hardware/firmware tidak sepenuhnya reproducible."
+ ],
+ "funding_coi": "Didanai Department of Science and Technology (DST), New Delhi; akses terbuka CC BY 4.0; tidak ada pernyataan konflik kepentingan eksplisit pada teks.",
+ "status_inklusi": "diterima",
+ "figur_dibaca": [
+  {"file": "_page_7_Figure_7.jpeg", "isi": "Fig. 7 - efisiensi plant RO vs waktu (15 hari): turun dari 67,66% (hari 1) ke 25,59% (hari 15); anotasi 'Membrane scaling event critical point (need chemical wash)' menunjuk hari 10 (58,14%), sebelum penurunan tajam."}
+ ],
+ "bukti": ["Table 1: perbandingan dua algoritma pelatihan ANN (R2/MSE)", "Fig. 1: skema pemantauan status RO", "Fig. 6: variasi laju alir & kualitas air feed/produk", "Fig. 7: analisis efisiensi membran (scaling event)", "Fig. 8: MSE vs jumlah neuron"]
+}

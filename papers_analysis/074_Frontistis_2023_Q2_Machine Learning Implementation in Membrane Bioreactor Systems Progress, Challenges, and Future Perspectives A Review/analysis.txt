@@ -1,0 +1,45 @@
+PAPER 53 — Frontistis et al. (2023)
+Judul : Machine Learning Implementation in Membrane Bioreactor Systems: Progress, Challenges, and Future Perspectives: A Review
+Jurnal: Environments (MDPI) | Scopus Q2 | DOI 10.3390/environments10070127 | Pilar: E. Membrane/RO/Desalination
+
+KARAKTERISTIK STUDI
+Review kritis (bukan studi primer) atas penerapan machine learning pada sistem membrane bioreactor (MBR) untuk pengolahan air limbah lanjut. Fokus tiga area: prediksi fouling membran, kontrol/optimasi proses, dan deteksi dini kegagalan; sekaligus memetakan tantangan implementasi.
+
+METODE
+Sintesis literatur: taksonomi ML (supervised, unsupervised, reinforcement learning), penjelasan algoritma (ANN, SVM/SVR, RF, PLSR, ANFIS, DL), pembahasan evaluasi model (MSE, akurasi, cross-validation), lalu studi kasus aplikasi pada MBR. Ditutup rekomendasi riset (interpretable XAI, big data/IoT, model hybrid).
+
+DATA
+Tanpa dataset primer. Mengompilasi studi: pilot plant 462 hari (BR UNIT), biofilm-MBR 114 hari, full-scale 4 tahun/80.000 titik data, 1 tahun operasi dua AnMBR, dsb. Variabel khas MBR: TMP, permeate flux, MLSS, COD, DO, pH, temperatur, salinitas.
+
+TEMUAN UTAMA
+- ML (ANN/SVM/RF) efektif memprediksi TMP/laju fouling untuk merancang strategi pembersihan lebih baik.
+- RF terbaik pada data full-scale (80.000 titik/4 tahun); LSTM gagal menangkap nilai ekstrem.
+- DQN (reinforcement learning) menurunkan energi aerasi ~34% tanpa menurunkan kualitas efluen.
+- Tantangan utama: kualitas/kuantitas data, interpretabilitas (black box), adaptabilitas terhadap perubahan kondisi.
+- Transfer learning/domain adaptation/meta-learning direkomendasikan untuk generalisasi lintas sistem MBR.
+- Integrasi ML+IoT memungkinkan kontrol real-time.
+
+RELEVANSI KE TESIS
+Konteks. Memberikan landasan domain membran/fouling (d7) dan secara eksplisit menandai tiga celah yang relevan: keterbatasan data berlabel, transferabilitas, dan analisis ketidakpastian. Meski tidak membahas RUL/survival, review ini memperkuat urgensi pendekatan data efisien (transfer/small-data) dan kuantifikasi ketidakpastian pada RUL membran.
+
+JUSTIFIKASI DIMENSI
+- d1 = "1": data monitoring deret waktu multi-sensor (TMP, DO, pH, temperatur, MLSS, flux, COD) dari operasi jangka panjang (114-462 hari, 4 tahun).
+- d2 = "": tidak ada definisi RUL/ambang kegagalan formal; hanya laju fouling dan masa pakai membran.
+- d3 = "": tidak ada survival/Weibull/hazard/censoring.
+- d4 = "1": model spesifik (ANN, SVM/SVR, RF, PLSR, ANFIS, LSTM, DenseNet, DQN, PCA, fuzzy clustering).
+- d5 = "1": analisis ketidakpastian dibahas (Kulesha low uncertainty via cross-validation; Kovacs uncertainty analysis).
+- d6 = "1": menganalisis keputusan maintenance/kontrol (strategi pembersihan, Table 2 kontrol konvensional/rule-based/ML/hybrid, penghematan energi 34%).
+- d7 = "1": domain inti MBR/membran/fouling (desalinasi, pengolahan air).
+- d8 = "1": transferabilitas & keterbatasan data berlabel menjadi fokus analitis; merekomendasikan transfer learning/domain adaptation/meta-learning.
+
+KUALITAS (skor 8/10)
+Q1=1, Q2=1, Q3=0,5 (review tanpa data primer), Q4=0,5 (tanpa artefak reproduksibilitas), Q5=0,5 (pembahasan evaluasi lintas-studi), Q6=N/A (tak ada censoring), Q7=1 (uncertainty dibahas), Q8=1 (kaitan kuat ke keputusan maintenance/kontrol). Skor = 5,5/7*10 ≈ 8.
+
+LIMITASI
+Bukan studi primer; tidak mendefinisikan RUL dan tidak menyentuh survival/censoring; interpretabilitas & transferabilitas masih hambatan; kualitas data MBR terbatas.
+
+BUKTI
+- 'The review focuses on implementing ML algorithms to enhance the prediction of membrane fouling... enabling the development of novel cleaning strategies.'
+- '(i) data quality and availability, (ii) model interpretability, and (iii) adaptability to changes in process conditions.'
+- 'Adaptation of technologies such as transfer learning, domain adaptation, and meta-learning... could enhance the generalizability and transferability.'
+- 'the application of the deep Q-network (DQN) algorithm successfully reduced energy consumption for aeration by approximately 34%.'

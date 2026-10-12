@@ -1,0 +1,112 @@
+LOG SUBSTITUSI & EKSKLUSI, SLR RUL Membran RO
+====================================================================
+Dokumen ini mencatat SEMUA penggantian/penghapusan paper beserta alasannya,
+untuk menjaga REPRODUCIBILITY (sesuai PRISMA 2020: setiap eksklusi dicatat).
+
+Ringkas: korpus awal 118 -> setelah pembersihan & penggantian = 97 artikel.
+Sebaran final: Q1=55, Q2=28, Q3=14. Tidak ada Q4, tidak ada non-Scopus/prosiding.
+
+
+BAGIAN A. ELIMINASI Q4 (kebijakan: korpus tanpa jurnal Q4)
+--------------------------------------------------------------------
+A1. DIBUANG: "Membrane Fouling Prediction and Control Using AI and Machine Learning:
+    A Comprehensive Review" (Journal of Environmental & Earth Sciences, Q4)
+    Alasan: Q4.
+    -> DIGANTI-1: "Predictive Modeling of Membrane Fouling in Domestic Wastewater MBR
+       Using Machine Learning" (Water Environment Research, Q2)
+    Alasan ganti lagi: paper WER tidak dapat diakses (paywall).
+    -> DIGANTI-2 (FINAL): "Physics-informed machine learning for cross-study prediction
+       of oil-water membrane fouling" (Scientific Reports, Q1; DOI 10.1038/s41598-026-54120-z)
+A2. DIBUANG: "An Investigation on Machine Learning and Statistical Hybrid Framework to
+    Predict Remaining Useful life" (Communications on Applied Nonlinear Analysis, Q4)
+    Alasan: Q4.
+    -> DIGANTI: "Integrating Survival Analysis with Bayesian Statistics to Forecast the
+       Remaining Useful Life of a Centrifugal Pump Conditional to Multiple Fault Types"
+       (Energies, Q1; DOI 10.3390/en16093707)
+A3. DIBUANG: "Machine-Learning Techniques Track, Monitor Offshore Water-Treatment KPIs"
+    (Journal of Petroleum Technology, Q4)
+    Alasan: Q4.
+    -> DIGANTI: "Harnessing machine learning for transmembrane pressure prediction in
+       MBR systems during textile wastewater treatment"
+       (Desalination and Water Treatment, Q3; DOI 10.1016/j.dwt.2025.101238)
+
+
+BAGIAN B. PEMBERSIHAN (prosiding / non-Scopus / nasional < SINTA 2)
+--------------------------------------------------------------------
+Dihapus 12 artikel (tanpa pengganti) karena bukan jurnal Scopus / prosiding /
+nasional < SINTA 2, mis.:
+  - Procedia Manufacturing, Vibroengineering PROCEDIA, Proceedings of the Water
+    Environment Federation (prosiding)
+  - IJMR, J. Geoscience & Environment Protection, Scientia, Korean Inst. Smart Media,
+    Asian J. Social & Humanities (non-Scopus)
+  - J. Applied Membrane Science & Technology (hanya MyCite)
+  - Reka Buana (SINTA 3), Energy Materials & Product Design (bukan SINTA 2)
+Dihapus 1 lagi: "Transactions of the ASABE" (di-discontinue dari Scopus 2021).
+
+
+BAGIAN C. PENGGANTIAN PAPER INTI YANG TIDAK DAPAT DIAKSES (batch ini)
+--------------------------------------------------------------------
+11 paper berkategori INTI (survival/Weibull/hazard/Bayesian/uncertainty) tidak dapat
+diakses (paywall) -> DIGANTI 11 paper OPEN ACCESS setara (menjaga pilar A/C & dimensi
+D3 censoring, D5 ketidakpastian, D6 keputusan):
+
+DIBUANG (11, tak bisa diakses) -> DIGANTI (11, OA Q1-Q3):
+ 1. 10.1177/14759217251333056 (PINN bearing RUL)
+ 2. 10.1002/er.7548  (SOH Li-ion + Bayesian hyperparameter)
+ 3. 10.1002/stc.2811 (Bayesian RNN RUL uncertainty)
+ 4. 10.1115/1.4001580 (Two-Zone Proportional Hazard)
+ 5. 10.1016/j.jom.2007.01.021 (Weibull + ANN remaining life)
+ 6. 10.1088/1361-6501/ae0e3e (bearing multiscale BIGRU)
+ 7. 10.1002/qre.3308 (Bayesian NN RUL uncertainty)
+ 8. 10.1115/1.4051314 (Weibull + kNN bearing)
+ 9. 10.1115/1.4052838 (Bayesian Opt LSTM lathe)
+10. 10.1177/1350650119874560 (Proportional hazard lubricating oil; dimensi D3)
+11. 10.1784/insi.2020.62.12.710 (3-parameter Weibull PH)
+  ->
+ R1. 10.1016/j.ymssp.2012.02.015  (Proportional hazard + SVM)            Q1
+ R2. 10.1155/2014/807693          (Weibull + data tersensor Tipe-I)      Q2  [D3]
+ R3. 10.3390/batteries3040032     (Weibull + random effect, SOH)         Q2
+ R4. 10.1016/j.ress.2016.07.019   (RUL armada heterogen, kondisi variabel)Q1  [D8]
+ R5. 10.3390/s26092592            (Bayesian CNN UQ, interval RUL)        Q1  [D5]
+ R6. 10.36001/ijphm.2015.v6i4.2319(Uncertainty in Prognostics & PHM)     Q2  [D5]
+ R7. 10.1002/nav.70033            (Robust Bayesian degradation state)    Q1  [D5]
+ R8. 10.1049/cim2.12021           (Prognostics survival -> keputusan)    Q1  [D6]
+ R9. 10.3390/s22124549            (LSTM RUL + uncertainty quantification)Q1  [D5]
+ R10.10.1038/s41598-026-65271-4   (Cox PH + ML, data tersensor & label terbatas) Q1 [D3]
+ R11.10.3390/machines11020163     (Bayesian filtering RUL, C-MAPSS)      Q2  [D5]
+
+
+BAGIAN D. PENGHAPUSAN PAPER REDUNDAN & DOMAIN (batch ini, tanpa pengganti)
+--------------------------------------------------------------------
+5 paper DL-RUL generik (redundant; cakupan sudah jenuh) DIHAPUS:
+  - 10.1002/qre.3757, 10.1002/qre.3151, 10.1115/1.4050886,
+    10.1088/1361-6501/ad006d, 10.3103/s0146411623010030
+3 paper domain (paling tidak krusial) DIHAPUS:
+  - 10.1021/acs.est.5c15320 (EIT monitoring RO)
+  - 10.1021/acs.est.4c12835 (MBR fouling ML)
+  - 10.1080/00986445.2025.2611396 (spiral-wound UF fouling ML)
+
+
+CATATAN REPRODUCIBILITY
+--------------------------------------------------------------------
+- Reproducibility SLR bersandar pada PROSEDUR (protokol, PRISMA, log ini), BUKAN pada
+  daftar akhir yang identik. Semua deviasi (substitusi/eksklusi) dicatat di sini.
+- Pelaporan PRISMA: tambahkan baris "excluded at full-text stage: full text unavailable"
+  (11 inti) dan "excluded: not Scopus/proceedings/below SINTA 2" (13).
+- 7 paper pengganti belum berhasil diunduh otomatis (diblokir MDPI/Wiley/Elsevier) dan
+  terdaftar di full_text/DAFTAR_CLOSED.txt untuk diunduh manual (OA, tanpa login).
+
+
+BAGIAN E. TAMBAHAN (mencapai 101 artikel, semua dapat diakses)
+--------------------------------------------------------------------
+- 6 dari 7 pengganti (Bagian C) diunduh MANUAL oleh pemilik tugas -> masuk full_text.
+- 1 pengganti (10.1002/nav.70033, Robust Bayesian) TIDAK dapat diakses -> DIHAPUS dan
+  DIGANTI oleh: 10.1109/access.2020.3001013 "RUL Prediction Based on Bayesian
+  Regularized RBF Neural Network" (Q1).
+- Ditambah 4 artikel OA lagi (total korpus = 101):
+  10.1038/s41598-025-22866-7 (nonlinear degradation RUL)         Q1
+  10.1038/s41598-026-63408-z (hybrid health index wind turbine)  Q1
+  10.1371/journal.pone.0236128 (RUL excavator via reliability)   Q1
+  10.1016/j.ress.2026.113080 (dependent degradation modeling)    Q1
+- Semua 5 PDF baru berhasil diunduh otomatis.
+Sebaran final: korpus 101; Q1=59, Q2=28, Q3=14; Q4=0. D3 (censoring)=13.

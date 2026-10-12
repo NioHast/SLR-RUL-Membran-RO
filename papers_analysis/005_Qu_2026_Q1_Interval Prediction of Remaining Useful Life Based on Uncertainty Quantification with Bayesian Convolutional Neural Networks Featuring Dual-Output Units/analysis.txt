@@ -1,0 +1,44 @@
+PAPER 005 - Qu et al. (2026)
+Judul   : Interval Prediction of Remaining Useful Life Based on Uncertainty Quantification with Bayesian Convolutional Neural Networks Featuring Dual-Output Units
+Jurnal  : Sensors | Scopus Q1 | DOI 10.3390/s26092592
+Pilar   : C. Bayesian & Uncertainty
+Relevansi: Pendukung (DL + kuantifikasi ketidakpastian RUL; tanpa survival/censoring, domain bearing)
+
+KARAKTERISTIK STUDI
+Prediksi interval RUL dengan kuantifikasi ketidakpastian. Mengkritik metode RUL yang mengabaikan ketidakpastian akibat kelangkaan data dan noise, serta rendahnya reliabilitas estimasi titik. Kontribusi: kerangka probabilistik terpadu (aleatoric + epistemic) berbasis BCNN dual-output dengan Bayes-by-backprop.
+
+METODE
+- Backbone CNN diubah ke kerangka Bayesian: parameter jadi variabel acak (q_phi(w)), diestimasi via variational inference / Bayes-by-backprop, dengan local reparameterization (Eq. 9-11) dan KL divergence + NLL (Eq. 18-20).
+- Unit dual-output: satu output mean, satu output variansi (heteroskedastik) untuk aleatoric; distribusi parameter untuk epistemic.
+- Interval prediksi pada level kepercayaan (1-alpha) (Eq. 22); dekomposisi variansi total (Eq. 21) dan perhitungan aleatoric/epistemic (Eq. 24-25).
+
+DATA
+IEEE PHM 2012 (FEMTO-ST PRONOSTIA). Vibrasi horizontal/vertikal 25,6 kHz, 2560 titik/record, interval 10 s; suhu 0,1 Hz. Split: bearing 1-6,1-7,2-6,2-7 sebagai test. Label RUL 0-1 linear.
+
+TEMUAN UTAMA
+- PCIP tertinggi 0,9628; akurasi 0,8061; RMSE 0,0894 (bearing 1-6) - mengungguli 7 model pembanding.
+- Hanya memodelkan aleatoric (dual-output CNN) atau hanya epistemic (single-output/MC-dropout BCNN) memberi PCIP rendah.
+- MPIW 0,3740 lebih besar sebagai trade-off demi coverage tinggi.
+- var_aleatoric mendominasi var_total; var_epistemic kecil (dataset latih jauh lebih besar daripada uji).
+
+RELEVANSI KE TESIS
+Sangat berguna untuk komponen kuantifikasi ketidakpastian pada prediksi RUL tesis (interval prediction, dekomposisi aleatoric/epistemic). Namun: (a) tidak menangani data tersensor, (b) domain bearing bukan membran. Karena itu Pendukung.
+
+JUSTIFIKASI DIMENSI (d1-d8)
+- d1=1: sinyal vibrasi multi-arah + suhu, diproses sebagai deret waktu (spectral + z-score).
+- d2=1: target RUL eksplisit (0-1).
+- d3="": tidak ada survival/hazard/Weibull/cure; tidak memodelkan censoring.
+- d4=1: BCNN (parameter acak) + dual-output + Bayes-by-backprop.
+- d5=1: kuantifikasi aleatoric + epistemic, interval prediksi (Eq. 22), metrik PCIP/MPIW.
+- d6="": menyebut decision support tetapi tanpa model keputusan/jadwal pemeliharaan konkret.
+- d7="": objek bearing.
+- d8="": benchmark lengkap; tanpa transfer/hierarchical/small-data yang didemonstrasikan.
+
+KUALITAS (skor 7/10)
+Q1=1; Q2=1; Q3=0,5 (uji kontras kuantitatif hanya satu bearing, tanpa statistik lintas-run); Q4=1 (arsitektur & hyperparameter rinci); Q5=1 (7 pembanding + metrik UQ); Q6=0 (tanpa pencensoringan); Q7=1; Q8=0. Jumlah 5,5/8 -> 7.
+
+LIMITASI
+Tanpa pencensoringan; uji kuantitatif satu bearing; MPIW besar; data on-request; domain bearing.
+
+BUKTI (fig/table/eq)
+Fig. 1; Eq. (21),(22),(24),(25); Table 2; Table 4.

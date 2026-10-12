@@ -1,0 +1,55 @@
+PAPER 65: General Log-Linear Weibull Model Combining Vibration and Temperature Characteristics for Remaining Useful Life Prediction of Rolling Element Bearings
+Penulis: Mingzhu Lv, Shixun Liu, Xiaoming Su, Changzheng Chen (2020)
+Jurnal: Shock and Vibration | Scopus Q3 | DOI 10.1155/2020/8829823 | Pilar: A. Survival Analysis & Censored Data
+
+KARAKTERISTIK STUDI
+Studi ini adalah rujukan metode paling langsung untuk sumbu survival analysis tesis: membangun model reliabilitas Weibull multivariat (General Log-Linear Weibull) untuk RUL bantalan gelinding, dengan mempertimbangkan dua sumber sinyal kondisi (getaran dan suhu). Bertumpu pada proportional hazards model (Cox) dan memperluasnya menjadi Weibull accelerated failure time.
+
+METODE
+Ekstraksi fitur: relative RMS (RRMS) dari getaran (menghilangkan perbedaan individu bantalan) dan tren suhu relatif (suhu/kecepatan). Smoothing moving average 7 titik. Fuzzifikasi dua sinyal menjadi operator 'excessive vibrations' (Vib) dan 'overheated bearing' (Tem). Model: F(t,x)=1-exp(-(t/exp(a0+a1*Vib+a2*Tem))^beta). Estimasi parameter via maximum likelihood (mengandung suku kegagalan n dan suku tersuspensi m) + Newton-Raphson. RUL dari reliabilitas bersyarat R(t|t0) pada critical reliability (95% failure probability). Metrik RMSE/MAPE dan alpha-lambda.
+
+DATA
+PRONOSTIA (FEMTO-ST) accelerated ageing (OC1 1800rpm/4000N, OC2 1650rpm/4200N, OC3 1500rpm/5000N) -> 6 rekaman bantalan (1-4,1-5,1-6,1-7,2-4,3-3) dengan leave-one-out. Plus bantalan high-speed shaft (HSS) turbin angin 2 MW nyata, 50 hari, 97.656 Hz, dipantau via SCADA.
+
+TEMUAN UTAMA
+- GLL-Weibull (vibration+temperature) mengungguli LRM, SVM, KF, dan CNN pada PRONOSTIA (RMSE rata-rata 0,81 vs CNN 1,03; MAPE 10,76% vs CNN 11,68%).
+- Fungsi likelihood MLE memuat sampel tersuspensi (suspension) secara eksplisit -> benar-benar memodelkan data tersensor.
+- PDF RUL menyempit seiring bertambahnya data monitoring; RUL HSS 2192 h (~91 hari) pada periode awal.
+- Kovariat getaran lebih dominan daripada suhu.
+- Akurasi dalam batas alpha=20% hampir di semua kasus.
+
+RELEVANSI KE TESIS
+Inti-Metode. Ini adalah contoh konkret bagaimana model survival (Weibull dengan kovariat internal) dan data tersuspensi diintegrasikan untuk RUL. Menjadi acuan langsung untuk memadukan sinyal multi-sensor (getaran+suhu) ke dalam hazard model, dan untuk estimasi parameter MLE + PDF RUL - pola yang akan diadopsi tesis pada membran RO.
+
+JUSTIFIKASI DIMENSI
+- d1=1: dua sinyal deret waktu (getaran+suhu) sepanjang hidup bantalan; RRMS dan suhu relatif dihaluskan.
+- d2=1: RUL via reliabilitas bersyarat & critical reliability (95%).
+- d3=1: likelihood MLE memuat n failure + m suspension (pemodelan penyensoran nyata), Weibull AFT dengan kovariat.
+- d4=1: GLL-Weibull (parametrik) + MLE; pembanding SVM/CNN/KF/LRM.
+- d5=1: reliabilitas, PDF RUL, alpha-lambda, batas kepercayaan.
+- d6=1: diagram alir berakhir 'Maintenance decision'; fuzzy early warning.
+- d7="": bukan membran/RO.
+- d8=1: hanya 6 rekaman bantalan (leave-one-out); menekankan akurasi dengan sedikit riwayat.
+
+KUALITAS (skor 9)
+Q1=1; Q2=1; Q3=1 (dua dataset, termasuk nyata); Q4=0,5; Q5=1; Q6=1; Q7=1; Q8=1. Sum 7,5/8 -> 9,375 ~ 9. Rujukan metode inti tesis.
+
+LIMITASI
+Data latih kecil; suhu kurang sensitif untuk fault lemah; ketidakpastian besar di tahap awal; error besar periode awal (RMSE 1160 h).
+
+FUNDING/COI
+Tidak ada pernyataan dana spesifik; penulis menyatakan tidak ada konflik kepentingan.
+
+BUKTI
+- "a novel general log-linear Weibull (GLL-Weibull) model is constructed by considering vibration and temperature" (Abstract)
+- Eq.7: n failure samples, m suspension samples (pemodelan tersensor)
+- "Early warning ... 0.5 to 0.8 ... Near failure ... greater than 0.8" (Sec. 2.2.2)
+- "Then, the maintenance decision is made by the user" (Sec. 3)
+- Table 4: avg RMSE 0,81 / MAPE 10,76% (proposed) vs CNN 1,03/11,68%
+- "the RUL time of the HSS bearing ... is 2192 h" (Sec. 4.2.2)
+
+FIGUR DIBACA
+- _page_2_Figure_2.jpeg: kurva bathtub kegagalan.
+- _page_6_Figure_2.jpeg: diagram blok offline/online RUL -> Maintenance decision.
+- _page_11_Figure_2.jpeg: RUL prediksi vs aktual dengan CI 20%.
+- _page_13_Figure_4.jpeg: distribusi PDF RUL dan prediksi 2192 h.

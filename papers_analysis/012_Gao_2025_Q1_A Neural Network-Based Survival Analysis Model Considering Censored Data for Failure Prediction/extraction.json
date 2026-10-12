@@ -1,0 +1,46 @@
+{
+ "no": 12,
+ "judul": "A Neural Network-Based Survival Analysis Model Considering Censored Data for Failure Prediction",
+ "penulis": "Yuanyuan Gao, Shuo Li, Di Wang, Jianming Mao, Linhan Ouyang",
+ "tahun": 2025,
+ "jurnal": "IEEE Transactions on Automation Science and Engineering",
+ "doi": "10.1109/TASE.2025.3640217",
+ "kuartil": "Scopus Q1 (SCImago SJR Best Quartile)",
+ "pilar": "A. Survival Analysis & Censored Data",
+ "ringkasan": "Studi mengusulkan Bayesian LSTM-SURV, metode yang mengintegrasikan survival analysis (SA) dengan jaringan saraf untuk memodelkan hubungan non-linear antara sinyal degradasi multi-sensor dan RUL dengan adanya data tersensor. Alih-alih memprediksi nilai RUL langsung, model mengasumsikan masa pakai mengikuti distribusi Weibull dan memakai fungsi loss yang diturunkan dari likelihood SA agar memanfaatkan data lengkap dan tersensor; prosedur Bayesian mentransfer informasi dari unit latih ke unit uji. Diuji pada data simulasi dan dataset gas turbine C-MAPSS, model mengungguli TSNN dan DeepSurv (RMSE terbaik 4,420) serta mengkuantifikasi ketidakpastian via interval 90%.",
+ "kontribusi": "Menyediakan kerangka inti-metode tesis: analisis survival + jaringan saraf (LSTM) yang menangani data tersensor sekaligus mengkuantifikasi ketidakpastian prediksi RUL - kombinasi yang persis dibutuhkan tesis untuk membran RO dengan data lapangan tersensor.",
+ "temuan_kunci": [
+  "Fungsi loss berbasis likelihood SA (Weibull f(t) untuk data lengkap + S(t) untuk data tersensor) memungkinkan NN dilatih langsung pada data tersensor tanpa label RUL, mengatasi bias akibat hanya memakai data lengkap.",
+  "Bayesian LSTM-SURV konsisten mengungguli TSNN dan DeepSurv di seluruh tingkat pencensoringan; RMSE terbaik 4,420 pada p1=0.7, p2=0.8 (C-MAPSS/simulasi).",
+  "Prediksi berupa distribusi (parameter lambda dan k Weibull) memungkinkan kuantifikasi ketidakpastian; interval 90% (P_CI) meningkat seiring unit mendekati kegagalan.",
+  "Bayesian updating memakai prior dari data latih mentransfer informasi ke unit uji berdata sedikit, mengurangi noise dan meningkatkan akurasi prediksi dini."
+ ],
+ "dimensi": {"d1": "1", "d2": "1", "d3": "1", "d4": "1", "d5": "1", "d6": "", "d7": "", "d8": "1"},
+ "alasan_dimensi": {
+  "d1": "Memakai sinyal degradasi multi-sensor deret waktu (J sinyal per unit, matriks Y_i berukuran n_i x J) sebagai input; pada C-MAPSS 20.631 siklus observasi.",
+  "d2": "Mendefinisikan waktu kegagalan T_i, indikator survival d_i, survival function S_i(t), dan RUL sebagai integral dari t0 ke tak hingga; target prediksi adalah distribusi masa pakai.",
+  "d3": "ACTUALLY memodelkan data tersensor: fungsi likelihood gabungan f(L_i)^d_i * S(C_i)^(1-d_i), asumsi distribusi Weibull, survival function, dan menguji berbagai tingkat pencensoringan (p2=0,2-0,8); 90% CI.",
+  "d4": "Menggunakan model spesifik: LSTM + jaringan Bayesian (Bayesian LSTM-SURV), serta benchmark DeepSurv (Cox PH + deep network) dan TSNN.",
+  "d5": "Mengkuantifikasi ketidakpastian: output distribusi Weibull (PDF), interval kepercayaan 90% (P_CI), posterior Bayesian dengan mean-kovarians; semua true lifetime pada contoh jatuh dalam 90% CI.",
+  "d6": "Tidak menganalisis keputusan pemeliharaan spesifik (jadwal/biaya/DSS); hanya memotivasi secara umum bahwa RUL akurat mendukung 'strategic maintenance decisions' dan pengurangan downtime.",
+  "d7": "Domain adalah turbin gas (C-MAPSS) dan simulasi umum; bukan membran/RO/desalinasi/fouling.",
+  "d8": "Menangani skala data kecil/heterogen dan data yang didominasi sensor tersensor: transfer informasi via Bayesian prior ke unit uji berobservasi sedikit; menguji p1 serendah 0,3 (70% tersensor)."
+ },
+ "relevansi": "Inti-Metode",
+ "kualitas": {"skor": 9, "rincian": {"Q1": 1, "Q2": 1, "Q3": 1, "Q4": 0.5, "Q5": 1, "Q6": 1, "Q7": 1, "Q8": 0.5}, "catatan": "Metode inti tesis (survival+NN+censoring+uncertainty) dengan evaluasi kuat (simulasi + C-MAPSS, benchmark TSNN/DeepSurv, 90% CI). Kelemahan: kode tidak publik (reproducibility 0,5); keterkaitan keputusan pemeliharaan hanya konseptual (Q8=0,5); bukan domain membran."},
+ "data_kuantitatif": {"dataset": "Data simulasi (2 sensor, regresi polinomial + random effects) dan dataset gas turbine C-MAPSS FD001", "ukuran": "Simulasi: 500 unit latih / 100 unit uji; C-MAPSS: 100 unit latih (20.631 siklus) / 100 unit uji (13.096 siklus)", "metrik": "RMSE (Bayesian LSTM-SURV terbaik 4,420); dibanding TSNN (6,757) dan DeepSurv (25,299) pada p1=0.7,p2=0.8; P_CI interval 90%; waktu latih 503,6 detik"},
+ "metode": "Survival analysis + neural network: Bayesian LSTM-SURV dengan loss berbasis likelihood Weibull; pemodelan mixed-effects Bayesian untuk denoising sinyal; Bayesian updating untuk unit uji; hyperparameter via Bayesian optimization dan 5-fold cross-validation; benchmark DeepSurv dan TSNN.",
+ "limitasi": [
+  "Kode/model tidak dipublikasikan; reproducibility terbatas.",
+  "Keputusan pemeliharaan tidak dianalisis secara kuantitatif (biaya/penjadwalan) - hanya motivasi.",
+  "Domain bukan membran/RO; generalisasi ke data membran belum diuji.",
+  "Metode dua tahap MLE untuk hyperparameter dapat menimbulkan sedikit bias."
+ ],
+ "funding_coi": "Didanai Natural Science Foundation of China (Grant 72401130, 72471112) dan Natural Science Foundation of Jiangsu Province (BK20241397); tidak ada pernyataan konflik kepentingan eksplisit pada teks yang dibaca.",
+ "status_inklusi": "diterima",
+ "figur_dibaca": [
+  {"file": "_page_6_Figure_2.jpeg", "isi": "Fig. 2 - arsitektur Bayesian LSTM-SURV: input sinyal terdenoise -> sliding window (length L) -> LSTM cell -> dropout -> FC1/FC2 -> output parameter distribusi Weibull (lambda, k) dengan loss L_net; panel (c) PDF terprediksi dengan 90% CI; panel (d) survival function terprediksi vs true."},
+  {"file": "_page_8_Figure_12.jpeg", "isi": "Fig. 4 - PDF Weibull kondisional untuk 4 unit uji (id 42,21,57,17); garis merah (masa pakai nyata) dan biru (prediksi) berdekatan di sekitar puncak; area abu-abu = 90% CI; semua nilai nyata jatuh dalam CI."}
+ ],
+ "bukti": ["Eq. (16)-(20): fungsi loss berbasis likelihood SA (Weibull) untuk data lengkap & tersensor", "Eq. (21)-(23): Bayesian updating & prediksi RUL", "Table II: perbandingan RMSE vs TSNN/DeepSurv", "Fig. 3: RMSE vs tingkat pencensoringan p1/p2", "Fig. 4-6: PDF, survival curve, P_CI 90%", "Fig. 7: Bayesian updating sinyal"]
+}

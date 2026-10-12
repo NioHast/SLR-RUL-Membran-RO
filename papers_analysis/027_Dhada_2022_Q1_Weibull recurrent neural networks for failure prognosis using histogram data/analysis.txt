@@ -1,0 +1,46 @@
+PAPER 020 - Dhada et al. (2022)
+Judul   : Weibull recurrent neural networks for failure prognosis using histogram data
+Jurnal  : Neural Computing and Applications | Scopus Q1 (ScImago SJR Best Quartile) | DOI 10.1007/s00521-022-07667-7
+Pilar   : A. Survival Analysis & Censored Data
+Relevansi: Inti-Metode  (RUL/failure + survival/Weibull/censoring; domain armada truk)
+
+KARAKTERISTIK STUDI
+Use case industri pertama WTTE-RNN (Weibull time-to-event recurrent neural network) untuk prognosis kegagalan turbocharger armada truk Scania. Data kondisi berbentuk histogram jarang ter-sampling. WTTE-RNN mengoptimalkan parameter distribusi Weibull waktu-ke-kegagalan via RNN dengan loss log-likelihood yang memanfaatkan data tersensor.
+
+METODE
+- WTTE-RNN: RNN mengoptimalkan log-likelihood Weibull diskret, L = u_t*log(e^d(t)-1) - Lambda(t+1), dengan indikator censoring u_t.
+- Preprocessing histogram: differencing snapshots + normalisasi; reduksi dimensi via relative entropy (overlap antar histogram berurutan + terhadap histogram sehat) -> ~1/30 fitur.
+- Mode distribusi densitas Weibull = prediksi waktu kegagalan; distribusi dievaluasi ulang tiap snapshot baru.
+- Eksperimen: (1) uncensored saja (cluster-specific vs general), (2) campuran censored+uncensored; uji rasio censoring 4:1, 1:1, 1:15.
+
+DATA
+Armada truk heavy-duty Scania (turbocharger). 14 fitur histogram (ambient temp/pressure, axle load, boost pressure) + 6 kategorikal + 3 skalar; 10-30 snapshot/truk; 14% truk gagal.
+
+TEMUAN UTAMA
+- Menambahkan data tersensor memperbaiki prediksi (varians galat menjelang kegagalan hampir separuh).
+- Rasio tersensor:tak-tersensor 15:1 merusak performa (over-generalization loss Weibull); ada proporsi optimal.
+- Clustering sub-armada hanya menguntungkan bila dataset cukup besar; cluster kecil -> overfitting.
+- WTTE-RNN under-predict (konservatif), menguntungkan perencanaan pemeliharaan; galat dalam jendela aksi (~±25 timestep).
+- Reduksi dimensi histogram via relative entropy efektif.
+
+RELEVANSI KE TESIS
+Inti-Metode: preseden industri WTTE-RNN yang mengombinasikan survival Weibull + RNN + data tersensor untuk keputusan pemeliharaan berbasis risiko, dan membahas trade-off censoring/small-data - sangat relevan bagi tesis. Domain bukan membran.
+
+JUSTIFIKASI DIMENSI (per d1-d8)
+- d1 = 1: deret waktu multi-parameter kondisi (14 histogram + kategorikal + skalar), snapshot.
+- d2 = 1: waktu-ke-kegagalan & distribusi densitas kegagalan.
+- d3 = 1: loss Weibull dengan indikator censoring u_t; survival analysis; data tersensor dimanfaatkan.
+- d4 = 1: RNN + loss Weibull (WTTE-RNN).
+- d5 = 1: distribusi kegagalan/varians densitas sebagai ukuran keyakinan.
+- d6 = 1: keputusan pemeliharaan berbasis risiko dari varians densitas; jendela perencanaan divalidasi (~±25 timestep).
+- d7 = "" : domain armada truk, bukan membran.
+- d8 = 1: sampel jarang, censoring dominan, clustering/transfer sub-armada, analisis rasio censoring.
+
+KUALITAS (skor 8/10)
+Q1=1; Q2=1; Q3=0,5 (data Scania tidak publik, sampling jarang); Q4=0,5 (data restriktif, arsitektur dasar dijelaskan); Q5=1 (eksperimen uncensored/censored, clustering, ketidakseimbangan); Q6=1 (censoring inti); Q7=1 (distribusi/varians); Q8=0,5 (dukungan keputusan, bukan model keputusan eksplisit). Jumlah 6,5/8 -> 8.
+
+LIMITASI
+Data tidak publik/restriktif; sampling jarang; performa sensitif pada ketidakseimbangan censoring; domain non-membran; keputusan pemeliharaan tak dimodelkan.
+
+BUKTI (fig/table/eq)
+Eq. 1 (log-likelihood dengan u_t), Eq. 2-3 (Weibull diskret alpha/beta); Section 2.1 (relative entropy histogram); Fig. 2 (flowchart preprocessing); Fig. 3 (distribusi kegagalan terprediksi); Fig. 8-10 (galat vs clustering/censoring).

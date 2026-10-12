@@ -1,0 +1,1138 @@
+[
+ {
+  "id": "https://openalex.org/W3123084659",
+  "doi": "https://doi.org/10.3390/electronics10030285",
+  "title": "A Genetic Algorithm Optimized RNN-LSTM Model for Remaining Useful Life Prediction of Turbofan Engine",
+  "year": 2021,
+  "authors": [
+   "Kwok Tai Chui",
+   "Brij Bhooshan Gupta",
+   "Pandian Vasant"
+  ],
+  "venue": "Electronics",
+  "host": "Multidisciplinary Digital Publishing Institute",
+  "cites": 108,
+  "type": "article",
+  "oa": true,
+  "abstract": "Understanding the remaining useful life (RUL) of equipment is crucial for optimal predictive maintenance (PdM). This addresses the issues of equipment downtime and unnecessary maintenance checks in run-to-failure maintenance and preventive maintenance. Both feature extraction and prediction algorithm have played crucial roles on the performance of RUL prediction models. A benchmark dataset, namely Turbofan Engine Degradation Simulation Dataset, was selected for performance analysis and evaluation. The proposal of the combination of complete ensemble empirical mode decomposition and wavelet packet transform for feature extraction could reduce the average root-mean-square error (RMSE) by 5.14–27.15% compared with six approaches. When it comes to the prediction algorithm, the results of the RUL prediction model could be that the equipment needs to be repaired or replaced within a shorter or a longer period of time. Incorporating this characteristic could enhance the performance of the RUL prediction model. In this paper, we have proposed the RUL prediction algorithm in combination with recurrent neural network (RNN) and long short-term memory (LSTM). The former takes the advantages of short-term prediction whereas the latter manages better in long-term prediction. The weights to combine RNN and LSTM were designed by non-dominated sorting genetic algorithm II (NSGA-II). It achieved average RMSE of 17.2. It improved the RMSE by 6.07–14.72% compared with baseline models, stand-alone RNN, and stand-alone LSTM. Compared with existing works, the RMSE improvement by proposed work is 12.95–39.32%.",
+  "topics": [
+   "Machine Fault Diagnosis Techniques",
+   "Reliability and Maintenance Optimization",
+   "Technical Engine Diagnostics and Monitoring"
+  ],
+  "_queries": [
+   "remaining useful life LSTM prediction"
+  ],
+  "_score": 26.7,
+  "pillars": [
+   "B",
+   "F"
+  ],
+  "idx": 37
+ },
+ {
+  "id": "https://openalex.org/W4280535437",
+  "doi": "https://doi.org/10.3390/s22103803",
+  "title": "Remaining Useful Life Prediction of Lithium-Ion Batteries Using Neural Networks with Adaptive Bayesian Learning",
+  "year": 2022,
+  "authors": [
+   "Karkulali Pugalenthi",
+   "Hyunseok Park",
+   "Shaista Hussain",
+   "Nagarajan Raghavan"
+  ],
+  "venue": "Sensors",
+  "host": "Multidisciplinary Digital Publishing Institute",
+  "cites": 29,
+  "type": "article",
+  "oa": true,
+  "abstract": "With smart electronic devices delving deeper into our everyday lives, predictive maintenance solutions are gaining more traction in the electronic manufacturing industry. It is imperative for the manufacturers to identify potential failures and predict the system/device's remaining useful life (RUL). Although data-driven models are commonly used for prognostic applications, they are limited by the necessity of large training datasets and also the optimization algorithms used in such methods run into local minima problems. In order to overcome these drawbacks, we train a Neural Network with Bayesian inference. In this work, we use Neural Networks (NN) as the prediction model and an adaptive Bayesian learning approach to estimate the RUL of electronic devices. The proposed prognostic approach functions in two stages-weight regularization using adaptive Bayesian learning and prognosis using NN. A Bayesian framework (particle filter algorithm) is adopted in the first stage to estimate the network parameters (weights and bias) using the NN prediction model as the state transition function. However, using a higher number of hidden neurons in the NN prediction model leads to particle weight decay in the Bayesian framework. To overcome the weight decay issues, we propose particle roughening as a weight regularization method in the Bayesian framework wherein a small Gaussian jitter is added to the decaying particles. Additionally, weight regularization was also performed by adopting conventional resampling strategies to evaluate the efficiency and robustness of the proposed approach and to reduce optimization problems commonly encountered in NN models. In the second stage, the estimated distributions of network parameters were fed into the NN prediction model to predict the RUL of the device. The lithium-ion battery capacity degradation data (CALCE/NASA) were used to test the proposed method, and RMSE values and execution time were used as metrics to evaluate the performance.",
+  "topics": [
+   "Advanced Battery Technologies Research",
+   "Reliability and Maintenance Optimization",
+   "Fault Detection and Control Systems"
+  ],
+  "_queries": [
+   "remaining useful life Bayesian neural network"
+  ],
+  "_score": 26.4,
+  "pillars": [
+   "B",
+   "C",
+   "F"
+  ],
+  "idx": 38
+ },
+ {
+  "id": "https://openalex.org/W3197729315",
+  "doi": "https://doi.org/10.1109/jsen.2021.3109623",
+  "title": "A Novel Cap-LSTM Model for Remaining Useful Life Prediction",
+  "year": 2021,
+  "authors": [
+   "Chengying Zhao",
+   "Xianzhen Huang",
+   "Yuxiong Li",
+   "Shangjie Li"
+  ],
+  "venue": "IEEE Sensors Journal",
+  "host": "IEEE Sensors Council",
+  "cites": 64,
+  "type": "article",
+  "oa": false,
+  "abstract": "In recent years, the Remaining Useful Life (RUL) prediction has become a hot spot in Prognostics and Health Management (PHM) research. High-accuracy RUL prediction can reduce the probability of accident occurrence and improve the reliability of the mechanical system. This paper proposes a novel two-channel hybrid model for RUL prediction based on a Capsule Neural Network and a Long Short-Term Memory Network (Cap-LSTM). Conventional Convolutional Neural Networks (CNN) are widely used in RUL prediction. However, the pooling layer of the conventional CNN only extracts the most active part of the multivariate time-series sensor data. Moreover, conventional CNN is not sensitive to the direction and spatial position of features and thus the feature information may not be fully used. To overcome these shortcomings, this paper uses the capsule neural network to directly extract the highly correlated spatial feature information, from the multivariate time-series sensor data, thus avoiding the loss of the spatial position relationship between local features and reducing the complexity of the model. In order to obtain the training and test samples, this paper uses the sliding time window method to preprocess the data. Meanwhile, the piece-wise linear function is used to represent the actual performance degradation of the engine. The NASA C-MAPSS dataset is used to verify the prediction effectiveness of the Cap-LSTM model. The state-of-the-art RUL prediction models are also introduced and compared to the proposed approach, providing results that show the superiority of the presented method.",
+  "topics": [
+   "Machine Fault Diagnosis Techniques",
+   "Reliability and Maintenance Optimization",
+   "Fault Detection and Control Systems"
+  ],
+  "_queries": [
+   "remaining useful life LSTM prediction"
+  ],
+  "_score": 26.2,
+  "pillars": [
+   "B"
+  ],
+  "idx": 39
+ },
+ {
+  "id": "https://openalex.org/W4411616995",
+  "doi": "https://doi.org/10.1177/14759217251333056",
+  "title": "A remaining useful life prediction approach for ball bearing by acoustic emission signal and physics-informed neural network",
+  "year": 2025,
+  "authors": [
+   "L. P. Wang",
+   "Furui Wang",
+   "Yan Ru Yang",
+   "Wei‐Hsin Liao"
+  ],
+  "venue": "Structural Health Monitoring",
+  "host": "SAGE Publishing",
+  "cites": 8,
+  "type": "article",
+  "oa": false,
+  "abstract": "Ensuring the safety and reliability of key components, such as bearings, is crucial in machinery systems. Therefore, academia and industry have long tried to develop prognostic and health management technology. In particular, it is necessary to carry out methods to predict the remaining useful life (RUL) of the bearing, which can reduce economic losses and significantly prevent safety accidents. To overcome the deficiency of current investigations on bearing RUL prediction, a new method based on acoustic emission signals and a physics-informed neural network (PINN) is proposed in this paper. A new health index is constructed by developing an improved diffusion entropy, which outperforms current time-domain features. Four different labeling functions are compared to demonstrate that the exponential function has the best capacity to represent the bearing degradation process. The physical knowledge in this paper is derived from reliability engineering, that is, the failure procedure described via the Weibull distribution, and this knowledge is incorporated into a long short-term memory neural network to construct the PINN model by developing a Weibull-loss function. Moreover, this knowledge integration can improve prediction performance and help circumvent some obstacles, including poor quality or limited historical data and the obscurity of the underlying processes. Finally, the effectiveness and superiority of the proposed method are validated through experimental results and comparison with other existing methods.",
+  "topics": [
+   "Machine Fault Diagnosis Techniques",
+   "Reliability and Maintenance Optimization",
+   "Gear and Bearing Dynamics Analysis"
+  ],
+  "_queries": [
+   "Weibull degradation remaining useful life"
+  ],
+  "_score": 26.2,
+  "pillars": [
+   "A",
+   "B"
+  ],
+  "idx": 40
+ },
+ {
+  "id": "https://openalex.org/W3021048621",
+  "doi": "https://doi.org/10.1109/tii.2020.2991796",
+  "title": "Deep-Convolution-Based LSTM Network for Remaining Useful Life Prediction",
+  "year": 2020,
+  "authors": [
+   "Meng Ma",
+   "Zhu Mao"
+  ],
+  "venue": "IEEE Transactions on Industrial Informatics",
+  "host": "Institute of Electrical and Electronics Engineers",
+  "cites": 517,
+  "type": "article",
+  "oa": false,
+  "abstract": "Accurate prediction of remaining useful life (RUL) has been a critical and challenging problem in the field of prognostics and health management (PHM), which aims to make decisions on which component needs to be replaced when. In this article, a novel deep neural network named convolution-based long short-term memory (CLSTM) network is proposed to predict the RUL of rotating machineries mining the in situ vibration data. Different from previous research that simply connects a convolutional neural network (CNN) to a long short-term memory (LSTM) network serially, the proposed network conducts convolutional operation on both the input-to-state and state-to-state transitions of the LSTM, which contains both time-frequency and temporal information of signals, not only preserving the advantages of LSTM, but also incorporating time-frequency features. The convolutional structure in the LSTM has the ability to capture long-term dependencies and extract features from the time-frequency domain at the same time. By stacking the multiple CLSTM layer-by-layer and forming an encoding-forecasting architecture, the deep learning model is established for RUL prediction in this article. Run-to-failure tests on bearings are conducted, and vibration responses are collected. Using the proposed algorithm, RUL is predicted, and as a comparison, the performance from other methods, including deep CNNs and deep LSTM, is evaluated using the same dataset. The comparative study indicates that the proposed CLSTM network outperforms the current deep learning algorithms in URL prediction and system prognosis with respect to better accuracy and computation efficiency.",
+  "topics": [
+   "Machine Fault Diagnosis Techniques",
+   "Reliability and Maintenance Optimization",
+   "Fault Detection and Control Systems"
+  ],
+  "_queries": [
+   "remaining useful life LSTM prediction"
+  ],
+  "_score": 26,
+  "pillars": [
+   "B"
+  ],
+  "idx": 41
+ },
+ {
+  "id": "https://openalex.org/W2013995673",
+  "doi": "https://doi.org/10.1016/j.jom.2007.01.021",
+  "title": "Remaining life estimation of used components in consumer products: Life cycle data analysis by Weibull and artificial neural networks",
+  "year": 2007,
+  "authors": [
+   "Ilyas Mazhar",
+   "Sami Kara",
+   "Hartmut Kaebernick"
+  ],
+  "venue": "Journal of Operations Management",
+  "host": "Wiley",
+  "cites": 193,
+  "type": "article",
+  "oa": false,
+  "abstract": "Abstract Environmental awareness and legislative pressures have made manufacturers responsible for the take‐back and end‐of‐life treatment of their products. To competitively exploit these products, one option is to incorporate used components in “new” or remanufactured products. However, this option is partly limited by a firm's ability to assess the reliability of used components. A comprehensive two‐step approach is proposed. The first stage phase statistically analyzes the behavior of components for reuse. A well‐known reliability assessment method, the Weibull analysis, is applied to the time‐to‐failure data to assess the mean life of components. In the second phase, the degradation and condition monitoring data are analyzed by developing an artificial neural network (ANN) model. The advantages of this approach over traditional approaches employing multiple regression analysis are highlighted with empirical data from a consumer product. Finally, the Weibull analysis and the ANN model are then integrated to assess the remaining useful life of components for reuse. This is a critical advance in sustainable management of supply chains since it allows for a better understanding of not only service requirements of product, but the remaining life in a product and hence its suitability for reuse or remanufacture. Future work should assess: (1) reduction in downtime of process equipment through the implementation of this technique as a means to better manage preventative maintenance; (2) reduce field failure of remanufactured product; (3) selling‐service strategy through implementation of the proposed methodology.",
+  "topics": [
+   "Reliability and Maintenance Optimization",
+   "Sustainable Supply Chain Management",
+   "Transportation Systems and Infrastructure"
+  ],
+  "_queries": [
+   "Weibull degradation remaining useful life"
+  ],
+  "_score": 26,
+  "pillars": [
+   "A",
+   "B"
+  ],
+  "idx": 42
+ },
+ {
+  "id": "https://openalex.org/W4226069359",
+  "doi": "https://doi.org/10.1109/tim.2022.3167778",
+  "title": "Bi-LSTM-Based Two-Stream Network for Machine Remaining Useful Life Prediction",
+  "year": 2022,
+  "authors": [
+   "Ruibing Jin",
+   "Zhenghua Chen",
+   "Keyu Wu",
+   "Min Wu",
+   "Xiaoli Li",
+   "Ruqiang Yan"
+  ],
+  "venue": "IEEE Transactions on Instrumentation and Measurement",
+  "host": "Institute of Electrical and Electronics Engineers",
+  "cites": 142,
+  "type": "article",
+  "oa": false,
+  "abstract": "In industry, prognostics and health management (PHM) is used to improve the system reliability and efficiency. In PHM, remaining useful life (RUL) prediction plays a key role in preventing machine failure and reducing operation cost. Recently, with the development of deep learning technology, long short-term memory (LSTM) and convolutional neural networks (CNNs) are adopted into many RUL prediction approaches, which shows impressive performances. However, existing deep learning-based methods directly utilize raw signals. Since noise widely exists in raw signals, the quality of these approaches’ feature representation is degraded, which degenerates their RUL prediction accuracy. To address this issue, we first propose a series of new handcrafted feature flows (HFFs), which can suppress the raw signal noise and thus improve the encoded sequential information for the RUL prediction. In addition, to effectively integrate our proposed HFFs with the raw input signals, a novel bidirectional LSTM (Bi-LSTM)-based two-stream network is proposed. In this novel two-stream network, three different fusion methods are designed to investigate how to combine both streams’ feature representations in a reasonable way. To verify our proposed Bi-LSTM-based two-stream network, extensive experiments are carried out on the commercial modular aero propulsion system simulation (C-MAPSS) dataset, showing superior performances over state-of-the-art approaches.",
+  "topics": [
+   "Machine Fault Diagnosis Techniques",
+   "Reliability and Maintenance Optimization",
+   "Fault Detection and Control Systems"
+  ],
+  "_queries": [
+   "remaining useful life LSTM prediction"
+  ],
+  "_score": 26.0,
+  "pillars": [
+   "B",
+   "F"
+  ],
+  "idx": 43
+ },
+ {
+  "id": "https://openalex.org/W3116796810",
+  "doi": "https://doi.org/10.1109/tim.2020.3031113",
+  "title": "Remaining Useful Life Prognosis Based on Ensemble Long Short-Term Memory Neural Network",
+  "year": 2020,
+  "authors": [
+   "Yiwei Cheng",
+   "Jun Wu",
+   "Haiping Zhu",
+   "Siu Wing Or",
+   "Xinyu Shao"
+  ],
+  "venue": "IEEE Transactions on Instrumentation and Measurement",
+  "host": "Institute of Electrical and Electronics Engineers",
+  "cites": 129,
+  "type": "article",
+  "oa": false,
+  "abstract": "Remaining useful life (RUL) prognosis is of great significance to improve the reliability, availability, and maintenance cost of an industrial equipment. Traditional machine learning method is not fit for dealing with time series signals and has low generalization and stability in prognostic. In this article, a novel ensemble long short-term memory neural network (ELSTMNN) model for RUL prediction is proposed to enhance the RUL prognosis accuracy and improve the adaptive and generalization abilities under different prognostic scenarios. The ELSTMNN contains a series of long short-term memory neural networks (LSTMNNs), each of which is trained on a unique set of historical data. A novel ensemble method is first proposed using Bayesian inference algorithm to integrate multiple predictions of the LSTMNNs for the optimal RUL estimation. The effectiveness of the ELSTMNN-based RUL prognosis method is validated using two characteristically different turbofan engine data sets. The experimental results show a competitive performance of the ELSTMNN in comparison with other prognostic methods.",
+  "topics": [
+   "Machine Fault Diagnosis Techniques",
+   "Reliability and Maintenance Optimization",
+   "Fault Detection and Control Systems"
+  ],
+  "_queries": [
+   "remaining useful life Bayesian neural network"
+  ],
+  "_score": 25.9,
+  "pillars": [
+   "B",
+   "C",
+   "F"
+  ],
+  "idx": 44
+ },
+ {
+  "id": "https://openalex.org/W4366697946",
+  "doi": "https://doi.org/10.3103/s0146411623010030",
+  "title": "A New Approach for Remaining Useful Life Estimation Using Deep Learning",
+  "year": 2023,
+  "authors": [
+   "Drici Djalel",
+   "Yahia Kourd",
+   "Mostefa Mohamed Touba",
+   "Dimitri Lefebvre"
+  ],
+  "venue": "Automatic Control and Computer Sciences",
+  "host": "Pleiades Publishing",
+  "cites": 5,
+  "type": "article",
+  "oa": false,
+  "abstract": "Abstract Prognosis and Health Management (PHM) refer specifically to the prediction phase of the future behavior of the system or subsystem, including the remaining useful life (RUL). It is helpful to early detect incipient failures in many domains as aircraft, nuclear reactor, turbine gas, etc. In this paper we propose a new approach based on the implementation of data-driven methods for fault prognosis. Such methods require the availability of data describing the degradation process; when there is a lack of data, it is difficult to predict the states using deep models, which require a large amount of training data. In this paper, we propose to use a simple data augmentation strategy to solve the problem of data scarcity in prediction of RUL provided through the use of a long-short term memory (LSTM), which is a type of recurrent neural network. The results of our experiments demonstrate that using a simple data augmentation strategy can increase RUL prediction performance by using LSTM technics. We analyze our approach using data from NASA Commercial Modular Aero-Propulsion System Simulation (C-MAPSS).",
+  "topics": [],
+  "_queries": [
+   "remaining useful life data scarcity augmentation"
+  ],
+  "_score": 25.8,
+  "pillars": [
+   "B",
+   "D"
+  ],
+  "idx": 45
+ },
+ {
+  "id": "https://openalex.org/W4401037878",
+  "doi": "https://doi.org/10.1177/16878132241239802",
+  "title": "Bayesian neural networks for uncertainty quantification in remaining useful life prediction of systems with sensor monitoring",
+  "year": 2024,
+  "authors": [
+   "Sunday Ochella",
+   "Fateme Dinmohammadi",
+   "Mahmood Shafiee"
+  ],
+  "venue": "Advances in Mechanical Engineering",
+  "host": "SAGE Publishing",
+  "cites": 37,
+  "type": "article",
+  "oa": true,
+  "abstract": "Many machine learning (ML) algorithms have been developed over the past two decades for prognostics and health management (PHM) of complex engineering systems. However, most of the existing algorithms tend to produce point estimates of a variable of interest, for example the equipment’s remaining useful life (RUL). The point estimation of the RUL often neglects the uncertainty inherent in model parameters and/or the uncertainty associated with data inputs. Bayesian Neural Networks (BNNs) have shown a lot of promise in obtaining credible intervals for model parameters, thus accounting for the uncertainties inherent in both the model and data. This paper proposes a deep BNN model with the Monte Carlo (MC) dropout method to predict the RUL of engineering systems equipped with sensors and monitoring instruments. The model is tested on NASA’s Turbofan Engine Degradation Simulation Dataset and the results are discussed and analyzed. It is revealed that the method can produce highly accurate predictions for RUL distribution parameters in safety critical components.",
+  "topics": [
+   "Machine Fault Diagnosis Techniques",
+   "Reliability and Maintenance Optimization",
+   "Fault Detection and Control Systems"
+  ],
+  "_queries": [
+   "remaining useful life Bayesian neural network"
+  ],
+  "_score": 25.6,
+  "pillars": [
+   "B",
+   "C"
+  ],
+  "idx": 46
+ },
+ {
+  "id": "https://openalex.org/W2068036956",
+  "doi": "https://doi.org/10.1115/1.4001580",
+  "title": "Two-Zone Proportional Hazard Model for Equipment Remaining Useful Life Prediction",
+  "year": 2010,
+  "authors": [
+   "Ming‐Yi You",
+   "Lin Li",
+   "Guang Meng",
+   "Jun Ni"
+  ],
+  "venue": "Journal of Manufacturing Science and Engineering",
+  "host": "ASM International",
+  "cites": 34,
+  "type": "article",
+  "oa": false,
+  "abstract": "Since pioneering work in 1972, the proportional hazard model (PHM) has been widely studied for survival analysis in the area of medicine. Recently, applying the PHM in the area of reliability engineering attracts significant research attentions. In this paper, a two-zone PHM is investigated to predict equipment remaining useful life (RUL) based on the practice that the equipment lifecycle could be divided into two zones: a stable zone and a degradation zone. Results from the numerical experiment illustrate that RUL prediction by applying the proposed two-zone PHM is more accurate and reliable than prediction using the traditional PHM for the entire lifecycle. In practice, this improvement is crucial for real-time maintenance decision making to prevent equipment from catastrophic failures.",
+  "topics": [
+   "Reliability and Maintenance Optimization",
+   "Machine Fault Diagnosis Techniques",
+   "Fault Detection and Control Systems"
+  ],
+  "_queries": [
+   "remaining useful life survival analysis"
+  ],
+  "_score": 25.6,
+  "pillars": [
+   "A",
+   "B",
+   "F"
+  ],
+  "idx": 47
+ },
+ {
+  "id": "https://openalex.org/W2922825525",
+  "doi": "https://doi.org/10.36001/ijphm.2019.v10i4.2612",
+  "title": "Data-driven Prognostics with Predictive Uncertainty Estimation using Ensemble of Deep Ordinal Regression Models",
+  "year": 2019,
+  "authors": [
+   "Vishnu Tv",
+   "Diksha Chavan",
+   "Pankaj Malhotra",
+   "Lovekesh Vig",
+   "Gautam M. Shroff"
+  ],
+  "venue": "International Journal of Prognostics and Health Management",
+  "host": "The Prognostics and Health Management Society",
+  "cites": 13,
+  "type": "article",
+  "oa": true,
+  "abstract": "Prognostics or Remaining Useful Life (RUL) Estimation from multi-sensor time series data is useful to enable condition-based maintenance and ensure high operational availability of equipment. We propose a novel deep learning based approach for Prognostics with Uncertainty Quantification that is useful in scenarios where: (i) access to labeled failure data is scarce due to rarity of failures (ii) inherent noise ispresent in the sensor readings. The two scenarios mentioned are unavoidable sources of uncertainty in the RUL estimation process, often resulting in unreliable RUL estimates. To address (i), we formulate RUL estimation as an Ordinal Regression (OR) problem and propose LSTM-OR: deep Long Short Term Memory (LSTM) network-based approach to learn the OR function. We show that LSTM-OR naturally allows for the incorporation of censored operational instances in training along with the failed instances, leading to more robust learning. To address (ii), we propose a simple yet effectiveapproach to quantify predictive uncertainty in the RUL estimation models by training an ensemble of LSTM-OR models. Through empirical evaluation on the publicly available turbofan engine benchmark datasets, we demonstrate that LSTMOR is at par with commonly used deep metric regressionbased approaches for RUL estimation when sufficient failed instances are available for training. Importantly, LSTM-OR outperforms these metric regression-based approaches in the practical scenario where failed training instances are scarce, but sufficient operational (censored) instances are additionally available. Furthermore, our uncertainty quantification approach yields high-quality predictive uncertainty estimateswhile also leading to improved RUL estimates compared to single best LSTM-OR models.",
+  "topics": [
+   "Machine Fault Diagnosis Techniques",
+   "Reliability and Maintenance Optimization",
+   "Fault Detection and Control Systems"
+  ],
+  "_queries": [
+   "remaining useful life censored",
+   "remaining useful life censored data deep learning",
+   "predictive maintenance censored data"
+  ],
+  "_score": 25.6,
+  "pillars": [
+   "A",
+   "B",
+   "C",
+   "F"
+  ],
+  "idx": 48
+ },
+ {
+  "id": "https://openalex.org/W4362009348",
+  "doi": "https://doi.org/10.1109/jsen.2023.3261874",
+  "title": "Remaining Useful Life Prediction of Turbofan Engines Using CNN-LSTM-SAM Approach",
+  "year": 2023,
+  "authors": [
+   "Jie Li",
+   "Yuanjie Jia",
+   "Mingbo Niu",
+   "Wei Zhu",
+   "Fanxi Meng"
+  ],
+  "venue": "IEEE Sensors Journal",
+  "host": "IEEE Sensors Council",
+  "cites": 90,
+  "type": "article",
+  "oa": false,
+  "abstract": "Accurate remaining useful life (RUL) prediction of turbofan engines can effectively avoid serious air disaster due to engine failure by mining its component degradation characteristics. However, the complexity of engine component degradation characteristics keeps increasing when the airplane flies in complex environments and multioperating working point (MOP) mode. In this work, a deep learning fusion algorithm based on self-attention mechanism (SAM) is proposed. This algorithm uses a 1-D convolutional neural network (CNN) to extract the spatial features and long short-term memory (LSTM) networks to fuse the measurement data of 21 components and extract the temporal feature from the measured data. Furthermore, with extracted features and SAM, the proposed algorithm provides weight redistribution and solves the information loss problem in LSTM. Experimental results validated the proposed model and it is found that the proposed prediction model can predict RUL of turbofan engines accurately and stably under the MOP mode and the proposed model outperforms other latest existing approaches.",
+  "topics": [
+   "Machine Fault Diagnosis Techniques",
+   "Reliability and Maintenance Optimization",
+   "Technical Engine Diagnostics and Monitoring"
+  ],
+  "_queries": [
+   "remaining useful life LSTM prediction"
+  ],
+  "_score": 25.5,
+  "pillars": [
+   "B"
+  ],
+  "idx": 49
+ },
+ {
+  "id": "https://openalex.org/W3175682324",
+  "doi": "https://doi.org/10.1002/stc.2811",
+  "title": "A probabilistic Bayesian recurrent neural network for remaining useful life prognostics considering epistemic and aleatory uncertainties",
+  "year": 2021,
+  "authors": [
+   "Jose Caceres",
+   "Danilo Gonzalez",
+   "Taotao Zhou",
+   "Enrique López Droguett"
+  ],
+  "venue": "Structural Control and Health Monitoring",
+  "host": "Wiley",
+  "cites": 86,
+  "type": "article",
+  "oa": true,
+  "abstract": "Deep learning-based approach has emerged as a promising solution to handle big machinery data from multi-sensor suites in complex physical assets and predict their remaining useful life (RUL). However, most recent deep learning-based approaches deliver a single-point estimate of RUL as these models represent the weights of a neural network as a deterministic value and hence cannot convey uncertainty in the RUL prediction. This practice usually provides overly confident predictions that might cause severe consequences in safety-critical industries. To address this issue, this paper proposes a probabilistic Bayesian recurrent neural network (RNN) for RUL prognostics considering epistemic and aleatory uncertainties. The epistemic uncertainty is handled by Bayesian RNN layers as extensions from the Frequentist RNN layers using the Flipout method. The aleatory uncertainty is covered by a probabilistic output that follows a Gaussian distribution parameterized by the two neurons in the output layer. The network is trained using Bayes by backprop with the Flipout method. The proposed model is demonstrated by the open-access Commercial Modular Aero-Propulsion System Simulation (C-MAPSS) dataset of turbofan engines and a comparative study of the Frequentist RNN counterparts, the Monte Carlo Dropout-based RNN, and the state-of-the-art models for C-MAPSS datasets. The results demonstrate the promising performance and robustness of the proposed model in RUL prognostics.",
+  "topics": [
+   "Machine Fault Diagnosis Techniques",
+   "Reliability and Maintenance Optimization",
+   "Fault Detection and Control Systems"
+  ],
+  "_queries": [
+   "remaining useful life Bayesian neural network"
+  ],
+  "_score": 25.5,
+  "pillars": [
+   "B",
+   "C"
+  ],
+  "idx": 50
+ },
+ {
+  "id": "https://openalex.org/W4392865038",
+  "doi": "https://doi.org/10.3390/batteries10030106",
+  "title": "Hybrid Neural Networks for Enhanced Predictions of Remaining Useful Life in Lithium-Ion Batteries",
+  "year": 2024,
+  "authors": [
+   "Alireza Rastegarpanah",
+   "M. Salman Asif",
+   "Rustam Stolkin"
+  ],
+  "venue": "Batteries",
+  "host": "Multidisciplinary Digital Publishing Institute",
+  "cites": 30,
+  "type": "article",
+  "oa": true,
+  "abstract": "With the proliferation of electric vehicles (EVs) and the consequential increase in EV battery circulation, the need for accurate assessment of battery health and remaining useful life (RUL) is paramount, driven by environmentally friendly and sustainability goals. This study addresses this pressing concern by employing data-driven methods, specifically harnessing deep learning techniques to enhance RUL estimation for lithium-ion batteries (LIB). Leveraging the Toyota Research Institute Dataset, consisting of 124 lithium-ion batteries cycled to failure and encompassing key metrics such as capacity, temperature, resistance, and discharge time, our analysis substantially improves RUL prediction accuracy. Notably, the Convolutional-LSTM-Deep Neural Network (CLDNN) model and the Transformer-LSTM (Temporal-Transformer) model have emerged as standout Remaining Useful Life (RUL) predictors. The CLDNN model, in particular, achieved a remarkable Mean Absolute Error (MAE) of 84.012 and a Mean Absolute Percentage Error (MAPE) of 25.676. Similarly, the Temporal-Transformer model exhibited notable performance with an MAE of 85.134 and a MAPE of 28.7932. These impressive results were achieved through the application of Bayesian hyperparameter optimization, further enhancing the accuracy of predictive methods. These models were benchmarked against existing approaches, demonstrating superior results with an improvement in MAPE ranging from 4.01% to 7.12%.",
+  "topics": [
+   "Advanced Battery Technologies Research",
+   "Advancements in Battery Materials",
+   "Machine Fault Diagnosis Techniques"
+  ],
+  "_queries": [
+   "remaining useful life Bayesian neural network"
+  ],
+  "_score": 25.4,
+  "pillars": [
+   "B",
+   "C"
+  ],
+  "idx": 51
+ },
+ {
+  "id": "https://openalex.org/W4413911711",
+  "doi": "https://doi.org/10.3390/machines13090789",
+  "title": "Remaining Useful Life Prediction of Turbine Engines Using Multimodal Transfer Learning",
+  "year": 2025,
+  "authors": [
+   "Jiaze Li",
+   "Zeliang Yang"
+  ],
+  "venue": "Machines",
+  "host": "Multidisciplinary Digital Publishing Institute",
+  "cites": 3,
+  "type": "article",
+  "oa": true,
+  "abstract": "Remaining useful life (RUL) prediction is a core technology in prognostics and health management (PHM), crucial for ensuring the safe and efficient operation of modern industrial systems. Although deep learning methods have shown potential in RUL prediction, they often face two major challenges: an insufficient generalization ability when distribution gaps exist between training data and real-world application scenarios, and the difficulty of comprehensively capturing complex equipment degradation processes with single-modal data. A key challenge in current research is how to effectively fuse multimodal data and leverage transfer learning to address RUL prediction in small-sample and cross-condition scenarios. This paper proposes an innovative deep multimodal fine-tuning regression (DMFR) framework to address these issues. First, the DMFR framework utilizes a Convolutional Neural Network (CNN) and a Transformer Network to extract distinct modal features, thereby achieving a more comprehensive understanding of data degradation patterns. Second, a fusion layer is employed to seamlessly integrate these multimodal features, extracting fused information to identify latent features, which are subsequently utilized in the predictor. Third, a two-stage training algorithm combining supervised pre-training and fine-tuning is proposed to accomplish transfer alignment from the source domain to the target domain. This paper utilized the Commercial Modular Aero-Propulsion System Simulation (C-MAPSS) turbine engine dataset publicly released by NASA to conduct comparative transfer experiments on various RUL prediction methods. The experimental results demonstrate significant performance improvements across all tasks.",
+  "topics": [
+   "Machine Fault Diagnosis Techniques",
+   "Reliability and Maintenance Optimization",
+   "Technical Engine Diagnostics and Monitoring"
+  ],
+  "_queries": [
+   "remaining useful life transfer learning"
+  ],
+  "_score": 25.4,
+  "pillars": [
+   "B",
+   "D"
+  ],
+  "idx": 52
+ },
+ {
+  "id": "https://openalex.org/W4200321320",
+  "doi": "https://doi.org/10.1002/er.7548",
+  "title": "State‐of‐health estimation and remaining useful life for lithium‐ion battery based on deep learning with Bayesian hyperparameter optimization",
+  "year": 2021,
+  "authors": [
+   "Depeng Kong",
+   "Shuhui Wang",
+   "Ping Ping"
+  ],
+  "venue": "International Journal of Energy Research",
+  "host": "Wiley",
+  "cites": 75,
+  "type": "article",
+  "oa": true,
+  "abstract": "Lithium-ion battery state-of-health (SOH) estimation and remaining usable life (RUL) prediction are important for battery prognosis and health management. In this article, a framework-combined deep convolution neural network (DCNN) with double-layer long short-term memory (LSTM) is proposed, which is designed for online health prognosis. Based on the raw data obtained during the constant current charging process, the aging characteristics of the battery can be extracted by DCNN to estimate SOH. The estimation results are then sent to the LSTM for the temporal prediction of the RUL. This framework considers both temporal and spatial characteristics of data, and the powerful spatial feature extraction ability of DCNN and the effectiveness of LSTM for time series problems can ensure the high precision of calculation. At the same time, the hyperparameters of the neural networks, which can highly affect the performance of networks, are obtained by Bayesian optimization to ensure the networks run in the best status. The results show that the proposed method can achieve low root mean square error, which are inferior to 0.0061 and 0.0627 for SOH estimation and RUL prediction, respectively.",
+  "topics": [
+   "Advanced Battery Technologies Research",
+   "Advancements in Battery Materials",
+   "Structural Health Monitoring Techniques"
+  ],
+  "_queries": [
+   "remaining useful life Bayesian neural network"
+  ],
+  "_score": 25.3,
+  "pillars": [
+   "B",
+   "C"
+  ],
+  "idx": 53
+ },
+ {
+  "id": "https://openalex.org/W3210322019",
+  "doi": "https://doi.org/10.1115/1.4052838",
+  "title": "Bayesian Optimization LSTM/bi-LSTM Network With Self-Optimized Structure and Hyperparameters for Remaining Useful Life Estimation of Lathe Spindle Unit",
+  "year": 2021,
+  "authors": [
+   "Nikhil M. Thoppil",
+   "Velagapudi Vasu",
+   "C. S. P. Rao"
+  ],
+  "venue": "Journal of Computing and Information Science in Engineering",
+  "host": "ASM International",
+  "cites": 24,
+  "type": "article",
+  "oa": false,
+  "abstract": "Abstract An effective maintenance strategy to cut back maintenance costs and production loss with assured product quality has always been a major concern for industries. The Industry 4.0 era has built a wide acceptance for the predictive maintenance techniques in the remaining useful life (RUL) estimation of critical industrial systems. In this paper, long short-term memory (LSTM) and bidirectional-LSTM (bi-LSTM) deep neural architecture-based predictive algorithms are proposed for the RUL estimation of the lathe spindle unit. The deep learning algorithm is embedded within a Bayesian optimization algorithm for the self-optimization of its network structure and hyperparameters. The proposed deep learning algorithm is trained using lathe spindle health degradation data collected from an experimental accelerated run-to-failure test rig to evolve an RUL prediction model. The vibration signals representing lathe spindle health degradation from the health to faulty state are analyzed to extract time, frequency, and time-frequency domain features, which are then subjected to a neighborhood component analysis (NCA) based feature selection criteria. Finally, the selected relevant features are used to train the optimized LSTM/bi-LSTM network for RUL estimation. A comparison of the prediction results for Bayesian optimized LSTM/bi-LSTM network architectures and other prominent data-driven approaches are performed. The Bayesian optimized LSTM + bi-LSTM deep network architecture is observed to have the highest prediction accuracy for lathe spindle RUL estimation.",
+  "topics": [
+   "Machine Fault Diagnosis Techniques",
+   "Reliability and Maintenance Optimization",
+   "Fault Detection and Control Systems"
+  ],
+  "_queries": [
+   "remaining useful life Bayesian neural network"
+  ],
+  "_score": 25.2,
+  "pillars": [
+   "B",
+   "C",
+   "F"
+  ],
+  "idx": 54
+ },
+ {
+  "id": "https://openalex.org/W3112923520",
+  "doi": "https://doi.org/10.1784/insi.2020.62.12.710",
+  "title": "Remaining useful life prediction of rolling bearings based on the three-parameter Weibull distribution proportional hazards model",
+  "year": 2020,
+  "authors": [
+   "Ye Wang",
+   "Zhixiong Chen",
+   "Yang Zhang",
+   "Xin Li",
+   "Zhixiong Li"
+  ],
+  "venue": "Insight - Non-Destructive Testing and Condition Monitoring",
+  "host": "British Institute of Non-Destructive Testing",
+  "cites": 23,
+  "type": "article",
+  "oa": false,
+  "abstract": "In order to accurately predict the remaining useful life (RUL) of rolling bearings, a novel method based on the threeparameter Weibull distribution proportional hazards model (WPHM) is proposed in this paper. In this new method, degradation features of the bearing vibration signals were calculated in the time, frequency and time-frequency domains and treated as the input covariates of the predictive WPHM. Essential knowledge of the bearing degradation dynamics was learnt from the input features to build an effective three-parameter WPHM for bearing RUL prediction. Experimental data acquired from the run-to-failure bearing tests of the intelligent maintenance system (IMS) was used to evaluate the proposed method. The analysis results demonstrate that the proposed model is able to produce accurate RUL prediction for the tested bearings and outperforms the popular two-parameter WPHM.",
+  "topics": [
+   "Machine Fault Diagnosis Techniques",
+   "Reliability and Maintenance Optimization",
+   "Gear and Bearing Dynamics Analysis"
+  ],
+  "_queries": [
+   "Weibull degradation remaining useful life"
+  ],
+  "_score": 25.2,
+  "pillars": [
+   "A"
+  ],
+  "idx": 55
+ },
+ {
+  "id": "https://openalex.org/W4384932338",
+  "doi": "https://doi.org/10.3390/environments10070127",
+  "title": "Machine Learning Implementation in Membrane Bioreactor Systems: Progress, Challenges, and Future Perspectives: A Review",
+  "year": 2023,
+  "authors": [
+   "Zacharias Frontistis",
+   "Grigoris Lykogiannis",
+   "Anastasios Sarmpanis"
+  ],
+  "venue": "Environments",
+  "host": "Multidisciplinary Digital Publishing Institute",
+  "cites": 61,
+  "type": "article",
+  "oa": true,
+  "abstract": "This study offers a review of machine learning (ML) applications in membrane bioreactor (MBR) systems, an emerging technology in advanced wastewater treatment. The review focuses on implementing ML algorithms to enhance the prediction of membrane fouling, control and optimize the system, and predict faults early, thereby enabling the development of novel cleaning strategies. Key ML algorithms such as artificial neural networks (ANNs), support vector machines (SVMs), random forest, and reinforcement learning (RL) are briefly introduced, with an emphasis on their potential and limitations in advanced wastewater applications. The main challenges obstructing the implementation, namely data quality, interpretability, and transferability of ML, are identified. Finally, future research trends are proposed, including ML integration with big data, the Internet of Things (IoT), and hybrid model development. The review also underscores the need for interdisciplinary collaboration and investment in data management, along with the implementation of new policies addressing data privacy and security. By addressing these challenges, the integration of ML into MBRs has the potential to significantly enhance performance and reduce the energy footprint, providing a sustainable solution for advanced wastewater treatment.",
+  "topics": [
+   "Membrane Separation Technologies",
+   "Wastewater Treatment and Reuse",
+   "Wastewater Treatment and Nitrogen Removal"
+  ],
+  "_queries": [
+   "membrane fouling prediction machine learning"
+  ],
+  "_score": 25.1,
+  "pillars": [
+   "B",
+   "E"
+  ],
+  "idx": 56
+ },
+ {
+  "id": "https://openalex.org/W7138442073",
+  "doi": "https://doi.org/10.2166/wst.2026.234",
+  "title": "Applying machine learning and AI for nanofiltration membranes water applications: a review",
+  "year": 2026,
+  "authors": [
+   "A.A. Abuhabib",
+   "Ahmed M. Albahnasawi",
+   "Heba Isawi",
+   "Law Yong Ng",
+   "Abdul Wahab Mohammad",
+   "Sofiah Hamzah"
+  ],
+  "venue": "Water Science & Technology",
+  "host": "Pergamon Press",
+  "cites": 7,
+  "type": "article",
+  "oa": true,
+  "abstract": "Nanofiltration (NF) has long been the focus of researchers and operators in the field of water and wastewater treatment and desalination. Characterised by both high rejection of diverse substances depending on their molecular composition and charge, and high flux, NF membranes have demonstrated broad applicability while maintaining long-lasting performance. However, NF membrane scalability and reliability are intrinsically constrained by non-linear phenomena like complex solute-rejection mechanisms, long-term fouling dynamics, and the inherent flux-selectivity trade-off. Traditional mechanistic models relying on simplifying assumptions within the solution-diffusion framework, often fail to accurately predict performance in heterogeneous, real-time water matrices, leading to a critical divergence between predictive capability and operational reality. This review addresses this gap by comprehensively assessing the integration of machine learning (ML) and artificial intelligence (AI) across three critical domains: fabrication optimisation, performance prediction, and fouling diagnosis and mitigation, through the analysis of 100 NF-ML publications over the past 10 years. Additionally, it highlights key methodological challenges including data scarcity and heterogeneity, and lack of robust external validation. Finally, the review emphasises that future advancements lie in reinforcement learning for real-time adaptive control and in hybrid ML-mechanistic frameworks bridging the existing gap between data-driven prediction and transparent mechanistic understanding.",
+  "topics": [
+   "Membrane Separation Technologies",
+   "Machine Learning in Materials Science",
+   "Hydrological Forecasting Using AI"
+  ],
+  "_queries": [
+   "membrane fouling prediction machine learning"
+  ],
+  "_score": 25.1,
+  "pillars": [
+   "E"
+  ],
+  "idx": 57
+ },
+ {
+  "id": "https://openalex.org/W4414699635",
+  "doi": "https://doi.org/10.1088/1361-6501/ae0e3e",
+  "title": "Bearing life prediction method based on the multiscale degradation fusion algorithm and an ensemble BIGRU network",
+  "year": 2025,
+  "authors": [
+   "Fan Jiang",
+   "Hongyan Song",
+   "Gongbo Zhou",
+   "Zhencai Zhu",
+   "T.S. Huang",
+   "Yun Ni"
+  ],
+  "venue": "Measurement Science and Technology",
+  "host": "IOP Publishing",
+  "cites": 2,
+  "type": "article",
+  "oa": false,
+  "abstract": "Abstract Remaining life prediction is a crucial way to prevent unexpected failures, reduce operating costs, and ensure the stable operation of bearings. However, the complete life cycle of bearings typically includes multiple degradation stages, each with a unique degradation trend. Single-scale data often only elucidate the characteristics of specific local stages and fail to provide a comprehensive representation of the entire degradation process. To address these issues and challenges, this study presents a bearing remaining useful life (RUL) prediction method based on the ensemble bidirectional gated recurrent unit (EBiGRU) model and a multiscale degradation fusion (MSDF) algorithm. First, a novel degradation stage division algorithm, called 3Sigma-Bottom-Up, was designed to divide the entire bearing life cycle into four distinct states: normal, mild, moderate, and severe degradations. Second, an ensemble-learning-based EBiGRU model, a local-scale analysis method, was proposed to obtain the RUL result for each bearing degradation stage. Third, a conservative RUL estimate, a global scale analysis index, was defined and calculated using the Weibull curve to fit the performance degradation feature. Finally, an MSDF algorithm was constructed to obtain the bearing RUL by fusing the local and global analysis results. Experiments were conducted with XITU-SY datasets and Prognostics and Health Management 2012 datasets. The results show that the proposed method is more effective than conventional life prediction methods, and that the EBiGRU model exhibits better accuracy in remaining-life prediction than the alternative models.",
+  "topics": [
+   "Machine Fault Diagnosis Techniques",
+   "Reliability and Maintenance Optimization",
+   "Gear and Bearing Dynamics Analysis"
+  ],
+  "_queries": [
+   "Weibull degradation remaining useful life"
+  ],
+  "_score": 25.1,
+  "pillars": [
+   "A",
+   "B",
+   "F"
+  ],
+  "idx": 58
+ },
+ {
+  "id": "https://openalex.org/W4415000458",
+  "doi": "https://doi.org/10.56294/dm20251102",
+  "title": "Reliable prediction of industrial components Remaining Useful Life using Cox and Weibull models: A Comparative Study",
+  "year": 2025,
+  "authors": [
+   "Hamdi Alaoui Abdelhafid",
+   "Anwar Meddaoui",
+   "Ahmed En-nhaili"
+  ],
+  "venue": "Data & Metadata",
+  "host": null,
+  "cites": 0,
+  "type": "article",
+  "oa": true,
+  "abstract": "Predicting the Remaining Useful Life (RUL) of industrial equipment is a cornerstone of predictive maintenance strategies aimed at minimizing downtime and optimizing maintenance costs. This study presents a comparative evaluation of two prominent survival analysis techniques Cox Proportional Hazards (Cox PH) and the Weibull model for RUL prediction using the AI4I 2020 Predictive Maintenance Dataset. We implement a robust analytical framework incorporating Kaplan-Meier survival curves, log-rank tests, and multivariate survival modeling. Our methodology includes detailed data preprocessing, model validation using the C-index and Akaike Information Criterion (AIC), and the identification of significant predictors of failure. The results reveal that the Cox PH model outperforms the Weibull model in terms of flexibility, predictive accuracy, and capacity to handle multiple covariates. This work highlights the strengths and limitations of both models and emphasizes the superior applicability of the Cox PH model for complex industrial datasets. These findings offer actionable insights for developing more reliable, data-driven maintenance strategies in Industry 4.0 environments.",
+  "topics": [
+   "Reliability and Maintenance Optimization",
+   "Machine Fault Diagnosis Techniques",
+   "Fault Detection and Control Systems"
+  ],
+  "_queries": [
+   "remaining useful life survival analysis"
+  ],
+  "_score": 25.0,
+  "pillars": [
+   "A",
+   "F"
+  ],
+  "idx": 59
+ },
+ {
+  "id": "https://openalex.org/W7134257861",
+  "doi": "https://doi.org/10.1007/s42452-026-08390-x",
+  "title": "Graph neural network-based remaining useful life prediction of milling tools using multi-sensor data",
+  "year": 2026,
+  "authors": [
+   "Satish Kumar",
+   "Dhruvi Ramaiya",
+   "Sameer Sayyad",
+   "Arunkumar Bongale",
+   "Vivek Warke",
+   "Vaibhav Joshi"
+  ],
+  "venue": "Discover Applied Sciences",
+  "host": null,
+  "cites": 0,
+  "type": "article",
+  "oa": true,
+  "abstract": "Forecasting the Remaining Useful Life (RUL) of cutting tools plays a key role in intelligent predictive maintenance and downtime reduction in today’s manufacturing. Traditional approaches based on hand-designed features or conventional machine learning models are typically incapable of handling intricate temporal relationships and sensor–interaction. This paper proposes a graph-based deep learning pipeline for tool wear forecasting in CNC milling, employing vibration, spindle load, and cutting force signals. Features from both the time-domain (mean, standard deviation, skewness, and kurtosis) and the frequency domain (FFT coefficients, power spectral density) were extracted, and graphs were formed based on correlation and temporal edges in order to model feature dependencies and sequential relationships. Three graph neural network (GNN) architectures were utilized: graph convolutional network (GCN), graph recurrent network (GRN), and graph attention network (GAT). Models were trained and tested on 120 machining runs, and hyperparameter optimization was performed using Optuna and Bayesian Optimization. The experimental results show that Optuna tuning enabled GRN to achieve the strongest time-domain performance (RMSE = 3.68, $$\\text {R}^2$$ = 0.9963), while Bayesian Optimization yielded improved frequency-domain performance for GAT (RMSE = 13.50, $$\\text {R}^2$$ = 0.9487). The designed framework illustrates the power of GNNs for tool-condition monitoring and offers a scalable solution for predictive maintenance, with future work considering physics-informed graph modeling and transfer learning for real-time application.",
+  "topics": [
+   "Advanced machining processes and optimization",
+   "Machine Fault Diagnosis Techniques",
+   "Engineering Technology and Methodologies"
+  ],
+  "_queries": [
+   "remaining useful life Bayesian neural network"
+  ],
+  "_score": 25.0,
+  "pillars": [
+   "B",
+   "C",
+   "D",
+   "F"
+  ],
+  "idx": 60
+ },
+ {
+  "id": "https://openalex.org/W7159785702",
+  "doi": "https://doi.org/10.52783/cana.v32.6568",
+  "title": "An Investigation on Machine Learning and Statistical Hybrid Framework to Predict Remaining Useable Life of Polyurethane Conveyor Belts",
+  "year": 2025,
+  "authors": [
+   "Monika Bhatnagar Reshma Shivhare"
+  ],
+  "venue": "Communications on Applied Nonlinear Analysis",
+  "host": null,
+  "cites": 0,
+  "type": "article",
+  "oa": true,
+  "abstract": "The correct determination of Remaining Useful Life (RUL) is also required to allow predictive maintenance of industrial conveyor belt systems, especially in pharmaceutical manufacturing facilities where the reliability of operations and contamination prevention are vital. This paper describes a hybrid prognostic modeling strategy of RUL prediction of polyurethane (PU) conveyor belts, which run with varying load, drop height, and current to the motor. Vibration RMS, current deviation, and impact force measurements were used to obtain experimental degradation data that was converted to a composite health indicator that reflected the progressive cumulative damage. The first model of wear-out behaviour to be developed was a Weibull-based statistical reliability model, which was developed with the aim of characterizing wear-out behaviour and offering baseline life prediction. In order to model nonlinear and time-varying dynamics of degradation, Random Forest regression and Long Short-Term Memory (LSTM) networks were applied to estimate RUL using data. The hybrid model used an optimized weighting strategy to combine statistical and machine learning predictions. The quantitative analysis showed that the standalone Weibull model had a high R 2 of 0.91 and a low RMSE of 18.4 cycles, whereas the models using the random forest and LSTM had high R 2 values of 0.96 and 0.98 and low RMSE values of 11.2 and 7.6 cycles, respectively. The advanced hybrid framework was better than all other models reaching an R 2 of 0.99, an MEA of 4.3 cycles, and RMSE of 5.1 cycles, which greatly enhanced the stability of prediction and the lowering of late stage estimation variance. The suggested solution offers a powerful and scalable system of smart condition-based maintenance of pharmaceutical conveyor belt systems",
+  "topics": [
+   "Machine Fault Diagnosis Techniques",
+   "Belt Conveyor Systems Engineering",
+   "Reliability and Maintenance Optimization"
+  ],
+  "_queries": [
+   "Weibull degradation remaining useful life"
+  ],
+  "_score": 25.0,
+  "pillars": [
+   "A",
+   "B",
+   "F"
+  ],
+  "idx": 61
+ },
+ {
+  "id": "https://openalex.org/W4412183320",
+  "doi": "https://doi.org/10.33366/rekabuana.v10i1.6651",
+  "title": "SAWFIER: A Solar-Powered Reverse Osmosis Desalinator for Clean Water Solutions in Coastal Communities",
+  "year": 2025,
+  "authors": [
+   "Dzaky Aqillah Fikriansyah",
+   "Sahi Rafael Damardhi",
+   "Jimmy Jimmy"
+  ],
+  "venue": "Reka Buana Jurnal Ilmiah Teknik Sipil dan Teknik Kimia",
+  "host": "Universitas Tribhuwana Tunggadewi",
+  "cites": 0,
+  "type": "article",
+  "oa": true,
+  "abstract": "Access to clean water remains a critical challenge for coastal communities worldwide, exacerbated by seawater intrusion, population growth, and insufficient infrastructure. Indonesia, as an archipelagic nation with extensive coastlines, faces significant disparities in clean water access, particularly in rural and underserved regions. This research develops and evaluates SAWFIER (Salt Water Purifier), a solar-powered desalination system utilizing the Reverse Osmosis (RO) principle, designed to provide sustainable clean water solutions in coastal areas. Performance testing was conducted using seawater with an initial salinity of 10,000 ppm. Key parameters, including salinity, pH, and water volume, were monitored at 5-minute intervals over a 120-minute operational period. The results demonstrated a consistent reduction in salinity to 1.36 ppt at the end of the test, with optimal performance observed up to 95 minutes, maintaining salinity levels below 1 ppt. The system generated an average daily energy output of 820.25 Wh from two 100 Wp solar panels, exceeding its energy consumption of 520.2 Wh, resulting in a surplus of 300.05 Wh. These findings highlight SAWFIER’s potential as an energy-efficient, scalable, and eco-friendly solution for addressing clean water scarcity in coastal regions. Despite challenges such as membrane fouling during prolonged operations, the system demonstrates strong alignment with Sustainable Development Goal (SDG) 6, emphasizing universal access to clean water and sanitation.",
+  "topics": [],
+  "_queries": [
+   "desalination Indonesia membrane"
+  ],
+  "_score": 25.0,
+  "pillars": [
+   "E",
+   "G"
+  ],
+  "idx": 62
+ },
+ {
+  "id": "https://openalex.org/W3042726568",
+  "doi": "https://doi.org/10.1109/access.2020.3010066",
+  "title": "Attention-Based LSTM Network for Rotatory Machine Remaining Useful Life Prediction",
+  "year": 2020,
+  "authors": [
+   "Hao Zhang",
+   "Qiang Zhang",
+   "Siyu Shao",
+   "Tianlin Niu",
+   "Xinyu Yang"
+  ],
+  "venue": "IEEE Access",
+  "host": "Institute of Electrical and Electronics Engineers",
+  "cites": 129,
+  "type": "article",
+  "oa": true,
+  "abstract": "As one of the key components in mechanical systems, rotatory machine plays a significant role in safe and stable operation. Accurate prediction of the Remaining Useful Life (RUL) of rotatory machine contributes to realization of intelligent operation and maintenance for mechanical manufacturing. In order to overcome the limitations of traditional machine learning algorithms in dealing with complex nonlinear signals, a novel prediction framework for RUL of rotatory machine based on deep learning is proposed in this paper. One-dimensional convolutional neural network is utilized to extract local features from the original signal sequence. In addition, the proposed framework analyzes sensor signals and predicts RUL by combining Long Short-Term Memory (LSTM) network with attention mechanism. Multi-layer LSTM is set up to extract useful temporal features layer by layer and improve the robustness of the model, while attention mechanism is able to effectively solve the problem of information loss in the long-distance signal transmission of LSTM. Through the feature extraction of multi-layer LSTM and the strong supervision ability of attention mechanism, the RUL of rotatory machine can be accurately predicted. The experimental results show that the proposed method for RUL estimation is efficient and has higher prediction accuracy than the traditional machine learning algorithms.",
+  "topics": [
+   "Machine Fault Diagnosis Techniques",
+   "Reliability and Maintenance Optimization",
+   "Fault Detection and Control Systems"
+  ],
+  "_queries": [
+   "remaining useful life LSTM prediction"
+  ],
+  "_score": 24.9,
+  "pillars": [
+   "B"
+  ],
+  "idx": 63
+ },
+ {
+  "id": "https://openalex.org/W2766688321",
+  "doi": "https://doi.org/10.1155/2017/8927937",
+  "title": "Remaining Useful Life Prediction of Bearing with Vibration Signals Based on a Novel Indicator",
+  "year": 2017,
+  "authors": [
+   "Bo Wu",
+   "Wei Li",
+   "Mingquan Qiu"
+  ],
+  "venue": "Shock and Vibration",
+  "host": "Hindawi Publishing Corporation",
+  "cites": 49,
+  "type": "article",
+  "oa": true,
+  "abstract": "Aiming at reducing the production downtime and maintenance cost, prognostics and health management (PHM) of rotating machinery often includes the remaining useful life (RUL) prediction of bearings. In this paper, a method combining the generalized Weibull failure rate function (WFRF) and radial basis function (RBF) neural network is developed to deal with the RUL prediction of bearings. A novel indicator, namely, the power value on the sensitive frequency band (SFB), is proposed to track bearing degradation process. Generalized WFRF is used to fit the degradation indicator series to reduce the effect of noise and avoid areas of fluctuation in the time domain. RBF neural network is employed to predict the RUL of bearings with times and fitted power values at present and previous inspections as input. Meanwhile, the life percentage is selected as output. The performance of the proposed method is validated by an accelerated bearing run-to-failure experiment, and the results demonstrate the advantage of this method in achieving more accurate RUL prediction.",
+  "topics": [
+   "Machine Fault Diagnosis Techniques",
+   "Reliability and Maintenance Optimization",
+   "Gear and Bearing Dynamics Analysis"
+  ],
+  "_queries": [
+   "Weibull degradation remaining useful life"
+  ],
+  "_score": 24.9,
+  "pillars": [
+   "A",
+   "B",
+   "F"
+  ],
+  "idx": 64
+ },
+ {
+  "id": "https://openalex.org/W3185872144",
+  "doi": "https://doi.org/10.1115/1.4051314",
+  "title": "Prognostic Analysis of High-Speed Cylindrical Roller Bearing Using Weibull Distribution and k-Nearest Neighbor",
+  "year": 2021,
+  "authors": [
+   "Maan Singh Rathore",
+   "Suraj Prakash Harsha"
+  ],
+  "venue": "Journal of Nondestructive Evaluation Diagnostics and Prognostics of Engineering Systems",
+  "host": "ASM International",
+  "cites": 18,
+  "type": "article",
+  "oa": false,
+  "abstract": "Abstract Bearing remnant operational life can be determined by implementing a data-driven prognostics method. In this work, the bearing run-to-failure data from experimentation on test rig is used to extract time-domain features. The sudden change in time-domain information signifies the fault inception which led to failure stage promptly. The monotonicity metric is utilized to select the optimal feature set that best represents bearing degradation. Principal component analysis (PCA) is used for dimension reduction and fusion, and a unidimensional health indicator (HI) is constructed. Fluctuations of HI are smoothed by fitting it with a Weibull failure rate function (WFRF) and the corresponding parameters are estimated using nonlinear least-squares method. By inverting the model, the predicted time values are calculated, and hence remnant operational life of bearing is evaluated and compared with the actual life from experimental data. The performance assessment metrics utilized are mean absolute percentage error (MAPE), mean-square error (MSE), root-mean-square error (RMSE), and bias. Besides this, an online degradation state classification method using the k-nearest neighbor (KNN) classifier is implemented. The KNN model performance is assessed by constructing receiver operating characteristics (ROC) curve, which indicates the value of area under the curve (AUC) equal to 0.94, representing high accuracy of the KNN. The remaining useful life (RUL) is predicted within 95% confidence limits, and the predicted RUL almost follows the actual one with some fluctuations. The model performance is found promising and can be implemented to evaluate the remaining useful life of bearing.",
+  "topics": [
+   "Machine Fault Diagnosis Techniques",
+   "Reliability and Maintenance Optimization",
+   "Fault Detection and Control Systems"
+  ],
+  "_queries": [
+   "Weibull degradation remaining useful life"
+  ],
+  "_score": 24.9,
+  "pillars": [
+   "A"
+  ],
+  "idx": 65
+ },
+ {
+  "id": "https://openalex.org/W4294579029",
+  "doi": "https://doi.org/10.1016/j.rineng.2022.100611",
+  "title": "Cellulose acetate from palm oil bunch waste for forward osmosis membrane in desalination of brackish water",
+  "year": 2022,
+  "authors": [
+   "Saiful Saiful",
+   "Sharmila Hasima",
+   "Nurul Kamila",
+   "⁠Rahmi ⁠Rahmi"
+  ],
+  "venue": "Results in Engineering",
+  "host": "Elsevier BV",
+  "cites": 41,
+  "type": "article",
+  "oa": true,
+  "abstract": "Hygienic drinking water availability has become a significant problem in many parts of the world in emerging countries, developing countries, and the countries that often experience disasters, including Indonesia. Forward osmosis (FO) membrane is an alternative water treatment method, particularly in emergency water supplies. This study has developed a FO membrane for desalination brackish water to produce energy drinking water. The FO membrane was made from cellulose acetate (CA) polymer synthesized from cellulose isolated from waste palm oil empty fruit bunches (POEFB). The forward osmosis membranes were made by printing a polymer solution on a glass plate, followed by solidification and membrane formation. FT-IR spectrum confirmed the successful synthesis of cellulose acetate. The obtaining cellulose acetate showed that the cellulose produced was cellulose diacetate, with acetyl content and degree substitution, 36.17% and 2.15, respectively. The Cellulose diacetate FO membrane has a water flux value of 2.2 L/m2hour and a rejection factor of 96% using 1 M sucrose as a draw solution. The water quality of the FO product has met drinking water standards based on the regulation of the Minister of Health of the Republic Indonesia Number 492/MENKES/PER/VI/2010 and WHO standard drinking water quality.",
+  "topics": [],
+  "_queries": [
+   "desalination Indonesia membrane"
+  ],
+  "_score": 24.7,
+  "pillars": [
+   "E",
+   "G"
+  ],
+  "idx": 66
+ },
+ {
+  "id": "https://openalex.org/W4323364161",
+  "doi": "https://doi.org/10.1002/qre.3308",
+  "title": "Remaining useful life prediction of rolling bearings based on Bayesian neural network and uncertainty quantification",
+  "year": 2023,
+  "authors": [
+   "Guang‐Jun Jiang",
+   "Jin‐Sen Yang",
+   "Tiancai Cheng",
+   "Honghua Sun"
+  ],
+  "venue": "Quality and Reliability Engineering International",
+  "host": "Wiley",
+  "cites": 38,
+  "type": "article",
+  "oa": false,
+  "abstract": "Abstract This paper constructs a remaining useful life (RUL) prediction model combining a convolutional neural network and a long short‐term memory network (CNNLSTM) to support decision‐making, especially the safety of rotational equipment. It avoids the influence of personnel and realizes the complementary advantages of the network. With the assistance of Bayesian short‐term and long‐term memory neural networks, the remaining life prediction method is able to provide the confidence interval of the remaining life prediction of rolling bearings. The compression between the proposed method and existing state‐of‐the‐art methods validated the good performance of the proposed method. Overall, the proposed method contributes to life prediction and condition‐based maintenance of bearings and complex rotational systems.",
+  "topics": [
+   "Machine Fault Diagnosis Techniques",
+   "Reliability and Maintenance Optimization",
+   "Gear and Bearing Dynamics Analysis"
+  ],
+  "_queries": [
+   "remaining useful life Bayesian neural network"
+  ],
+  "_score": 24.7,
+  "pillars": [
+   "B",
+   "C"
+  ],
+  "idx": 67
+ },
+ {
+  "id": "https://openalex.org/W4210630405",
+  "doi": "https://doi.org/10.2118/1221-0054-jpt",
+  "title": "Machine-Learning Techniques Track, Monitor Offshore Water-Treatment KPIs",
+  "year": 2021,
+  "authors": [
+   "Chris Carpenter"
+  ],
+  "venue": "Journal of Petroleum Technology",
+  "host": "Society of Petroleum Engineers",
+  "cites": 1,
+  "type": "article",
+  "oa": false,
+  "abstract": "This article, written by JPT Technology Editor Chris Carpenter, contains highlights of paper SPE 206173, “Offshore Water-Treatment KPIs Using Machine-Learning Techniques,” by Lauren Flores, Martin Morles, and Cheng Chen, Chevron, prepared for the 2021 SPE Annual Technical Conference and Exhibition, Dubai, 21–23 September. The paper has not been peer reviewed. New water treatment facilities in the Gulf of Mexico include a seawater sulfate removal unit (SRU) to mitigate reservoir souring and scaling. Current industrial practice relies on only pressure drop and regular cleaning intervals to perform SRU maintenance, which may result in reduced membrane life because of cleaning frequency or severe membrane fouling without the capability to predict fouling based on process conditions. The machine-learning techniques applied in the complete paper aim to deliver a prediction model based on both simulation and real-time field data. The model tracks and monitors system key performance indicators (KPIs). KPI Model Establishment Before KPI models were established in this study, key model input and output parameters were identified. The input parameters were values that could be measured directly, including feed temperature, feed and permeate total dissolved solids (TDS), and feed and reject pressures. The output parameters were predicted membrane pressures, fouling factors, and permeate sulfate concentrations. For membrane fouling monitoring, current industrial practice over-looks the effect of other parameters on pressure drop, which may lead to incorrect decisions. In this study, fouling factor was used to reflect an accurate picture of membrane fouling. Fouling factor is a projection of mem-brane fouling over time, typically with a value between 0 to 1. A fouling factor of 1 indicates that the aged membrane has the same fouling profile as new membrane, while a smaller fouling factor means more-severe fouling. With regard to the SRU process, the major fouling mechanisms causing flux reduction include particle plugging and biofouling. The first step was to obtain SRU data for the prediction model. Because the SRU has not been installed, a membrane-simulation tool was applied to generate performance data under various operating conditions. The next step was to use simulation data for model selection, training, and validation. Several models were evaluated using training data, and the model scores were compared. Metrics were used to determine the model that best fit th",
+  "topics": [
+   "Membrane Separation Technologies",
+   "Fault Detection and Control Systems",
+   "Membrane-based Ion Separation Techniques"
+  ],
+  "_queries": [
+   "membrane fouling prediction machine learning"
+  ],
+  "_score": 24.7,
+  "pillars": [
+   "E"
+  ],
+  "idx": 68
+ },
+ {
+  "id": "https://openalex.org/W4283074491",
+  "doi": "https://doi.org/10.1002/qre.3151",
+  "title": "Remaining useful life prediction using composite health index and hybrid LSTM‐SVR model",
+  "year": 2022,
+  "authors": [
+   "Liudong Gu",
+   "Rui Zheng",
+   "Yifan Zhou",
+   "Zhisheng Zhang",
+   "Kunkun Zhao"
+  ],
+  "venue": "Quality and Reliability Engineering International",
+  "host": "Wiley",
+  "cites": 31,
+  "type": "article",
+  "oa": false,
+  "abstract": "Abstract Remaining useful life (RUL) plays an important role in prognostic and health management to reduce maintenance costs and avoid possible accidents. Massive multi‐sensor data makes it challenging to extract degradation features and predict RUL. This paper develops a novel RUL prediction framework consisted of a multi‐sensor fusion model and a hybrid prediction model. HI curves are constructed by synthesizing multiple metrics including time correlation, monotonicity, robustness, and consistency, making our data fusion method different from existing methods considering only one metric. In many practical situations, the initial degradation levels of obtained HI curves are different, and treating all curves without classification will result in errors in RUL prediction. The K‐means method is used to partition degradation paths into discrete states and the obtained HI curves are grouped by their initial states and then trained separately. A hybrid prediction model combining Long Short‐Term Memory (LSTM) network and Support Vector Regression (SVR) is developed to predict the RUL. The dataset of turbofan engines is used to verify the proposed method. The results show that the proposed method performs better than many existing methods.",
+  "topics": [
+   "Machine Fault Diagnosis Techniques",
+   "Reliability and Maintenance Optimization",
+   "Technical Engine Diagnostics and Monitoring"
+  ],
+  "_queries": [
+   "remaining useful life LSTM prediction"
+  ],
+  "_score": 24.5,
+  "pillars": [
+   "B",
+   "F"
+  ],
+  "idx": 69
+ },
+ {
+  "id": "https://openalex.org/W4399426101",
+  "doi": "https://doi.org/10.1109/jsen.2024.3402660",
+  "title": "Remaining Useful Life Prediction of Wind Turbine Main-Bearing Based on LSTM Optimized Network",
+  "year": 2024,
+  "authors": [
+   "linli li",
+   "Qifei Jian"
+  ],
+  "venue": "IEEE Sensors Journal",
+  "host": "IEEE Sensors Council",
+  "cites": 30,
+  "type": "article",
+  "oa": false,
+  "abstract": "The remaining useful life (RUL) prediction is a crucial aspect of predictive maintenance for equipment. However, main bearings operate in complex, high-frequency vibration-prone nacelle conditions, identifying fault characteristics and accurately predicting the degradation process pose significant challenges. To address this, this article presents the first-ever research on fault diagnosis and prognosis based on historical vibration data from in-service wind turbine units with confirmed damages in a certain offshore wind farm. Proposing a tree seed algorithm optimized long short-term memory (TSA-LSTM) predictive model founded on the sideband energy ratio (SER) principle. Considering the distinctive structural configuration of wind turbines, fault indexes are extracted from the modulation component composed of the main bearing defect frequency occurring on both sides of the gearbox characteristic frequency based on SER. The time sensitivity of LSTM and the excellent global search ability of TSA were combined to complete modeling. This approach effectively captures the degradation process and achieves accurate fault identification. Through comparison, the superior predictive performance and robustness of the proposed optimization algorithm are verified, with mean absolute percentage error (MAPE) lower than 0.228 and root mean square error (RMSE) lower than 0.014. Additionally, the exponential fitting can accurately describe the whole process of the gradual accumulation of faults over time until failure, facilitating RUL prediction. The results demonstrate that SER-based features exhibit higher sensitivity to early-stage faults and better fit the degradation trend, providing a promising solution for wind turbine main bearing fault prognosis.",
+  "topics": [
+   "Machine Fault Diagnosis Techniques",
+   "Gear and Bearing Dynamics Analysis",
+   "Fault Detection and Control Systems"
+  ],
+  "_queries": [
+   "remaining useful life LSTM prediction"
+  ],
+  "_score": 24.4,
+  "pillars": [
+   "B",
+   "F"
+  ],
+  "idx": 70
+ },
+ {
+  "id": "https://openalex.org/W7126263255",
+  "doi": "https://doi.org/10.1021/acs.est.5c15320",
+  "title": "Dynamic Monitoring of Reverse Osmosis Process via Electrical Impedance Tomography: Enabling In Situ Visualization and Uncovering Distinct Roles of Concentration Polarization/Foulant Deposition in Flux Decline",
+  "year": 2026,
+  "authors": [
+   "Fei Gao",
+   "Jianrui Zhou",
+   "Hui Jia",
+   "Qi Wang",
+   "Jie Wang"
+  ],
+  "venue": "Environmental Science & Technology",
+  "host": "American Chemical Society",
+  "cites": 3,
+  "type": "article",
+  "oa": false,
+  "abstract": "Access to information about fouling in the membrane modules can provide critical insights to advance fundamental understanding and develop effective strategies for fouling mitigation. In this study, we developed a rapid, in situ, and noninvasive membrane imaging platform based on the electrical impedance tomography (EIT) technique to probe the evolution of fouling in the reverse osmosis (RO) process. This technique can be used to monitor the formation of the concentration polarization (CP) and the fouling layer without labeling. Our data demonstrate that CP reaches equilibrium within minutes of filtration initiation, whereas fouling is the primary cause of the continuous flux decline during filtration. We further show that the salt concentration is a critical factor influencing the extent of CP and scaling processes, while the presence of organic matter accelerates membrane fouling. This study also clarifies the correlation between the membrane surface impedance variation and flux decline during filtration. Leveraging impedance time-series data, a machine learning-based random forest model was developed for flux change prediction.",
+  "topics": [
+   "Membrane Separation Technologies",
+   "Membrane-based Ion Separation Techniques",
+   "Electrical and Bioimpedance Tomography"
+  ],
+  "_queries": [
+   "reverse osmosis membrane fouling prediction machine learning"
+  ],
+  "_score": 24.4,
+  "pillars": [
+   "E"
+  ],
+  "idx": 71
+ },
+ {
+  "id": "https://openalex.org/W4406901998",
+  "doi": "https://doi.org/10.1016/j.inffus.2025.102972",
+  "title": "Counterfactual explanations for remaining useful life estimation within a Bayesian framework",
+  "year": 2025,
+  "authors": [
+   "Jilles Andringa",
+   "Márcia Lourenço Baptista",
+   "Bruno Filipe Santos"
+  ],
+  "venue": "Information Fusion",
+  "host": "Elsevier BV",
+  "cites": 25,
+  "type": "article",
+  "oa": true,
+  "abstract": "Machine learning has contributed to the advancement of maintenance in many industries, including aviation. In recent years, many neural network models have been proposed to address the problems of failure identification and estimating the remaining useful life (RUL). Nevertheless, the black-box nature of neural networks often limits their transparency and interpretability. Interpretability (or explainability) in maintenance refers to the ability of a predictive model to provide insights into its decision-making process for predicting failures or estimating metrics like RUL. Counterfactual Explanations (CFEs) from Explainable AI (XAI) addresses this problem by explaining model decisions through hypothetical scenarios leading to alternative outcomes. A kind of neural network that could benefit from increased interpretability is Bayesian networks. In general, Bayesian models improve interpretability by quantifying uncertainty. However, incorporating Bayesian uncertainty into neural networks adds complexity because we often need a statistical distribution for each network parameter. This study investigates the use of CFEs within a Bayesian framework to achieve two key objectives simultaneously: (1) enhance the interpretability of RUL estimations and (2) improve model accuracy. We generate two types of CFEs: (1) RUL CFEs that increase/decrease the RUL estimation and (2) uncertainty CFEs with reduced estimation uncertainty, which we use to augment the dataset and increase model accuracy. We apply this method to a classical case study, the C-MAPSS dataset, using a Bayesian Long Short-Term Memory (B-LSTM) model. We demonstrate that CFEs can help identify critical features and fine-tune corrective actions to achieve specific outcomes. For example, following a maintenance action that increased the temperature by 1°F, CFEs can reveal that this adjustment extended the equipment’s useful life by 30 cycles. This ability to correlate specific actions with effects enhances both decision-making and maintenance efficiency. Additionally, our data augmentation approach results in a 5% improvement in α − λ accuracy for a strict α of 20%. The root mean square error (RMSE) of the B-LSTM model decreases from 9.56 to 8.47 cycles, demonstrating the potential of Uncertainty CFEs to improve accuracy in aircraft maintenance. The code is publicly available at Github . • Machine learning enhances predictive maintenance, focusing on the aviation sector. • Explainable AI, using Counterfac",
+  "topics": [
+   "Explainable Artificial Intelligence (XAI)",
+   "Machine Fault Diagnosis Techniques",
+   "Reliability and Maintenance Optimization"
+  ],
+  "_queries": [
+   "remaining useful life Bayesian neural network"
+  ],
+  "_score": 24.3,
+  "pillars": [
+   "B",
+   "C",
+   "D",
+   "F"
+  ],
+  "idx": 72
+ }
+]

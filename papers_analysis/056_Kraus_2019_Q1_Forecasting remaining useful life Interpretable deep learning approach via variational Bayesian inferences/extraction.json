@@ -1,0 +1,48 @@
+{
+ "no": 77,
+ "judul": "Forecasting remaining useful life: Interpretable deep learning approach via variational Bayesian inferences",
+ "penulis": "Mathias Kraus, Stefan Feuerriegel",
+ "tahun": 2019,
+ "jurnal": "Decision Support Systems",
+ "doi": "10.1016/j.dss.2019.113100",
+ "kuartil": "Scopus Q1 (SCImago SJR Best Quartile)",
+ "pilar": "F. DSS & Predictive Maintenance (IS)",
+ "ringkasan": "Studi mengusulkan structured-effect neural network (SENN) untuk memprediksi RUL secara akurat sekaligus interpretable. SENN mendekomposisi prediksi menjadi tiga komponen: (1) baseline non-parametrik berupa probabilitas lifetime (conditional expectation Weibull atau log-normal, E[Z|Z>t] - t), (2) kombinasi linear sensor, dan (3) komponen rekuren (LSTM) untuk menangkap non-linearitas. Parameter diestimasi via variational Bayesian inference (maximisasi ELBO), sehingga diperoleh distribusi posterior dan kuantifikasi ketidakpastian. Pada C-MAPSS, SENN mengalahkan model machine learning tradisional dan mendekati performa LSTM murni dengan interpretabilitas jauh lebih tinggi.",
+ "kontribusi": "Sangat relevan bagi tesis: menggabungkan model kelangsungan hidup (Weibull/log-normal conditional residual life) dengan deep learning (LSTM) dalam satu kerangka interpretable dan Bayesian - tepat pada sumbu survival analysis + DL. Namun tidak memodelkan data tersensor (C-MAPSS run-to-failure) dan domainnya aero-engine, bukan membran.",
+ "temuan_kunci": [
+  "SENN log-normal + feature engineering memperoleh MAE 13,267 (terbaik di kategori structured-effect), mengalahkan semua model ML tradisional (mis. random forest 17,793); LSTM murni lebih akurat (MAE 11,188) tetapi tidak interpretable.",
+  "Dekomposisi kontribusi varians: non-parametrik 0,175; linear 0,408; recurrent 0,064 - komponen terstruktur menjelaskan porsi terbesar, menjaga interpretabilitas.",
+  "Variational Bayesian inference memberi distribusi posterior parameter (shape/scale Weibull & log-normal) dan credible region koefisien beta sensor.",
+  "Model probabilistic (Weibull/log-normal conditional expectation) saja meningkatkan RUL sebesar ~39% dibanding estimasi empiris (MAE 45,06 -> 27,79/27,41).",
+  "Implikasi DSS: prediksi RUL akurat memungkinkan perencanaan pemeliharaan preemptive dan klaim pengurangan downtime 30-50% (McKinsey)."
+ ],
+ "dimensi": {"d1": "1", "d2": "1", "d3": "1", "d4": "1", "d5": "1", "d6": "1", "d7": "", "d8": ""},
+ "alasan_dimensi": {
+  "d1": "Menggunakan 21 sensor turbofan (time series) sebagai kovariat; komponen rekuren LSTM memakai lintasan 50 nilai sensor terakhir untuk memodelkan dependensi temporal.",
+  "d2": "Mendefinisikan RUL sebagai variabel acak Y_t dan mengestimasi E[Y_t|X_t,...,X_1] hingga kegagalan (breakdown); model lifetime memakai conditional expected residual life.",
+  "d3": "Secara eksplisit membangun model kelangsungan hidup: fungsi survival (1-F) dan conditional expected residual life E[Z|Z>t] - t dengan distribusi lifetime Weibull dan log-normal (Eq. 4-7), serta mengaitkan dengan proportional hazards model; ini pemodelan survival/Weibull nyata (meski data C-MAPSS run-to-failure tanpa indikator censoring eksplisit).",
+  "d4": "Model spesifik: structured-effect neural network (Weibull/log-normal + Bayesian linear + LSTM 2 layer 100/50 neuron); baseline ridge/lasso/elastic net, random forest, SVR, LSTM.",
+  "d5": "Kuantifikasi ketidakpastian eksplisit: variational Bayesian inference menghasilkan distribusi posterior parameter (Fig. 3) dan credible region koefisien beta (Table 4).",
+  "d6": "Menganalisis keputusan pemeliharaan/DSS: Section 5.1 'Implication for decision support', Table 1 memetakan model RUL ke strategi pemeliharaan (threshold rule), dan implikasi biaya (downtime turun 30-50%); tanpa model keputusan/optimasi formal.",
+  "d7": "Objek penelitian adalah turbofan engine (C-MAPSS), bukan membran/RO/desalinasi.",
+  "d8": "Tidak ada skema small-data/transfer/hierarchical/all-censored; struktur + prior Bayesian diklaim mampu mengurangi kebutuhan data, tetapi eksperimen memakai 100 engine latih."
+ },
+ "relevansi": "Inti-Metode",
+ "kualitas": {"skor": 9, "rincian": {"Q1": 1, "Q2": 1, "Q3": 1, "Q4": 1, "Q5": 1, "Q6": "N/A", "Q7": 1, "Q8": 0.5}, "catatan": "Sangat kuat: kerangka interpretable + Bayesian, kode tersedia publik (GitHub), C-MAPSS publik, banyak baseline, uji-t signifikansi, dekomposisi varians, dan distribusi posterior. Kelemahan: tidak ada pemodelan censoring; Q8 adalah diskusi implikasi decision support kualitatif tanpa model keputusan formal; data simulasi. Q6 tidak berlaku."},
+ "data_kuantitatif": {"dataset": "NASA 'Turbofan Engine Degradation Simulation' (C-MAPSS): 21 sensor, 200 engine (100 latih/100 uji)", "ukuran": "200 engine; rata-rata RUL 82,30 siklus (std 54,59); median 77 siklus; lintasan 50 nilai sensor terakhir; split 90/10 untuk tuning DL", "metrik": "MAE: empirical RUL 45,060; Weibull 27,794; log-normal 27,409; random forest (FE) 17,793; SVR (FE) 21,932; LSTM 11,188; SENN terbaik log-normal+FE 13,267; kontribusi varians 0,175/0,408/0,064"},
+ "metode": "Structured-effect neural network (SENN): prediksi = lambda(t) [non-parametrik: E_{Z~Weibull/log-normal}[Z|Z>t]-t] + beta^T X_t [linear/Bayesian] + RNN_theta [LSTM] (Eq. 10-11). Estimasi via variational Bayesian inference meminimalkan KL divergence dan memaksimalkan ELBO (Appendix A; Adam lr 0,005; library pyro). Baseline: estimasi empiris, probabilitas (Weibull/log-normal), ML tradisional (ridge/lasso/elastic net/RF/SVR), LSTM, dengan/tanpa feature engineering (Tabel 2).",
+ "limitasi": [
+  "Tidak memodelkan data tersensor (data run-to-failure).",
+  "Data C-MAPSS bersifat simulasi; nama sensor disanitasi sehingga interpretasi fisik terbatas.",
+  "Implikasi DSS bersifat kualitatif tanpa model keputusan/optimasi biaya formal.",
+  "Variational Bayesian inference lebih mahal komputasinya dibanding dropout-based UQ.",
+  "Contoh dekomposisi hanya pada satu engine."
+ ],
+ "funding_coi": "Sebagian didanai Swiss National Science Foundation (SNF) Project 183569; tidak ada pernyataan konflik kepentingan.",
+ "status_inklusi": "diterima",
+ "figur_dibaca": [
+  {"file": "_page_20_Figure_1.jpeg", "isi": "Dekomposisi prediksi RUL SENN untuk satu engine: komponen non-parametrik (baseline lifetime, dominan), komponen linear sensor (variasi engine-spesifik dengan ribbon uncertainty), dan komponen rekuren (kecil, non-linear) sepanjang lifetime (cycles)."},
+  {"file": "_page_21_Figure_1.jpeg", "isi": "Histogram distribusi posterior parameter SENN: shape a dan scale b untuk Weibull, serta mean a dan scale b untuk log-normal - mengkuantifikasi ketidakpastian estimasi parameter."}
+ ],
+ "bukti": ["Eq. (1): definisi RUL sebagai ekspektasi bersyarat", "Eq. (2)-(7): estimasi empiris & probabilistic lifetime model (conditional expectation Weibull/log-normal)", "Eq. (8): optimasi ML", "Eq. (9): RNN", "Eq. (10)-(11): SENN & lambda(t) survival", "Eq. (12)-(13): estimasi Bayesian", "Table 1: strategi pemeliharaan per model RUL", "Table 2: fungsi agregasi feature engineering", "Table 3: MAE seluruh model + t-test", "Table 4: posterior koefisien beta sensor", "Table 5: karakteristik model", "Fig. 2 (dekomposisi), Fig. 3 (posterior)"]
+}

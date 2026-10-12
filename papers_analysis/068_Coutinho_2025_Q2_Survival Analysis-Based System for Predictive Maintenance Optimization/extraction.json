@@ -1,0 +1,84 @@
+{
+  "no": 38,
+  "judul": "Survival Analysis-Based System for Predictive Maintenance Optimization",
+  "penulis": "Beatriz Coutinho, Margarida Moreira, Eliseu Pereira, Gil Gonçalves",
+  "tahun": 2025,
+  "jurnal": "SN Computer Science",
+  "doi": "10.1007/s42979-025-04291-9",
+  "kuartil": "Scopus Q2 (SCImago SJR Best Quartile)",
+  "pilar": "F. DSS & Predictive Maintenance (IS)",
+  "ringkasan": "Artikel ini menyajikan kerangka predictive maintenance modular berbasis survival analysis untuk mengestimasi RUL komponen industri, digabung algoritma optimasi penjadwalan Simulated Annealing. Empat model survival dievaluasi (Cox PH, Random Survival Forest, Gradient Boosting Survival Analysis, Survival SVM), dengan GBSA paling robust karena tahan overfitting dan mampu menangkap degradasi nonlinier. Kerangka divalidasi pada data degradasi elektroda las (nyata) dan dataset sintetis Microsoft Azure, menurunkan downtime 25% dibanding metode tak teroptimasi.",
+  "kontribusi": "Langkah paling dekat dengan tesis: secara eksplisit mengintegrasikan data tersensor ke dalam model survival (Cox PH/RSF/GBSA/Survival SVM) untuk RUL, lalu menghubungkannya ke keputusan penjadwalan pemeliharaan. Relevan sebagai preseden Inti-Metode; celah yang tersisa adalah belum diterapkan pada membran/RO dan belum memakai deep learning survival (mis. DeepHit/DeepSurv) pada data membran.",
+  "temuan_kunci": [
+    "GBSA memberi keseimbangan terbaik train-test dan paling tahan overfitting; C-index 0,789 pada data las (train=test).",
+    "Cox PH menunjukkan pola overfitting (train 0,763 vs test 0,974 pada data las; test rendah pada sintetis).",
+    "Survival SVM kurang bertenaga (C-index ~0,50-0,55 pada dataset sintetis).",
+    "Survival function S(t)=P(T>t) menggantikan laju degradasi tetap dan mengakomodasi data tersensor.",
+    "Optimasi Simulated Annealing menjadwalkan pemeliharaan dengan menyelaraskan interval antar-komponen, menurunkan downtime 25% vs urutan produksi tak teroptimasi (mis. 3 vs 4 siklus pemeliharaan).",
+    "Ambang pemeliharaan berbasis probabilitas survival (interval 0,1985-0,20) menggantikan threshold deterministik."
+  ],
+  "dimensi": {
+    "d1": "1",
+    "d2": "1",
+    "d3": "1",
+    "d4": "1",
+    "d5": "1",
+    "d6": "1",
+    "d7": "",
+    "d8": ""
+  },
+  "alasan_dimensi": {
+    "d1": "Fitur sensor diagregasi per siklus operasi (mean & std dari arus las; atau tegangan/rotasi/tekanan/vibrasi) membentuk runtun waktu; plus counter siklus dan jam kumulatif (Section Data Acquisition).",
+    "d2": "RUL/TTF didefinisikan eksplisit; survival function S(t)=P(T>t); ambang pemeliharaan saat probabilitas survival dalam 0,1985-0,20 (Eq. 1, Section Maintenance Scheduling).",
+    "d3": "SECARA AKTIF memodelkan data tersensor: kontribusi menyatakan 'integrating censored data'; Survival SVM dan metode survival ML menangani incomplete/right-censored observations (Section Survival Analysis, Gap Analysis, Survival SVM).",
+    "d4": "Model spesifik: Cox Proportional Hazards, Random Survival Forest, Gradient Boosting Survival Analysis, Survival SVM.",
+    "d5": "Kuantifikasi ketidakpastian melalui survival function probabilistik S(t) yang menyatakan risiko gagal sepanjang waktu (kontras dengan point estimate); dipakai langsung untuk keputusan.",
+    "d6": "Mengusulkan keputusan pemeliharaan konkret: optimasi penjadwalan berbasis Simulated Annealing meminimalkan downtime (cost=|D|), menyelaraskan interval perawatan (Section Maintenance Scheduling Optimization, Fig. 6, 9, 10).",
+    "d7": "Bukan domain membran/RO/desalinasi; objek elektroda las dan komponen mesin generik (Microsoft Azure).",
+    "d8": "Tidak menerapkan small-data/transfer/hierarchical maupun skenario all-censored secara spesifik."
+  },
+  "relevansi": "Inti-Metode",
+  "kualitas": {
+    "skor": 8,
+    "rincian": {
+      "Q1": "1",
+      "Q2": "1",
+      "Q3": "0.5",
+      "Q4": "1",
+      "Q5": "0.5",
+      "Q6": "1",
+      "Q7": "0.5",
+      "Q8": "1"
+    },
+    "catatan": "RQ dan gap jelas. Metode memadai: empat model survival dibandingkan + optimasi SA; penanganan penyensoran eksplisit. Reproduksibilitas tinggi (kode tersedia di GitHub). Data dua dataset (nyata + sintetis) dengan praproses dijelaskan, namun validitas generalisasi terbatas: C-index sintetis kadang ~0,5 dan skenario penjadwalan dibangun tangan. Evaluasi RUL hanya C-index (tanpa RMSE/MAE RUL) dan penjadwalan hanya satu skenario. Ketidakpastian disampaikan sebagai survival function probabilistik, bukan CI eksplisit. Kaitan keputusan pemeliharaan kuat."
+  },
+  "data_kuantitatif": {
+    "dataset": "Data degradasi elektroda las nyata (pabrikan perkakas rumah tangga) dan sintetis Microsoft Azure PdM",
+    "ukuran": "Spot welding: 70.971 siklus, 5 fitur + 2 target (629.444 sampel arus, 96.869 data rotary, 248 event kegagalan); Azure sintetis: 50.407 siklus, 16 fitur, 4 komponen; split 80%/20%",
+    "metrik": "Concordance Index (C-index); total production downtime (cost=|D|)"
+  },
+  "metode": "Kerangka PdM modular: (1) akuisisi & praproses data (agregasi fitur per siklus); (2) prediksi RUL via survival analysis (Cox PH, RSF, GBSA, Survival SVM; scikit-survival; hyperparameter grid-search 5-fold CV); (3) optimasi penjadwalan via simulasi produksi + Simulated Annealing meminimalkan downtime dengan menyelaraskan interval perawatan.",
+  "limitasi": [
+    "Validasi penjadwalan hanya pada satu skenario sintetis (3 mesin/komponen).",
+    "C-index test beberapa komponen sintetis rendah (~0,5), generalisasi terbatas.",
+    "Evaluasi RUL hanya C-index, tanpa metrik kesalahan kuantitatif (RMSE/MAE RUL).",
+    "Ambang survival 0,1985-0,20 ditetapkan default; durasi pemeliharaan seragam (rata-rata).",
+    "Bukan domain membran/RO; belum memakai deep learning survival."
+  ],
+  "funding_coi": "Sebagian didukung proyek HORIZON-CL4-2021-TWIN-TRANSITION-01 openZDM (Grant Agreement No. 101058673); open access didanai FCT|FCCN (b-on). Penulis menyatakan tidak ada konflik kepentingan.",
+  "status_inklusi": "diterima",
+  "figur_dibaca": [
+    {"file": "figures/_page_6_Figure_6.jpeg", "isi": "Fig. 4 arsitektur kerangka PdM: Data Acquisition & Pre-processing -> RUL Prediction (Survival Analysis; TTF; Survival Functions) -> Maintenance Scheduling Optimization (Production Simulation; Simulated Annealing; Results Report) -> Maintenance Activities."},
+    {"file": "figures/_page_11_Figure_12.jpeg", "isi": "Fig. 7 kurva survival GBSA dataset las: y=S(t) 0-1, x=cycles 0-14000; S turun dari 1,0 (0 siklus) ke ~0,5 (4000) dan ~0,05 (10000)."},
+    {"file": "figures/_page_14_Figure_1.jpeg", "isi": "Fig. 9 simulasi jadwal pemeliharaan urutan teroptimasi: survival probability (c1 biru, c2 oranye, c3 hijau); threshold ~0,20; event reset ke 1,0 pada t1113 (c3), t3710 (c2), t10017 (c3) = pemeliharaan; 3 event."}
+  ],
+  "bukti": [
+    "Abstrak: 4 model survival, GBSA terbaik, downtime -25%, validasi 2 dataset.",
+    "Kontribusi: integrasi censored data + penjadwalan adaptif; simulasi jangka panjang; evaluasi dua dataset.",
+    "Gap Analysis: penekanan bahwa pendekatan ML biasanya point estimate tanpa kuantifikasi ketidakpastian dan sulit menangani data tersensor; survival analysis mengatasinya.",
+    "Eq. 1 (S(t)=1-F(t)), Eq. 2 (hazard Cox PH h(t,X)=h0(t)exp(beta X)).",
+    "Tabel 3-4: C-index train/test per model per komponen; GBSA paling stabil.",
+    "Section Maintenance Scheduling: interval I_c, downtime D=union, cost=|D|, SA; hasil -25%.",
+    "Fig. 6 (flowchart), Fig. 7 (survival), Fig. 9-10 (jadwal optimasi vs non-optimasi)."
+  ]
+}

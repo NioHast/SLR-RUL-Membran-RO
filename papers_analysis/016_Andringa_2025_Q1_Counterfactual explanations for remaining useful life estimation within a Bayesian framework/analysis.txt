@@ -1,0 +1,52 @@
+PAPER 63: Counterfactual explanations for remaining useful life estimation within a Bayesian framework
+Penulis: Jilles Andringa, Marcia L. Baptista, Bruno F. Santos (2025)
+Jurnal: Information Fusion | Scopus Q1 | DOI 10.1016/j.inffus.2025.102972 | Pilar: C. Bayesian & Uncertainty
+
+KARAKTERISTIK STUDI
+Studi jembatan XAI + prognostik: memakai Bayesian LSTM (B-LSTM) dan Counterfactual Explanations (CFE, framework DiCE) untuk dua tujuan, yaitu interpretabilitas estimasi RUL dan peningkatan akurasi via augmentasi data. Termasuk ranah prescriptive maintenance (menjelaskan dampak aksi terhadap RUL).
+
+METODE
+B-LSTM dengan variational inference (VI) + Monte Carlo sampling untuk distribusi prediktif. DiCE menghasilkan dua jenis CFE: RUL CFE (skenario menaikkan/menurunkan RUL 10 siklus) dan Uncertainty CFE (skenario menurunkan ketidakpastian). Lima model dilatih: baseline, augmentasi uncertainty CFE, augmentasi RUL CFE (naik), (turun), dan (gabungan). Evaluasi: RMSE, alpha-lambda accuracy, asymmetric scoring function, dan normalized diversity score (NDS).
+
+DATA
+C-MAPSS FD001 (NASA): 100 lintasan train/test, satu kondisi operasi, satu fault mode. Preprocessing: pemilihan 14 sensor, denoising Savitzky-Golay, normalisasi [-1,1], sliding window 30 siklus, label RUL dilinearisasi (maks 120 siklus) -> 17.731 sampel (30,14).
+
+TEMUAN UTAMA
+- B-LSTM mengalahkan LSTM deterministik (RMSE 5,81 vs 13,51 siklus).
+- Augmentasi Uncertainty CFE terbaik: RMSE 8,47 (vs 9,56), akurasi 79% (vs 74%), score 2312,69 (vs 2802,69).
+- Augmentasi RUL CFE gabungan tidak selalu lebih baik (RMSE 10,26), menunjukkan augmentasi harus bertarget.
+- CFE mengaitkan aksi maintenance dengan perubahan RUL (mis. water wash menurunkan suhu -> memperpanjang umur 30 siklus).
+- Ketidakpastian menyempit mendekati akhir umur; tantangan korelasi-vs-kausalitas diakui.
+
+RELEVANSI KE TESIS
+Pendukung. Sangat berharga untuk sumbu ketidakpastian (Bayesian) dan DSS/keputusan maintenance, tetapi tidak memakai survival/penyensoran dan bukan domain membran. Menjadi rujukan bagaimana ketidakpastian prediktif dikaitkan ke keputusan operasional.
+
+JUSTIFIKASI DIMENSI
+- d1=1: time series multisensor 30 x 14 (C-MAPSS).
+- d2=1: RUL eksplisit; EOL; label dilinearisasi maks 120 siklus.
+- d3="": tidak ada model survival/penyensoran (Bayesian bukan survival).
+- d4=1: Bayesian LSTM (VI).
+- d5=1: posterior, Monte Carlo, interval prediksi 90%, Uncertainty CFE.
+- d6=1: analisis keputusan prescriptive maintenance (aksi -> RUL).
+- d7="": bukan membran/RO.
+- d8="": dataset benchmark standar (bukan small-data/transfer).
+
+KUALITAS (skor 9)
+Q1=1; Q2=1; Q3=0,5 (data simulasi); Q4=0,5; Q5=1; Q6=N/A; Q7=1; Q8=1. Sum applicable 6,0/7 -> 8,57 ~ 9.
+
+LIMITASI
+Hanya C-MAPSS FD001; korelasi vs kausalitas; augmentasi gabungan tidak konsisten; butuh model CF khusus (CLUE) dan dataset lebih kompleks.
+
+FUNDING/COI
+FCT Portugal UIDB/04152/2020 (MagIC/NOVA IMS). Tidak ada konflik kepentingan.
+
+BUKTI
+- "We generate two types of CFEs: (1) RUL CFEs ... and (2) uncertainty CFEs ... to augment the dataset" (Abstract)
+- "we used variational inference (VI) ... Monte Carlo simulations for each input" (Sec. 3.2)
+- "B-LSTM RMSE: 5.81 cycles, LSTM RMSE: 13.51 cycles" (Fig. 10)
+- Table 4: RMSE 9.56 -> 8.47; accuracy 74% -> 79%
+- "extended the equipment's useful life by 30 cycles" (Abstract)
+
+FIGUR DIBACA
+- _page_5_Figure_2.jpeg: arsitektur B-LSTM (14 sensor x 30 siklus -> LSTM 32 -> Dense 32,16 -> RUL, tiap bobot distribusi).
+- _page_8_Figure_13.jpeg: prediksi RUL + interval 90% + CFE +/-10 siklus.

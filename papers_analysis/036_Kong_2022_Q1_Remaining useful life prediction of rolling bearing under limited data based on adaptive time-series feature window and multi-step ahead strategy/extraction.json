@@ -1,0 +1,48 @@
+{
+  "no": 94,
+  "judul": "Remaining useful life prediction of rolling bearing under limited data based on adaptive time-series feature window and multi-step ahead strategy",
+  "penulis": "Weili Kong, Hai Li",
+  "tahun": 2022,
+  "jurnal": "Applied Soft Computing",
+  "doi": "10.1016/j.asoc.2022.109630",
+  "kuartil": "Scopus Q1 (SCImago SJR Best Quartile)",
+  "pilar": "D. Small-data/Transfer/Hierarchical",
+  "ringkasan": "Studi mengusulkan metode prediksi RUL bantalan gelinding pada kondisi data terbatas. Tiga komponen utama: identifikasi first prediction time (FPT) berbasis kurtosis dan RMS, jendela fitur deret waktu adaptif yang dikompresi memakai degradation factor, dan jaringan stacked bidirectional LSTM (SBiLSTM) dengan strategi prediksi multi-step ahead bergulir. Pada dataset XJTU-SY, metode mencapai MAPE 6,77%, 18,92%, dan 8,95% untuk tiga bantalan representatif, mengalahkan delapan metode pembanding.",
+  "kontribusi": "Menunjukkan strategi RUL yang dirancang khusus untuk data terbatas (small-data) tanpa memerlukan dataset run-to-failure masif, relevan dengan tantangan kelangkaan data kegagalan membran; namun tidak memakai survival/pencensoringan dan domainnya bukan membran.",
+  "temuan_kunci": [
+    "Jendela fitur adaptif menurunkan MAPE sebesar 21,91%, 25,5%, dan 11,27% dibanding jendela tanpa kompresi.",
+    "Proses outlier menurunkan MAPE wilayah outlier dari 82,73% menjadi 9,09% (SP=171 pada bearing_2_5).",
+    "SBiLSTM mengalahkan LSTM (MAPE 6,77%/18,92%/8,95% vs 16,34%/33,74%/13,61%).",
+    "Parameter optimal SBiLSTM: epoch 250, neuron [140,150], learning rate 0,002, batch size 32 (via k-fold cross-validation).",
+    "Metode berperilaku sebagai 'individual model' yang bergantung pada kondisi operasi objek, bukan model 'group' dari data masif."
+  ],
+  "dimensi": {"d1": "1", "d2": "1", "d3": "", "d4": "1", "d5": "", "d6": "", "d7": "", "d8": "1"},
+  "alasan_dimensi": {
+    "d1": "Memakai sinyal vibrasi deret waktu dari dua akselerometer (vertikal dan horizontal, 25,6 kHz) dan menurunkan fitur RMS dan kurtosis sebagai input.",
+    "d2": "Mendefinisikan RUL sebagai selisih failure time (FT) dan start prediction time (SP), dengan failure threshold F_FT pada fitur RMS.",
+    "d3": "Tidak ada survival/Weibull/hazard/cure maupun penanganan data tersensor; ini model data-driven LSTM murni.",
+    "d4": "Memakai stacked bidirectional LSTM (SBiLSTM) sebagai model prediksi, dibanding LSTM, BPNN, dan model eksponensial.",
+    "d5": "Tidak melaporkan interval kepercayaan/posterior; hanya MAPE dan RMSPE tanpa kuantifikasi ketidakpastian.",
+    "d6": "Menyebut pengurangan downtime dan biaya pemeliharaan serta penjadwalan, tetapi tidak menyusun/menganalisis keputusan perawatan konkret.",
+    "d7": "Objek penelitian adalah rolling bearing, bukan membran/RO/desalinasi.",
+    "d8": "Secara khusus menangani data terbatas: skenario 'Known-Unknown' dan 'Unknown-Known-Unknown', model individual tanpa dataset run-to-failure masif."
+  },
+  "relevansi": "Inti-Domain",
+  "kualitas": {"skor": 8, "rincian": {"Q1": 1, "Q2": 1, "Q3": 0.5, "Q4": 1, "Q5": 0.5, "Q6": "N/A", "Q7": "N/A", "Q8": "N/A"}, "catatan": "Metode dijelaskan sangat rinci (rumus jendela fitur, FPT, SBiLSTM, hyperparameter) dan diuji melawan delapan pembanding pada dataset publik XJTU-SY. Kelemahan: eval uasi kuantitatif rinci hanya pada tiga bantalan representatif tanpa pengulangan/interval kepercayaan atas metrik, dan pernyataan data availability ('No data was used') tidak konsisten dengan penggunaan XJTU-SY. Q6, Q7, Q8 tidak berlaku (tanpa survival, tanpa kuantifikasi ketidakpastian, tanpa model keputusan perawatan)."},
+  "data_kuantitatif": {"dataset": "XJTU-SY rolling bearing dataset (15 run-to-failure, tiga kondisi operasi: 35 Hz/12 kN, 37,5 Hz/11 kN, 40 Hz/10 kN)", "ukuran": "13 bantalan dipakai untuk validasi (bearing_1_4 dan bearing_3_2 dikecualikan karena kegagalan mendadak/multipel); tiga bantalan representatif (1_3, 2_5, 3_1) dianalisis rinci; tiap file 32.768 titik sinyal, sampling 25,6 kHz", "metrik": "MAPE: 6,77% / 18,92% / 8,95%; RMSPE: 8,87% / 29,19% / 10,42%; pembanding terbaik lainnya MAPE 16,34% (LSTM) dan 18,39% (eksponensial); n0=10, nkl=6, nsl=3; g_max=0,2197"},
+  "metode": "Prediksi RUL berbasis (1) identifikasi FPT memakai kurtosis dan RMS, (2) jendela fitur deret waktu adaptif dengan degradation factor hasil derivasi matematis (ekspansi deret), (3) jaringan stacked bidirectional LSTM (SBiLSTM) dan strategi prediksi multi-step ahead bergulir dengan postprocessing berbasis degradation factor.",
+  "limitasi": [
+    "Perbandingan kuantitatif rinci hanya pada tiga bantalan representatif; 10 lainnya hanya diklaim.",
+    "Tanpa kuantifikasi ketidakpastian prediksi dan tanpa survival/pencensoringan.",
+    "Pernyataan ketersediaan data tidak konsisten (menyatakan tidak memakai data, padahal memakai XJTU-SY).",
+    "Domain rolling bearing, bukan membran/RO; degradasi diasumsikan eksponensial."
+  ],
+  "funding_coi": "Didukung Major Project of National Science and Technology, China (grant 2017ZX04002001-002); penulis menyatakan tidak ada konflik kepentingan yang diketahui.",
+  "status_inklusi": "diterima",
+  "figur_dibaca": [
+    {"file": "_page_4_Figure_2.jpeg", "isi": "Diagram alur metode tiga bagian: (1) identifikasi FPT dari sinyal vibrasi mentah, kurtosis, dan RMS; (2) konstruksi jendela fitur deret waktu M01/M02/Mk1/Mk2; (3) prediksi bergulir multi-step dengan stacked BiLSTM hingga mencapai F_FT."},
+    {"file": "_page_8_Figure_2.jpeg", "isi": "Arsitektur SBiLSTM: input jendela fitur, dua lapisan LSTM bidirectional (jalur maju biru untuk prediksi, jalur mundur merah untuk smoothing), konkatenasi, output jendela fitur berikutnya."},
+    {"file": "_page_12_Figure_2.jpeg", "isi": "Grafik RMS vs waktu untuk bearing_1_3 dengan enam subplot SP=80-130; garis Real data (hitam) mencapai failure threshold RMS~2,2 di ~150 menit; Method 1 (proposed) lebih dekat ke real data dibanding Method 2 dan 3."}
+  ],
+  "bukti": ["Eq (3): kriteria FPT", "Eq (4)-(11): degradation factor dan feature threshold ratio", "Eq (12)-(22): konstruksi jendela fitur dan proses outlier", "Eq (27): penentuan RUL", "Eq (33)-(34): RMSPE dan MAPE", "Tabel 2: detail dataset XJTU-SY", "Tabel 4-6: hasil prediksi delapan metode", "Tabel 7: efek proses outlier", "Fig 9: arsitektur SBiLSTM"]
+}

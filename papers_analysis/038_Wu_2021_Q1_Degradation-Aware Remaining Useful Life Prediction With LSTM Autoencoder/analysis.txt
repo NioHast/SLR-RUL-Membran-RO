@@ -1,0 +1,45 @@
+PAPER 076 - Wu et al. (2021)
+Judul   : Degradation-Aware Remaining Useful Life Prediction With LSTM Autoencoder
+Jurnal  : IEEE Transactions on Instrumentation and Measurement | Scopus Q1 (SCImago SJR Best Quartile) | DOI 10.1109/tim.2021.3055788
+Pilar   : B. Deep Learning RUL
+Relevansi: Pendukung  (RUL + DL/LSTM-AE; tanpa survival/censoring, domain bearing)
+
+KARAKTERISTIK STUDI
+Mengusulkan DELTA, kerangka RUL "degradation-aware" yang mengatasi asumsi tren degradasi tunggal/eksponensial. Tiga modul: identifikasi tahap sehat (HHT + SVM), estimasi degradation factor (LSTM autoencoder), dan estimasi RUL (similarity matching berbobot). Diuji pada dataset FEMTO/PRONOSTIA.
+
+METODE
+- Identifikasi tahap sehat: HHT (EMD -> IMF, Hilbert marginal spectrum) mengekstraksi indikator frekuensi inner/outer race/ball (Eq. 1-7); klasifikasi tahap via SVM (Eq. 8-12).
+- Degradation factor: LSTM autoencoder (encoder -> vektor berukuran tetap -> decoder; linear layer berbias); reconstruction error e_t (Eq. 13) dinormalisasi menjadi degradation factor h_t (Eq. 14).
+- RUL: similarity matching antara plot degradasi uji dan semua sampel latih (Euclidean distance + weighted moving average, Eq. 15); PWL RUL dengan max RUL 16000.
+- Metrik: Score (Eq. 16) dan RMSE; baseline MLP, XGBoost, RFR, CNN, LSTM, SVR, RNN, two-stage; ablation.
+
+DATA
+FEMTO/PRONOSTIA bearing. FEMTO 1 (load 4000 N, 1800 rpm): latih 1-1,1-2; uji 1-3..1-7. FEMTO 2 (load 4200 N, 1650 rpm): latih 2-1,2-2; uji 2-3..2-7. Sensor: getaran (25,6 kHz; 2560 titik/0,1 s; sampling tiap 10 s) dan suhu; EOL saat amplitudo getaran > 20 g.
+
+TEMUAN UTAMA
+- FEMTO 1: DELTA RMSE 80,9-128,6 vs XGBoost 113,5-476,2, LSTM 108,7-512,6; Score DELTA 508,7-1817,4 terendah.
+- FEMTO 2: DELTA unggul semua baseline (RMSE 86,7-253,9; Score 397,5-987,2).
+- Ablation: modul klasifikasi tahap sehat lebih penting daripada autoencoder.
+- Degradation factor meningkat seiring degradasi; tidak butuh asumsi tren degradasi.
+
+RELEVANSI KE TESIS
+Relevan sebagai contoh metode DL RUL (autoencoder + similarity matching) dan penanganan tahap degradasi, sebagai pembanding arsitektur pada tesis. Namun tidak memodelkan data tersensor, tidak mengkuantifikasi ketidakpastian prediksi, dan domainnya bearing. Karena itu Pendukung.
+
+JUSTIFIKASI DIMENSI (per d1-d8)
+- d1 = 1: getaran + suhu multisensor deret waktu (25,6 kHz).
+- d2 = 1: RUL PWL (max 16000) + EOL saat amplitudo > 20 g.
+- d3 = "" : tanpa survival/hazard/Weibull/censoring; similarity + klasifikasi tahap.
+- d4 = 1: LSTM autoencoder + SVM (baseline CNN/LSTM/SVR/XGBoost/RFR/MLP).
+- d5 = "" : tanpa CI/posterior/interval; hanya mean/smoothed.
+- d6 = "" : motivasi pengurangan biaya maintenance tanpa model keputusan.
+- d7 = "" : objek bearing, bukan membran.
+- d8 = "" : tanpa small-data/transfer/hierarchical.
+
+KUALITAS (skor 7/10)
+Q1=1; Q2=1; Q3=1 (FEMTO publik, 2 kondisi, banyak bearing uji); Q4=0,5 (metode rinci, tanpa kode); Q5=1 (RMSE+Score, 8 pembanding, ablation); Q6=N/A; Q7=0 (tanpa ketidakpastian); Q8=0,5 (motivasi maintenance). Total 7 item, jumlah 5,0 -> 7.
+
+LIMITASI
+Tanpa ketidakpastian; tanpa censoring; tanpa kode; bergantung pemilihan IMF/SVM; domain bearing.
+
+BUKTI (fig/table/eq)
+Eq. (1)-(16); Table I-VI; Fig. 1 (system design), Fig. 2 (encoder-decoder), Fig. 4 (getaran), Fig. 5 (prediksi RUL).

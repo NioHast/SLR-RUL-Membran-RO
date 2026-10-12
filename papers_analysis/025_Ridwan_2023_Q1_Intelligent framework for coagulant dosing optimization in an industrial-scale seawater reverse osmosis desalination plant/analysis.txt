@@ -1,0 +1,45 @@
+PAPER 019 - Ridwan et al. (2023)
+Judul   : Intelligent framework for coagulant dosing optimization in an industrial-scale seawater reverse osmosis desalination plant
+Jurnal  : Machine Learning with Applications | Scopus Q1 (SCImago SJR Best Quartile) | DOI 10.1016/j.mlwa.2023.100475
+Pilar   : E. Membrane/RO/Desalination
+Relevansi: Konteks  (ML optimasi pra-perlakuan/desalinasi SWRO; tanpa RUL/survival)
+
+KARAKTERISTIK STUDI
+Mengembangkan kerangka berbasis ANN untuk mengoptimalkan dosis koagulan (FeCl3) pada plant SWRO industri (216.000 m3/hari). Model memprediksi SDI air terfiltrasi dari parameter operasional; keputusan dosing diberikan ke operator; dampak ekonomi dihitung.
+
+METODE
+- Feature engineering: lag (next/prev) dan diff untuk SDI, pH, turbidity, FeCl3, polimer; seleksi fitur korelasi Pearson (10 input).
+- ANN dense 10-256-128-64-64-1, ReLU + linear, MSE, Adam, 500 epoch, batch 50.
+- Baseline: decision tree, random forest, linear regression.
+- Deployment + perhitungan penghematan biaya.
+
+DATA
+Plant SWRO 216.000 m3/d, Arab Saudi; data operasional 3 tahun, 9261 nilai/parameter; split 90/10.
+
+TEMUAN UTAMA
+- ANN akurasi 95,33% (R2=0,95; MAE=0,15; MSE=0,047); mengalahkan RF (R2=0,57), DT/LR (0,49).
+- Implementasi 1 tahun: konsumsi koagulan turun 11,7%; hemat 325.000 SAR; penghematan terbesar musim dingin.
+- SDI sebagai indikator kualitas filtrate untuk keputusan dosing.
+- Variabel kunci: SDI/pH/turbidity sebelumnya + dosing FeCl3 yang diusulkan.
+
+RELEVANSI KE TESIS
+Konteks domain: contoh pengendalian fouling pra-perlakuan membran RO dengan data industri nyata dan dampak biaya - memperkuat pemahaman alur sensor->prediksi->keputusan pada desalinasi. Namun tidak memprediksi RUL, tidak memakai survival analysis, dan tanpa data tersensor. Tier = Konteks.
+
+JUSTIFIKASI DIMENSI (per d1-d8)
+- d1 = 1: multi-parameter operasional + fitur lag/diff deret waktu.
+- d2 = "" : target SDI kontinu, bukan RUL/kegagalan.
+- d3 = "" : tanpa survival/hazard/Weibull/censoring.
+- d4 = 1: ANN (MLP) spesifik; baseline DT/RF/LR.
+- d5 = "" : tanpa CI/posterior.
+- d6 = 1: keputusan dosing koagulan + DSS operator + penghematan biaya terukur.
+- d7 = 1: plant SWRO desalinasi, fokus pra-perlakuan/fouling.
+- d8 = "" : data industri besar (bukan small-data/transfer/hierarchical/censoring).
+
+KUALITAS (skor 9/10)
+Q1=1; Q2=1; Q3=1 (data 3 tahun industri); Q4=0,5 (data tidak publik); Q5=1 (beberapa model + metrik); Q6=N/A; Q7=N/A; Q8=1 (optimasi dosing + dampak ekonomi). Jumlah 5,5/6 -> 9.
+
+LIMITASI
+Data tidak publik; tanpa ketidakpastian; target bukan RUL; tanpa survival/censoring.
+
+BUKTI (fig/table/eq)
+Table 1-4; Fig. 3 (arsitektur ANN 10-256-128-64-64-1); Fig. 4 (actual vs predicted SDI); Fig. 6 (filtrate SDI sebelum/sesudah); Fig. 7 (konsumsi & penghematan biaya).

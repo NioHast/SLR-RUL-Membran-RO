@@ -1,0 +1,48 @@
+PAPER 077 - Kraus & Feuerriegel (2019)
+Judul   : Forecasting remaining useful life: Interpretable deep learning approach via variational Bayesian inferences
+Jurnal  : Decision Support Systems | Scopus Q1 (SCImago SJR Best Quartile) | DOI 10.1016/j.dss.2019.113100
+Pilar   : F. DSS & Predictive Maintenance (IS)
+Relevansi: Inti-Metode  (RUL + survival/Weibull + deep learning, kerangka Bayesian interpretable)
+
+KARAKTERISTIK STUDI
+Mengusulkan structured-effect neural network (SENN) untuk RUL aero-engine yang menggabungkan akurasi deep learning dengan interpretabilitas model probabilistik. Motivasi: ML black-box sulit dipertanggungjawabkan (akuntabilitas/regulasi), sedangkan model lifetime probabilistik interpretable tetapi mengabaikan sensor. SENN menjembatani keduanya dan diestimasi secara Bayesian.
+
+METODE
+- Prediksi = lambda(t) + beta^T X_t + RNN_theta (Eq. 10-11):
+  (1) lambda(t): komponen non-parametrik, conditional expected residual life dari distribusi lifetime Weibull atau log-normal (Eq. 4-7), E[Z|Z>t]-t;
+  (2) beta^T X_t: kombinasi linear sensor (Bayesian, prior normal/lasso);
+  (3) RNN_theta: LSTM 2 layer (100/50 neuron), lintasan 50 sensor terakhir.
+- Estimasi via variational Bayesian inference meminimalkan KL divergence / maximisasi ELBO (Appendix A), library pyro, Adam lr 0,005. Kode publik di GitHub.
+- Baseline: estimasi empiris, probabilistic (Weibull/log-normal), ML tradisional (ridge, lasso, elastic net, random forest, SVR), LSTM; dengan/tanpa feature engineering (Tabel 2, 15 fungsi agregasi).
+
+DATA
+NASA C-MAPSS turbofan degradation: 200 engine (100 latih/100 uji), 21 sensor (nama disanitasi). Rata-rata RUL 82,30 siklus (std 54,59); median 77. Metrik utama MAE (dapat diterjemahkan ke margin siklus).
+
+TEMUAN UTAMA
+- SENN log-normal + feature engineering MAE 13,267 (terbaik structured-effect) vs random forest FE 17,793 dan SVR FE 21,932; LSTM murni 11,188 (lebih akurat tetapi black-box).
+- Dekomposisi varians: non-parametrik 0,175; linear 0,408; recurrent 0,064 (komponen interpretable dominan).
+- Probabilistic model saja (Weibull/log-normal) membaik ~39% dari empiris (45,06 -> 27,8).
+- VI menghasilkan distribusi posterior parameter (shape/scale) dan credible region koefisien beta; sensor X9, X12, X21, X7 paling berpengaruh.
+- Implikasi DSS: perencanaan pemeliharaan preemptive, klaim pengurangan downtime 30-50% (McKinsey).
+
+RELEVANSI KE TESIS
+Sangat relevan secara metode: ini contoh langka yang menggabungkan model kelangsungan hidup (Weibull/log-normal conditional residual life, terhubung ke proportional hazards) dengan deep learning (LSTM) dalam satu kerangka, plus kuantifikasi ketidakpastian Bayesian - persis sumbu survival analysis + DL tesis. Kekurangan: tidak memodelkan data tersensor dan domainnya aero-engine. Tier Inti-Metode.
+
+JUSTIFIKASI DIMENSI (per d1-d8)
+- d1 = 1: 21 sensor time series + lintasan 50 nilai (LSTM).
+- d2 = 1: RUL = E[Y_t|X_t..X_1] hingga breakdown; model conditional residual life.
+- d3 = 1: pemodelan survival nyata: fungsi survival (1-F) + conditional expected residual life E[Z|Z>t]-t dengan Weibull & log-normal (Eq. 4-7); dikaitkan dengan proportional hazards (namun tanpa indikator censoring eksplisit; data run-to-failure).
+- d4 = 1: SENN (Weibull/log-normal + Bayesian linear + LSTM); baseline RF/SVR/ridge/lasso/LSTM.
+- d5 = 1: posterior parameter (Fig. 3) + credible region koefisien (Table 4) via VI.
+- d6 = 1: analisis keputusan/DSS (Section 5.1, Table 1, implikasi biaya) meski tanpa model keputusan formal.
+- d7 = "" : objek turbofan engine, bukan membran.
+- d8 = "" : tanpa small-data/transfer/hierarchical (klaim pengurangan kebutuhan data tetapi eksperimen 100 engine).
+
+KUALITAS (skor 9/10)
+Q1=1; Q2=1; Q3=1 (C-MAPSS publik, banyak baseline, uji-t); Q4=1 (kode GitHub publik, library, hyperparameter); Q5=1 (MAE, uji signifikansi, dekomposisi varians); Q6=N/A (tanpa censoring); Q7=1 (posterior/credible region); Q8=0,5 (implikasi DSS kualitatif tanpa model keputusan). Total 7 item, jumlah 6,5 -> 9.
+
+LIMITASI
+Tanpa censoring; data simulasi; implikasi DSS tanpa model formal; VI mahal secara komputasi; contoh dekomposisi satu engine.
+
+BUKTI (fig/table/eq)
+Eq. (1)-(13) + Appendix A; Table 1-5; Fig. 2 (dekomposisi), Fig. 3 (posterior).

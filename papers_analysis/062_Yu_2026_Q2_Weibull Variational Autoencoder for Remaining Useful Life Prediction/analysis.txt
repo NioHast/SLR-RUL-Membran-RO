@@ -1,0 +1,38 @@
+PAPER 92: Weibull Variational Autoencoder for Remaining Useful Life Prediction
+Penulis: JunWoo Yu, Yoojin Jang, Kwanghui Shin, Jinsoo Jeong, Yong Soo Kim (2026)
+Jurnal: Quality and Reliability Engineering International | Scopus Q2 (SCImago SJR Best Quartile) | DOI 10.1002/qre.70386
+Pilar: C. Bayesian & Uncertainty | Relevansi: Inti-Metode | Skor kualitas: 9/10
+
+KARAKTERISTIK STUDI
+Studi metode murni yang mengusulkan Weibull Variational Autoencoder (WVAE) untuk prediksi RUL/waktu kegagalan sistem repairable. Inti gagasannya: mengganti prior normal pada latent space VAE dengan distribusi Weibull, sehingga model belajar bentuk (shape beta) dan skala (scale eta) distribusi kegagalan langsung dari riwayat kegagalan tanpa mendefinisikan mekanisme degradasi.
+
+METODE
+Encoder dan decoder memakai 1D-CNN. Encoder mengestimasi parameter beta (aktivasi Softplus) dan eta (aktivasi Exponential); latent variable dibangkitkan lewat inverse-CDF Weibull z = eta(-ln(1-epsilon))^(1/beta). Loss gabungan MSE (akurasi titik) dan negative log-likelihood Weibull (kesetiaan distribusi) dengan lambda=0,01 dan konstanta delta=50. Ketidakpastian dikuantifikasi lewat Monte Carlo Dropout (100 forward pass) untuk membentuk interval kepercayaan 95%. Baseline: VAE, PAE-NMF, MLP, LSTM, 1D-CNN. Analisis sensitivitas terhadap lambda dan perbandingan efisiensi komputasi terhadap PAE-NMF.
+
+DATA
+Data simulasi Weibull: 9 kondisi (shape 0,8 infant mortality; 1,0 random; 2,5 wear-out, dikombinasikan noise sigma 50/100/150), masing-masing 300 deret waktu (total 2.700). Validasi lapangan: dataset Backblaze Drive Stats 2025, enam model HDD dengan n kegagalan 318 sampai 479.
+
+TEMUAN UTAMA
+WVAE mencapai CRPS terendah di semua dataset simulasi pada MPIW tetap 480 (mis. wear-out sigma=50 CRPS=183 vs VAE=269, PICP=0,578 vs 0,390). Pada Backblaze, WVAE unggul PICP pada 5 dari 6 model drive (mis. HGST HUH721212ALN604 PICP=0,980) dan estimasi beta/eta dengan CI 95% sebagian besar konsisten dengan MLE klasik. Kelemahan: pada satu model drive dengan distribusi bimodal (TOSHIBA MG08ACA16TEY) asumsi Weibull tunggal gagal, dan PICP absolut pada noise tinggi masih rendah.
+
+RELEVANSI KE TESIS
+Sangat relevan pada sumbu metode: ini contoh langsung integrasi distribusi Weibull (survival) ke dalam deep generative model untuk RUL, plus kuantifikasi ketidakpastian berbasis interval. Ini pola yang bisa ditiru tesis. Namun penulis secara eksplisit MENGECUALIKAN observasi right-censored (unit yang belum gagal), justru masalah inti data membran; domainnya juga hard drive, bukan membran. Jadi menyumbang Metode, bukan Domain.
+
+JUSTIFIKASI DIMENSI
+d1 = 1: input deret waktu riwayat kegagalan dan snapshot SMART harian; encoder 1D-CNN.
+d2 = 1: target adalah waktu kegagalan/RUL dengan parameter Weibull sebagai output.
+d3 = 1: memodelkan distribusi waktu kegagalan secara eksplisit dengan Weibull (latent Weibull + NLL Weibull, Eq. 12 dan 17).
+d4 = 1: WVAE spesifik dibanding LSTM, 1D-CNN, MLP, VAE, PAE-NMF.
+d5 = 1: MC Dropout, CI 95%, metrik PICP/MPIW/CRPS.
+d6 = "": menyebut biaya pemeliharaan dan kepercayaan personel, tanpa keputusan perawatan konkret.
+d7 = "": domain sistem mekanis umum dan HDD, bukan membran/RO.
+d8 = "": tidak menangani small-data/transfer/hierarkis, dan mengecualikan data tersensor.
+
+KUALITAS (9/10)
+Q1 = 1, Q2 = 1, Q3 = 1 (simulasi ekstensif + validasi Backblaze), Q4 = 1 (arsitektur dan hyperparameter rinci, data simulasi reprodusibel, Backblaze publik), Q5 = 1 (lima baseline, metrik probabilistik, 10 pengulangan, sensitivitas lambda), Q6 = 0 (right-censoring sengaja dikecualikan), Q7 = 1, Q8 = N/A. Total 6/7 berlaku = 8,57 dibulatkan 9.
+
+LIMITASI
+Observasi right-censored dikecualikan; asumsi satu mode kegagalan Weibull; kalibrasi interval lemah pada noise tinggi; evaluasi utama pada data simulasi; data dan kode tidak publik.
+
+BUKTI
+Eq (12) KL antar Weibull, Eq (15) reparameterization, Eq (17) loss gabungan, Tabel 2-3 sensitivitas lambda, Tabel 5 arsitektur, Tabel 7-8 parameter+CI dan kinerja, Tabel 11-12 hasil Backblaze vs MLE klasik.

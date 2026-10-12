@@ -1,0 +1,45 @@
+PAPER 072 - Oikonomou et al. (2022)
+Judul   : Remaining Useful Life Prognosis of Aircraft Brakes
+Jurnal  : International Journal of Prognostics and Health Management | Scopus Q2 (SCImago SJR Best Quartile) | DOI 10.36001/ijphm.2022.v13i1.3072
+Pilar   : C. Bayesian & Uncertainty
+Relevansi: Inti-Metode  (RUL + model reliabilitas semi-Markov/Bayesian + kuantifikasi ketidakpastian; tanpa pencensoringan)
+
+KARAKTERISTIK STUDI
+Mengevaluasi kelayakan prognostik RUL real-time untuk rem cakram karbon pesawat komersial yang saat ini dipelihara dengan Time-Based Maintenance (TBM). Bertujuan mendukung peralihan ke Condition-Based Maintenance (CBM). Dataset riil blind dari armada wide-body maskapai Eropa. Tiga metodologi probabilistik dibandingkan: BLR, NHHSMM, dan BNN. Penekanan pada kuantifikasi ketidakpastian sebagai syarat prediksi yang bermakna.
+
+METODE
+- Bayesian Linear Regression (BLR): bobot sebagai variabel acak dengan prior Gaussian, hyperprior Gamma (a,b,c,d=1e-6); estimasi via maximisasi log marginal likelihood (implementasi scikit-learn 0,23,2; Tipping 2001).
+- Non-Homogeneous Hidden Semi Markov Model (NHHSMM): proses ganda stokastik (rantai semi-Markov tersembunyi + proses observasi); estimasi parameter theta via MLE (Moghaddass & Zuo 2014); RUL dari conditional reliability R(t|x,L>tp,theta*) (Eq. 3) dan CDF (Eq. 4).
+- Bootstrapped ANN (BNN): 200 ANN (satu hidden layer 20 neuron, ReLU, output linear, normalisasi [-1,1], lr 1e-4 decay 1e-5, Adam), resampling with replacement; mean & variance prediksi (Eq. 8-9) membentuk CI (Eq. 10); dekomposisi varians epistemic+aleatoric.
+- Praporses: moving average 6 flight, failure threshold saat sensor = 0%.
+
+DATA
+Dataset rem pesawat (ketebalan cakram karbon dalam %). 56 riwayat brake; 27 riwayat lengkap (100%->0%); 3 di antaranya outlier (2 left, 1 right) hanya untuk uji. 24 riwayat normal dari 8 brake-set 3 aircraft; skema leave-two-out (16 latih selalu). 11 brake uji. Variabel input: performed flights + sensor data; output: RUL (flights).
+
+TEMUAN UTAMA
+- BNN terbaik: rata-rata RMSE 21,20 / MAPE 5,27 / CRA 0,92 / PH 0,75 / CICP 0,83 / MCIW 79,46; unggul hampir semua brake termasuk outlier.
+- BLR: CICP tertinggi 0,97 tetapi MCIW terlebar 133,33 (gagal outlier, PH 0,70); NHHSMM terburuk (RMSE 29,27, CRA 0,83) - kalah dari model "sederhana" versi probabilistiknya.
+- BNN CI tersempit; semua model konvergen ke ground truth di akhir umur; CI menyusut seiring waktu operasi.
+- Meski data sangat linear, slope tiap kurva bersifat stokastik sehingga regresi linear deterministik tidak cukup dan kuantifikasi ketidakpastian diperlukan (terutama untuk outlier).
+
+RELEVANSI KE TESIS
+Sangat relevan untuk pilar C: perbandingan eksplisit model Bayesian (BLR), reliabilitas semi-Markov (NHHSMM), dan bootstrap ANN dalam mengkuantifikasi ketidakpastian RUL, dengan metrik coverage (CICP) dan lebar CI (MCIW). Namun tidak ada pemodelan data tersensor (riwayat tidak lengkap justru dibuang), dan domainnya rem pesawat. Berguna sebagai preseden bahwa model reliabilitas (semi-Markov) dapat menjadi kompetitor/alternatif terhadap DL - relevan saat tesis mengintegrasikan survival analysis + DL.
+
+JUSTIFIKASI DIMENSI (per d1-d8)
+- d1 = 1: deret waktu per brake (performed flights + sensor % ketebalan).
+- d2 = 1: RUL = remaining useful flights hingga threshold sensor 0%.
+- d3 = "" : tanpa indikator censoring/survival eksplisit; 29 riwayat tidak lengkap dikecualikan (bukan dimodelkan).
+- d4 = 1: BLR + NHHSMM + BNN (model spesifik).
+- d5 = 1: 95% CI (BLR posterior, NHHSMM CDF RUL, bootstrap BNN) + metrik CICP/MCIW.
+- d6 = 1: analisis kebijakan pemeliharaan TBM->CBM dan peran RUL bagi keputusan kapan pemeliharaan dilakukan (tanpa model jadwal/biaya).
+- d7 = "" : objek rem pesawat, bukan membran.
+- d8 = "" : dataset kecil tetapi tanpa transfer/hierarchical/small-data eksplisit.
+
+KUALITAS (skor 8/10)
+Q1=1; Q2=1; Q3=0,5 (data riil & validasi kuat tetapi proprietary dan kecil); Q4=0,5 (hyperparameter rinci, data tidak publik); Q5=1 (6 metrik, 3 model, 11 brake); Q6=N/A (tanpa pemodelan censoring); Q7=1 (CI 95% + CICP); Q8=0,5 (motivasi CBM tanpa model keputusan). Total 7 item, jumlah 5,5 -> 8.
+
+LIMITASI
+Data proprietary kecil; riwayat tidak lengkap dibuang; NHHSMM bergantung pada N state; tanpa model keputusan kuantitatif; metrik mengabaikan 25% awal umur.
+
+BUKTI (fig/table/eq)
+Eq. (1)-(16); Table 1, 2; Fig. 1 (flowchart), Fig. 4 (bootstrap ANN), Fig. 5-6 (hasil prognostik + CI).

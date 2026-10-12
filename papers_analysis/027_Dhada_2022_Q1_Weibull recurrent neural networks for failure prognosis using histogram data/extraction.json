@@ -1,0 +1,46 @@
+{
+ "no": 20,
+ "judul": "Weibull recurrent neural networks for failure prognosis using histogram data",
+ "penulis": "Maharshi Dhada, Ajith Kumar Parlikad, Olof Steinert, Tony Lindgren",
+ "tahun": 2022,
+ "jurnal": "Neural Computing and Applications",
+ "doi": "10.1007/s00521-022-07667-7",
+ "kuartil": "Scopus Q1 (SCImago SJR Best Quartile)",
+ "pilar": "A. Survival Analysis & Censored Data",
+ "ringkasan": "Studi menyajikan use case industri pertama WTTE-RNN (Weibull time-to-event recurrent neural network) untuk prognosis kegagalan turbocharger pada armada truk Scania. WTTE-RNN mengoptimalkan parameter distribusi Weibull waktu-ke-kegagalan via RNN menggunakan loss log-likelihood yang memanfaatkan data tersensor (truk yang tidak gagal). Data kondisi berupa histogram yang jarang ter-sampling (10-30 snapshot/truk); dimensi direduksi via relative entropy antar-histogram. Hasil: WTTE-RNN memberi rentang galat yang memadai untuk perencanaan pemeliharaan; menggabungkan data tersensor memperbaiki prediksi, tetapi rasio tersensor:tak-tersensor yang terlalu timpang merusak performa; clustering sub-armada hanya bermanfaat bila dataset cukup besar.",
+ "kontribusi": "Mendemonstrasikan secara industri bahwa WTTE-RNN (survival Weibull + RNN) yang memanfaatkan data tersensor dapat langsung mendukung keputusan pemeliharaan berbasis risiko - inti metode tesis, meski domainnya armada truk (bukan membran).",
+ "temuan_kunci": [
+  "WTTE-RNN mengoptimalkan log-likelihood Weibull diskret yang secara eksplisit memuat indikator censoring (u_t), sehingga truk yang tidak gagal tetap memberi informasi.",
+  "Menambahkan data tersensor memperbaiki prediksi (varians galat menjelang kegagalan hampir separuh), tetapi rasio tersensor 15:1 merusak performa (over-generalization loss Weibull).",
+  "Clustering sub-armada hanya menguntungkan bila dataset cukup besar; pada cluster kecil justru overfitting.",
+  "Reduksi dimensi histogram via relative entropy (overlap histogram berurutan + histogram sehat) memangkas fitur menjadi ~1/30.",
+  "WTTE-RNN cenderung under-predict waktu kegagalan (galat negatif lalu menuju positif), memberi estimasi konservatif yang menguntungkan perencanaan pemeliharaan."
+ ],
+ "dimensi": {"d1": "1", "d2": "1", "d3": "1", "d4": "1", "d5": "1", "d6": "1", "d7": "", "d8": "1"},
+ "alasan_dimensi": {
+  "d1": "Memakai deret waktu data kondisi multi-parameter (14 fitur histogram: ambient temp/pressure, axle load, boost pressure; 6 kategorikal; 3 skalar) yang direkam sebagai snapshot histogram.",
+  "d2": "Mendefinisikan waktu-ke-kegagalan (time-to-event) dan distribusi densitas kegagalan; mode distribusi dipakai sebagai prediksi waktu kegagalan.",
+  "d3": "ACTUALLY memodelkan data tersensor: loss log-likelihood Weibull dengan indikator censoring u_t (komponen (1-u_t) untuk aset tak-gagal), survival analysis + Weibull hazard.",
+  "d4": "Menggunakan model spesifik: RNN (recurrent neural network) dengan loss Weibull (WTTE-RNN).",
+  "d5": "Mengkuantifikasi ketidakpastian via distribusi kegagalan (densitas Weibull); varians densitas menandakan tingkat keyakinan prediksi.",
+  "d6": "Menganalisis keputusan pemeliharaan: keputusan berbasis risiko dari varians kurva densitas, dan rentang galat prediksi divalidasi cukup untuk jendela perencanaan pemeliharaan (interval ±25 timestep).",
+  "d7": "Domain adalah armada truk heavy-duty (turbocharger); bukan membran/RO/desalinasi/fouling.",
+  "d8": "Menangani data kecil/tersensor: sampel jarang (10-30 snapshot), pencensoringan dominan, clustering/transfer antar sub-armada, dan analisis rasio tersensor/tak-tersensor."
+ },
+ "relevansi": "Inti-Metode",
+ "kualitas": {"skor": 8, "rincian": {"Q1": 1, "Q2": 1, "Q3": 0.5, "Q4": 0.5, "Q5": 1, "Q6": 1, "Q7": 1, "Q8": 0.5}, "catatan": "Use case industri pertama WTTE-RNN dengan eksperimen menyeluruh (uncensored vs censored, clustering, ketidakseimbangan). Kelemahan: data Scania tidak publik (terbatas) dan sampling jarang; keputusan pemeliharaan dibingkai sebagai dukungan (bukan model keputusan eksplisit)."},
+ "data_kuantitatif": {"dataset": "Data kondisi armada truk heavy-duty Scania (turbocharger); histogram jarang ter-sampling", "ukuran": "14 fitur histogram + 6 kategorikal + 3 skalar; 10-30 snapshot per truk; 14% truk gagal", "metrik": "Galat waktu prediksi (interval ±25 timestep); varians galat menurun ~50% saat data tersensor disertakan; rasio 4:1, 1:1, 1:15 diuji; reduksi fitur ~1/30"},
+ "metode": "WTTE-RNN: RNN mengoptimalkan log-likelihood Weibull diskret dengan indikator censoring; preprocessing histogram via relative entropy (overlap antar snapshot + terhadap histogram sehat); evaluasi berbasis segmen waktu & boxplot galat; uji clustering dan rasio censoring.",
+ "limitasi": [
+  "Data industri Scania tidak publik (restriksi lisensi); hanya tersedia atas permintaan.",
+  "Sampling jarang/iregular (10-30 snapshot) menyulitkan evaluasi.",
+  "Kinerja memburuk pada rasio tersensor:tak-tersensor sangat timpang.",
+  "Domain armada truk, bukan membran; keputusan pemeliharaan tidak dimodelkan eksplisit."
+ ],
+ "funding_coi": "Penelitian didukung Scania CV, Swedia; penulis menyatakan tidak ada konflik kepentingan; akses terbuka CC BY 4.0.",
+ "status_inklusi": "diterima",
+ "figur_dibaca": [
+  {"file": "_page_6_Figure_13.jpeg", "isi": "Fig. 3 - distribusi probabilitas kegagalan terprediksi (kurva biru): sumbu-x timesteps (0-250), sumbu-y probability of failure (0-0.7); unimodal, right-skewed dengan mode ~timestep 135 ditandai garis merah putus-putus + bintang ('Failure time'); garis hitam 'Current timestep' ~65."}
+ ],
+ "bukti": ["Eq. (1): log-likelihood gabungan dengan indikator censoring u_t", "Eq. (2)-(3): log-likelihood Weibull diskret (alpha, beta)", "Section 2.1: preprocessing histogram (relative entropy)", "Fig. 2 (flowchart preprocessing)", "Fig. 3 (distribusi kegagalan terprediksi)", "Fig. 8-10 (galat vs clustering/censoring)"]
+}

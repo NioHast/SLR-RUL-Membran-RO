@@ -1,0 +1,45 @@
+PAPER 023 - Lahlou et al. (2025)
+Judul   : Predictive Modeling of Brackish Surface Water Quality for Reverse Osmosis Desalination Plants Using Advanced Machine Learning Techniques
+Jurnal  : Science & Technology Asia | Scopus Q3 (SCImago SJR Best Quartile) | DOI 10.14456/scitechasia.2025.79
+Pilar   : E. Membrane/RO/Desalination
+Relevansi: Pendukung
+
+KARAKTERISTIK STUDI
+Memprediksi WQI dan mengklasifikasikan WQC (Excellent/Good/Poor/Unsuitable) air permukaan payau yang menjadi umpan pabrik demineralisasi RO (MAROC CENTRAL) untuk mendukung monitoring dan keputusan operasional.
+
+METODE
+- Regresi WQI: k-NN (k=5), Random Forest (100 trees), MLP (100,100). Klasifikasi WQC: Decision Tree, XGBoost, SVM (linear).
+- Grid search + normalisasi min-max ke rentang 0,1-0,9; split 70/15/15.
+- WQI = agregasi terbobot 11 parameter (bobot dari panduan produsen membran + pengalaman pabrik).
+- Klasifikasi WQC dari ambang WQI (<=60 Excellent, 60-80 Good, 80-100 Poor, >100 Unsuitable).
+
+DATA
+10.000 sampel x 11 parameter (SDI, pH, turbiditas, ORP, klorida, besi total, EC, alkalinitas, kalsium, oksidabilitas, temperatur) dari sensor SCADA real-time + analisis laboratorium. Distribusi kelas awal tidak seimbang -> augmentasi/resampling.
+
+TEMUAN UTAMA
+- MLP terbaik WQI: R2=0,9819 (train), MAE=0,0182, MSE=0,0043.
+- XGBoost terbaik WQC: 99,84 % (train), 100 % (test), 99,73 % (validasi); DT 99,67 %; SVM 99,13 %.
+- WQC berkorelasi dengan kinerja RO: 'Excellent' -> feed rate & permeate flow tinggi; 'Unacceptable' -> dP tinggi dan energi meningkat.
+- Parameter berbobot terbesar: SDI (24,3 %), besi total (20,3 %), turbiditas & oksidabilitas (16,2 %).
+
+RELEVANSI KE TESIS
+Menambah konteks domain RO/desalinasi (kualitas air umpan -> potensi fouling) dan kategori aksi untuk operasi; namun targetnya kualitas air, bukan RUL/degradasi membran, dan tidak ada survival. Karena itu diklasifikasikan Pendukung (bukan Inti-Domain yang mensyaratkan RUL).
+
+JUSTIFIKASI DIMENSI (d1-d8)
+- d1 = 1: 11 parameter multi-sensor (SCADA + lab); WQI dianalisis sebagai deret waktu.
+- d2 = "" : tidak ada RUL/kegagalan; WQC = kategori kualitas air, bukan status degradasi membran.
+- d3 = "" : tanpa survival/pencensoringan.
+- d4 = 1: kNN, RF, MLP, DT, XGBoost, SVM.
+- d5 = "" : tanpa interval/posterior.
+- d6 = 1: WQC sebagai kategori aksi (cleaning, tekanan, aliran) + penyebutan pemeliharaan preventif.
+- d7 = 1: pabrik RO/desalinasi air payau (potensi fouling/scaling membran).
+- d8 = "" : dataset besar; augmentasi hanya penyeimbangan kelas.
+
+KUALITAS (skor 8/10)
+Q1=1; Q2=1; Q3=0,5; Q4=0,5; Q5=1; Q6=N/A; Q7=N/A; Q8=0,5. Jumlah 4,5/6 -> 8.
+
+LIMITASI
+Target kualitas air (bukan RUL); tanpa ketidakpastian; satu pabrik; metrik hampir sempurna berpotensi dipengaruhi augmentasi kelas.
+
+BUKTI (fig/table/eq)
+Table 1-8; Fig. 1 (metodologi); Fig. 2-11 (lokasi/pabrik, skema RF/MLP, distribusi, heatmap, time series, scatter, confusion matrix).

@@ -1,0 +1,83 @@
+{
+ "no": 48,
+ "judul": "Bayesian neural networks for uncertainty quantification in remaining useful life prediction of systems with sensor monitoring",
+ "penulis": "Ochella, S., Dinmohammadi, F., Shafiee, M.",
+ "tahun": 2024,
+ "jurnal": "Advances in Mechanical Engineering",
+ "doi": "10.1177/16878132241239802",
+ "kuartil": "Scopus Q3 (SCImago SJR Best Quartile)",
+ "pilar": "C. Bayesian & Uncertainty",
+ "ringkasan": "Penelitian ini mengusulkan deep Bayesian Neural Network (BNN) dengan Monte Carlo (MC) dropout untuk memprediksi RUL sistem ber-sensor sekaligus mengkuantifikasi ketidakpastian. Model dilatih dan diuji pada dataset NASA C-MAPSS FD001 (100 unit turbofan run-to-failure, 21 sensor). Hasil menunjukkan prediksi mean RUL beserta credible interval 95% yang menangkap ketidakpastian aleatorik dan epistemik, dengan rata-rata CI sekitar 38,78 siklus.",
+ "kontribusi": "Menyediakan kerangka RUL probabilistik (bukan point estimate) yang secara eksplisit mengkuantifikasi ketidakpastian aleatorik dan epistemik melalui MC dropout, sehingga memberi informasi kuantitatif (mean + credible interval) untuk perencanaan maintenance. Relevan ke tesis sebagai contoh deep learning yang menghasilkan distribusi prediksi, namun belum menangani data tersensor secara survival.",
+ "temuan_kunci": [
+  "BNN + MC dropout menghasilkan mean RUL dan credible interval 95% tanpa asumsi eksplisit distribusi RUL benar.",
+  "Kedua tipe ketidakpastian (aleatorik dan epistemik) dimodelkan sekaligus melalui negative log likelihood dan sampling bobot.",
+  "Untuk 39 unit dengan ground-truth RUL<=60 siklus, RUL sebenarnya 24 unit jatuh di dalam batas prediksi (coverage baik pada level 95%).",
+  "RMSE mean RUL 38,94 siklus, lebih tinggi dari metode point estimate lain, karena optimasi BNN meminimalkan negative log likelihood bukan MSE.",
+  "Interval ketidakpastian menyempit mendekati end-of-life karena lebih banyak data operasional tersedia."
+ ],
+ "dimensi": {
+  "d1": "1",
+  "d2": "1",
+  "d3": "",
+  "d4": "1",
+  "d5": "1",
+  "d6": "",
+  "d7": "",
+  "d8": ""
+ },
+ "alasan_dimensi": {
+  "d1": "Data time-series multi-sensor: 21 kolom sensor + 3 setelan operasi pada dataset C-MAPSS, diproses sebagai runtun waktu per siklus per unit.",
+  "d2": "Mendefinisikan RUL eksplisit sebagai waktu sebelum degradasi melewati failure threshold, dan memodelkan RUL mengikuti kurva P-F dengan capping 125 siklus.",
+  "d3": "Tidak memodelkan data tersensor; tidak memakai survival analysis, Weibull, hazard, atau cure model. 'Weibull' hanya muncul di rujukan (Kraus & Feuerriegel), bukan metode.",
+  "d4": "Model spesifik: deep Bayesian Neural Network dengan Monte Carlo dropout, diimplementasikan di TensorFlow 2.6.0 + TensorFlow Probability 0.13.0.",
+  "d5": "Mengkuantifikasi ketidakpastian via credible interval 95% (kuantil 0,025 dan 0,975) dan melaporkan coverage.",
+  "d6": "Tidak mengusulkan/menganalisis keputusan maintenance formal (jadwal/biaya/DSS). Hanya klaim kualitatif bahwa hasil berguna untuk perencanaan maintenance, spares, dan end-of-life management.",
+  "d7": "Domain aplikasi turbofan engine (C-MAPSS), bukan membran/RO/desalinasi/fouling.",
+  "d8": "Bukan small-data/transfer/hierarchical/all-censored; memakai dataset lengkap run-to-failure standar."
+ },
+ "relevansi": "Pendukung",
+ "kualitas": {
+  "skor": 8,
+  "rincian": {
+   "Q1": 1,
+   "Q2": 1,
+   "Q3": 1,
+   "Q4": 0.5,
+   "Q5": 0.5,
+   "Q6": "N/A",
+   "Q7": 1,
+   "Q8": 0.5
+  },
+  "catatan": "Q1-Q2 jelas dan memadai. Q3 dataset publik standar dan valid meski perbandingan RMSE diakui tidak adil. Q4 hyperparameter, versi library, dan parameter dijelaskan tetapi tanpa tautan kode. Q5 evaluasi RMSE kurang tepat untuk BNN namun coverage CI dilaporkan. Q6 tidak berlaku. Q7 pelaporan ketidakpastian kuat. Q8 hanya tautan kualitatif ke maintenance. Skor = round(5.5/7*10)=8."
+ },
+ "data_kuantitatif": {
+  "dataset": "NASA C-MAPSS FD001 (Turbofan Engine Degradation Simulation)",
+  "ukuran": "100 unit turbofan run-to-failure; 21 sensor + 3 setelan operasi; latih terbagi 85/15",
+  "metrik": "RMSE mean RUL 38,94 siklus; rata-rata CI 38,78 siklus; coverage 24/39 unit dengan RUL<=60 di dalam CI; T=1000 forward passes; epoch optimal 83"
+ },
+ "metode": "Deep Bayesian Neural Network dengan Monte Carlo dropout; loss negative log likelihood; seleksi fitur fitness (prognosability+trendability+monotonicity); tuning Hyperband Keras; cap RUL 125 siklus mengikuti kurva P-F",
+ "limitasi": [
+  "Optimasi pada negative log likelihood sehingga RMSE tidak sebanding dengan metode point estimate (38,94 siklus).",
+  "Masih mengasumsikan secara implisit posterior RUL Gaussian melalui negative log likelihood.",
+  "Tidak mengusulkan/menganalisis model keputusan maintenance (hanya klaim kegunaan kualitatif).",
+  "Membutuhkan sumber komputasi besar (GPU).",
+  "Metrik kinerja BNN (CIC, OAV) belum baku sehingga benchmarking sulit.",
+  "Tidak menangani data tersensor (semua unit run-to-failure)."
+ ],
+ "funding_coi": "Deklarasi penulis: tidak ada konflik kepentingan dan tidak menerima dukungan finansial.",
+ "status_inklusi": "diterima",
+ "figur_dibaca": [
+  {"file": "_page_10_Figure_4.jpeg", "isi": "Flowchart proses prediksi RUL: training data -> preprocessing -> split 85% latih/15% validasi -> cek histogram RUL (loop bila tidak fair) -> model RUL mengikuti kurva P-F -> tuning hyperparameter -> bangun & latih BNN -> digabung test data -> hasil prediksi RUL."},
+  {"file": "_page_9_Figure_1.jpeg", "isi": "Perbandingan arsitektur BNN: (a) Variational Inference menghasilkan RUL approx N(mu_RUL, sigma_RUL^2); (b) MC dropout melakukan T forward pass stokastik (neuron di-drop ditandai X merah) lalu mu_RUL = (1/T) sum y*_t."},
+  {"file": "_page_15_Figure_1.jpeg", "isi": "Grid 3x3 trajektori degradasi 9 unit mesin (Unit 17,20,31,34,40,56,76,81,91): ground-truth RUL turun linear, mean RUL prediksi, batas bawah/atas CI (pita abu-abu), dan garis RUL training ~120-130 siklus; sumbu X waktu (siklus 0-200), sumbu Y RUL 0-250."}
+ ],
+ "bukti": [
+  "Dataset FD001: '100 identical turbofan engines subjected to similar failure modes and same operating conditions' (Data description).",
+  "'the method can produce highly accurate predictions for RUL distribution parameters in safety critical components' (Abstract).",
+  "'This fills the gap in earlier heuristic approaches that only attempt to achieve uncertainty quantification by making several, repeated point estimations' (Introduction).",
+  "'the average CI obtained for the prediction results from this study is 38.78 cycles' (Prediction results).",
+  "'Out of the 39 engine units with RULt>=60, the ground truth RUL for 24 units falls completely within the range of the RUL prediction along with the uncertainty bounds' (Prediction results).",
+  "'The author(s) received no financial support for the research, authorship, and/or publication of this article.' (Funding)."
+ ]
+}

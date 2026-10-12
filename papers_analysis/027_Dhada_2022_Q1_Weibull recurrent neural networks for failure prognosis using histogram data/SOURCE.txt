@@ -1,0 +1,9 @@
+SUMBER FULL-TEXT (Open Access)
+============================
+Judul   : Weibull recurrent neural networks for failure prognosis using histogram data
+DOI     : 10.1007/s00521-022-07667-7
+Status  : hybrid (Open Access)
+Lisensi : cc-by
+
+Catatan : Open Access berlisensi Creative Commons; boleh didistribusikan ulang DENGAN ATRIBUSI
+kepada penulis/penerbit asli. Diverifikasi via Unpaywall (https://unpaywall.org).

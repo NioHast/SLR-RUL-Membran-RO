@@ -1,0 +1,48 @@
+{
+  "no": 91,
+  "judul": "Predictive Framework for Membrane Fouling in Full-Scale Membrane Bioreactors (MBRs): Integrating AI-Driven Feature Engineering and Explainable AI (XAI)",
+  "penulis": "Jie Liang, Sangyoup Lee, Xianghao Ren, Yingjie Guo, Jeonghyun Park, Sung-Gwan Park, Ji-Yeon Kim, Moon-Hyun Hwang",
+  "tahun": 2025,
+  "jurnal": "Processes",
+  "doi": "10.3390/pr13082352",
+  "kuartil": "Scopus Q2 (SCImago SJR Best Quartile)",
+  "pilar": "E. Membrane/RO/Desalination",
+  "ringkasan": "Studi membangun kerangka prediksi fouling membran pada membrane bioreactor (MBR) skala penuh dengan menggabungkan feature engineering berbasis AI dan explainable AI (XAI). Target prediksi diubah menjadi specific flux (flux/TMP) sebagai indikator permeabilitas, ditambah COD removal efficiency sebagai indikator kinerja biologis, dan moving average untuk menangkap dinamika fouling temporal. Dari 194 catatan harian, CatBoost paling akurat (R2 = 0,8374), dan SHAP mengidentifikasi rasio F/M dan MLSS sebagai variabel paling berpengaruh.",
+  "kontribusi": "Memberi bukti bahwa prediksi degradasi membran (specific flux) yang interpretable dapat dilakukan pada data lapangan skala penuh yang kecil dan bising, relevan dengan sumbu domain tesis (membran/fouling dan small-data), namun tidak memakai RUL eksplisit, survival analysis, maupun pencensoringan.",
+  "temuan_kunci": [
+    "CatBoost mengungguli regresi dan XGBoost; R2 terbaik 0,8374 (dengan robust scaling + moving average 5 hari), RMSE 0,0054.",
+    "Pada uji kronologis 20% (39 catatan) CatBoost mencapai R2 = 0,7712, RMSE = 0,0064, MAE = 0,0054, MAPE 0,11%.",
+    "Moving average 5 hari menaikkan R2 lebih dari 10% dibanding data mentah, membuktikan sifat kumulatif fouling.",
+    "SHAP menempatkan F/M_MA5 (26,17%), F/M, MLSS, dan pH_MA5 sebagai prediktor dominan fouling.",
+    "Kerangka mendukung keputusan perawatan proaktif (penjadwalan pencucian) berbasis ambang TMP (kenaikan >30% atau >60 kPa)."
+  ],
+  "dimensi": {"d1": "1", "d2": "1", "d3": "", "d4": "1", "d5": "", "d6": "1", "d7": "1", "d8": "1"},
+  "alasan_dimensi": {
+    "d1": "Memakai data multi-sensor harian selama 194 hari (F/M, SV30, SVI, MLSS, DO, pH, suhu, flux, COD, TMP) dari MBR skala penuh; moving average diterapkan untuk sifat deret waktu.",
+    "d2": "Mendefinisikan ambang kegagalan/perawatan operasional: siklus pencucian membran dijadwalkan bila TMP naik lebih dari 30% dari baseline atau melebihi 60 kPa.",
+    "d3": "Tidak ada model survival/hazard/Weibull/cure dan tidak ada penanganan data tersensor; ini regresi ML murni pada sinyal fouling.",
+    "d4": "Memakai model spesifik: CatBoost dan XGBoost (gradient boosting) dibanding regresi Linear, Ridge, Lasso, dan ElasticNet; interpretasi via SHAP dan permutation importance.",
+    "d5": "Tidak mengkuantifikasi ketidakpastian prediksi; penulis secara eksplisit menyatakan uji t dan interval kepercayaan tidak dapat diterapkan karena hanya ada satu deret waktu lapangan.",
+    "d6": "Menganalisis keputusan perawatan: kerangka mendukung keputusan proaktif, penjadwalan pencucian, dan adaptive control (mengoptimalkan F/M dan MLSS), bukan sekadar menyebut kata maintenance.",
+    "d7": "Objek penelitian adalah fouling membran pada membrane bioreactor (MBR), dan penulis menyatakan metodenya dapat ditransfer ke reverse osmosis (RO).",
+    "d8": "Secara khusus menangani kondisi data kecil dan bising: hanya 194 catatan satu pabrik, penulis menekankan prediksi tetap efektif 'even with limited data' dan memakai cross-validation serta kontrol overfitting untuk dataset kecil."
+  },
+  "relevansi": "Inti-Domain",
+  "kualitas": {"skor": 8, "rincian": {"Q1": 1, "Q2": 1, "Q3": 0.5, "Q4": 0.5, "Q5": 0.5, "Q6": "N/A", "Q7": "N/A", "Q8": 1}, "catatan": "RQ jelas dan metode rinci (preprocessing, model, XAI). Evaluasi memadai secara metrik (R2/MAE/MAPE/RMSE, empat kasus, CV untuk tuning) tetapi final hanya satu split kronologis tanpa pembanding SOTA maupun pengulangan acak. Data satu pabrik tidak publik dan tanpa peristiwa fouling parah/pencucian sehingga validitas eksternal terbatas. Q6 dan Q7 tidak berlaku karena tidak ada pencensoringan dan penulis menyatakan CI tidak dapat diterapkan."},
+  "data_kuantitatif": {"dataset": "Data operasional harian satu MBR skala penuh (limbah industri makanan, Beijing, kapasitas 150 m3/hari)", "ukuran": "194 record harian x 8 fitur masukan (F/M, SV30, SVI, MLSS, DO, pH, suhu, COD RM) + target specific flux; split kronologis 155 latih (80%) / 39 uji (20%)", "metrik": "CatBoost R2=0,8374, RMSE=0,0054 (fitur engineering); uji 20%: R2=0,7712, RMSE=0,0064, MAE=0,0054, MAPE 0,11%; XGBoost R2=0,7404; regresi linear R2=0,6623"},
+  "metode": "Machine learning prediksi (CatBoost, XGBoost, regresi Linear/Ridge/Lasso/ElasticNet) dengan robust scaling (median/IQR) dan moving average 5 hari; evaluasi R2/MAE/MAPE/MSE/RMSE; interpretasi XAI (built-in importance, permutation importance, SHAP).",
+  "limitasi": [
+    "Data dari satu MBR skala penuh (Beijing) sehingga generalisasi terbatas dan data tidak publik.",
+    "Dataset relatif kecil (194 catatan) dan tidak memuat peristiwa fouling parah atau pencucian, sehingga kemampuan prediksi peristiwa ekstrem belum teruji.",
+    "Tidak ada kuantifikasi ketidakpastian prediksi (tanpa CI) dan tidak ada analisis survival/pencensoringan.",
+    "Resolusi data harian menyembunyikan fluktuasi intra-hari yang relevan untuk dinamika fouling."
+  ],
+  "funding_coi": "Dibiayai Korea Agency for Infrastructure Technology Advancement (KAIA) grant dari Ministry of Land, Infrastructure and Transport (RS-2022-00144137); penulis menyatakan tidak ada konflik kepentingan.",
+  "status_inklusi": "diterima",
+  "figur_dibaca": [
+    {"file": "_page_5_Figure_2.jpeg", "isi": "Skema alur pengolahan air limbah skala penuh: settling tank, grate tank, equalization, dua reaktor mikro-aerobik, MBR, pompa, effluent tank; kotak MBR menandai titik ukur (SV30, SVI, MLSS, DO, pH, Temp, COD_in, F/M, TMP, flux)."},
+    {"file": "_page_19_Figure_4.jpeg", "isi": "Grafik deret waktu CatBoost actual (garis biru) vs predicted (garis putus merah) specific flux dengan anotasi R2=0,7712, RMSE=0,0064, MAE=0,0054, MAPE 0,11%; prediksi lebih halus dan sedikit melemah pada puncak."},
+    {"file": "_page_21_Figure_1.jpeg", "isi": "SHAP summary/beeswarm: urutan kepentingan fitur (F/M_MA5, F/M, MLSS, pH_MA5, DO, Temp); nilai F/M_MA5 tinggi (magenta) mendorong output positif; sumbu SHAP -0,006 sampai +0,010."}
+  ],
+  "bukti": ["Tabel 4-7: kinerja model pada empat kasus (tanpa/dengan COD RM, target TMP vs Spec. Flux)", "Tabel 8-9: pengaruh robust scaling dan moving average 5 hari", "Tabel 10 dan Fig 7: feature importance dan SHAP", "Eq (2): moving average", "Eq (9): Shapley value", "Gambar 5: actual vs predicted specific flux"]
+}

@@ -1,0 +1,59 @@
+PAPER 081 | no=81 | Relevansi: Inti-Metode | Skor kualitas: 4/10 | Dimensi: d1,d2,d3,d4
+Judul: Bearing Remaining Useful Life Prediction Based on Naive Bayes and Weibull Distributions
+Penulis: Nannan Zhang, Lifeng Wu, Zhonghua Wang, Yong Guan
+Jurnal/tahun: Entropy (MDPI), 20(12):944, 2018 | DOI 10.3390/e20120944 | Quartile Q2
+
+KARAKTERISTIK STUDI
+Studi RUL data-driven pada rolling bearing dengan alur: ekstraksi fitur vibrasi -> seleksi berbasis RMS -> fitting Weibull diperluas (UFRF) -> klasifikasi Naive Bayes -> exponential smoothing untuk RUL. Satu-satunya dari tiga paper yang menggunakan kosakata survival/Weibull/hazard secara aktual (d3=1), meski bukan dalam kerangka data tersensor.
+
+METODE
+- Ekstraksi 16 fitur statistik time-domain (RMS, mean, variance, skewness, kurtosis, crest/impulse/margin index, dll).
+- Seleksi fitur: korelasi dengan RMS, threshold T=0,9 -> 6 fitur (F1,F3,F4,F5,F8,F9).
+- Weibull/UFRF: Universal Failure Rate Function f(delta,k,b,c) = b + c*(k/delta^k)*t^(k-1), parameter per tahap degradasi (normal, continuous recession, final failure).
+- Klasifikasi Naive Bayes 5 kelas (Gaussian kontinu).
+- RUL: exponential smoothing s_t = z*l_t + (1-z)*s_{t-1}, z = 0,08/0,05/0,07 per bearing.
+- Evaluasi: akurasi klasifikasi (%) dan error e = (1/n) sum |s_t - l_t|.
+
+DATA
+- Dataset IMS/University of Cincinnati run-to-failure (Rexnord ZA-2115, 2000 rpm, load 2724 kg).
+- 3 bearing: B1 (944, out race), B3 (2156, inner race), B4 (2156, roller); 20 kHz tiap 10 menit; 16 fitur.
+- Pembagian data latih/uji per kelas (Table 8-10); label 100% of failure pada titik 950/2120.
+
+TEMUAN UTAMA
+- Akurasi NB: B1 = 80,9% (ref 74,2%), B3 = 90,2%, B4 = 62,94% (kelas 4 = 0%).
+- Error e: B1 = 0,1173 (ref 4,61), B3 = 0,0402 (ref 0,98), B4 = 0,6345.
+- UFRF mampu memuluskan fitur degradasi per tahap dan konsisten dengan tren degradasi.
+
+RELEVANSI KE TESIS
+Inti-Metode: RUL + pemodelan Weibull/fungsi hazard (d3=1, d4=1). Ini paper paling dekat secara metodologis dengan "survival/Weibull" yang dibutuhkan tesis, namun tetap TIDAK melakukan survival analysis dengan data tersensor (tidak ada proportional hazard regression, tidak ada cure model, tidak ada handling censoring). Karena itu ia menegaskan celah: integrasi Weibull/hazard + deep learning + censoring pada membran RO masih terbuka.
+
+JUSTIFIKASI DIMENSI (d1-d8)
+- d1=1: vibrasi dua accelerometer (kanal x,y) deret waktu; 16 fitur time-domain sepanjang siklus (Sect. 3.1.1).
+- d2=1: definisi RUL, label kegagalan 100%, failure threshold (Sect. 3.2).
+- d3=1: distribusi Weibull (2 & 3 parameter) + UFRF (failure-rate/hazard function) memfit fitur degradasi (Sect. 2.2, 3.2).
+- d4=1: Naive Bayes (classifier Bayesian, atribut Gaussian kontinu).
+- d5="": tidak ada CI/posterior/interval; RUL point estimate.
+- d6="": tanpa keputusan pemeliharaan spesifik (hanya pernyataan umum).
+- d7="": objek rolling bearing, bukan membran.
+- d8="": tanpa small-data/transfer/hierarchical/censoring eksplisit.
+
+KUALITAS (skor 4/10)
+Q1=1 (RQ jelas); Q2=0,5 (pipeline koheren tapi konversi klasifikasi->RUL heuristik + akurasi kelas rendah); Q3=0,5 (data nyata tapi hanya 3 bearing tanpa cross-validation); Q4=0,5 (parameter UFRF disetel manual, tanpa kode); Q5=0,5 (laporan evaluasi ada tapi B4 error besar); Q6=N/A (tanpa censoring); Q7=0 (tanpa pelaporan ketidakpastian); Q8=0 (tanpa keterkaitan operasional). Skor = round(3,0/7*10) = 4.
+
+LIMITASI
+(1) Akurasi kelas buruk (B4 total 62,94%, kelas 4 = 0%); (2) parameter UFRF acak + tuning manual -> sulit direproduksi; (3) RUL point estimate tanpa interval; (4) tanpa censoring; (5) hanya 3 bearing; (6) konstanta smoothing z disetel manual.
+
+FUNDING/COI
+Funding: NSFC (71601022), NSFB (4173074), NSFB Key B (KZ201710028028), Capacity Building Fund (025185305000-187), Youth Innovative Research Team CNU. COI: tidak ada.
+
+BUKTI
+- Abstract: improved Weibull (UFRF) mengfit fitur -> input NB.
+- Sect. 2.2: rumus UFRF f(delta,k,b,c) = b + c*(k/delta^k)*t^(k-1).
+- Sect. 3.1.1: dua ICP accelerometer (kanal x,y).
+- Table 11-13: akurasi 80,9% / 90,2% / 62,94%; Table 15: error 0,1173 / 0,0402 / 0,6345.
+- Sect. 3.2: parameter UFRF "randomly generated... then adjusted".
+
+FIGUR DIBACA
+- _page_4_Figure_10.jpeg (Fig 1, framework RUL 3 langkah).
+- _page_15_Figure_7.jpeg (Fig 12, hasil prediksi RUL vs aktual).
+- _page_13_Figure_5.jpeg (Fig 11, klasifikasi 5 label degradasi).

@@ -1,0 +1,47 @@
+{
+ "no": 21,
+ "judul": "An insight into real-time monitoring and predictive modelling of ultrafiltration pretreatment for flow rate and fouling mitigation in seawater desalination",
+ "penulis": "Kamil Kayode Katibi, Azimov Abdugani Mutalovich, Nazmi Mat Nawi, Gani M. Iztleuov, Marat I. Sataev, Muhammad Adib Mohd Nasir",
+ "tahun": 2025,
+ "jurnal": "Desalination and Water Treatment",
+ "doi": "10.1016/j.dwt.2025.101386",
+ "kuartil": "Scopus Q3 (SCImago SJR Best Quartile)",
+ "pilar": "E. Membrane/RO/Desalination",
+ "ringkasan": "Studi membangun empat model machine learning (Tree Regression, Ensemble Learning/Random Forest, Neural Network, Gaussian Process Regression) untuk memprediksi laju alir dan resistansi membran pada sistem ultrafiltrasi (UF) yang berperan sebagai pretreatment pabrik desalinasi air laut, memakai 426 hari data operasional (3,7 x 10^6 sampel pada 1 Hz). ENS dan TR mencapai akurasi tertinggi (R2=0,99; RMSE 3,08 dan 3,27 L/min), dan kendali backwash adaptif yang dipandu prediksi menurunkan ekskursi TMP 18 %, menurunkan frekuensi backwash dari 6 jam ke 8 jam, serta memangkas biaya pemeliharaan sekitar 12 %.",
+ "kontribusi": "Menunjukkan prediksi fouling real-time + keputusan pemeliharaan (penjadwalan backwash dan biaya) di domain membran/desalinasi, sangat relevan bagi sisi domain tesis; namun tidak memodelkan RUL, survival, maupun data tersensor, sehingga hanya menyumbang dimensi domain dan pemeliharaan.",
+ "temuan_kunci": [
+  "ENS (Random Forest) dan TR mengungguli NN dan GPR dengan R2=0,99; RMSE ENS 3,08 L/min, TR 3,27 L/min, NN 4,69 L/min, GPR 5,98 L/min.",
+  "GPR menyediakan interval kepercayaan 95 % (kernel squared-exponential + ARD) yang dipakai untuk keputusan backwash sadar-risiko.",
+  "Kendali backwash adaptif menurunkan ekskursi TMP 18 %, frekuensi backwash 6 jam -> 8 jam, energi 4,5-5,0 MWh/tahun, dan biaya pemeliharaan ~12 % (USD 3000-3500 per UF train).",
+  "Model stabil lintas variabel operasi (waktu, temperatur, tekanan, ORP, pH); deviasi terbesar hanya pada transisi filtrasi-backwash (spike TMP dan turbulensi)."
+ ],
+ "dimensi": {"d1": "1", "d2": "1", "d3": "", "d4": "1", "d5": "1", "d6": "1", "d7": "1", "d8": ""},
+ "alasan_dimensi": {
+  "d1": "Data multivariat deret waktu kontinu: laju alir, TMP, pH, temperatur, ORP dan turbiditas dicuplik 1 Hz selama 426 hari; model memprediksi laju alir pada jendela waktu 15.000 s yang mencakup banyak siklus filtrasi-backwash.",
+  "d2": "Menetapkan ambang operasional kritis: backwash dipicu saat TMP melebihi 1,4 bar atau ketika resistansi membran hasil model menyimpang dari baseline, yaitu definisi ambang degradasi kinerja yang memicu tindakan.",
+  "d3": "Tidak ada model survival/hazard/Weibull/cure dan tidak ada pencensoringan; ini murni regresi ML (GPR memakai proses Gaussian untuk interval, bukan untuk data tersensor).",
+  "d4": "Empat model spesifik: Tree Regression, Ensemble Learning (bagged Random Forest), Neural Network (feedforward, ReLU, Adam), dan Gaussian Process Regression (squared-exponential/ARD).",
+  "d5": "GPR menghasilkan prediksi titik beserta batas kepercayaan 95 % (interval keyakinan) yang dipakai untuk penyesuaian operasional sadar-risiko.",
+  "d6": "Keputusan pemeliharaan konkret dianalisis: penjadwalan backwash adaptif (6 h -> 8 h), penghematan energi dan biaya pemeliharaan (USD 3000-3500/train, ~12 %), serta integrasi model ke sistem kendali real-time.",
+  "d7": "Objek adalah membran ultrafiltrasi (PES hollow-fiber) yang berfungsi sebagai pretreatment RO pada pabrik desalinasi air laut; fokus pada fouling membran dan ketahanan operasi.",
+  "d8": "Tidak menerapkan small-data/transfer/hierarchical/kolaborasi all-censored; dataset besar (426 hari, 3,7 juta sampel) dan tidak ada pencensoringan."
+ },
+ "relevansi": "Inti-Domain",
+ "kualitas": {"skor": 9, "rincian": {"Q1": 1, "Q2": 1, "Q3": 1, "Q4": 0.5, "Q5": 1, "Q6": "N/A", "Q7": 1, "Q8": 1}, "catatan": "Studi lapangan skala nyata (426 hari, 3,7 juta sampel) dengan empat model, grid search + k-fold, analisis residu, kuantifikasi ketidakpastian GPR, dan analisis biaya pemeliharaan. Kelemahan: data tidak publik (on request), kode tidak dibagikan, R2~0,99 berpotensi overfitting, tanpa validasi eksternal. Q6 (censoring) tidak berlaku."},
+ "data_kuantitatif": {"dataset": "Data operasional 426 hari sistem UF-RO pabrik desalinasi Tanjung Bin (Malakoff), Johor, Malaysia (UF PES hollow-fiber, 3 modul x 50 m2)", "ukuran": "3,7 x 10^6 sampel pada 1 Hz selama 426 hari; parameter input TMP, laju alir, pH, temperatur, ORP, turbiditas", "metrik": "ENS R2=0,99 RMSE=3,08 L/min; TR R2=0,99 RMSE=3,27; NN R2=0,98 RMSE=4,69; GPR R2=0,97 RMSE=5,98; backwash 6 h->8 h; ekskursi TMP -18 %; biaya pemeliharaan -12 %"},
+ "metode": "Empat model regresi ML di MATLAB 2022a: Tree Regression, Ensemble (bagged Random Forest), Feedforward Neural Network, dan Gaussian Process Regression (sparse pseudo-input, kernel squared-exponential/ARD); hyperparameter via grid search dan 5-fold cross-validation; evaluasi RMSE, MSE, MAE, R2; integrasi real-time ke pengendali NI cRIO-9022.",
+ "limitasi": [
+  "Fokus pada subsistem UF (pretreatment), bukan membran RO langsung.",
+  "R2 ~ 0,99 pada semua variabel berpotensi overfitting; deviasi terbesar saat transisi filtrasi-backwash (perubahan TMP mendadak).",
+  "Data dan kode tidak publik (data on request), sehingga reproducibility terbatas.",
+  "Tidak memodelkan RUL, survival, pencensoringan, maupun ketidakpastian prediksi selain interval GPR."
+ ],
+ "funding_coi": "Didanai proyek No. 30-PCF-23-24 (BR18574143) Ministry of Science and Higher Education Republik Kazakhstan, serta sebagian oleh RUSA dan SPARC; penulis menyatakan tidak ada konflik kepentingan.",
+ "status_inklusi": "diterima",
+ "figur_dibaca": [
+  {"file": "_page_2_Picture_10.jpeg", "isi": "Skema sistem UF-RO terintegrasi: Intake Feed -> LP -> CD -> Sediment Filter -> UF1/UF2/UF3 -> CF -> HP -> RO -> RO Permeate, dengan jalur Backwash dan Drain; retentat RO dipakai untuk backwash UF."},
+  {"file": "_page_2_Figure_15.jpeg", "isi": "Flowchart pipeline ML: Raw Data -> Data Acquisition -> Preprocessing -> Feature Engineering -> Model Selection -> Training -> Validation -> Prediction -> Deployment -> Visualization, dengan loop retrain dan update prediksi data live; metrik RMSE & R2."},
+  {"file": "_page_6_Figure_2.jpeg", "isi": "Plot true vs predicted laju alir (sumbu 0-15000 operasional; -20 s.d. 120 L/min) dengan plateau ~90-95 L/min dan spike ~115 L/min; garis true dan predicted berimpit pada plateau, melebar pada transisi."}
+ ],
+ "bukti": ["Table 1: metrik 9 model (ENS R2 0,99 RMSE 3,08; TR 3,27; NN 4,69; GPR 5,98; SVM 12,1; LR 17,42)", "Table 2: kinerja ENS/TR/NN/GPR lintas variabel operasi", "Fig. 1: skema UF-RO", "Fig. 2: flowchart ML", "Fig. 3-7: prediksi vs true, scatter, residu", "Bagian 3.1 & 4: analisis biaya pemeliharaan dan energi"]
+}

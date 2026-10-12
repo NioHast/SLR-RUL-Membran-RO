@@ -1,0 +1,80 @@
+{
+ "no": 50,
+ "judul": "Remaining Useful Life Prediction of Turbofan Engines Using CNN-LSTM-SAM Approach",
+ "penulis": "Jie Li, Yuanjie Jia, Mingbo Niu, Wei Zhu, Fanxi Meng",
+ "tahun": 2023,
+ "jurnal": "IEEE Sensors Journal",
+ "doi": "10.1109/JSEN.2023.3261874",
+ "kuartil": "Scopus Q1 (SCImago SJR Best Quartile)",
+ "pilar": "B. Deep Learning RUL",
+ "ringkasan": "Paper mengusulkan algoritma fusi deep learning CNN-LSTM dengan self-attention mechanism (SAM/CLS) untuk memprediksi RUL turbofan engine, khususnya pada mode multi-operating point (MOP) yang sangat non-linear. CNN mengekstrak fitur spasial, LSTM mengekstrak fitur temporal, dan SAM memberi bobot adaptif pada unit hidden untuk mengatasi kehilangan informasi LSTM. Dievaluasi pada C-MAPSS FD001-FD004, model mencapai RMSE 12,56/15,25/13,77/18,63 dan mengalahkan metode pembanding pada mode MOP.",
+ "kontribusi": "Menjadi contoh state-of-the-art arsitektur deep learning (CNN+LSTM+attention) untuk regresi RUL point-estimate pada data multi-sensor non-stasioner. Relevan ke tesis sebagai baseline model deep learning, tetapi tidak menangani data tersensor maupun kuantifikasi ketidakpastian — justru menunjukkan celah yang coba diisi tesis.",
+ "temuan_kunci": [
+  "CLS (CNN-LSTM-SAM) unggul pada mode MOP: RMSE turun 19,0% (FD002) dan 9,3% (FD004) dibanding hasil terbaik sebelumnya.",
+  "Skor prediksi turun 22,5% (FD002) dan 28,5% (FD004); rata-rata RMSE turun 6,2%.",
+  "SAM memberi bobot stabil pada hidden layer; AM (attention pada input) justru fluktuatif dan kurang konvergen.",
+  "Lebih dari 90% error prediksi terkonsentrasi pada rentang [-20,20].",
+  "Model lebih unggul di MOP daripada SOP karena SAM menyaring informasi turbulen pada kondisi non-linear."
+ ],
+ "dimensi": {
+  "d1": "1",
+  "d2": "1",
+  "d3": "",
+  "d4": "1",
+  "d5": "",
+  "d6": "",
+  "d7": "",
+  "d8": ""
+ },
+ "alasan_dimensi": {
+  "d1": "Input multi-sensor time series (21 sensor; dimensi data 16/24/17/24) diolah dengan sliding window W=30 sebagai runtun waktu.",
+  "d2": "RUL didefinisikan eksplisit dengan dua tahap (konstan di ambang 125 siklus lalu degradasi linear menuju 0); failure threshold menjadi acuan pelabelan.",
+  "d3": "Tidak memodelkan data tersensor; semua data run-to-failure; tanpa survival/Weibull/hazard/cure. Tidak ada mekanisme censoring.",
+  "d4": "Model spesifik: 1-D CNN + LSTM + Self-Attention Mechanism (CLS), optimizer Adam, loss MSE.",
+  "d5": "Tidak mengkuantifikasi ketidakpastian; hanya point estimate dengan metrik RMSE/score/R2. Tidak ada CI/posterior/interval.",
+  "d6": "Tidak menganalisis keputusan maintenance (jadwal/biaya/DSS); hanya klaim kualitatif tentang efisiensi condition maintenance.",
+  "d7": "Domain turbofan engine (C-MAPSS), bukan membran/RO/desalinasi/fouling.",
+  "d8": "Bukan small-data/transfer/hierarchical/all-censored; memakai dataset lengkap C-MAPSS dengan data latih besar."
+ },
+ "relevansi": "Pendukung",
+ "kualitas": {
+  "skor": 9,
+  "rincian": {
+   "Q1": 1,
+   "Q2": 1,
+   "Q3": 1,
+   "Q4": 0.5,
+   "Q5": 1,
+   "Q6": "N/A",
+   "Q7": "N/A",
+   "Q8": "N/A"
+  },
+  "catatan": "Q1 RQ jelas; Q2 metode memadai dengan studi ablasi lapisan/batch; Q3 dataset publik C-MAPSS 4 subset; Q4 parameter & lingkungan (PyCharm 2019, Python 3.7) dijelaskan tetapi tanpa kode; Q5 evaluasi lengkap (RMSE, score, R2, boxplot error, tabel pembanding). Q6-Q8 tidak berlaku (tanpa censoring, tanpa ketidakpastian, tanpa keputusan maintenance). Skor = round(4.5/5*10) = 9."
+ },
+ "data_kuantitatif": {
+  "dataset": "NASA C-MAPSS FD001-FD004",
+  "ukuran": "Train 100/260/100/249 engine; test 100/259/100/248; dimensi data 16/24/17/24; window W=30; epoch 150; batch 256",
+  "metrik": "RMSE FD001 12,56 / FD002 15,25 / FD003 13,77 / FD004 18,63; Score 261,03 / 1155,97 / 252,92 / 2425,86; peningkatan RMSE 19,0% (FD002), 9,3% (FD004)"
+ },
+ "metode": "CNN-LSTM-SAM (CLS): 1-D CNN untuk fitur spasial + LSTM untuk fitur temporal + self-attention mechanism (SAM) membobot unit hidden; normalisasi min-max [-1,1], pelabelan dua tahap (ambang 125), sliding window; BP + Adam, loss MSE",
+ "limitasi": [
+  "Hanya menghasilkan point estimate RUL, tanpa estimasi ketidakpastian.",
+  "Tidak menangani data tersensor (censoring).",
+  "Tidak ada model keputusan maintenance formal.",
+  "Tidak mengungguli model terbaik pada mode SOP (FD001, FD003).",
+  "Arsitektur kompleks dengan banyak hyperparameter (lapisan, batch, window)."
+ ],
+ "funding_coi": "Didanai Science and Technology Planning Project of the State Administration of Market Supervision (Grant 2021MK104) dan Key Research and Development Program of Shaanxi Province (Grant 2022GY-178). Tidak ditemukan pernyataan konflik kepentingan eksplisit.",
+ "status_inklusi": "diterima",
+ "figur_dibaca": [
+  {"file": "_page_3_Figure_2.jpeg", "isi": "Schematic CNN-LSTM-SAM: blok kiri CNN (Input -> Convolution -> Max-pool -> Convolution -> Max-pool -> Fully Connected), lalu blok kanan LSTM (hidden state h1..ht) diberi bobot oleh self-attention (alpha1..alphat), digabung (kali lalu jumlah) menghasilkan C dan output prediksi."},
+  {"file": "_page_2_Figure_2.jpeg", "isi": "Flowchart konstruksi model: Historical Database (train) dan Real-time Database (test) melewati praproses bersama (Normalization -> Add Data Label -> Sliding Window), lalu bercabang ke Model Training (-> simpan parameter terbaik) dan RUL Prediction (Trained Model -> hasil prediksi & evaluasi)."},
+  {"file": "_page_2_Figure_11.jpeg", "isi": "Label dataset dua tahap: RUL konstan ~125 siklus (cycle 0-50), lalu degradasi linear menuju 0 pada ~cycle 170; sumbu RUL 0-140, waktu 0-180. Menegaskan ambang 125 siklus."}
+ ],
+ "bukti": [
+  "'a self-AM (SAM)-based CNN-LSTM fusion algorithm with optimized weights assigning is proposed' (Introduction).",
+  "'compared with the best existing results, the RMSE of our approach is reduced by 19.0% and 9.3%, respectively, and the score is reduced by 22.5% and 28.5%' (Comparisons).",
+  "'the RUL threshold is set as 125' (Label Adding) — definisi threshold.",
+  "'more than 90% of the errors are concentrated in [-20, 20]' (Results Discussion)."
+ ]
+}

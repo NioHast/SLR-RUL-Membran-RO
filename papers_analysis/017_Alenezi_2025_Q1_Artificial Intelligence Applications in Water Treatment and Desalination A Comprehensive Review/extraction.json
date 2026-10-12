@@ -1,0 +1,82 @@
+{
+  "no": 33,
+  "judul": "Artificial Intelligence Applications in Water Treatment and Desalination: A Comprehensive Review",
+  "penulis": "Anwur Alenezi, Yousef Alabaiadly",
+  "tahun": 2025,
+  "jurnal": "Water (MDPI)",
+  "doi": "10.3390/w17081169",
+  "kuartil": "Scopus Q1 (SCImago SJR Best Quartile)",
+  "pilar": "E. Membrane/RO/Desalination",
+  "ringkasan": "Artikel ini adalah tinjauan komprehensif penerapan kecerdasan buatan (AI) pada pengolahan air dan desalinasi, mencakup machine learning, neural network, dan genetic algorithm untuk prediksi, optimasi proses, serta deteksi kesalahan dan pemeliharaan prediktif. Studi melaporkan AI menurunkan konsumsi energi hingga ~50% (klaim abstrak) dan mendukung pemeliharaan prediktif untuk meminimalkan downtime, dengan studi kasus pada sistem RO, MSF, dan ADD yang ditenagai energi terbarukan. Penulis mengidentifikasi tantangan data, daya komputasi, dan interpretabilitas model.",
+  "kontribusi": "Memberi peta lanskap penerapan AI di desalinasi/RO dan menegaskan bahwa pemeliharaan prediktif serta prediksi umur/penyumbatan membran adalah area kunci, sekaligus menyoroti kelangkaan data, transparansi pelaporan, dan ketiadaan studi jangka panjang. Relevan ke tesis sebagai justifikasi domain dan celah: prediksi RUL membran berbasis survival dengan data tersensor belum tercakup dalam tinjauan ini.",
+  "temuan_kunci": [
+    "AI meningkatkan kualitas air, memangkas energi hingga ~50%, dan mengaktifkan pemeliharaan prediktif yang menurunkan downtime.",
+    "Pada desalinasi, AI terutama dipakai untuk pemeliharaan prediktif dan manajemen energi; pada pengolahan air lebih ke optimasi proses.",
+    "Studi kasus: prediksi kebutuhan perawatan/penggantian membran RO, deteksi fouling, dan optimasi tekanan dapat memperpanjang umur membran (klaim ~20% peningkatan umur membran).",
+    "Tantangan utama berulang: keterbatasan data berkualitas, kebutuhan komputasi, dan model 'black box' yang sulit diinterpretasi.",
+    "Banyak studi berskala kecil/jangka pendek sehingga hasil jangka panjang dan skalabilitas belum pasti."
+  ],
+  "dimensi": {
+    "d1": "",
+    "d2": "",
+    "d3": "",
+    "d4": "",
+    "d5": "",
+    "d6": "1",
+    "d7": "1",
+    "d8": ""
+  },
+  "alasan_dimensi": {
+    "d1": "Tinjauan membahas analisis data sensor dan pemantauan real-time dari literatur, namun tidak menyajikan/menggunakan runtun waktu multi-sensor sendiri.",
+    "d2": "Tidak mendefinisikan RUL/failure/threshold secara kuantitatif; hanya membahas prediksi kebutuhan pembersihan/penggantian membran secara kualitatif.",
+    "d3": "Tidak memodelkan data tersensor/survival/Weibull/hazard.",
+    "d4": "Meninjau banyak model spesifik (ANN, SVM, RF, GA, DT, LSTM) sebagai subjek tinjauan, tetapi tidak menerapkan/membangun model spesifik sendiri.",
+    "d5": "Tidak mengkuantifikasi ketidakpastian prediksi (tidak ada CI/posterior/interval).",
+    "d6": "Secara substantif menganalisis keputusan pemeliharaan: pemeliharaan prediktif 4.0, penjadwalan proaktif, dan dampak biaya/downtime (Section 4.2.3, Tabel 7).",
+    "d7": "Domain inti adalah desalinasi/RO/membran/fouling (Sections 1, 4.1.1, 4.2.3).",
+    "d8": "Kelangkaan data disebut sebagai tantangan dan seruan riset model low-data, namun bukan penerapan metode small-data/transfer/hierarchical."
+  },
+  "relevansi": "Konteks",
+  "kualitas": {
+    "skor": 7,
+    "rincian": {
+      "Q1": "1",
+      "Q2": "0.5",
+      "Q3": "0.5",
+      "Q4": "0.5",
+      "Q5": "0.5",
+      "Q6": "N/A",
+      "Q7": "N/A",
+      "Q8": "1"
+    },
+    "catatan": "RQ eksplisit (bagaimana AI dipakai di desalinasi dan hasilnya). Metode tinjauan dijelaskan (database, kata kunci, penyaringan 1200->150 sumber) namun tidak memakai protokol sistematis/PRISMA penuh dan tanpa appraisal formal. Validitas bergantung pada sumber sekunder yang heterogen; sebagian klaim angka (mis. 50% hemat energi) tidak dirujuk ketat. Reproduksibilitas terbatas. Kuantifikasi ketidakpastian tidak relevan untuk tinjauan. Kaitan keputusan pemeliharaan kuat."
+  },
+  "data_kuantitatif": {
+    "dataset": "Tidak ada dataset primer; tinjauan literatur (Google Scholar, Scopus, Web of Science)",
+    "ukuran": "~1200 sumber awal disaring menjadi 150 artikel peer-review",
+    "metrik": "R, R^2, RMSE, MAE, MSE (dari studi yang ditinjau); klaim penghematan energi (%) dan biaya"
+  },
+  "metode": "Tinjauan literatur naratif/komprehensif dengan kerangka analitik tiga area (teknik AI, hasil/outcome, konteks), sintesis tematik, dan asesmen kritis metodologi.",
+  "limitasi": [
+    "Bukan studi primer; tidak ada eksperimen atau model yang diusulkan.",
+    "Tidak memakai protokol tinjauan sistematis penuh (tanpa PRISMA/appraisal formal).",
+    "Sumber heterogen dan sejumlah klaim kuantitatif (mis. 50% penghematan energi) kurang dirujuk secara ketat.",
+    "Data availability dinyatakan hanya 'tersedia dari penulis atas permintaan'.",
+    "Tidak mencakup pemodelan penyensoran/survival untuk RUL membran."
+  ],
+  "funding_coi": "Tidak menerima pendanaan eksternal ('This study received no external funding'); penulis menyatakan tidak ada konflik kepentingan.",
+  "status_inklusi": "diterima",
+  "figur_dibaca": [
+    {"file": "figures/_page_2_Figure_11.jpeg", "isi": "Fig. 1 alur tinjauan literatur: Initial Database Search -> Title screening -> Abstract screening -> Full-text review -> Quality assessment -> Data extraction & synthesis (tanpa angka)."},
+    {"file": "figures/_page_16_Figure_1.jpeg", "isi": "Fig. 7 alur deteksi fault di plant desalinasi: ambil nilai/daya pompa -> scaling -> hitung head dari pressure & flow -> keputusan 'flow test < flow water?' -> klasifikasi sludge-free / with sludge -> update training data set (loop A)."}
+  ],
+  "bukti": [
+    "Abstrak: AI menurunkan energi hingga 50%, pemeliharaan prediktif, integrasi RO/MSF dengan energi terbarukan.",
+    "Section 1.2 Research Question; Section 2.1 proses tinjauan (1200->150).",
+    "Section 3.1.1: ML memprediksi laju fouling dan menyesuaikan tekanan, memperpanjang umur membran.",
+    "Section 4.2.1 Predictive Modeling (membran perlu dibersihkan/diganti, Qadir et al.).",
+    "Section 4.2.3 Fault Detection and Maintenance + Predictive Maintenance 4.0 (Saidy et al.).",
+    "Tabel 6 (SWRO/ADD/MSF) dan Tabel 7 (AI usage: predictive maintenance Saudi, energy optimization USA, fault detection China).",
+    "Section 7 Conclusions: RO, MED, ADD; seruan model low-data."
+  ]
+}

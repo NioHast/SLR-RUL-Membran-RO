@@ -1,0 +1,46 @@
+PAPER 101: Modeling dependent degradation data considering inherent causal relationships for reliability analysis and remaining useful life prediction
+Penulis: Shi-Shun Chen, Xiao-Yang Li (Beihang University) | Tahun 2026 | Reliability Engineering & System Safety | Q1 | DOI 10.1016/j.ress.2026.113080
+Status inklusi: diterima | Relevansi: Pendukung
+
+1. KARAKTERISTIK STUDI
+Studi metodologis di bidang prognostik dan health management (PHM). Masalah: pemodelan degradasi dependen pada sistem multi-indikator. Kritik utama terhadap literatur: model dependen berbasis korelasi (kovarians/kopula) bersifat simetris dan mengabaikan arah kausalitas fisik antar jalur degradasi, sehingga menimbulkan inferensi fisis yang salah (contoh: FF -> EGT pada mesin terbang). Tujuan: membangun kerangka "causality-driven" yang menggabungkan proses stokastik, causal discovery, dan neural network dalam kerangka Bayes untuk analisis reliabilitas dan prediksi RUL.
+
+2. METODE
+- Model degradasi univariat per indikator: proses Wiener dengan tren deterministik (Y(t)=Y0+a*Psi(t;beta)) + multi-sumber ketidakpastian (Y0 acak, laju degradasi a acak, Wiener sigma*B(t), measurement error epsilon). Estimasi parameter via maximum likelihood dengan optimizer metaheuristik TERIME (improved RIME).
+- Causal discovery: algoritma Stable-PC (partial correlation + Fisher z; skeleton -> orientasi V-structure -> Meek rules -> orientasi via pengetahuan domain) pada increment degradasi (bukan nilai mentah) untuk mencegah dependensi semu akibat tren non-stasioner.
+- Pemodelan efek kausal: uncertainty-aware neural network memetakan parent state -> child state dan mengeluarkan mean serta varians (NLL loss).
+- Fusion Bayes: prior dari model univariat (populasi) digabung dengan informasi kausalitas (unit-spesifik) untuk membentuk posterior prediktif.
+- Reliabilitas & RUL: margin performa M(t) dengan logika seri; R(t)=Pr{M(t)>0} dan T_RUL=inf{t>tn|M(t)<=0}, diselesaikan via Monte Carlo.
+
+3. DATA
+NASA C-MAPSS subset FD001 (turbofan, run-to-failure). 100 mesin; 88 untuk pengembangan (70 latih, 18 validasi), 12 uji. 14 sensor; dua indikator dipilih: U8 (rasio aliran bahan bakar terhadap tekanan statis outlet HPC) dan U14 (coolant bleed LPT). Ambang kegagalan U8=519,6 dan U14=23,07. Denoising via moving average (window 15). Data uji dihentikan sebelum gagal, namun tidak diperlakukan sebagai observasi tersensor.
+
+4. TEMUAN UTAMA
+- Prediksi degradasi U14: RMSE turun 30,2%, MAE 23,4%, CRPS 27,6% vs model korelasi terbaik (M2). Tabel 5: usulan 0,074/0,059/0,042 vs M2 0,106/0,077/0,058.
+- RUL: usulan RMSE 40,16 / MAE 25,19 / CRPS 19,04, mengurangi ~22%/29%/35% vs korelasi terbaik; saat U14 tidak terukur tetap 40,17/25,21/19,05 (variasi <0,1%), sedangkan model lain memburuk 60-80%.
+- Ablation: menghilangkan model univariat (M5) menaikkan CRPS 14% (0,048 vs 0,042); model independen (M4) jauh lebih buruk (RMSE 0,619).
+- Reliabilitas: model usulan memperlambat penurunan R<0,9 ke siklus 159 (vs M2=156, M3=153, independen=152, M1=151), menghilangkan skenario tak-fisis (U8 lambat namun U14 cepat).
+- Sensitivitas: robust terhadap learning rate (0,001-0,01) dan jumlah neuron (4-16); arah kausal U8->U14 lebih baik dari U14->U8, namun keduanya tetap mengalahkan model korelasi.
+
+5. RELEVANSI KE TESIS
+Tesis: RUL membran RO/desalinasi via survival analysis + deep learning dengan data tersensor. Paper ini bukan domain membran dan tidak menangani data tersensor, sehingga tidak langsung menjadi Inti. Namun relevan sebagai reference metodologis (Pendukung): (a) menunjukkan pola pemodelan dependensi multi-indikator antar jalur degradasi yang dapat dipetakan ke keterkaitan parameter fouling membran (mis. tekanan trans-membran vs fluks vs konduktivitas); (b) memperlihatkan cara menggabungkan prior proses stokastik (Wiener) dengan model pembelajaran (neural network) dalam framework Bayes — analog dengan menghubungkan survival model baseline dengan deep learning; (c) metrik probabilistik (CRPS, NLL, interval kredibel) sejalan dengan kebutuhan pelaporan ketidakpastian RUL. Kontribusi konseptual yang dapat dikutip: kausalitas eksplisit mengalahkan korelasi simetris dalam model degradasi dependen.
+
+6. JUSTIFIKASI DIMENSI (d1-d8 + bukti)
+- d1="1" (multi-sensor/time-series): C-MAPSS 14 sensor sepanjang siklus; dua jalur degradasi U8/U14 diamati untuk 100 mesin; input time-series t_ij.
+- d2="1" (definisi RUL/kegagalan/ambang): RUL Pers. 29 T_RUL=inf{t>tn|M(t)<=0}; margin M(t) Pers. 20; ambang Y_th; R(t)=Pr{M(t)>0}.
+- d3="" (data tersensor): tidak ada pemodelan censoring; data run-to-failure; tidak ada Weibull/hazard/cure; reliabilitas via Monte Carlo first-hitting-time, bukan estimasi censor. Bukti negatif: seluruh eksperimen memakai failure threshold deterministik tanpa observasi tersensor.
+- d4="1" (model spesifik): proses Wiener, Stable-PC, uncertainty-aware neural network (mean+varians), fusion Bayes.
+- d5="1" (kuantifikasi ketidakpastian): interval kredibel 95% (Gbr. 7, 11, 12, 13), distribusi posterior prediktif Pers. 17, output varians NN, NLL dan CRPS.
+- d6="" (keputusan pemeliharaan): tidak ada model keputusan/jadwal/biaya/DSS; CBM hanya disebut sebagai motivasi di pendahuluan.
+- d7="" (membran/RO/desalinasi/fouling): domain adalah turbofan aero engine; tidak ada membran/RO/desalinasi.
+- d8="" (small-data/transfer/hierarchical/all-censored): benchmark standar 100 mesin (bukan small-data); transfer learning hanya sebagai future work; tidak ada skema hierarkis.
+
+7. KUALITAS (skor 9/10)
+Q1=1 (RQ jelas: mengatasi keterbatasan korelasi simetris dengan kausalitas); Q2=1 (metode kuat dan terderivasi: Wiener + Stable-PC + NN + Bayes + MC); Q3=1 (benchmark publik, split train/val/test, benchmark + ablation, validitas via sensitivitas); Q4=0,5 (persamaan/hyperparameter/dataset/kode TERIME tersedia, tetapi kode pipeline penuh tidak dibagikan); Q5=1 (RMSE/MAE/NLL/CRPS, ablation, sensitivitas hyperparameter dan arah kausal). Q6=N/A (tanpa pemodelan censoring). Q7=1 (interval kredibel 95%, NLL, CRPS, distribusi posterior). Q8=N/A (tidak ada keputusan pemeliharaan yang dianalisis).
+Item berlaku = Q1-Q5, Q7 (6 item); jumlah = 5,5; skor = round(5,5/6*10) = 9.
+
+8. LIMITASI
+Asumsi Gaussian; asumsi kausalitas kontemporer & stabil (steady-state); kompleksitas naik cepat seiring jumlah variabel; butuh observasi padat; ambang kegagalan deterministik; tidak menangani data tersensor; validasi pada data simulasi C-MAPSS (bukan mekanisme fisis riil).
+
+9. BUKTI
+Tabel 5 (degradasi U14), Tabel 6 (ablation), Tabel 7 (RUL terukur/tak terukur), Tabel 4 & Gbr. 9 (deteksi kausal 100%, Fisher z << 1E-5), Gbr. 14 (reliabilitas), Tabel 9 (efek arah kausal). Gambar dibaca: Fig. 1 (metodologi), Fig. 12 (perbandingan degradasi), Fig. 14 (reliabilitas), Fig. 16(a) (perbandingan RUL).

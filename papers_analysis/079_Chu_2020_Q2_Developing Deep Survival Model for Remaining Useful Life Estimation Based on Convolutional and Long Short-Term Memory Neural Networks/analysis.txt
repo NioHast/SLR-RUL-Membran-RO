@@ -1,0 +1,47 @@
+PAPER 095 - Chu, Lee & Yeh (2020)
+Judul   : Developing Deep Survival Model for Remaining Useful Life Estimation Based on Convolutional and Long Short-Term Memory Neural Networks
+Jurnal  : Wireless Communications and Mobile Computing (Hindawi) | Scopus Q2 (ScImago SJR Best Quartile) | DOI 10.1155/2020/8814658
+Pilar   : A. Survival Analysis & Censored Data
+Relevansi: Inti-Metode (RUL + Weibull diskrit + log-likelihood tersensor + kurva survival ber-CI; domain turbofan)
+
+KARAKTERISTIK STUDI
+Mengintegrasikan CNN (1D temporal convolution) dan LSTM untuk ekstraksi fitur dari data sensor sekuensial, lalu memakai dua kepala keluaran: regresi (RUL tunggal) dan analisis survival (distribusi Weibull diskrit) untuk mengestimasi RUL sekaligus probabilitas kegagalan. Motivasi: regresi saja tidak memberi keyakinan/varians pada prediksi, sedangkan survival model memberi distribusi waktu-ke-gagal yang menyerupai analisis survival di domain kesehatan. Ini termasuk pilar A (Survival Analysis & Censored Data).
+
+METODE
+- Min-max normalisasi; sliding time window (TW) membentuk sampel m x k (TW x jumlah sensor).
+- 1D temporal convolution (conv + max-pooling + ReLU) -> dua lapisan LSTM (gate input/forget/output) -> fully connected + dropout.
+- Dua loss: (a) regresi: aktivasi linear + MSE; (b) survival: aktivasi eksponensial untuk alpha dan softplus untuk beta, loss = log-likelihood Weibull diskrit dengan event indicator u (0/1).
+- PMF Weibull diskrit: Pr(t<=T<=t+1) = exp(-(t/alpha)^beta) - exp(-((t+1)/alpha)^beta).
+- Konstruksi kurva survival Kaplan-Meier + confidence interval untuk tiap unit.
+
+DATA
+NASA CMAPSS (turbofan degradation simulation): FD001 (1 kondisi, 1 fault), FD002 (6 kondisi, 1 fault), FD003 (1 kondisi, 2 fault), FD004 (6 kondisi, 2 fault); 26 kolom (unit, cycle, 3 setting operasi, 21 sensor); 100/260/100/249 mesin train. Split 80% latih / 20% validasi.
+
+TEMUAN UTAMA
+- CNN+LSTM w/Weibull: RMSE terbaik pada FD002 (15,15) dan skor terbaik FD002; unggul skor pada FD004 (3,67e4).
+- R2 loss Weibull lebih tinggi (mis. FD001 TW=90: 0,94 vs 0,87) -> tren degradasi lebih cocok distribusi Weibull.
+- Kurva Kaplan-Meier lebih halus dan ber-CI dibanding regresi yang berfluktuasi (terutama tahap awal); regresi hanya baik di tahap akhir.
+- Time window memengaruhi akurasi & skor; metode muncul di top-3 skor pada keempat subset.
+- Model memprediksi probabilitas kegagalan per siklus (bukan sekadar nilai RUL).
+
+RELEVANSI KE TESIS
+Inti-Metode. Ini salah satu preseden paling relevan: jaringan (CNN+LSTM) sebagai encoder fitur + kepala keluaran Weibull + log-likelihood tersensor + kurva survival ber-CI. Pola "RUL + probabilitas kegagalan + interval kepercayaan" persis yang dibutuhkan ketika tesis menggabungkan survival analysis dan deep learning. Pengecualian: domain turbofan, bukan membran/RO, dan tidak menangani data kecil/transfer (hanya disarankan sebagai future work).
+
+JUSTIFIKASI DIMENSI (d1-d8)
+- d1 = 1: 21 sensor turbofan deret waktu + 3 setting operasi, dibentuk jadi sampel sekuensial (TW).
+- d2 = 1: RUL didefinisikan sebagai waktu ke perbaikan/penggantian; probabilitas kegagalan dengan event indicator per siklus.
+- d3 = 1: memodelkan waktu-ke-peristiwa dengan Weibull diskrit (Eq 10) dan log-likelihood tersensor (Eq 11-12, indikator u); kurva Kaplan-Meier dibangun.
+- d4 = 1: model spesifik 1D-CNN + LSTM + FC; dibanding MLP/SVR/RVR/DBN/RNN/BiLSTM/DAG.
+- d5 = 1: kurva survival Kaplan-Meier dengan confidence interval + probabilitas kegagalan (bukan titik tunggal).
+- d6 = "": menyebut CBM/penjadwalan pemeliharaan dan memberi referensi kapan/seberapa sering penggantian, tetapi tidak ada model keputusan pemeliharaan konkret.
+- d7 = "": domain mesin turbofan (CMAPSS), bukan membran/RO/desalinasi.
+- d8 = "": data latih besar & berlabel; transfer learning hanya saran, tanpa penanganan data kecil/hierarki/all-censored.
+
+KUALITAS (skor 9/10)
+Q1=1; Q2=1; Q3=1 (dataset publik NASA CMAPSS, standar komunitas PHM); Q4=0,5 (data publik & persamaan lengkap, tetapi tanpa kode dan detail hyperparameter sebagian implisit); Q5=1 (RMSE, skor asimetris, MAE, R2, lintas TW, lintas 4 subset, plus evaluasi survival); Q6=1 (penanganan data tersensor via log-likelihood Weibull diskrit & indikator event); Q7=1 (CI + probabilitas kegagalan); Q8=0,5 (kaitan ke keputusan pemeliharaan hanya kualitatif). Total = 7/8 -> 8,75 -> dibulatkan 9.
+
+LIMITASI
+Asumsi Weibull diskrit 2-parameter yang belum tentu cocok semua proses degradasi; butuh data run-to-failure besar; perlu transfer learning antar kondisi; tanpa model keputusan pemeliharaan; domain turbofan simulasi.
+
+BUKTI (fig/tabel/persamaan)
+Eq (1) sliding window; Eq (2)-(3) conv 1D; Eq (4)-(9) gate LSTM; Eq (10) PMF Weibull diskrit; Eq (11)-(12) log-likelihood Weibull diskrit; Eq (13)-(15) metrik; Tabel 1 CMAPSS; Tabel 2 SOTA; Tabel 3-6 hasil per TW; Fig 2 workflow; Fig 4-8 Kaplan-Meier & RUL. Figure dibaca: _page_3_Figure_3 (workflow), _page_3_Figure_5 (sliding window), _page_7_Figure_3 (Kaplan-Meier all engines), _page_7_Figure_5 (unit 58 Weibull vs regresi).

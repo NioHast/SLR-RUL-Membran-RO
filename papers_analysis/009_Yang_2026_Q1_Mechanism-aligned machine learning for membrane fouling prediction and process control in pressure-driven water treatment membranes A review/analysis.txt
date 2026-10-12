@@ -1,0 +1,46 @@
+PAPER 016 - Yang et al. (2026)
+Judul   : Mechanism-aligned machine learning for membrane fouling prediction and process control in pressure-driven water treatment membranes: A review
+Jurnal  : Journal of Water Process Engineering | Scopus Q1 (SCImago SJR Best Quartile) | DOI 10.1016/j.jwpe.2026.110543
+Pilar   : E. Membrane/RO/Desalination
+Relevansi: Konteks  (tinjauan domain membran/RO + kontrol DSS; tanpa RUL/survival/censoring)
+
+KARAKTERISTIK STUDI
+Tinjauan kritis yang membangun kerangka machine learning selaras-mekanisme untuk prediksi fouling dan kontrol proses membran UF/NF/RO. Empat pertanyaan pemandu: mekanisme fouling dominan? struktur data tersedia? arsitektur model cocok? keputusan operasional apa yang didukung?
+
+METODE
+- Pencarian transparan: 6 database (Scopus, WoS, ScienceDirect, Google Scholar, IEEE Xplore, PubMed) + citation tracking; 1822 record ->274 artikel final.
+- Kerangka mechanism-to-control: mekanisme -> signature data -> model -> output -> aksi kontrol terjaga.
+- Model: GRU (UF), XGBoost terregularisasi (NF), CNN-GRU-SHAP (RO); XAI, digital twin, PINN dibahas.
+- Benchmarking: validasi kronologis/rolling/cross-site, uncertainty metrics, fallback control.
+
+DATA
+Review, tanpa data primer. Table 1 memberi rentang kuantitatif (separasi UF/NF/RO, tekanan/TMP, flux/rejection, interval sampling, ambang peringatan, waktu latih, latency). Membahas SCADA noise, missing data (MCAR/MNAR), kalman/EWMA filtering.
+
+TEMUAN UTAMA
+- Pemetaan proses-model: UF-GRU (TMP/flux frekuensi tinggi), NF-XGBoost (DOM/kation multikolinear), RO-CNN-GRU-SHAP (biofouling/scaling heterogen + OCT/hyperspectral).
+- Target prediksi = endpoint plant: kenaikan TMP, kehilangan permeabilitas, probabilitas melewati ambang cleaning, expected time to CIP, warning score modul.
+- Aksi kontrol: backwash scheduling, koagulan/pH/antiscalant dosing, targeted cleaning/CIP, biocide zoning - semua dengan safeguards.
+- Validasi ketat: random split menyesatkan untuk data terautokorelasi; gunakan chronological/rolling/cross-season/cross-site + uncertainty interval.
+- Data sparsity: fallback ke XGBoost/rule-based; federated learning untuk transfer lintas plant (future work).
+
+RELEVANSI KE TESIS
+Sangat relevan sebagai konteks domain: menunjukkan bagaimana sinyal membran RO (ΔP, salt passage, pH, recovery) dipetakan ke aksi kontrol/pemeliharaan, dan menyebut endpoint mirip RUL (expected time to CIP). Namun tidak memakai survival analysis/censoring maupun memprediksi RUL langsung. Tier = Konteks (DSS/IS + domain membran).
+
+JUSTIFIKASI DIMENSI (per d1-d8)
+- d1 = 1: input multi-sensor deret waktu (TMP/flux/turbidity; DOC/UV254/pH; ΔP/salt passage + OCT/hyperspectral).
+- d2 = 1: ambang kegagalan operasional (warning +5-20 kPa, cleaning threshold, expected time to CIP).
+- d3 = "" : tanpa survival/hazard/Weibull/cure; tidak memodelkan data tersensor.
+- d4 = 1: GRU, XGBoost terregularisasi, CNN-GRU (+SHAP).
+- d5 = "" : ketidakpastian hanya direkomendasikan (ensemble/quantile/CI), tidak diukur.
+- d6 = 1: keputusan pemeliharaan/proses konkret (backwash, CIP, dosing, pH, biocide, inspeksi).
+- d7 = 1: objek membran UF/NF/RO, fokus fouling.
+- d8 = "" : data sparsity + federated learning hanya dibahas sebagai arah masa depan, bukan diimplementasikan.
+
+KUALITAS (skor 9/10)
+Q1=1 (empat pertanyaan pemandu jelas); Q2=1 (prosedur review transparan); Q3=1 (sintesis luas 274 artikel); Q4=1 (database/string/jumlah terperinci -> reproducible); Q5=1 (bagian benchmarking & validasi); Q6=N/A; Q7=0,5 (ketidakpastian direkomendasikan, tak diukur); Q8=1 (aksi kontrol/keputusan eksplisit). Jumlah 6,5/7 -> 9.
+
+LIMITASI
+Bukan meta-analisis; tanpa data primer/RUL/censoring; pemetaan model-proses sebagai panduan; dataset publik membran langka.
+
+BUKTI (fig/table/eq)
+Table 1 (rentang operasional & ambang), Table 2 (perbandingan review); Fig. 1 (skema fouling UF/NF/RO), Fig. 2 (mechanism-to-control pathway), Fig. 3 (workflow deployment), Fig. 4 (XAI closed-loop), Fig. 5 (roadmap).

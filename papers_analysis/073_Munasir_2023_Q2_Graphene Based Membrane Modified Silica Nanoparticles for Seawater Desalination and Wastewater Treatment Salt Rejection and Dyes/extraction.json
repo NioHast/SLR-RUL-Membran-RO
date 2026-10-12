@@ -1,0 +1,48 @@
+{
+ "no": 73,
+ "judul": "Graphene Based Membrane Modified Silica Nanoparticles for Seawater Desalination and Wastewater Treatment: Salt Rejection and Dyes",
+ "penulis": "N. Munasir, S. R. Lutfiana, F. Nuha, S. Evi, R. Lydia, S. S. Eza, T. Ahmad",
+ "tahun": 2023,
+ "jurnal": "International Journal of Engineering, Transactions A: Basics",
+ "doi": "10.5829/ije.2023.36.04a.09",
+ "kuartil": "Scopus Q2 (SCImago SJR Best Quartile)",
+ "pilar": "E. Membrane/RO/Desalination",
+ "ringkasan": "Studi eksperimental material fabrikasi membran komposit graphene oxide-silika (GO/SiO2-Psf) dengan metode phase inversion untuk desalinasi air laut dan pengolahan air limbah zat warna. Variasi konsentrasi TEOS (0,6; 0,8; 1,0; 1,2 ml) diteliti terhadap sifat hidrofilik (contact angle), morfologi (SEM), kristalinitas (XRD), gugus fungsi (FTIR), antibakteri (E. coli & S. aureus), salt-rejection NaCl, dan filtrasi metilen biru. Membran TEOS 0,8 ml paling optimal: salt-rejection 67,22% dan adsorpsi metilen biru terbaik.",
+ "kontribusi": "Memberi konteks domain tentang jenis, fabrikasi, dan karakteristik kinerja membran (GO/SiO2-Psf) untuk desalinasi/zat warna - sebagai latar belakang material membran pada tesis, tetapi sama sekali tidak menyentuh RUL, prognostik, survival analysis, atau pencensoringan.",
+ "temuan_kunci": [
+  "Membran GO/SiO2-Psf dengan TEOS 0,8 ml paling efektif: salt-rejection NaCl 67,22% dan adsorpsi metilen biru terbaik (absorbansi 0,396 pada 291 nm).",
+  "Contact angle semua sampel <90 derajat (hidrofilik); TEOS 0,8 ml terendah (70,16 derajat) pada pelarut NMP.",
+  "Flux terendah pada TEOS 0,8 ml (47,46 L.m-2.h-1 untuk NaCl; 51,55 L.m-2.h-1 untuk metilen biru), menandakan pori rapat dan filtrasi lebih efisien.",
+  "Filtrasi 5 kali menurunkan absorbansi metilen biru drastis (TEOS 0,8 ml menghasilkan absorbansi negatif, di bawah batas deteksi).",
+  "Penambahan SiO2 meningkatkan hidrofilisitas dan sifat antibakteri (zona hambat E. coli lebih kuat daripada S. aureus)."
+ ],
+ "dimensi": {"d1": "", "d2": "", "d3": "", "d4": "", "d5": "", "d6": "", "d7": "1", "d8": ""},
+ "alasan_dimensi": {
+  "d1": "Bukan studi pemantauan kondisi multi-sensor/deret waktu; hanya pengukuran karakterisasi batch (XRD, FTIR, SEM, contact angle, flux) tanpa data sensor temporal untuk prognostik.",
+  "d2": "Tidak mendefinisikan RUL, kegagalan, atau ambang batas kinerja berbasis waktu; keberhasilan dinilai dari salt-rejection dan adsorbansi, bukan time-to-failure.",
+  "d3": "Tidak ada pemodelan data tersensor, survival, hazard, Weibull, atau cure model.",
+  "d4": "Tidak menggunakan model statistik/ML (LSTM, CNN, Transformer, Bayesian, RF, SVM, GP); murni eksperimen material.",
+  "d5": "Tidak mengkuantifikasi ketidakpastian prediktif (tanpa CI/posterior/interval).",
+  "d6": "Tidak menganalisis keputusan pemeliharaan (jadwal/biaya/DSS); fokus pada kinerja filtrasi.",
+  "d7": "Objek penelitian adalah membran komposit GO/SiO2-Psf untuk desalinasi air laut dan filtrasi zat warna; membahas hidrofilisitas, antifouling, salt-rejection, dan fouling pori secara kualitatif.",
+  "d8": "Tidak ada skema small-data/transfer/hierarchical/all-censored."
+ },
+ "relevansi": "Konteks",
+ "kualitas": {"skor": 6, "rincian": {"Q1": 1, "Q2": 0.5, "Q3": 0.5, "Q4": 0.5, "Q5": 0.5, "Q6": "N/A", "Q7": "N/A", "Q8": "N/A"}, "catatan": "Tujuan jelas dan karakterisasi material cukup lengkap (XRD, FTIR, SEM, contact angle, antibakteri, salt-rejection, flux). Kelemahan: nilai salt-rejection tunggal tanpa ulangan/statistik, tidak ada analisis galat/ketidakpastian, dan tidak ada aplikasi prognostik/RUL. Q6/Q7/Q8 tidak berlaku karena tidak ada model prediktif/kelangsungan."},
+ "data_kuantitatif": {"dataset": "Data eksperimen fabrikasi membran GO/SiO2-Psf (carbon shell graphite, TEOS, polysulfone, NMP) dengan variasi TEOS 0,6-1,2 ml", "ukuran": "4 variasi membran (0,6; 0,8; 1,0; 1,2 ml TEOS); 3 ulangan uji antibakteri; luas membran 12,25 cm2; tekanan 650 mmHg; konsentrasi MB 20 ppm", "metrik": "Salt-rejection 67,22% (TEOS 0,8 ml); contact angle NMP 70,16-76,78 derajat; flux NaCl 47,46-79,37 L.m-2.h-1; absorbansi MB 1 filter 0,396-0,599; 5 filter -0,037-0,015"},
+ "metode": "Eksperimen material: sintesis GO metode Hummers, sintesis komposit GO/SiO2 via hidrolisis TEOS, fabrikasi membran GO/SiO2-Psf metode phase inversion; karakterisasi XRD, FTIR, Raman, SEM, contact angle, uji antibakteri disc diffusion; uji filtrasi NaCl dan metilen biru dengan vakum (Buchner); uji UV-Vis; perhitungan salt-rejection (Eq. 1) dan flux (Eq. 2).",
+ "limitasi": [
+  "Tidak ada analisis prognostik/RUL atau pemantauan degradasi membran secara temporal.",
+  "Nilai salt-rejection tunggal tanpa statistik/interval kepercayaan.",
+  "Hasil bergantung pada satu batch fabrikasi; tidak ada uji ketahanan/fouling jangka panjang.",
+  "Tidak ada pembanding performa terhadap membran komersial/RO standar secara kuantitatif.",
+  "Tidak ada data biaya/skala produksi."
+ ],
+ "funding_coi": "Didanai hibah penelitian kompetitif LPPM-UNESA (kontrak No. B/36699/UN38.3/LK.04.00/2022); tidak ada pernyataan konflik kepentingan.",
+ "status_inklusi": "diterima",
+ "figur_dibaca": [
+  {"file": "_page_3_Picture_2.jpeg", "isi": "Skema uji filtrasi GO/SiO2-Psf: membran ditempatkan di Buchner funnel, larutan NaCl atau metilen biru diteteskan, divakum (Rocker 300), larutan terfiltrasi ditampung."},
+  {"file": "_page_8_Figure_6.jpeg", "isi": "Model filtrasi membran GO/SiO2-Psf: (a) aliran air melalui 1-layer & multi-layer graphene dengan penolakan ion/molekul; (b) membran sebelum/sesudah filtrasi; skema silanisasi SiO2 dan interaksi elektrostatik GO/SiO2."}
+ ],
+ "bukti": ["Eq. (1): salt-rejection", "Eq. (2): flux J=V/At", "Table 1: contact angle (DMAC & NMP)", "Table 2: antibakteri E. coli & S. aureus", "Table 3: flow flux NaCl & metilen biru", "Table 4: perbandingan absorbansi 1x vs 5x filtrasi", "Fig. 1 (setup filtrasi), Fig. 5 (morfologi), Fig. 7-9 (UV-Vis MB), Fig. 11 (model filtrasi)"]
+}

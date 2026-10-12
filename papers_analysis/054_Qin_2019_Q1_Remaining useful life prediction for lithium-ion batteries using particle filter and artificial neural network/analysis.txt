@@ -1,0 +1,51 @@
+PAPER 64: Remaining useful life prediction for lithium-ion batteries using particle filter and artificial neural network
+Penulis: Wei Qin, Huichun Lv, Chengliang Liu, Datta Nirmalya, Peyman Jahanshahi (2019)
+Jurnal: Industrial Management & Data Systems | Scopus Q1 | DOI 10.1108/imds-03-2019-0195 | Pilar: C. Bayesian & Uncertainty
+
+KARAKTERISTIK STUDI
+Studi estimasi RUL baterai lithium-ion dengan pendekatan fusi Bayesian state estimation. Tujuannya memberi nilai penilaian risiko penggunaan baterai dengan ekspresi ketidakpastian (Probability Density Function), bukan hanya titik estimasi.
+
+METODE
+Model state space: persamaan keadaan memakai model double-exponential (Q_k = a e^(bk) + c e^(dk)) dan persamaan observasi memakai ANN tiga lapis (optimizer Adam) yang memprediksi SOH dari data charge/discharge (cutoff voltage, suhu, ambient temp, voltage drop time). Particle filter dengan importance resampling memperbarui posterior parameter; parameter diekstrapolasi ke ambang SOH=0,7 untuk memperoleh RUL dan PDF-nya.
+
+DATA
+NASA Ames PCoE (uji Idaho National Lab), baterai 18650 2 Ah (B5, B6, B7, B18). B5 sebagai train dan B6 sebagai test; 30 siklus awal untuk inisialisasi parameter; titik prediksi pada siklus ke-50, 70, 90.
+
+TEMUAN UTAMA
+- Fusi PF+ANN+double-exponential memodelkan kurva degradasi SOH dengan baik.
+- RUL error menurun seiring bertambahnya siklus: 17 siklus (siklus 70) -> 2 siklus (siklus 90); pada siklus 50 prediksi menyebar di rentang 38-50.
+- Ambang gagal SOH=0,7 (70% kapasitas awal).
+- Data kecil diakui; koreksi posterior mengurangi overfitting ANN.
+- Saat RUL mendekati ambang, sistem memicu peringatan penggantian baterai.
+
+RELEVANSI KE TESIS
+Pendukung. Memberi contoh estimasi RUL probabilistik (PDF) dengan data kecil dan tautan ke keputusan (BMS), tetapi tanpa pemodelan penyensoran/survival dan bukan domain membran. Berguna untuk kerangka ketidakpastian dan penanganan data terbatas.
+
+JUSTIFIKASI DIMENSI
+- d1=1: deret waktu siklik charge-discharge multivariabel; state space Markov.
+- d2=1: RUL & failure threshold SOH=0,7 eksplisit.
+- d3="": tidak ada survival/penyensoran.
+- d4=1: particle filter + ANN + double-exponential.
+- d5=1: distribusi posterior + PDF RUL.
+- d6=1: peringatan penggantian (BMS) + kerangka risk assessment.
+- d7="": bukan membran/RO.
+- d8=1: small sample dinyatakan eksplisit; 4 sel.
+
+KUALITAS (skor 8)
+Q1=1; Q2=1; Q3=0,5 (data sangat kecil, lingkungan sederhana); Q4=0,5 (dataset publik, arsitektur ANN kurang rinci); Q5=0,5 (error besar pada siklus 70); Q6=N/A; Q7=1; Q8=1. Sum applicable 5,5/7 -> 7,86 ~ 8.
+
+LIMITASI
+Error ANN sebagai observasi; lingkungan eksperimen sederhana; data kecil & butuh parameter awal offline; bentuk distribusi RUL belum dikonfirmasi.
+
+FUNDING/COI
+Tidak ada pernyataan dana/kepentingan eksplisit pada teks.
+
+BUKTI
+- "The particle filter (PF) algorithm is taken as the core, and the double-exponential model is used as the state equation and the artificial neural network is used as the observation equation" (Abstract)
+- "the failure threshold ... SOH is equal to 0.7" (Sec. 2.3)
+- "the error is 17 cycles" (siklus 70) dan "the error is 2 cycles" (siklus 90) (Sec. 3.2.2)
+- "the battery data set belongs to a small sample" (Sec. 2.3)
+- "the system will prompt the user to replace the battery" (Sec. 4)
+
+FIGUR DIBACA
+- _page_6_Figure_2.jpeg: flow chart metode prediksi (4 bagian).

@@ -1,0 +1,46 @@
+PAPER 018 - Reddy et al. (2026)
+Judul   : A Multisensor Cross-Modal Attention Framework for Weibull-Driven RUL Estimation for Liner Using Real-World Industrial Data
+Jurnal  : IEEE Sensors Letters | Scopus Q2 (ScImago SJR Best Quartile) | DOI 10.1109/LSENS.2026.3673123
+Pilar   : A. Survival Analysis & Censored Data
+Relevansi: Inti-Metode  (RUL + censoring + Weibull + uncertainty; domain liner/turbofan)
+
+KARAKTERISTIK STUDI
+Mengusulkan CMA-WFT (cross-modal attention-Weibull fusion transformer) untuk RUL pada liner press industri. Menggabungkan multisensor fusion, temporal modeling, dan inferensi survival berbasis Weibull, dengan penanganan eksplisit data tersensor kanan.
+
+METODE
+- Encoder temporal per-modalitas (vibrasi, gap/displacement, temperatur) + positional encoding (sinusoidal, learnable, exponential decay, cumulative age).
+- Cross-modal attention (2 head) untuk memodelkan ketergantungan antar-sensor -> pooling -> MLP (FC 128/64, dropout 0.1).
+- Head Weibull parametrik: k=softplus(...), lambda=exp(...) memberi estimasi RUL titik + kurva reliabilitas.
+- Pelatihan dengan censored Weibull negative log-likelihood (indikator Delta), AdamW lr 3e-4, 600 epoch.
+- Baseline: RF, SVM, RNN-Weibull, LSTM-Weibull.
+
+DATA
+Data sintetis multisensor (kontrol) + data industri nyata (gear-manufacturing press: vibrasi, temperatur, gap 1 Hz; window 120 s, stride 12 s; 4 siklus kehidupan liner) + benchmark ATE (aircraft turbofan engine).
+
+TEMUAN UTAMA
+- CMA-WFT terbaik lintas dataset: RT 84%, Synthetic 85%, ATE 87% (akurasi).
+- Mengalahkan LSTM-Weibull (72/76/81), RNN-Weibull (71/72/80), SVM (62/65/69), RF (55/60/67).
+- Head Weibull memberi kurva reliabilitas kontinu; prediksi CMA lebih dekat ke titik kegagalan nyata; LSTM cenderung underestimasi/prematur.
+- Sensor gap proximity sebagai indikator degradasi fisik interpretatif (gap tinggi sebelum gagal, turun setelah penggantian liner).
+
+RELEVANSI KE TESIS
+Inti-Metode: contoh langsung integrasi multisensor + transformer + survival Weibull + penanganan censoring + kuantifikasi ketidakpastian - sangat dekat dengan arsitektur yang dibutuhkan tesis. Domainnya liner/turbofan (bukan membran), dan ukuran data riil kecil. Berguna sebagai preseden arsitektur.
+
+JUSTIFIKASI DIMENSI (per d1-d8)
+- d1 = 1: tiga aliran sensor deret waktu (vibrasi, temperatur, gap) pada 1 Hz, windowing.
+- d2 = 1: definisi T (time-to-next-failure) + indikator censoring Delta.
+- d3 = 1: censored Weibull NLL, head Weibull (shape/scale), penanganan sampel tersensor kanan.
+- d4 = 1: cross-modal attention Transformer + encoder per-modalitas; baseline LSTM/RNN-Weibull/SVM/RF.
+- d5 = 1: distribusi Weibull -> parameter (k, lambda), kurva reliabilitas/survival, median/expected life.
+- d6 = "" : menyebut perawatan proaktif & validasi efek maintenance, tetapi tanpa model keputusan spesifik.
+- d7 = "" : domain liner press/turbofan, bukan membran.
+- d8 = 1: sampel tersensor kanan + data riil kecil (4 siklus) + validasi lintas dataset (transfer sintetis->riil->ATE).
+
+KUALITAS (skor 8/10)
+Q1=1; Q2=1; Q3=0,5 (data riil kecil, 4 siklus; melampirkan benchmark ATE); Q4=0,5 (arsitektur dirinci tetapi kode tak publik); Q5=0,5 (banyak baseline lintas dataset, tetapi metrik dominan akurasi %, tanpa CI/uji statistik); Q6=1 (censoring ditangani); Q7=1 (kurva reliabilitas/Weibull); Q8=0,5 (motivasi maintenance, tanpa model keputusan). Jumlah 6/8 -> 8.
+
+LIMITASI
+Format letter (detail terbatas); data riil kecil; metrik tanpa interval/uji signifikansi; kode tidak publik; keputusan pemeliharaan tak dianalisis; domain non-membran.
+
+BUKTI (fig/table/eq)
+CMA (softmax(QK^T/sqrt(d))V); head Weibull (k=softplus, lambda=exp); censored Weibull NLL; Fig. 2 (konsep), Fig. 3 (sensor), Fig. 4-5 (gap/temp/vibration), Fig. 6 (kurva reliabilitas), Table 1 (akurasi lintas dataset).

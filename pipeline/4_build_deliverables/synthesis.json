@@ -1,0 +1,27 @@
+{
+ "d1": "Literatur RUL umumnya memakai data multi-sensor deret waktu (vibrasi, suhu, tekanan, arus). Pada domain membran/RO, sinyal kunci adalah beda tekanan transmembran (TMP/delta-P), laju alir permeate, konduktivitas/TDS, suhu umpan, dan pH. Artinya, sensor yang dibutuhkan tesis ini sudah mapan di literatur.",
+ "d2": "Definisi target terbelah dua: (a) sebagian studi memakai kegagalan fisik (data run-to-failure seperti C-MAPSS/bearing), (b) sebagian mendefinisikan target sebagai ambang performa/health index (soft failure). Untuk membran yang jarang dibiarkan rusak total, pendekatan (b) lebih relevan dan lebih realistis.",
+ "d3": "Kelompok survival analysis dan sejumlah metode deep learning modern secara eksplisit menangani data tersensor. Namun mayoritas metode DL untuk RUL masih mengabaikan censoring dan dilatih hanya pada data lengkap, sehingga bias. Ini celah metodologis utama.",
+ "d4": "Arsitektur didominasi LSTM, CNN-LSTM, dan Transformer untuk deret waktu, serta Bayesian Neural Network untuk probabilistik; pendekatan survival klasik (Cox, Weibull/AFT) tetap dipakai untuk pemodelan waktu-ke-kejadian.",
+ "d5": "Model probabilistik/Bayesian menyediakan kuantifikasi ketidakpastian (interval prediksi), sedangkan model deterministik umumnya hanya mengeluarkan satu angka RUL. Untuk keputusan perawatan, ketidakpastian penting.",
+ "d6": "Hanya sebagian kecil studi menghubungkan prediksi RUL ke keputusan perawatan (penjadwalan, biaya). Justru di sinilah kontribusi Sistem Informasi (DSS/CMMS) berada.",
+ "d7": "Domain membran/RO/desalinasi jauh lebih sedikit dibanding mesin/bearing/baterai. Prediksi RUL membran masih tipis; sebagian besar berupa prediksi fouling atau performa, bukan RUL dengan survival analysis.",
+ "d8": "Sangat sedikit studi yang secara khusus menangani data kecil (small-data), few-shot, transfer learning, atau kondisi tanpa kegagalan; mayoritas berasumsi armada besar dengan banyak kegagalan teramati.",
+ "gap": "Dari 101 artikel yang diekstraksi, tidak satu pun secara simultan menggabungkan: (1) prediksi RUL membran reverse osmosis dengan survival analysis yang sadar-censoring; (2) kondisi data tanpa kegagalan (penggantian preventif sebelum rusak) sehingga censoring mendominasi; (3) skala data kecil pada satu plant pilot; dan (4) integrasi hasilnya ke dalam sistem pendukung keputusan perawatan. Kombinasi inilah yang menjadi kontribusi tesis.",
+ "teori": [
+  ["Survival Analysis (waktu-ke-kejadian)", "D3 Censoring / A", "Cox (1972); Si dkk. (2011); Li, Taylor & Sy (2001)", "Menghitung peluang bertahan & RUL dari data yang sebagian tersensor."],
+  ["Deep Learning deret waktu", "D4 Arsitektur", "Katzman dkk. (2018) DeepSurv; Lee dkk. (2018) DeepHit; Noot dkk. (2025)", "Menangkap pola multi-sensor sepanjang waktu untuk memprediksi parameter RUL."],
+  ["Inferensi Bayesian", "D5 Ketidakpastian", "Gao dkk. (2025); Drent dkk. (2021)", "Memindahkan pengetahuan antar-unit dan mengukur ketidakpastian prediksi."],
+  ["Reliabilitas / PHM (Weibull)", "D2 Target / A", "Gao dkk. (2025); Zhang dkk. (2019)", "Memodelkan distribusi waktu kegagalan dan hazard."],
+  ["Teori Sistem Pendukung Keputusan (IS)", "D6 Keputusan/DSS", "Bousdekis dkk. (2018); zur Heiden dkk. (2024)", "Mengubah prediksi menjadi keputusan perawatan (CIP vs ganti) yang dapat dipertanggungjawabkan."],
+  ["Design Science Research", "D6 / lintas", "Hevner; Peffers; Mettler (2011)", "Membangun & mengevaluasi artifact sistem informasi (DSS) sebagai kontribusi bidang SI."]
+ ],
+ "konsep": [
+  ["Right-censoring", "Pengamatan berakhir sebelum kegagalan terjadi; label hanya menyatakan batas bawah waktu kegagalan.", "Inti masalah: sumber data lapangan didominasi data tersensor."],
+  ["Proxy (soft) failure", "Kegagalan didefinisikan melalui ambang performa: delta-P +15%, normalized salt passage +10%, FRR <=70%.", "Endpoint (target) prediksi pada tesis ini."],
+  ["Identifiability", "Kemampuan mengestimasi parameter model dari data; skala Weibull tidak teridentifikasi bila tidak ada satu pun kegagalan teramati.", "Batasan & syarat: shape dikunci + prior informatif (Drent dkk., 2021)."],
+  ["Bayesian mixed-effects", "Model hierarkis yang 'meminjam kekuatan' antar-unit dan memperbarui parameter secara online.", "Komponen model: denoising sinyal & personalisasi per-unit."],
+  ["Uncertainty quantification", "Keluaran berupa distribusi/interval, bukan satu angka.", "Keluaran untuk DSS agar keputusan sadar-risiko."],
+  ["DSS / CMMS", "Sistem pendukung keputusan / manajemen perawatan terkomputerisasi.", "Artifact kontribusi bidang Sistem Informasi."]
+ ]
+}

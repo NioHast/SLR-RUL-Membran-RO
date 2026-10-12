@@ -1,0 +1,23 @@
+NOTICE - Third-Party Content and Licenses
+==========================================
+This repository contains third-party material that is NOT covered by the licenses in
+LICENSE (MIT-0) and LICENSE-CONTENT (CC0 1.0). Their original licenses still apply and
+attribution may be REQUIRED.
+
+1) mirror_data/  (SCImago / Scopus data)
+   - Files: sjr_quart.csv, sjr_all.csv, scopus_titles.tsv
+   - Source: SCImago Journal & Country Rank (https://www.scimagojr.com) - derived from Scopus.
+   - License: CC BY-NC (Attribution-NonCommercial), compiled from public SCImago exports.
+   - OBLIGATION: attribution to SCImago is REQUIRED; NON-COMMERCIAL use only.
+   - Attribution: SCImago. (n.d.). SJR - SCImago Journal & Country Rank. https://www.scimagojr.com
+
+2) papers_analysis/<folder>/full_text.pdf, full_text.md, figures/, meta.json
+   (for the Open-Access articles only)
+   - These are the original articles / derived text & figures, reprinted here only when the
+     article is Open Access AND carries a Creative Commons license that permits redistribution.
+   - Each folder has a SOURCE.txt with the specific DOI and license.
+   - OBLIGATION: retain the article's original license terms; attribution to the authors/
+     publisher may be required (e.g., CC BY requires attribution).
+
+All other files (pipeline code, docs, analysis outputs, metadata tables authored by the
+author) are covered by MIT-0 (code) and CC0 1.0 (content).

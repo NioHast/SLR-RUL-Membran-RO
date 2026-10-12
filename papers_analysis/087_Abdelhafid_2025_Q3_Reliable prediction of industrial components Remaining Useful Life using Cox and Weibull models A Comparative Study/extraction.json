@@ -1,0 +1,86 @@
+{
+  "no": 55,
+  "judul": "Reliable prediction of industrial components Remaining Useful Life using Cox and Weibull models: A Comparative Study",
+  "penulis": "Hamdi Alaoui Abdelhafid, Anwar Meddaoui, Ahmed En-nhaili",
+  "tahun": 2025,
+  "jurnal": "Data and Metadata",
+  "doi": "10.56294/dm20251102",
+  "kuartil": "Scopus Q3 (SCImago SJR 2024)",
+  "pilar": "A. Survival Analysis & Censored Data",
+  "ringkasan": "Studi komparatif dua teknik analisis survival - Cox Proportional Hazards (semi-parametrik) dan model Weibull (parametrik) - untuk prediksi RUL komponen industri pada dataset AI4I 2020 Predictive Maintenance. Memakai Kaplan-Meier, uji log-rank, dan validasi C-index/AIC; Cox PH unggul (C-index 0,9148 vs 0,639; AIC 4184,44 vs 5915,87) dan menangani kovariat berganda serta data tersensor (right-censored) secara efektif.",
+  "kontribusi": "Menyediakan justifikasi metodologis langsung untuk tesis: Cox PH lebih tepat daripada Weibull murni ketika terdapat banyak kovariat sensor dan data tersensor, dan menghasilkan RUL yang terindividualisasi per unit. Menjadi kerangka survival analysis acuan yang dapat dikombinasikan dengan machine learning.",
+  "temuan_kunci": [
+    "Cox PH mengungguli Weibull: C-index 0,9148 (excellent) vs 0,639 (moderate); AIC 4184,44 vs 5915,87",
+    "Air temperature (HR 1,63), Torque (HR 1,22), Rotational speed (HR 1,008) meningkatkan hazard; Process temperature bersifat protektif (HR 0,61); Type L berisiko 70% lebih tinggi (HR 1,70)",
+    "Model Weibull menghasilkan median RUL tetap 500,03 menit (λ=639,09; β=2,09 -> hazard meningkat), sedangkan Cox memberi RUL terindividualisasi",
+    "Uji log-rank: Type L vs H signifikan (p=0,0057); Type M vs L borderline (p=0,0501); Type M vs H tidak signifikan (p=0,1046)",
+    "Observasi right-censored (mesin yang belum gagal di akhir periode) ditangani eksplisit oleh kedua model",
+    "Cox PH lebih fleksibel untuk kovariat banyak/time-varying; Weibull tetap berguna untuk pola wear-out yang dapat diprediksi"
+  ],
+  "dimensi": {
+    "d1": "1",
+    "d2": "1",
+    "d3": "1",
+    "d4": "1",
+    "d5": "1",
+    "d6": "1",
+    "d7": "",
+    "d8": ""
+  },
+  "alasan_dimensi": {
+    "d1": "Data multi-sensor/operasional: air temperature, process temperature, rotational speed, torque, dan tool wear (variabel waktu) dari 14 variabel/10.000 rekaman.",
+    "d2": "RUL dan event didefinisikan formal: variabel waktu = Tool Wear [min], indikator event = Machine Failure (1/0); median RUL saat survival = 0,5.",
+    "d3": "Secara eksplisit memodelkan data tersensor: 'some observations were right-censored... These were appropriately handled by both the Cox and Weibull models'; memakai Cox PH, Weibull, Kaplan-Meier, dan uji log-rank.",
+    "d4": "Model spesifik: Cox Proportional Hazards (partial likelihood) dan model Weibull (MLE), plus Kaplan-Meier dan log-rank test.",
+    "d5": "Mengkuantifikasi ketidakpastian: 95% confidence interval untuk log(HR) tiap kovariat (Table 2, Figure 7) dan pita kepercayaan pada kurva survival/CDF (Figure 4-6).",
+    "d6": "Berorientasi keputusan maintenance: prediksi RUL untuk meminimalkan downtime dan mengoptimalkan biaya maintenance, perencanaan intervensi, dan maintenance planning berbasis RCM.",
+    "d7": "Bukan domain membran/RO/desalinasi; objek adalah komponen mesin industri (tool wear).",
+    "d8": "Bukan small-data/transfer/hierarchical dan tidak semuanya tersensor; dataset besar (10.000 rekaman) dan censoring hanya sebagian."
+  },
+  "relevansi": "Inti-Metode",
+  "kualitas": {
+    "skor": 9,
+    "rincian": {
+      "Q1": 1,
+      "Q2": 1,
+      "Q3": 1,
+      "Q4": 0.5,
+      "Q5": 1,
+      "Q6": 1,
+      "Q7": 1,
+      "Q8": 1
+    },
+    "catatan": "RQ jelas (bandingkan Cox vs Weibull), metode mumpuni (survival lengkap: KM, log-rank, Cox, Weibull), data publik AI4I 2020 dengan preprocessing & feature selection (VIF, korelasi), evaluasi kuat (C-index, AIC, residual/Schoenfeld, 5-fold CV), censoring ditangani (Q6=1), ketidakpastian dilaporkan (CI), dan kaitan maintenance kuat (Q8=1). Reproducibility sedang: memakai lifelines tetapi kode tidak dibagikan. Skor = 7,5/8*10 ≈ 9."
+  },
+  "data_kuantitatif": {
+    "dataset": "AI4I 2020 Predictive Maintenance Dataset",
+    "ukuran": "10.000 rekaman, 14 variabel; split 70% train / 30% test; stratified 5-fold CV",
+    "metrik": "C-index 0,9148 (Cox) vs 0,639 (Weibull); AIC 4184,44 vs 5915,87; median RUL 500,03 menit (Weibull); HR Air Temp 1,63; Process Temp 0,61; Torque 1,22; Rot Speed 1,008; Type L 1,70"
+  },
+  "metode": "Survival analysis: Kaplan-Meier estimator, log-rank test, Cox Proportional Hazards (semi-parametrik, partial likelihood, Breslow untuk censoring), dan model Weibull (MLE). Validasi: C-index, AIC, residual plot & Schoenfeld test, stratified 5-fold CV.",
+  "limitasi": [
+    "Cox PH bergantung pada asumsi proportional hazards yang harus divalidasi per aplikasi dan sensitif terhadap multikolinearitas",
+    "Weibull mengasumsikan bentuk distribusi tetap sehingga bisa underfit/menyimpang pada kondisi heterogen/noisy",
+    "Tidak menyentuh domain membran/RO/desalinasi",
+    "Kode tidak dibagikan; tidak melaporkan jumlah observasi tersensor secara rinci",
+    "Bukan pendekatan deep learning (tetapi dapat dikombinasikan dengannya)"
+  ],
+  "funding_coi": "Penulis menyatakan tidak menerima bantuan finansial/grant apa pun. Penulis menyatakan tidak ada konflik kepentingan finansial maupun non-finansial.",
+  "status_inklusi": "diterima",
+  "figur_dibaca": [
+    {
+      "file": "_page_7_Figure_11.jpeg",
+      "isi": "Dua panel: (kiri) Kaplan-Meier survival by type M/L/H, sumbu X Tool Wear 0-250 menit, sumbu Y probabilitas 0-1; semua kurva dekat 1,0 hingga ~150-175 lalu turun tajam setelah 200; Type M turun paling awal/tajam, Type H paling akhir; pita CI melebar di ekor kanan. (kanan) CDF by type; CDF M naik pertama (~210), CDF L & H naik lebih lambat, semua menuju ~1,0 pada ~250 menit (end-of-life)."
+    },
+    {
+      "file": "_page_10_Figure_2.jpeg",
+      "isi": "Plot koefisien model Cox (sumbu X = log(HR) 95% CI, -0,6..1,0, garis referensi 0). Type[T.L] ~0,55 (CI 0,05-1,00), Air_temp ~0,32 (0,22-0,42), Type[T.M] ~0,25 (-0,15-0,75), Torque ~0,17 (interval sempit), Rot_speed ~0,00, Process_temp ~-0,48 (-0,62--0,35, protektif). Sesuai HR di Table 2."
+    }
+  ],
+  "bukti": [
+    "Abstract: 'The results demonstrated that the Cox PH model outperforms the Weibull model in terms of flexibility, predictive accuracy, and the ability to handle multiple covariates.'",
+    "Censoring: 'As is typical in industrial settings, some observations were right-censored—i.e., machines that had not yet failed at the end of the observation period. These were appropriately handled by both the Cox and Weibull models.'",
+    "Performance: 'C-index of 0,9148 for the Cox model (excellent predictive ability), compared to 0,639 for the Weibull model'; 'AIC... 4184,44 vs. 5915,87'.",
+    "RUL definition: 'the variable (Tool wear [min]) serves as the time variable... and the binary variable \"Machine failure\" acts as the event indicator'."
+  ]
+}

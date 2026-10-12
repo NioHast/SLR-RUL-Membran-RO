@@ -1,0 +1,51 @@
+PAPER 49 — Vishnu TV et al. (2019)
+Judul: Data-driven Prognostics with Predictive Uncertainty Estimation using Ensemble of Deep Ordinal Regression Models
+Jurnal: International Journal of Prognostics and Health Management | Q2 (SCImago SJR Best Quartile) | DOI 10.36001/ijphm.2019.v10i4.2612
+Pilar: A. Survival Analysis & Censored Data | Relevansi: Inti-Metode | Skor kualitas: 9/10
+
+KARAKTERISTIK STUDI
+Studi prognostik RUL dari time-series multi-sensor yang menangani dua tantangan praktis: (i) data gagal berlabel langka (failure jarang) sehingga banyak instan operasional bersifat tersensor (censored), dan (ii) noise sensor. Pendekatannya memformulasikan RUL sebagai ordinal regression agar instan tersensor dapat dipakai melatih, plus ensemble untuk kuantifikasi ketidakpastian.
+
+METODE
+- LSTM-OR: deep LSTM yang mempelajari fungsi ordinal regression. Rentang RUL [0, r_u] dibagi K=10 interval; setiap instan menjadi vektor multi-label biner y=[y_1..y_K] dengan y_j=0 jika j<k dan y_j=1 jika j>=k.
+- Handling censored: untuk instan tersensor, hanya sebagian label diketahui (y_j=0 untuk j<k', sisanya di-mask/unknown); loss L_ORC hanya menghitung klasifier yang tidak di-mask. Ini setara semi-supervised learning.
+- Estimasi titik RUL: r_hat = r_u(1 - (1/K) sum y_hat_j).
+- Uncertainty: ensemble m=6 LSTM-OR (inisialisasi & shuffle acak); estimasi r_hat = rata-rata; ketidakpastian ESD = std dev empiris (dibandingkan dengan Entropy/ENT). ESD terbukti lebih robust.
+- Hyperparameter: h in {50..100}, L in {2,3}, lr in {0.001,0.005}, dropout 0,2, batch 32, grid search.
+
+DATA
+- NASA C-MAPSS FD001 (100 train/100 test, 21 sensor, 1 kondisi operasi) dan FD004 (249/248, 27 fitur one-hot, 6 kondisi, 2 fault mode).
+- Validasi 20% dari train. Skenario censoring pc in {0,50,70,90}%: pc% instan dipotong sebelum gagal (dianggap tersensor). Time series dipotong pada 20 titik acak; T=360; r_u=130.
+
+TEMUAN UTAMA
+- ORC unggul atas MR saat instan gagal sedikit: RMSE membaik 15,1% (FD001) dan 3,6% (FD004) pada pc=90% (nf=8 dan 20).
+- ORCE (ensemble) konsisten lebih baik dari ORC tunggal: mis. RMSE FD001 pc=0% 15,63 -> 14,62; pc=90% 21,51 -> 20,38.
+- ESD lebih robust dari ENT (precision-recall & F1).
+- Ketidakpastian rendah berkorelasi error rendah; P_l=0,917 (FD001) dan 0,857 (FD004) pada tau_r=20.
+- Model lebih akurat dan yakin saat RUL rendah (mendekati gagal).
+
+RELEVANSI KE TESIS
+Sangat relevan untuk sumbu censoring pada tesis: menunjukkan secara konkret cara memasukkan data tersensor ke pelatihan deep learning (label masking pada ordinal regression), persis kebutuhan RUL membran dengan data belum-gagal/tersensor. Namun domainnya turbofan (bukan membran) dan tanpa model keputusan maintenance formal. Posisi: Inti-Metode.
+
+JUSTIFIKASI DIMENSI
+- d1=1: runtun waktu multi-sensor (21/27 fitur), panjang hingga 360 siklus.
+- d2=1: RUL didefinisikan eksplisit (r=F-T; batas r_u=130) dan failure point F menjadi acuan.
+- d3=1: memodelkan data tersensor secara nyata (target parsial/masking, loss L_ORC, skenario pc sampai 90%) — bukan sekadar menyebut kata "censored".
+- d4=1: model spesifik LSTM ordinal regression + ensemble.
+- d5=1: kuantifikasi ketidakpastian ensemble (ESD/ENT) dengan metrik presisi/recall.
+- d6="": tidak ada analisis keputusan maintenance (jadwal/biaya/DSS), hanya klaim kualitatif (alarm, CBM, decision making).
+- d7="": domain turbofan, bukan membran/RO/desalinasi/fouling.
+- d8=1: menargetkan skenario labeled-failure langka (small-data) dan data tersensor masif (censored-heavy).
+Bukti kunci: "ORC performs significantly better than MR ... 15.1% and 3.6% improvement"; "we formulate RUL estimation as an Ordinal Regression (OR) problem"; "focuses on aleatoric uncertainty".
+
+KUALITAS (9/10)
+Q1 jelas (1); Q2 metode memadai (1); Q3 dua dataset publik + skenario censoring terkontrol (1); Q4 hyperparameter dijelaskan tanpa kode (0,5); Q5 evaluasi lengkap RMSE + timeliness + precision/recall/F1 (1); Q6 penanganan censoring eksplisit & jadi kontribusi inti (1); Q7 pelaporan ketidakpastian kuat (1); Q8 tautan maintenance hanya kualitatif (0,5). Skor = round(7/8*10) = 9.
+
+LIMITASI
+Hanya aleatoric uncertainty; metrik belum divalidasi dataset lain; clipping r_u=130 menyebabkan error untuk instan berumur sangat panjang (engine#166 FD004); hanya LSTM diuji; tanpa model keputusan maintenance; tidak mengungguli LSTM-MR pada data penuh.
+
+BUKTI (kutipan)
+- "we formulate RUL estimation as an Ordinal Regression (OR) problem and propose LSTM-OR ... leading to more robust learning" (Abstract).
+- "with pc = 90% ... ORC performs significantly better than MR, and shows 15.1% and 3.6% improvement over MR in terms of RMSE, for FD001 and FD004" (Results).
+- "The proposed approach for uncertainty estimation focuses on aleatoric uncertainty" (Conclusion).
+- "we found ESD to be the most robust measure of uncertainty as compared to ENT" (Section 5).

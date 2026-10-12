@@ -1,0 +1,81 @@
+{
+  "no": 31,
+  "judul": "A Bayesian Optimization AdaBN-DCNN Method With Self-Optimized Structure and Hyperparameters for Domain Adaptation Remaining Useful Life Prediction",
+  "penulis": "Jialin Li, David He",
+  "tahun": 2020,
+  "jurnal": "IEEE Access",
+  "doi": "10.1109/ACCESS.2020.2976595",
+  "kuartil": "Scopus Q1 (SCImago SJR Best Quartile)",
+  "pilar": "D. Small-data/Transfer/Hierarchical",
+  "ringkasan": "Makalah ini mengusulkan metode prediksi RUL berbasis Deep Convolutional Neural Network (DCNN) yang digabung dengan Bayesian optimization dan Adaptive Batch Normalization (AdaBN). Bayesian optimization dipakai untuk memilih struktur jaringan dan hyperparameter secara otomatis, sedangkan AdaBN dipakai untuk adaptasi domain lintas kondisi operasi. Metode divalidasi pada dataset simulasi degradasi mesin turbofan C-MAPSS dan mengalahkan grid search serta random search.",
+  "kontribusi": "Memberi contoh strategi transfer/adaptasi domain berbiaya rendah (hanya fine-tuning parameter BN) untuk RUL lintas domain (FD001-FD004). Relevan ke tesis sebagai pembanding bagaimana 'pergeseran domain' ditangani tanpa memodelkan penyensoran, sehingga menegaskan celah bahwa adaptasi domain pada membran RO dengan data tersensor masih terbuka.",
+  "temuan_kunci": [
+    "Bayesian optimization menemukan kombinasi hyperparameter terbaik dengan iterasi lebih sedikit dibanding grid/random search (E_RMSE terbaik FD001 = 11.94).",
+    "Penambahan BN + fine-tuning AdaBN memangkas E_RMSE prediksi lintas domain hingga ~10x pada 4 pasang domain (mis. FD002->FD001, FD004->FD003).",
+    "AdaBN lebih efektif saat memprediksi domain sederhana (sedikit mode kegagalan/kondisi) dari model yang dilatih pada domain kompleks.",
+    "Hasil prediksi terbaik pada FD001, FD002, FD003 (E_RMSE 11.94/19.29/12.31) dan kompetitif pada FD004 (22.14)."
+  ],
+  "dimensi": {
+    "d1": "1",
+    "d2": "1",
+    "d3": "",
+    "d4": "1",
+    "d5": "",
+    "d6": "",
+    "d7": "",
+    "d8": "1"
+  },
+  "alasan_dimensi": {
+    "d1": "Input berupa runtun waktu multi-sensor: 14 dari 21 sinyal sensor turbofan C-MAPSS dipotong dengan sliding time window (TW) menjadi segmen time-series multi-kanal (Tabel 5, Fig. 3).",
+    "d2": "RUL didefinisikan eksplisit dalam siklus; fungsi RUL piecewise-linear dengan plateau pada RUL=125 dan titik Fault ~190 siklus (Fig. 7b, Eq. 40-41).",
+    "d3": "Tidak ada pemodelan data tersensor: seluruh unit pada C-MAPSS run-to-failure (tidak ada unit tersensor/suspensi, tidak ada survival/Weibull/hazard).",
+    "d4": "Memakai model spesifik: DCNN (convolutional + pooling + fully-connected) dengan Bayesian optimization Gaussian Process dan AdaBN.",
+    "d5": "Tidak ada kuantifikasi ketidakpastian RUL: interval 95% GP hanya dipakai untuk mencari hyperparameter, sedangkan 'error band' prediksi adalah distribusi galat, bukan interval prediktif RUL.",
+    "d6": "Hanya menyebut 'predictive maintenance' sebagai motivasi; tidak ada model keputusan pemeliharaan, jadwal, atau biaya.",
+    "d7": "Bukan domain membran/RO/desalinasi; objek adalah mesin turbofan (C-MAPSS).",
+    "d8": "Termasuk sumbu small-data/transfer: adaptasi domain lintas sub-dataset dengan AdaBN (fine-tuning skala/offset BN) untuk menghindari pelatihan ulang penuh."
+  },
+  "relevansi": "Inti-Domain",
+  "kualitas": {
+    "skor": 8,
+    "rincian": {
+      "Q1": "1",
+      "Q2": "1",
+      "Q3": "1",
+      "Q4": "0.5",
+      "Q5": "1",
+      "Q6": "N/A",
+      "Q7": "0.5",
+      "Q8": "0.5"
+    },
+    "catatan": "RQ jelas dan pembandingan baseline banyak (8 metode). Metode memadai dan evaluasi (RMSE + score) lengkap di 4 sub-dataset. Reproduksibilitas sedang: hyperparameter hasil BO diberi, namun tanpa kode/pengaturan lengkap. Penyensoran tidak relevan (N/A). Pelaporan ketidakpastian hanya berupa error band/histogram, bukan interval prediktif RUL. Kaitan keputusan pemeliharaan hanya level motivasi."
+  },
+  "data_kuantitatif": {
+    "dataset": "NASA C-MAPSS (FD001-FD004) data simulasi run-to-failure mesin turbofan",
+    "ukuran": "FD001 100 train/100 test, FD002 260/259, FD003 100/100, FD004 249/248; sampel latih 17.731/48.559/21.220/57.016",
+    "metrik": "E_RMSE, E_score, waktu komputasi (s)"
+  },
+  "metode": "DCNN + Bayesian optimization (Gaussian process + acquisition function) untuk struktur/hyperparameter + Adaptive Batch Normalization (AdaBN) untuk adaptasi domain; sliding time window + z-score normalization; SGD with momentum.",
+  "limitasi": [
+    "Hanya validasi pada data simulasi C-MAPSS, bukan data industri nyata.",
+    "Tidak memodelkan data tersensor/suspensi, tidak ada estimasi ketidakpastian RUL.",
+    "Ketidakpastian hanya pada pencarian hyperparameter, bukan pada prediksi RUL.",
+    "Tidak ada model keputusan pemeliharaan yang diusulkan.",
+    "Kinerja bergantung pada rentang hyperparameter yang ditetapkan manual (empiris)."
+  ],
+  "funding_coi": "Tidak disebutkan secara eksplisit dalam naskah (artikel IEEE Access); tidak ada pernyataan dana maupun konflik kepentingan yang ditemukan pada teks.",
+  "status_inklusi": "diterima",
+  "figur_dibaca": [
+    {"file": "figures/_page_8_Picture_2.jpeg", "isi": "Fig. 5 kerangka Bayesian optimization AdaBN-DCNN: input tensor time-sequence Ls multi-kanal sensor; 3 blok dashed (kedalaman jaringan) berisi Conv(merah)->BN(hijau)->Pool(kuning); setelah stage 3 -> pooling -> fully connected(ungu) -> BN -> output RUL."},
+    {"file": "figures/_page_10_Figure_10.jpeg", "isi": "Fig. 7: (a) 14 sinyal sensor ternormalisasi engine #1 FD001, fase 'Healthy' hijau ~0-65 siklus; (b) fungsi RUL piecewise-linear plateau 125 vs linear, garis Fault merah ~190 siklus."}
+  ],
+  "bukti": [
+    "Abstrak & Kontribusi (1)-(2): DCNN + Bayesian optimization + AdaBN untuk RUL.",
+    "Tabel 4: deskripsi dataset C-MAPSS (jumlah engine, cycles, TW length).",
+    "Tabel 5: 21 sensor output; 14 sinyal tren dipilih sebagai input.",
+    "Tabel 7: hyperparameter terbaik & E_RMSE 4 sub-dataset (FD001 11.94, FD002 19.29, FD003 12.31, FD004 22.14).",
+    "Tabel 8: perbandingan dengan CNN/LSTM/MODBNE/BLSTM/BiLSTM/DCNN/DAG.",
+    "Tabel 12 & Fig. 14: hasil cross-domain dengan/tanpa AdaBN.",
+    "Eq. 40-41: definisi E_RMSE dan E_score; Fig. 7b: fungsi RUL piecewise-linear threshold 125."
+  ]
+}

@@ -1,0 +1,9 @@
+SUMBER FULL-TEXT (Open Access)
+============================
+Judul   : LSTM and Transformers based methods for Remaining Useful Life Prediction considering Censored Data
+DOI     : 10.36001/ijphm.2025.v16i2.4260
+Status  : gold (Open Access)
+Lisensi : cc-by, cc-by-sa, other-oa
+
+Catatan : Open Access berlisensi Creative Commons; boleh didistribusikan ulang DENGAN ATRIBUSI
+kepada penulis/penerbit asli. Diverifikasi via Unpaywall (https://unpaywall.org).

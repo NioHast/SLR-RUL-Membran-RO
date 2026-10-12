@@ -1,0 +1,1283 @@
+{
+ "10.1109/access.2019.2919566": {
+  "issn_l": "2169-3536",
+  "issn": [
+   "2169-3536"
+  ],
+  "source": "IEEE Access",
+  "type": "journal",
+  "in_doaj": true
+ },
+ "10.1109/tmech.2020.2971503": {
+  "issn_l": "1083-4435",
+  "issn": [
+   "1083-4435",
+   "1941-014X"
+  ],
+  "source": "IEEE/ASME Transactions on Mechatronics",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.3390/app8122416": {
+  "issn_l": "2076-3417",
+  "issn": [
+   "2076-3417"
+  ],
+  "source": "Applied Sciences",
+  "type": "journal",
+  "in_doaj": true
+ },
+ "10.3390/electronics10030285": {
+  "issn_l": "2079-9292",
+  "issn": [
+   "2079-9292"
+  ],
+  "source": "Electronics",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.1109/jiot.2024.3376715": {
+  "issn_l": "2327-4662",
+  "issn": [
+   "2327-4662",
+   "2372-2541"
+  ],
+  "source": "IEEE Internet of Things Journal",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.1109/tnnls.2020.2977132": {
+  "issn_l": "2162-237X",
+  "issn": [
+   "2162-237X",
+   "2162-2388"
+  ],
+  "source": "IEEE Transactions on Neural Networks and Learning Systems",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.1109/tim.2022.3200667": {
+  "issn_l": "0018-9456",
+  "issn": [
+   "0018-9456",
+   "1557-9662"
+  ],
+  "source": "IEEE Transactions on Instrumentation and Measurement",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.1109/tte.2022.3161140": {
+  "issn_l": "2332-7782",
+  "issn": [
+   "2332-7782",
+   "2372-2088",
+   "2577-4212"
+  ],
+  "source": "IEEE Transactions on Transportation Electrification",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.1109/jsen.2021.3109623": {
+  "issn_l": "1530-437X",
+  "issn": [
+   "1530-437X",
+   "1558-1748",
+   "2379-9153"
+  ],
+  "source": "IEEE Sensors Journal",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.1016/j.jwpe.2024.106532": {
+  "issn_l": "2214-7144",
+  "issn": [
+   "2214-7144"
+  ],
+  "source": "Journal of Water Process Engineering",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.3390/w17081169": {
+  "issn_l": "2073-4441",
+  "issn": [
+   "2073-4441"
+  ],
+  "source": "Water",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.5004/dwt.2019.23444": {
+  "issn_l": "1944-3986",
+  "issn": [
+   "1944-3986",
+   "1944-3994"
+  ],
+  "source": "Desalination and Water Treatment",
+  "type": "journal",
+  "in_doaj": true
+ },
+ "10.30564/jees.v7i6.8630": {
+  "issn_l": "2661-3190",
+  "issn": [
+   "2661-3190"
+  ],
+  "source": "Journal of Environmental & Earth Sciences",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.1016/j.advmem.2026.100219": {
+  "issn_l": "2772-8234",
+  "issn": [
+   "2772-8234"
+  ],
+  "source": "Advanced Membranes",
+  "type": "journal",
+  "in_doaj": true
+ },
+ "10.1109/access.2020.2976595": {
+  "issn_l": "2169-3536",
+  "issn": [
+   "2169-3536"
+  ],
+  "source": "IEEE Access",
+  "type": "journal",
+  "in_doaj": true
+ },
+ "10.21595/vp.2019.20617": {
+  "issn_l": "2345-0533",
+  "issn": [
+   "2345-0533",
+   "2538-8479"
+  ],
+  "source": "Vibroengineering PROCEDIA",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.3390/s22103803": {
+  "issn_l": "1424-8220",
+  "issn": [
+   "1424-8220"
+  ],
+  "source": "Sensors",
+  "type": "journal",
+  "in_doaj": true
+ },
+ "10.1038/s41598-022-12572-z": {
+  "issn_l": "2045-2322",
+  "issn": [
+   "2045-2322"
+  ],
+  "source": "Scientific Reports",
+  "type": "journal",
+  "in_doaj": true
+ },
+ "10.4236/gep.2021.97004": {
+  "issn_l": "2327-4336",
+  "issn": [
+   "2327-4336",
+   "2327-4344"
+  ],
+  "source": "Journal of Geoscience and Environment Protection",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.1016/j.mlwa.2023.100475": {
+  "issn_l": "2666-8270",
+  "issn": [
+   "2666-8270"
+  ],
+  "source": "Machine Learning with Applications",
+  "type": "journal",
+  "in_doaj": true
+ },
+ "10.1109/access.2022.3226780": {
+  "issn_l": "2169-3536",
+  "issn": [
+   "2169-3536"
+  ],
+  "source": "IEEE Access",
+  "type": "journal",
+  "in_doaj": true
+ },
+ "10.1177/14759217251333056": {
+  "issn_l": "1475-9217",
+  "issn": [
+   "1475-9217",
+   "1741-3168"
+  ],
+  "source": "Structural Health Monitoring",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.1016/j.dwt.2025.101386": {
+  "issn_l": "1944-3986",
+  "issn": [
+   "1944-3986",
+   "1944-3994"
+  ],
+  "source": "Desalination and Water Treatment",
+  "type": "journal",
+  "in_doaj": true
+ },
+ "10.1007/s42979-025-04291-9": {
+  "issn_l": "2661-8907",
+  "issn": [
+   "2661-8907",
+   "2662-995X"
+  ],
+  "source": "SN Computer Science",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.3390/eng7030106": {
+  "issn_l": "2673-4117",
+  "issn": [
+   "2673-4117"
+  ],
+  "source": "Eng—Advances in Engineering",
+  "type": "journal",
+  "in_doaj": true
+ },
+ "10.1007/s13201-018-0821-8": {
+  "issn_l": "2190-5487",
+  "issn": [
+   "2190-5487",
+   "2190-5495"
+  ],
+  "source": "Applied Water Science",
+  "type": "journal",
+  "in_doaj": true
+ },
+ "10.1007/s00521-022-07667-7": {
+  "issn_l": "0941-0643",
+  "issn": [
+   "0941-0643",
+   "1433-3058"
+  ],
+  "source": "Neural Computing and Applications",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.36001/ijphm.2025.v16i2.4260": {
+  "issn_l": "2153-2648",
+  "issn": [
+   "2153-2648"
+  ],
+  "source": "International Journal of Prognostics and Health Management",
+  "type": "journal",
+  "in_doaj": true
+ },
+ "10.3390/separations10020134": {
+  "issn_l": "2297-8739",
+  "issn": [
+   "2297-8739"
+  ],
+  "source": "Separations",
+  "type": "journal",
+  "in_doaj": true
+ },
+ "10.15294/jpii.v9i3.23310": {
+  "issn_l": "2089-4392",
+  "issn": [
+   "2089-4392",
+   "2339-1286"
+  ],
+  "source": "Jurnal Pendidikan IPA Indonesia",
+  "type": "journal",
+  "in_doaj": true
+ },
+ "10.1109/tase.2025.3640217": {
+  "issn_l": "1545-5955",
+  "issn": [
+   "1545-5955",
+   "1558-3783"
+  ],
+  "source": "IEEE Transactions on Automation Science and Engineering",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.1109/lsens.2026.3673123": {
+  "issn_l": "2475-1472",
+  "issn": [
+   "2475-1472"
+  ],
+  "source": "IEEE Sensors Letters",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.3390/s26061915": {
+  "issn_l": "1424-8220",
+  "issn": [
+   "1424-8220"
+  ],
+  "source": "Sensors",
+  "type": "journal",
+  "in_doaj": true
+ },
+ "10.2175/193864711802713513": {
+  "issn_l": "1938-6478",
+  "issn": [
+   "1938-6478"
+  ],
+  "source": "Proceedings of the Water Environment Federation",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.36948/ijfmr.2023.v05i05.6214": {
+  "issn_l": "2582-2160",
+  "issn": [
+   "2582-2160"
+  ],
+  "source": "International Journal For Multidisciplinary Research",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.14456/scitechasia.2025.79": {
+  "issn_l": "2586-9027",
+  "issn": [
+   "2586-9027"
+  ],
+  "source": "Science & Technology Asia",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.46604/peti.2025.15348": {
+  "issn_l": "2413-7146",
+  "issn": [
+   "2413-7146",
+   "2518-833X"
+  ],
+  "source": "Proceedings of Engineering and Technology Innovation",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.1016/j.ceja.2026.101217": {
+  "issn_l": "2666-8211",
+  "issn": [
+   "2666-8211"
+  ],
+  "source": "Chemical Engineering Journal Advances",
+  "type": "journal",
+  "in_doaj": true
+ },
+ "10.1016/j.jwpe.2026.110543": {
+  "issn_l": "2214-7144",
+  "issn": [
+   "2214-7144"
+  ],
+  "source": "Journal of Water Process Engineering",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.11113/jamst.v30n2.348": {
+  "issn_l": "2600-9226",
+  "issn": [
+   "2600-9226"
+  ],
+  "source": "Journal of Applied Membrane Science & Technology",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.1109/tii.2020.2991796": {
+  "issn_l": "1551-3203",
+  "issn": [
+   "1551-3203",
+   "1941-0050"
+  ],
+  "source": "IEEE Transactions on Industrial Informatics",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.1016/j.jom.2007.01.021": {
+  "issn_l": "0272-6963",
+  "issn": [
+   "0272-6963",
+   "1873-1317"
+  ],
+  "source": "Journal of Operations Management",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.1109/tim.2022.3167778": {
+  "issn_l": "0018-9456",
+  "issn": [
+   "0018-9456",
+   "1557-9662"
+  ],
+  "source": "IEEE Transactions on Instrumentation and Measurement",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.1109/access.2020.3010066": {
+  "issn_l": "2169-3536",
+  "issn": [
+   "2169-3536"
+  ],
+  "source": "IEEE Access",
+  "type": "journal",
+  "in_doaj": true
+ },
+ "10.1109/tim.2020.3031113": {
+  "issn_l": "0018-9456",
+  "issn": [
+   "0018-9456",
+   "1557-9662"
+  ],
+  "source": "IEEE Transactions on Instrumentation and Measurement",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.1016/j.jmsy.2020.11.005": {
+  "issn_l": "0278-6125",
+  "issn": [
+   "0278-6125",
+   "1878-6642"
+  ],
+  "source": "Journal of Manufacturing Systems",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.1109/jsen.2023.3261874": {
+  "issn_l": "1530-437X",
+  "issn": [
+   "1530-437X",
+   "1558-1748",
+   "2379-9153"
+  ],
+  "source": "IEEE Sensors Journal",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.1002/stc.2811": {
+  "issn_l": "1545-2255",
+  "issn": [
+   "1545-2255",
+   "1545-2263"
+  ],
+  "source": "Structural Control and Health Monitoring",
+  "type": "journal",
+  "in_doaj": true
+ },
+ "10.1002/er.7548": {
+  "issn_l": "0363-907X",
+  "issn": [
+   "0363-907X",
+   "1099-114X"
+  ],
+  "source": "International Journal of Energy Research",
+  "type": "journal",
+  "in_doaj": true
+ },
+ "10.1108/imds-03-2019-0195": {
+  "issn_l": "0263-5577",
+  "issn": [
+   "0263-5577",
+   "1758-5783"
+  ],
+  "source": "Industrial Management & Data Systems",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.3390/environments10070127": {
+  "issn_l": "2076-3298",
+  "issn": [
+   "2076-3298"
+  ],
+  "source": "Environments",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.1109/tec.2021.3116423": {
+  "issn_l": "0885-8969",
+  "issn": [
+   "0885-8969",
+   "1558-0059"
+  ],
+  "source": "IEEE Transactions on Energy Conversion",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.1002/qre.3308": {
+  "issn_l": "0748-8017",
+  "issn": [
+   "0748-8017",
+   "1099-1638"
+  ],
+  "source": "Quality and Reliability Engineering International",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.1177/16878132241239802": {
+  "issn_l": "1687-8132",
+  "issn": [
+   "1687-8132",
+   "1687-8140"
+  ],
+  "source": "Advances in Mechanical Engineering",
+  "type": "journal",
+  "in_doaj": true
+ },
+ "10.3390/batteries10030106": {
+  "issn_l": "2313-0105",
+  "issn": [
+   "2313-0105"
+  ],
+  "source": "Batteries",
+  "type": "journal",
+  "in_doaj": true
+ },
+ "10.1109/jsen.2024.3402660": {
+  "issn_l": "1530-437X",
+  "issn": [
+   "1530-437X",
+   "1558-1748",
+   "2379-9153"
+  ],
+  "source": "IEEE Sensors Journal",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.1016/j.inffus.2025.102972": {
+  "issn_l": "1566-2535",
+  "issn": [
+   "1566-2535",
+   "1872-6305"
+  ],
+  "source": "Information Fusion",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.1155/2017/8927937": {
+  "issn_l": "1070-9622",
+  "issn": [
+   "1070-9622",
+   "1875-9203"
+  ],
+  "source": "Shock and Vibration",
+  "type": "journal",
+  "in_doaj": true
+ },
+ "10.3390/en15238918": {
+  "issn_l": "1996-1073",
+  "issn": [
+   "1996-1073"
+  ],
+  "source": "Energies",
+  "type": "journal",
+  "in_doaj": true
+ },
+ "10.1016/j.rineng.2022.100611": {
+  "issn_l": "2590-1230",
+  "issn": [
+   "2590-1230"
+  ],
+  "source": "Results in Engineering",
+  "type": "journal",
+  "in_doaj": true
+ },
+ "10.1002/qre.3151": {
+  "issn_l": "0748-8017",
+  "issn": [
+   "0748-8017",
+   "1099-1638"
+  ],
+  "source": "Quality and Reliability Engineering International",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.1115/1.4052838": {
+  "issn_l": "1530-9827",
+  "issn": [
+   "1530-9827",
+   "1944-7078"
+  ],
+  "source": "Journal of Computing and Information Science in Engineering",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.1784/insi.2020.62.12.710": {
+  "issn_l": "1354-2575",
+  "issn": [
+   "1354-2575",
+   "1754-4904"
+  ],
+  "source": "Insight - Non-Destructive Testing and Condition Monitoring",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.3390/fractalfract8080485": {
+  "issn_l": "2504-3110",
+  "issn": [
+   "2504-3110"
+  ],
+  "source": "Fractal and Fractional",
+  "type": "journal",
+  "in_doaj": true
+ },
+ "10.2166/wst.2026.234": {
+  "issn_l": "0273-1223",
+  "issn": [
+   "0273-1223",
+   "1996-9732"
+  ],
+  "source": "Water Science & Technology",
+  "type": "journal",
+  "in_doaj": true
+ },
+ "10.1115/1.4001580": {
+  "issn_l": "1087-1357",
+  "issn": [
+   "1087-1357",
+   "1528-8935"
+  ],
+  "source": "Journal of Manufacturing Science and Engineering",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.1115/1.4051314": {
+  "issn_l": "2572-3898",
+  "issn": [
+   "2572-3898",
+   "2572-3901"
+  ],
+  "source": "Journal of Nondestructive Evaluation Diagnostics and Prognostics of Engineering Systems",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.3390/membranes11010054": {
+  "issn_l": "2077-0375",
+  "issn": [
+   "2077-0375"
+  ],
+  "source": "Membranes",
+  "type": "journal",
+  "in_doaj": true
+ },
+ "10.36001/ijphm.2019.v10i4.2612": {
+  "issn_l": "2153-2648",
+  "issn": [
+   "2153-2648"
+  ],
+  "source": "International Journal of Prognostics and Health Management",
+  "type": "journal",
+  "in_doaj": true
+ },
+ "10.1155/2020/8829823": {
+  "issn_l": "1070-9622",
+  "issn": [
+   "1070-9622",
+   "1875-9203"
+  ],
+  "source": "Shock and Vibration",
+  "type": "journal",
+  "in_doaj": true
+ },
+ "10.3390/machines13090789": {
+  "issn_l": "2075-1702",
+  "issn": [
+   "2075-1702"
+  ],
+  "source": "Machines",
+  "type": "journal",
+  "in_doaj": true
+ },
+ "10.1021/acs.est.5c15320": {
+  "issn_l": "0013-936X",
+  "issn": [
+   "0013-936X",
+   "1520-5851"
+  ],
+  "source": "Environmental Science & Technology",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.3103/s0146411623010030": {
+  "issn_l": "0146-4116",
+  "issn": [
+   "0146-4116",
+   "1558-108X"
+  ],
+  "source": "Automatic Control and Computer Sciences",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.1088/1361-6501/ae0e3e": {
+  "issn_l": "0957-0233",
+  "issn": [
+   "0957-0233",
+   "1361-6501"
+  ],
+  "source": "Measurement Science and Technology",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.1109/tim.2026.3684677": {
+  "issn_l": "0018-9456",
+  "issn": [
+   "0018-9456",
+   "1557-9662"
+  ],
+  "source": "IEEE Transactions on Instrumentation and Measurement",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.2118/1221-0054-jpt": {
+  "issn_l": "0149-2136",
+  "issn": [
+   "0149-2136",
+   "1944-978X"
+  ],
+  "source": "Journal of Petroleum Technology",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.33366/rekabuana.v10i1.6651": {
+  "issn_l": "2503-2682",
+  "issn": [
+   "2503-2682",
+   "2503-3654"
+  ],
+  "source": "Reka Buana Jurnal Ilmiah Teknik Sipil dan Teknik Kimia",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.56294/dm20251102": {
+  "issn_l": "2953-4917",
+  "issn": [
+   "2953-4917"
+  ],
+  "source": "Data & Metadata",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.1007/s42452-026-08390-x": {
+  "issn_l": "3004-9261",
+  "issn": [
+   "3004-9261"
+  ],
+  "source": "Discover Applied Sciences",
+  "type": "journal",
+  "in_doaj": true
+ },
+ "10.52783/cana.v32.6568": {
+  "issn_l": "1074-133X",
+  "issn": [
+   "1074-133X"
+  ],
+  "source": "Communications on Applied Nonlinear Analysis",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.1109/tii.2020.3008223": {
+  "issn_l": "1551-3203",
+  "issn": [
+   "1551-3203",
+   "1941-0050"
+  ],
+  "source": "IEEE Transactions on Industrial Informatics",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.1109/tim.2019.2917735": {
+  "issn_l": "0018-9456",
+  "issn": [
+   "0018-9456",
+   "1557-9662"
+  ],
+  "source": "IEEE Transactions on Instrumentation and Measurement",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.1016/j.promfg.2020.06.015": {
+  "issn_l": "2351-9789",
+  "issn": [
+   "2351-9789"
+  ],
+  "source": "Procedia Manufacturing",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.1109/tim.2021.3055788": {
+  "issn_l": "0018-9456",
+  "issn": [
+   "0018-9456",
+   "1557-9662"
+  ],
+  "source": "IEEE Transactions on Instrumentation and Measurement",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.1016/j.dss.2019.113100": {
+  "issn_l": "0167-9236",
+  "issn": [
+   "0167-9236",
+   "1873-5797"
+  ],
+  "source": "Decision Support Systems",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.1007/s44196-024-00639-w": {
+  "issn_l": "1875-6883",
+  "issn": [
+   "1875-6883",
+   "1875-6891"
+  ],
+  "source": "International Journal of Computational Intelligence Systems",
+  "type": "journal",
+  "in_doaj": true
+ },
+ "10.1109/tii.2021.3078193": {
+  "issn_l": "1551-3203",
+  "issn": [
+   "1551-3203",
+   "1941-0050"
+  ],
+  "source": "IEEE Transactions on Industrial Informatics",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.1021/acs.est.4c12835": {
+  "issn_l": "0013-936X",
+  "issn": [
+   "0013-936X",
+   "1520-5851"
+  ],
+  "source": "Environmental Science & Technology",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.1016/j.geits.2025.100291": {
+  "issn_l": "2773-1537",
+  "issn": [
+   "2773-1537"
+  ],
+  "source": "Green Energy and Intelligent Transportation",
+  "type": "journal",
+  "in_doaj": true
+ },
+ "10.1016/j.asoc.2022.109630": {
+  "issn_l": "1568-4946",
+  "issn": [
+   "1568-4946",
+   "1872-9681"
+  ],
+  "source": "Applied Soft Computing",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.3390/s25020554": {
+  "issn_l": "1424-8220",
+  "issn": [
+   "1424-8220"
+  ],
+  "source": "Sensors",
+  "type": "journal",
+  "in_doaj": true
+ },
+ "10.1088/1361-6501/ad006d": {
+  "issn_l": "0957-0233",
+  "issn": [
+   "0957-0233",
+   "1361-6501"
+  ],
+  "source": "Measurement Science and Technology",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.1016/j.jwpe.2024.106479": {
+  "issn_l": "2214-7144",
+  "issn": [
+   "2214-7144"
+  ],
+  "source": "Journal of Water Process Engineering",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.3390/pr13082352": {
+  "issn_l": "2227-9717",
+  "issn": [
+   "2227-9717"
+  ],
+  "source": "Processes",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.3390/e20120944": {
+  "issn_l": "1099-4300",
+  "issn": [
+   "1099-4300"
+  ],
+  "source": "Entropy",
+  "type": "journal",
+  "in_doaj": true
+ },
+ "10.1115/1.4050886": {
+  "issn_l": "1550-624X",
+  "issn": [
+   "1550-624X",
+   "1551-6989",
+   "2381-6872",
+   "2381-6910"
+  ],
+  "source": "Journal of Electrochemical Energy Conversion and Storage",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.1109/tia.2022.3170525": {
+  "issn_l": "0093-9994",
+  "issn": [
+   "0093-9994",
+   "1939-9367"
+  ],
+  "source": "IEEE Transactions on Industry Applications",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.1177/1350650119874560": {
+  "issn_l": "1350-6501",
+  "issn": [
+   "1350-6501",
+   "2041-305X"
+  ],
+  "source": "Proceedings of the Institution of Mechanical Engineers Part J Journal of Engineering Tribology",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.36001/ijphm.2022.v13i1.3072": {
+  "issn_l": "2153-2648",
+  "issn": [
+   "2153-2648"
+  ],
+  "source": "International Journal of Prognostics and Health Management",
+  "type": "journal",
+  "in_doaj": true
+ },
+ "10.3390/sym14061111": {
+  "issn_l": "2073-8994",
+  "issn": [
+   "2073-8994"
+  ],
+  "source": "Symmetry",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.1109/access.2021.3073945": {
+  "issn_l": "2169-3536",
+  "issn": [
+   "2169-3536"
+  ],
+  "source": "IEEE Access",
+  "type": "journal",
+  "in_doaj": true
+ },
+ "10.1155/2020/8814658": {
+  "issn_l": "1530-8669",
+  "issn": [
+   "1530-8669",
+   "1530-8677"
+  ],
+  "source": "Wireless Communications and Mobile Computing",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.1016/j.clwat.2024.100041": {
+  "issn_l": "2950-2632",
+  "issn": [
+   "2950-2632"
+  ],
+  "source": "Cleaner Water",
+  "type": "journal",
+  "in_doaj": true
+ },
+ "10.5829/ije.2023.36.04a.09": {
+  "issn_l": "1025-2495",
+  "issn": [
+   "1025-2495",
+   "1728-1431",
+   "1735-9244"
+  ],
+  "source": "International Journal of Engineering",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.13031/trans.56.10021": {
+  "issn_l": "2151-0032",
+  "issn": [
+   "2151-0032",
+   "2151-0040"
+  ],
+  "source": "Transactions of the ASABE",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.3390/s23125669": {
+  "issn_l": "1424-8220",
+  "issn": [
+   "1424-8220"
+  ],
+  "source": "Sensors",
+  "type": "journal",
+  "in_doaj": true
+ },
+ "10.1002/qre.3757": {
+  "issn_l": "0748-8017",
+  "issn": [
+   "0748-8017",
+   "1099-1638"
+  ],
+  "source": "Quality and Reliability Engineering International",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.1080/00986445.2025.2611396": {
+  "issn_l": "0098-6445",
+  "issn": [
+   "0098-6445",
+   "1026-7379",
+   "1563-5201"
+  ],
+  "source": "Chemical Engineering Communications",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.33263/briac142.029": {
+  "issn_l": "2069-5837",
+  "issn": [
+   "2069-5837"
+  ],
+  "source": "Biointerface Research in Applied Chemistry",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.59888/ajosh.v3i7.549": {
+  "issn_l": "2963-4946",
+  "issn": [
+   "2963-4946"
+  ],
+  "source": "Asian Journal of Social and Humanities",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.29303/empd.v3i2.5429": {
+  "issn_l": "2964-6987",
+  "issn": [
+   "2964-6987"
+  ],
+  "source": "Energy Materials and Product Design",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.1299/jamdsm.2025jamdsm0044": {
+  "issn_l": "1881-3054",
+  "issn": [
+   "1881-3054"
+  ],
+  "source": "Journal of Advanced Mechanical Design Systems and Manufacturing",
+  "type": "journal",
+  "in_doaj": true
+ },
+ "10.59324/stss.2026.3(1).09": {
+  "issn_l": "3083-5577",
+  "issn": [
+   "3083-5577"
+  ],
+  "source": "Scientia. Technology, science and society.",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.30693/smj.2026.15.1.30": {
+  "issn_l": "2287-1322",
+  "issn": [
+   "2287-1322",
+   "2288-9671"
+  ],
+  "source": "Korean Institute of Smart Media",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.48084/etasr.15186": {
+  "issn_l": "1792-8036",
+  "issn": [
+   "1792-8036",
+   "2241-4487"
+  ],
+  "source": "Engineering Technology & Applied Science Research",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.1038/s41598-026-42910-4": {
+  "issn_l": "2045-2322",
+  "issn": [
+   "2045-2322"
+  ],
+  "source": "Scientific Reports",
+  "type": "journal",
+  "in_doaj": true
+ },
+ "10.19965/j.cnki.iwt.2024-0719": {
+  "issn_l": null,
+  "issn": null,
+  "source": "DOAJ (DOAJ: Directory of Open Access Journals)",
+  "type": "repository",
+  "in_doaj": false
+ },
+ "10.1002/qre.70386": {
+  "issn_l": "0748-8017",
+  "issn": [
+   "0748-8017",
+   "1099-1638"
+  ],
+  "source": "Quality and Reliability Engineering International",
+  "type": "journal",
+  "in_doaj": false
+ },
+ "10.1016/j.dwt.2025.101238": {
+  "issn_l": "1944-3986",
+  "issn": [
+   "1944-3986",
+   "1944-3994"
+  ],
+  "source": "Desalination and Water Treatment"
+ },
+ "10.1002/wer.70205": {
+  "issn_l": "0043-1303",
+  "issn": [
+   "0043-1303",
+   "1061-4303",
+   "1554-7531"
+  ],
+  "source": "Water Environment Research"
+ },
+ "10.3390/en16093707": {
+  "issn_l": "1996-1073",
+  "issn": [
+   "1996-1073"
+  ],
+  "source": "Energies"
+ },
+ "10.1038/s41598-026-54120-z": {
+  "issn_l": "2045-2322",
+  "issn": [
+   "2045-2322"
+  ],
+  "source": "Scientific Reports"
+ },
+ "10.1016/j.ymssp.2012.02.015": {
+  "issn_l": "0888-3270",
+  "issn": [
+   "0888-3270",
+   "1096-1216"
+  ],
+  "source": "Mechanical Systems and Signal Processing"
+ },
+ "10.1155/2014/807693": {
+  "issn_l": "1537-744X",
+  "issn": [
+   "1537-744X",
+   "2356-6140"
+  ],
+  "source": "The Scientific World JOURNAL"
+ },
+ "10.3390/batteries3040032": {
+  "issn_l": "2313-0105",
+  "issn": [
+   "2313-0105"
+  ],
+  "source": "Batteries"
+ },
+ "10.1016/j.ress.2016.07.019": {
+  "issn_l": "0951-8320",
+  "issn": [
+   "0951-8320",
+   "1879-0836"
+  ],
+  "source": "Reliability Engineering & System Safety"
+ },
+ "10.3390/s26092592": {
+  "issn_l": "1424-8220",
+  "issn": [
+   "1424-8220"
+  ],
+  "source": "Sensors"
+ },
+ "10.36001/ijphm.2015.v6i4.2319": {
+  "issn_l": "2153-2648",
+  "issn": [
+   "2153-2648"
+  ],
+  "source": "International Journal of Prognostics and Health Management"
+ },
+ "10.1002/nav.70033": {
+  "issn_l": "0894-069X",
+  "issn": [
+   "0894-069X",
+   "1520-6750"
+  ],
+  "source": "Naval Research Logistics (NRL)"
+ },
+ "10.1049/cim2.12021": {
+  "issn_l": "2516-8398",
+  "issn": [
+   "2516-8398"
+  ],
+  "source": "IET Collaborative Intelligent Manufacturing"
+ },
+ "10.3390/s22124549": {
+  "issn_l": "1424-8220",
+  "issn": [
+   "1424-8220"
+  ],
+  "source": "Sensors"
+ },
+ "10.1038/s41598-026-65271-4": {
+  "issn_l": "2045-2322",
+  "issn": [
+   "2045-2322"
+  ],
+  "source": "Scientific Reports"
+ },
+ "10.3390/machines11020163": {
+  "issn_l": "2075-1702",
+  "issn": [
+   "2075-1702"
+  ],
+  "source": "Machines"
+ },
+ "10.1109/access.2020.3001013": {
+  "issn_l": "2169-3536",
+  "issn": [
+   "2169-3536"
+  ],
+  "source": "IEEE Access"
+ },
+ "10.1038/s41598-025-22866-7": {
+  "issn_l": "2045-2322",
+  "issn": [
+   "2045-2322"
+  ],
+  "source": "Scientific Reports"
+ },
+ "10.1038/s41598-026-63408-z": {
+  "issn_l": "2045-2322",
+  "issn": [
+   "2045-2322"
+  ],
+  "source": "Scientific Reports"
+ },
+ "10.1371/journal.pone.0236128": {
+  "issn_l": "1932-6203",
+  "issn": [
+   "1932-6203"
+  ],
+  "source": "PLoS ONE"
+ },
+ "10.1016/j.ress.2026.113080": {
+  "issn_l": "0951-8320",
+  "issn": [
+   "0951-8320",
+   "1879-0836"
+  ],
+  "source": "Reliability Engineering & System Safety"
+ }
+}

@@ -1,0 +1,77 @@
+{
+ "no": 68,
+ "judul": "Prediction of Remaining Useful Life of Lithium Batteries Based on WOA-VMD and LSTM",
+ "penulis": "Mingsan Ouyang, Peicheng Shen",
+ "tahun": 2022,
+ "jurnal": "Energies",
+ "doi": "10.3390/en15238918",
+ "kuartil": "Scopus Q1 (Scimago SJR Best Quartile)",
+ "pilar": "B. Deep Learning RUL",
+ "ringkasan": "Studi mengusulkan model hibrida WOA-VMD-LSTM untuk prediksi RUL baterai lithium-ion. Whale Optimization Algorithm (WOA) mengoptimalkan parameter VMD (K dan alpha) agar sinyal kapasitas terdekomposisi menjadi komponen ganda tren atenuasi global dan komponen fluaktuasi pemulihan kapasitas; masing-masing komponen diprediksi LSTM lalu direkonstruksi menjadi RUL. Hasil pada dataset NASA menunjukkan AE maksimum 2 siklus, RMSE rata-rata < 0,69%, dan MAPE rata-rata < 0,43%, mengungguli LSTM, EMD-LSTM, VMD-LSTM, dan ELM.",
+ "kontribusi": "Menunjukkan pipeline deep learning RUL dengan pra-pemrosesan dekomposisi sinyal (mengatasi fenomena pemulihan kapasitas), relevan sebagai pembanding arsitektur DL RUL. Namun tidak memakai survival/penyensoran dan bukan domain membran.",
+ "temuan_kunci": [
+  "WOA-VMD-LSTM terbaik: AE maksimum 2, RMSE rata-rata < 0,69%, MAPE rata-rata < 0,43%.",
+  "Dekomposisi WOA-VMD memisahkan tren atenuasi global dari pemulihan kapasitas, meningkatkan korelasi komponen ganda dengan kapasitas (0,998).",
+  "LSTM (model dalam) mengungguli ELM (model dangkal): AE maks LSTM 6 vs ELM minimum 11; RMSE rata-rata 2,07% vs 6,37%.",
+  "Semakin banyak data training (titik prediksi lebih mundur), semakin rendah error.",
+  "Ambang gagal EOL = 70% kapasitas awal (1,4 Ah; B7 1,45 Ah)."
+ ],
+ "dimensi": {
+  "d1": "1",
+  "d2": "1",
+  "d3": "",
+  "d4": "1",
+  "d5": "",
+  "d6": "",
+  "d7": "",
+  "d8": ""
+ },
+ "alasan_dimensi": {
+  "d1": "Data kapasitas baterai adalah deret waktu siklik; input LSTM berupa komponen time series hasil dekomposisi VMD.",
+  "d2": "RUL didefinisikan eksplisit (T_RUL = |T_EOL - T_START|) dengan ambang gagal 70% kapasitas awal.",
+  "d3": "Tidak ada pemodelan data tersensor/survival; tidak ada Weibull/hazard/cure.",
+  "d4": "Model spesifik: LSTM + Variational Mode Decomposition (VMD) dioptimalkan Whale Optimization Algorithm (WOA).",
+  "d5": "Tidak ada kuantifikasi ketidakpastian; hanya AE/MAE/RMSE/MAPE titik.",
+  "d6": "Tidak menganalisis keputusan pemeliharaan; hanya menyebut penggantian tepat waktu sebagai motivasi.",
+  "d7": "Bukan membran/RO/desalination; objek baterai lithium-ion.",
+  "d8": "Bukan small-data/transfer/hierarchical/all-censored; dataset NASA kecil (4 baterai) tetapi tidak dibingkai sebagai tantangan small-data/transfer."
+ },
+ "relevansi": "Pendukung",
+ "kualitas": {
+  "skor": 6,
+  "rincian": {
+   "Q1": 1,
+   "Q2": 1,
+   "Q3": 0.5,
+   "Q4": 0.5,
+   "Q5": 1,
+   "Q6": "N/A",
+   "Q7": 0,
+   "Q8": 0.5
+  },
+  "catatan": "RQ dan metode jelas (dekomposisi + LSTM). Dataset publik NASA tetapi hanya 4 baterai -> validitas eksternal terbatas (Q3=0,5). Reproduksibilitas sedang (hyperparameter diberi, data publik). Evaluasi kuat dengan banyak pembanding (LSTM, EMD-LSTM, VMD-LSTM, ELM) dan berbagai titik mulai (Q5=1). Tanpa kuantifikasi ketidakpastian (Q7=0); tautan ke keputusan hanya berupa motivasi penggantian (Q8=0,5)."
+ },
+ "data_kuantitatif": {
+  "dataset": "NASA PCoE, baterai 18650 tipe 2 Ah (B5, B6, B7, B18).",
+  "ukuran": "4 baterai; titik prediksi 70/90 (B5,B6,B7) dan 55/70 (B18); contoh B5 memakai 70 set data latih.",
+  "metrik": "AE, MAE, RMSE, MAPE (AE maks 2; RMSE rata-rata < 0,69%; MAPE rata-rata < 0,43%)."
+ },
+ "metode": "Whale Optimization Algorithm (WOA) mengoptimalkan parameter VMD (K, alpha) memakai envelope entropy sebagai fitness; VMD mendekomposisi sinyal kapasitas menjadi IMF tren + fluaktuasi; LSTM memprediksi tiap komponen; rekonstruksi hasil untuk RUL; metrik AE/MAE/RMSE/MAPE dan perbandingan lima metode.",
+ "limitasi": [
+  "Hanya memakai baterai NASA 18650; belum diuji pada tipe lain.",
+  "Hanya LSTM sebagai model prediksi -> generalisasi antar tren sinyal kurang kuat.",
+  "Dataset kecil; tanpa kuantifikasi ketidakpastian.",
+  "Tidak ada model keputusan pemeliharaan formal."
+ ],
+ "funding_coi": "Didanai National Natural Science Foundation of China (51874010) dan Anhui Provincial Key R&D Plan (202004a07020043). Penulis menyatakan tidak ada konflik kepentingan.",
+ "status_inklusi": "diterima",
+ "figur_dibaca": [],
+ "bukti": [
+  "Abstract: 'a prediction model based on the combination of the whale optimization algorithm (WOA)-variational mode decomposition (VMD) and short-term memory neural network (LSTM) was proposed'.",
+  "Abstract: 'The average cycle error was one cycle, the average RMSE was less than 0.69%, and the average MAPE was less than 0.43%'.",
+  "Sec. 4.1: 'when the capacity decays to 70% of the original capacity, the battery life reaches the end of life'.",
+  "Sec. 4.2: 'T_RUL = |T_EOL - T_START|'.",
+  "Sec. 6: 'The maximum AE of LSTM was 6, while the minimum AE of ELM was 11'.",
+  "Sec. 5: 'the generalization ability of the model is not strong enough, and it may not be applicable to the datasets of lithium-ion batteries of other types'."
+ ]
+}

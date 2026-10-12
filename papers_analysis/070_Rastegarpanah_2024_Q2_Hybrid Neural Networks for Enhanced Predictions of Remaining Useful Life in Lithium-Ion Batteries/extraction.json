@@ -1,0 +1,86 @@
+{
+  "no": 51,
+  "judul": "Hybrid Neural Networks for Enhanced Predictions of Remaining Useful Life in Lithium-Ion Batteries",
+  "penulis": "Alireza Rastegarpanah, Mohammed Eesa Asif, Rustam Stolkin",
+  "tahun": 2024,
+  "jurnal": "Batteries (MDPI)",
+  "doi": "10.3390/batteries10030106",
+  "kuartil": "Scopus Q2 (SCImago SJR Best Quartile)",
+  "pilar": "B. Deep Learning RUL",
+  "ringkasan": "Penelitian ini memprediksi Remaining Useful Life (RUL) baterai lithium-ion menggunakan dua arsitektur deep learning hybrid: CLDNN (CNN+LSTM+DNN) dan Temporal Transformer (Transformer+LSTM). Memakai dataset Toyota Research Institute berisi 124 sel LFP/graphite yang disiklus hingga gagal, model dioptimasi dengan Bayesian hyperparameter tuning dan menghasilkan MAE 84,012 (CLDNN) serta 85,134 (TT), mengalahkan beberapa pendekatan mapan dengan perbaikan MAPE 4,01-7,12%.",
+  "kontribusi": "Mendemonstrasikan bahwa arsitektur hybrid CNN-LSTM dan Transformer-LSTM yang dioptimasi Bayesian dapat memprediksi RUL baterai (dalam jumlah siklus) secara akurat dan efisien untuk BMS; menjadi baseline deep learning RUL non-censored yang relevan sebagai pembanding bagi tesis yang menambahkan lapisan survival analysis.",
+  "temuan_kunci": [
+    "CLDNN mencapai MAE 84,012; MAPE 25,676%; RMSE 0,8218; MSE 0,6754 pada prediksi RUL baterai",
+    "Temporal Transformer mencapai MAE 85,134; MAPE 28,7932%; hanya sedikit lebih rendah dari CLDNN",
+    "Perbaikan MAPE 4,01-7,12% dibanding pendekatan pembanding (Auto-CNN-LSTM, ATCMN, Deep CNN)",
+    "Bayesian hyperparameter optimization (Keras Tuner) menurunkan over-parameterisasi pada model original",
+    "Waktu inferensi rendah (~15,5 ms CLDNN; ~16,7 ms TT) mendukung penerapan real-time di BMS",
+    "RUL didefinisikan sebagai jumlah siklus hingga kapasitas turun 80% dari nilai awal (threshold EOL)"
+  ],
+  "dimensi": {
+    "d1": "1",
+    "d2": "1",
+    "d3": "",
+    "d4": "1",
+    "d5": "",
+    "d6": "",
+    "d7": "",
+    "d8": ""
+  },
+  "alasan_dimensi": {
+    "d1": "Input berupa data multi-sensor/deret waktu tiap siklus: voltase, arus, temperatur, internal resistance, discharge capacity/time, Qdlin dan Tdlin; diratakan ke 1000 entri per siklus (multivariate time-series).",
+    "d2": "RUL didefinisikan eksplisit sebagai jumlah siklus tersisa hingga kapasitas turun ke 80% dari nilai awal (end-of-life threshold), dan dihitung sebagai target 'remaining cycles'.",
+    "d3": "Tidak ada pemodelan data tersensor: tidak memakai survival analysis, distribusi Weibull, hazard function, atau mekanisme censoring; semua sel diamati sampai gagal.",
+    "d4": "Memakai model spesifik dan bernama: CLDNN (CNN+LSTM+DNN), Temporal Transformer (multi-head self-attention + LSTM + FFN), serta CNN, LSTM, autoencoder.",
+    "d5": "Tidak melaporkan ketidakpastian prediktif (tanpa confidence interval/posterior/interval prediksi). Bayesian optimization hanya dipakai untuk tuning hyperparameter, bukan kuantifikasi uncertainty RUL.",
+    "d6": "Tidak mengusulkan keputusan maintenance konkret (jadwal/biaya/DSS); hanya menyebut manfaat untuk BMS, recycling, dan manajemen siklus hidup secara umum.",
+    "d7": "Domain baterai lithium-ion, bukan membran/RO/desalinasi/fouling.",
+    "d8": "Bukan small-data/transfer/hierarchical/all-censored; dataset besar (124 baterai, ribuan siklus) dan tidak ada transfer learning lintas domain."
+  },
+  "relevansi": "Pendukung",
+  "kualitas": {
+    "skor": 6,
+    "rincian": {
+      "Q1": 1,
+      "Q2": 1,
+      "Q3": 1,
+      "Q4": 0.5,
+      "Q5": 1,
+      "Q6": "N/A",
+      "Q7": 0,
+      "Q8": 0
+    },
+    "catatan": "RQ jelas (RUL baterai), metode mumpuni (dua arsitektur hybrid + Bayesian HPO), data valid (TRI 124 sel, stratified sampling, benchmarking). Reproducibility sedang: dataset publik tetapi kode tidak disebutkan. Evaluasi kuat (MAE/MAPE/RMSE/MSE + inferensi time). Tidak menangani censoring (N/A), tidak melaporkan ketidakpastian prediktif, dan tidak mengaitkan ke keputusan maintenance konkret. Skor = 4,5/7*10 ≈ 6."
+  },
+  "data_kuantitatif": {
+    "dataset": "Toyota Research Institute (TRI) battery dataset (LFP/graphite)",
+    "ukuran": "124 sel lithium-ion, 1,1 Ah, 3,3 V, disiklus hingga gagal; umur 150-2300 siklus; ~48 sel per batch",
+    "metrik": "CLDNN: MAE 84,012; MAPE 25,676%; RMSE 0,8218; MSE 0,6754. TT: MAE 85,134; MAPE 28,7932%. Waktu inferensi 15,5 ms (CLDNN), 16,7 ms (TT)"
+  },
+  "metode": "Deep learning hybrid CLDNN (CNN+LSTM+DNN) dan Temporal Transformer (Transformer+LSTM+FFN); preprocessing (interpolasi linear, moving average, PCA, outlier removal), stratified random sampling, Bayesian hyperparameter optimization via Keras Tuner (100 trials).",
+  "limitasi": [
+    "Terbatas pada satu kimia baterai (LFP/graphite 1,1 Ah, 3,3 V) sehingga generalisasi lintas kimia belum terbukti",
+    "Tidak menangani data tersensor / tidak memakai survival analysis",
+    "Tidak melaporkan interval kepercayaan atau ketidakpastian prediksi RUL",
+    "Belum divalidasi pada dataset dunia nyata yang lebih luas",
+    "Tidak ada kode/model yang dibagikan secara eksplisit"
+  ],
+  "funding_coi": "Didanai The Faraday Institution (FIRG057) dan UK Research and Innovation (101104241; RELiB2 FIRG005). Penulis menyatakan tidak ada konflik kepentingan.",
+  "status_inklusi": "diterima",
+  "figur_dibaca": [
+    {
+      "file": "_page_9_Figure_1.jpeg",
+      "isi": "Diagram arsitektur Temporal Transformer (varian b): dua input time-distributed (None,100,1000) -> Concatenate -> TimeDistributed Dense (40) -> Concatenate dengan 3 input bantu (IR/DT/QD, None,100,1) -> Transformer Block (None,100,32) -> Dropout -> LSTM (None,32) -> Hidden (None,40) -> Output (None,1)."
+    },
+    {
+      "file": "_page_14_Figure_1.jpeg",
+      "isi": "Tiga kurva learning error (MAE, MAPE, MSE) vs epoch untuk 9 model hybrid. MAE terbaik (~50) pada Transformer-LSTM/-Improved; MAPE terbaik (~20-25) pada Transformer-LSTM; MSE terbaik (~0,62) pada CNN-Transformer dan CNN-LSTM-NTM. Ranking MSE terbalik dari ranking MAE/MAPE."
+    }
+  ],
+  "bukti": [
+    "Abstract: 'The CLDNN model, in particular, achieved a remarkable mean absolute error (MAE) of 84.012 and a mean absolute percentage error (MAPE) of 25.676.'",
+    "Dataset: '124 commercial lithium iron phosphate (LFP)/graphite lithium-ion batteries... The batteries' lifetimes, defined by the cycle count at which the capacity declined to 80% of its initial value, varied from 150 to 2300 cycles.'",
+    "RUL gap statement: 'the remaining useful life (RUL) of individual components is typically not known a priori' and models must handle 'features with varying sampling rates'.",
+    "Conclusion: 'Both the CLDNN and TT models... surpassing existing approaches... improvements in mean absolute percentage error (MAPE), which ranged from 4.01% to 7.12%.'"
+  ]
+}

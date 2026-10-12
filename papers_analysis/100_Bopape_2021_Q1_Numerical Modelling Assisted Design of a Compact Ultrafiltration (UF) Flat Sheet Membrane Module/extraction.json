@@ -1,0 +1,91 @@
+{
+  "no": 69,
+  "judul": "Numerical Modelling Assisted Design of a Compact Ultrafiltration (UF) Flat Sheet Membrane Module",
+  "penulis": "Mokgadi F Bopape, Tim Van Geel, Abhishek Dutta, Bart Van Der Bruggen, Maurice Stephen Onyango",
+  "tahun": 2021,
+  "jurnal": "Membranes (MDPI), 11(1):54, ISSN 2077-0375",
+  "doi": "10.3390/membranes11010054",
+  "kuartil": "Q1",
+  "pilar": "Desain & optimasi modul membran (CFD, ultrafiltrasi)",
+  "ringkasan": "Studi kasus ini merancang dan memodelkan modul membran flat sheet ultrafiltrasi (UF) kompak untuk pengolahan air minum terdesentralisasi menggunakan simulasi Computational Fluid Dynamics (CFD) 3D (ANSYS 19.2). Tujuan utamanya adalah mengkarakterisasi geometri dan memprediksi aliran fluida di dalam modul melalui analisis sensitivitas parametrik (spacer curviness/thickness, panjang & diameter inlet-outlet, permeabilitas, ketebalan, dan luas membran) untuk memperoleh distribusi aliran seragam di atas permukaan membran. Hasil menunjukkan permeate flux sedikit menurun dari 2,81 L/m2h (curviness 0%) ke 2,73 L/m2h (curviness 100%), dan inlet pressure, permeabilitas, ketebalan serta luas membran berpengaruh signifikan terhadap flux.",
+  "kontribusi": "Memberikan bukti bahwa pemodelan numerik (CFD) dapat memandu desain modul membran UF lokal tanpa ketergantungan pada modul komersial, menurunkan biaya dan kebutuhan eksperimen pada optimasi. Namun paper ini murni desain hidrodinamika steady-state: tidak ada RUL, prognostik, data tersensor, maupun analisis keputusan pemeliharaan - sehingga hanya relevan sebagai konteks domain (membran/UF) bagi tesis.",
+  "temuan_kunci": [
+    "Permeate flux menurun tipis seiring peningkatan spacer curviness (2,81 -> 2,73 L/m2h, ~3%), terkait hilangnya sifat promotif turbulensi yang dapat memicu fouling dan concentration polarization.",
+    "Inlet pressure, permeabilitas membran, ketebalan membran, dan luas membran berpengaruh signifikan terhadap total permeate flux (mengikuti Darcy's Law).",
+    "Spacer thickness dan diameter outlet signifikan terhadap profil transmembrane pressure (TMP); sebaliknya panjang inlet/outlet dan ketebalan outflow zone tidak berpengaruh signifikan.",
+    "Analisis grid (250.000-2.000.000 sel) menunjukkan profil TMP konvergen pada grid 1.500.000-2.000.000 sel.",
+    "Mengurangi luas membran ke ukuran spacer memungkinkan penggabungan lebih banyak membran kecil untuk flux total lebih tinggi.",
+    "Model belum divalidasi terhadap data eksperimen (disebut sebagai future work) dan tidak memodelkan fouling/CP secara eksplisit."
+  ],
+  "dimensi": {
+    "d1": "",
+    "d2": "",
+    "d3": "",
+    "d4": "",
+    "d5": "",
+    "d6": "",
+    "d7": "1",
+    "d8": ""
+  },
+  "alasan_dimensi": {
+    "d1": "Bukan multi-sensor/time-series: ini simulasi CFD steady-state pada domain 3D, bukan analisis deret waktu dari sensor nyata.",
+    "d2": "Tidak mendefinisikan RUL, kegagalan, atau threshold berbasis kondisi; tidak ada konsep lifetime.",
+    "d3": "Tidak memodelkan data tersensor; tidak ada survival/Weibull/hazard/cure analysis.",
+    "d4": "Model yang digunakan adalah CFD/Navier-Stokes (ANSYS Fluent), bukan model machine learning dari daftar (LSTM/CNN/Transformer/Bayesian/RF/SVM/GP/Naive Bayes).",
+    "d5": "Tidak melaporkan kuantifikasi ketidakpastian prediktif (tanpa CI/posterior/interval prediksi); hanya deviasi standar antar-kasus pada analisis sensitivitas.",
+    "d6": "Tidak mengusulkan atau menganalisis keputusan pemeliharaan (jadwal/biaya/DSS); 'maintenance requirements' hanya disinggung sebagai aspek desain pabrik secara umum.",
+    "d7": "Inti domain membran: modul flat sheet ultrafiltrasi (UF) untuk air minum, dengan pembahasan fouling dan concentration polarization sebagai risiko operasi.",
+    "d8": "Tidak ada unsur small-data/transfer/hierarchical/all-censored; ini studi simulasi parametrik."
+  },
+  "relevansi": "Konteks",
+  "kualitas": {
+    "skor": 7,
+    "rincian": {
+      "Q1": 1,
+      "Q2": 1,
+      "Q3": 0.5,
+      "Q4": 0.5,
+      "Q5": 0.5,
+      "Q6": "N/A",
+      "Q7": "N/A",
+      "Q8": "N/A"
+    },
+    "catatan": "RQ dan tujuan desain jelas (Q1=1). Metode CFD 3D dengan analisis grid dan sensitivitas memadai untuk tujuan desain (Q2=1). Namun model tidak divalidasi terhadap data eksperimen (validasi disebut sebagai future work) sehingga validitas terbatas (Q3=0.5). Setup ANSYS dan tabel parameter dideskripsikan cukup rinci, tetapi tidak ada rilis model/kode (Q4=0.5). Evaluasi memadai secara internal (grid independence + sensitivitas), tetapi tanpa validasi eksternal (Q5=0.5). Censoring, uncertainty prediktif, dan keputusan pemeliharaan tidak relevan pada studi ini (Q6-Q8 = N/A). Skor = round(3,5/5*10) = 7."
+  },
+  "data_kuantitatif": {
+    "dataset": "Data simulasi CFD (ANSYS Fluent) - tidak ada dataset eksperimen",
+    "ukuran": "Grid 250.000-2.000.000 sel; 7 nilai intrinsic permeability; 7 ketebalan membran (50-350 mikron); 7 inlet pressure (0,05-0,35 bar); spacer curviness 0-100%; spacer thickness 0,5-3,0 mm; luas membran 0,026-0,044 m2",
+    "metrik": "Permeate flux (L/m2h), transmembrane pressure (TMP, Pa), pressure drop, mean velocity"
+  },
+  "metode": "Pemodelan CFD 3D (ANSYS 19.2: Design Modeler, Meshing, Fluent, CFD Post) menyelesaikan persamaan Navier-Stokes (mass & momentum conservation) untuk aliran isotermal, incompressible, Newtonian, steady-state; membran dimodelkan sebagai porous zone via Darcy's Law (J = k/mu * dP/dx). Validasi internal: grid sensitivity (5 tingkat) dan parametric/sensitivity study atas variabel geometri (spacer curviness, thickness, inlet/outlet length & diameter) serta properti membran/operasi (permeabilitas, ketebalan, luas, tekanan inlet).",
+  "limitasi": [
+    "Tidak ada validasi eksperimen; validasi model disebut sebagai future work (perlu data pressure drop retentate/permeate).",
+    "Fouling dan concentration polarization (CP) tidak dimodelkan secara eksplisit - hanya pure water flux.",
+    "Model membran disederhanakan sebagai black box (pori tidak dimodelkan individual, hanya nilai permeabilitas).",
+    "Simulasi steady-state, bukan dinamika jangka panjang degradasi/penyumbatan.",
+    "Tidak ada analisis biaya, jadwal, atau keputusan pemeliharaan."
+  ],
+  "funding_coi": "Funding: National Research Fund (NRF) South Africa, Freestanding Doctoral and Postdoctoral Abroad, grant SFH150720127975. Conflicts of Interest: 'The authors declare no conflict of interest.'",
+  "status_inklusi": "diterima",
+  "figur_dibaca": [
+    {
+      "file": "figures/_page_3_Picture_6.jpeg",
+      "isi": "Figure 1 - Tampak atas geometri modul tersimulasi: kanal serpentine (berkelok) di atas pelat membran, dengan inlet di kiri-atas dan outlet di kanan-bawah (zona inflow, membrane, outflow)."
+    },
+    {
+      "file": "figures/_page_3_Picture_9.jpeg",
+      "isi": "Figure 2 - Tampak samping (cross-section) bagian geometri dekat inlet: strip vertikal tipis (membran) dan blok kanal dengan gradien grayscale (zona outflow)."
+    },
+    {
+      "file": "figures/_page_10_Figure_4.jpeg",
+      "isi": "Figure 11 - Total permeate flux (L/m2h) vs persentase nilai referensi (100% = curviness 0%, 20% = curviness 80%): hubungan hampir-linear dengan sedikit kenaikan dari ~2,73 ke ~2,81 L/m2h, mengonfirmasi penurunan flux tipis saat curviness meningkat."
+    }
+  ],
+  "bukti": [
+    "Abstract: 'The permeate flux through the membrane decreased with an increase in spacer curviness from 2.81 L/m2h for no (0%) curviness to 2.73 L/m2h for full (100%) curviness.'",
+    "Sect. 2.2.3: 'the membrane was regarded as a black box with a value for the intrinsic permeability inserted into Darcy's law' dan 'no fouling or concentration polarization phenomena were considered in the model.'",
+    "Sect. 4 (Conclusions): model 'could predict permeate flux with a reasonable error' namun validasi eksperimen belum dilakukan.",
+    "Future Work: 'To validate the simulation model and optimize the module design, experimental data of the pressure drop in the retentate or permeate channels with a spacer needs to be determined.'",
+    "Funding: 'This research was funded by the National Research Fund (NRF), South Africa... grant number SFH150720127975.'"
+  ]
+}

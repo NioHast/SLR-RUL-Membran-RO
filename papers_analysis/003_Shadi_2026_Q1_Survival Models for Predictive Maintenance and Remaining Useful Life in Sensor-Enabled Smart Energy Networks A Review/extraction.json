@@ -1,0 +1,47 @@
+{
+ "no": 14,
+ "judul": "Survival Models for Predictive Maintenance and Remaining Useful Life in Sensor-Enabled Smart Energy Networks: A Review",
+ "penulis": "Mohammad Reza Shadi, Hamid Mirshekali, Maryamsadat Tahavori, Hamid Reza Shaker",
+ "tahun": 2026,
+ "jurnal": "Sensors",
+ "doi": "10.3390/s26061915",
+ "kuartil": "Scopus Q1 (SCImago SJR Best Quartile)",
+ "pilar": "A. Survival Analysis & Censored Data",
+ "ringkasan": "Tinjauan sistematis tentang model survival (time-to-event) untuk predictive maintenance dan estimasi RUL pada jaringan energi pintar berbasis sensor (distribusi listrik + district heating). Artikel menyusun taksonomi model non-parametrik, semi-parametrik, parametrik, dan learning-based; memetakannya ke tipe data (kovariat statis vs time-varying), asumsi (proportional hazards vs distribusi parametrik), dan keluaran berorientasi keputusan (risk ranking, horizon failure probability, distribusi RUL). Evaluasi juga disintesiskan via metrik diskriminasi (C-index, AUC), kalibrasi, akurasi RUL sadar-censoring, dan proper scoring rules (Brier/IBS).",
+ "kontribusi": "Menjadi peta metodologis komprehensif untuk pemilihan model survival berbasis censoring dan kuantifikasi ketidakpastian - persis kerangka metode yang akan dipakai tesis - serta menegaskan bahwa censoring/truncation adalah karakteristik inti, bukan detail pinggiran; namun tidak membahas domain membran/RO.",
+ "temuan_kunci": [
+  "Censoring dan truncation (termasuk left-truncation pada aset lama) harus dimodelkan eksplisit; mengabaikannya membuat bias inferensi dan estimasi performa menyesatkan.",
+  "Taksonomi empat keluarga model: non-parametrik (KM, Nelson-Aalen), semi-parametrik (Cox PH), parametrik (Weibull/Gamma/Gompertz/Exponential/AFT), dan learning-based (RSF, Neural Cox, Neural Weibull, Transformer).",
+  "Likelihood sadar-censoring standar: L = prod f(t_i)^delta_i * S(t_i)^(1-delta_i) menjadi dasar pelatihan model parametrik/learning-based.",
+  "Antarmuka keputusan eksplisit: risk ranking, horizon failure probability, dan aturan intervensi 'Intervene if Pr(t0<T<=t0+tau|T>t0) > gamma' (Eq. 10) yang menghubungkan output survival ke jadwal pemeliharaan.",
+  "Evaluasi harus mencakup diskriminasi (C-index/AUC), kalibrasi (ECE/D-calibration), akurasi RUL sadar-censoring (MAE dengan koreksi), dan Brier/IBS; model kompleks butuh data lebih besar dan lebih sulit divalidasi pada data kegagalan langka."
+ ],
+ "dimensi": {"d1": "1", "d2": "1", "d3": "1", "d4": "1", "d5": "1", "d6": "1", "d7": "", "d8": "1"},
+ "alasan_dimensi": {
+  "d1": "Membahas kovariat multi-sensor dan time-varying (SCADA: arus/tegangan/daya; DHN: suhu/tekanan/flow), serta indikator kondisi (PD, DGA, vibrasi) sebagai input deret waktu.",
+  "d2": "Mendefinisikan secara formal T (waktu kegagalan), survival S(t), hazard h(t), cumulative hazard H(t), dan RUL(t0) = (T-t0)|(T>t0) beserta kuantilnya (Eq. 1-8).",
+  "d3": "Inti tinjauan: censoring/truncation eksplisit (right/interval/left, left/right/double truncation) dan likelihood sadar-censoring (Eq. 35-36); membahas model Weibull/hazard/neural Weibull.",
+  "d4": "Membahas model spesifik: Cox PH, Weibull, Random Survival Forest, Neural Cox/DeepSurv, Neural Weibull, Transformer survival.",
+  "d5": "Mengkuantifikasi ketidakpastian: prediction intervals, kalibrasi (ECE, D-calibration), proper scoring rules (Brier/IBS), kuantil RUL.",
+  "d6": "Menganalisis keputusan pemeliharaan konkret: risk ranking, horizon failure probability, aturan intervensi ambang (Eq. 10), penjadwalan penggantian/renewal, alokasi anggaran.",
+  "d7": "Domain adalah jaringan energi (kabel, transformator, switchgear, pipa DHN); bukan membran/RO/desalinasi/fouling.",
+  "d8": "Menangani data kecil/langka dan heterogen: kegagalan jarang, censoring berat, small-sample Bayesian/hierarchical, pooling lintas utility, model parametrik untuk dataset kecil."
+ },
+ "relevansi": "Inti-Metode",
+ "kualitas": {"skor": 9, "rincian": {"Q1": 1, "Q2": 1, "Q3": 1, "Q4": 0.5, "Q5": 1, "Q6": 1, "Q7": 1, "Q8": 1}, "catatan": "Tinjauan metodologis yang lengkap dan formal (taksonomi, formula, metrik evaluasi, antarmuka keputusan). Reproducibility review 0,5 karena protokol pencarian sistematis (query/database/PRISMA) tidak dirinci. Sangat relevan untuk kerangka metode tesis, meski domain non-membran."},
+ "data_kuantitatif": {"dataset": "Tinjauan literatur; tidak ada data primer. Menyertakan tabel dataset publik relevan (mis. district heating substations 93 unit/73 fault; wind turbine 36 unit; overhead line 2904 pengukuran; transformator 376/589 sampel).", "ukuran": "Sintesis >115 rujukan; cakupan aset listrik distribusi dan district heating", "metrik": "Metrik yang disintesis: C-index, time-dependent AUC, ECE, MAE sadar-censoring, Brier score, Integrated Brier Score (IBS), coverage PI"},
+ "metode": "Systematic/narrative review; taksonomi empat keluarga model survival; formulasi matematis (survival/hazard/likelihood censoring-aware); pemetaan model ke data, asumsi, dan keluaran keputusan; sintesis metrik evaluasi time-to-event.",
+ "limitasi": [
+  "Protokol pencarian sistematis (database, string, PRISMA) tidak dirinci sehingga reproducibility terbatas.",
+  "Domain hanya jaringan energi; tidak membahas membran/RO/desalinasi.",
+  "Sebagian klaim performa bersumber dari studi titik-titik yang tidak diverifikasi ulang.",
+  "Tidak ada data primer atau eksperimen baru."
+ ],
+ "funding_coi": "Didanai Danish Energy Agency (EUDP), proyek ID 134241-521237 (IEA DHC Annex TS6); penulis menyatakan tidak ada konflik kepentingan; penggunaan generative AI untuk tata bahasa diakui.",
+ "status_inklusi": "diterima",
+ "figur_dibaca": [
+  {"file": "_page_4_Figure_6.jpeg", "isi": "Fig. 1 - taksonomi empat keluarga model survival: (1) Non-parametrik (Kaplan-Meier, Nelson-Aalen), (2) Semi-parametrik (Cox PH), (3) Parametrik (Weibull, Gamma, Gompertz, Exponential, AFT), (4) Learning-based (Neural Cox, Neural Weibull, Transformer, Random Survival Forest) di tengah/potongan."},
+  {"file": "_page_30_Figure_2.jpeg", "isi": "Fig. 8 - peta aplikasi: domain (listrik distribusi & district heating) -> keluarga model survival -> input/sensing (asset description, condition indicators, operational stressors, contextual) + actions (monitor/overhaul/refurbish/replace) + survival outputs (S(t), h(t), failure probability horizon, RUL & risk ranking, renewal priority)."}
+ ],
+ "bukti": ["Eq. (1)-(8): definisi S(t), h(t), H(t), RUL & kuantil", "Eq. (10): aturan intervensi ambang", "Eq. (18)-(34): model parametrik Weibull/Gompertz/log-normal/log-logistic/Gamma", "Eq. (35)-(36): likelihood sadar-censoring", "Eq. (40): Neural Cox partial likelihood", "Eq. (45)-(49): Brier, AUC, ECE, MAE, IBS", "Table 2-4: ringkasan formula & dataset publik", "Fig. 1 (taksonomi), Fig. 8 (peta aplikasi)"]
+}

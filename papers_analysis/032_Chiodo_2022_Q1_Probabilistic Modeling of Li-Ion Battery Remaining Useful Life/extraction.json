@@ -1,0 +1,103 @@
+{
+  "no": 84,
+  "judul": "Probabilistic Modeling of Li-Ion Battery Remaining Useful Life",
+  "penulis": "Elio Chiodo, Pasquale De Falco, Luigi Pio Di Noia",
+  "tahun": 2022,
+  "jurnal": "IEEE Transactions on Industry Applications",
+  "doi": "10.1109/TIA.2022.3170525",
+  "kuartil": "Scopus Q1 (SCImago SJR Best Quartile)",
+  "pilar": "C. Bayesian & Uncertainty",
+  "ringkasan": "Artikel mengusulkan karakterisasi probabilistik RUL baterai Li-ion dengan distribusi inverse Burr (IB) dan dua campurannya: IB-inverse Gaussian (M-IB-IG) dan IB-inverse Weibull (M-IB-IW). Sampel RUL dibangkitkan secara sintetis melalui prosedur elektrokimia dua tahap: solusi analitik PDE difusi (model Rakhmatov) yang memetakan profil arus ke RUL, dan proses Poisson-Monte Carlo yang membangkitkan M profil arus acak. Parameter distribusi diestimasi dengan MLE, dan algoritma EM dikembangkan khusus untuk distribusi campuran, lalu dievaluasi dengan empat uji GOF (ADC, Anderson-Darling, chi-square, Q-Q plot) pada 13 skenario, termasuk skenario data kecil (M=50) dan suhu operasi 25/40/55 derajat C. Distribusi berbasis IB mengungguli benchmark IG, IW, dan Gumbel; fokus paper adalah kecocokan distribusi untuk karakterisasi ketidakpastian RUL, bukan prediksi real-time.",
+  "kontribusi": "1) Perumusan distribusi campuran berbasis IB (M-IB-IG dan M-IB-IW) untuk karakterisasi probabilistik RUL baterai, memperluas hasil konferensi [32]. 2) Pengembangan algoritma EM khusus untuk estimasi parameter campuran (langkah ekspektasi dengan solusi analitik untuk bobot omega, langkah maksimisasi numerik untuk parameter lain). 3) Evaluasi GOF komprehensif dengan uji baru atas 13 skenario operasi (arus pengisian/pengosongan variabel, C-rate tinggi, profil simetris/asimetris, suhu 25/40/55 derajat C) dibandingkan distribusi IG, IW, dan Gumbel sebagai benchmark.",
+  "temuan_kunci": [
+    "Campuran berbasis IB (M-IB-IG/M-IB-IW) memberi performa GOF terbaik: ADC tertinggi dan statistik ADT/CST terkecil pada mayoritas skenario; M-IB-IG terbaik di 9 dari 13 skenario dan M-IB-IW di 4 skenario, serta keduanya tidak menolak hipotesis nol pada ADT maupun CST (alpha 5%) di seluruh percobaan.",
+    "Distribusi IW tunggal konsisten terburuk: gagal ADT pada S1-S3, ditolak pada S11-S13, dan plot Q-Q menyimpang dari garis 45 derajat di ekor kanan (kuantil RUL tinggi).",
+    "IG dan Gumbel adalah benchmark terbaik; Gumbel ditolak ADT/CST pada semua skenario suhu (S11-S13) dan gagal pada S3, S7, S8, S9.",
+    "Data kecil tetap ditangani: pada S4-S6 (M=50), distribusi berbasis IB tidak ditolak, meski plot Q-Q lebih kasar dan CDF empiris bertangga (rentang 750-1000 menit di S5) tidak dapat direplikasi distribusi kontinu.",
+    "Skenario S9 (profil simetris) paling kritis: CDF empiris menyerupai ramp; campuran IB memodelkan ekor kiri dengan baik tetapi menyimpang di ekor kanan.",
+    "Suhu operasi lebih tinggi (40 dan 55 derajat C) mempercepat degradasi dan menggeser distribusi RUL ke nilai lebih kecil; campuran berbasis IB tetap paling sesuai."
+  ],
+  "dimensi": {
+    "d1": "",
+    "d2": "1",
+    "d3": "",
+    "d4": "",
+    "d5": "1",
+    "d6": "",
+    "d7": "",
+    "d8": "1"
+  },
+  "alasan_dimensi": {
+    "d1": "Tidak ada data multi-sensor atau time-series hasil pengukuran; seluruh data RUL bersifat sintetis: 'The IB-based distributions are applied on a RUL dataset created by Monte Carlo sampling on an electrochemical battery model'. Profil arus i(t) dibangkitkan proses Poisson-Monte Carlo sebagai input simulasi, bukan direkam sensor.",
+    "d2": "RUL dan EOL didefinisikan eksplisit: 'RUL can be defined as the remaining number of charge/discharge cycles beyond which the capacity (voltage) of the battery drops by a fixed percentage of the rated capacity (voltage)' dan 'the battery end of life (EOL) is reached when its voltage is below a fixed percentage of the rated voltage' (tegangan kritis 3,0 V untuk baterai LiFePO4 3,2 V/60 Ah, Tabel I).",
+    "d3": "Tidak memodelkan data tersensor. Sampel RUL sepenuhnya teramati (fully observed) dan sintetis dari Monte Carlo; tidak ada mekanisme censoring/survival/hazard. Kata 'censor' tidak muncul dalam teks; 'hazard' hanya muncul di judul referensi [13]. EM menangani label kelas laten campuran (mixture membership), bukan umur tersensor.",
+    "d4": "Metode inti adalah distribusi statistik parametrik (IB, IG, IW, Gumbel) dan campurannya dengan estimasi MLE/EM; sesuai aturan, distribusi statistik/EM tidak otomatis termasuk model d4 (LSTM/CNN/Transformer/Bayesian/RF/SVM/GP). 'Bayesian inference' pada EM hanya dipakai untuk posterior probabilitas kelas laten, bukan pemodelan Bayesian penuh atas parameter RUL.",
+    "d5": "Ketidakpastian dikuantifikasi penuh melalui PDF/CDF distribusi RUL (Persamaan 18, 23, 24, 34, 35, 38) dan divisualisasikan sebagai CDF terestimasi vs CDF empiris serta plot Q-Q: 'it should be probabilistically characterized to allow the application of decision-making processes'. CDF/PDF adalah ukuran ketidakpastian langsung, bukan sekadar interval CI tunggal.",
+    "d6": "Keputusan maintenance hanya disebut sebagai motivasi tanpa diusulkan/dianalisis: 'it is possible to schedule corrective maintenance actions for safe and reliable operation of the connected equipment [15], with an optimization of the global costs of the system' dan 'decision-making tools to schedule and arrange corrective actions'. Tidak ada model jadwal, model biaya, atau DSS yang dibangun dalam paper.",
+    "d7": "Domain adalah baterai Li-ion (LiFePO4), bukan membran/RO/desalinasi/fouling. Tidak ada kata terkait membran, reverse osmosis, desalinasi, atau fouling dalam teks.",
+    "d8": "Data kecil menjadi fokus eksplisit: 'a hybrid methodology is developed to characterize the RUL even with small amount of data, in view of the typical scarcity of data for adequately fitting the RUL probability distributions'. Skenario S4-S6 memakai hanya M=50 sampel, dan kesimpulan menegaskan 'the typical scarcity of historical RUL data'."
+  },
+  "relevansi": "Inti-Metode+Domain",
+  "kualitas": {
+    "skor": 6,
+    "rincian": {
+      "Q1": 1,
+      "Q2": 1,
+      "Q3": 0.5,
+      "Q4": 0.5,
+      "Q5": 0.5,
+      "Q6": "N/A",
+      "Q7": 1,
+      "Q8": 0
+    },
+    "catatan": "Q6 N/A karena studi tidak melibatkan data tersensor sama sekali; Q8=0 karena tautan keputusan maintenance hanya berupa motivasi di pendahuluan tanpa analisis jadwal/biaya/DSS. RQ jelas (karakterisasi probabilistik RUL dengan data terbatas) dan metode memadai (EM khusus untuk campuran, 4 uji GOF, 13 skenario, 6 distribusi dibandingkan). Namun validitas terbatas pada data sintetis tanpa validasi baterai nyata (Q3, Q5=0.5), dan reproduksibilitas terbatas karena nilai K1/K2 tidak dilaporkan serta tidak ada dataset/kode publik (Q4=0.5). Skor = round(4.5/7*10) = 6. Catatan tambahan: terdapat inkonsistensi naratif di kesimpulan ('ADC ... is the smallest one') yang berlawanan dengan konvensi tabel bahwa ADC terbesar = terbaik."
+  },
+  "data_kuantitatif": {
+    "dataset": "RUL sintetis hasil Monte Carlo pada model elektrokimia baterai LiFePO4 (3,2 V, 60 Ah, 2,3 kg; tegangan kritis 3,0 V); 13 skenario (S1-S13) tanpa data pengukuran riil.",
+    "ukuran": "M=500 sampel (S1-S3, S7-S13) dan M=50 sampel (S4-S6); psi=0,1 event/menit; lambda_ch=10-180 A; lambda_dch bervariasi 10-60 A atau tetap 15-180 A; suhu 25/40/55 derajat C; rentang RUL sekitar 0-2400 menit.",
+    "metrik": "ADC, TS_ADT (h_ADT), TS_CST (h_CST), plot Q-Q (coverage 0,02-0,98). Hasil: ADC terbaik 0,9992 (M-IB-IW, S7); TS_ADT terkecil 0,20 (M-IB-IG, S6); TS_CST terkecil 68,48 (M-IB-IG, S4); IW TS_ADT 8,34/9,36/8,18 (S1/S2/S3); Gumbel TS_ADT 10,35-12,43 pada S11-S13."
+  },
+  "metode": "Dua tahap. (1) Pembangkitan sampel RUL: model elektrokimia difusi 1D berbasis hukum Fick (PDE, solusi Laplace; model Rakhmatov [36]) dengan kondisi batas Faraday menghasilkan konsentrasi c(0,t); kriteria EOL tegangan (di bawah persentase tetap tegangan rated; tegangan kritis 3,0 V) menghasilkan RUL r dari invers Persamaan (16) yang bergantung konstanta K1 dan K2 (K1 fungsi difusivitas/geometri, K2 fungsi teknologi baterai). Profil arus dibangkitkan proses Poisson (rate lambda_ch pada fase charge, lambda_dch pada fase discharge; panjang subinterval eksponensial dengan rate psi) melalui Monte Carlo (M profil arus, masing-masing piecewise constant). (2) Fitting distribusi: IB (3 parameter) dan campuran M-IB-IG/M-IB-IW (6 parameter); estimasi MLE untuk IB tunggal; algoritma EM khusus untuk campuran (posterior Bayes atas label kelas laten y; update analitik untuk omega; maksimisasi numerik untuk parameter lain; kriteria stop: norma selisih vektor parameter). Benchmark: IG, IW, Gumbel (MLE). Evaluasi: ADC, Anderson-Darling, chi-square, dan plot Q-Q.",
+  "limitasi": [
+    "Seluruh hasil berbasis data sintetis (Monte Carlo pada model elektrokimia); penulis menyatakan 'Further research considering actual batteries is required' sehingga belum ada validasi pada baterai nyata.",
+    "Tidak ada penanganan data tersensor; kelangkaan data historis diatasi dengan simulasi, bukan dengan metode censored-data/survival analysis.",
+    "Model elektrokimia 1D dengan asumsi konsentrasi seragam dalam elektrolit; hubungan suhu-parameter tidak eksplisit, memakai asumsi Stokes-Einstein (difusivitas) dan Arrhenius (RUL kondisi terkendali) yang diperkenalkan tanpa validasi langsung.",
+    "Nilai parameter K1 dan K2 tidak dilaporkan; hanya prosedur fitting yang dirujuk ke referensi [18], sehingga replikasi numerik sulit dilakukan.",
+    "Tidak ada analisis keputusan maintenance (jadwal/biaya/DSS); manfaat decision-making hanya dinyatakan sebagai motivasi di pendahuluan.",
+    "Inkonsistensi naratif: kesimpulan menyebut ADC M-IB-IG/M-IB-IW 'is the smallest one' padahal tabel menandai ADC terbesar sebagai performa terbaik."
+  ],
+  "funding_coi": "Didanai MUR - Italian Ministry of University and Research dalam kerangka proyek ERA-Net 'DiGRiFlex - Real time Distribution GRid control and Flexibility provision under uncertainties' dan University of Naples Parthenope melalui proyek 'DING324_Metodi per la pianificazione e gestione delle smart grid'. Tidak ada pernyataan konflik kepentingan (COI) dalam teks.",
+  "status_inklusi": "diterima",
+  "figur_dibaca": [
+    {
+      "file": "figures/_page_2_Figure_8.jpeg",
+      "isi": "Fig. 1 - Skema metodologi elektrokimia: input Expected charge current lambda_ch, Expected events/time rate psi, dan Expected discharge current lambda_dch (kotak garis putus-putus, opsional) menuju Monte Carlo Poisson process; keluaran profil arus i1(t),...,iM(t) menuju blok 'Individuation of the corresponding RUL values using the battery electrochemical model' (dengan input Battery parameters) menghasilkan sampel r1,...,rM."
+    },
+    {
+      "file": "figures/_page_8_Figure_2.jpeg",
+      "isi": "Fig. 4 - CDF empiris vs CDF terestimasi (IB, M-IB-IG, M-IB-IW, IG, IW, GU) untuk S1-S6. Sumbu Lifetime [min] berkisar 0-900 (S1/S4), 0-1600 (S2), 0-2400 (S3), dan serupa untuk S5-S6. Kurva IW (kuning) menyimpang paling rendah di ekor kanan (CDF hanya mencapai ~0,92, sedangkan empiris ~1,0); campuran berbasis IB paling dekat ke CDF empiris; pada S5 (M=50) terlihat CDF empiris bertangga/step di rentang atas."
+    },
+    {
+      "file": "figures/_page_8_Figure_4.jpeg",
+      "isi": "Fig. 5 - Plot Q-Q skenario S1 (500 sampel) untuk 6 distribusi dengan sumbu 0-1000 menit. Panel IB, M-IB-IG (paling rapat ke garis 45 derajat), M-IB-IW, IG, dan GU mengikuti diagonal; panel IW (e) mendatar pada kuantil tinggi (empiris ~600-650 menit saat estimasi ~800-1000 menit) mengonfirmasi kegagalan ekor kanan IW."
+    },
+    {
+      "file": "figures/_page_10_Figure_2.jpeg",
+      "isi": "Fig. 7 - CDF empiris vs terestimasi untuk S7 (0-100 menit), S8 (0-50 menit), S9 (0-1800 menit), dan S10 (0-1800 menit). Pada S8 kurva IG (biru) dan GU (hijau) jelas underperform di ekor kanan; pada S9 CDF empiris berbentuk ramp dan campuran IB menyimpang di ekor kanan; kurva berbasis IB umumnya paling dekat ke empiris."
+    },
+    {
+      "file": "figures/_page_10_Figure_8.jpeg",
+      "isi": "Fig. 8 - CDF untuk S11 (25 derajat C), S12 (40 derajat C), dan S13 (55 derajat C), sumbu Lifetime 0-2500 menit. Kurva bergeser ke kiri dan makin tegak seiring naiknya suhu (RUL menurun); IB dan IW meremehkan ekor kanan sedangkan GU melebihkan ekor kanan; campuran berbasis IB paling dekat ke CDF empiris."
+    }
+  ],
+  "bukti": [
+    "Abstract: 'a hybrid methodology is developed to characterize the RUL even with small amount of data, in view of the typical scarcity of data for adequately fitting the RUL probability distributions' (bukti d8).",
+    "Abstract: 'The IB-based distributions are applied on a RUL dataset created by Monte Carlo sampling on an electrochemical battery model fitted upon given charge/discharge cycles' (bukti data sintetis, dasar d3 kosong).",
+    "Abstract: 'The battery remaining useful life (RUL) depends on several random factors and thus it should be probabilistically characterized to allow the application of decision-making processes' (bukti d5; sekaligus motivasi d6).",
+    "Section I: 'RUL can be defined as the remaining number of charge/discharge cycles beyond which the capacity (voltage) of the battery drops by a fixed percentage of the rated capacity (voltage)... the battery end of life (EOL) is reached when its voltage is below a fixed percentage of the rated voltage' (bukti d2).",
+    "Section I: 'Using prognostic techniques, it is possible to schedule corrective maintenance actions for safe and reliable operation of the connected equipment [15], with an optimization of the global costs of the system' (motivasi maintenance tanpa analisis; dasar d6 kosong).",
+    "Section III-B: 'In this article, an EM algorithm [40], [41] is specifically developed to estimate the parameters of the M-IB-IG distribution. The EM algorithm exploits Bayesian inference to maximize the expected value of the log-likelihood' (metode; bukan pemodelan Bayesian penuh, dasar d4 kosong).",
+    "Section V: 'In four upon six scenarios, the M-IB-IG distribution returns the greatest ADC and the smallest ADT statistic... In all the considered cases, the IB-based distributions fail to reject the null hypothesis either by applying the ADT or the CST' (temuan utama GOF).",
+    "Conclusion: 'Moreover, the adaption of the proposal to actual battery datasets should address the typical scarcity of historical RUL data, as they come from disruptive experiments on the batteries' (bukti d8 dan limitasi validasi)."
+  ]
+}

@@ -1,0 +1,48 @@
+ANALISIS PAPER 040 — Cheng, Ma, Zhang, Sun, Teng, Ding & Yuan (2020), IEEE/ASME Transactions on Mechatronics
+Judul: A deep learning-based remaining useful life prediction approach for bearings
+DOI: 10.1109/TMECH.2020.2971503 | Kuartil: Scopus Q1 | Pilar indeks: B. Deep Learning RUL
+
+KARAKTERISTIK STUDI
+Studi metodologis RUL untuk rolling element bearing (REB). Menggabungkan rekayasa fitur sinyal (Hilbert-Huang Transform) dengan deep learning (CNN) dan regresi (ε-SVR). Domain: bearing (platform PRONOSTIA/FEMTO-ST). Klaster "Pendukung": metode RUL umum tanpa penyensoran/survival maupun domain membran.
+
+METODE
+Framework 3 tahap:
+1) Ekstraksi DEI (degradation energy indicator): getaran mentah di-EMD menjadi IMF, di-Hilbert transform, dihitung marginal Hilbert spectrum pada frekuensi alami komponen (f_inner=221 Hz, f_outer=168 Hz, f_ball=215,4 Hz), DEI = maksimum MHS, dinormalisasi.
+2) CNN 6 lapis (Conv1 64 filter kernel 1x100/stride 50 -> Maxpool1 1x2/2 -> Conv2 64 filter kernel 1x2/1 -> Maxpool2 1x2/2 -> Flatten -> FC1 100 -> output sigmoid) dilatih memetakan getaran mentah ke DEI (MSE, Adam lr 1e-5, 1000 iterasi).
+3) ε-SVR (kernel RBF, C=5,09 via grid search/CV) memforecast evolusi DEI via sliding window (l=50, s=1) sampai melewati failure threshold L_ft=0,9756; RUL = U x tau.
+
+DATA
+PRONOSTIA/FEMTO-ST: train bearing1_2 (N=871 unit), uji bearing1_4/5/6; train bearing2_2, uji bearing2_4/6. Dua accelerometer ortogonal, sampling 25,6 kHz, 0,1 s tiap 10 s (2560 sampel). Bearing1 1800 rpm/4000 N; Bearing2 1600 rpm/4200 N.
+
+TEMUAN UTAMA
+- DEI nonlinier jauh lebih efektif dari label waktu linear (C1): Er% proposed -0,29%/6,83%/-1,37% vs C1 91,15%/49,07%/19,11%.
+- Tanpa CNN (C2) DEI berisik, lambat (~2 s/periode) dan melewati FT sebelum waktunya.
+- Terbaik dibanding 8 metode: S_mean=0,87; MAE=46,2; NRMSE=0,05.
+- Generalisasi ke kondisi operasi berbeda (bearing2) tanpa ubah hyperparameter/arsitektur, hanya fine-tune C (Er% 5,75%, 1,55%).
+- Failure threshold konsisten dari DEI maksimum bearing latih.
+
+RELEVANSI KE TESIS
+Pembanding pada rekayasa indikator/fitur RUL (HHT + CNN) dan penanganan ambang kegagalan. Tidak menyentuh survival/penyensoran dan bukan membran. Celah: indikator/fitur belum dirancang untuk data tersensor (unit yang belum gagal) dan tidak ada kuantifikasi ketidakpastian yang dibutuhkan tesis.
+
+JUSTIFIKASI DIMENSI (d1-d8)
+- d1 = "1": runtun waktu getaran mentah (2560 sampel/unit) — Section II-A, Eq. 1.
+- d2 = "1": RUL/TTF eksplisit; FT dari DEI maksimum bearing latih (L_ft=0,9756) — Section II-C.
+- d3 = "": tanpa pemodelan tersensor/survival/hazard.
+- d4 = "1": CNN 6 lapis + ε-SVR (RBF); ekstraksi DEI via HHT.
+- d5 = "": tanpa kuantifikasi ketidakpastian (hanya titik estimasi + metrik galat).
+- d6 = "": tanpa keputusan pemeliharaan.
+- d7 = "": domain bearing.
+- d8 = "": generalisasi lintas bearing bukan metode small-data/transfer learning/hierarchical.
+
+KUALITAS (skor 6/10)
+Q1=1; Q2=1; Q3=0.5 (benchmark standar tapi jumlah bearing uji sedikit); Q4=0.5 (arsitektur & hyperparameter diberi, tanpa kode); Q5=1 (Er%/ETA/S_mean/MAE/NRMSE + 8 metode pembanding); Q6=N/A; Q7=0 (tanpa ketidakpastian); Q8=0.5 (motivasi saja). Applicable = 7, jumlah = 4.5 -> skor = round(4.5/7*10) = 6.
+
+LIMITASI
+Jumlah bearing uji sedikit (5); tanpa penyensoran/ketidakpastian; FT bergantung bearing latih; ekstraksi DEI manual berat; tanpa keputusan pemeliharaan.
+
+BUKTI
+- Abstrak + Kontribusi 1)-4).
+- Section II-A (DEI: EMD/HT/MHS, Eq. 1-9), Eq. 10-11 (normalisasi).
+- Section II-B (CNN, Eq. 12-14, Algorithm 1), Table III (parameter CNN).
+- Section II-C (ε-SVR forecasting, FT, Algorithm 2).
+- Table V (proposed vs C1/C2), Table VI (8 metode), Fig. 6/8/9/10.

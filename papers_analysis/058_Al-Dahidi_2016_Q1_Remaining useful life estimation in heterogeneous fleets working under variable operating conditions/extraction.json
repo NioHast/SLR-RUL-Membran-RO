@@ -1,0 +1,46 @@
+{
+ "no": 4,
+ "judul": "Remaining useful life estimation in heterogeneous fleets working under variable operating conditions",
+ "penulis": "Sameer Al-Dahidi, Francesco Di Maio, Piero Baraldi, Enrico Zio",
+ "tahun": 2016,
+ "jurnal": "Reliability Engineering & System Safety",
+ "doi": "10.1016/j.ress.2016.07.019",
+ "kuartil": "Scopus Q1 (SCImago SJR Best Quartile)",
+ "pilar": "A. Survival Analysis & Censored Data",
+ "ringkasan": "Studi mengusulkan pendekatan prognostik data-driven untuk estimasi RUL peralatan dalam fleet heterogen yang bekerja pada kondisi operasi bervariasi. Tiga fase: (1) identifikasi level degradasi (state) via unsupervised ensemble clustering; (2) estimasi parameter distribusi Weibull diskrit transisi antar-state dengan MLE dan kuantifikasi ketidakpastiannya via Fisher Information Matrix (FIM); (3) estimasi RUL peralatan baru via simulasi Monte Carlo langsung. Dianalisis pada dua studi kasus (kapasitor elektrolit aluminium dan mesin turbofan) dan terbukti lebih baik daripada pendekatan fuzzy similarity.",
+ "kontribusi": "Sangat relevan ke poros survival/Weibull tesis: pemodelan transisi state dengan distribusi Weibull diskrit dan penanganan eksplisit data right-censored (trajektori run-to-failure tak lengkap) di dalam likelihood, plus kuantifikasi ketidakpastian dan strategi fleet/hierarchical. Namun tanpa deep learning dan domainnya bukan membran.",
+ "temuan_kunci": [
+  "Model semi-Markov diskrit finite-state dengan distribusi Weibull diskrit memodelkan transisi state; likelihood (Eq. 1) memuat indikator censoring delta (0 untuk trajektori tak lengkap).",
+  "Memanfaatkan trajektori run-to-failure tak lengkap (right-censored) meningkatkan akurasi RUL dibanding hanya trajektori lengkap (terbukti pada kasus kapasitor).",
+  "Interval prediksi RUL menyempit seiring umur peralatan; Coverage Rate konsisten >= 0,8.",
+  "Pendekatan mengungguli fuzzy similarity-based pada RMSE, AI, dan alpha-lambda accuracy (turbofan: RMSE 18,87 vs 21,96; alpha-lambda 0,41 vs 0,15)."
+ ],
+ "dimensi": {"d1": "1", "d2": "1", "d3": "1", "d4": "1", "d5": "1", "d6": "", "d7": "", "d8": "1"},
+ "alasan_dimensi": {
+  "d1": "Data multi-sinyal deret waktu: kapasitor (Z=2: ESR dan temperatur) serta turbofan (Z=24 sinyal, 15 dipakai) dengan trajektori degradasi waktu.",
+  "d2": "Mendefinisikan RUL dan ambang kegagalan (ESR^norm > 200% untuk kapasitor); state kegagalan sebagai absorbing state.",
+  "d3": "Memodelkan transisi state dengan distribusi Weibull diskrit (Eq. 1) dan secara eksplisit menangani data right-censored (trajektori run-to-failure tak lengkap) via indikator delta dalam log-likelihood.",
+  "d4": "Model spesifik: homogeneous discrete-time finite-state semi-Markov model + unsupervised ensemble clustering (CSPA, Spectral Clustering, Fuzzy C-Means) + Monte Carlo.",
+  "d5": "Kuantifikasi ketidakpastian via Fisher Information Matrix (95% CI parameter) dan interval prediksi RUL (persentil 10 dan 90); metrik CR/PI.",
+  "d6": "Menyebut prediksi RUL berguna untuk 'scheduling proactively the proper maintenance interventions' dan decision maker, namun tidak ada model jadwal/biaya/DSS formal.",
+  "d7": "Objek adalah kapasitor elektrolit dan mesin turbofan, bukan membran/RO/desalinasi.",
+  "d8": "Memanfaatkan fleet heterogen dan trajektori right-censored (incomplete run-to-failure) untuk memperbaiki estimasi - strategi pooling/hierarchical lintas-unit dan penanganan data tak lengkap."
+ },
+ "relevansi": "Inti-Metode",
+ "kualitas": {"skor": 8, "rincian": {"Q1": 1, "Q2": 1, "Q3": 0.5, "Q4": 0.5, "Q5": 1, "Q6": 1, "Q7": 1, "Q8": 0.5}, "catatan": "Kuat pada penanganan censoring dan kuantifikasi ketidakpastian, dievaluasi dengan lima metrik dan dibandingkan baseline. Kelemahan: data kapasitor bersifat artifisial (simulasi fisika) dan kasus turbofan simulasi C-MAPSS, tak ada data riil lapangan. Jumlah 6,5/8 -> 8."},
+ "data_kuantitatif": {"dataset": "Kasus I: fleet kapasitor elektrolit aluminium kendaraan listrik (model berbasis fisika); Kasus II: 260 trajektori turbofan C-MAPSS (NASA)", "ukuran": "Kapasitor: P_training=100 (20 lengkap + 80 tak lengkap), P_test=50, Z=2, M=1000; Turbofan: 50 latih, 150 uji, Z=24 (15 dipakai), M=5; N_max=1000 MC", "metrik": "RMSE 18,87 vs 21,96 (fuzzy); CR 0,82; PI 57,69; alpha-lambda (10%,50%) 0,41 vs 0,15; AI 0,36 vs 0,49; monotonicity PPI 0,71 (kapasitor) / 0,996 (turbofan)"},
+ "metode": "Tiga fase: (1) unsupervised ensemble clustering (CSPA + Spectral Clustering + FCM, index Silhouette) untuk state; (2) MLE parameter Weibull diskrit + FIM untuk CI; (3) direct Monte Carlo simulation untuk distribusi RUL.",
+ "limitasi": [
+  "Data kapasitor bersifat artifisial (simulasi) dan turbofan berasal dari simulator C-MAPSS, bukan data lapangan riil.",
+  "Pemilihan jumlah state bergantung Silhouette; cluster validity bisa tidak stabil.",
+  "Tidak ada model keputusan pemeliharaan formal.",
+  "Tanpa komponen deep learning."
+ ],
+ "funding_coi": "Didukung EU Project INNHF (FP7-PEOPLE-2011-ITN, Marie-Curie) dan China NSFC (No. 71231001); tidak ada pernyataan konflik kepentingan.",
+ "status_inklusi": "diterima",
+ "figur_dibaca": [
+  {"file": "_page_3_Figure_2.jpeg", "isi": "Fig. 2 sketsa pendekatan prognostik fleet: TRAINING (fleet P_training -> Phase 1 unsupervised ensemble clustering 'States set up' -> Phase 2 MLE+FIM 'parameter q,beta dan ketidakpastian'); TEST (peralatan baru -> Phase 3 simulasi Monte Carlo langsung -> progres degradasi hingga gagal)."},
+  {"file": "_page_12_Figure_6.jpeg", "isi": "Fig. 19 prediksi RUL satu mesin (sumbu x Measurement times cycles 0-97, y RUL cycles): True RUL, estimasi RUL, persentil 10 dan 90; estimasi mengikuti true RUL, band melebar di awal dan menyempit di akhir."}
+ ],
+ "bukti": ["Eq. (1): log-likelihood Weibull diskrit dengan indikator censoring delta", "Eq. (2): monotonicity PPI", "Fig. 2: sketsa 3 fase", "Fig. 10/19: prediksi RUL dengan persentil 10/90", "Table 1: kombinasi trajektori lengkap/tak lengkap", "Table 3: metrik performa vs fuzzy similarity"]
+}

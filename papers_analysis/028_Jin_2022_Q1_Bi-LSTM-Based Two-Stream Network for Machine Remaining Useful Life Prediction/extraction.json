@@ -1,0 +1,47 @@
+{
+ "no": 46,
+ "judul": "Bi-LSTM-Based Two-Stream Network for Machine Remaining Useful Life Prediction",
+ "penulis": "Ruibing Jin, Zhenghua Chen, Keyu Wu, Min Wu, Xiaoli Li, Ruqiang Yan",
+ "tahun": 2022,
+ "jurnal": "IEEE Transactions on Instrumentation and Measurement",
+ "doi": "10.1109/TIM.2022.3167778",
+ "kuartil": "Scopus Q1 (SCImago SJR Best Quartile)",
+ "pilar": "B. Deep Learning RUL",
+ "ringkasan": "Studi mengusulkan handcrafted feature flows (HFFs) untuk menekan noise pada sinyal mentah dan jaringan dua-stream berbasis Bi-LSTM yang menggabungkan stream sinyal mentah dengan stream HFF. Tiga metode fusi diuji (late, concatenation, addition); fusi addition terbaik. Pada dataset C-MAPSS (FD001-FD004), model mencapai RMSE 11,96/14,48/13,41/15,11 dan mengungguli 8 metode SOTA termasuk CNN-BiLSTM.",
+ "kontribusi": "Preseden metode RUL deep learning dengan rekayasa fitur (HFF) dan arsitektur multi-stream/fusi, berguna sebagai pembanding metode bagi tesis; namun tanpa survival/penyensoran dan bukan domain membran, sehingga Pendukung.",
+ "temuan_kunci": [
+  "RMSE fusi addition: FD001 11,96, FD002 14,48, FD003 13,41, FD004 15,11; score 206,33/726,82/223,36/892,39.",
+  "HFF menekan noise sinyal mentah dan menyediakan informasi sekuensial; HFF stream mengungguli raw stream pada FD002 (score 879,24 vs 1040,85).",
+  "Fusi addition terbaik di semua subset; concatenation unggul di FD002/FD004; late fusion unggul di FD001/FD003.",
+  "Hyperparameter: dua layer Bi-LSTM hidden 16 dan 32, dua FC 16 per stream, FC fusi 8, dropout 0,2, batch 10, 50 epoch, window 30, 5-fold.",
+  "Model mengungguli HDNN, CNN-LSTM, BLCNN, DCNN, BiLSTM-ED, LSTM-BS, ATS2S, dan CNN-BiLSTM."
+ ],
+ "dimensi": {"d1": "1", "d2": "1", "d3": "", "d4": "1", "d5": "", "d6": "", "d7": "", "d8": ""},
+ "alasan_dimensi": {
+  "d1": "Memakai data deret waktu multisensor C-MAPSS (14 sensor terseleksi: suhu, tekanan, kecepatan) plus setting operasi, disegmentasi sliding window (30 langkah).",
+  "d2": "Mendefinisikan target RUL eksplisit dengan fungsi piecewise linear (nilai maks 125) untuk mesin yang diamati run-to-failure.",
+  "d3": "Tidak memodelkan data tersensor/survival/Weibull/hazard; label RUL diketahui dari simulasi.",
+  "d4": "Memakai arsitektur spesifik: Bi-LSTM dua lapis per stream, HFF (amplitude average + koefisien tren polinomial), dua fully-connected decoder, modul fusi (late/concatenation/addition).",
+  "d5": "Tidak mengkuantifikasi ketidakpastian; hanya RMSE dan scoring function titik.",
+  "d6": "RUL diposisikan untuk mencegah kegagalan dan menurunkan biaya operasi, tetapi tidak ada model/analisis keputusan perawatan.",
+  "d7": "Objek penelitian adalah aircraft engine (C-MAPSS), bukan membran/RO/desalinasi.",
+  "d8": "Tidak menangani small-data/transfer/hierarchical/all-censored; hanya data benchmark publik."
+ },
+ "relevansi": "Pendukung",
+ "kualitas": {"skor": 8, "rincian": {"Q1": 1, "Q2": 1, "Q3": 1, "Q4": 0.5, "Q5": 1, "Q6": "N/A", "Q7": 0, "Q8": "N/A"}, "catatan": "Kontribusi jelas (HFF + two-stream + tiga metode fusi), evaluasi kuat pada benchmark publik dengan 8+ metode SOTA dan ablation study, hyperparameter cukup rinci. Kelemahan: kode/model tidak dibagikan (reproduksibilitas parsial) dan tidak ada kuantifikasi ketidakpastian. Q6/Q8 tidak berlaku."},
+ "data_kuantitatif": {"dataset": "NASA C-MAPSS (FD001-FD004), 21 sensor (14 dipakai) + setting operasi", "ukuran": "Trajektori latih/uji: FD001 100/100, FD002 260/259, FD003 100/100, FD004 248/249; window 30; 5-fold CV", "metrik": "RMSE/Score fusi addition: FD001 11,96/206,33; FD002 14,48/726,82; FD003 13,41/223,36; FD004 15,11/892,39"},
+ "metode": "Handcrafted Feature Flows: amplitude average dan koefisien tren linear dihitung pada panjang temporal t=2..T lalu dikonkatenasi menjadi HFF (X tilde di R^{(T-1)x2C}). Jaringan dua-stream: tiap stream = dua Bi-LSTM (hidden 16, 32) + dua FC; fusi (late/concatenation/addition) + regressor. Min-max normalisasi, label RUL piecewise (max 125), dropout 0,2, batch 10, Adam.",
+ "limitasi": [
+  "Kode/model tidak dilampirkan; reproduksibilitas parsial.",
+  "Tanpa kuantifikasi ketidakpastian prediksi.",
+  "Hanya dataset simulasi turbofan engine.",
+  "Tidak menangani censoring/kelangkaan data."
+ ],
+ "funding_coi": "Didanai A*STAR Career Development Award (C210112046); tidak ada pernyataan konflik kepentingan.",
+ "status_inklusi": "diterima",
+ "figur_dibaca": [
+  {"file": "figures/_page_2_Figure_2.jpeg", "isi": "Overview metode: Step 1 generasi HFF (raw signal -> handcrafted feature computation -> concatenation), Step 2 jaringan dua-stream (Raw Stream & HFF Stream masing-masing 2 Bi-LSTM + FC) -> fusion -> regressor -> RUL; mengonfirmasi d4."},
+  {"file": "figures/_page_4_Figure_2.jpeg", "isi": "Tiga metode fusi: (a) late fusion (rata-rata dua prediksi RUL), (b) concatenation fusion (gabung vektor fitur, dimensi bertambah), (c) addition fusion (jumlah element-wise, dimensi tetap); mengonfirmasi d4 dan kontribusi fusi."}
+ ],
+ "bukti": ["Fig. 1: raw sensor signals ber-noise", "Fig. 2: overview metode", "Fig. 3: pipeline generasi HFF", "Fig. 5: tiga metode fusi", "Table I: dataset C-MAPSS", "Table II: perbandingan dengan SOTA", "Table III: ablation study", "Eq. (1)-(13)"]
+}

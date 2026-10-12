@@ -1,0 +1,48 @@
+ANALISIS PAPER 036 — Li, Li, Zuo, Zhu & Shen (2022), IEEE Transactions on Instrumentation and Measurement
+Judul: Domain Adaptive Remaining Useful Life Prediction With Transformer
+DOI: 10.1109/TIM.2022.3200667 | Kuartil: Scopus Q1 | Pilar indeks: D. Small-data/Transfer/Hierarchical
+
+KARAKTERISTIK STUDI
+Studi metodologis RUL dengan fokus transfer learning/domain adaptation. Menjawab masalah industri: data berlabel melimpah di domain sumber tetapi domain target tidak berlabel dan mengalami pergeseran distribusi. Domain: mesin turbofan (C-MAPSS dan N-CMAPSS, yang kedua dari data penerbangan nyata). Klaster Inti-Domain (RUL + transfer/small-data).
+
+METODE
+- Arsitektur: Transformer (positional encoding + multihead self-attention encoder, 8 heads) sebagai feature extractor G; predictor P = layer linear (d,1); dua diskriminator domain MLP: D_f pada fitur, D_y pada keluaran (kurva prediksi).
+- Pelatihan adversarial dengan Gradient Reversal Layer (GRL); loss total L = L_y - alpha L_d^f - beta L_d^y. Fitur harus domain-invariant (D_f) dan keluaran harus tak-terbedakan antar domain (D_y, sebagai regularisasi untuk tugas regresi).
+- Preprocessing: min-max normalization, sliding window (70 untuk C-MAPSS, 40 untuk N-CMAPSS), fungsi RUL piecewise dengan batas R_C=130 (CMAPSS) dan 65 (N-CMAPSS).
+- Kuantifikasi ketidakpastian: Monte Carlo dropout (dropout aktif saat testing, 100 run) → 95% CI.
+
+DATA
+C-MAPSS (FD001-FD004; 100/260/100/249 unit; 24 sensor) dan N-CMAPSS (DS01-DS07; 10/9/15/10/10/10/10 unit; 38 dimensi sensor, data nyata). Tugas: source-only (4 subset CMAPSS) dan cross-domain (12 tugas CMAPSS + 42 tugas N-CMAPSS), plus uji online.
+
+TEMUAN UTAMA
+- Source-only C-MAPSS: RMSE 8,67/12,42/9,37/12,41 (FD001-FD004) — state-of-the-art, boost hingga 31,4%.
+- Cross-domain: perbaikan RMSE hingga 63,9% (FD002->FD004), mendekati target-supervised.
+- N-CMAPSS: domain adaptation menurunkan RMSE dari >30 menjadi umumnya <10 pada 42 tugas.
+- Ablation: D_f + D_y lebih baik daripada D_f saja (transformer+DANN).
+- 95% CI via MC dropout (mis. RUL 120 → [115,123]); uji online menurun namun diterima, inferensi <1 s/sampel.
+
+RELEVANSI KE TESIS
+Relevan pada dua sumbu: (1) transfer/domain adaptation tanpa label target (d8) dan (2) kuantifikasi ketidakpastian via MC dropout/CI (d5). Namun tidak memodelkan penyensoran/survival dan bukan domain membran. Celah: menggabungkan backbone Transformer + alignment domain + model survival data tersensor untuk RUL membran RO belum ada.
+
+JUSTIFIKASI DIMENSI (d1-d8)
+- d1 = "1": multi-sensor time series (24/38 sensor, sliding window) — Section IV-B, Eq. 12.
+- d2 = "1": RUL eksplisit + fungsi piecewise R_C=130/65 (Section IV-B).
+- d3 = "": tanpa pemodelan tersensor/survival/hazard.
+- d4 = "1": Transformer, CNN, RNN/LSTM, DANN/GRL.
+- d5 = "1": 95% CI via Monte Carlo dropout (Section IV-I, Tabel VIII, Fig. 8).
+- d6 = "": tanpa keputusan pemeliharaan.
+- d7 = "": domain turbofan.
+- d8 = "1": domain adaptation/transfer learning (feature + semantic alignment, tanpa label target).
+
+KUALITAS (skor 9/10)
+Q1=1; Q2=1; Q3=1 (dua benchmark, termasuk data nyata N-CMAPSS, validasi luas); Q4=0.5 (hyperparameter sebagian di appendix, tanpa kode); Q5=1 (RMSE+score, 12+42 tugas, ablation, uji online); Q6=N/A; Q7=1 (95% CI dilaporkan); Q8=0.5 (motivasi saja). Applicable = 7, jumlah = 6.0 -> skor = round(6.0/7*10) = 9.
+
+LIMITASI
+Tidak memodelkan penyensoran/survival; domain adaptation dapat merusak distribusi yang sudah selaras; akurasi online lebih rendah; tanpa kode; tanpa keputusan pemeliharaan.
+
+BUKTI
+- Abstrak + Kontribusi 1)-3).
+- Section III-A (problem definition), III-B (Transformer, Eq. 1-5), III-C-E (model & loss, Eq. 6-11).
+- Section IV-B (RUL piecewise, sliding window, Eq. 12).
+- Tabel I-II (dataset), III (source-only), IV-V (cross-domain), VI (N-CMAPSS), VII (ablation), VIII (CI), IX (online).
+- Fig. 2 (overview), Fig. 4 (cross-domain), Fig. 8 (CI).

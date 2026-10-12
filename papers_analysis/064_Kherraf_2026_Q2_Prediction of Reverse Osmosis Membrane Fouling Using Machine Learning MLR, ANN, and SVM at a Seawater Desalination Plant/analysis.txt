@@ -1,0 +1,44 @@
+PAPER 022 - Kherraf et al. (2026)
+Judul   : Prediction of Reverse Osmosis Membrane Fouling Using Machine Learning: MLR, ANN, and SVM at a Seawater Desalination Plant
+Jurnal  : Eng (Advances in Engineering) | Scopus Q2 (SCImago SJR 2024) | DOI 10.3390/eng7030106
+Pilar   : E. Membrane/RO/Desalination
+Relevansi: Inti-Domain
+
+KARAKTERISTIK STUDI
+Memodelkan TMP (indikator fouling membran RO) di pabrik desalinasi air laut Boujdour (Maroko) dari lima parameter operasional. Penulis secara eksplisit membingkai masalah sebagai regresi state-to-TMP karena data tidak memiliki stempel waktu.
+
+METODE
+- MLR dengan regularisasi Ridge; ANN (MLP, ReLU/tanh); SVR (kernel RBF). Implementasi Python 3.11 scikit-learn.
+- GridSearchCV + kerangka anti-kebocoran: split 80/20 pada data nyata lebih dulu, augmentasi SMOGN hanya pada latih (k-NN k=3, perturbasi 1%).
+- Evaluasi R2, RMSE, MAE; bootstrap 95 %, repeated K-fold (5x3), uji Diebold-Mariano (proxy), permutation importance, PDP/ICE 5-95 %.
+
+DATA
+195 pengamatan harian (156 latih / 39 uji nyata), 5 input (temperatur, pH, turbiditas, konduktivitas umpan, laju alir umpan) -> TMP. Setelah augmentasi SMOGN, latih ~1961 sampel. Test tetap 100 % nyata.
+
+TEMUAN UTAMA
+- SVR terbaik pada set uji (R2=0,4347; RMSE=0,3226; MAE=0,2530) tetapi overfit (delta R2 ~ 0,25).
+- Bootstrap CI 95 % R2 SVR lebar [0,1022; 0,6421]; repeated K-fold R2 rata-rata ~0,325 +/- 0,213 (beberapa fold negatif).
+- Pendekatan 5 variabel mengalahkan pendekatan 2 variabel (pH+konduktivitas).
+- pH dominan (permutation importance); konduktivitas signifikan (OLS).
+
+RELEVANSI KE TESIS
+Menyumbang sisi DOMAIN (fouling membran RO) dan kesadaran ketidakpastian, tetapi bukan RUL/survival dan tanpa pencensoringan; targetnya TMP, bukan sisa umur. Diklasifikasikan Inti-Domain.
+
+JUSTIFIKASI DIMENSI (d1-d8)
+- d1 = "" : tanpa stempel waktu -> penulis menyatakan non-kronologis (bukan deret waktu).
+- d2 = "" : tidak mendefinisikan RUL/ambang kegagalan; TMP hanyalah indikator fouling.
+- d3 = "" : tidak ada survival/hazard/Weibull/cure/pencensoringan.
+- d4 = 1: MLR (Ridge), ANN (MLP), SVR (RBF).
+- d5 = 1: bootstrap CI 95 %, band 5-95 % PDP/ICE, uji berpasangan.
+- d6 = "" : hanya klaim aspirasional 'decision support'; tanpa jadwal/biaya/DSS.
+- d7 = 1: membran RO pabrik desalinasi air laut (fouling).
+- d8 = 1: small-data (195 observasi nyata) ditangani dengan augmentasi SMOGN bebas kebocoran.
+
+KUALITAS (skor 8/10)
+Q1=1; Q2=1; Q3=0,5 (n kecil, satu pabrik, tanpa waktu); Q4=1 (pipeline transparan, anti-kebocoran); Q5=0,5 (uji tunggal + n kecil, banyak perbedaan tak signifikan); Q6=N/A; Q7=1 (CI bootstrap); Q8=N/A. Jumlah 5/6 -> 8.
+
+LIMITASI
+n kecil, tanpa stempel waktu, akurasi moderat & overfitting, satu pabrik, tanpa RUL/survival/censoring.
+
+BUKTI (fig/table/eq)
+Table 1-7; Fig. 1 (permutation importance); Fig. 2 (kinerja SVR); Fig. 3-4 (overfitting, learning curve); Fig. 5 (ACF); Fig. 6 (PDP/ICE).

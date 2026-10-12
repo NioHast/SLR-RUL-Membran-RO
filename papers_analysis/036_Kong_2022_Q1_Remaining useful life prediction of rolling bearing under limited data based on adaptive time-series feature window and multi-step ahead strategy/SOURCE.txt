@@ -1,0 +1,9 @@
+SUMBER FULL-TEXT (Open Access)
+============================
+Judul   : Remaining useful life prediction of rolling bearing under limited data based on adaptive time-series feature window and multi-step ahead strategy
+DOI     : 10.1016/j.asoc.2022.109630
+Status  : hybrid (Open Access)
+Lisensi : cc-by-nc-nd
+
+Catatan : Open Access berlisensi Creative Commons; boleh didistribusikan ulang DENGAN ATRIBUSI
+kepada penulis/penerbit asli. Diverifikasi via Unpaywall (https://unpaywall.org).

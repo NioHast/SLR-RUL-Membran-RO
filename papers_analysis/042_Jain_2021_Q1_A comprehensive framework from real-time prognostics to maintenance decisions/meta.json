@@ -1,0 +1,921 @@
+{
+  "table_of_contents": [
+    {
+      "title": "ORIGINAL RESEARCH PAPER",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          45.637699127197266,
+          69.5830078125
+        ],
+        [
+          210.83364868164062,
+          69.5830078125
+        ],
+        [
+          210.83364868164062,
+          79.91455078125
+        ],
+        [
+          45.637699127197266,
+          79.91455078125
+        ]
+      ]
+    },
+    {
+      "title": "A comprehensive framework from real\u2010time prognostics to\nmaintenance decisions",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          43.65234375,
+          110.49169921875
+        ],
+        [
+          495.6541442871094,
+          110.49169921875
+        ],
+        [
+          495.6541442871094,
+          152.2745361328125
+        ],
+        [
+          43.65234375,
+          152.2745361328125
+        ]
+      ]
+    },
+    {
+      "title": "Correspondence",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          44.81640625,
+          269.53857421875
+        ],
+        [
+          94.05680847167969,
+          269.53857421875
+        ],
+        [
+          94.05680847167969,
+          279.2981262207031
+        ],
+        [
+          44.81640625,
+          279.2981262207031
+        ]
+      ]
+    },
+    {
+      "title": "Funding information",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          44.81640625,
+          339.12158203125
+        ],
+        [
+          108.27059173583984,
+          339.12158203125
+        ],
+        [
+          108.27059173583984,
+          348.29241943359375
+        ],
+        [
+          44.81640625,
+          348.29241943359375
+        ]
+      ]
+    },
+    {
+      "title": "Abstract",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          201.96484375,
+          230.54150390625
+        ],
+        [
+          240.63949584960938,
+          230.54150390625
+        ],
+        [
+          240.63949584960938,
+          242.22930908203125
+        ],
+        [
+          201.96484375,
+          242.22930908203125
+        ]
+      ]
+    },
+    {
+      "title": "1 | INTRODUCTION",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          43.65234375,
+          435.849609375
+        ],
+        [
+          173.3842010498047,
+          435.849609375
+        ],
+        [
+          173.3842010498047,
+          449.2197570800781
+        ],
+        [
+          43.65234375,
+          449.2197570800781
+        ]
+      ]
+    },
+    {
+      "title": "2 | METHODOLOGY",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          306.439453125,
+          97.5
+        ],
+        [
+          436.8664987405541,
+          97.5
+        ],
+        [
+          436.8664987405541,
+          108.0
+        ],
+        [
+          306.439453125,
+          108.0
+        ]
+      ]
+    },
+    {
+      "title": "2.1 | Prognostics module",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          303.8203125,
+          121.5791015625
+        ],
+        [
+          445.87405541561714,
+          121.5791015625
+        ],
+        [
+          445.87405541561714,
+          132.2841796875
+        ],
+        [
+          303.8203125,
+          132.2841796875
+        ]
+      ]
+    },
+    {
+      "title": "2.2 | Predictive maintenance planning model",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          44.287153652392945,
+          531.81298828125
+        ],
+        [
+          252.96221662468514,
+          531.81298828125
+        ],
+        [
+          252.96221662468514,
+          554.25
+        ],
+        [
+          44.287153652392945,
+          554.25
+        ]
+      ]
+    },
+    {
+      "title": "2.2.1 | Corrective replacement cost",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          306.1484375,
+          244.30517578125
+        ],
+        [
+          484.9068010075566,
+          244.30517578125
+        ],
+        [
+          484.9068010075566,
+          255.77490234375
+        ],
+        [
+          306.1484375,
+          255.77490234375
+        ]
+      ]
+    },
+    {
+      "title": "2.2.2 | Predictive replacement cost",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          304.984375,
+          510.0
+        ],
+        [
+          482.6549118387909,
+          510.0
+        ],
+        [
+          482.6549118387909,
+          519.75
+        ],
+        [
+          304.984375,
+          519.75
+        ]
+      ]
+    },
+    {
+      "title": "3 | EXPERIMENTAL CASE STUDY",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          44.234375,
+          365.501953125
+        ],
+        [
+          251.46095717884128,
+          365.501953125
+        ],
+        [
+          251.46095717884128,
+          375.75
+        ],
+        [
+          44.234375,
+          375.75
+        ]
+      ]
+    },
+    {
+      "title": "3.1 | Performance assessment of the prognostics module",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          43.943359375,
+          652.5
+        ],
+        [
+          242.4534005037783,
+          653.009765625
+        ],
+        [
+          242.4534005037783,
+          675.94921875
+        ],
+        [
+          43.943359375,
+          675.94921875
+        ]
+      ]
+    },
+    {
+      "title": "3.2 | Predictive maintenance framework",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          304.984375,
+          116.53173828125
+        ],
+        [
+          522.3319702148438,
+          116.53173828125
+        ],
+        [
+          522.3319702148438,
+          129.52777099609375
+        ],
+        [
+          304.984375,
+          129.52777099609375
+        ]
+      ]
+    },
+    {
+      "title": "3.2.1 | Implications of imperfect prognostics\ninformation on maintenance decisions",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          304.111328125,
+          298.855712890625
+        ],
+        [
+          529.6028442382812,
+          298.855712890625
+        ],
+        [
+          529.6028442382812,
+          324.7785949707031
+        ],
+        [
+          304.111328125,
+          324.7785949707031
+        ]
+      ]
+    },
+    {
+      "title": "3.2.2 | Sensitivity analysis",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          306.1484375,
+          425.14453125
+        ],
+        [
+          437.908447265625,
+          425.14453125
+        ],
+        [
+          437.908447265625,
+          438.3907775878906
+        ],
+        [
+          306.1484375,
+          438.3907775878906
+        ]
+      ]
+    },
+    {
+      "title": "4 | CONCLUSION AND FUTURE WORK",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          304.984375,
+          628.6387176513672
+        ],
+        [
+          544.78125,
+          628.6387176513672
+        ],
+        [
+          544.78125,
+          641.5787811279297
+        ],
+        [
+          304.984375,
+          641.5787811279297
+        ]
+      ]
+    },
+    {
+      "title": "ACKNOWLEDGEMENTS",
+      "heading_level": null,
+      "page_id": 6,
+      "polygon": [
+        [
+          304.40234375,
+          690.4775390625
+        ],
+        [
+          438.934326171875,
+          690.4775390625
+        ],
+        [
+          438.934326171875,
+          700.8164138793945
+        ],
+        [
+          304.40234375,
+          700.8164138793945
+        ]
+      ]
+    },
+    {
+      "title": "ORCID",
+      "heading_level": null,
+      "page_id": 7,
+      "polygon": [
+        [
+          44.81640625,
+          297.4482421875
+        ],
+        [
+          82.93767547607422,
+          297.4482421875
+        ],
+        [
+          82.93767547607422,
+          308.27557373046875
+        ],
+        [
+          44.81640625,
+          308.27557373046875
+        ]
+      ]
+    },
+    {
+      "title": "REFERENCES",
+      "heading_level": null,
+      "page_id": 7,
+      "polygon": [
+        [
+          45.107421875,
+          373.9130859375
+        ],
+        [
+          123.0885009765625,
+          373.9130859375
+        ],
+        [
+          123.0885009765625,
+          386.00225830078125
+        ],
+        [
+          45.107421875,
+          386.00225830078125
+        ]
+      ]
+    }
+  ],
+  "page_stats": [
+    {
+      "page_id": 0,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          1354
+        ],
+        [
+          "Line",
+          82
+        ],
+        [
+          "Text",
+          9
+        ],
+        [
+          "PageHeader",
+          6
+        ],
+        [
+          "SectionHeader",
+          6
+        ],
+        [
+          "PageFooter",
+          3
+        ],
+        [
+          "Picture",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 1,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          114
+        ],
+        [
+          "Span",
+          102
+        ],
+        [
+          "Text",
+          10
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "Equation",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 2,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          109
+        ],
+        [
+          "Span",
+          86
+        ],
+        [
+          "Text",
+          11
+        ],
+        [
+          "Equation",
+          4
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "PageHeader",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 3,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          109
+        ],
+        [
+          "Span",
+          83
+        ],
+        [
+          "TableCell",
+          27
+        ],
+        [
+          "Text",
+          10
+        ],
+        [
+          "Equation",
+          2
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "TableGroup",
+          1
+        ],
+        [
+          "Reference",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 4,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          943
+        ],
+        [
+          "TableCell",
+          118
+        ],
+        [
+          "Line",
+          92
+        ],
+        [
+          "Text",
+          5
+        ],
+        [
+          "Caption",
+          4
+        ],
+        [
+          "Figure",
+          2
+        ],
+        [
+          "Table",
+          2
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "FigureGroup",
+          2
+        ],
+        [
+          "TableGroup",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "Reference",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 5,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          1315
+        ],
+        [
+          "Line",
+          76
+        ],
+        [
+          "Text",
+          6
+        ],
+        [
+          "Figure",
+          4
+        ],
+        [
+          "Caption",
+          4
+        ],
+        [
+          "FigureGroup",
+          4
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 6,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          1168
+        ],
+        [
+          "TableCell",
+          108
+        ],
+        [
+          "Line",
+          83
+        ],
+        [
+          "Text",
+          5
+        ],
+        [
+          "Caption",
+          3
+        ],
+        [
+          "ListItem",
+          3
+        ],
+        [
+          "Table",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ],
+        [
+          "TableGroup",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ],
+        [
+          "Reference",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 7,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          1618
+        ],
+        [
+          "Line",
+          120
+        ],
+        [
+          "ListItem",
+          26
+        ],
+        [
+          "Text",
+          3
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "ListGroup",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ],
+        [
+          "Reference",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 8,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          308
+        ],
+        [
+          "Line",
+          23
+        ],
+        [
+          "Text",
+          4
+        ],
+        [
+          "ListItem",
+          4
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ],
+        [
+          "Reference",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    }
+  ],
+  "debug_data_path": "debug_data/007"
+}

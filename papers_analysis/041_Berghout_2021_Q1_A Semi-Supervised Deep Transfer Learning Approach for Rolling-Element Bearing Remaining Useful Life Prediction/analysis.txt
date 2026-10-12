@@ -1,0 +1,53 @@
+PAPER 66: A Semi-Supervised Deep Transfer Learning Approach for Rolling-Element Bearing Remaining Useful Life Prediction
+Penulis: Tarek Berghout, Leila-Hayet Mouss, Toufik Bentrcia, Mohamed Benbouzid (2021)
+Jurnal: IEEE Transactions on Energy Conversion | Scopus Q1 | DOI 10.1109/tec.2021.3116423 | Pilar: D. Small-data/Transfer/Hierarchical
+
+KARAKTERISTIK STUDI
+Studi deep transfer learning semi-supervised untuk RUL bantalan gelinding ketika data historis berlabel langka. Menangani tiga masalah sekaligus: regresi (HI), clustering (HS via GMM), dan klasifikasi (HS), lalu menyusun RUL dari keduanya.
+
+METODE
+Rekonstruksi health index (HI) sebagai fungsi eksponensial kumulatif (HI=1 sehat, HI=0 gagal). Pemisahan health stage (healthy/degradation/critical) via Gaussian mixture model (GMM) dengan kriteria Silhouettes >= 0,90. Arsitektur DL: LSTM (15 unit) -> ReLU (15) -> FC, berbeda untuk klasifikasi (Softmax 3) dan regresi (FC 1). Transfer learning: bobot LSTM sumber dipindah untuk fine-tuning lapisan target. Metrik: RMSE, scoring function PHM 2012, classification rate, Silhouettes.
+
+DATA
+PRONOSTIA (FEMTO-ST), bantalan NSK 6804 DD, 17 bantalan pada 3 kondisi (1800/1650/1500 rpm; 4000/4200/5000 N). Data frame tiap 10 s (25,6 kHz). Kandidat HS terpilih: Bearing1-1, 1-4, 2-5, 2-7; validasi 2-fold.
+
+TEMUAN UTAMA
+- TL menurunkan RMSE test rata-rata (0,1888 vs DL 0,3125) dan meningkatkan akurasi klasifikasi HS (0,9044 vs 0,7558).
+- TL lebih stabil dan konvergen cepat; DL berfluktuasi karena sampel kurang.
+- Score PHM TL 0,7307 vs DL 0,3096.
+- Prediksi DL cenderung lebih awal (aman tapi kurang akurat), TL lebih lambat (akurat tapi berisiko).
+- GMM dengan soft clustering lebih tepat daripada K-means untuk pemisahan HS.
+
+RELEVANSI KE TESIS
+Inti-Domain. Relevan pada sumbu data kecil/transfer dan pemisahan tahap degradasi (analog dengan fase fouling membran). Tidak memakai survival/penyensoran dan bukan domain membran, tetapi strategi transfer untuk histori kegagalan terbatas sangat relevan dengan tantangan data membran RO.
+
+JUSTIFIKASI DIMENSI
+- d1=1: data getaran deret waktu frame-per-frame (sequence-by-sequence).
+- d2=1: RUL via HI=0 dan pemisahan HS dengan ambang tahap.
+- d3="": tidak ada survival/penyensoran (penanganan lewat transfer learning).
+- d4=1: LSTM + GMM + transfer learning.
+- d5="": tidak ada kuantifikasi ketidakpastian.
+- d6="": tidak ada model keputusan maintenance (hanya sebut-sebut).
+- d7="": bukan membran/RO.
+- d8=1: transfer learning untuk data kecil dan tak berlabel.
+
+KUALITAS (skor 6)
+Q1=1; Q2=1; Q3=0,5 (data accelerated/unlabeled); Q4=0,5; Q5=1; Q6=N/A; Q7=0 (tanpa ketidakpastian); Q8=0 (tanpa keputusan). Sum 4,0/7 -> 5,71 ~ 6. Deterministik tanpa ketidakpastian/maintenance, namun strategi transfer data kecil bernilai.
+
+LIMITASI
+Data accelerated tak berlabel terbatas; generalisasi antar siklus; TL menghasilkan prediksi lambat (berisiko); ketidakpastian clustering sulit diukur.
+
+FUNDING/COI
+Tidak ada pernyataan dana/konflik eksplisit pada teks tersedia.
+
+BUKTI
+- "a novel sequence-by-sequence deep learning algorithm able to expand the generalization capacity by transferring obtained knowledge" (Abstract)
+- "we have moved towards the use of Gaussian mixture model (GMM)" (Sec. II-B)
+- Table III: Test RMSE DL 0,3125 vs TL 0,1888
+- Table V: Test accuracy DL 0,7558 vs TL 0,9044
+- "under the hypothesis of small sized bearing data with short unlabeled life cycles" (Sec. I)
+
+FIGUR DIBACA
+- _page_3_Figure_2.jpeg: flowchart metodologi (preprocessing -> labeling -> training dengan transfer learning -> validasi).
+- _page_3_Figure_8.jpeg: dua arsitektur DL (klasifikasi vs regresi).
+- _page_7_Figure_2.jpeg: kurva fitting HI DL vs TL (TL lebih baik; DL kolaps pada dua kasus).

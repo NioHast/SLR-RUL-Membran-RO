@@ -1,0 +1,55 @@
+PAPER 069 | no=69 | Relevansi: Konteks | Skor kualitas: 7/10 | Dimensi: d7
+Judul: Numerical Modelling Assisted Design of a Compact Ultrafiltration (UF) Flat Sheet Membrane Module
+Penulis: Mokgadi F Bopape, Tim Van Geel, Abhishek Dutta, Bart Van Der Bruggen, Maurice Stephen Onyango
+Jurnal/tahun: Membranes (MDPI), 11(1):54, 2021 | DOI 10.3390/membranes11010054 | Quartile Q1
+
+KARAKTERISTIK STUDI
+Studi kasus rekayasa desain modul membran ultrafiltrasi (UF) flat sheet kompak untuk air minum terdesentralisasi. Berbasis simulasi numerik (CFD 3D) untuk memprediksi hidrodinamika modul, bukan berbasis data sensor atau prognostik. Bersifat eksploratori-desain; tidak ada komponen waktu-ke-gagal/RUL.
+
+METODE
+- CFD 3D (ANSYS 19.2: Design Modeler, Meshing, Fluent, CFD Post); aliran isotermal, incompressible, Newtonian, steady-state.
+- Persamaan Navier-Stokes (kontinuitas + momentum); membran = porous zone via Darcy's Law (J = k/mu * dP/dx), pori tidak dimodelkan individual.
+- Grid sensitivity: 250k, 500k, 1jt, 1,5jt, 2jt sel.
+- Parametric/sensitivity study: spacer curviness (0-100%), spacer thickness, inlet/outlet length & diameter, permeabilitas, ketebalan membran, luas membran, inlet pressure.
+
+DATA
+- Tidak ada dataset eksperimen; seluruhnya data simulasi. Pure water flux saja, tanpa fouling/CP.
+- Rentang parameter: 7 nilai permeabilitas, ketebalan 50-350 mikron, tekanan 0,05-0,35 bar, luas 0,026-0,044 m2.
+- Metrik: permeate flux (L/m2h), TMP (Pa), pressure drop.
+
+TEMUAN UTAMA
+- Flux menurun tipis dari 2,81 (curviness 0%) ke 2,73 L/m2h (curviness 100%) -> curviness tinggi mengurangi efek promotif turbulensi (risiko fouling/CP).
+- Inlet pressure, permeabilitas, ketebalan, dan luas membran signifikan terhadap flux; spacer thickness & outlet diameter signifikan terhadap TMP.
+- Konvergensi grid pada 1,5-2 juta sel; model dapat memprediksi permeate flux "dengan error wajar".
+
+RELEVANSI KE TESIS
+Konteks domain (membran/UF/desalination, d7=1) saja. Tidak ada RUL, degradasi waktu, survival/censoring, maupun ML/DL. Berguna sebagai latar teknis tentang hidrodinamika modul membran, sifat fouling/CP, dan pentingnya karakterisasi aliran - relevan untuk memahami mengapa degradasi (fouling) pada membran perlu diprediksi, tetapi tidak menyumbang metode RUL.
+
+JUSTIFIKASI DIMENSI (d1-d8)
+- d1="": simulasi CFD steady-state, bukan multi-sensor/time-series.
+- d2="": tidak mendefinisikan RUL/kegagalan/threshold.
+- d3="": tanpa survival/Weibull/hazard/cure.
+- d4="": model = CFD/Navier-Stokes, bukan model dari daftar ML/DL.
+- d5="": tanpa kuantifikasi ketidakpastian prediktif (hanya sigma antar-kasus).
+- d6="": tidak ada keputusan pemeliharaan; 'maintenance requirements' hanya disinggung umum.
+- d7=1: inti domain membran flat sheet UF untuk air minum; membahas fouling/CP.
+- d8="": tidak ada small-data/transfer/hierarchical/censoring.
+
+KUALITAS (skor 7/10)
+Q1=1 (tujuan desain jelas); Q2=1 (CFD + analisis grid memadai); Q3=0,5 (tanpa validasi eksperimen); Q4=0,5 (setup rinci, tanpa kode/model); Q5=0,5 (validasi internal saja, tanpa validasi eksternal); Q6=N/A; Q7=N/A; Q8=N/A. Skor = round(3,5/5*10) = 7.
+
+LIMITASI
+(1) Tidak divalidasi eksperimen (future work); (2) fouling/CP tidak dimodelkan; (3) membran dianggap black box; (4) steady-state, bukan dinamika degradasi jangka panjang; (5) tanpa analisis biaya/jadwal pemeliharaan.
+
+FUNDING/COI
+Funding: NRF South Africa, grant SFH150720127975. COI: tidak ada.
+
+BUKTI
+- Abstract: flux 2,81 -> 2,73 L/m2h dengan curviness (d7).
+- Sect. 2.2.3: membran "black box" + "no fouling or concentration polarization".
+- Sect. 4 & Future Work: validasi eksperimen belum dilakukan.
+
+FIGUR DIBACA
+- _page_3_Picture_6.jpeg (Fig 1, geometri modul 3D, kanal serpentine).
+- _page_3_Picture_9.jpeg (Fig 2, tampak samping membran/kanal).
+- _page_10_Figure_4.jpeg (Fig 11, flux vs persentase referensi/curviness).

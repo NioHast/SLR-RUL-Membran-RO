@@ -1,0 +1,9 @@
+SUMBER FULL-TEXT (Open Access)
+============================
+Judul   : Statistical Characterization of the State-of-Health of Lithium-Ion Batteries with Weibull Distribution Function, A Consideration of Random Effect Model in Charge Capacity Decay Estimation
+DOI     : 10.3390/batteries3040032
+Status  : gold (Open Access)
+Lisensi : cc-by, cc-by-sa
+
+Catatan : Open Access berlisensi Creative Commons; boleh didistribusikan ulang DENGAN ATRIBUSI
+kepada penulis/penerbit asli. Diverifikasi via Unpaywall (https://unpaywall.org).

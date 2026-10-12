@@ -1,0 +1,45 @@
+PAPER 014 - Shadi et al. (2026)
+Judul   : Survival Models for Predictive Maintenance and Remaining Useful Life in Sensor-Enabled Smart Energy Networks: A Review
+Jurnal  : Sensors | Scopus Q1 (SCImago SJR Best Quartile) | DOI 10.3390/s26061915
+Pilar   : A. Survival Analysis & Censored Data
+Relevansi: Inti-Metode  (RUL + survival/censoring + uncertainty + keputusan; domain energi, bukan membran)
+
+KARAKTERISTIK STUDI
+Tinjauan metodologis model survival (time-to-event) untuk predictive maintenance (PdM) dan estimasi RUL pada jaringan energi pintar berbasis sensor (distribusi listrik dan district heating/DHN). Menekankan bahwa censoring dan truncation adalah karakteristik inti data lapangan (banyak aset belum gagal, pemeliharaan preventif menghentikan pengamatan).
+
+METODE
+- Taksonomi empat keluarga: non-parametrik (KM, Nelson-Aalen), semi-parametrik (Cox PH, Cox time-varying), parametrik (Weibull, Gamma, Gompertz, Exponential, AFT log-normal/log-logistic), learning-based (RSF, Neural Cox/DeepSurv, Neural Weibull, Transformer survival).
+- Likelihood sadar-censoring L = prod f(t_i)^delta_i S(t_i)^(1-delta_i) sebagai dasar pelatihan.
+- Antarmuka keputusan eksplisit: risk ranking, horizon failure probability, aturan intervensi ambang, distribusi RUL.
+- Sintesis metrik evaluasi: C-index/time-dependent AUC (diskriminasi), ECE/D-calibration (kalibrasi), MAE sadar-censoring, Brier/IBS (proper scoring).
+
+DATA
+Tidak ada data primer (review). Menyertakan tabel dataset publik relevan (mis. 93 substation DHN/73 fault; 36 turbin angin; 2904 pengukuran saluran; transformator 376/589 sampel). Contoh aplikasi: kabel MV/HV, transformator distribusi, switchgear, pipa DHN, pompa.
+
+TEMUAN UTAMA
+- Censoring/truncation (right, interval, left; left/right/double truncation) harus dimodelkan eksplisit; mengabaikannya -> bias.
+- Pemetaan model ke data & tujuan: model sederhana (Cox/Weibull) untuk data statis + kegagalan jarang; model kompleks (RSF/Transformer survival) untuk data sensor kaya namun butuh data besar.
+- Keluaran survival diterjemahkan ke keputusan: prioritisasi penggantian, proyeksi kegagalan multi-tahun, benchmark anggaran; aturan intervensi berbasis ambang.
+- Evaluasi harus menggabungkan diskriminasi + kalibrasi + akurasi probabilistik (Brier/IBS), bukan hanya RMSE.
+
+RELEVANSI KE TESIS
+Peta metodologis paling lengkap di korpus ini: memberi justifikasi teoritis untuk memakai survival analysis + model parametrik/learning-based + censoring-aware likelihood + kuantifikasi ketidakpastian pada RUL. Domain bukan membran. Tier: Inti-Metode.
+
+JUSTIFIKASI DIMENSI (per d1-d8)
+- d1 = 1: kovariat multi-sensor/time-varying (SCADA, suhu, tekanan, flow, PD, DGA).
+- d2 = 1: definisi formal T, S(t), h(t), H(t), RUL & kuantil.
+- d3 = 1: inti tinjauan - censoring/truncation + likelihood censoring-aware + Weibull/hazard/neural Weibull.
+- d4 = 1: Cox PH, RSF, Neural Cox, Neural Weibull, Transformer survival.
+- d5 = 1: prediction interval, kalibrasi (ECE/D-calibration), Brier/IBS.
+- d6 = 1: risk ranking, horizon failure probability, aturan intervensi ambang, penjadwalan penggantian & anggaran.
+- d7 = "" : domain jaringan energi, bukan membran/RO.
+- d8 = 1: data kecil/kegagalan langka/censoring berat, Bayesian/hierarchical, pooling lintas utility.
+
+KUALITAS (skor 9/10)
+Q1=1; Q2=1; Q3=1; Q4=0,5 (protokol pencarian sistematis tak dirinci); Q5=1 (bagian metrik evaluasi lengkap); Q6=1; Q7=1; Q8=1. Jumlah 7,5/8 -> 9.
+
+LIMITASI
+Protokol pencarian tak dirinci; domain non-membran; tak ada data primer; sebagian klaim bersumber dari studi yang tidak diverifikasi ulang.
+
+BUKTI (fig/table/eq)
+Eq. 1-8 (S/h/H/RUL); Eq. 10 (aturan intervensi); Eq. 18-34 (model parametrik); Eq. 35-36 (likelihood censoring); Eq. 40 (Neural Cox); Eq. 45-49 (Brier/AUC/ECE/MAE/IBS); Table 2-4; Fig. 1 (taksonomi), Fig. 8 (peta aplikasi).

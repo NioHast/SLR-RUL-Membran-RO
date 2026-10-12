@@ -1,0 +1,47 @@
+PAPER 075 - Zhou et al. (2023)
+Judul   : Multiform Informed Machine Learning Based on Piecewise and Weibull for Engine Remaining Useful Life Prediction
+Jurnal  : Sensors | Scopus Q1 (SCImago SJR Best Quartile) | DOI 10.3390/s23125669
+Pilar   : B. Deep Learning RUL
+Relevansi: Inti-Metode  (RUL + pengetahuan keandalan/Weibull dalam DL; tanpa pencensoringan)
+
+KARAKTERISTIK STUDI
+Mengusulkan Informed Machine Learning (IML) "multiform" untuk RUL aero-engine. Dua bentuk pengetahuan rekayasa keandalan diintegrasikan: (1) Piecewise RUL untuk pelabelan data, (2) fungsi kumulatif Weibull sebagai knowledge-based loss. Tujuan: memanfaatkan pengetahuan domain agar model ML lebih akurat, stabil, dan interpretable tanpa arsitektur kompleks, khususnya pada kondisi operasi kompleks (FD002/FD004).
+
+METODE
+- Kerangka IML (mengikuti Rueden et al.): knowledge source (reliability engineering), knowledge representation (Piecewise RUL + Weibull CDF, Eq. 1), knowledge integration (label pada data latih + loss function).
+- Loss gabungan (Eq. 3-5): L = L_label + lambda*L_domain; tiga varian Weibull (MSE/RMSE/RMSLE) (Tabel 2-3).
+- Parameter Weibull ditetapkan dari fitting failure-time C-MAPSS: beta=2, eta=90 (rentang (1,2) dan (70,100), Tabel 1); RULmax diuji 100-150.
+- Backbone: LSTM (3 hidden layer, 100 neuron, dropout 0,5, Adam lr 0,0002, batch 128).
+- Praproses: K-means condition recognition + min-max normalisasi (Eq. 6) + sliding window (30). Metrik: RMSE (Eq. 7) & Score PHM (Eq. 8); 15 ulangan.
+
+DATA
+NASA C-MAPSS: FD001 (100/100 engine, 1 kondisi, 1 fault), FD002 (260/259, 6 kondisi), FD003 (100/100), FD004 (249/248, 6 kondisi). 21 sensor, window 30, 24 fitur, split latih/validasi 9:1.
+
+TEMUAN UTAMA
+- Ablation FD002: RMSE None 27,46 -> Piecewise 14,63 -> Weibull 23,39 -> Piecewise+Weibull 13,13 (kombinasi terbaik).
+- Weibull-RMSLE-Comb paling akurat (FD001/FD003/FD004) dan paling stabil (FD002).
+- FD002/FD004 rata-rata RMSE 14,57 & Score 923, mengalahkan MSTformer (14,76/1056): RMSE -1,29%, Score -12,59%.
+- Model lebih konservatif (prediksi lebih awal) karena pengetahuan reliability -> meningkatkan safety.
+- RULmax optimal ~125 (FD001/FD003), ~130 (FD002/FD004).
+
+RELEVANSI KE TESIS
+Relevan sebagai preseden mengintegrasikan pengetahuan keandalan (distribusi Weibull / failure probability) ke dalam pipeline DL untuk RUL - sejalan dengan gagasan menggabungkan survival/reliability dan deep learning pada tesis. Namun tidak memodelkan data tersensor (Weibull dipakai sebagai loss, bukan model waktu-hidup), tidak mengkuantifikasi ketidakpastian prediksi RUL, dan domainnya aero-engine. Karena itu tier Inti-Metode (RUL + Weibull).
+
+JUSTIFIKASI DIMENSI (per d1-d8)
+- d1 = 1: 21 sensor deret waktu multivariat C-MAPSS + window 30.
+- d2 = 1: RUL via Piecewise + ambang RULmax (Eq. 2).
+- d3 = "" : tanpa survival/hazard/censoring; Weibull CDF sebagai loss/reliability, data run-to-failure tanpa censoring.
+- d4 = 1: LSTM + Weibull-combined loss.
+- d5 = "" : hanya 95% CI parameter Weibull (Tabel 1), bukan ketidakpastian prediksi RUL.
+- d6 = "" : motivasi maintenance/PHM tanpa model keputusan konkret.
+- d7 = "" : objek aero-engine, bukan membran.
+- d8 = "" : klaim membantu keterbatasan data, tetapi eksperimen memakai C-MAPSS lengkap; tanpa transfer/hierarchical.
+
+KUALITAS (skor 8/10)
+Q1=1; Q2=1; Q3=1 (C-MAPSS publik, 4 sub-dataset, 15 ulangan); Q4=0,5 (parameter rinci, tanpa pernyataan kode); Q5=1 (RMSE+Score, ablation, SOTA); Q6=N/A (tanpa censoring); Q7=0,5 (CI parameter Weibull, tanpa interval RUL); Q8=0,5 (motivasi maintenance tanpa model). Total 7 item, jumlah 5,5 -> 8.
+
+LIMITASI
+Data simulasi; tanpa ketidakpastian prediksi; tanpa censoring; klaim small-data belum dibuktikan.
+
+BUKTI (fig/table/eq)
+Eq. (1)-(8); Table 1-7; Fig. 6 (framework), Fig. 11 (ablation), Fig. 12-13, Fig. 14.

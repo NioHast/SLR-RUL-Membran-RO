@@ -1,0 +1,45 @@
+PAPER 012 - Gao et al. (2025)
+Judul   : A Neural Network-Based Survival Analysis Model Considering Censored Data for Failure Prediction
+Jurnal  : IEEE Transactions on Automation Science and Engineering | Scopus Q1 (SCImago SJR Best Quartile) | DOI 10.1109/TASE.2025.3640217
+Pilar   : A. Survival Analysis & Censored Data
+Relevansi: Inti-Metode  (RUL + survival/censoring/Weibull; domain non-membran)
+
+KARAKTERISTIK STUDI
+Mengusulkan Bayesian LSTM-SURV yang menggabungkan survival analysis dengan neural network untuk memodelkan hubungan non-linear antara sinyal degradasi multi-sensor dan RUL dengan adanya data tersensor. Alih-alih memprediksi RUL langsung, model memprediksi distribusi masa pakai (Weibull), sehingga ketidakpastian dapat dikuantifikasi. Motivasi: di lapangan, proporsi besar data tersensor (mis. 90,2% heart failure, 98,8% hard disk, >95% railway/aviation).
+
+METODE
+- Bayesian LSTM-SURV: LSTM -> dropout -> FC1 -> FC2 -> output parameter Weibull (lambda scale, k shape) via Softplus.
+- Loss = likelihood survival analysis: untuk data lengkap f(t_i), untuk tersensor S(t_i); ditambah penalti k>1.
+- Pemodelan mixed-effects Bayesian untuk denoising sinyal + Bayesian updating pada tahap online (transfer informasi prior ke unit uji).
+- Hyperparameter via Bayesian optimization + 5-fold CV; benchmark DeepSurv dan TSNN.
+
+DATA
+Simulasi: 2 sensor, regresi polinomial (1,t,t^2) + random effects; 500 unit latih, 100 unit uji; variasi p1 (persen data lengkap=0,3/0,5/0,7) dan p2 (persen waktu pencensoringan=0,2/0,4/0,6/0,8). Kasus nyata: C-MAPSS FD001 (100 unit latih/20.631 siklus; 100 unit uji/13.096 siklus).
+
+TEMUAN UTAMA
+- Loss likelihood SA memungkinkan NN memakai data tersensor tanpa label RUL; menghindari bias akibat mengabaikan data tersensor.
+- RMSE terbaik 4,420 (p1=0,7, p2=0,8) mengalahkan TSNN (6,757) dan DeepSurv (25,299). DeepSurv terburuk karena hanya pakai observasi terakhir.
+- Output distribusi (PDF, survival function, 90% CI): semua true lifetime contoh jatuh dalam 90% CI; P_CI meningkat saat unit mendekati kegagalan.
+- Bayesian updating menurunkan noise dan memperbaiki prediksi unit berdata sedikit (awal prediksi condong ke tren populasi).
+
+RELEVANSI KE TESIS
+Sangat relevan sebagai kerangka metode: kombinasi tepat survival analysis + deep learning + data tersensor + ketidakpastian, yang menjadi inti proposal tesis. Kekurangannya domain non-membran (turbin gas) dan tidak menganalisis keputusan pemeliharaan spesifik. Tier: Inti-Metode.
+
+JUSTIFIKASI DIMENSI (per d1-d8)
+- d1 = 1: input sinyal degradasi multi-sensor deret waktu.
+- d2 = 1: definisi waktu kegagalan, indikator survival d_i, S_i(t), RUL.
+- d3 = 1: memodelkan data tersensor (likelihood f^d * S^(1-d), Weibull, uji p2 0,2-0,8) - bukan sekadar kata.
+- d4 = 1: LSTM + Bayesian NN; benchmark DeepSurv & TSNN.
+- d5 = 1: distribusi Weibull, 90% CI (P_CI), posterior Bayesian.
+- d6 = "" : hanya motivasi umum dukungan keputusan; tidak ada model jadwal/biaya/DSS.
+- d7 = "" : domain turbin gas, bukan membran/RO.
+- d8 = 1: data tersensor dominan + transfer Bayesian + uji datasedikit (p1=0,3).
+
+KUALITAS (skor 9/10)
+Q1=1; Q2=1; Q3=1; Q4=0,5 (kode tidak publik); Q5=1 (simulasi+C-MAPSS, benchmark, CV); Q6=1 (penanganan censoring inti); Q7=1 (CI 90%/posterior); Q8=0,5 (motivasi PdM tanpa analisis keputusan). Jumlah 7/8 -> 9.
+
+LIMITASI
+Kode tidak publik; keputusan pemeliharaan tak dianalisis; domain non-membran; bias kecil dari estimasi dua tahap.
+
+BUKTI (fig/table/eq)
+Eq. 16-20 (loss likelihood Weibull + S); Eq. 21-23 (RUL via Bayesian updating); Table II (RMSE vs TSNN/DeepSurv); Fig. 3 (RMSE vs p1/p2); Fig. 4 (PDF + 90% CI); Fig. 5-6 (survival curve, P_CI); Fig. 7 (Bayesian update).

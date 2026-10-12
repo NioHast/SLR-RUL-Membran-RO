@@ -1,0 +1,94 @@
+{
+  "no": 81,
+  "judul": "Bearing Remaining Useful Life Prediction Based on Naive Bayes and Weibull Distributions",
+  "penulis": "Nannan Zhang, Lifeng Wu, Zhonghua Wang, Yong Guan",
+  "tahun": 2018,
+  "jurnal": "Entropy (MDPI), 20(12):944, ISSN 1099-4300",
+  "doi": "10.3390/e20120944",
+  "kuartil": "Q2",
+  "pilar": "Prognostics & RUL prediction (klasifikasi Bayesian + distribusi Weibull)",
+  "ringkasan": "Paper ini mengusulkan metode data-driven untuk memprediksi RUL bearing berbasis klasifikasi Naive Bayes (NB) dengan pembentukan fitur degradasi memakai distribusi Weibull yang diperluas (Universal Failure Rate Function, UFRF). Enam belas fitur statistik time-domain diekstraksi dari sinyal vibrasi, lalu diseleksi berdasarkan korelasi terhadap RMS (threshold 0,9 menjadi 6 fitur) dan difit oleh UFRF pada tiga tahap degradasi sebagai input pelatihan NB. Klasifikasi lima kelas (health states + empat tahap degradasi) dihaluskan dengan exponential smoothing untuk menghasilkan prediksi RUL; hasilnya lebih akurat dibanding referensi pada data run-to-failure IMS/Cincinnati. Meski memakai distribusi Weibull dan fungsi hazard (UFRF), metode ini tidak menangani data tersensor (censoring).",
+  "kontribusi": "Menunjukkan penggunaan Weibull/fungsi hazard (UFRF) untuk memuluskan fitur degradasi sebelum klasifikasi NB guna prediksi RUL. Kaitannya dengan tesis: paper ini satu-satunya dari tiga yang menyentuh 'bahasa' survival analysis (Weibull/hazard), namun tidak memodelkan censoring maupun survival regression, sehingga tetap meninggalkan celah untuk survival analysis dengan data tersensor pada RUL membran.",
+  "temuan_kunci": [
+    "RMS dipakai sebagai indeks degradasi utama; seleksi korelasi (T=0,9) mereduksi 16 fitur menjadi 6 fitur (F1,F3,F4,F5,F8,F9).",
+    "UFRF (Weibull diperluas): f(delta,k,b,c) = b + c*(k/delta^k)*t^(k-1) memfit fungsi karakteristik pada tiga tahap degradasi (normal, continuous recession, final failure).",
+    "NB mengklasifikasikan degradasi ke 5 label (1=normal; 2-5 = 25/50/90/100% atau setara per bearing).",
+    "Akurasi klasifikasi NB: bearing 1 = 80,9% (vs referensi 74,2%), bearing 3 = 90,2%, bearing 4 = 62,94% (kelas 4 = 0%).",
+    "Error prediksi RUL (e rata-rata |prediksi-aktual|): bearing 1 = 0,1173 (ref 4,61), bearing 3 = 0,0402 (ref 0,98), bearing 4 = 0,6345.",
+    "RUL dihasilkan sebagai point estimate via exponential smoothing (konstanta z = 0,08/0,05/0,07 untuk bearing 1/3/4); tidak ada interval kepercayaan."
+  ],
+  "dimensi": {
+    "d1": "1",
+    "d2": "1",
+    "d3": "1",
+    "d4": "1",
+    "d5": "",
+    "d6": "",
+    "d7": "",
+    "d8": ""
+  },
+  "alasan_dimensi": {
+    "d1": "Data multi-kanal deret waktu: sinyal vibrasi dari dua accelerometer (kanal x dan y) disampling 20 kHz tiap 10 menit; 16 fitur statistik time-domain dihitung sepanjang waktu hingga run-to-failure.",
+    "d2": "Mendefinisikan RUL dan tahap kegagalan secara eksplisit (label 100% of failure, failure threshold pada titik 950/2120 untuk bearing 1/3; tiga tahap degradasi dengan rasio 0.5:0.2:0.3).",
+    "d3": "Memodelkan Weibull/fungsi hazard secara aktual: distribusi Weibull (2 & 3 parameter) dan Universal Failure Rate Function (UFRF, fungsi failure-rate berbasis Weibull diperluas) memfit fitur degradasi per tahap. Ini tergolong pemodelan survival/Weibull/hazard meskipun bukan dalam kerangka censoring.",
+    "d4": "Menggunakan model spesifik: Naive Bayes (classifier Bayesian dengan asumsi independensi kondisional, atribut kontinu Gaussian).",
+    "d5": "Tidak melaporkan kuantifikasi ketidakpastian prediktif: RUL berupa point estimate via exponential smoothing; tidak ada CI/posterior/interval meskipun NB menghasilkan probabilitas kelas.",
+    "d6": "Tidak mengusulkan/menganalisis keputusan pemeliharaan spesifik; hanya pernyataan umum di pendahuluan/kesimpulan bahwa prediksi RUL dapat meningkatkan keandalan dan menurunkan biaya pemeliharaan, tanpa jadwal/biaya/DSS.",
+    "d7": "Bukan membran/RO/desalination: objek adalah rolling bearing, tanpa unsur fouling membran.",
+    "d8": "Tidak ada unsur small-data/transfer/hierarchical/all-censored yang dinyatakan secara eksplisit; data run-to-failure lengkap (3 bearing). Pelatihan memakai data UFRF-fitted berskala besar (984-2156 sampel)."
+  },
+  "relevansi": "Inti-Metode",
+  "kualitas": {
+    "skor": 4,
+    "rincian": {
+      "Q1": 1,
+      "Q2": 0.5,
+      "Q3": 0.5,
+      "Q4": 0.5,
+      "Q5": 0.5,
+      "Q6": "N/A",
+      "Q7": 0,
+      "Q8": 0
+    },
+    "catatan": "RQ jelas (Q1=1). Kecukupan metode sedang: pipeline (ekstraksi fitur -> UFRF -> NB -> exponential smoothing) koheren, tetapi mengubah klasifikasi menjadi RUL via smoothing bersifat heuristik dan akurasi kelas sangat rendah pada bearing 4 (Q2=0.5). Data vibrasi run-to-failure IMS/Cincinnati valid namun hanya 3 bearing, tanpa validasi silang (Q3=0.5). Reproduksibilitas sedang: parameter UFRF 'dipilih acak lalu disetel manual', tanpa kode (Q4=0.5). Evaluasi memadai secara laporan (akurasi + error e + perbandingan), tetapi bearing 4 error besar (0,6345) dan tanpa cross-validation (Q5=0.5). Censoring tidak ditangani (Q6=N/A). Tidak ada pelaporan ketidakpastian prediktif (Q7=0). Tidak ada keterkaitan operasional ke keputusan pemeliharaan (Q8=0). Skor = round(3,0/7*10) = 4."
+  },
+  "data_kuantitatif": {
+    "dataset": "IMS / University of Cincinnati run-to-failure bearing vibration dataset (Rexnord ZA-2115, 2000 rpm, load 2724 kg)",
+    "ukuran": "3 bearing: Set No.2 Bearing1 (944 sampel, out race), Set No.1 Bearing3 (2156, inner race), Set No.1 Bearing4 (2156, roller); 16 fitur time-domain per sampel; sampling 20 kHz tiap 10 menit selama 35 hari",
+    "metrik": "Akurasi klasifikasi NB (%), error prediksi e = (1/n) sum |s_t - l_t|"
+  },
+  "metode": "Data-driven RUL: (1) akuisisi sinyal vibrasi run-to-failure; (2) ekstraksi 16 fitur statistik time-domain; (3) seleksi fitur berbasis korelasi dengan RMS (threshold T=0,9 -> 6 fitur); (4) fitting fitur degradasi dengan UFRF (Weibull diperluas, parameter delta,k,b,c per tahap degradasi); (5) pelatihan klasifikasi Naive Bayes 5 kelas dengan data UFRF-fitted; (6) pengujian NB dengan data degradasi asli; (7) exponential smoothing (s_t = z*l_t + (1-z)*s_{t-1}) untuk mengubah hasil klasifikasi menjadi tren RUL.",
+  "limitasi": [
+    "Akurasi klasifikasi buruk pada beberapa kelas (bearing 4 total 62,94% dan kelas 4 = 0%; bearing 3 kelas 3 = 16,2%), menunjukkan ketidakstabilan model.",
+    "Pemilihan parameter UFRF 'first randomly generated... then the optimal parameters are obtained by adjusting' -> subjektif dan sulit direproduksi.",
+    "RUL hanya point estimate; tidak ada interval kepercayaan/ketidakpastian.",
+    "Tidak menangani data tersensor (censoring).",
+    "Hanya 3 bearing dengan jenis fault berbeda; tanpa cross-validation atau evaluasi pada unit baru.",
+    "Transformasi kelas klasifikasi menjadi RUL bergantung pada konstanta smoothing z yang disetel manual per bearing."
+  ],
+  "funding_coi": "Funding: National Natural Science Foundation of China (No. 71601022), Natural Science Foundation of Beijing (4173074), Key Project B Class of Beijing Natural Science Fund (KZ201710028028), Capacity Building for Sci-Tech Innovation-Fundamental Scientific Research Funds (025185305000-187), dan Youth Innovative Research Team of Capital Normal University. Conflicts of Interest: 'The authors declare no conflict of interest.'",
+  "status_inklusi": "diterima",
+  "figur_dibaca": [
+    {
+      "file": "figures/_page_4_Figure_10.jpeg",
+      "isi": "Figure 1 - Bearing RUL prediction model framework: tiga langkah (Feature construction: akuisisi vibrasi, ekstraksi fitur time-domain, seleksi berbasis RMS; Class Model construction: fitting fitur berbasis WD, Training NB dan Test NB; RUL construction: model prediksi RUL dan output hasil)."
+    },
+    {
+      "file": "figures/_page_15_Figure_7.jpeg",
+      "isi": "Figure 12 - Hasil prediksi RUL (a,b,c untuk bearing 1,3,4): kurva life percentage (%) vs time (10 menit), membandingkan Actual (bintang merah) dan Predicted (lingkaran biru); prediksi mengikuti tren degradasi bertahap dan kadang mendahului nilai aktual."
+    },
+    {
+      "file": "figures/_page_13_Figure_5.jpeg",
+      "isi": "Figure 11 - Klasifikasi data degradasi menjadi 5 label berurut (0%->100% of failure) untuk setiap bearing, dengan batas kelas pada titik waktu dan persentase kegagalan yang berbeda per bearing."
+    }
+  ],
+  "bukti": [
+    "Abstract: 'the improved Weibull distributions (WD) algorithm is used to fit the fluctuation feature of bearing at different recession stages, which is used as input of Naive Bayes (NB) training stage.'",
+    "Sect. 2.2: 'An improved WD proposed in [26] is called Universal Failure Rate Function (UFRF), and the UFRF formula is defined as: f(delta,k,b,c) = b + c*(k/delta^k)*t^(k-1)' -> dasar d3.",
+    "Sect. 3.1.1: 'there are two ICP-based Accelerometers... to measure the vibration data along the x and y of channel signals' -> dasar d1.",
+    "Tables 8-10: lima kelas (normal, 25/30/40%, 50/60/80%, 90/95%, 100% of failure) dan jumlah data latih/uji.",
+    "Table 11-13: akurasi NB (80,9% / 90,2% / 62,94%); Table 15: error e (0,1173 / 0,0402 / 0,6345).",
+    "Sect. 3.2: 'The selection of parameters is first randomly generated according to the distribution rules of the WD distribution, and then the optimal parameters are obtained by adjusting the parameters according to the real data.' (limitasi reproduksibilitas).",
+    "Sect. 4: 'an exponential distribution is used to predict bearing's RUL' - RUL berupa point estimate, tanpa interval."
+  ]
+}

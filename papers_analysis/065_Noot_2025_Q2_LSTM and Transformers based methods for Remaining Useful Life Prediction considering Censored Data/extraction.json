@@ -1,0 +1,46 @@
+{
+ "no": 13,
+ "judul": "LSTM and Transformers based methods for Remaining Useful Life Prediction considering Censored Data",
+ "penulis": "Jean-Pierre Noot, Mikael Martin, Etienne Birmelé",
+ "tahun": 2025,
+ "jurnal": "International Journal of Prognostics and Health Management",
+ "doi": "10.36001/IJPHM.2025.v16i2.4260",
+ "kuartil": "Scopus Q2 (SCImago SJR Best Quartile)",
+ "pilar": "A. Survival Analysis & Censored Data",
+ "ringkasan": "Artikel mengadaptasi arsitektur Transformer DAST dan LSTM menjadi ordinal regression (OR) agar mampu menangani data tersensor kanan (right-censored) pada prediksi RUL. OR mengodekan RUL menjadi vektor status masa depan (0/1/-) dan loss BCE dimask pada koordinat tersensor, memungkinkan pemanfaatan unit yang diganti sebelum gagal. Dievaluasi pada C-MAPSS dan N-CMAPSS dengan tingkat pencensoringan artifisial 0-90%, metode ini setara SOTA pada data tanpa sensor dan lebih unggul pada pencensoringan tinggi pada dataset besar; conformal prediction dipakai untuk interval kepercayaan.",
+ "kontribusi": "Menunjukkan cara menggabungkan arsitektur deep-learning RUL modern (LSTM/Transformer) dengan penanganan data tersensor eksplisit dan interval prediksi conformal - dua komponen inti metode tesis, meski domainnya bukan membran.",
+ "temuan_kunci": [
+  "Ordinal regression memungkinkan prediksi RUL memakai unit tersensor kanan (diganti sebelum gagal) dengan memask koordinat status yang tidak diketahui pada loss BCE.",
+  "Pada data tanpa sensor, DAST-OR/LSTM-MLP-OR setara dengan metode RUL langsung SOTA; pada pencensoringan tinggi (90%) OR lebih tahan degradasi performa (DAST-ORE RMSE 15,80 vs LSTM-ORCE 20,38 pada FD001).",
+  "Pilihan arsitektur bergantung kompleksitas data: DAST lebih baik pada satu kondisi operasi, LSTM lebih baik pada enam kondisi operasi (FD002/FD004).",
+  "Conformal prediction memberi interval prediksi terkalibrasi (coverage mendekati 1-alpha); namun OR tidak efektif bila jumlah unit tersensor sangat sedikit (N-CMAPSS, <10 unit/kondisi)."
+ ],
+ "dimensi": {"d1": "1", "d2": "1", "d3": "1", "d4": "1", "d5": "1", "d6": "", "d7": "", "d8": "1"},
+ "alasan_dimensi": {
+  "d1": "Input adalah deret waktu multi-sensor (14-21 sensor C-MAPSS) dengan sliding window W=40-80; sinyal per unit diproses sebagai matriks (p, W).",
+  "d2": "Mendefinisikan T* (waktu gagal), C (waktu tersensor), T=min(C,T*), R_t=min(T*-t, R_max), dan menyatakan bahwa untuk data tersensor hanya diketahui R_t >= min(C-t,R_max).",
+  "d3": "ACTUALLY menangani data tersensor kanan: ordinal regression memask koordinat status 'tidak diketahui' pada loss BCE; pencensoringan artifisial 0-90%; dibandingkan antar tingkat censoring.",
+  "d4": "Model spesifik: Transformer DAST/DAST-OR dan LSTM-MLP-OR (deep learning deret waktu) dengan ordinal regression.",
+  "d5": "Mengkuantifikasi ketidakpastian via conformal prediction: interval prediksi dengan coverage 1-alpha (uji pada 0,50/0,75/0,95) dan lebar interval dilaporkan.",
+  "d6": "Memotivasi predictive maintenance/CBM dan pengurangan biaya secara umum, tetapi tidak menganalisis keputusan pemeliharaan spesifik (jadwal/biaya/DSS).",
+  "d7": "Domain adalah turbofan C-MAPSS/N-CMAPSS; bukan membran/RO/desalinasi/fouling.",
+  "d8": "Fokus pada data tersensor dominan (hingga 90% unit tersensor) dan analisis dataset kecil (N-CMAPSS <10 unit/kondisi) serta kegagalan OR pada data kecil."
+ },
+ "relevansi": "Inti-Metode",
+ "kualitas": {"skor": 9, "rincian": {"Q1": 1, "Q2": 1, "Q3": 1, "Q4": 1, "Q5": 1, "Q6": 1, "Q7": 1, "Q8": 0.5}, "catatan": "Metode inti (deep learning + censoring + conformal uncertainty) dengan kode publik (Pytorch), evaluasi menyeluruh pada 4 subset C-MAPSS + N-CMAPSS, benchmark SOTA dan asymmetric score. Q8 hanya 0,5 karena keputusan pemeliharaan tak dimodelkan."},
+ "data_kuantitatif": {"dataset": "C-MAPSS (FD001-FD004, NASA turbofan) dan N-CMAPSS DS02", "ukuran": "FD001: 100 train/100 test; FD002: 260/259; FD003: 100/100; FD004: 249/248; N-CMAPSS DS02: 6 unit; 14-21 sensor", "metrik": "RMSE (DAST-ORE terbaik 8,54 pada FD003 tanpa sensor; 15,80 pada FD001 pc=90%); asymmetric score; coverage conformal 1-alpha"},
+ "metode": "Ordinal regression untuk RUL dengan data tersensor (target vektor status 0/1/-), arsitektur DAST (Transformer dual-aspect self-attention) dan LSTM-MLP-OR; ensemble dari beberapa pelatihan; conformal prediction split untuk interval; loss BCE termask.",
+ "limitasi": [
+  "Tidak efektif bila jumlah unit tersensor sangat sedikit (dataset kecil N-CMAPSS).",
+  "OR meningkatkan waktu latih (DAST-OR 5-10x, LSTM-OR 20-25x lebih lambat).",
+  "Keputusan pemeliharaan/biaya tidak dimodelkan.",
+  "Domain non-membran; pencensoringan artifisial, bukan alami."
+ ],
+ "funding_coi": "Artikel akses terbuka (CC BY 3.0 US); afiliasi penulis mencakup Liebherr Components Colmar; tidak ada pernyataan konflik kepentingan eksplisit pada teks.",
+ "status_inklusi": "diterima",
+ "figur_dibaca": [
+  {"file": "_page_2_Figure_19.jpeg", "isi": "Fig. 1 - arsitektur DAST: input embedding + positional encoding yang bercabang ke Sensor Encoder dan Time-step Encoder, digabung di decoder + feed forward, menghasilkan prediksi RUL."},
+  {"file": "_page_10_Figure_3.jpeg", "isi": "Fig. 8 - plot RUL terprediksi vs target dengan interval kepercayaan (1-alpha=0,75) dua unit (FD001 pc=0%, FD003 pc=50%); pita CI melebar saat RUL menurun; DAST-E umumnya lebih dekat ke target."}
+ ],
+ "bukti": ["Eq. (2)-(4): loss BCE termask & varian asimetris", "Eq. (3): pemetaan vektor OR ke RUL", "Table 4-6: RMSE C-MAPSS dengan/tanpa censoring", "Table 8: coverage conformal", "Fig. 1: arsitektur DAST", "Fig. 8: RUL + CI"]
+}

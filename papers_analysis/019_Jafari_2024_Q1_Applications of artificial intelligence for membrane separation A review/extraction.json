@@ -1,0 +1,46 @@
+{
+ "no": 26,
+ "judul": "Applications of artificial intelligence for membrane separation: A review",
+ "penulis": "Mehryar Jafari, Christina Tzirtzipi, Bernardo Castro-Dominguez",
+ "tahun": 2024,
+ "jurnal": "Journal of Water Process Engineering",
+ "doi": "10.1016/j.jwpe.2024.106532",
+ "kuartil": "Scopus Q1 (SCImago SJR Best Quartile)",
+ "pilar": "E. Membrane/RO/Desalination",
+ "ringkasan": "Tinjauan bibliometrik (PRISMA, Scopus/Web of Science, 2013-2023) atas penerapan AI pada proses separasi membran, mencakup MF, UF, NF, RO, FO, MBR, dan MD. Review memetakan algoritma (ANN dominan >150 penggunaan; RF dan SVM paling banyak di ML), rata-rata akurasi R2 per algoritma (mis. CNN ~0,98; ANN ~0,94; LR/MLR ~0,58), serta membahas fouling, optimasi proses, kendali real-time, dan tantangan keterbatasan data serta interpretabilitas.",
+ "kontribusi": "Memetakan lanskap AI untuk membran (termasuk RO dan prediksi fouling), berguna sebagai konteks pemilihan metode; tidak memakai survival/pencensoringan, tidak membangun model RUL, dan tidak membangun keputusan pemeliharaan.",
+ "temuan_kunci": [
+  "ANN adalah algoritma paling dominan (>150 penggunaan) diikuti RF dan SVM pada ML; DL umumnya memberi R2 lebih tinggi (CNN ~0,98) dibanding ML konvensional.",
+  "Fouling menjadi salah satu fokus utama penggunaan AI pada membran karena berdampak pada penurunan kinerja dan umur membran.",
+  "Srivastava et al. memakai ANN untuk prediksi kegagalan dini/pemeliharaan prediktif pabrik RO (R2=99,99 % dengan hanya 75 sampel) - berisiko overfitting.",
+  "Isu utama: keterbatasan data (data scarcity), interpretabilitas model, dan beban komputasi; masa depan: kontrol real-time, XAI, dan model hibrida fisika-data."
+ ],
+ "dimensi": {"d1": "", "d2": "", "d3": "", "d4": "1", "d5": "", "d6": "", "d7": "1", "d8": ""},
+ "alasan_dimensi": {
+  "d1": "Review tidak menyajikan data multi-sensor/deret waktu miliknya sendiri; studi-studi yang ditinjau mayoritas prediksi steady-state (flux, rejection), dengan LSTM hanya sebagian kecil. Bukan studi deret waktu.",
+  "d2": "Tidak mendefinisikan RUL/ambang kegagalan; menyebut umur/lifespan membran secara kualitatif tanpa kerangka threshold.",
+  "d3": "Tidak membahas survival/hazard/Weibull/cure maupun pencensoringan.",
+  "d4": "Inti review adalah perbandingan sistematis algoritma spesifik untuk membran (ANN, MLP, CNN, DNN, RF, SVM/SVR, XGBoost, GP/GPR, LSTM, ANFIS, dst.) beserta kelebihan/kekurangan dan rata-rata R2 (Table 1, Fig. 4).",
+  "d5": "Menyebut GP/GPRM punya 'uncertainty estimates' (Table 1) tetapi tidak ada analisis/pelaporan kuantifikasi ketidakpastian.",
+  "d6": "Menyebut kendali real-time, model predictive control, dan early fault detection, tetapi tidak menyusun keputusan/jadwal/biaya pemeliharaan; hanya sebagai arah masa depan.",
+  "d7": "Subjek review adalah teknologi membran untuk separasi, termasuk RO, UF, NF, MF, FO, MBR, MD, dan fouling.",
+  "d8": "Keterbatasan data (data scarcity) dibahas sebagai tantangan, tetapi review tidak menerapkan small-data/transfer/hierarchical; bukan metode."
+ },
+ "relevansi": "Konteks",
+ "kualitas": {"skor": 9, "rincian": {"Q1": 1, "Q2": 1, "Q3": 1, "Q4": 1, "Q5": 0.5, "Q6": "N/A", "Q7": "N/A", "Q8": "N/A"}, "catatan": "Protokol PRISMA jelas (409 artikel -> 313 -> analisis), basis data WoS/Scopus terdokumentasi, taksonomi algoritma dan aplikasi per jenis membran lengkap, serta peringatan hati-hati saat menginterpretasi R2. Kelemahan: hanya tinjauan literatur (tanpa eksperimen baru), mayoritas studi steady-state, sebagian klaim akurasi tidak divalidasi. Q6-Q8 tidak berlaku."},
+ "data_kuantitatif": {"dataset": "Literatur Scopus/Web of Science 2013-2023 (AI untuk separasi membran)", "ukuran": "409 artikel diperoleh -> 313 setelah pra-screening -> 109 dikeluarkan -> analisis kategorikal; >50 algoritma AI terdokumentasi", "metrik": "Rata-rata R2: CNN ~0,98; ANN ~0,94; MLP ~0,91; GBR/GBDT ~0,97; RF ~0,84; SVM/SVR ~0,86; LR/MLR ~0,58; LSTM ~0,86"},
+ "metode": "Tinjauan bibliometrik (PRISMA) + analisis co-occurrence VOSviewer; taksonomi algoritma AI (supervised/unsupervised/reinforcement) dan tabel perbandingan kelebihan/kekurangan serta rata-rata akurasi per jenis membran.",
+ "limitasi": [
+  "Hanya tinjauan literatur; tidak ada eksperimen/validasi baru.",
+  "Cakupan 2013-2023 dan terbatas pada Scopus/WoS; mayoritas studi prediksi steady-state.",
+  "Tidak menangani survival/pencensoringan atau RUL secara eksplisit.",
+  "Tidak ada sintesis keputusan pemeliharaan berbasis biaya."
+ ],
+ "funding_coi": "Didanai University of Bath, UKRI, dan EPSRC; penulis (M. Jafari) melaporkan dukungan finansial EPSRC sebagai potensi konflik kepentingan.",
+ "status_inklusi": "diterima",
+ "figur_dibaca": [
+  {"file": "_page_4_Figure_2.jpeg", "isi": "Klasifikasi algoritma AI (unsupervised: clustering/HMM/ANN SOM-ART; supervised: SVM/KNN/DT/GB + regresi; reinforcement: Q-learning, policy gradient), pie chart platform (MATLAB 38,37 %, Python 24,24 %, R 4,4 %), dan bar chart frekuensi algoritma (ANN 154; SVM/SVR 31; RF 25; dst.)."},
+  {"file": "_page_7_Figure_2.jpeg", "isi": "Boxplot & bar chart rata-rata R2 per algoritma: DL (CNN ~0,95-0,98; ANN/MLP ~0,89-0,91) umumnya lebih tinggi; ML terbaik RSM ~0,93, GBR ~0,89; terendah LR/MLR ~0,62."}
+ ],
+ "bukti": ["Table 1: algoritma AI, kelebihan/kekurangan, jenis membran, rata-rata R2", "Fig. 1: tren publikasi & co-occurrence", "Fig. 2: klasifikasi algoritma & frekuensi", "Fig. 4: akurasi R2 ML vs DL", "Fig. 5-7: jenis membran, tujuan, input/output"]
+}

@@ -1,0 +1,90 @@
+{
+  "no": 52,
+  "judul": "Remaining Useful Life Prediction of Turbine Engines Using Multimodal Transfer Learning",
+  "penulis": "Jiaze Li, Zeliang Yang",
+  "tahun": 2025,
+  "jurnal": "Machines (MDPI)",
+  "doi": "10.3390/machines13090789",
+  "kuartil": "Scopus Q2 (SCImago SJR Best Quartile)",
+  "pilar": "D. Small-data/Transfer/Hierarchical",
+  "ringkasan": "Paper mengusulkan DMFR (Deep Multimodal Fine-tuning Regression), framework RUL yang menggabungkan multimodal (deret waktu + citra recurrence plot) dengan transfer learning dua tahap (pre-training terawasi + fine-tuning). Dievaluasi pada dataset NASA C-MAPSS turbofan dengan 12 tugas transfer lintas operating condition/fault mode; model melaporkan RMSE/MAE/R2/Score terbaik antar baseline (CNN, DNN, GRU, LSTM, RNN, TCN) dan menyajikan interval kepercayaan 95%.",
+  "kontribusi": "Menunjukkan bagaimana transfer learning dan fusi multimodal menangani skenario small-sample dan cross-condition pada RUL; relevan bagi tesis RUL membran yang menghadapi kelangkaan data dan pergeseran kondisi operasi (cocok untuk strategi small-data/transfer).",
+  "temuan_kunci": [
+    "DMFR mengungguli baseline di semua target domain; pada FD001 RMSE 0,233 (turun 9,8% vs TCN)",
+    "Modalitas citra (RP) secara umum mengalahkan modalitas temporal tunggal",
+    "Metode multimodal mengalahkan single-modal, tetapi arsitektur CNN/Transformer murni kurang memanfaatkan sinergi cross-modal",
+    "Model melaporkan interval kepercayaan 95% dan standar deviasi antar-run, menunjukkan stabilitas prediksi",
+    "Keunggulan DMFR makin besar seiring meningkatnya kompleksitas target domain (FD003)",
+    "RUL dimodelkan sebagai segmented linear RUL dengan titik R_early = 125 siklus"
+  ],
+  "dimensi": {
+    "d1": "1",
+    "d2": "1",
+    "d3": "",
+    "d4": "1",
+    "d5": "1",
+    "d6": "",
+    "d7": "",
+    "d8": "1"
+  },
+  "alasan_dimensi": {
+    "d1": "Input multi-sensor deret waktu: 30-dimensi per siklus (3 parameter operasi + 21 sensor + 6 heat encoding), diseleksi 14 kanal sensor, dengan sliding window 30 langkah waktu.",
+    "d2": "RUL didefinisikan eksplisit (jumlah siklus operasi tersisa sebelum gagal) dan dimodelkan sebagai segmented linear RUL dengan ambang R_early = 125 siklus; metrik Score C-MAPSS juga berbasis deviasi dari RUL aktual.",
+    "d3": "Tidak memodelkan data tersensor: tidak ada survival/Weibull/hazard. Meski trajektori uji C-MAPSS berhenti sebelum kegagalan (truncated), data tidak diperlakukan sebagai censored dan tidak ada mekanisme censoring.",
+    "d4": "Model spesifik: CNN (branch citra RP), Transformer (branch deret waktu), DMFR hybrid, serta pembanding GRU/LSTM/RNN/TCN.",
+    "d5": "Mengkuantifikasi ketidakpastian: Figure 4 menampilkan 95% confidence interval dari beberapa hasil prediksi, dan Table 3 melaporkan RMSE/MAE/R2/Score dengan ± standar deviasi antar-run.",
+    "d6": "Tidak mengusulkan keputusan maintenance konkret (jadwal/biaya/DSS); hanya klaim bahwa prediksi penting untuk maintenance guidance/risk management.",
+    "d7": "Domain turbofan engine (C-MAPSS), bukan membran/RO/desalinasi/fouling.",
+    "d8": "Fokus eksplisit pada small-sample dan cross-condition via transfer learning dua tahap (pre-training + fine-tuning) untuk mengatasi pergeseran distribusi."
+  },
+  "relevansi": "Inti-Domain",
+  "kualitas": {
+    "skor": 8,
+    "rincian": {
+      "Q1": 1,
+      "Q2": 1,
+      "Q3": 1,
+      "Q4": 0.5,
+      "Q5": 1,
+      "Q6": "N/A",
+      "Q7": 1,
+      "Q8": 0
+    },
+    "catatan": "RQ jelas (RUL small-sample/cross-condition), metode mumpuni (multimodal + transfer dua tahap), data valid (C-MAPSS publik, 12 tugas transfer, split 70/15/15), evaluasi kuat (RMSE/MAE/R2/Score + CI). Reproducibility sedang: data 'on request', kode tidak tersedia. Melaporkan uncertainty (95% CI + std). Tidak menangani censoring (N/A) dan tidak mengusulkan keputusan maintenance konkret. Skor = 5,5/7*10 ≈ 8."
+  },
+  "data_kuantitatif": {
+    "dataset": "NASA C-MAPSS turbofan engine (FD001-FD004)",
+    "ukuran": "Train: 100/260/100/249 engine; Test: 100/259/100/248; OC 1/6, FM 1/2",
+    "metrik": "RMSE, MAE, R2, Score (C-MAPSS). Contoh Table 3: Task1 RMSE 31,4±3,1; Task6 RMSE 23,1±3,0; pada perbandingan 70/15/15 di FD001 DMFR RMSE 0,233 (9,8% lebih baik dari TCN)"
+  },
+  "metode": "DMFR: branch CNN untuk citra recurrence plot (30x30) + branch Transformer (4 encoder, 8 attention head) untuk deret waktu; fusion layer 2 FC; two-stage transfer (supervised pre-training di source domain + fine-tuning di target domain); min-max normalization; MSE loss.",
+  "limitasi": [
+    "Tidak memodelkan data tersensor / tidak memakai survival analysis",
+    "Tidak mengusulkan keputusan maintenance/biaya konkret",
+    "Tidak ada kode yang tersedia; data hanya 'on request'",
+    "Evaluasi pada simulator C-MAPSS, bukan data lapangan nyata",
+    "RMSE 0,233 yang dilaporkan tidak konsisten skala dengan Table 3 (kemungkinan skala/normalisasi berbeda) sehingga pembandingan langsung sulit"
+  ],
+  "funding_coi": "Tidak menerima dana eksternal. Data tersedia atas permintaan penulis. Penulis menyatakan tidak ada konflik kepentingan.",
+  "status_inklusi": "diterima",
+  "figur_dibaca": [
+    {
+      "file": "_page_4_Figure_1.jpeg",
+      "isi": "Diagram framework DMFR: tiga blok pra-pelatihan (Pre-train Transformer untuk sinyal deret waktu; Pre-train CNN untuk citra; Fine-tuning terfusi). Panah 'Transfer' menghubungkan bobot pretrained ke blok fine-tuning; kedua branch difusikan di Feature Fusion lalu menghasilkan output RUL."
+    },
+    {
+      "file": "_page_7_Figure_2.jpeg",
+      "isi": "Flowchart dua tahap: strategi pre-training multimodal (citra->CNN, time series->Transformer->prediksi RUL awal) dan mekanisme transfer dua tahap (pre-training terawasi di source + fine-tuning di target, fusi fitur heterogen di hidden layer bersama)."
+    },
+    {
+      "file": "_page_12_Figure_1.jpeg",
+      "isi": "Dua grafik prediksi RUL sepanjang siklus hidup: garis hitam = RUL aktual, merah = prediksi, pita kuning = interval kepercayaan. Sumbu X 0-130 siklus, sumbu Y RUL 0-200. Pita CI melebar seiring bertambahnya siklus (mis. unit 17 akhir ~10; unit 2 melebar di siklus 8-15)."
+    }
+  ],
+  "bukti": [
+    "Abstract: 'a key challenge in current research is how to effectively fuse multimodal data and leverage transfer learning to address RUL prediction in small-sample and cross-condition scenarios.'",
+    "Figure 4 caption/body: 'the orange-colored shaded area represents the 95% confidence interval calculated based on multiple prediction results'.",
+    "RUL definition: 'RUL refers to the time or number of operating cycles that a system, component, or machine is expected to continue operating within acceptable performance limits before failure'.",
+    "Test set description: 'the test dataset consists of time-series data that end at a specific point prior to system failure.'"
+  ]
+}

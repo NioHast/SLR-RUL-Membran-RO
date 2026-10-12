@@ -1,0 +1,47 @@
+ANALISIS PAPER 039 — Li, Li & He (2019), IEEE Access
+Judul: A Directed Acyclic Graph Network Combined With CNN and LSTM for Remaining Useful Life Prediction
+DOI: 10.1109/ACCESS.2019.2919566 | Kuartil: Scopus Q1 | Pilar indeks: B. Deep Learning RUL
+
+KARAKTERISTIK STUDI
+Studi metodologis DL untuk RUL mesin turbofan. Menawarkan arsitektur Directed Acyclic Graph (DAG) yang menempatkan CNN dan LSTM secara paralel (bukan serial seperti literatur sebelumnya), sehingga parameter kedua jalur dapat dikoreksi bersama dari galat prediksi. Klaster "Pendukung": metode RUL umum tanpa penyensoran/survival maupun domain membran.
+
+METODE
+- Input: 14 sinyal sensor C-MAPSS dipotong sliding time window (step 1) menjadi matriks {t_l x n}, lalu ditranspose & dipotong menjadi m segmen. 
+- Dua jalur paralel: jalur 1 (flatten + LSTM1); jalur 2 (2D-convolution kernel [3,2], pooling [1,2], flatten). Keluaran kedua jalur dijumlah element-wise.
+- Hasil gabungan masuk LSTM2 (last mode) lalu fully connected (1 node) → RUL.
+- Optimizer rmsprop, lr 0,005, mini-batch 100; z-score normalization; fungsi RUL piecewise-linear (max 125).
+
+DATA
+C-MAPSS FD001-FD004 (100/260/100/249 engine latih; 100/259/100/248 uji; TW 30/21/36/18). Satu kondisi operasi untuk FD001/FD003, enam untuk FD002/FD004; FD003/FD004 punya 2 mode kegagalan.
+
+TEMUAN UTAMA
+- RMSE terbaik 4 sub-dataset: 11,96/20,34/12,46/22,43 — terendah dibanding 12 metode pembanding (2016-2018).
+- Score terbaik kecuali FD003 (outlier prediksi 'late' engine #16).
+- Memperpanjang TW meningkatkan akurasi; akurasi lebih baik pada fase akhir degradasi.
+- DAG paralel lebih akurat dari CNN atau LSTM tunggal; lebih cepat dari LSTM (138,17 s vs 304,35 s).
+
+RELEVANSI KE TESIS
+Pembanding arsitektur DL RUL (paralel CNN+LSTM). Tidak menyentuh survival/penyensoran dan bukan membran. Celah: pendekatan arsitektural ini tidak memberi estimasi ketidakpastian maupun menangani observasi tersensor—dua kebutuhan inti tesis.
+
+JUSTIFIKASI DIMENSI (d1-d8)
+- d1 = "1": multi-sensor time series (14 sensor + sliding TW) — Table 1-2, Fig. 7a.
+- d2 = "1": RUL eksplisit + piecewise-linear max 125 (Section III-C, Fig. 7b).
+- d3 = "": tanpa pemodelan tersensor/survival/hazard.
+- d4 = "1": DAG network (LSTM + 2D-CNN + LSTM2 + FC).
+- d5 = "": tanpa kuantifikasi ketidakpastian (histogram/boxplot galat bukan interval prediktif).
+- d6 = "": tanpa keputusan pemeliharaan.
+- d7 = "": domain turbofan.
+- d8 = "": tanpa small-data/transfer/hierarchical.
+
+KUALITAS (skor 7/10)
+Q1=1; Q2=1; Q3=1 (benchmark C-MAPSS, 4 sub-dataset); Q4=0.5 (arsitektur & hyperparameter diberi, tanpa kode); Q5=1 (RMSE+score+12 pembanding+analisis TW & waktu latih); Q6=N/A; Q7=0 (tanpa ketidakpastian); Q8=0.5 (motivasi saja). Applicable = 7, jumlah = 5.0 -> skor = round(5.0/7*10) = 7.
+
+LIMITASI
+Tanpa penyensoran/ketidakpastian; hanya data simulasi; rentan pada kondisi campuran; TW manual; tanpa keputusan pemeliharaan.
+
+BUKTI
+- Abstrak + Index Terms.
+- Section II-A (langkah konstruksi DAG 1-7).
+- Table 1-2 (sensor & dataset), Section III-C (piecewise RUL 125).
+- Eq. 14-15 (RMSE/score), Table 4-5 (perbandingan), Table 6 (waktu latih).
+- Fig. 1 (DAG), Fig. 9-11 (hasil), Fig. 16-17 (boxplot).

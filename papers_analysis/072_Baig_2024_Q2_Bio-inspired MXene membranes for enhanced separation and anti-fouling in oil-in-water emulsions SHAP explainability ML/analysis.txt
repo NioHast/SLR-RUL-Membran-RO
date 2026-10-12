@@ -1,0 +1,45 @@
+PAPER 096 - Baig et al. (2024)
+Judul   : Bio-inspired MXene membranes for enhanced separation and anti-fouling in oil-in-water emulsions: SHAP explainability ML
+Jurnal  : Cleaner Water (Elsevier) | Scopus Q2 (ScImago SJR Best Quartile) | DOI 10.1016/j.clwat.2024.100041
+Pilar   : E. Membrane/RO/Desalination
+Relevansi: Konteks (domain membran/fouling + small-data ML + SHAP; tanpa RUL/survival/censoring)
+
+KARAKTERISTIK STUDI
+Menggabungkan sintesis/fabrikasi membran MXene berbasis keramik (MX-CM, PDMX-CM, SPDMX-CM) dengan analisis data-driven untuk mengevaluasi fouling dan efisiensi separasi emulsi minyak-dalam-air. Fokus metodologisnya adalah praproses/keandalan data (reliabilitas, kenormalan, stationeritas) dan interpretasi model ML dengan SHAP. Tidak ada prediksi umur/RUL maupun analisis survival. Termasuk pilar E (Membrane/RO/Desalination).
+
+METODE
+- Sintesis MXene tersulfonasi (etching MAX dengan HF, delaminasi, polimerisasi dopamin + 2,5-diaminobenzensulfonat), fabrikasi lapisan pada membran keramik lewat dead-end filtration.
+- Pengukuran kinerja: flux F=V/(A t); efisiensi separasi E=(1-Cf/Cp)x100; FRR=(F2/F1)x100.
+- Analisis statistik: EDA/deskriptif, differencing, Jarque-Bera (normalitas), ADF & PP (stationeritas), korelasi, ACF/PACF.
+- Explainable ML: SHAP (feature importance, summary, force, decision, dependence). Model ML tidak dispesifikasikan.
+
+DATA
+Data eksperimen sendiri: 15 observasi (siklus 1-15) per membran. Variabel keluaran: resistansi fouling dan efisiensi separasi. Data tersedia 'on request'.
+
+TEMUAN UTAMA
+- SPDMX-CM paling baik & konsisten: fouling 0,816 (SD 0,130), separasi 95,913% (SD 0,928).
+- MX-CM stationer di level I(0); PDMX-CM dan SPDMX-CM butuh differencing (I(1)/I(2)).
+- SHAP fouling: Cycle +0,09, PDMX-CM -0,06, MX-CM -0,06. SHAP separasi: MX-CM -0,01, PDMX-CM +0,01, Cycle 0,00.
+- Korelasi negatif kuat siklus-kinerja (fouling SPDMX-CM -0,957; separasi MX-CM -0,970).
+
+RELEVANSI KE TESIS
+Konteks. Sangat relevan sebagai konteks domain: membran (termasuk konteks desalinasi/water treatment) dan pengelolaan small-data (15 titik) dengan uji reliabilitas/stationeritas serta explainability SHAP. Namun tidak ada RUL, tidak ada survival/Weibull/censoring, dan model ML-nya pun tidak dispesifikasikan tanpa laporan metrik prediksi. Jadi ia menyuplai latar praproses & interpretabilitas, bukan kerangka inti (survival + censoring) yang dicari tesis.
+
+JUSTIFIKASI DIMENSI (d1-d8)
+- d1 = 1: data diperlakukan sebagai deret waktu terindeks siklus (ACF/PACF, ADF, PP), dengan korelasi antar-variabel sepanjang 15 observasi.
+- d2 = "": tidak mendefinisikan RUL/waktu kegagalan/ambang batas; output adalah resistansi fouling & efisiensi separasi.
+- d3 = "": tidak ada survival/Weibull/hazard/cure/pencensoringan.
+- d4 = "": tidak ada model spesifik yang dinamai/dijelaskan; hanya disebut 'ML models' dan ARIMA sebagai rujukan konseptual.
+- d5 = "": hanya statistik uji (p-value Jarque-Bera/ADF/PP), tanpa interval/posterior prediksi.
+- d6 = "": membahas pengurangan perawatan/penggantian & biaya serta 'decision making', tetapi tanpa model keputusan konkret.
+- d7 = 1: domain membran MXene untuk pemisahan minyak-dalam-air, fouling, pengolahan air/desalinasi.
+- d8 = 1: penanganan small-data eksplisit (15 observasi), fokus praproses dan metode tahan-overfitting.
+
+KUALITAS (skor 4/10)
+Q1=1 (tujuan jelas); Q2=0,5 (praproses & uji statistik rapi, tetapi model ML tidak dispesifikasikan); Q3=0,5 (eksperimen nyata tetapi hanya 15 observasi, tanpa hold-out); Q4=0,5 (metode dijelaskan, tanpa kode/detail model); Q5=0 (tidak ada metrik performa prediksi: RMSE/R2/akurasi); Q6=N/A; Q7=0 (tidak ada kuantifikasi ketidakpastian prediksi); Q8=0,5 (kaitan pemeliharaan/biaya hanya motivasional). Total = 3/7 -> 4,29 -> dibulatkan 4.
+
+LIMITASI
+Model ML tidak dispesifikasikan; tanpa metrik performa prediksi; data sangat kecil (15 observasi) tanpa validasi; tanpa RUL/survival/censoring; tanpa kuantifikasi ketidakpastian; data tanpa kode.
+
+BUKTI (fig/tabel/persamaan)
+Eq (1) flux; Eq (2) efisiensi separasi; Eq (3) FRR; Eq (4)-(5) SHAP; Tabel 1 deskriptif; Tabel 2-3 ADF/PP; Fig 4 ACF/PACF; Fig 5 Jarque-Bera; Fig 7 SHAP. Figure dibaca: _page_2_Figure_9 (alur eksperimen), _page_4_Figure_7 (skema ML & proses), _page_10_Figure_1 (SHAP fouling & separasi).

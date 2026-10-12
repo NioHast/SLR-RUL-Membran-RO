@@ -1,0 +1,45 @@
+PAPER 025 - Zhang et al. (2018)
+Judul   : Transfer Learning with Deep Recurrent Neural Networks for Remaining Useful Life Estimation
+Jurnal  : Applied Sciences | Scopus Q2 (SCImago SJR Best Quartile) | DOI 10.3390/app8122416
+Pilar   : D. Small-data/Transfer/Hierarchical
+Relevansi: Pendukung
+
+KARAKTERISTIK STUDI
+Mengatasi masalah utama prognostik berbasis data: sulitnya memperoleh banyak sampel progres kegagalan. Mengusulkan transfer learning untuk RUL sehingga model dapat dilatih pada dataset lain yang terkait lalu di-fine-tune ke dataset target kecil.
+
+METODE
+- Parameter-transfer: model dibagi menjadi bagian bersama W0 dan bagian spesifik (Eq. 3-6).
+- Arsitektur: dua jaringan BLSTM; tiap jaringan 4 hidden layer (64, 64, flatten, 128) dengan dropout 0,2/0,2/0,5, regularisasi L2, dan early stopping.
+- Loss = mean scoring function PHM 2008 (Eq. 10, 12); evaluasi dengan scoring function dan RMSE (Eq. 11).
+- Input: 30 siklus per sampel (window size 1); normalisasi z-score (Eq. 13); klaster kondisi operasi via K-means -> one-hot 6 dimensi.
+
+DATA
+NASA C-MAPSS (FD001-FD004), 100/260/100/249 trajektori latih; 21 sensor + 3 setting. Piece-wise linear RUL (max 130). 12 konfigurasi (4 no-transfer + 8 transfer), 10 ukuran dataset (10-100 trajektori), 3 ulangan -> 360 eksperimen.
+
+TEMUAN UTAMA
+- Transfer learning meningkatkan akurasi RUL pada hampir semua kasus, paling besar saat data target sedikit (E2: hingga 85,12%).
+- Manfaat menurun seiring bertambahnya data target (E5: 43,19% pada 10 vs 8,29% pada 60 trajektori).
+- Negative transfer: transfer dari kondisi operasi majemuk (6) ke tunggal (1) (E3, E9) merugikan karena overfitting dan perbedaan distribusi sensor.
+- Transfer tunggal->majemuk dan antar kondisi fault positif.
+
+RELEVANSI KE TESIS
+Relevan sebagai strategi mengatasi small-data pada prediksi RUL (dimensi d8), yang menjadi tantangan tesis (data kegagalan membran langka). Namun tidak memodelkan pencensoringan dan domainnya turbofan, sehingga Pendukung.
+
+JUSTIFIKASI DIMENSI (per d1-d8)
+- d1 = 1: multivariat deret waktu (21 sensor + 3 setting), sliding window 30.
+- d2 = 1: target RUL piece-wise linear (max 130).
+- d3 = "" : tanpa survival/hazard/Weibull/cure; tanpa pencensoringan.
+- d4 = 1: Bi-directional LSTM (BLSTM).
+- d5 = "" : hanya RMSE & scoring function; tanpa interval/posterior.
+- d6 = "" : hanya menyinggung maintenance preparation/late penalty; tanpa model keputusan.
+- d7 = "" : objek turbofan C-MAPSS.
+- d8 = 1: transfer learning (parameter-transfer) khusus untuk small-data RUL.
+
+KUALITAS (skor 9/10)
+Q1=1; Q2=1; Q3=1; Q4=1 (arsitektur & parameter lengkap, data publik); Q5=0,5 (hanya baseline no-transfer, tanpa SOTA lain); Q6=N/A; Q7=N/A; Q8=N/A. Jumlah 4,5/5 -> 9.
+
+LIMITASI
+Data simulasi; tanpa perbandingan SOTA; negative transfer belum terpecahkan; tanpa ketidakpastian/pencensoringan.
+
+BUKTI (fig/table/eq)
+Eq. (1)-(6), (10)-(13); Table 1, 2, 3; Figure 2; Figure 8-9.

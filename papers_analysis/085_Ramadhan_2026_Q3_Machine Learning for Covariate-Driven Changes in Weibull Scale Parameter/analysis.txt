@@ -1,0 +1,53 @@
+PAPER 79 — Ramadhan et al. (2026)
+Judul: Machine Learning for Covariate-Driven Changes in Weibull Scale Parameter
+Jurnal: Engineering, Technology & Applied Science Research (ETASR) | Q3 (SCImago SJR 2024) | DOI 10.48084/etasr.15186
+Pilar: A. Survival Analysis & Censored Data | Relevansi: Inti-Metode | Skor kualitas: 8/10
+
+KARAKTERISTIK STUDI
+Studi yang mengkritik model survival statis konvensional untuk estimasi RUL. Premis: characteristic life (parameter skala Weibull, lambda) bukan statis melainkan fungsi dinamis dari kovariat operasional/lingkungan. Model AFT klasik mengasumsikan hubungan linear yang terlalu kaku; paper memakai machine learning terawasi untuk menangkap hubungan non-linear kovariat-lambda, sekaligus menempelkan prediksi ke kerangka probabilistik Weibull.
+
+METODE
+- Dasar: distribusi Weibull dua-parameter (PDF/CDF); RUL sebagai variabel acak; waktu kegagalan direkonstruksi (siklus terakhir + RUL ground truth).
+- Estimasi awal parameter via MLE (k diselesaikan iteratif; lambda dari rumus).
+- Baseline: AFT-OLS, lambda(X) = lambda_base * e^-(beta^T X).
+- ML: Linear Regression, SVR, Random Forest (bagging), XGBoost, LightGBM (boosting).
+- Target transformasi: y = lambda(1 - t/t_RUL) (degradasi linear dari characteristic life ke nol saat gagal).
+- Preprocessing: SMA denoising (window w), StandardScaler.
+- Hyperparameter: grid search.
+- Metrik standar (MAE/MSE/RMSE) + metrik Weibull-kustom baru: MWE, MLWE, MRWE, MQWE (area antara CDF Weibull dan step function kegagalan).
+
+DATA
+NASA C-MAPSS FD001: 100 lintasan latih + 100 lintasan uji; 21 sensor + 3 setelan operasi; satu kondisi operasi. Parameter Weibull terestimasi: k=4,359886822599401; lambda=236,7659325811420 (k>1 → wear-out).
+
+TEMUAN UTAMA
+- Semua model berbasis kovariat mengalahkan baseline statis NC → characteristic life memang bergantung kovariat.
+- LightGBM terbaik: MAE 25,44; MSE 1170,52; RMSE 34,21; MWE 27,16; MLWE 9,07; MRWE 18,09; MQWE 1058,44.
+- XGBoost (26,59) dan RF (26,62) menyusul; LR (35,43) dan SVR (29,74) di tengah; AFT-OLS (36,17) hampir setara NC (38,50).
+- Metrik Weibull-kustom berkorelasi dengan metrik regresi standar → validasi metrik baru.
+- Ensemble boosting mengungguli model klasik karena menangkap dinamika degradasi non-linear.
+
+RELEVANSI KE TESIS
+Inti pada sumbu metode: analisis survival Weibull + RUL + pemodelan lambda sebagai fungsi kovariat (sangat relevan karena tesis juga memodelkan RUL membran terhadap kovariat operasional) dan penempatan prediksi ML dalam kerangka probabilistik. Namun tidak menangani data tersensor secara eksplisit dan domainnya turbofan. Posisi: Inti-Metode.
+
+JUSTIFIKASI DIMENSI
+- d1=1: multivariate time series (21 sensor + 3 setelan) sebagai kovariat.
+- d2=1: RUL eksplisit; waktu kegagalan direkonstruksi.
+- d3=1: kerangka inti = survival analysis distribusi Weibull (PDF/CDF) + MLE; memodelkan waktu-ke-kejadian. (Tanpa likelihood censoring eksplisit.)
+- d4=1: model spesifik AFT-OLS + LR/SVR/RF/XGBoost/LightGBM.
+- d5=1: menghasilkan distribusi Weibull per instan sebagai representasi probabilistik RUL; diklaim sebagai solusi UQ. (Tanpa pelaporan CI eksplisit.)
+- d6="": tanpa model keputusan maintenance formal.
+- d7="": domain turbofan, bukan membran/RO/desalinasi/fouling.
+- d8="": subset FD001 standar, bukan small-data/transfer/hierarchical/all-censored.
+Bukti kunci: "the two-parameter Weibull distribution is widely used for reliability engineering and survival analysis"; "LightGBM ... MAE=25.44 ... MQWE=1058.44"; "k = 4.359886822599401 and lambda = 236.7659325811420".
+
+KUALITAS (8/10)
+Q1 jelas (1); Q2 memadai (1); Q3 hanya FD001 + protokol validasi kurang eksplisit (0,5); Q4 parameter dijelaskan tanpa kode (0,5); Q5 evaluasi kaya (metrik standar + kustom, 7 model) (1); Q6 N/A; Q7 distribusi ada tapi tanpa CI eksplisit (0,5); Q8 N/A. Skor = round(4.5/6*10) = 8.
+
+LIMITASI
+Hanya FD001; tanpa penanganan censoring; hasil dilaporkan sebagai error titik (tanpa CI); tanpa model keputusan maintenance; AFT hanya OLS; tanpa kode.
+
+BUKTI (kutipan)
+- "the two-parameter Weibull distribution is widely used for reliability engineering and survival analysis" (Introduction).
+- "we propose the use of supervised Machine Learning (ML) models to directly quantify the complex, potentially non-linear relationship between sensor-based covariates and the Weibull scale parameter" (Introduction).
+- "LightGBM emerged as the top-performing model ... MAE=25.44 ... RMSE=34.21 ... MWE=27.16 ... MQWE=1058.44" (Results).
+- "offering a structured solution to Uncertainty Quantification (UQ) challenges by embedding ML predictions within an interpretable probabilistic Weibull framework" (Conclusion).

@@ -1,0 +1,47 @@
+{
+ "no": 42,
+ "judul": "A Genetic Algorithm Optimized RNN-LSTM Model for Remaining Useful Life Prediction of Turbofan Engine",
+ "penulis": "Kwok Tai Chui, Brij B. Gupta, Pandian Vasant",
+ "tahun": 2021,
+ "jurnal": "Electronics (MDPI)",
+ "doi": "10.3390/electronics10030285",
+ "kuartil": "Scopus Q2 (SCImago SJR Best Quartile)",
+ "pilar": "B. Deep Learning RUL",
+ "ringkasan": "Studi mengusulkan model prediksi RUL turbofan engine dengan menggabungkan RNN (prediksi jangka pendek) dan LSTM (jangka panjang) yang bobot gabungannya dioptimasi NSGA-II. Fitur diekstraksi dengan dekomposisi dua tahap CEEMD-WPT dan enam fitur statistik (Shannon entropy, kurtosis, skewness, peak-to-peak, standar deviasi, mean). Pada dataset benchmark C-MAPSS-TD (FD001-FD004), model mencapai RMSE rata-rata 17,2 dengan validasi 10-fold cross-validation, mengalahkan RNN/LSTM tunggal dan 10 karya pembanding.",
+ "kontribusi": "Preseden metode RUL berbasis deep learning yang kuat dan tervalidasi silang, namun domainnya turbofan engine dan tidak memodelkan penyensoran/survival, sehingga bagi tesis hanya berperan sebagai pembanding metode (Pendukung), bukan irisan metode+domain.",
+ "temuan_kunci": [
+  "Model NSGA-II optimized RNN-LSTM mencapai RMSE/MAE 11,19/10,28 (FD001), 19,33/18,50 (FD002), 11,47/10,66 (FD003), 19,74/18,82 (FD004); rata-rata RMSE 17,2.",
+  "CEEMD-WPT menurunkan RMSE 5,14-27,15% dibanding EMD, EEMD, CEEMD, WPT, EEMD-WPT, dan EMD-WPT.",
+  "Kombinasi RNN-LSTM menurunkan RMSE 6,07-14,72% dibanding RNN tunggal dan LSTM tunggal.",
+  "Dibanding karya terkait yang memakai k-fold CV, RMSE turun 12,95-39,32%; 10-fold CV dipakai untuk mengurangi bias.",
+  "Tingkat kesulitan dataset: FD004 > FD002 > FD003 > FD001."
+ ],
+ "dimensi": {"d1": "1", "d2": "1", "d3": "", "d4": "1", "d5": "", "d6": "", "d7": "", "d8": ""},
+ "alasan_dimensi": {
+  "d1": "Memakai data multisensor deret waktu C-MAPSS-TD: tiap record berisi 26 kolom (ID engine, timestamp, 3 operational setting, 21 sensor) dengan pengukuran per siklus; dekomposisi sinyal CEEMD-WPT mengandaikan sinyal waktu.",
+  "d2": "Mendefinisikan target RUL eksplisit (sisa siklus sampai kegagalan) dan memprediksinya untuk turbofan engine sampai run-to-failure.",
+  "d3": "Tidak ada model survival/Weibull/hazard/cure; data tidak diperlakukan sebagai tersensor (regresi RUL murni).",
+  "d4": "Memakai arsitektur spesifik: RNN (Elman 3 lapis), LSTM (gerbang forget/input/output), CEEMD-WPT untuk fitur, dan NSGA-II multi-objective (F1 RMSE, F2 MAE).",
+  "d5": "Tidak mengkuantifikasi ketidakpastian; hanya melaporkan RMSE dan MAE titik tanpa interval kepercayaan/posterior.",
+  "d6": "Hanya menyebut predictive maintenance sebagai motivasi ('optimal PdM can be scheduled to reduce the maintenance cost and avoid equipment downtime'); tidak mengusulkan/menganalisis model atau jadwal keputusan perawatan.",
+  "d7": "Objek penelitian adalah turbofan engine, bukan membran/RO/desalinasi.",
+  "d8": "Tidak menangani small-data/transfer/hierarchical/all-censored; justru menyarankan GAN untuk menambah data di masa depan, bukan menerapkannya."
+ },
+ "relevansi": "Pendukung",
+ "kualitas": {"skor": 8, "rincian": {"Q1": 1, "Q2": 1, "Q3": 1, "Q4": 0.5, "Q5": 0.5, "Q6": "N/A", "Q7": 0, "Q8": "N/A"}, "catatan": "Desain dan metodologi dijelaskan rinci (persamaan CEEMD-WPT, RNN, LSTM, NSGA-II, Algoritma 1) dan dievaluasi pada benchmark publik dengan 10-fold CV serta banyak baseline. Kelemahan: parameter NSGA-II (population size, max generation) dan pemilihan wavelet final tidak lengkap sehingga reproduksibilitas parsial; tanpa uji signifikansi statistik; tanpa pelaporan ketidakpastian. Q6 dan Q8 tidak berlaku."},
+ "data_kuantitatif": {"dataset": "NASA C-MAPSS Turbofan Engine Degradation Simulation (FD001-FD004)", "ukuran": "FD001 200 unit (180 train/20 test), FD002 519 unit, FD003 200 unit, FD004 497 unit; 26 kolom per record; 10-fold CV", "metrik": "RMSE/MAE: FD001 11,19/10,28; FD002 19,33/18,50; FD003 11,47/10,66; FD004 19,74/18,82; rata-rata RMSE 17,2 dan MAE 16,3"},
+ "metode": "Ekstraksi fitur dua tahap CEEMD-WPT (dekomposisi CEEMD lalu WPT) + 6 fitur statistik; pelatihan RNN (Elman) dan LSTM terpisah; penggabungan terbobot y=w_RNN.y_RNN+w_LSTM.y_LSTM dioptimasi NSGA-II (minimasi RMSE dan MAE); evaluasi 10-fold cross-validation.",
+ "limitasi": [
+  "Parameter NSGA-II (ukuran populasi, jumlah generasi) dan konfigurasi wavelet final tidak dilaporkan lengkap.",
+  "Tidak ada uji signifikansi statistik maupun interval ketidakpastian prediksi.",
+  "Hanya domain turbofan engine; generalisasi ke domain lain (membran) belum diuji.",
+  "Tidak menangani penyensoran/data tidak lengkap."
+ ],
+ "funding_coi": "Didanai sebagian oleh hibah penelitian Open University of Hong Kong (2019/1.7); penulis menyatakan tidak ada konflik kepentingan.",
+ "status_inklusi": "diterima",
+ "figur_dibaca": [
+  {"file": "figures/_page_3_Figure_1.jpeg", "isi": "Alur sistem: data C-MAPSS-TD -> dekomposisi CEEMD-WPT -> ekstraksi fitur -> cabang paralel RNN & LSTM -> NSGA-II -> model NSGA-II optimized RNN-LSTM; mengonfirmasi arsitektur hybrid (dukungan d4)."},
+  {"file": "figures/_page_6_Figure_5.jpeg", "isi": "Arsitektur RNN (input Features, hidden dengan self-loop v_ij, output) dan LSTM (tiga gerbang i_t/f_t/o_t, cell state C, tanh, h_t); mengonfirmasi penggunaan LSTM/RNN (dukungan d4)."}
+ ],
+ "bukti": ["Fig. 1: system overview CEEMD-WPT + RNN-LSTM + NSGA-II", "Fig. 3: arsitektur RNN & LSTM", "Table 1: ringkasan dataset C-MAPSS-TD", "Table 2: perbandingan 7 metode ekstraksi fitur", "Table 3: RNN vs LSTM vs proposed", "Table 4: perbandingan dengan 10 karya terkait", "Eq. (1)-(27), Algorithm 1"]
+}

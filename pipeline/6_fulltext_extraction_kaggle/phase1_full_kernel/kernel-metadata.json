@@ -1,0 +1,15 @@
+{
+ "id": "muhammadnioh/slr-corpus-marker",
+ "title": "SLR Corpus Marker",
+ "code_file": "slr_full.ipynb",
+ "language": "python",
+ "kernel_type": "notebook",
+ "is_private": true,
+ "enable_gpu": true,
+ "enable_internet": true,
+ "dataset_sources": [
+  "muhammadnioh/slr-corpus-pdfs"
+ ],
+ "competition_sources": [],
+ "kernel_sources": []
+}

@@ -1,0 +1,48 @@
+{
+  "no": 93,
+  "judul": "A two-stage framework for cost-sensitive predictive maintenance using deep learning, GANs, and risk-aware clustering",
+  "penulis": "Ali Hakami",
+  "tahun": 2026,
+  "jurnal": "Scientific Reports",
+  "doi": "10.1038/s41598-026-42910-4",
+  "kuartil": "Scopus Q1 (SCImago SJR Best Quartile)",
+  "pilar": "F. DSS & Predictive Maintenance (IS)",
+  "ringkasan": "Studi mengusulkan kerangka predictive maintenance dua tahap yang berorientasi keputusan biaya, menghubungkan prediksi RUL per komponen dengan optimasi jadwal perawatan. Tahap pertama memakai LSTM untuk memprediksi RUL tiap komponen dan WGAN-GP untuk membangkitkan data run-to-failure sintetis guna mengatasi kelangkaan data kegagalan; tahap kedua mengelompokkan komponen dengan degradasi mirip memakai DBSCAN, lalu memilih ambang waktu perawatan optimal per klaster lewat grid search atas fungsi biaya (preventif, korektif, downtime) dengan proxy risiko berbasis CDF. Validasi pada sistem pabrik air minum kemasan (16 komponen, 3.319 jam operasi) menunjukkan jadwal berbasis klaster menurunkan kegagalan korektif dan biaya dibanding strategi random dan fixed-percentile.",
+  "kontribusi": "Menunjukkan jalur lengkap dari prediksi RUL sampai keputusan perawatan yang sadar-biaya dan sadar-risiko, plus penanganan data kecil via GAN; sangat relevan sebagai cetak biru DSS, tetapi tidak memakai survival/pencensoringan nyata (penulis sendiri menyebutnya sebagai future work) dan domainnya bukan membran.",
+  "temuan_kunci": [
+    "WGAN-GP (rasio augmentasi 15, gradient penalty 10, critic 5x per generator) menstabilkan distribusi RUL pada komponen dengan riwayat kegagalan sangat sedikit (3.319 jam operasi, 16 komponen).",
+    "Model LSTM dengan augmentasi GAN mencapai R2 hingga 0,9989 dan Within+-10 hingga ~97% pada beberapa komponen; tanpa augmentasi muncul R2 negatif akibat sparsity ekstrem.",
+    "Distribusi lifetime (Weibull, lognormal, inverse Gaussian, Gompertz, eksponensial) difit ke prediksi RUL untuk membentuk survival index SI dan proxy risiko (Eq. 2-3).",
+    "DBSCAN (epsilon=65,14 jam) mengelompokkan komponen; strategi berbasis klaster konsisten berbiaya terendah (total cost ~1490 vs fixed ~1685 dan random ~1705) dan stabil terhadap variasi biaya.",
+    "Perawatan oportunistik: komponen dengan horizon degradasi mirip dirawat bersamaan, menurunkan intervensi redundan."
+  ],
+  "dimensi": {"d1": "1", "d2": "1", "d3": "", "d4": "1", "d5": "", "d6": "1", "d7": "", "d8": "1"},
+  "alasan_dimensi": {
+    "d1": "Data deret waktu per jam (throughput gross/net, failure time/type, line speed, SKU, age at repair, throughput deficit) dari 16 komponen selama 3.319 jam operasi, dibentuk menjadi sekuens run-to-failure multivariat.",
+    "d2": "Mendefinisikan RUL per komponen dan ambang waktu perawatan optimal t_k, serta survival index dan proxy risiko kegagalan (Eq. 2-3).",
+    "d3": "Tidak benar-benar memodelkan data tersensor; penulis eksplisit menyatakan distribusi yang difit menggambarkan distribusi NILAI RUL prediksi, bukan proses waktu-kegagalan, dan analisis survival diusulkan sebagai kerja masa depan.",
+    "d4": "Memakai LSTM (per komponen) dan WGAN-GP (generator/discriminator), ditambah DBSCAN untuk clustering.",
+    "d5": "Tidak melaporkan interval kepercayaan/posterior prediksi; hanya analisis sensitivitas terhadap parameter biaya (C_f, C_d) tanpa kuantifikasi ketidakpastian prediksi.",
+    "d6": "Menganalisis keputusan perawatan konkret: optimasi ambang waktu perawatan per klaster via grid search atas fungsi biaya preventif/korektif/downtime, perawatan oportunistik, dan perbandingan dengan kebijakan random serta fixed-percentile.",
+    "d7": "Objek penelitian adalah komponen pabrik air minum kemasan, bukan membran/RO/desalinasi.",
+    "d8": "Secara khusus menangani data kecil: augmentasi WGAN-GP untuk riwayat kegagalan yang sangat langka (beberapa komponen hanya 2-3 run)."
+  },
+  "relevansi": "Inti-Domain",
+  "kualitas": {"skor": 8, "rincian": {"Q1": 1, "Q2": 1, "Q3": 0.5, "Q4": 1, "Q5": 0.5, "Q6": "N/A", "Q7": "N/A", "Q8": 1}, "catatan": "Kerangka dua tahap dijelaskan rinci dan kode tersedia publik (GitHub), kekuatan pada kaitan RUL ke keputusan biaya. Sejumlah catatan hasil tidak lengkap/terdistorsi pada tabel evaluasi RUL (Tabel 3) sehingga verifikasi angka sulit; uji K-S menunjukkan distribusi data sintetis berbeda signifikan dari asli, dan validitas hanya dari satu pabrik. Q6 tidak berlaku karena tidak ada pemodelan survival/censoring; Q7 tidak berlaku karena tidak ada kuantifikasi ketidakpastian prediksi."},
+  "data_kuantitatif": {"dataset": "Log run-to-failure satu pabrik air minum kemasan (16 komponen, dikode M0-M15), resolusi per jam", "ukuran": "3.319 jam operasi; total run bervariasi (mis. M1 612 run, M9-M15 hanya 2-3 run); split 70% latih, 20% uji, 10% validasi per komponen; augmentasi 15 sekuens sintetis per run nyata", "metrik": "RUL: R2 hingga 0,9989, RMSE 0,004-0,053 (dengan GAN) vs R2 negatif (tanpa GAN); clustering: silhouette 0,579 (augmented) vs 0,885 (original); biaya: klaster ~1490 vs fixed ~1685 vs random ~1705 (biaya ternormalisasi); epsilon DBSCAN 65,14 jam"},
+  "metode": "Framework PdM dua tahap: LSTM per komponen untuk RUL + WGAN-GP untuk augmentasi data langka; fitting distribusi lifetime (Weibull/lognormal/inverse Gaussian/Gompertz/eksponensial) untuk survival index dan proxy risiko; DBSCAN untuk clustering komponen; optimasi ambang perawatan per klaster via grid search atas fungsi biaya; analisis sensitivitas biaya.",
+  "limitasi": [
+    "Proxy risiko berbasis CDF bukan probabilitas waktu-kegagalan nyata; tidak ada model survival/pencensoringan.",
+    "Sebagian komponen dengan riwayat sangat sedikit tetap tidak dapat difit distribusinya secara stabil dan dijadwalkan terpisah.",
+    "Data dari satu pabrik; data mentah hanya tersedia atas permintaan.",
+    "Uji K-S menunjukkan perbedaan distribusi signifikan antara data sintetis dan asli; tabel evaluasi RUL tidak lengkap/ambigu."
+  ],
+  "funding_coi": "Penulis menyatakan tidak menerima dana dari organisasi mana pun untuk pekerjaan ini; penulis menyatakan tidak ada konflik kepentingan. Kode tersedia publik di GitHub; data tersedia atas permintaan.",
+  "status_inklusi": "diterima",
+  "figur_dibaca": [
+    {"file": "_page_12_Figure_3.jpeg", "isi": "Flowchart kerangka konseptual: data 3.319 jam, generasi 10.000 run sintetis per komponen (GAN), data gabungan, pelatihan model (70/20/10), prediksi RUL, estimasi distribusi/probabilitas kegagalan, clustering mesin untuk meminimalkan biaya perawatan."},
+    {"file": "_page_21_Figure_3.jpeg", "isi": "DBSCAN clustering komponen berdasarkan median RUL (dua panel): panel atas 3 klaster (dest_0-dest_7) pada rentang 50-375 jam, panel bawah 4 klaster pada rentang RUL jauh lebih lebar (termasuk komponen dest_8-dest_15)."},
+    {"file": "_page_26_Figure_1.jpeg", "isi": "Perbandingan biaya perawatan: panel kiri Total Cost vs Theta untuk tiga strategi (Cluster-based ~1490 datar, Random ~1705-1720, Fixed ~1685); panel kanan bar Average Total Cost: Cluster < Fixed < Random."}
+  ],
+  "bukti": ["Eq (2): survival index SI, Eq (3): proxy risiko", "Eq (4): fungsi biaya perawatan per klaster", "Tabel 1: statistik run per komponen", "Tabel 2: uji K-S data sintetis vs asli", "Tabel 3: metrik RUL dengan/tanpa GAN", "Tabel 4: distribusi terpilih per komponen", "Tabel 5 dan Gambar 4: hasil clustering", "Gambar 5-10: sensitivitas biaya dan perbandingan strategi"]
+}

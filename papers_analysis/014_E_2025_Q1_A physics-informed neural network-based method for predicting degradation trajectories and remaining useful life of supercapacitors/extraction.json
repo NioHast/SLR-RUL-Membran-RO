@@ -1,0 +1,83 @@
+{
+  "no": 80,
+  "judul": "A physics-informed neural network-based method for predicting degradation trajectories and remaining useful life of supercapacitors",
+  "penulis": "Lixin E, Jun Wang, Ruixin Yang, Chenxu Wang, Hailong Li, Rui Xiong",
+  "tahun": 2025,
+  "jurnal": "Green Energy and Intelligent Transportation",
+  "doi": "10.1016/j.geits.2025.100291",
+  "kuartil": "Scopus Q1 (SCImago SJR 2024)",
+  "pilar": "B. Deep Learning RUL",
+  "ringkasan": "Studi mengembangkan Physics-Informed Neural Network (PINN) berbasis LSTM untuk memprediksi trajektori degradasi dan RUL supercapacitor, dengan menyisipkan persamaan penuaan empiris (SOH = A·ln(cycle) + B) ke dalam fungsi loss. Bobot penyeimbang antara loss data dan loss fisika (lambda) dioptimasi secara adaptif menggunakan Bayesian optimization.",
+  "kontribusi": "Menunjukkan integrasi pengetahuan fisika dan deep learning dapat memangkas kebutuhan data training secara drastis (hanya 1-5% siklus hidup) sehingga relevan untuk tesis RUL membran yang berhadapan dengan kelangkaan data degradasi; namun belum menangani kelayakan/handling data tersensor maupun ketidakpastian prediksi RUL.",
+  "temuan_kunci": [
+    "PINN mencapai RMSE 3 mF untuk trajektori degradasi dan RMSE 269,4 siklus untuk RUL pada training 500 siklus (rata-rata umur 5.180 siklus).",
+    "Dengan hanya 100 siklus training, RMSE RUL 790,8 siklus, jauh lebih baik daripada LSTM (1.993,9) dan OLS (3.273,3).",
+    "PINN menurunkan RMSE 85% dan 87,5% (trajektori) serta 86,5% dan 94,6% (RUL) dibanding LSTM dan OLS.",
+    "Nilai lambda optimal menurun seiring bertambahnya data (4,116 pada 100 siklus menjadi 1,09 pada 500 siklus), mengindikasikan regulasi fisika mengompensasi kelangkaan data."
+  ],
+  "dimensi": {
+    "d1": "1",
+    "d2": "1",
+    "d3": "",
+    "d4": "1",
+    "d5": "1",
+    "d6": "",
+    "d7": "",
+    "d8": "1"
+  },
+  "alasan_dimensi": {
+    "d1": "Data kapasitas-vs-siklus dari 113 supercapacitor merupakan deret waktu (trajektori siklus); input model adalah nomor siklus (time index) dan output SOH per waktu.",
+    "d2": "Mendefinisikan kegagalan secara eksplisit: kapasitansi turun ke 90% nilai awal (0,90 F) sebagai ambang; RUL dihitung melalui iterasi hingga ambang tersebut.",
+    "d3": "Tidak memodelkan data tersensor ataupun survival/Weibull/hazard/cure; ini regresi trajektori + iterasi ambang dan semua unit diamati sampai gagal.",
+    "d4": "Model spesifik: LSTM (backbone PINN, 2 lapis) dan Bayesian optimization dengan surrogate Gaussian process.",
+    "d5": "Bayesian optimization memakai surrogate Gaussian process dan memodelkan ketidakpastian sigma(M) pada fungsi akuisisi; namun interval kredibel RUL tidak dilaporkan (hanya point estimate).",
+    "d6": "Hanya menyebut predictive maintenance secara umum tanpa model keputusan (jadwal/biaya/DSS).",
+    "d7": "Domain penyimpanan energi (supercapacitor), bukan membran/RO/desalinasi/fouling.",
+    "d8": "Skema few-shot: training hanya 100/300/500 siklus (1-5% siklus hidup) dan secara eksplisit membahas skenario kelangkaan data."
+  },
+  "relevansi": "Inti-Domain",
+  "kualitas": {
+    "skor": 9,
+    "rincian": {
+      "Q1": 1,
+      "Q2": 1,
+      "Q3": 1,
+      "Q4": 1,
+      "Q5": 1,
+      "Q6": "N/A",
+      "Q7": 0.5,
+      "Q8": "N/A"
+    },
+    "catatan": "Q6 (penanganan censoring) dan Q8 (kaitan keputusan pemeliharaan) tidak berlaku. Q7 diberi 0,5 karena ketidakpastian hanya dimodelkan pada surrogate Bayesian optimization, bukan interval prediksi RUL. skor = round(5,5/6 × 10) = 9."
+  },
+  "data_kuantitatif": {
+    "dataset": "Dataset degradasi supercapacitor komersial elektroda karbon dari Ref.[10]",
+    "ukuran": "113 sel; 10.000 siklus; split training 100/300/500 siklus (1-5% rentang hidup); 4 batch kondisi uji",
+    "metrik": "RMSE, MAE, MAPE; RMSE RUL 269,4 siklus (500 siklus training) dan 790,8 siklus (100); RMSE SOH 3 mF dan 5,7 mF; MAPE di bawah 2%"
+  },
+  "metode": "PINN: LSTM 2 lapis (128/256 neuron) dengan loss gabungan Loss_total = Loss_data + Loss_physics (persamaan penuaan SOH = A·ln(cycle) + B); Min-Max normalisasi; Bayesian optimization menentukan bobot lambda; Adam, 5000 epoch, dropout 0,2.",
+  "limitasi": [
+    "Data berasal dari dataset publik/simulasi, bukan eksperimen membran atau sistem desalinasi.",
+    "Tidak menangani data tersensor (semua unit diamati sampai gagal).",
+    "Tidak memberi kuantifikasi ketidakpastian RUL (hanya point estimate).",
+    "Tidak ada kaitan eksplisit ke model keputusan pemeliharaan."
+  ],
+  "funding_coi": "Didanai National Natural Science Foundation of China (No. 52107222) dan Beijing Natural Science Foundation (No. L242075). Penulis menyatakan tidak ada konflik kepentingan.",
+  "status_inklusi": "diterima",
+  "figur_dibaca": [
+    {
+      "file": "_page_4_Figure_17.jpeg",
+      "isi": "Diagram kerangka PINN: aliran ganda historical data (LSTM cell) dan physical information (SOH, Cycle), dengan Bayesian optimization menyetel lambda_best yang membobot kedua komponen loss."
+    },
+    {
+      "file": "_page_10_Figure_11.jpeg",
+      "isi": "Diagram radar RMSE/MAE/MAPE untuk PINN vs LSTM vs OLS pada 100/300/500 siklus; poligon PINN paling kecil (error terendah) konsisten di semua ukuran data."
+    }
+  ],
+  "bukti": [
+    "Abstrak: 'a RMSE of 269 cycles (the average cycle life is 5180 cycles) for the RUL'.",
+    "Bagian 4.3: 'when 500 cycles are used for training, the average RMSE of the proposed model's RUL prediction is 269.4 cycles, which is significantly lower than the RMSE of 1,993.9 for the LSTM model and 3,273.3 for the OLS model'.",
+    "Bagian 3.1: 'The failure of a supercapacitor is defined as when its capacitance decreases to 90% of its initial value (0.90 F)'.",
+    "Bagian 4.4: 'when the training cycle is 100, the optimal lambda value reaches 4.116; when the training cycle increases to 500, the lambda value decreases to 1.09'."
+  ]
+}

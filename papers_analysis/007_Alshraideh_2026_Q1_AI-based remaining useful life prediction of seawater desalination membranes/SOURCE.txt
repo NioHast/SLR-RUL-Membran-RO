@@ -1,0 +1,9 @@
+SUMBER FULL-TEXT (Open Access)
+============================
+Judul   : AI-based remaining useful life prediction of seawater desalination membranes
+DOI     : 10.1016/j.ceja.2026.101217
+Status  : gold (Open Access)
+Lisensi : cc-by-nc-nd, cc-by-sa
+
+Catatan : Open Access berlisensi Creative Commons; boleh didistribusikan ulang DENGAN ATRIBUSI
+kepada penulis/penerbit asli. Diverifikasi via Unpaywall (https://unpaywall.org).

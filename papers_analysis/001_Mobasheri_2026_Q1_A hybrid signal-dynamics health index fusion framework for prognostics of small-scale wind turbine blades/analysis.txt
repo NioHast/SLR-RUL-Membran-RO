@@ -1,0 +1,49 @@
+PAPER 099 - Mobasheri, Aranizadeh & Vahidi (2026)
+Judul   : A hybrid signal-dynamics health index fusion framework for prognostics of small-scale wind turbine blades
+Jurnal  : Scientific Reports | Scopus Q1 (ScImago SJR Best Quartile) | DOI 10.1038/s41598-026-63408-z
+Pilar   : A. Survival Analysis & Censored Data
+Relevansi: Inti-Metode (RUL + Weibull + LSTM; tanpa censoring, domain blade turbin angin)
+
+KARAKTERISTIK STUDI
+Kerangka condition monitoring + prognostik untuk blade small-scale wind turbine (SSWT). Menggabungkan fitur signal-based (time/frequency domain) dengan properti dinamika struktur (natural frequency, mode shape curvature, transmissibility). Tiga HI (PCA, Mahalanobis, autoencoder) difusi menjadi Combined Health Index (CHI) berbobot entropy, lalu RUL diestimasi ganda: Weibull (statistis) + LSTM/GRU (data-driven). Validasi pada tiga kondisi: healthy (C), degradasi global (L), lokal (R).
+
+METODE
+- Praproses: band-pass 0,5-400 Hz, normalisasi z-score, wavelet denoising (Daubechies-4, SURE/minimax).
+- Fitur: time domain (mean, RMS, skewness, kurtosis); frequency (peak freq, spectral energy, bandwidth); dinamika (natural frequency, mode shape curvature, transmissibility).
+- Reduksi dimensi: PCA (linear) dan t-SNE (visualisasi).
+- HI: PCA-based (projection PC1), Mahalanobis distance, autoencoder reconstruction error (L2 reg 0,001, dropout 0,2, early stopping).
+- CHI = sum_m w_m HI_m, entropy weighting w=[0,32;0,28;0,40].
+- RUL: degradasi eksponensial HI(t)=alpha e^{beta t}+eps; RUL=min{tau|HI(t+tau)>=theta}; Weibull (scale/shape) dan LSTM/GRU.
+- Validasi: silhouette, Davies-Bouldin, ANOVA, Tukey HSD, bootstrap CI, CV/SNR, VIF.
+
+DATA
+Eksperimen SSWT 1,5/5,0 kW (IEC 61400-2, rotor 5 m): 24 strain gauge + 8 akselerometer (2 kHz), tiga kondisi C/L/R. Lintasan degradasi disintesis via monotonic cubic spline interpolation (50 langkah) untuk validasi RUL.
+
+TEMUAN UTAMA
+- CHI paling robust: CV 0,042; SNR 23,8 dB; urutan konsisten C < R < L; silhouette 0,82.
+- Transmissibility indikator dominan; natural frequency sensitif degradasi global, curvature sensitif lokal.
+- Frekuensi puncak: C 252 Hz, L 225,97 Hz (turun), R 256,99 Hz (naik).
+- RUL: C ~ tak hingga/50 langkah; L 0,62/21; R 0,72/8 -> degradasi lokal (R) paling cepat.
+- ANOVA p<0,01; Tukey p<0,05; bootstrap CI 95% C=[0;0,02], L=[0,72;0,89], R=[0,68;0,85].
+
+RELEVANSI KE TESIS
+Inti-Metode. Memberi kerangka hybrid HI fusion + estimasi RUL ganda (Weibull statistis + LSTM data-driven) dengan pelaporan interval bootstrap - relevan sebagai contoh strategi prognostik dan fusi indikator. Namun pemodelan Weibull sangat dangkal (hanya scale/shape untuk 3 kondisi, tanpa pencensoringan/survival sejati), RUL divalidasi pada lintasan sintetis, dan domainnya blade turbin angin (bukan membran/RO). Masuk Inti-Metode karena adanya sumbu RUL + Weibull.
+
+JUSTIFIKASI DIMENSI (d1-d8)
+- d1 = 1: multi-sensor deret waktu (24 strain gauge + 8 akselerometer, 2 kHz).
+- d2 = 1: RUL didefinisikan eksplisit sebagai waktu HI melewati failure threshold theta.
+- d3 = 1: pemodelan degradasi berbasis Weibull (parameter scale/shape dan RUL, Tabel 6) diterapkan untuk estimasi umur.
+- d4 = 1: model spesifik autoencoder, LSTM/GRU, PCA, Mahalanobis; pembanding CNN/BiLSTM.
+- d5 = 1: CI 95% bootstrap, CV, SNR, VIF dilaporkan (untuk HI).
+- d6 = "": membahas predictive maintenance/downtime/biaya tanpa model keputusan konkret.
+- d7 = "": domain blade turbin angin, bukan membran/RO/desalinasi.
+- d8 = "": tanpa transfer/hierarki/all-censored; small-data hanya keterbatasan, bukan fokus metodologis.
+
+KUALITAS (skor 6/10)
+Q1=1; Q2=0,5 (kerangka lengkap, tetapi RUL divalidasi pada lintasan sintetis dan 'LSTM-inspired' tidak dispesifikasikan); Q3=0,5 (eksperimen nyata tetapi hanya 3 kondisi, terkontrol, data on request); Q4=0,5 (metode rinci, tanpa kode, sebagian model vague); Q5=0,5 (metrik clustering/statistik kuat, tetapi evaluasi RUL lemah/self-generated); Q6=0,5 (Weibull dinamai tanpa pencensoringan); Q7=0,5 (CI dilaporkan untuk HI, bukan RUL); Q8=0,5 (kaitan pemeliharaan motivasional). Total = 4,5/8 -> 5,63 -> dibulatkan 6.
+
+LIMITASI
+Hanya tiga kondisi diskrit tanpa degradasi gradual; RUL disintesis; Weibull tanpa pencensoringan; 'LSTM-inspired' tidak dispesifikasikan; tanpa kode; domain blade turbin angin.
+
+BUKTI (fig/tabel/persamaan)
+Eq (11)-(13) fitur time domain; Eq (14)-(15) DFT/energy; Eq (22)-(24) HI; Eq (25)-(26) CHI; Eq (27)-(28) degradasi & RUL; Eq (29) LSTM/GRU; Tabel 3 fitur; Tabel 4 HI; Tabel 5 CHI; Tabel 6 Weibull/RUL. Figure dibaca: _page_19_Figure_2 (flowchart), _page_28_Figure_1 (sinyal degradasi), _page_28_Figure_5 (Weibull & LSTM RUL).

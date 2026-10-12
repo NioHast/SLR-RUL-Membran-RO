@@ -1,0 +1,45 @@
+PAPER 017 - Zhang et al. (2026)
+Judul   : Improved CNN-LSTM Bearing Remaining Useful Life Prediction Based on the Weibull Loss Function
+Jurnal  : Proceedings of Engineering and Technology Innovation | Scopus Q3 (SCImago SJR 2024) | DOI 10.46604/peti.2025.15348
+Pilar   : B. Deep Learning RUL
+Relevansi: Inti-Metode  (RUL + Weibull modeling; domain bantalan, tanpa censoring)
+
+KARAKTERISTIK STUDI
+Mengusulkan KCNN-LSTM, model deep learning knowledge-informed untuk RUL bantalan: CNN-LSTM + loss berbasis Weibull CDF + health index eksponensial. Tujuan: memasukkan pengetahuan distribusi umur pakai (Weibull) ke dalam pelatihan agar sensitif pada fase wear-out akseleratif.
+
+METODE
+- KCNN-LSTM: input -> CNN (32 filter) -> 3 LSTM layer (64 unit) -> fully connected -> output; dropout.
+- Loss gabungan L = MSE + lambda*(F(t_i)-F(t_hat_i))^2, F = Weibull CDF (beta shape, eta characteristic life).
+- Health index eksponensial HI(t)=d-e^(tau*t+a), HI=1 sehat, HI=0 gagal; RUL(t)=HI(t).
+- Evaluasi RMSE dan Score (penalti asimetris over/under-estimasi); analisis sensitivitas beta (1-3) dan lambda (0,1-3).
+
+DATA
+PHM2012 (FEMTO-ST) 17 set siklus penuh; fitur time-domain (std, kurtosis, FFT). XJTU-SY sebagai validasi lintas dataset. ~1200 sampel/epoch, 60 epoch, batch 32, lr 0.001.
+
+TEMUAN UTAMA
+- KCNN-LSTM terbaik: PHM2012 bearing 1-3 RMSE 0,071 / Score 0,821; XJTU-SY RMSE 0,054 / Score 0,779.
+- Mengalahkan CNN-LSTM (MSE/RMSLE), LSTM, Bi-LSTM, dan FNN+(MSE+Weibull).
+- Sensitivitas: beta=2,0 & lambda=2,28 optimal; beta=3 menurunkan Score tajam (0,518).
+- Kurva prediksi halus, tahan derau, mengidentifikasi titik infleksi degradasi akseleratif.
+
+RELEVANSI KE TESIS
+Inti-Metode: pola knowledge-informed (memasukkan distribusi fisik Weibull ke loss) adalah teknik yang bisa diadopsi tesis untuk RUL membran. Namun domain bantalan, tidak memakai survival/censoring (right-censored disebut tetapi dikeluarkan), dan tidak melaporkan ketidakpastian kuantitatif.
+
+JUSTIFIKASI DIMENSI (per d1-d8)
+- d1 = 1: data multidimensi deret waktu sensor (vibration/temperature/current) + fitur time/frequency domain.
+- d2 = 1: definisi RUL dan health index (0-1); label RUL=HI.
+- d3 = 1: modeling Weibull substantif (CDF, shape beta, scale eta, loss Weibull) - sesuai kriteria survival/Weibull. (Censoring sendiri tidak ditangani.)
+- d4 = 1: KCNN-LSTM spesifik; baseline LSTM/Bi-LSTM/FNN.
+- d5 = "" : klaim uncertainty via Weibull, tetapi tanpa CI/interval kuantitatif.
+- d6 = "" : hanya motivasi PdM umum; tanpa model keputusan.
+- d7 = "" : domain bantalan, bukan membran.
+- d8 = "" : menyadari data kegagalan minim dan memakai beta standar literatur, tetapi tanpa metode small-data/transfer/hierarchical eksplisit.
+
+KUALITAS (skor 8/10)
+Q1=1; Q2=1; Q3=1 (dua dataset, multi-kanal); Q4=0,5 (kode tidak publik); Q5=1 (banyak baseline + analisis sensitivitas); Q6=0 (censoring disebut tetapi tidak ditangani); Q7=0 (tanpa pelaporan ketidakpastian); Q8=0,5 (motivasi PdM, metrik Score memperhitungkan asimetri biaya). Jumlah 6/8 -> 8.
+
+LIMITASI
+Censoring tidak dimodelkan; tanpa ketidakpastian kuantitatif; kode tidak publik; domain non-membran; keputusan pemeliharaan tidak dianalisis.
+
+BUKTI (fig/table/eq)
+Eq. 6 (Weibull CDF), Eq. 7 (eta), Eq. 12 (loss MSE+Weibull), Eq. 13-14 (HI), Eq. 8-11 (RMSE/Score); Table 3-5 (sensitivitas & hasil); Fig. 3 (arsitektur KCNN-LSTM), Fig. 4 (prediksi HI enam kanal).

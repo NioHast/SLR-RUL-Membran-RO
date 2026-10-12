@@ -1,0 +1,83 @@
+{
+  "no": 88,
+  "judul": "A Data-Driven Auto-CNN-LSTM Prediction Model for Lithium-Ion Battery Remaining Useful Life",
+  "penulis": "Lei Ren, Jiabao Dong, Xiaokang Wang, Zihao Meng, Li Zhao, M. Jamal Deen",
+  "tahun": 2020,
+  "jurnal": "IEEE Transactions on Industrial Informatics",
+  "doi": "10.1109/TII.2020.3008223",
+  "kuartil": "Scopus Q1 (SCImago SJR Best Quartile)",
+  "pilar": "B. Deep Learning RUL",
+  "ringkasan": "Studi mengusulkan model Auto-CNN-LSTM untuk memprediksi RUL baterai Li-ion: autoencoder memperbesar dimensi fitur untuk mengatasi keterbatasan data, CNN menambang informasi kedalaman, LSTM mengekstrak informasi temporal, dan DNN 7-lapis menghasilkan prediksi RUL yang dihaluskan dengan filter orde pertama.",
+  "kontribusi": "Memberi contoh strategi augmentasi dimensi berbasis autoencoder untuk data degradasi terbatas dan pipeline hibrida CNN+LSTM — relevan untuk tesis pada sumbu data langka; namun tanpa penanganan censoring/survival, tanpa kuantifikasi ketidakpastian, dan bukan domain membran.",
+  "temuan_kunci": [
+    "Auto-CNN-LSTM mencapai RMSE 5,03% / akurasi 94,97% (tanpa filter) dan 4,84% / 95,16% (filter linear) pada dataset uji.",
+    "Unggul atas ADNN (RMSE 11,80%) dan SVM (RMSE 18,23%).",
+    "Dimensi encoder optimal 50 (dari 21 menjadi 50) memberi akurasi terbaik.",
+    "Filter orde pertama paling baik dan menghasilkan kurva prediksi lebih halus/stabil."
+  ],
+  "dimensi": {
+    "d1": "1",
+    "d2": "1",
+    "d3": "",
+    "d4": "1",
+    "d5": "",
+    "d6": "",
+    "d7": "",
+    "d8": "1"
+  },
+  "alasan_dimensi": {
+    "d1": "Data siklus charge-discharge baterai berupa deret waktu multivariabel (21 dimensi: tegangan, arus, suhu) per siklus.",
+    "d2": "Mendefinisikan umur/kegagalan: proses berakhir saat kapasitas baterai turun ke 70%.",
+    "d3": "Tidak ada survival/Weibull/hazard/cure maupun data tersensor.",
+    "d4": "Model spesifik: autoencoder, CNN, LSTM, DNN 7-lapis.",
+    "d5": "Tidak mengkuantifikasi ketidakpastian; secara eksplisit mengkritik metode yang hanya memberi satu nilai tanpa informasi ketidakpastian, namun memilih point estimate.",
+    "d6": "Menyebut pengurangan maintenance tak terduga, tetapi tidak menyusun model keputusan pemeliharaan.",
+    "d7": "Domain baterai Li-ion, bukan membran/RO/desalinasi.",
+    "d8": "Augmentasi dimensi via autoencoder ditujukan mengatasi keterbatasan jumlah data degradasi (small-data)."
+  },
+  "relevansi": "Inti-Domain",
+  "kualitas": {
+    "skor": 6,
+    "rincian": {
+      "Q1": 1,
+      "Q2": 1,
+      "Q3": 0.5,
+      "Q4": 0.5,
+      "Q5": 1,
+      "Q6": "N/A",
+      "Q7": 0,
+      "Q8": 0
+    },
+    "catatan": "Q6 N/A. Q3 0,5 (hanya #7 dan #28 sebagai test; dataset kecil). Q4 0,5 (rinci; tanpa kode/data). Q5 1 (RMSE/akurasi + ablasi dimensi encoder + pembanding ADNN/SVM). Q7 0 (tanpa ketidakpastian). Q8 0. skor = round(4/7×10) = 6."
+  },
+  "data_kuantitatif": {
+    "dataset": "NASA PcoE battery dataset (#5, #6, #25-#27 training; #7, #28 testing)",
+    "ukuran": "168 siklus (#5-#7), 28 siklus (#25-#28); vektor 21-D, feature map 14x21 diperbesar menjadi 14x50",
+    "metrik": "RMSE (%), akurasi (%). Auto-CNN-LSTM 5,03%/94,97%; filter linear 4,84%/95,16%; ADNN 11,80%/88,20%; SVM 18,23%/81,77%"
+  },
+  "metode": "Tiga tahap: (1) ekstraksi fitur (autoencoder memperbesar dimensi 21 -> 50); (2) ekspansi fitur paralel (CNN menambang informasi kedalaman; LSTM informasi temporal) lalu konkatenasi; (3) prediksi RUL via DNN 7-lapis (dropout + L2) dan smoothing filter orde pertama. Dinormalisasi Min-Max; optimizer Adam.",
+  "limitasi": [
+    "Data uji hanya dua baterai (#7, #28).",
+    "Tanpa kuantifikasi ketidakpastian prediksi.",
+    "Overfitting ringan (RMSE training 3,52% vs uji 5,03%).",
+    "Domain baterai, bukan membran/RO; tanpa model keputusan pemeliharaan."
+  ],
+  "funding_coi": "Didanai National Key Research and Development Program of China (2018YFB1004001) dan National Natural Science Foundation of China (61572057, 61836001). Tidak dinyatakan konflik kepentingan.",
+  "status_inklusi": "diterima",
+  "figur_dibaca": [
+    {
+      "file": "_page_1_Figure_6.jpeg",
+      "isi": "Kerangka Auto-CNN-LSTM: Original Data -> Extract Features -> Autoencoder augmentasi (d1->d2) -> paralel CNN (deep info) & LSTM (timing info) -> normalisasi -> DNN -> filter orde pertama -> output RUL."
+    },
+    {
+      "file": "_page_4_Figure_2.jpeg",
+      "isi": "Struktur DNN 7-lapis: input vektor fitur 484-D, output 1-D RUL (0-1), menggunakan dropout dan regularisasi L2."
+    }
+  ],
+  "bukti": [
+    "Abstrak: 'an autoencoder is utilized to augment the dimensions of data for more effective training of CNN and LSTM'.",
+    "Bagian III.A: 'The experiment will end when the LIB life ends, that is, its capacity drops to 70%'.",
+    "Tabel III: Auto-CNN-LSTM RMSE 5,03%/akurasi 94,97%; ADNN 11,80%/88,20%; SVM 18,23%/81,77%.",
+    "Abstrak: 'Due to insufficient amount of degradation data, the prediction accuracy of data-driven methods is greatly limited'."
+  ]
+}

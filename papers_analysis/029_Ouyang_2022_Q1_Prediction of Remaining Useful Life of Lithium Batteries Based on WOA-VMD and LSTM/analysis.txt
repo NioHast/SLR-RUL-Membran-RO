@@ -1,0 +1,51 @@
+PAPER 68: Prediction of Remaining Useful Life of Lithium Batteries Based on WOA-VMD and LSTM
+Penulis: Mingsan Ouyang, Peicheng Shen (2022)
+Jurnal: Energies | Scopus Q1 | DOI 10.3390/en15238918 | Pilar: B. Deep Learning RUL
+
+KARAKTERISTIK STUDI
+Model hibrida deep learning untuk RUL baterai lithium-ion yang menangani fenomena pemulihan kapasitas (capacity recovery) yang mengganggu akurasi. Pra-pemrosesan dekomposisi sinyal dikombinasikan dengan LSTM.
+
+METODE
+WOA mengoptimalkan parameter VMD (jumlah mode K dan faktor penalti alpha) dengan envelope entropy sebagai fitness. VMD mendekomposisi sinyal kapasitas menjadi komponen ganda tren atenuasi global (IMF1, IMF2) dan komponen fluaktuasi pemulihan kapasitas. LSTM memprediksi tiap komponen; hasil direkonstruksi menjadi RUL. Perbandingan: M1 WOA-VMD-LSTM (usulan), M2 LSTM, M3 EMD-LSTM, M4 VMD-LSTM, M5 ELM.
+
+DATA
+NASA PCoE, baterai 18650 2 Ah (B5, B6, B7, B18). Titik prediksi 70/90 (B5/B6/B7) dan 55/70 (B18). Ambang gagal EOL 70% kapasitas (1,4 Ah; B7 1,45 Ah).
+
+TEMUAN UTAMA
+- WOA-VMD-LSTM terbaik: AE maks 2; RMSE maks 1,02%, min 0,36%, rata-rata < 0,69%; MAPE maks 0,59%, min 0,19%, rata-rata < 0,43%.
+- Komponen ganda hasil WOA-VMD berkorelasi tinggi dengan kapasitas (0,998), lebih baik dari VMD biasa.
+- LSTM > ELM (AE maks 6 vs ELM min 11; RMSE rata-rata 2,07% vs 6,37%).
+- Semakin mundur titik prediksi (lebih banyak data latih), semakin rendah error.
+- Metode ini mengatasi mode aliasing EMD dan pengaruh hyperparameter VMD.
+
+RELEVANSI KE TESIS
+Pendukung. Memberi contoh arsitektur DL RUL + pra-pemrosesan dekomposisi, berguna sebagai pembanding metode, tetapi tanpa survival/penyensoran dan bukan domain membran.
+
+JUSTIFIKASI DIMENSI
+- d1=1: deret waktu kapasitas siklik; input LSTM = komponen time series.
+- d2=1: RUL eksplisit (T_RUL = |T_EOL - T_START|); ambang 70%.
+- d3="": tidak ada survival/penyensoran.
+- d4=1: LSTM + VMD + WOA (model spesifik).
+- d5="": tidak ada kuantifikasi ketidakpastian.
+- d6="": tidak ada model keputusan pemeliharaan (hanya motivasi penggantian).
+- d7="": bukan membran/RO.
+- d8="": dataset kecil (4 baterai) tapi tidak dibingkai small-data/transfer.
+
+KUALITAS (skor 6)
+Q1=1; Q2=1; Q3=0,5 (4 baterai, satu tipe); Q4=0,5; Q5=1 (banyak pembanding + variasi titik mulai); Q6=N/A; Q7=0; Q8=0,5. Sum 4,5/7 -> 6,43 ~ 6.
+
+LIMITASI
+Hanya baterai NASA 18650; hanya LSTM (generalisasi kurang); dataset kecil; tanpa ketidakpastian; tanpa model keputusan.
+
+FUNDING/COI
+NSFC (51874010) + Anhui Key R&D (202004a07020043). Tidak ada konflik kepentingan.
+
+BUKTI
+- "a prediction model based on the combination of the whale optimization algorithm (WOA)-variational mode decomposition (VMD) and ... LSTM was proposed" (Abstract)
+- "The average cycle error was one cycle, the average RMSE was less than 0.69%, and the average MAPE was less than 0.43%" (Abstract)
+- "when the capacity decays to 70% of the original capacity, the battery life reaches the end of life" (Sec. 4.1)
+- "T_RUL = |T_EOL - T_START|" (Sec. 4.2)
+- "The maximum AE of LSTM was 6, while the minimum AE of ELM was 11" (Sec. 6)
+
+FIGUR DIBACA
+(Tidak ada; teks dan tabel sudah cukup - figur utama adalah flowchart WOA-VMD-LSTM dan struktur LSTM.)

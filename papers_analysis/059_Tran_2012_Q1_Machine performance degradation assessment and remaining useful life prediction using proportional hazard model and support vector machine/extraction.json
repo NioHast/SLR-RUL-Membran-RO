@@ -1,0 +1,46 @@
+{
+ "no": 1,
+ "judul": "Machine performance degradation assessment and remaining useful life prediction using proportional hazard model and support vector machine",
+ "penulis": "Van Tung Tran, Hong Thom Pham, Bo-Suk Yang, Tan Tien Nguyen",
+ "tahun": 2012,
+ "jurnal": "Mechanical Systems and Signal Processing",
+ "doi": "10.1016/j.ymssp.2012.02.015",
+ "kuartil": "Scopus Q1 (SCImago SJR Best Quartile)",
+ "pilar": "A. Survival Analysis & Censored Data",
+ "ringkasan": "Studi mengusulkan metode tiga tahap untuk menilai degradasi kinerja mesin dan memprediksi RUL hanya dari data kondisi operasi normal. Tahap pertama membangun model identifikasi ARMA dan indeks degradasi dari RMS residual; tahap kedua membangun Cox proportional hazard model (PHM) untuk mengestimasi fungsi survival; tahap ketiga memakai support vector regression dengan prediksi multi-langkah untuk meramalkan RUL. Metode divalidasi pada data pemantauan kompresor low methane dan mencapai akurasi RUL 87,5% (RMSE survival 0,33674).",
+ "kontribusi": "Preseden metodologis paling langsung untuk kombinasi survival analysis + machine learning pada RUL: Cox PHM yang secara eksplisit memodelkan data tersensor (seri biner 0/1 dari ambang batas) dipadukan dengan SVM. Relevan bagi poros 'survival analysis' tesis, tetapi domainnya mesin kompresor (bukan membran/RO) sehingga tidak menyentuh poros domain.",
+ "temuan_kunci": [
+  "Cox PHM dapat mengestimasi fungsi survival dari data tersensor biner (0 = normal, 1 = gagal) yang dibangun dari ambang batas degradasi 0,004.",
+  "Prediksi multi-langkah SVM memberi RUL 96 jam vs aktual 84 jam (akurasi 87,5%); koreksi lag rata-rata diklaim menaikkan akurasi ke 100%.",
+  "Indeks degradasi dari RMS residual (ARMA) lebih efektif memakai fitur peak acceleration dibanding envelope acceleration.",
+  "Model identifikasi hanya memerlukan data kondisi operasi normal, menghindari kebutuhan data seluruh siklus hidup mesin."
+ ],
+ "dimensi": {"d1": "1", "d2": "1", "d3": "1", "d4": "1", "d5": "", "d6": "", "d7": "", "d8": ""},
+ "alasan_dimensi": {
+  "d1": "Dua sinyal getaran (peak dan envelope acceleration) sebagai kovariat deret waktu z1(t), z2(t); direkam Agustus-November 2005, 1200 titik data per record (rata-rata 6 jam per record).",
+  "d2": "Mendefinisikan target RUL eksplisit, ambang kegagalan (failure threshold 0,004), dan fungsi survival S(t|z) (Eq. 8).",
+  "d3": "Secara eksplisit membangun data tersensor: 'the failure threshold is also employed to attain the censored data... a series of 0 and 1 values indicating the normal condition and failure condition'. Partial likelihood Cox (Eq. 3-5) memuat indikator censoring delta_i dan risk set R(t_i).",
+  "d4": "Memakai model spesifik: Cox proportional hazard model (semi-parametrik, Eq. 2), ARMA(p,q) untuk identifikasi sistem, dan support vector regression (SVM/SVR) dengan Gaussian kernel.",
+  "d5": "Tidak melaporkan interval kepercayaan/posterior atas RUL; hanya estimasi titik berupa RMSE (0,33674) dan akurasi (87,5%), sehingga kuantifikasi ketidakpastian tidak dilakukan.",
+  "d6": "Keputusan pemeliharaan hanya disebut sepintas ('decision making, in time, among options of taking no action, repair or replacement'); tidak ada model jadwal/biaya/DSS formal.",
+  "d7": "Objek penelitian bukan membran/RO/desalinasi, melainkan kompresor low methane (wet screw) di pabrik petrokimia.",
+  "d8": "Tidak menerapkan strategi small-data/transfer/hierarchical; satu unit mesin tunggal, bukan skenario all-censored."
+ },
+ "relevansi": "Inti-Metode",
+ "kualitas": {"skor": 6, "rincian": {"Q1": 1, "Q2": 1, "Q3": 0.5, "Q4": 0.5, "Q5": 0.5, "Q6": 0.5, "Q7": 0, "Q8": 0.5}, "catatan": "Rancangan tiga tahap (ARMA-Cox-SVM) memadai dan pencensoringan eksplisit menjadikannya preseden kuat pilar A. Namun validasi hanya satu unit kompresor dengan satu event kegagalan, tanpa pembanding metode, dan tanpa pelaporan ketidakpastian. Jumlah 4,5/8 -> 6."},
+ "data_kuantitatif": {"dataset": "Data pemantauan kondisi kompresor low methane pabrik petrokimia (sinyal vibrasi peak & envelope acceleration; 440 kW, 3565 rpm)", "ukuran": "308 titik sebelum kerusakan (300 normal + 8 degradasi); 1200 titik/record; ARMA(4,3) peak & ARMA(6,5) envelope; 2 kovariat z1(t), z2(t); 150 titik untuk identifikasi", "metrik": "RMSE survival 0,33674; akurasi RUL 87,5% (prediksi 96 jam vs aktual 84 jam); beta1=-0,8042; threshold 0,004"},
+ "metode": "Tiga tahap: (1) ARMA untuk identifikasi sistem + indeks degradasi RMS residual (Eq. 16); (2) Cox PHM semi-parametrik untuk fungsi survival via partial likelihood; (3) SVM/support vector regression multi-step direct prediction untuk RUL.",
+ "limitasi": [
+  "Validasi hanya satu unit mesin dengan satu event kegagalan (data 308 titik).",
+  "Tidak ada pembanding dengan metode/baseline lain.",
+  "Prediksi multi-langkah mengalami lag; koreksi lag bersifat ad hoc.",
+  "Tidak melaporkan ketidakpastian estimasi RUL (interval kepercayaan)."
+ ],
+ "funding_coi": "Didukung Vietnam National Foundation for Science and Technology Development (NAFOSTED) dan Brain Korea 21 Project; tidak ada pernyataan konflik kepentingan.",
+ "status_inklusi": "diterima",
+ "figur_dibaca": [
+  {"file": "_page_15_Figure_0.jpeg", "isi": "Fig. 1 diagram skematik metode tiga tahap: data monitoring + kondisi normal -> model ARMA(p,q) -> degradasi index DI -> uji DI > TH_f -> Cox PHM -> estimasi fungsi survival -> latih SVM -> prediksi RUL."},
+  {"file": "_page_22_Figure_0.jpeg", "isi": "Fig. 8 estimasi fungsi survival (sumbu x time 150-300, sumbu y survival probability 0-1); survival tetap ~1 hingga ~280 lalu turun tajam ke ~0,1 pada t~310, menandai titik kegagalan."}
+ ],
+ "bukti": ["Eq. (2)-(5): Cox PHM & partial likelihood dengan delta_i dan risk set", "Eq. (16): indeks degradasi RMS residual", "Fig. 1: skema metode", "Fig. 6: indeks degradasi peak vs envelope", "Fig. 8: estimasi fungsi survival", "Fig. 9-10: hasil prediksi RUL 87,5%/100%", "Table 1: informasi sistem"]
+}

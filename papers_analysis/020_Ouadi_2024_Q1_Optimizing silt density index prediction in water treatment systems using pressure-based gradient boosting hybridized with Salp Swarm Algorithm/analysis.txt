@@ -1,0 +1,61 @@
+KARAKTERISTIK STUDI
+Paper 85 (Ouadi et al., 2024, Journal of Water Process Engineering, Q1) merupakan studi pengembangan model prediksi machine learning berbasis data operasional plant, BUKAN studi RUL/survival. Judul dan isi berfokus pada prediksi Silt Density Index (SDI) - parameter kualitas air pra-perlakuan yang menjadi indikator potensi fouling partikulat membran RO - dari pengukuran tekanan. Konteks domain: dua plant desalinasi reverse osmosis di Aljazair barat (Benisaf dan El Mactaa). Tujuan: membandingkan tiga varian Gradient Boosting (GB standar, GB+PSO, GB+SSA/GBSSA) untuk prediksi SDI harian selama satu bulan. Klaim kebaruan: hibridisasi GB dengan Salp Swarm Algorithm (GBSSA) untuk tuning hyperparameter. Tidak ada elemen RUL, kejadian gagal, threshold kegagalan, survival analysis, maupun data tersensor di seluruh naskah.
+
+METODE
+Model utama: Gradient Boosting untuk regresi tabular non-linear (base learner decision tree; 100 pohon; learning rate 0,1; max depth 3; subsample 0,8; min samples split 2 - Tabel 4). Hyperparameter GB (learning rate, jumlah pohon, max_depth) dioptimasi oleh Salp Swarm Algorithm (SSA: populasi 50; 100 iterasi; step size 0,2) dengan fungsi objektif MAE (min MAE) - inilah GBSSA. Pembanding: GBPSO (PSO: populasi 50; 100 iterasi; inertia 0,7) dan GB standar tanpa tuning. Alur (Fig. 4 yang dibaca): inisialisasi populasi salp -> untuk setiap salp latih model GB -> evaluasi kinerja MAE -> update posisi salp -> pilih set hyperparameter terbaik -> iterasi sampai konvergen -> latih model GB final. Evaluasi memakai RMSE, MAE, R2, dan MAPE (Tabel 5), plus tabel konvergensi MAE SSA vs PSO per iterasi (Tabel 6). Preprocessing: imputasi interpolasi linear untuk data hilang, robust Z-score (buang >3 SD), normalisasi [0,1], split acak 70/30.
+
+DATA
+Sumber: pengukuran harian di tahap pra-perlakuan dua plant RO: Benisaf (200.000 m3/hari; 10 unit; komisioning 2010) dan El Mactaa (500.000 m3/hari; 25 modul @20.000 m3/hari; komisioning 2016). Cakupan: 30 hari (satu bulan) per plant = 30 titik per plant, 60 observasi total (Tabel 3). Fitur input: HANYA tekanan (bar) - dipilih karena murah, real-time, sedikit intervensi manual; target: SDI harian. Rentang: tekanan Benisaf ~7,5-13 bar; El Mactaa ~5,5-15 bar; SDI Benisaf ~1,5-1,9 dan El Mactaa ~0,99-2,74 menurut Tabel 3 (teks menyatakan rentang pelatihan/pengujian SDI 1,5-2,5). Margin of error alat: +-0,016 bar (tekanan) dan +-0,05 (SDI). Korelasi tekanan-SDI dilaporkan negatif kuat. Keterbatasan variabel: temperatur, salinitas, dan turbiditas tidak dimasukkan karena keterbatasan ketersediaan data.
+
+TEMUAN UTAMA
+1) GBSSA terbaik di kedua plant (Tabel 5): Benisaf MAE 0,005617; RMSE 0,008996; R2 0,98879; MAPE 62% - jauh mengalahkan GBPSO (R2 0,96208) dan GB (R2 0,13647). 2) El Mactaa: GBSSA MAE 0,060048; RMSE 0,086527; R2 0,96526; MAPE 69,4% vs GB R2 0,42925 dan GBPSO R2 0,95059. 3) SSA konvergen lebih cepat dan ke MAE lebih rendah daripada PSO (Tabel 6): Benisaf SSA 0,08240->0,00561 vs PSO 0,09601->0,00938; El Mactaa SSA 0,20044->0,06004 vs PSO 0,25904->0,06244. 4) GB standar tanpa tuning buruk, menegaskan pentingnya tuning hyperparameter. 5) Figur hasil yang dibaca (Fig. 5, 7, 10) menunjukkan GB konsisten underprediksi; GBSSA hampir mengikuti actual; GBPSO dekat namun kadang overshoot (mis. hari 8 Benisaf; hari 7/12/26 El Mactaa). 6) Akurasi hanya valid dalam rentang SDI pelatihan 1,5-2,5; ekstrapolasi berisiko. 7) Klaim aplikatif: prediksi SDI akurat memungkinkan penyesuaian operasional tepat waktu dan perencanaan jadwal pembersihan membran yang lebih baik (kualitatif).
+
+RELEVANSI KE TESIS
+Tidak relevan sebagai Inti-Metode atau Inti-Domain karena tidak ada RUL, survival, censoring, Weibull, hazard, maupun threshold kegagalan (d2, d3, d8 kosong). Relevansi nyata ada pada tiga sumbu: (a) konteks domain membran/RO/desalinasi dan fouling (d7) - SDI adalah prekursor fouling membran, satu siklus dengan topik degradasi membran pada tesis; (b) contoh metodologis model spesifik Gradient Boosting + metaheuristik SSA/PSO (d4) yang dapat menjadi alternatif baseline/pembanding untuk data sensor kecil dan tabular; (c) pola pikir "memprediksi indikator kondisi (proksi degradasi) dari sensor yang mudah diukur" yang analog dengan penggunaan tekanan/proxy covariates dalam model prognosis tesis, serta klaim kaitan prediksi-ke-keputusan pemeliharaan (d6) walau hanya kualitatif. Klasifikasi tier yang tepat: KONTEKS (domain-context prediction tanpa RUL), bukan Pendukung (bukan metode RUL/survival umum).
+
+JUSTIFIKASI DIMENSI (d1-d8 + evidence)
+d1=1 - Deret waktu harian: 'We have collected daily measurements of both SDI and pressure over a one-month period, with results detailed in Table 3' (Sec. 2.2); 'The pressure data is continuously monitored and recorded to reflect daily operational conditions' (Sec. 2.2). Tabel 3 memuat 30 titik harian per plant. Catatan: hanya satu jenis sensor (tekanan), bukan multisensor.
+d2='' - Tidak ada definisi RUL, failure event, atau threshold yang dimodelkan. Studi regresi nilai kontinu: 'aims to forecast SDI values, which serve as the output' (Sec. 4). Batas SDI feedwater RO hanya disebut sebagai referensi literatur dan tidak dioperasionalkan sebagai target kegagalan.
+d3='' - Tidak ada survival/Weibull/hazard/cure/censoring. Data hilang diimputasi, bukan diperlakukan tersensor: 'missing data points were identified and imputed using linear interpolation methods' (Sec. 2.3).
+d4=1 - Model spesifik dan bernama: GB, GBPSO, GBSSA (Sec. 1.2); parameter lengkap Tabel 4; mekanisme tuning SSA dengan fitness MAE (Sec. 3.3).
+d5='' - Tidak ada CI/prediction interval/posterior/bootstrap. Evaluasi hanya metrik titik RMSE, MAE, R2, MAPE (Sec. 4.3); margin of error Tabel 3 adalah presisi alat ukur, bukan ketidakpastian model.
+d6=1 - Kaitan prediksi-ke-pemeliharaan eksplisit meski kualitatif: 'facilitating better operational adjustments and maintenance decisions' (Abstract); 'Accurate SDI predictions enable better planning for membrane cleaning schedules, optimizing the balance between operational efficiency and cost' (Sec. 4.3). Tanpa model keputusan/jadwal/biaya formal.
+d7=1 - Kuat: dua plant desalinasi reverse osmosis (Tabel 1-2, Abstract), SDI sebagai indikator fouling membran RO (Sec. 1.1), upaya manajemen fouling.
+d8='' - Dataset kecil (30 titik/plant) tetapi tidak ada metodologi small-data (transfer learning, hierarchical/Bayesian hierarchical, augmentasi) maupun skenario all-censored; penyebutan data kecil hanya justifikasi pemilihan GB ('For small to medium-sized tabular datasets, GB provides a solid baseline', Sec. 4.3), bukan kontribusi metodologis.
+
+KUALITAS (skor + alasan)
+Skor = 6 (dari 7 kriteria yang applicable; Q6 N/A).
+Q1=1 - Pertanyaan penelitian/objektif jelas: memprediksi SDI dari tekanan dan membandingkan GB, GBPSO, GBSSA.
+Q2=1 - Metode memadai untuk tugas regresi tabular: GB + tuning SSA berobjektif MAE, pembanding GBPSO dan GB, persamaan dan setelan parameter lengkap (Tabel 4), dua study site.
+Q3=0,5 - Data nyata dua plant dengan margin of error dan preprocessing terdokumentasi, tetapi sangat terbatas: 30 titik/plant, input tunggal, split acak 70/30 tanpa cross-validation; validitas eksternal rendah.
+Q4=0,5 - Replikasi parsial: Tabel 3 (data) dan Tabel 4 (parameter) tersedia; namun data hanya atas permintaan ke penulis korespondensi dan tidak ada kode/seed.
+Q5=0,5 - Empat metrik standar dan perbandingan tiga model di dua plant, tetapi tanpa uji signifikansi, tanpa CV, tanpa baseline non-GB; MAPE 62-77% menandakan metrik relatif bermasalah pada nilai target kecil.
+Q6=N/A - Tidak ada kerangka survival/censoring; kriteria tidak applicable, dikecualikan dari skor.
+Q7=0 - Tidak ada kuantifikasi ketidakpastian prediksi (tanpa CI/prediction interval), padahal ini applicable untuk studi prediksi.
+Q8=0,5 - Tautan ke keputusan pemeliharaan ada (jadwal pembersihan membran, biaya) tetapi hanya naratif, bukan model/analisis keputusan formal.
+Perhitungan: (1+1+0,5+0,5+0,5+0+0,5)/7 x 10 = 5,71 -> dibulatkan 6.
+
+LIMITASI
+1) Generalisasi terbatas: hanya dua plant, kondisi operasi/sumber air/proses bisa berbeda.
+2) Input tunggal: tekanan saja; temperatur, salinitas, turbiditas, dosis kimia tidak dimasukkan karena keterbatasan data - padahal memengaruhi SDI/fouling.
+3) Akurasi menurun di luar rentang SDI pelatihan 1,5-2,5 (ekstrapolasi).
+4) Potensi bias pengumpulan data karena ketergantungan pada satu variabel.
+5) Dampak lingkungan jangka panjang teknologi AI pada desalinasi belum dieksplorasi.
+6) Catatan penilai: dataset sangat kecil (30 titik/plant), tanpa CV/uji signifikansi/ketidakpastian; klaim 'forecast' sebenarnya prediksi dalam periode yang sama, bukan ramalan temporal murni.
+
+BUKTI
+- Abstract: 'This study introduces a novel approach for predicting Silt Density Index (SDI) values in desalination systems by combining Gradient Boosting with the Salp Swarm Algorithm (GBSSA).'
+- Abstract: 'Pressure measurements were chosen as input features due to their ease of measurement... facilitating better operational adjustments and maintenance decisions.'
+- Sec. 2: 'daily pressure readings and SDI values. Pressure data is utilized for training predictive models, while SDI values are used to validate these predictions.'
+- Sec. 2.2: 'We have collected daily measurements of both SDI and pressure over a one-month period, with results detailed in Table 3.'
+- Sec. 2.2: 'These sensors provide real-time pressure data... The pressure data is continuously monitored and recorded to reflect daily operational conditions.'
+- Sec. 2.3: 'missing data points were identified and imputed using linear interpolation methods... a random 70/30 split was used to partition the dataset into training and test sets.'
+- Sec. 1.2: 'Three variants of Gradient Boosting were compared: Gradient Boosting alone (GB), Gradient Boosting combined with Particle Swarm Optimization (GBPSO), and Gradient Boosting combined with Salp Swarm Algorithm (GBSSA).'
+- Sec. 3.3: 'fine-tuning critical hyperparameters such as the learning rate, the number of estimators, and the maximum depth of trees in Gradient Boosting... fitness measured as the Mean Absolute Error (MAE).'
+- Tabel 5: Benisaf GBSSA MAE 0.005617, RMSE 0.008996, R2 0.98879, MAPE 62; GB 0.048986/0.070172/0.13647/69.8; El Mactaa GBSSA 0.060048/0.086527/0.96526/69.4; GB 0.256980/0.335280/0.42925/76.6.
+- Tabel 6: konvergensi MAE Benisaf SSA 0,08240->0,00561 vs PSO 0,09601->0,00938; El Mactaa SSA 0,20044->0,06004 vs PSO 0,25904->0,06244.
+- Sec. 4.3: 'Accurate SDI predictions enable better planning for membrane cleaning schedules, optimizing the balance between operational efficiency and cost.'
+- Sec. 4.2: 'The GBSSA model was trained and tested on SDI values ranging from 1.5 to 2.5.'
+- Sec. 2.1.3: 'incorporating these variables was beyond the scope of this study due to data availability constraints.'
+- Kesimpulan: 'the reliance on pressure as the sole input variable, could impact the model's performance under varied operational stresses.'
+- Figur dibaca: _page_6_Figure_2.jpeg (flowchart GBSSA); _page_8_Figure_4.jpeg (Fig. 7 actual vs predicted Benisaf); _page_10_Figure_7.jpeg (Fig. 10 actual vs predicted El Mactaa); _page_7_Figure_2.jpeg (Fig. 5 line plot prediksi Benisaf) - semua tanpa interval ketidakpastian.

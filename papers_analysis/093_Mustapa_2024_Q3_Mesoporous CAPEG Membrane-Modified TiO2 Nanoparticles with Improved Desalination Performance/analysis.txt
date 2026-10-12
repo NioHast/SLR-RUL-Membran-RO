@@ -1,0 +1,60 @@
+KARAKTERISTIK STUDI
+Penelitian eksperimental laboratorium bidang ilmu material (membran polimer-nanokomposit) untuk desalinasi air laut, bukan studi prognostik/RUL, bukan pemodelan data, dan bukan sistem informasi/keputusan. Tujuan eksplisit: menyintesis membran mesoporous CA/PEG dimodifikasi TiO2-NPs melalui dua rute (surface coating/SC dan blending/B), mengkarakterisasi fisikokimianya, dan menguji kinerja desalinasi (fluks air, rejeksi garam, pH, salinitas) terhadap air laut Pantai Kolaka, Sulawesi Tenggara. Konteks aplikasi: penyediaan air bersih bagi masyarakat pesisir dan pulau kecil Indonesia. Publikasi di Biointerface Research in Applied Chemistry (BRIAC) 2024, DOI 10.33263/BRIAC142.029, Scopus Q3.
+
+METODE
+- Sintesis kontrol: 3 g CA dilarutkan dalam 17 mL aseton, ditambah 2 g PEG, diaduk ±3 jam suhu ruang, dicetak pada cawan Petri, didiamkan 15 jam.
+- Modifikasi TiO2-NPs 0,5 g dengan dua metode: SC (ditaburkan pada permukaan membran CA/PEG) dan B (dicampurkan langsung ke larutan membran hingga homogen).
+- Karakterisasi: XRD untuk kristalinitas/deposisi TiO2, FTIR untuk gugus fungsi, SEM untuk morfologi permukaan, cross-section, dan ketebalan.
+- Uji RO: perangkat pipa PVC 2 inci 3 tabung — tabung 1 feed (19 L air laut, direndam arang 24 jam), tabung 2 pretreatment (pasir, arang, kerikil, serat), tabung 3 membran uji dengan lampu UV. Tidak ada penjelasan rinci pompa/tekanan; hanya klaim tekanan konstan 10 bar.
+- Kinerja: fluks J=Q/(A×t); rejeksi garam R=(1−Cp/C0)×100%; pH; salinitas (meter/refraktometer).
+- Tidak ada metode pemodelan statistik/ML, tidak ada survival analysis, tidak ada pengolahan data tersensor.
+
+DATA
+- Satu batch 19 L air laut (salinitas awal 32‰); tiga perlakuan membran (CA/PEG kontrol, SC, B); satu kali uji per membran selama 0,5 jam; A=38,465×10⁻⁴ m²; Q=0,19/0,25/0,31 L.
+- Tidak ada dataset time-series, sensor ganda, variabel degradasi berulang, waktu kegagalan, maupun variabel tersensor. Data berupa nilai tunggal per metrik per membran (fluks, rejeksi, pH, salinitas) plus data karakterisasi (pola XRD, spektra FTIR, citra SEM).
+
+TEMUAN UTAMA
+1. Metode B terbaik: fluks 161,18 L/m2.jam dan rejeksi garam 84%; SC 129,99 L/m2.jam/80%; kontrol 98,79 L/m2.jam/60%.
+2. Salinitas permeat: 4‰ (B), 5‰ (SC), 10‰ (kontrol), 25‰ (pretreatment); SC dan B dikategorikan air tawar (walau teks juga menyebut brakish mesohaline).
+3. XRD semikristalin; puncak anatase TiO2 (25°, 48°, 54°, 55°, 62,5°, 75°) dan rutile (43,2°); interaksi Van der Waals/ikatan hidrogen CA/PEG–TiO2.
+4. FTIR: O-Ti-O pada 372 cm-1 (SC dan B); gugus -OH, C-H, C=H, C-O-C dari CA/PEG; metode B menghilangkan gugus alifatik 1381 cm-1 dan cincin piranosa.
+5. SEM: kontrol halus sedikit pori; SC berpori banyak/reguler hanya di permukaan; B menyisipkan butiran TiO2 pada kisi pori (terlihat di cross-section).
+6. pH permeat turun ke 7,8 (SC dan B), 7,9 (kontrol), 8 (filter); dinyatakan stabil asam lemah.
+7. Perangkat RO 3 tabung + UV mampu menurunkan kadar garam air laut secara nyata.
+
+RELEVANSI KE TESIS
+Artikel ini menyumbang konteks domain pilar E (Membrane/RO/Desalination): objek yang kelak diprediksi RUL-nya (membran RO), mekanisme degradasi yang relevan (fouling, penurunan fluks), metrik kinerja yang dapat berperan sebagai health indicator (fluks, rejeksi garam, salinitas), serta desain sistem RO skala kecil dengan pretreatment dan UV. Namun, secara metodologis artikel tidak menyediakan komponen apa pun untuk tesis (survival analysis + deep learning dengan data tersensor): tidak ada data longitudinal/time-series, tidak ada event kegagalan atau waktu observasi, tidak ada sensor, tidak ada model ML, tidak ada ketidakpastian, dan tidak ada keputusan pemeliharaan. Nilainya adalah sebagai referensi latar belakang/domain pada bab pendahuluan (jenis membran, bahan CA/PEG/TiO2, parameter uji desalinasi, isu umur membran dan fouling sebagai arah riset prediktif). Relevansi: Konteks.
+
+JUSTIFIKASI DIMENSI (d1-d8)
+- d1 = "" (tidak ada data multi-sensor/time-series). Bukti: pengukuran tunggal volume permeat (t=0,5 jam) dan pH/salinitas sekali ukur per membran; tidak ada deret waktu.
+- d2 = "" (tidak mendefinisikan RUL/kegagalan/ambang). Bukti: hanya motivasi di pendahuluan — “membrane fouling, such as water flux declination, resulting in increased operating costs and reduced membrane lifetime”; tidak ada definisi/kuantifikasi umur atau ambang kegagalan.
+- d3 = "" (tidak memodelkan data tersensor). Bukti: tidak ada istilah survival/Weibull/hazard/cure; tidak ada subjek dengan waktu observasi.
+- d4 = "" (tidak ada model spesifik). Bukti: hanya persamaan deterministik J=Q/(A×t) dan R=(1−Cp/C0)×100%; tidak ada ML/statistik inferensial.
+- d5 = "" (tidak ada kuantifikasi ketidakpastian). Bukti: semua hasil nilai tunggal tanpa error bar, CI, atau posterior.
+- d6 = "" (tidak ada keputusan pemeliharaan). Bukti: biaya operasi dan umur membran hanya disinggung di pendahuluan; tidak ada jadwal/biaya/DSS; perangkat RO adalah alat uji, bukan sistem keputusan.
+- d7 = "1". Bukti: fokus utuh pada membran/RO/desalinasi dan fouling — judul “Mesoporous CA/PEG Membrane-Modified TiO2 Nanoparticles with Improved Desalination Performance”; abstract “fabrication of CA/PEG/TiO2 membrane… over surface coating (SC) and blending (B)”; uji fluks, rejeksi garam, pH, salinitas air laut; “RO membranes still have significant disadvantages due to the occurrence of membrane fouling”.
+- d8 = "" (tidak ada small-data/transfer/hierarchical/all-censored). Bukti: tidak ada model ML sama sekali; n kecil (3 membran) adalah keterbatasan eksperimen material, bukan skenario pembelajaran.
+
+KUALITAS (SKOR + ALASAN)
+- Q1 RQ jelas = 1: tujuan spesifik membandingkan efektivitas SC vs B dan menguji kinerja desalinasi membran CA/PEG/TiO2.
+- Q2 metode memadai = 0,5: sintesis dan karakterisasi standar serta sesuai tujuan, tetapi tanpa ulangan, tanpa kontrol tekanan/flow yang terverifikasi, dan sebagian instrumen tanpa parameter operasi.
+- Q3 data & validitas = 0,5: data internal konsisten (Q/A/t dan Cp/C0), namun satu batch, satu run, tanpa statistik; ada inkonsistensi klasifikasi salinitas dan C0 berbeda antar baris.
+- Q4 reproduktibilitas = 0,5: rasio bahan dan durasi dilaporkan, tetapi spesifikasi alat (model XRD/FTIR/SEM, rentang 2θ, tegangan SEM), tekanan/flow sistem RO, dan protokol sampling tidak lengkap.
+- Q5 evaluasi = 0,5: metrik kinerja dibandingkan antar perlakuan, tetapi tanpa replikasi, error bar, atau uji signifikansi.
+- Q6 censoring = N/A; Q7 uncertainty = N/A; Q8 maintenance-decision link = N/A (tidak berlaku; dikeluarkan dari skor).
+- Skor akhir = (1+0,5+0,5+0,5+0,5)/5 × 10 = 6.
+
+LIMITASI
+1) Tidak relevan secara metode untuk RUL/survival: tanpa data longitudinal, event, censoring, atau model. 2) Tanpa replikasi dan analisis statistik/ketidakpastian. 3) Kondisi operasi RO tidak dirinci (tekanan 10 bar hanya diklaim; laju alir, suhu, durasi total tidak ada). 4) Inkonsistensi naratif: 4-5‰ disebut air tawar sekaligus brakish mesohaline; pH 7,8 disebut “acidic”. 5) Klaim antifouling/self-cleaning TiO2 tidak diuji langsung (tidak ada uji fouling jangka panjang/stabilitas).
+
+BUKTI
+- Abstract: “fabrication of CA/PEG/TiO2 membrane by comparing the effectiveness methods over surface coating (SC) and blending (B)”.
+- Abstract: “water flux value of 161.18 L/m2.h and salt rejection of 84% that indicated the 4‰ for water salinity”.
+- 3.4.1: “the membrane with B method has a large value compared to the two membranes, which is 161.20 L/m2.h”; “The pressure used in this study is constant at 10 bar”.
+- Tabel 2: Q = 0,19/0,25/0,31 L; A = 38,465×10⁻⁴ m²; t = 0,5 jam.
+- Tabel 3: Pretreatment 22%; CA/PEG 60%; SC 80%; B 84% (Cp 25/10/5/4‰; C0 32/25/25/25‰).
+- 3.4.4: “a decrease in seawater salt content respectively by 25‰ filter material, 10‰ CA/PEG membrane control, 5‰ CA/PEG/TiO2 SC, and 4‰ CA/PEG/TiO2 B”.
+- 3.4.3: “the role of CA/PEG, CA/PEG/TiO2 SC, and B membranes experienced a decrease in pH of 7.9, 7.8, and 7.8”.
+- 3.2.2: “good wave number absorption at 372 cm-1, showing the presence of O-Ti-O bonds formed due to the addition of TiO2 material”.
+- 3.2.3: “white grains are visible in each membrane pore lattice” (cross-section membran B).
+- Introduction (motivasi, bukan hasil): “membrane fouling, such as water flux declination, resulting in increased operating costs and reduced membrane lifetime”.

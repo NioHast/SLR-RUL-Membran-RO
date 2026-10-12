@@ -1,0 +1,47 @@
+PAPER 097 - Guo et al. (2020)
+Judul   : Remaining Useful Life Prediction Based on the Bayesian Regularized Radial Basis Function Neural Network for an External Gear Pump
+Jurnal  : IEEE Access | Scopus Q1 (ScImago SJR Best Quartile) | DOI 10.1109/ACCESS.2020.3001013
+Pilar   : C. Bayesian & Uncertainty
+Relevansi: Inti-Metode (RUL + Weibull + Bayesian-regularized NN; tanpa censoring eksplisit, domain pompa)
+
+KARAKTERISTIK STUDI
+Memprediksi RUL pompa roda gigi eksternal melalui accelerated life test step-stress. Alur: denoising vibrasi (VMD-Hilbert) -> ekstraksi fitur multi-domain -> fusi fitur factor analysis menjadi degradation fusion index -> smoothing Holt -> prediksi RUL dengan Trainbr-RBFNN. Di akhir, distribusi Weibull dua parameter dipakai menaksir parameter keandalan/MTTF dan mengekstrapolasi umur ke tegangan normal.
+
+METODE
+- ALT step-stress (23-27 MPa), quantitative truncation; kegagalan bila efisiensi volumetrik <82% (standar JBT7014.2-2018).
+- Denoising VMD (Eq 1-7) + Hilbert envelope demodulation; dibanding EEMD/MEEMD.
+- Fitur time/frequency/time-frequency domain (kurtosis, RMS, freq std dev, dll) + torsi + kecepatan; fusi FA (cumulative contribution 96%).
+- Holt two-parameter exponential smoothing untuk prediksi indeks.
+- Trainbr-RBFNN: performance function f(w)=V E_w + beta E_d, posterior bobot (Eq 11-14); dibanding RBFNN, ANFIS, Trainbr-BP.
+- Weibull dua parameter (Eq 18-20) via MLE + acceleration model (Eq 21-22) untuk ekstrapolasi ke tegangan normal.
+
+DATA
+Data ALT sendiri: 4 pompa Hefei Changyuan CBW-F304; sensor vibrasi x/y/z, torsi, kecepatan, aliran; sampling tiap 10 menit; 0-1000 jam (latih 0-650, uji 650-1000). Hanya pompa No.2 dianalisis rinci.
+
+TEMUAN UTAMA
+- VMD-Hilbert terbaik (SNR 15,43 dB; RMSE 0,13) vs MEEMD (12,24/0,18) dan EEMD (3,58/0,95).
+- Trainbr-RBFNN MSE terkecil 3,7843e-04 vs Trainbr-BP 9,9903e-04, ANFIS 0,0034, RBFNN 0,0069.
+- Error prediksi indeks degradasi ~1% pada 600-1000 jam.
+- Weibull: m riil 1,47 vs prediksi 1,34; eta 9316,8 vs 9032,7; MTTF 8430 vs 8298 jam (relative error ~1,5%).
+
+RELEVANSI KE TESIS
+Inti-Metode. Ini contoh jaringan dengan regularisasi Bayesian untuk RUL plus pemodelan distribusi waktu-kegagalan Weibull dua parameter dengan MLE dan acceleration model - kombinasi 'jaringan + Weibull' yang berdekatan dengan kerangka tesis. Namun tidak ada penanganan pencensoringan eksplisit (data ALT lengkap via quantitative truncation), tidak ada kuantifikasi ketidakpastian (CI/posterior keluaran), dan domainnya pompa hidraulis (bukan membran/RO). Jadi masuk Inti-Metode karena adanya sumbu RUL + Weibull.
+
+JUSTIFIKASI DIMENSI (d1-d8)
+- d1 = 1: multi-sensor deret waktu (vibrasi x/y/z, torsi, kecepatan, aliran) tiap 10 menit pada ALT.
+- d2 = 1: definisi kegagalan eksplisit (efisiensi volumetrik <82%) dan RUL terhadap ambang; MTTF ditaksir.
+- d3 = 1: Weibull dua parameter (Eq 18-20) diestimasi MLE dari data kegagalan ALT dan acceleration model (Eq 21-22); benar-benar memodelkan waktu-ke-kegagalan, bukan sekadar kata.
+- d4 = 1: Trainbr-RBFNN (Bayesian regularized RBFNN), dibanding RBFNN/ANFIS/Trainbr-BP.
+- d5 = "": tidak ada CI/posterior atas prediksi; Bayesian hanya untuk regularisasi bobot, output tanpa ketidakpastian.
+- d6 = "": menyebut health management/makna umur, tanpa model keputusan pemeliharaan konkret.
+- d7 = "": domain pompa roda gigi, bukan membran/RO/desalinasi.
+- d8 = "": tanpa small-data/transfer/hierarki/all-censored sebagai metodologi.
+
+KUALITAS (skor 5/10)
+Q1=1; Q2=1 (pipeline rinci & sesuai); Q3=0,5 (data sendiri, kecil, 1 unit dianalisis, tidak publik); Q4=0,5 (persamaan lengkap, tanpa kode/data publik); Q5=0,5 (empat algoritma dibandingkan via MSE + error relatif, tetapi tanpa pengulangan/uji signifikansi); Q6=0,5 (Weibull dimodelkan, tetapi pencensoringan tidak ditangani); Q7=0 (tanpa ketidakpastian prediksi); Q8=0 (tanpa model keputusan). Total = 4/8 -> 5.
+
+LIMITASI
+Data ALT kecil & tertutup (4 pompa, 1 dianalisis); tanpa pencensoringan eksplisit; tanpa CI/posterior; domain pompa; tanpa uji signifikansi.
+
+BUKTI (fig/tabel/persamaan)
+Eq (1)-(7) VMD; Eq (8)-(9) RBFNN; Eq (10)-(14) Trainbr; Eq (17) korelasi IMF; Eq (18)-(20) Weibull; Eq (21)-(22) acceleration model; Tabel 2 SNR/RMSE; Tabel 3 FA; Tabel 4 MSE; Tabel 5 parameter keandalan. Figure dibaca: _page_2_Figure_2 (topologi RBFNN), _page_3_Figure_2 (test bench), _page_7_Figure_14 (debit + indeks degradasi), _page_9_Figure_2 (prediksi vs aktual).

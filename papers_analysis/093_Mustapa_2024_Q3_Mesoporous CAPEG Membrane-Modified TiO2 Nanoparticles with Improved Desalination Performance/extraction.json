@@ -1,0 +1,98 @@
+{
+  "no": 87,
+  "judul": "Mesoporous CA/PEG Membrane-Modified TiO2 Nanoparticles with Improved Desalination Performance",
+  "penulis": "Faizal Mustapa, Muhammad Nurdin, Muh. Zakir Muzakkar, Muhammad Idris",
+  "tahun": 2024,
+  "jurnal": "Biointerface Research in Applied Chemistry (BRIAC)",
+  "doi": "10.33263/BRIAC142.029",
+  "kuartil": "Scopus Q3 (SCImago SJR Best Quartile)",
+  "pilar": "E. Membrane/RO/Desalination",
+  "ringkasan": "Studi material eksperimental yang mensintesis membran mesoporous CA/PEG (cellulose acetate/polyethylene glycol) dimodifikasi nanopartikel TiO2 (TiO2-NPs) melalui dua metode, yaitu surface coating (SC) dan blending (B), lalu menguji kinerja desalinasi air laut Pantai Kolaka (Sulawesi Tenggara) dengan perangkat RO sederhana 3 tabung (feed + pretreatment pasir/arang/kerikil/serat + membran ber-UV). Karakterisasi XRD, FTIR, dan SEM menunjukkan struktur semikristalin dan keberadaan TiO2 dalam matriks membran. Membran metode B unggul dengan fluks 161,18 L/m2.jam dan rejeksi garam 84%, menurunkan salinitas permeat menjadi 4‰ (kategori air tawar). Artikel tidak mengandung pemodelan RUL, survival analysis/censoring, sensor time-series, machine learning, analisis ketidakpastian, maupun keputusan pemeliharaan.",
+  "kontribusi": "Membandingkan dua rute modifikasi TiO2-NPs (SC vs B) pada membran CA/PEG untuk desalinasi air laut; menunjukkan metode blending menyisipkan TiO2 ke kisi pori membran sehingga porositas dan kinerja pemisahan garam meningkat; merancang perangkat RO sederhana 3 kompartemen (pretreatment + membran + lampu UV) yang murah untuk masyarakat pesisir dan pulau kecil Indonesia.",
+  "temuan_kunci": [
+    "Metode blending (B) menghasilkan kinerja terbaik: fluks 161,18 L/m2.jam dan rejeksi garam 84% (SC 129,99 L/m2.jam/80%; kontrol CA/PEG 98,79 L/m2.jam/60%).",
+    "Salinitas permeat menurun berturut-turut: 25‰ (material filter), 10‰ (CA/PEG kontrol), 5‰ (SC), 4‰ (B); permeat membran SC dan B dikategorikan air tawar menurut klasifikasi salinitas.",
+    "XRD menunjukkan struktur semikristalin dengan puncak anatase TiO2 pada 2θ 25°, 48,0°, 54,0°, 55,0°, 62,5°, 75° dan sedikit rutile pada 43,2°; interaksi CA/PEG-TiO2 berupa ikatan Van der Waals/ikatan hidrogen.",
+    "FTIR mengidentifikasi gugus fungsi CA/PEG (-OH 3444 cm-1; C-H; C=H; C-O-C) dan ikatan O-Ti-O pada 372 cm-1 pada membran SC dan B.",
+    "SEM: SC hanya memodifikasi permukaan (tidak mengubah struktur cross-section), sedangkan B menyisipkan butiran putih TiO2 ke dalam kisi pori membran (terbukti pada potongan lintang).",
+    "pH permeat turun menjadi 7,8 (SC dan B), 7,9 (kontrol CA/PEG), dan 8 (material filter); sistem dinyatakan stabil pada kondisi asam lemah.",
+    "Perangkat RO sederhana 3 tabung PVC 2 inci dengan pretreatment dan lampu UV terbukti mampu menurunkan kandungan garam air laut."
+  ],
+  "dimensi": {
+    "d1": "",
+    "d2": "",
+    "d3": "",
+    "d4": "",
+    "d5": "",
+    "d6": "",
+    "d7": "1",
+    "d8": ""
+  },
+  "alasan_dimensi": {
+    "d1": "Tidak ada data multi-sensor atau runtun waktu; pengukuran hanya satu titik per membran (volume permeat selama t=0,5 jam; pH dan salinitas sekali ukur) pada 3 perlakuan membran, bukan deret waktu.",
+    "d2": "RUL, kegagalan, atau ambang batas tidak didefinisikan maupun diukur. Fouling dan 'reduced membrane lifetime' hanya disebut sebagai motivasi di pendahuluan, bukan bagian metode/hasil.",
+    "d3": "Tidak ada pemodelan data tersensor; istilah survival/Weibull/hazard/cure tidak ada dalam artikel.",
+    "d4": "Tidak ada model statistik/ML spesifik (LSTM/CNN/Transformer/Bayesian/RF/SVM/GP); hanya persamaan deterministik fluks J=Q/(A×t) dan rejeksi garam R=(1−Cp/C0)×100%.",
+    "d5": "Tidak ada kuantifikasi ketidakpastian (CI/posterior/interval/error bar); semua hasil dilaporkan sebagai nilai tunggal tanpa ulangan atau uji statistik.",
+    "d6": "Keputusan pemeliharaan (jadwal/biaya/DSS) tidak dibahas; biaya operasi dan umur membran hanya disinggung sekilas sebagai dampak fouling di pendahuluan. Perangkat RO 3 tabung adalah alat uji eksperimental, bukan sistem pengambilan keputusan.",
+    "d7": "1 — Artikel berfokus pada membran CA/PEG/TiO2 untuk RO/desalinasi air laut, terbukti dari abstract: 'fabrication of CA/PEG/TiO2 membrane by comparing the effectiveness methods over surface coating (SC) and blending (B)' serta pengujian 'water flux, salt rejection, pH, and salt content'; fouling RO disebut sebagai masalah utama ('membrane fouling, such as water flux declination').",
+    "d8": "Tidak ada pendekatan small-data/transfer learning/hierarchical/all-censored karena tidak ada pemodelan ML sama sekali; jumlah sampel kecil (3 membran) adalah keterbatasan desain eksperimen material, bukan tantangan pembelajaran mesin."
+  },
+  "relevansi": "Konteks",
+  "kualitas": {
+    "skor": 6,
+    "rincian": {
+      "Q1": 1,
+      "Q2": 0.5,
+      "Q3": 0.5,
+      "Q4": 0.5,
+      "Q5": 0.5,
+      "Q6": "N/A",
+      "Q7": "N/A",
+      "Q8": "N/A"
+    },
+    "catatan": "Q6-Q8 tidak berlaku (bukan studi censoring/ketidakpastian/keputusan pemeliharaan) dan dikeluarkan dari skor. Skor = (1+0,5+0,5+0,5+0,5)/5 × 10 = 6. Kekuatan: tujuan (SC vs B terhadap kinerja desalinasi) jelas; prosedur sintesis dan karakterisasi standar; metrik kinerja terukur (fluks, rejeksi, pH, salinitas) dan dibandingkan antar perlakuan. Kelemahan: tanpa ulangan/replikasi dan uji statistik; kondisi operasi RO (tekanan 10 bar, laju alir, suhu) tidak dirinci dan perangkat dijelaskan kualitatif; sebagian instrumen tanpa spesifikasi parameter; terdapat inkonsistensi naratif (klasifikasi salinitas 4-5‰ sebagai air tawar vs brakish mesohaline)."
+  },
+  "data_kuantitatif": {
+    "dataset": "Satu batch 19 L air laut Pantai Kolaka, Kolaka, Sulawesi Tenggara (salinitas 32‰; direndam arang 24 jam); 3 membran uji (CA/PEG kontrol, CA/PEG/TiO2 SC, CA/PEG/TiO2 B) + material pretreatment (pasir, arang, kerikil, serat).",
+    "ukuran": "3 perlakuan membran tanpa ulangan; luas membran A=38,465×10⁻⁴ m² (d=0,07 m); durasi t=0,5 jam; volume permeat Q=0,19/0,25/0,31 L; tekanan diklaim konstan 10 bar.",
+    "metrik": "Fluks air (L/m2.jam): 98,79 (kontrol), 129,99 (SC), 161,19 (B). Rejeksi garam (%): 22 (pretreatment), 60 (kontrol), 80 (SC), 84 (B). pH permeat: 8/7,9/7,8/7,8. Salinitas permeat (‰): 25/10/5/4."
+  },
+  "metode": "Sintesis membran CA/PEG: 3 g CA dilarutkan dalam 17 mL aseton + 2 g PEG, diaduk ±3 jam, dicetak pada cawan Petri dan didiamkan 15 jam. Modifikasi 0,5 g TiO2-NPs dengan dua metode: (i) surface coating (SC) — TiO2 ditaburkan pada permukaan membran; (ii) blending (B) — TiO2 dicampurkan ke larutan membran CA/PEG. Karakterisasi: XRD (kristalinitas/deposisi TiO2), FTIR (gugus fungsi), SEM (morfologi permukaan, cross-section, ketebalan). Uji RO: perangkat pipa PVC 2 inci 3 tabung (tabung 1 feed 19 L air laut ber-arang; tabung 2 pretreatment pasir/arang/kerikil/serat; tabung 3 membran + lampu UV). Perhitungan: fluks J=Q/(A×t); rejeksi garam R=(1−Cp/C0)×100%; pengukuran pH dan salinitas dengan meter/refraktometer.",
+  "limitasi": [
+    "Bukan studi RUL/prognostik: tidak ada data longitudinal, event/kegagalan, censoring, atau model prediktif; fouling dan umur membran hanya disebut di pendahuluan.",
+    "Tidak ada ulangan (replikasi) dan analisis statistik/ketidakpastian (error bar, CI) pada pengukuran fluks, rejeksi garam, pH, dan salinitas.",
+    "Kondisi operasi perangkat RO tidak dirinci secara kuantitatif (tekanan 10 bar diklaim konstan tanpa verifikasi; laju alir, suhu, dan durasi total proses tidak dilaporkan); perangkat dijelaskan secara kualitatif.",
+    "Inkonsistensi naratif: permeat 4-5‰ disebut air tawar sekaligus brakish/mesohaline; penggunaan C0 berbeda antara baris pretreatment (32‰) dan membran (25‰).",
+    "Tidak ada uji fouling, ketahanan jangka panjang, self-cleaning, atau stabilitas membran yang menjadi inti klaim antifouling TiO2 pada literatur yang dikutip."
+  ],
+  "funding_coi": "Funding: Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi Republik Indonesia — hibah riset dasar no. 51/UN29.20/PG/2022 dan World Class Professor Award no. 3252/E4/DT.04.03/2022. COI: penulis menyatakan tidak ada konflik kepentingan yang diketahui.",
+  "status_inklusi": "diterima",
+  "figur_dibaca": [
+    {
+      "file": "figures/_page_8_Figure_3.jpeg",
+      "isi": "SEM morfologi: (a) CA/PEG kontrol permukaan halus dengan sedikit pori; (b) CA/PEG/TiO2 SC berpori banyak dan reguler (skala 20 µm); (c) CA/PEG/TiO2 B dengan pori terisi butiran TiO2 (skala 1 mm); (d-f) potongan lintang (skala 200 µm) memperlihatkan struktur kanal/berpori, dengan butiran putih TiO2 tampak pada kisi pori membran B (f)."
+    },
+    {
+      "file": "figures/_page_9_Picture_4.jpeg",
+      "isi": "Foto perangkat RO sederhana 3 tabung PVC 2 inci: (a) tabung vertikal dengan celah lampu UV/chamber gelap sebagai tempat membran; (b) rangkaian tabung, pompa, dan pipa keluaran (outlet) berwarna putih/merah."
+    },
+    {
+      "file": "figures/_page_10_Figure_5.jpeg",
+      "isi": "Diagram batang fluks: CA/PEG kontrol 98,791088; CA/PEG/TiO2 SC 129,9883011; CA/PEG/TiO2 B 161,1854933 L/m2.jam, dengan panah tren naik; mengonfirmasi metode B tertinggi."
+    }
+  ],
+  "bukti": [
+    "Abstract: “fabrication of CA/PEG/TiO2 membrane by comparing the effectiveness methods over surface coating (SC) and blending (B)” — perbandingan SC vs B.",
+    "Abstract: “water flux value of 161.18 L/m2.h and salt rejection of 84% that indicated the 4‰ for water salinity” — kinerja membran B.",
+    "3.4.1 Water Flux Identification: “the membrane with B method has a large value compared to the two membranes, which is 161.20 L/m2.h”.",
+    "3.4.1: “The pressure used in this study is constant at 10 bar” — satu-satunya parameter operasi kuantitatif.",
+    "Tabel 3 (3.4.2 Salt rejection): Pretreatment 22%; CA/PEG 60%; SC 80%; B 84% (Cp 25/10/5/4‰; C0 32/25/25/25‰).",
+    "3.4.4 Salinity test: “a decrease in seawater salt content respectively by 25‰ filter material, 10‰ CA/PEG membrane control, 5‰ CA/PEG/TiO2 SC, and 4‰ CA/PEG/TiO2 B”.",
+    "3.4.3 pH test: “the role of CA/PEG, CA/PEG/TiO2 SC, and B membranes experienced a decrease in pH of 7.9, 7.8, and 7.8”.",
+    "3.2.2 FTIR: “it provides good wave number absorption at 372 cm-1, showing the presence of O-Ti-O bonds formed due to the addition of TiO2 material”.",
+    "3.2.3 SEM: “the morphology of the side view of the CA/PEG/TiO2 B (Figure 7f) that white grains are visible in each membrane pore lattice”.",
+    "Introduction: “RO membranes still have significant disadvantages due to the occurrence of membrane fouling, such as water flux declination, resulting in increased operating costs and reduced membrane lifetime” — motivasi fouling/lifetime, bukan pemodelan.",
+    "Tabel 4: klasifikasi salinitas 0,5-5,0‰ = air tawar; 5,0-30‰ = brakish — dasar kategorisasi permeat 4-5‰."
+  ]
+}

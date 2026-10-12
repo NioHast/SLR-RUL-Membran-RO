@@ -1,0 +1,48 @@
+PAPER 013 - Noot et al. (2025)
+Judul   : LSTM and Transformers based methods for Remaining Useful Life Prediction considering Censored Data
+Jurnal  : International Journal of Prognostics and Health Management | Scopus Q2 (SCImago SJR Best Quartile) | DOI 10.36001/IJPHM.2025.v16i2.4260
+Pilar   : A. Survival Analysis & Censored Data
+Relevansi: Inti-Metode  (RUL + deep learning + censoring + uncertainty; domain turbofan)
+
+KARAKTERISTIK STUDI
+Mengadaptasi arsitektur Transformer (DAST) dan LSTM menjadi ordinal regression (OR) untuk prediksi RUL dengan data tersensor kanan. Motivasi: pada predictive maintenance, banyak unit diganti sebelum gagal sehingga RUL-nya tidak diketahui (right-censored), sementara arsitektur deep-learning terbaik umumnya mengabaikan pencensoringan.
+
+METODE
+- OR: RUL didiskretkan menjadi vektor Y_t panjang K (status tiap L siklus): 0=sehat, 1=gagal, -=tidak diketahui (tersensor).
+- Loss BCE hanya dihitung pada koordinat yang tidak ter-mask.
+- DAST-OR (Transformer dual-aspect self-attention + sigmoid) dan LSTM-MLP-OR (LSTM + feed-forward + sigmoid).
+- Ensemble dari 6 model terbaik dari 10 pelatihan; BEST-ORE memilih DAST-ORE/LSTM-MLP-ORE via validasi.
+- Conformal prediction (split) untuk interval kepercayaan tanpa asumsi distribusi.
+- Kode publik (Pytorch): gitlab.math.unistra.fr/jnoot/rul_estimation_cmapss.
+
+DATA
+C-MAPSS FD001-FD004 (turbofan, 14-21 sensor; 100-260 trajektori latih) + N-CMAPSS DS02 (6 unit). Pencensoringan artifisial 0/20/50/70/90%. R_max=130, K=13, L=10.
+
+TEMUAN UTAMA
+- OR memungkinkan memakai unit tersensor (diganti sebelum gagal).
+- Tanpa censoring: DAST-OR/LSTM-MLP-OR setara SOTA. Dengan censoring tinggi (90%): DAST-ORE jauh lebih tahan (FD001 RMSE 15,80 vs LSTM-ORCE 20,38).
+- Arsitektur saling melengkapi: DAST unggul pada 1 kondisi operasi, LSTM pada 6 kondisi operasi.
+- Conformal interval terkalibrasi (coverage ~1-alpha), tapi lebar interval bervariasi; OR tidak efektif pada data kecil (N-CMAPSS).
+- Biaya komputasi tinggi: DAST-OR 5-10x, LSTM-OR 20-25x lebih lambat dari baseline.
+
+RELEVANSI KE TESIS
+Relevan sebagai kerangka metode: cara modern menggabungkan deep learning RUL dengan data tersensor eksplisit + interval prediksi conformal. Domain bukan membran. Tier: Inti-Metode.
+
+JUSTIFIKASI DIMENSI (per d1-d8)
+- d1 = 1: deret waktu multi-sensor (14-21 sensor), sliding window.
+- d2 = 1: definisi T*, C, T, R_t dan kondisi tersensor R_t >= min(C-t, R_max).
+- d3 = 1: ordinal regression dengan masking loss pada data tersensor; uji pencensoringan 0-90%.
+- d4 = 1: DAST-OR, LSTM-MLP-OR (deep learning spesifik).
+- d5 = 1: conformal prediction interval (coverage 1-alpha) + lebar interval.
+- d6 = "" : hanya motivasi predictive maintenance secara umum; tanpa model keputusan.
+- d7 = "" : domain turbofan, bukan membran.
+- d8 = 1: data tersensor dominan + analisis kegagalan pada dataset kecil.
+
+KUALITAS (skor 9/10)
+Q1=1; Q2=1; Q3=1; Q4=1 (kode publik); Q5=1 (4 subset C-MAPSS + N-CMAPSS, benchmark, asymmetric score); Q6=1 (censoring inti); Q7=1 (conformal); Q8=0,5 (motivasi PdM tanpa model keputusan). Jumlah 7,5/8 -> 9.
+
+LIMITASI
+Tak efektif bila sedikit unit tersensor; waktu latih tinggi; keputusan pemeliharaan tak dimodelkan; censoring artifisial; domain non-membran.
+
+BUKTI (fig/table/eq)
+Eq. 2 (BCE termask), Eq. 3 (OR->RUL), Eq. 4 (BCE asimetris); Table 1 (dataset), 4 (RMSE tanpa censoring), 5-6 (RMSE dengan censoring), 8 (coverage); Fig. 1 (arsitektur DAST), 8 (RUL + CI conformal).

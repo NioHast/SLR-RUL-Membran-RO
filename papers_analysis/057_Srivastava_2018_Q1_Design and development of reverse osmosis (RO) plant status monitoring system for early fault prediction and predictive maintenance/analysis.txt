@@ -1,0 +1,44 @@
+PAPER 015 - Srivastava et al. (2018)
+Judul   : Design and development of reverse osmosis (RO) plant status monitoring system for early fault prediction and predictive maintenance
+Jurnal  : Applied Water Science | Scopus Q1 (SCImago SJR Best Quartile) | DOI 10.1007/s13201-018-0821-8
+Pilar   : F. DSS & Predictive Maintenance (IS)
+Relevansi: Konteks  (sistem pemantauan/DSS domain RO; tanpa RUL/survival/censoring)
+
+KARAKTERISTIK STUDI
+Membangun unit pemantauan status plant RO berbasis embedded system untuk deteksi dini kerusakan dan pemeliharaan prediktif. Fokus: monitoring real-time + peringatan dini + rekomendasi tindakan. Domain aplikasi kuat (membran RO), tetapi tidak memprediksi RUL.
+
+METODE
+- Hardware: Raspberry Pi 3, sensor pH/TDS/flow/pressure/level, ADC/EEPROM/port expander, Bluetooth, 2G GSM, UPS, layar sentuh.
+- Software: firmware C++/Qtopia; app Android + cloud (Firebase) + web server; mode set point lokasi-spesifik, transfer data, training.
+- ANN multi-input single-output (MATLAB 2015a): 5 input (laju alir feed/produk, pH, TDS, frekuensi water wash, waktu operasi) -> efisiensi membran; hidden layer 1-7 neuron; uji Levenberg-Marquardt vs Bayesian regularization.
+
+DATA
+Plant RO 2000 LPH (kampus CSIR-CEERI) dioperasikan 6 jam/hari selama 10 hari; data 7 hari kontinu; 75 sampel (70/15/15). Uji lapangan di 10 plant RO desa (500-2000 LPH) Rajasthan.
+
+TEMUAN UTAMA
+- ANN akurat: Bayesian regularization R2=99,99% (5 neuron, MSE 1,28e-10); LM R2=100% (4 neuron).
+- Efisiensi plant turun 67,7% -> 25,6% dalam 15 hari; scaling event ditandai drop setelah hari 10 -> memicu chemical wash.
+- Sistem merekomendasikan chemical wash, water wash, penggantian membran, shutdown darurat, dan mendeteksi kerusakan sensor.
+- Desain modular dapat dipasang pada plant RO kapasitas berapa pun.
+
+RELEVANSI KE TESIS
+Konteks domain: contoh implementasi nyata predictive maintenance pada plant RO/desalinasi yang mengubah sinyal sensor menjadi keputusan pemeliharaan membran. Namun tidak memprediksi RUL, tidak memakai survival analysis, dan tidak menangani data tersensor. Karena tidak mengandung sumbu RUL/survival maupun RUL+membran, tier = Konteks (DSS/IS + domain).
+
+JUSTIFIKASI DIMENSI (per d1-d8)
+- d1 = 1: multi-sensor deret waktu real-time (pH, TDS, flow, pressure, level, daya).
+- d2 = 1: ambang set point (pH/TDS/flow) memicu alarm + definisi peristiwa kegagalan (fouling/scaling).
+- d3 = "" : tanpa survival/hazard/Weibull/penanganan censoring.
+- d4 = 1: ANN/MLP dengan Levenberg-Marquardt & Bayesian regularization.
+- d5 = "" : tanpa CI/posterior (Bayesian di sini hanya regularisasi pelatihan).
+- d6 = 1: keputusan perawatan konkret (chemical/water wash, ganti membran) via DSS peringatan dini.
+- d7 = 1: objek membran RO, fokus fouling/scaling.
+- d8 = "" : data kecil (75 sampel) tetapi tanpa metode small-data/transfer/hierarchical eksplisit.
+
+KUALITAS (skor 8/10)
+Q1=1; Q2=1; Q3=0,5 (data sangat kecil, 7-15 hari, tanpa validasi eksternal); Q4=0,5 (desain hardware/firmware tidak reproducible penuh); Q5=1 (dua algoritma ANN dibandingkan dengan R2/MSE); Q6=N/A; Q7=N/A; Q8=1 (rekomendasi tindakan perawatan jelas). Jumlah 5/6 -> 8.
+
+LIMITASI
+Dataset sangat kecil & periode singkat; target hanya efisiensi (bukan RUL); tanpa ketidakpastian/uji statistik; desain tidak reproducible penuh.
+
+BUKTI (fig/table/eq)
+Table 1 (perbandingan algoritma ANN); Fig. 1 (skema pemantauan); Fig. 6 (variasi flow & kualitas air); Fig. 7 (efisiensi membran, scaling event); Fig. 8 (MSE vs neuron).

@@ -1,0 +1,82 @@
+{
+ "no": 49,
+ "judul": "Data-driven Prognostics with Predictive Uncertainty Estimation using Ensemble of Deep Ordinal Regression Models",
+ "penulis": "Vishnu TV, Diksha, Pankaj Malhotra, Lovekesh Vig, Gautam Shroff",
+ "tahun": 2019,
+ "jurnal": "International Journal of Prognostics and Health Management (IJPHM)",
+ "doi": "10.36001/ijphm.2019.v10i4.2612",
+ "kuartil": "Scopus Q2 (SCImago SJR Best Quartile)",
+ "pilar": "A. Survival Analysis & Censored Data",
+ "ringkasan": "Paper mengusulkan LSTM-OR, pendekatan ordinal regression berbasis deep LSTM untuk estimasi RUL yang secara alami dapat memanfaatkan instan operasional tersensor (censored) saat melatih, plus kuantifikasi ketidakpastian prediktif lewat ensemble LSTM-OR. Dievaluasi pada benchmark turbofan C-MAPSS FD001 dan FD004 dengan skenario pc = 0/50/70/90%. Ordinal regression dengan censored (ORC) mengalahkan metric regression (MR) saat jumlah instan gagal sedikit, contoh 15,1% (FD001) dan 3,6% (FD004) perbaikan RMSE pada pc=90%.",
+ "kontribusi": "Menunjukkan cara menggabungkan data tersensor ke pelatihan model deep learning RUL lewat label masking pada ordinal regression — inti tesis karena tesis membutuhkan penanganan data tersensor. Juga menyediakan kuantifikasi ketidakpastian ensemble (ESD) yang terbukti berkorelasi dengan error, relevan untuk keputusan maintenance berbasis risiko.",
+ "temuan_kunci": [
+  "Ordinal regression (OR) memungkinkan pemanfaatan instan tersensor dengan label parsial; MR tidak bisa.",
+  "ORC mengalahkan MR saat instan gagal sedikit: perbaikan RMSE 15,1% (FD001) dan 3,6% (FD004) pada pc=90% (nf=8 dan 20).",
+  "Ensemble LSTM-OR (ORCE, m=6) meningkatkan estimasi RUL dibanding model tunggal (mis. RMSE FD001 pc=0% turun 15,63->14,62).",
+  "ESD (empirical std dev) lebih robust sebagai metrik ketidakpastian dibanding Entropy (ENT).",
+  "Ketidakpastian rendah berkorelasi dengan error rendah; untuk tau_r=20, presisi P_l=0,917 (FD001) dan 0,857 (FD004).",
+  "Pendekatan ini fokus pada aleatoric uncertainty; epistemic (noise pengukuran/proses) belum ditangani."
+ ],
+ "dimensi": {
+  "d1": "1",
+  "d2": "1",
+  "d3": "1",
+  "d4": "1",
+  "d5": "1",
+  "d6": "",
+  "d7": "",
+  "d8": "1"
+ },
+ "alasan_dimensi": {
+  "d1": "Input adalah multi-sensor time series (21 sensor di FD001, 27 fitur di FD004) dengan panjang deret hingga T=360 siklus.",
+  "d2": "RUL didefinisikan eksplisit (r = F - T, batas atas r_u=130 siklus) dan failure point F menjadi acuan; target ordinal dibagi K=10 interval.",
+  "d3": "Memodelkan data tersensor secara nyata: instan operasional tanpa waktu gagal menghasilkan target parsial (label masking y_j unknown untuk j>=k') dengan loss L_ORC; skenario pc hingga 90% tersensor.",
+  "d4": "Model spesifik: deep LSTM untuk ordinal regression (LSTM-OR) dan ensemble LSTM-OR.",
+  "d5": "Mengkuantifikasi ketidakpastian prediktif via ensemble ESD (standar deviasi empiris) dan Entropy (ENT), dengan metrik Precision/Recall/F1.",
+  "d6": "Tidak mengusulkan/menganalisis keputusan maintenance formal (jadwal/biaya/DSS). Hanya menyebut kegunaan untuk condition-based maintenance, alarm dini, dan 'decision making' secara kualitatif.",
+  "d7": "Domain turbofan engine (C-MAPSS), bukan membran/RO/desalinasi/fouling.",
+  "d8": "Menargetkan skenario labeled-failure-data langka (small-data) dan memanfaatkan data tersensor masif (pc hingga 90%); ini termasuk small-data/censored-heavy."
+ },
+ "relevansi": "Inti-Metode",
+ "kualitas": {
+  "skor": 9,
+  "rincian": {
+   "Q1": 1,
+   "Q2": 1,
+   "Q3": 1,
+   "Q4": 0.5,
+   "Q5": 1,
+   "Q6": 1,
+   "Q7": 1,
+   "Q8": 0.5
+  },
+  "catatan": "Q1-Q3 jelas, metodologi ordinal regression untuk censoring solid, dua dataset publik diuji dengan skenario censoring terkontrol. Q4 hyperparameter & arsitektur dijelaskan tetapi tanpa kode. Q5 evaluasi sangat lengkap (RMSE, timeliness score, precision/recall/F1 ketidakpastian). Q6 penanganan censoring eksplisit dan menjadi kontribusi inti. Q7 pelaporan ketidakpastian kuat (ESD vs ENT). Q8 hanya tautan kualitatif ke decision making. Skor = round(7/8*10) = 9."
+ },
+ "data_kuantitatif": {
+  "dataset": "NASA C-MAPSS FD001 dan FD004",
+  "ukuran": "FD001: 100 train/100 test engine, 21 sensor; FD004: 249/248, 27 fitur; hingga 1600 (FD001) dan 3980 (FD004) instan terpotong; T=360; K=10; r_u=130",
+  "metrik": "RMSE, Timeliness Score S; perbaikan ORC atas MR 15,1% (FD001) & 3,6% (FD004) pada pc=90%; ORCE RMSE 14,62 (FD001 pc=0%); P_l=0,917/0,857 pada tau_r=20"
+ },
+ "metode": "Deep LSTM Ordinal Regression (LSTM-OR) dengan multi-label target K interval dan label masking untuk instan tersensor (loss L_ORC); ensemble ORCE (m=6 model) untuk estimasi RUL dan ketidakpastian (ESD & Entropy); grid search hyperparameter",
+ "limitasi": [
+  "Fokus hanya pada aleatoric uncertainty; epistemic (noise pengukuran/model) belum dimodelkan.",
+  "Metrik ketidakpastian belum divalidasi pada dataset lain (mis. baterai).",
+  "Clipping RUL pada r_u=130 menimbulkan error bagi instan berumur sangat panjang.",
+  "Hanya arsitektur LSTM yang diuji (walau diklaim generik).",
+  "Tidak ada model keputusan maintenance formal.",
+  "Performa pada data penuh tidak lebih baik dari LSTM-MR; keunggulan hanya pada skenario tersensor berat."
+ ],
+ "funding_coi": "Afiliasi TCS Research, New Delhi, India. Teks hanya memuat ucapan terima kasih ke reviewer; tidak ada pernyataan eksplisit konflik kepentingan maupun sumber pendanaan.",
+ "status_inklusi": "diterima",
+ "figur_dibaca": [
+  {"file": "_page_3_Figure_3.jpeg", "isi": "Dua panel: (a) alur LSTM-OR — instan gagal (RUL r, x_1..x_T) dan instan tersensor (T-t0, x_1..x_t0) diarahkan ke 'Train an Ordinal Regression model', lalu inferensi: input -> model -> y_hat -> r_hat; (b) alur ensemble: input ke m model LSTM-OR, rata-rata r_hat=(1/m)sum r_hat_i dan ketidakpastian u_hat=sqrt((1/m)sum(r_hat_i-r_hat)^2)."},
+  {"file": "_page_3_Figure_5.jpeg", "isi": "Pembuatan target vector ordinal: (a) instan gagal -> y=[0 0 1 1 1] (interval RUL T->F); (b) instan tersensor -> y=[0 0 - - -] dengan label setelah t0 di-mask (unknown). Menunjukkan mekanisme censoring inti paper."},
+  {"file": "_page_9_Figure_1.jpeg", "isi": "Evaluasi ESD: (a) rata-rata error naik seiring ambang ketidakpastian tau_u (FD004 selalu lebih tinggi dari FD001); (b) presisi P_l turun seiring ambang RUL tau_r; FD001 lebih presisi, ~0,75-1,00. Menunjukkan ketidakpastian berkorelasi dengan error."}
+ ],
+ "bukti": [
+  "'we formulate RUL estimation as an Ordinal Regression (OR) problem and propose LSTM-OR ... naturally allows for the incorporation of censored operational instances in training along with the failed instances' (Abstract).",
+  "'with pc = 90% ... ORC performs significantly better than MR, and shows 15.1% and 3.6% improvement over MR in terms of RMSE, for FD001 and FD004' (Results).",
+  "'The proposed approach for uncertainty estimation focuses on aleatoric uncertainty' (Conclusion).",
+  "'we observe that for R>=0.1, P is higher in case of ESD for FD001 dataset' (Uncertainty quantification)."
+ ]
+}

@@ -1,0 +1,47 @@
+{
+ "no": 27,
+ "judul": "Hybrid models, digital twins, and digital shadows for sustainable membrane technologies: A critical review",
+ "penulis": "Kamran Ghasemzadeh, Mostafa Jafari, Tara Torabi, Amirpiran Amiri, Adolfo Iulianelli",
+ "tahun": 2026,
+ "jurnal": "Advanced Membranes",
+ "doi": "10.1016/j.advmem.2026.100219",
+ "kuartil": "Scopus Q1 (ScImago SJR 2024)",
+ "pilar": "E. Membrane/RO/Desalination",
+ "ringkasan": "Tinjauan kritis yang membedakan dan mengintegrasikan tiga tingkat digitalisasi untuk membran: model hibrida (fisika + ML), digital shadow (DS, aliran data satu arah), dan digital twin (DT, loop tertutup dua arah). Review menyintesis aplikasi pada desalinasi/pengolahan air, MBR, separasi gas (CO2/H2/O2/N2), catalytic membrane reactor, dan PEMFC; menyoroti peran CFD untuk menghasilkan data sintetis, kuantifikasi ketidakpastian (mis. Stochastic Greybox Modeling and Control), serta DSS pemeliharaan prediktif membran (mis. optimasi strategi restorasi elemen RO dengan pengurangan penggantian 50-80 %).",
+ "kontribusi": "Memberikan kerangka konseptual domain untuk keputusan pemeliharaan/penggantian membran berbasis digital twin dan DSS, serta menempatkan kuantifikasi ketidakpastian sebagai prioritas; tidak memakai survival/pencensoringan maupun membangun model RUL survivals.",
+ "temuan_kunci": [
+  "Klasifikasi berjenjang: model ML (prediktif offline) -> DS (monitoring satu arah) -> DT (kendali adaptif loop tertutup, pemeliharaan prediktif).",
+  "DS/DT diterapkan pada UF/RO/TFF untuk diagnosis fouling real-time (soft sensor) dengan galat <10 %.",
+  "DT-DSS untuk pemulihan elemen RO (Van Rooij et al.) memakai differential pressure + particle filtering untuk membandingkan kebijakan restorasi (biaya, downtime, risiko), memproyeksikan pengurangan penggantian elemen 50-80 %.",
+  "Celah riset: kurangnya protokol validasi standar, infrastruktur sensor, dan arsitektur DT yang skalabel; kuantifikasi ketidakpastian jadi kebutuhan.",
+  "SGMC (stochastic greybox) memakai SDE untuk menangkap ketidakpastian dan memperbarui model pada UF air."
+ ],
+ "dimensi": {"d1": "1", "d2": "", "d3": "", "d4": "1", "d5": "1", "d6": "1", "d7": "1", "d8": ""},
+ "alasan_dimensi": {
+  "d1": "Real-time multi-sensor dan deret waktu menjadi inti bahasan DS/DT: sensor tekanan, temperatur, pH, flow meter, dan penganalisis komposisi yang diperbarui kontinu (soft sensor, autoregressive, Kalman filter).",
+  "d2": "Tidak mendefinisikan RUL/ambang kegagalan secara kuantitatif; menyebut ambang tekanan trans-membran kritis dan siklus penggantian, tetapi tidak menetapkan threshold operasional.",
+  "d3": "Tidak ada survival/hazard/Weibull/cure maupun pencensoringan.",
+  "d4": "Mengulas arsitektur model spesifik di banyak studi: ANN, CNN, SVR, XGBoost, CatBoost, ensemble trees, Kalman filter, particle filter, autoregressive, genetic algorithm, dan reduzksi model (surrogate).",
+  "d5": "Kuantifikasi ketidakpastian dibahas sebagai kebutuhan kunci; SGMC memakai stochastic differential equations untuk menangkap ketidakpastian dan memperbarui state, dan 'uncertainty quantification' diusulkan sebagai metrik validasi standar.",
+  "d6": "Keputusan pemeliharaan dianalisis konkret: DT-DSS untuk strategi restorasi/penggantian membran RO (biaya, downtime, risiko, pengurangan penggantian 50-80 %), pemeliharaan prediktif, kendali adaptif, dan optimasi energi.",
+  "d7": "Domain inti adalah teknologi membran (desalinasi/RO, UF, MBR, separasi gas, CMR, PEMFC) dan fouling.",
+  "d8": "Membahas keterbatasan data dan pemanfaatan data sintetis dari CFD, tetapi tidak menerapkan kecil-data/transfer/hierarchical/all-censored sebagai metode."
+ },
+ "relevansi": "Konteks",
+ "kualitas": {"skor": 9, "rincian": {"Q1": 1, "Q2": 1, "Q3": 1, "Q4": 1, "Q5": 0.5, "Q6": "N/A", "Q7": 1, "Q8": 1}, "catatan": "Review kritis yang terstruktur, membedakan ML/DS/DT secara konseptual dan operasional, memetakan tantangan dan celah riset, serta menyoroti kuantifikasi ketidakpastian dan keputusan pemeliharaan berbasis DSS. Kelemahan: tinjauan konseptual (tanpa eksperimen baru), tanpa sintesis kuantitatif formal, tidak membahas survival/pencensoringan. Q6 tidak berlaku."},
+ "data_kuantitatif": {"dataset": "Literatur (Scopus 2000-2025 untuk bibliometrik) + studi kasus di berbagai sistem membran", "ukuran": "Analisis co-occurrence Scopus + banyak tabel studi kasus (UF, RO, MBR, CO2, H2, CMR, PEMFC)", "metrik": "Galat soft-sensor fouling <10 %; pengurangan penggantian elemen RO 50-80 % (DSS); akurasi R2 mis. CatBoost 0,8374 (MBR), GB decision tree R2 0,87 (H2); galat prediksi transport <10 %"},
+ "metode": "Tinjauan kritis + analisis bibliometrik (VOSviewer) + kerangka konseptual; menyintesis arsitektur model hibrida/DS/DT, enabler teknologi (CFD, IoT, cloud, big data), dan studi kasus.",
+ "limitasi": [
+  "Tinjauan konseptual tanpa eksperimen atau validasi empiris baru.",
+  "Cakupan aplikasi DS/DT belum merata (banyak celah pada separasi gas, CMR, H2, CO2).",
+  "Belum ada protokol validasi/benchmark standar untuk DS/DT.",
+  "Tidak membahas survival/pencensoringan atau model RUL eksplisit."
+ ],
+ "funding_coi": "Penulis menyatakan tidak ada konflik kepentingan; A. Iulianelli tercatat sebagai salah satu penulis dengan peran funding acquisition (pernyataan dana spesifik tidak dijabarkan dalam teks yang dibaca).",
+ "status_inklusi": "diterima",
+ "figur_dibaca": [
+  {"file": "_page_4_Figure_1.jpeg", "isi": "Arsitektur sistem (a) Digital Shadow: Physical System -> Sensor Data -> Virtual Model -> Data Integration Layer -> Monitoring & Diagnosis (satu arah, tanpa umpan balik); (b) Digital Twin: loop dua arah dengan Real-time Feedback Loop dan Control Actions/Adaptive Operation ke Physical System."},
+  {"file": "_page_6_Figure_4.jpeg", "isi": "Alur konseptual ML -> DS -> DT pada membran: Sensor Data -> Analisis real-time AI/ML (prediksi kinerja, deteksi anomali, condition monitoring) -> Digital Shadow -> Pengambilan keputusan (kendali adaptif, maintenance) -> Digital Twin -> Parameter teroptimasi kembali ke sistem membran; sensor tekanan, temperatur, pH, flow, komposisi."}
+ ],
+ "bukti": ["Fig. 1-4: aplikasi membran, perbedaan ML/DS/DT", "Fig. 5-6: hubungan DT/CFD/AI/IoT/sensor & workflow", "Table 1-5: studi kasus hibrida/DS/DT (water, MBR, CO2, H2, gas separation)", "Fig. 12: DT loop tertutup pabrik RO (Cuba et al.)", "Bagian 7: kesimpulan & celah riset"]
+}

@@ -1,0 +1,47 @@
+{
+ "no": 30,
+ "judul": "Physics-informed machine learning for cross-study prediction of oil-water membrane fouling",
+ "penulis": "Carine Lourenco Alves, Silvio Edegar Weschenfelder, Maria Alice Prado Cechinel, Mariane Carolina Proner, Regina de Fatima Peralta Muniz Moreira, Alan Ambrosi, Marco Di Luccio, Sergio Yesid Gomez-Gonzalez",
+ "tahun": 2026,
+ "jurnal": "Scientific Reports",
+ "doi": "10.1038/s41598-026-54120-z",
+ "kuartil": "Scopus Q1 (SCImago SJR Best Quartile)",
+ "pilar": "E. Membrane/RO/Desalination",
+ "ringkasan": "Studi menggabungkan model finite-element reduced-order (ROM) transport dan resistansi fouling dengan kerangka data-driven yang memetakan metadata eksperimen ke perilaku penurunan fluks lintas data. Dari 112 dataset (berbagai membran, minyak, kondisi operasi), ROM mereproduksi trajektori fluks dengan R2 rata-rata ~0,95; prediksi tersegmentasi (early/mid/late) memberi MAE 0,079-0,14 pada grouped cross-validation. Validasi publikasi-level (holdout studi tak terlihat) menunjukkan MAE meningkat ~2x, mengungkap 'cross-study generalization penalty': keterbatasan prediksi lebih disebabkan kelengkapan metadata dan variabilitas antar-studi, bukan kapasitas model. Diusulkan checklist metadata minimal untuk model fouling yang reproducible.",
+ "kontribusi": "Sangat relevan pada sumbu domain (fouling membran) dan sumbu transfer lintas-studi (small-data/domain shift) tesis, serta menegaskan pentingnya keterwakilan data; tidak memakai survival/pencensoringan dan berfokus pada MF/UF oil-water, bukan RO.",
+ "temuan_kunci": [
+  "ROM hybrid mereproduksi trajektori penurunan fluks dengan R2 ~0,95; bentuk hybrid (eksponensial awal + relaksasi aljabar akhir) paling sering terbaik.",
+  "MAE naik ~2x dari grouped CV ke publication holdout (early 0,079 -> 0,15; late 0,14 -> 0,32) -> cross-study generalization penalty.",
+  "Porosity adalah fitur paling dominan; crossflow & pressure memengaruhi tahap awal, porosity/permeance memengaruhi tahap akhir (segmentasi waktu S2-S6).",
+  "Prediksi interval dan kalibrasi dilaporkan; metadata 10-12 parameter memberi plateau akurasi, menandakan keterbatasan utamanya kelengkapan metadata.",
+  "Validasi laboratorium pada membran tubular memberi R2=0,98 (kondisi dead-end, belum menangkap shear crossflow)."
+ ],
+ "dimensi": {"d1": "1", "d2": "", "d3": "", "d4": "1", "d5": "1", "d6": "", "d7": "1", "d8": "1"},
+ "alasan_dimensi": {
+  "d1": "Menganalisis trajektori fluks ternormalisasi terhadap waktu (time-dependent), dibagi menjadi enam segmen waktu (S1-S6) untuk prediksi tersegmentasi tahap fouling.",
+  "d2": "Tidak mendefinisikan RUL/ambang kegagalan; fokus pada bentuk kurva penurunan fluks (degradasi) tanpa threshold keputusan.",
+  "d3": "Tidak ada model survival/hazard/Weibull/cure maupun pencensoringan.",
+  "d4": "Model spesifik: regresi/klasifikasi ML (MiniRocket convolution features, shape descriptors, PCA, SHAP) di atas ROM finite-element.",
+  "d5": "Melaporkan prediksi interval (prediction-interval reliability), interval kepercayaan 95 % untuk macro-F1, serta bar ketidakpastian/error bar.",
+  "d6": "Tidak menyusun keputusan/jadwal/biaya pemeliharaan; implikasinya pada desain eksperimen dan pelaporan data serta optimasi proses, bukan keputusan pemeliharaan.",
+  "d7": "Objek adalah fouling membran pada separasi minyak-air (MF/UF); menyebut keterkaitan dengan RO sebagai perluasan.",
+  "d8": "Menangani transferabilitas lintas-studi (domain shift) dengan grouped cross-validation dan publication holdout, serta menekankan keterbatasan metadata/small-data antar-studi."
+ },
+ "relevansi": "Inti-Domain",
+ "kualitas": {"skor": 9, "rincian": {"Q1": 1, "Q2": 1, "Q3": 1, "Q4": 1, "Q5": 1, "Q6": "N/A", "Q7": 1, "Q8": 0.5}, "catatan": "Kerangka fisika-informed yang kuat, validasi berlapis (grouped CV, publication holdout, kalibrasi, validasi laboratorium), interpretabilitas (SHAP, segmentasi waktu), dan pelaporan ketidakpastian. Kelemahan: keterbatasan metadata/cross-study tetap dominan, berfokus MF/UF oil-water (bukan RO), validasi lab hanya dead-end; belum menyentuh keputusan pemeliharaan formal. Q6 tidak berlaku."},
+ "data_kuantitatif": {"dataset": "112 dataset fouling membran oil-water dari literatur (berbagai membran, minyak, kondisi operasi)", "ukuran": "112 dataset; trajektori fluks tersegmentasi S1-S6", "metrik": "ROM R2~0,95; MAE early 0,079+/-0,01, mid 0,14+/-0,02, late 0,14+/-0,02 (grouped CV); publication holdout MAE ~2x; macro-F1 material 0,196 [95% CI 0,119-0,262]; validasi lab R2=0,98"},
+ "metode": "Physics-informed ML: reduced-order FEM (adveksi-difusi-Darcy) + abstraksi deskriptor (PCA) + ML regression/classification (MiniRocket vs shape features, SHAP); validasi dengan GroupKFold (dalam-studi) dan publication holdout (antar-studi); kalibrasi + validasi laboratorium.",
+ "limitasi": [
+  "Prediksi lintas-studi dibatasi variabilitas antar-publikasi dan metadata tidak lengkap/konsisten.",
+  "Fokus MF/UF oil-water; perluasan ke RO butuh parameter tambahan (tekanan tinggi/salinitas).",
+  "Validasi laboratorium hanya kondisi dead-end (tidak menangkap shear crossflow).",
+  "Class imbalance dan label noise (material menggabungkan polimer dasar & modifikasi permukaan)."
+ ],
+ "funding_coi": "Pernyataan pendanaan/konflik kepentingan spesifik tidak dijabarkan pada bagian teks yang dibaca; artikel Scientific Reports (akses terbuka).",
+ "status_inklusi": "diterima",
+ "figur_dibaca": [
+  {"file": "_page_5_Figure_1.jpeg", "isi": "Generalisasi lintas-studi: (a) MAE per tahap fouling (early/mid/late) untuk Grouped CV, Publication Holdout, dan Oil type — holdout ~2x lebih besar; (b) importance fitur (porosity dominan ~17, lalu pore size, crossflow); (c)-(d) kurva fluks prediksi vs eksperimen (kasus mismatch dan kasus cocok)."},
+  {"file": "_page_11_Figure_9.jpeg", "isi": "Kerangka konseptual tiga tahap: Physical modelling (umpan, crossflow, boundary/processing conditions) -> Reduced order model abstraction (adveksi, difusi, Darcy; PDE) -> ML integration (klasifikasi, validasi, testing unseen data), dengan jembatan PCA ke prediksi kurva fluks."}
+ ],
+ "bukti": ["Fig. 1: kesesuaian ROM (R2 ~0,95) & bentuk terbaik", "Fig. 2: matriks korelasi Spearman metadata vs fitur kurva", "Fig. 5: generalisasi lintas-studi & prediksi kurva", "Fig. 6: kalibrasi, NRMSE vs jumlah metadata, SHAP", "Fig. 8: validasi laboratorium & checklist metadata minimal", "Fig. 9: kerangka konseptual"]
+}

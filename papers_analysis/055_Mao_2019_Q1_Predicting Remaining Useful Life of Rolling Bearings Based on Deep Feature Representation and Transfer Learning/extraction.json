@@ -1,0 +1,83 @@
+{
+  "no": 89,
+  "judul": "Predicting Remaining Useful Life of Rolling Bearings Based on Deep Feature Representation and Transfer Learning",
+  "penulis": "Wentao Mao, Jianliang He, Ming J. Zuo",
+  "tahun": 2019,
+  "jurnal": "IEEE Transactions on Instrumentation and Measurement",
+  "doi": "10.1109/TIM.2019.2917735",
+  "kuartil": "Scopus Q1 (Scopus SJR Best Quartile)",
+  "pilar": "D. Small-data/Transfer/Hierarchical",
+  "ringkasan": "Studi mengusulkan kerangka prediksi RUL bearing yang menggabungkan representasi fitur dalam (Contractive Denoising Autoencoder, CDAE) dengan transfer learning (Transfer Component Analysis, TCA). CDAE mengekstrak fitur dari marginal spectrum Hilbert-Huang; korelasi Pearson menilai status kesehatan; TCA menyelaraskan distribusi fitur antar-bearing; LSSVM membangun model regresi RUL.",
+  "kontribusi": "Menunjukkan transfer learning dapat mengatasi perbedaan distribusi data antar-unit dan data skala kecil — relevan untuk tesis pada sumbu small-data/transfer (mis. antar-modul membran); namun tanpa survival/censoring, tanpa kuantifikasi ketidakpastian penuh, dan bukan domain membran.",
+  "temuan_kunci": [
+    "Fitur dalam (CDAE) lebih representatif daripada fitur statistik untuk RUL (RMSE 64,87-69,96 vs 81,54-103,76 pada berbagai regresor).",
+    "Adaptasi TCA menurunkan MAPE pada keempat regresor dan meningkatkan stabilitas numerik (std MAPE turun).",
+    "Fitur hasil TCA lebih linear terhadap degradasi sehingga regresor sederhana (LSR) pun memadai.",
+    "Metode yang diusulkan unggul atas Ren et al. (RMSE 3.430), Wu et al. (73,57), dan Liu et al. (56,55) dengan RMSE 50,09 dan MAPE 0,2399."
+  ],
+  "dimensi": {
+    "d1": "1",
+    "d2": "1",
+    "d3": "",
+    "d4": "1",
+    "d5": "",
+    "d6": "",
+    "d7": "",
+    "d8": "1"
+  },
+  "alasan_dimensi": {
+    "d1": "Data berupa sinyal getaran dan suhu (deret waktu) dari platform PRONOSTIA; marginal spectrum HHT sebagai input.",
+    "d2": "Mendefinisikan RUL dan ambang: RUL = T2 - T1 dengan T2 waktu saat amplitudo getaran mencapai ambang kerusakan (mis. 20 g); status kesehatan dipisah normal vs fast-degradation.",
+    "d3": "Tidak ada survival/Weibull/hazard/cure maupun pemodelan data tersensor.",
+    "d4": "Model spesifik: CDAE (deep autoencoder), TCA (transfer learning), LSSVM/GPR/LSR/SVM.",
+    "d5": "Tidak mengkuantifikasi ketidakpastian prediksi; hanya melaporkan standar deviasi MAPE (stabilitas numerik), bukan interval kredibel.",
+    "d6": "Menyebut konteks PHM/CBM dan decision making, tetapi tidak menyusun model keputusan pemeliharaan.",
+    "d7": "Domain bearing/rotating machinery, bukan membran/RO/desalinasi.",
+    "d8": "Transfer learning (TCA) dan penanganan data skala kecil (small-scale bearing dataset) merupakan inti kontribusi."
+  },
+  "relevansi": "Inti-Domain",
+  "kualitas": {
+    "skor": 8,
+    "rincian": {
+      "Q1": 1,
+      "Q2": 1,
+      "Q3": 1,
+      "Q4": 0.5,
+      "Q5": 1,
+      "Q6": "N/A",
+      "Q7": 0.5,
+      "Q8": 0.5
+    },
+    "catatan": "Q6 N/A. Q4 0,5 (parameter rinci, tanpa kode/data). Q7 0,5 (standar deviasi 20 run, tanpa interval kepercayaan). Q8 0,5 (konteks CBM tanpa model keputusan). skor = round(5,5/7×10) = 8."
+  },
+  "data_kuantitatif": {
+    "dataset": "IEEE PHM Challenge 2012 (platform PRONOSTIA), 7 bearing kondisi operasi 1",
+    "ukuran": "Whole-life vibration signal; tiap sampel 10 s; sampling 25,6 kHz (akselerasi) dan 10 Hz (suhu); 6 bearing training / 1 bearing test bergilir",
+    "metrik": "RMSE, MAPE (dirata-rata 20 run). Metode usulan: RMSE 50,09; MAPE 0,2399 vs Ren (3430,43/0,5320), Wu (73,57/0,3158), Liu (56,55/0,3462)"
+  },
+  "metode": "Lima tahap: (1) preprocessing sinyal (hilangkan komponen DC, transformasi HHT -> marginal spectrum); (2) ekstraksi fitur dalam via CDAE (lapisan tersembunyi 50 neuron); (3) penilaian status kesehatan via korelasi Pearson (ambang 0,95); (4) adaptasi domain via TCA (kernel RBF, dim output 25); (5) regresi RUL dengan LSSVM dan pembanding LSR/GPR/SVM.",
+  "limitasi": [
+    "Kerangka tidak menangani data tersensor/survival.",
+    "Tidak memberi interval kepercayaan prediksi (hanya stabilitas run-to-run).",
+    "Berbasis bearing, bukan membran/RO; generalisasi domain perlu diuji.",
+    "Negative transfer teramati pada beberapa regresor (LIBSVM/LSSVM)."
+  ],
+  "funding_coi": "Didanai National Natural Science Foundation of China (U1704158), China Postdoctoral Science Foundation (2016T90944), dan NSERC Canada (PGPIN-2015-04897). Tidak dinyatakan konflik kepentingan.",
+  "status_inklusi": "diterima",
+  "figur_dibaca": [
+    {
+      "file": "_page_2_Figure_6.jpeg",
+      "isi": "Flowchart metode: tiga blok (Signal Processing & Transforming; Deep Feature Extraction & State Assessment; Transfer Learning & RUL Prediction) mencakup akuisisi getaran, HHT, CDAE, korelasi Pearson, TCA, dan LSSVM."
+    },
+    {
+      "file": "_page_10_Figure_4.jpeg",
+      "isi": "Perbandingan prediksi RUL via GPR menggunakan fitur CDAE vs fitur TCA untuk 7 bearing; histogram error TCA lebih rendah di banyak titik."
+    }
+  ],
+  "bukti": [
+    "Abstrak: 'a new RUL prediction method based on deep feature representation and transfer learning ... includes an off-line stage and an online stage'.",
+    "Abstrak: 'Results using the PHM Challenging 2012 data set show a significant performance improvement ... in terms of predictive accuracy and numerical stability'.",
+    "Bagian II-E: 'RUL = T2 - T1 ... This paper adopts our other work [50] to determine the RUL value' (ambang amplitudo mis. 20 g).",
+    "Tabel VI: metode usulan MAPE 0,2399 / RMSE 50,0941 vs tiga metode pembanding."
+  ]
+}

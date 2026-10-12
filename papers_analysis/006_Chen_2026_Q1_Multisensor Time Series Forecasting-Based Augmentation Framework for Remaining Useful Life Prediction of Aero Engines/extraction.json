@@ -1,0 +1,83 @@
+{
+ "no": 70,
+ "judul": "Multisensor Time Series Forecasting-Based Augmentation Framework for Remaining Useful Life Prediction of Aero Engines",
+ "penulis": "Ziyi Chen, Dingcheng Zhang, Chenyang Jiao",
+ "tahun": 2026,
+ "jurnal": "IEEE Transactions on Instrumentation and Measurement",
+ "doi": "10.1109/tim.2026.3684677",
+ "kuartil": "Scopus Q1 (Scimago SJR Best Quartile)",
+ "pilar": "D. Small-data/Transfer/Hierarchical",
+ "ringkasan": "Studi mengusulkan kerangka multisensor forecasting-based augmentation (MSFA) untuk RUL aero engine pada kondisi data tak seimbang (long-tail). Model multiscale-and-multicomponent transformer (MSMCT) meramalkan segmen degradasi lanjut untuk melengkapi data tersensor (censored), selektor berbasis Wasserstein distance menyaring sampel hasil augmentasi yang konsisten distribusinya, dan dynamic graph spatio-temporal network (DGSTN) dilatih pada dataset teraugmentasi untuk prediksi RUL. Pada C-MAPSS, metode unggul di semua rasio data (10-30%) dengan RMSE FD002 ~12,12 dan improvement 20,3% (RMSE) / 60,3% (Score) dibanding terbaik kedua.",
+ "kontribusi": "Sangat relevan bagi tesis: secara eksplisit menangani data tersensor/terpotong (censored data) dan ketidakseimbangan data dengan melengkapi segmen degradasi lanjut via forecasting, lalu memvalidasi distribusi (Wasserstein/KL). Menyediakan pola alternatif penanganan penyensoran (forecasting-completion) selain survival analysis, plus arsitektur graph spatio-temporal.",
+ "temuan_kunci": [
+  "MSFA (MSMCT + selektor Wasserstein + DGSTN) mengungguli CNN-1D, CNN-LSTM, BiLSTM-ED, STAE, GCN-PR pada semua rasio data 10-30%.",
+  "Improvement RMSE 20,3% dan Score 60,3% pada FD002; 10,4% dan 22,4% pada FD004 dibanding metode terbaik kedua.",
+  "MSMCT merekonstruksi segmen degradasi lanjut yang tak teramati (data tersensor) dengan fidelity tinggi; KL divergence rata-rata 0,068 (FD001) sangat rendah.",
+  "Wasserstein distance dipakai sebagai metrik sekaligus kriteria seleksi sampel augmentasi -> menjaga konsistensi distribusi.",
+  "Augmentasi menurunkan bias over-estimasi RUL di fase akhir (S-Score turun 27,7% pada FD002)."
+ ],
+ "dimensi": {
+  "d1": "1",
+  "d2": "1",
+  "d3": "",
+  "d4": "1",
+  "d5": "",
+  "d6": "",
+  "d7": "",
+  "d8": "1"
+ },
+ "alasan_dimensi": {
+  "d1": "Input adalah time series multisensor (14 kanal dari 21 sensor C-MAPSS) dengan sliding window; jelas multi-sensor/time-series.",
+  "d2": "RUL dan kegagalan didefinisikan eksplisit: failure threshold data-driven Tf, pseudo-RUL label, dan maintenance threshold tau=150.",
+  "d3": "Tidak memakai model survival/Weibull/hazard/cure. Meski secara substantif menangani data tersensor (censored/truncated) dengan melengkapinya via forecasting, dimensi d3 (pemodelan survival formal) TIDAK terpenuhi menurut definisi ketat.",
+  "d4": "Model spesifik: MSMCT (Transformer multiscale/multicomponent dengan dekomposisi trend-periodic-residual) dan DGSTN (Graph Convolutional Network + CNN dilated + regressor).",
+  "d5": "Tidak ada kuantifikasi ketidakpastian prediksi RUL (interval/CI/posterior). Analisis distribusi (Wasserstein/KL) bersifat kesamaan distribusi, bukan ketidakpastian prediksi.",
+  "d6": "Tidak menganalisis jadwal/biaya/DSS keputusan pemeliharaan; S-Score hanya menghukum keterlambatan prediksi (aspek keselamatan), bukan model keputusan.",
+  "d7": "Bukan membran/RO/desalination; objek aero engine.",
+  "d8": "Menangani data tak seimbang/terbatas (long-tail, censored data dominan) dan augmentasi untuk kelangkaan data kegagalan -> sumbu small-data/imbalance/all-censored."
+ },
+ "relevansi": "Inti-Metode+Domain",
+ "kualitas": {
+  "skor": 7,
+  "rincian": {
+   "Q1": 1,
+   "Q2": 1,
+   "Q3": 0.5,
+   "Q4": 0.5,
+   "Q5": 1,
+   "Q6": 1,
+   "Q7": 0,
+   "Q8": 0.5
+  },
+  "catatan": "RQ dan metode sangat jelas. Validitas pada dataset simulasi C-MAPSS (bukan data nyata) dan partisi buatan (bottom 10-30%) -> Q3=0,5. Reproduksibilitas sedang (hyperparameter lengkap, struktur dijelaskan; kode tidak disediakan). Evaluasi kuat (banyak baseline + berbagai rasio + ablation + KL/Wasserstein). Penanganan data tersensor jelas (Q6=1) walau tanpa model survival formal. Tanpa kuantifikasi ketidakpastian (Q7=0); tautan maintenance hanya via S-Score konservatif (Q8=0,5)."
+ },
+ "data_kuantitatif": {
+  "dataset": "C-MAPSS (NASA) FD001-FD004; 14 kanal sensor terpilih dari 21; partisi run-to-failure = 10-30% unit dengan umur terpendek, sisanya data tersensor.",
+  "ukuran": "FD001: 100 train/100 test; FD002: 260/259; FD003: 100/100; FD004: 249/248; window W=90 (forecasting), Ws=30/20/30/15 (RUL prediction).",
+  "metrik": "RMSE (FD001 11,60; FD002 12,12; FD003 12,04; FD004 14,20) dan S-Score (187,34; 556,04; 209,22; 1219,24); KL divergence (0,068/0,0072/0,0295/0,0139)."
+ },
+ "metode": "MSFA framework: (1) MSMCT - dekomposisi sinyal (trend via moving average, periodic via FFT top-K, residual) + transformer multiscale (downsampling {1,2,4}) untuk forecasting data tersensor (rolling forecasting sampai ambang Tf); (2) selektor berbasis Wasserstein distance untuk augmentasi; (3) DGSTN - dynamic graph (adjacency learnable sparse/directed) + GCNEncoder + TopKPooling + CNNDecoder (dilated conv) + regressor; loss kombinasi MAE+envelope+FFT.",
+ "limitasi": [
+  "MSMCT tumbuh kuadratik pada memori/latensi terhadap dimensi sensor/panjang sekuens (skalabilitas).",
+  "Asumsi data lengkap dan tersampel teratur; belum menangani sampling tak teratur/nilai hilang.",
+  "Validasi hanya pada data simulasi C-MAPSS.",
+  "Tanpa kuantifikasi ketidakpastian prediksi RUL."
+ ],
+ "funding_coi": "Didanai Sichuan Provincial Major Science and Technology Special Project (Grant 2025ZDZX0055). Tidak ada pernyataan konflik kepentingan eksplisit pada teks.",
+ "status_inklusi": "diterima",
+ "figur_dibaca": [
+  {"file": "_page_1_Figure_2.jpeg", "isi": "Flowchart MSFA 4 tahap: akuisisi data (multi-sensor, seleksi, partisi) -> forecasting multi-sensor (MSMCT: run-to-failure vs censored data) -> augmentasi data (Data Selector, Wasserstein Distance) -> prediksi RUL (DGSTN)."},
+  {"file": "_page_2_Figure_2.jpeg", "isi": "Arsitektur MSMCT: modul dekomposisi temporal (trend/periodic/residual), transformer spesifik-komponen, downsampling multiskala (r=1,r1,r2), dan base transformer (Conv Embedding + Time2Vec pseudo-timestamp -> Multi-Head Attention -> Feed Forward -> Forecast Head)."},
+  {"file": "_page_5_Figure_2.jpeg", "isi": "Arsitektur DGSTN: GCNEncoder (GCNConv, ReLU&Norm, TopKPooling, Global Mean Pool) + CNNDecoder (Conv1d dilated) + Regressor (Linear-Sigmoid); graph learnable dari multi-sensor."},
+  {"file": "_page_9_Figure_7.jpeg", "isi": "Bar chart RMSE vs rasio engine rtf (10/20/30%) untuk FD001-FD004, enam metode; Proposed Model konsisten terendah (mis. FD002 10% ~16 vs baseline ~32)."}
+ ],
+ "bukti": [
+  "Abstract: 'a multisensor forecasting-based augmentation (MSFA) framework is proposed to enhance RUL prediction ... MSMCT ... completing censored data'.",
+  "Sec. I: 'data with failure times exceeding the maintenance threshold, termed censored data ... censored data substantially outnumber run-to-failure data'.",
+  "Sec. III-B: 'a fixed maintenance threshold tau=150 is defined ... the unknown portion as {X_i,t | t > tau}'.",
+  "Sec. III-D: 'improvements of 20.3% and 60.3% on the FD002 subset, and 10.4% and 22.4% on the FD004 subset'.",
+  "Sec. III-D: 'the averaged KL divergence across all channels is 0.068, 0.0072, 0.0295, and 0.0139 for the FD001-FD004'.",
+  "Sec. III-D/Fig.11: 'a 17.3% improvement in RMSE and ... a 27.7% reduction in S-Score on the FD002 subset'.",
+  "Sec. IV: 'the current formulation assumes complete and regularly sampled data'."
+ ]
+}

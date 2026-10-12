@@ -1,0 +1,65 @@
+{
+ "no": 86,
+ "judul": "Research on Prediction Method of Gear Pump Remaining Useful Life Based on DCAE and Bi-LSTM",
+ "penulis": "Chenyang Wang, Wanlu Jiang, Yi Yue, Shuqing Zhang",
+ "tahun": 2022,
+ "jurnal": "Symmetry (MDPI)",
+ "doi": "10.3390/sym14061111",
+ "kuartil": "Scopus Q2 (SCImago SJR Best Quartile)",
+ "pilar": "B. Deep Learning RUL",
+ "ringkasan": "Artikel mengusulkan skema prediksi RUL pompa roda gigi (gear pump) hidraulik yang menggabungkan deep convolutional autoencoder (DCAE) dan multi-layer Bi-LSTM. Tahap pertama membangun health indicator (HI) secara tanpa supervisi: DCAE 1D simetris mengekstraksi fitur sinyal getaran, SOM mereduksi vektor fitur C6 (100 dimensi), dan HI dihitung sebagai minimum quantization error (MQE). Tahap kedua memakai nilai HI sebagai label otomatis (self-labeling) pada data getaran mentah untuk melatih Bi-LSTM end-to-end yang keluarannya adalah nilai RUL. Validasi memakai data siklus hidup penuh dari uji hidup dipercepat 4 pompa roda gigi; HI yang dibangun unggul pada monotonicity/korelasi dan prediksi RUL lebih akurat dibanding dua metode pelabelan pembanding.",
+ "kontribusi": "Memberi contoh pipeline DL end-to-end untuk RUL (autoencoder konvolusional + SOM untuk HI self-labeled + Bi-LSTM) pada peralatan dengan dataset siklus hidup yang langka melalui uji hidup dipercepat, relevan sebagai pembanding metode DL RUL dan strategi small-data pada tesis. Namun tidak memodelkan data tersensor/survival, tidak mengkuantifikasi ketidakpastian, dan domainnya bukan membran/RO, sehingga tidak menutup celah integrasi survival analysis + DL tersensor pada membran desalinasi.",
+ "temuan_kunci": [
+  "HI DCAE+SOM unggul pada 4 pompa: monotonicity 0,15-0,22 dan korelasi 0,89-0,96, mengalahkan PCA (Corr 0,73-0,79), SAE (Corr 0,77-0,87), dan PASCAL (Corr 0,84-0,90).",
+  "Struktur DCAE terbaik adalah 12 layer konvolusi (encoder 32-64-128-256-64-1; decoder cermin) dengan kernel 3x1 dan max pooling 2x1; kernel 7x1, jaringan lebih besar (overfitting, Corr turun ke 0,33-0,35), struktur dangkal, dan average pooling semuanya lebih buruk.",
+  "Lima layer Bi-LSTM adalah konfigurasi optimal; 1-4 layer RMSE besar, sedangkan di atas 5 layer RMSE meningkat karena overfitting dan waktu latih bertambah.",
+  "HI-Method (self-labeling) mengungguli dua metode pelabelan alternatif pada 4 pompa: MAE 0,019-0,033 (Method 2: 0,051-0,184; Method 3: 0,049-0,089), RMSE 0,012-0,037 (0,101-0,189; 0,074-0,103), dan skor PHM2012 0,581-0,624 (0,319-0,457; 0,399-0,474).",
+  "Kurva prediksi RUL mengikuti RUL riil sepanjang siklus hidup sekitar 900 jam; deviasi membesar hanya pada fase degradasi cepat sekitar 750-900 jam (prediksi sedikit lebih rendah dan berfluktuasi).",
+  "Pelabelan otomatis berbasis HI menghilangkan anotasi manual, menurunkan error pelabelan, dan meningkatkan kualitas data latih (klaim pada Kesimpulan)."
+ ],
+ "dimensi": {"d1": "1", "d2": "1", "d3": "", "d4": "1", "d5": "", "d6": "", "d7": "", "d8": "1"},
+ "alasan_dimensi": {
+  "d1": "Data deret waktu getaran 1D arah Z (amplitudo terbesar; panjang sampel 2400 titik, sampling 12 kHz, akuisisi 2 s tiap 10 menit), dan rig mengumpulkan multi-sensor: 'The sensors installed in the test include torque sensors, flow meters and acceleration sensors to monitor and collect changes in torque, rotational speed, output flow and vibration throughout the life test' (Section 3).",
+  "d2": "Ambang kegagalan didefinisikan eksplisit: 'When the performance characteristics degrade beyond the predetermined failure threshold, the hydraulic pump fails'; RUL merupakan sasaran prediksi dengan label dari siklus hidup penuh tn (Eq. 17-18) dan dievaluasi sebagai ActRUL/PredRUL (Eq. 23).",
+  "d3": "Tidak ada pemodelan data tersensor/survival: tidak ada istilah atau metode survival/Weibull/hazard/cure; keempat pompa diuji run-to-failure sampai melewati ambang kegagalan sehingga data siklus hidup lengkap.",
+  "d4": "Model spesifik dipakai: DCAE 1D (12 layer konvolusi simetris), SOM, CNN 1D, LSTM, dan multi-layer Bi-LSTM (5 layer) untuk prediksi RUL.",
+  "d5": "Tidak ada kuantifikasi ketidakpastian prediktif (tanpa CI/posterior/interval kepercayaan); evaluasi hanya metrik titik MAE, RMSE, dan penalty score.",
+  "d6": "Tidak mengusulkan/menganalisis keputusan perawatan konkret (jadwal/biaya/DSS); hanya motivasi di pendahuluan: 'The RUL prediction of a gear pump can effectively improve production efficiency and reduce equipment life cycle costs' - tanpa model keputusan.",
+  "d7": "Objek penelitian adalah pompa roda gigi (gear pump) hidraulik pada rig uji, bukan membran/RO/desalinasi/fouling.",
+  "d8": "Secara khusus menangani keterbatasan data siklus hidup: 'Currently, there are few hydraulic pump life datasets available, making it difficult to perform effective model training', dan solusinya skema uji hidup dipercepat + pelabelan otomatis HI: 'Aiming at the situation of inadequate life data of the hydraulic pump, an accelerated life test scheme for the gear pump is proposed'; hanya 4 pompa. Tidak memakai transfer learning/hierarkis."
+ },
+ "relevansi": "Inti-Domain",
+ "kualitas": {"skor": 6, "rincian": {"Q1": 1, "Q2": 1, "Q3": 0.5, "Q4": 0.5, "Q5": 1, "Q6": "N/A", "Q7": 0, "Q8": 0.5}, "catatan": "RQ dan metode sangat rinci (arsitektur layer, hyperparameter, plabelan, skema split) dan evaluasi kaya: HI dibanding 3 metode (PCA/SAE/PASCAL), RUL dibanding 2 metode pelabelan, 6 struktur DCAE, 1-9 layer Bi-LSTM, 3 metrik pada 4 pompa. Namun data tidak publik (tersedia atas permintaan, hanya 4 pompa satu tipe pada satu rig) sehingga validitas eksternal dan reproduksibilitas penuh terbatas, dan tidak ada kode. Q6 tidak berlaku karena seluruh unit run-to-failure tanpa penyensoran. Q7=0 karena tidak ada pelaporan ketidakpastian prediksi (CI/interval). Q8=0,5 karena hanya motivasi pengurangan biaya/efisiensi, tanpa model atau jadwal pemeliharaan. Skor 4,5/7 = 6,4 -> 6."},
+ "data_kuantitatif": {
+  "dataset": "Uji hidup dipercepat 4 pompa roda gigi CBWF-304 (Yanshan University): tekanan dipercepat 23/25/27 MPa per tahap 300 jam, suhu oli dijaga sekitar 50 C; sensor torsi-kecepatan, flowmeter, akselerometer, tekanan; getaran arah X/Y/Z (arah Z dipakai).",
+  "ukuran": "4 pompa, validasi latih-uji bergantian (1 pompa uji, 3 pompa latih, sehingga 4 skenario leave-one-pump-out); sampling 12 kHz, akuisisi 2 s tiap 10 menit; panjang sampel 2400 titik; total sekitar 900 jam (3 tahap x 300 jam); DCAE encoder 6 + decoder 6 layer; vektor fitur C6 100 dimensi; SOM input 100; Bi-LSTM 5 layer; dropout 0,5; batch 64; learning rate 0,001; maksimum 100 iterasi; 2x GPU RTX 3090.",
+  "metrik": "HI-Method per Pump1-4: MAE 0,025/0,026/0,019/0,033; RMSE 0,012/0,028/0,037/0,027; skor PHM2012 0,601/0,624/0,599/0,581. Method 2: MAE 0,051-0,184; RMSE 0,101-0,189; skor 0,319-0,457. Method 3: MAE 0,049-0,089; RMSE 0,074-0,103; skor 0,399-0,474. HI: monotonicity DCAE+SOM 0,15-0,22; korelasi 0,89-0,96; struktur DCAE terbaik 1 (Mon 0,15-0,22; Corr 0,89-0,96) vs struktur 4 terburuk (Mon 0,01-0,05; Corr 0,33-0,35)."
+ },
+ "metode": "Pipeline dua tahap. (1) Pemodelan degradasi tanpa supervisi: sinyal getaran mentah disegmentasi (2400 titik), diproses DCAE 1D simetris (6 layer konvolusi encoder dan 6 layer decoder; kernel 3x1; max pooling 2x1; ReLU; Adam; lr 0,001; batch 64; 2x RTX 3090); vektor layer C6 (100 dimensi) direduksi SOM (neuron r=5*sqrt(Y)); HI = MQE (Eq. 14) dan dihaluskan dengan sliding filter lebar 10. (2) Prediksi RUL: nilai HI dipakai sebagai label otomatis tiap segmen data mentah (menggantikan pelabelan manual linear/piecewise), lalu multi-layer Bi-LSTM 5 layer (cross-entropy; Adam; lr 0,001; dropout 0,5 setelah FC pertama; early stopping; maksimum 100 iterasi) dilatih end-to-end dengan input [batch, time steps=2400, fitur] dan output nilai RUL. Evaluasi: monotonicity dan correlation untuk HI (Eq. 15-16); MAE, RMSE, dan penalty score PHM2012 untuk RUL (Eq. 23-25).",
+ "limitasi": [
+  "Data terbatas pada 4 pompa satu tipe pada satu rig dan tidak publik ('available from the corresponding author upon reasonable request'), sehingga validitas eksternal dan replikasi independen terbatas.",
+  "Tidak memodelkan data tersensor/survival (semua unit run-to-failure) dan tidak mengkuantifikasi ketidakpastian prediksi (tanpa CI/interval).",
+  "Label RUL memakai nilai HI yang dibangun oleh model sendiri (self-labeling), dan definisi kuantitatif RUL aktual (ActRUL) untuk evaluasi tidak diuraikan rinci di teks (bergantung pada siklus hidup penuh tn), berpotensi bias sirkular.",
+  "Monotonisitas HI tergolong rendah (0,15-0,22) meskipun korelasi tinggi (0,89-0,96); kurva HI masih berfluktuasi.",
+  "Tidak ada model/jadwal keputusan pemeliharaan, hanya motivasi pengurangan biaya dan peningkatan efisiensi.",
+  "Generalisasi ke tipe pompa, kondisi beban, atau domain lain belum diuji."
+ ],
+ "funding_coi": "Didanai National Natural Science Foundation of China (Grant No. 51875498 dan 51475405) serta Key Project of Natural Science Foundation of Hebei Province, China (Grant No. E2018203339 dan F2020203058). Penulis menyatakan tidak ada konflik kepentingan. Data tersedia dari penulis terkait atas permintaan.",
+ "status_inklusi": "diterima",
+ "figur_dibaca": [
+  {"file": "figures/_page_2_Figure_2.jpeg", "isi": "Figure 1 (skema prediksi RUL): Original Vibration Signal -> Data Preprocessing, lalu bercabang menjadi (a) Degradation state modeling (Modeling of Gear Pump Degradation Based on DCAE+SOM -> Health Indicator) dan (b) RUL prediction (labeling dari HI -> Bi-LSTM Model -> RUL); menegaskan arsitektur dua tahap DCAE+SOM+Bi-LSTM."},
+  {"file": "figures/_page_9_Picture_4.jpeg", "isi": "Figure 10 (struktur DCAE simetris): encoder dari 2400x1 melalui C1 2400x32, C2 1200x64, C3 600x128, C4 300x256, C5 100x256, P1-P4, C6 100x64 ke bottleneck 100x1; decoder C7 100x64, C8 100x256, C9 200x128, C10 600x64, C11 1200x64, U1-U4, C12 2400x1; mengonfirmasi simetri encoder-decoder dan pemilihan vektor C6 sebagai fitur HI."},
+  {"file": "figures/_page_15_Figure_5.jpeg", "isi": "Figure 16 (struktur multi-layer Bi-LSTM): input x1..xt masuk ke tumpukan layer LSTM1..LSTMn dengan pasangan sel LSTM dua arah (bidirectional) per layer; output layer terakhir menuju fully connected (Dense) dan keluar nilai RUL."},
+  {"file": "figures/_page_17_Figure_4.jpeg", "isi": "Figure 18 (hasil prediksi RUL): Real RUL (garis putus-putus biru) vs Predicted RUL (garis magenta) terhadap waktu 0-1000 jam; RUL 0-1; kedua kurva turun lambat hingga sekitar 700-750 jam lalu jatuh cepat mendekati 0 pada sekitar 900 jam; prediksi mengikuti RUL riil dengan fluktuasi lokal dan tanpa penyimpangan sistematis besar."},
+  {"file": "figures/_page_8_Figure_1.jpeg", "isi": "Figure 7 (kurva degradasi aliran): Output Flow 4,4-5,4 L/min terhadap waktu 0-900 jam; aliran turun dari sekitar 5,3 ke sekitar 4,5 L/min, penurunan lambat di awal dan makin cepat di akhir, mendukung degradasi keausan menuju ambang kegagalan."}
+ ],
+ "bukti": [
+  "Abstrak dan Section 1: skema DCAE + Bi-LSTM untuk RUL pompa roda gigi; motivasi efisiensi dan biaya siklus hidup.",
+  "Section 2.1: definisi kegagalan via ambang - 'When the performance characteristics degrade beyond the predetermined failure threshold, the hydraulic pump fails'.",
+  "Section 3: konfigurasi uji hidup dipercepat 4 pompa; tekanan 23-27 MPa; 3 tahap x 300 jam; sampling 12 kHz, akuisisi 2 s tiap 10 menit; Tabel 1 komponen dan parameter.",
+  "Section 4, Eq. (11)-(14), Figure 9-10: DCAE+SOM dan HI = MQE; Tabel 2 (HI empat metode) dan Tabel 3-4 (enam struktur DCAE).",
+  "Section 5, Eq. (17)-(22), Figure 13-16: pelabelan HI sebagai label, arsitektur multi-layer Bi-LSTM, hyperparameter latih.",
+  "Eq. (23)-(25): MAE, RMSE, dan penalty score PHM2012; Tabel 5 dan Figure 17-19: hasil prediksi RUL, pengaruh jumlah layer Bi-LSTM, perbandingan tiga metode pelabelan.",
+  "Kesimpulan 1-3: kontribusi DCAE+SOM, model Bi-LSTM, dan tiga ide utama (konvolusi 1D, unit Bi-LSTM, self-labeling data)."
+ ]
+}

@@ -1,0 +1,48 @@
+PAPER 62: Remaining Useful Life Prediction of Wind Turbine Main-Bearing Based on LSTM Optimized Network
+Penulis: Linli Li, Qifei Jian (2024)
+Jurnal: IEEE Sensors Journal | Scopus Q1 | DOI 10.1109/jsen.2024.3402660 | Pilar: B. Deep Learning RUL
+
+KARAKTERISTIK STUDI
+Studi prognostik RUL pada main bearing turbin angin lepas pantai 5,5 MW memakai data getaran historis nyata (bukan laboratorium). Fokus ganda: diagnosis dini kerusakan dan prediksi tren degradasi, dengan RUL diturunkan dari fitting eksponensial indeks kondisi.
+
+METODE
+Ekstraksi fitur fisik berbasis Sideband Energy Ratio (SER) di sekitar frekuensi meshing gearbox (memanfaatkan modulasi AM/FM bantalan low-speed yang dimodulasi ke sekitar frekuensi gearbox). 18 indeks diekstraksi (SER, domain waktu, domain frekuensi, envelope spectrum). Model regresi deret waktu LSTM dioptimalkan metaheuristik Tree-Seed Algorithm (TSA-LSTM); dibandingkan LSTM dasar, PSO-LSTM, dan Random Forest. RUL via generalized exponential fitting (Eq.26) dan definisi First Prognostic Time (FPT).
+
+DATA
+Turbin angin semi-direct-drive 5,5 MW lepas pantai dengan kerusakan main bearing terkonfirmasi; sensor akselerasi 12.800 Hz pada housing bantalan. 2007 rekaman historis dua tahun; matriks input R(2007x19); split train/test 80:20.
+
+TEMUAN UTAMA
+- TSA-LSTM terbaik: MAPE < 0,228 / < 0,005 dan RMSE < 0,014 / < 0,002 (indikator OM/IM).
+- Fitur SER lebih sensitif terhadap kerusakan awal dan lebih linear terhadap degradasi dibanding indeks statistik/envelope.
+- FPT: RUL turun di bawah 100% saat komponen frekuensi kerusakan muncul (sampel ke-113, lalu ke-282).
+- Ambang alarm berjenjang 0,6/0,7/0,9 (level 1-3) untuk mendeteksi keparahan kerusakan.
+- Validasi unit berbeda mengonfirmasi generalisasi (RMSE < 0,020, MAPE < 0,017).
+
+RELEVANSI KE TESIS
+Pendukung. Memberi contoh arsitektur RUL DL + optimasi metaheuristik dan ekstraksi fitur fisik yang kuat, tetapi tanpa RUL tersensor, survival analysis, maupun domain membran. Berguna sebagai pembanding metode RUL berbasis LSTM dan sebagai contoh integrasi alarm/keputusan maintenance.
+
+JUSTIFIKASI DIMENSI
+- d1=1: matriks multiparameter time series R(2007x19) dari 18 indeks + frekuensi rotasi.
+- d2=1: RUL eksplisit; FPT; ambang alarm 0,6/0,7/0,9; fitting eksponensial.
+- d3="": tidak ada survival/penyensoran.
+- d4=1: LSTM + Tree-Seed Algorithm (TSA-LSTM), dengan pembanding PSO-LSTM/RF.
+- d5="": tidak ada kuantifikasi ketidakpastian (hanya MAPE/RMSE).
+- d6=1: ambang alarm berjenjang + maintenance terdiferensiasi.
+- d7="": bukan membran/RO.
+- d8="": bukan small-data/transfer.
+
+KUALITAS (skor 7)
+Q1=1; Q2=1; Q3=0,5 (satu kasus kerusakan/dua unit); Q4=0,5 (data proprietary); Q5=1 (beberapa pembanding + validasi unit lain); Q6=N/A; Q7=0 (tanpa ketidakpastian); Q8=1 (alarm -> keputusan). Sum applicable 5,0/7 -> 7,14 ~ 7.
+
+LIMITASI
+Satu kasus kerusakan; tanpa ketidakpastian; LSTM 1 hidden layer; tidak ada verifikasi fisik kerusakan.
+
+FUNDING/COI
+NSFC (21776095) + Guangdong S&T Project (2022A1515240080). Tidak ada pernyataan konflik kepentingan.
+
+BUKTI
+- "MAPE lower than 0.228 and RMSE lower than 0.014" (Abstract)
+- "a 5.5 MW semi-direct-drive wind turbine ... sampling frequency of 12 800 Hz" (Sec. III-A)
+- "2007 historical data records ... shape of R^2007x19" (Sec. III-B)
+- "Thresholds are set at 0.6, 0.7, and 0.9 ... level 1, level 2, and level 3 alarm thresholds" (Sec. IV-A)
+- "differentiated maintenance is carried out according to the fluctuation of monitoring data" (Sec. IV-A)

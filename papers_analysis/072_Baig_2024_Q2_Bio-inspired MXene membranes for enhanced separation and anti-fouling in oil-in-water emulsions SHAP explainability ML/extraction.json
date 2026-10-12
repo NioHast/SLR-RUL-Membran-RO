@@ -1,0 +1,49 @@
+{
+  "no": 96,
+  "judul": "Bio-inspired MXene membranes for enhanced separation and anti-fouling in oil-in-water emulsions: SHAP explainability ML",
+  "penulis": "Nadeem Baig, Sani I. Abba, Jamil Usman, Ibrahim Muhammad, Ismail Abdulazeez, A.G. Usman, Isam H. Aljundi",
+  "tahun": 2024,
+  "jurnal": "Cleaner Water (Elsevier)",
+  "doi": "10.1016/j.clwat.2024.100041",
+  "kuartil": "Scopus Q2 (ScImago SJR Best Quartile)",
+  "pilar": "E. Membrane/RO/Desalination",
+  "ringkasan": "Studi mengevaluasi fouling dan efisiensi separasi tiga membran berbasis MXene pada keramik (MX-CM, PDMX-CM, SPDMX-CM) untuk emulsi minyak-dalam-air. Pendekatan menggabungkan uji reliabilitas/kenormalan/stationeritas (ADF, PP, Jarque-Bera, ACF/PACF) dengan machine learning yang dijelaskan memakai SHAP untuk menafsirkan kontribusi fitur (Cycle, PDMX-CM, MX-CM). SPDMX-CM paling stabil dan tahan fouling, tetapi studi tidak memprediksi RUL maupun waktu kegagalan.",
+  "kontribusi": "Memberi konteks domain membran/desalinasi dan fouling sekaligus contoh penanganan small-data (15 observasi) dengan uji reliabilitas/stationeritas dan explainability SHAP - berguna bagi tesis untuk justifikasi praproses dan interpretabilitas, tetapi tanpa RUL/survival/pencensoringan sehingga tidak menyumbang kerangka inti.",
+  "temuan_kunci": [
+    "SPDMX-CM memiliki ketahanan fouling tertinggi (mean 0,816, SD terendah 0,130) dan efisiensi separasi tertinggi (mean 95,913%, SD 0,928).",
+    "Stationeritas menentukan keandalan model: MX-CM stationer di level I(0), sedangkan PDMX-CM dan SPDMX-CM butuh differencing (I(1)/I(2)).",
+    "SHAP foulasi: Cycle berkontribusi +0,09, PDMX-CM dan MX-CM masing-masing -0,06 (prediksi model 0,525 vs base 0,558).",
+    "SHAP efisiensi separasi: MX-CM -0,01, PDMX-CM +0,01, Cycle netral (prediksi 0,551 vs base 0,56).",
+    "Korelasi negatif kuat antara jumlah siklus dan kinerja membran (mis. fouling SPDMX-CM -0,957; efisiensi MX-CM -0,970)."
+  ],
+  "dimensi": {"d1": "1", "d2": "", "d3": "", "d4": "", "d5": "", "d6": "", "d7": "1", "d8": "1"},
+  "alasan_dimensi": {
+    "d1": "Data dianalisis sebagai deret waktu terindeks siklus (Cycle) dengan ACF/PACF, ADF, dan PP, serta korelasi antar-variabel sepanjang 15 observasi.",
+    "d2": "Tidak mendefinisikan RUL, waktu kegagalan, atau ambang batas kegagalan; variabel keluaran adalah resistansi fouling dan efisiensi separasi (bukan waktu-ke-peristiwa).",
+    "d3": "Tidak ada model survival/Weibull/hazard/cure maupun penanganan data tersensor.",
+    "d4": "Tidak menyebut model ML spesifik (arsitektur/algoritma tidak dinamai, hanya 'ML models' dan ARIMA sebagai rujukan konseptual); tidak ada LSTM/CNN/RF/SVM/GP yang diimplementasikan dan dijelaskan.",
+    "d5": "Melaporkan statistik uji (Jarque-Bera, ADF/PP p-value) tetapi tidak ada interval kepercayaan/posterior atas prediksi.",
+    "d6": "Membahas pengurangan frekuensi perawatan/penggantian dan penghematan biaya sebagai implikasi, serta 'decision making' via SHAP, tetapi tanpa model keputusan pemeliharaan konkret.",
+    "d7": "Domain membran MXene untuk pemisahan minyak-dalam-air, fouling, dan pengolahan air/desalinasi.",
+    "d8": "Secara eksplisit menangani small data (15 observasi) dengan fokus praproses, uji reliabilitas, dan pemilihan metode yang tahan overfitting."
+  },
+  "relevansi": "Konteks",
+  "kualitas": {"skor": 4, "rincian": {"Q1": 1, "Q2": 0.5, "Q3": 0.5, "Q4": 0.5, "Q5": 0, "Q6": "N/A", "Q7": 0, "Q8": 0.5}, "catatan": "Tujuan jelas (mengevaluasi kinerja membran + explainability data-driven) dan uji praproses (ADF/PP/Jarque-Bera/ACF-PACF) dijalankan rapi. Kelemahan besar: model ML tidak dispesifikasikan dan tidak ada metrik performa prediksi (RMSE/R2/akurasi) sehingga tidak dapat dinilai kualitas prediksinya (Q5=0); tidak ada kuantifikasi ketidakpastian prediksi (Q7=0); dataset kecil (15 observasi) tanpa validasi silang/hold-out (Q3=0,5); tanpa kode & detail model (Q4=0,5). Q6 tidak berlaku (bukan survival/censoring). Kaitan pemeliharaan hanya motivasional (Q8=0,5)."},
+  "data_kuantitatif": {"dataset": "Data eksperimen sendiri: uji fouling dan efisiensi separasi membran MX-CM, PDMX-CM, SPDMX-CM pada emulsi minyak-dalam-air (diesel + Tween-80) dengan sistem dead-end", "ukuran": "15 observasi (siklus 1-15) per membran; deskriptif mean/SD/kurtosis/skewness per variabel", "metrik": "Fouling resistance (MX-CM 0,277; PDMX-CM 0,453; SPDMX-CM 0,816), efisiensi separasi (%) (92,145/93,226/95,913), FRR (%); statistik ADF/PP, Jarque-Bera p-value; nilai SHAP (+0,09 Cycle; -0,06 PDMX-CM; -0,06 MX-CM pada fouling)"},
+  "metode": "Desain eksperimen sintesis MXene tersulfonasi (etching MAX dengan HF, polimerisasi dopamin, sulfonasi) dan fabrikasi membran di atas keramik; pengukuran flux (F=V/(A t)), efisiensi separasi (E=(1-Cf/Cp)*100), FRR=(F2/F1)*100; EDA & praproses (normalisasi, differencing); uji kenormalan (Jarque-Bera), stationeritas (ADF, PP), korelasi & ACF/PACF; model ML (tidak dispesifikasikan) dijelaskan dengan SHAP (feature importance, summary, force, decision, dependence plots).",
+  "limitasi": [
+    "Model ML tidak dispesifikasikan dan tidak ada metrik performa prediksi.",
+    "Data sangat kecil (15 observasi) tanpa validasi hold-out/cross-validation.",
+    "Tidak memprediksi RUL/waktu kegagalan dan tidak memodelkan survival/censoring.",
+    "Tidak ada kuantifikasi ketidakpastian prediksi.",
+    "Data tersedia 'on request' dan tanpa kode."
+  ],
+  "funding_coi": "Didukung Interdisciplinary Research Center for Membranes and Water Security, King Fahd University of Petroleum and Minerals; penulis menyatakan tidak ada konflik kepentingan keuangan.",
+  "status_inklusi": "diterima",
+  "figur_dibaca": [
+    {"file": "_page_2_Figure_9.jpeg", "isi": "Diagram alur eksperimen: MAX phase -> etching dengan HF -> MXene -> sonikasi/delaminasi -> fungsionalisasi (polimerisasi dopamin) -> MXene tersulfonasi -> pembentukan lapisan di atas membran keramik (dead-end) -> SPDMX-CM -> filtrasi emulsi menjadi air bersih."},
+    {"file": "_page_4_Figure_7.jpeg", "isi": "(a) Skema proses desain eksperimen tradisional vs ML-integrated (database system, intelligent mining/ML/AI) dan (b) tahapan ML: Data Collection -> Sensitivity Analysis (feature engineering/selection) -> Model Evaluation (validation, algorithm selection) -> Application (computational server, decision making)."},
+    {"file": "_page_10_Figure_1.jpeg", "isi": "Plot SHAP: (a) fouling - Cycle +0,09, PDMX-CM -0,06, MX-CM -0,06 (f(x)=0,525, base 0,558); (b) efisiensi separasi - MX-CM -0,01, PDMX-CM +0,01, Cycle 0,00 (f(x)=0,551, base 0,56), memakai summary, force, dan waterfall plot."}
+  ],
+  "bukti": ["Eq (1): flux F=V/(A t)", "Eq (2): efisiensi separasi E=(1-Cf/Cp)x100", "Eq (3): FRR=(F2/F1)x100", "Eq (4)-(5): formulasi SHAP", "Tabel 1: statistik deskriptif fouling & separasi", "Tabel 2-3: hasil ADF/PP fouling & separasi", "Fig 4: ACF/PACF", "Fig 5: Jarque-Bera", "Fig 7: SHAP"]
+}

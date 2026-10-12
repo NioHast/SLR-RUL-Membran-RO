@@ -1,0 +1,9 @@
+SUMBER FULL-TEXT (Open Access)
+============================
+Judul   : Physics-informed machine learning for cross-study prediction of oil–water membrane fouling
+DOI     : 10.1038/s41598-026-54120-z
+Status  : gold (Open Access)
+Lisensi : cc-by-nc-nd
+
+Catatan : Open Access berlisensi Creative Commons; boleh didistribusikan ulang DENGAN ATRIBUSI
+kepada penulis/penerbit asli. Diverifikasi via Unpaywall (https://unpaywall.org).

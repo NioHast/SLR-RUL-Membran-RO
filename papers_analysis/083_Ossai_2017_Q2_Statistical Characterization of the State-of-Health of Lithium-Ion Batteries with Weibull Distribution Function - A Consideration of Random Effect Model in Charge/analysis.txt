@@ -1,0 +1,46 @@
+PAPER 003 - Ossai & Raghavan (2017)
+Judul   : Statistical Characterization of the State-of-Health of Lithium-Ion Batteries with Weibull Distribution Function - A Consideration of Random Effect Model in Charge Capacity Decay Estimation
+Jurnal  : Batteries | Scopus Q2 | DOI 10.3390/batteries3040032
+Pilar   : A. Survival Analysis & Censored Data
+Relevansi: Inti-Metode (Weibull + model efek acak; tanpa ML, domain baterai)
+
+KARAKTERISTIK STUDI
+Estimasi keandalan baterai lithium-ion melalui pemodelan degradasi kapasitas dengan mempertimbangkan ketidakpastian (efek acak). Tujuan: RUL dan State-of-Health (SOH) pada ambang 70% End-of-Life (EOL), dengan menekankan pentingnya memasukkan ketidakpastian dalam pemodelan prognostik.
+
+METODE
+- Model degradasi sigmoidal multifase Q(t)=P1 exp(-r1 t)+P2 exp(-r2 t) (Eq. 1), direparametrisasi (Eq. 2).
+- Kerangka nonlinear mixed effect model (NLMEM): efek tetap + efek acak (Eq. 3-8).
+- Estimasi parameter: MLE (Eq. 9-10) + Stochastic Approximation Expectation Maximization (SAEM, Eq. 11-14) berbasis MCMC/Metropolis-Hastings.
+- Prediksi kapasitas masa depan + noise (Eq. 15); waktu ke 70% EOL.
+- SOH/RUL dengan fungsi Weibull: PDF/CDF (Eq. 17), regresi log-log (Eq. 18), SOH=exp(-(t/mu)^rho) (Eq. 19).
+
+DATA
+NASA AMES battery dataset: 4 sel (B0029-B0032) diuji pada 43C (charge 1,5 A hingga 4,2 V; discharge 4 A). Kapasitas awal 2,0 Ah; EOL = 70% kapasitas awal (1,4 Ah).
+
+TEMUAN UTAMA
+- Prediksi kapasitas menyimpang <2% (MAPE 0,70-1,69%); COE 0,8731-0,9394.
+- Weibull cocok (R^2 0,9846-0,9852); parameter bentuk rho > 1 menandakan wear-out.
+- mu (umur karakteristik) 103,33-164,85; B0031 paling lambat turun.
+- Laju penurunan kapasitas meningkat seiring usia (korosi litium, degradasi permukaan elektroda, plating litium).
+
+RELEVANSI KE TESIS
+Preseden poros survival/Weibull: pemodelan distribusi waktu-ke-gagal pada ambang kegagalan dan penanganan ketidakpastian/heterogenitas lintas-unit via efek acak (hierarchical). Tidak ada machine learning dan tidak menangani data tersensor; domain baterai, bukan membran. Berguna untuk arsitektur survival + uncertainty tesis.
+
+JUSTIFIKASI DIMENSI (d1-d8)
+- d1="": indikator degradasi tunggal (kapasitas vs siklus), bukan multi-sensor.
+- d2=1: mendefinisikan RUL/SOH pada ambang 70% EOL.
+- d3=1: memakai fungsi distribusi Weibull untuk RUL/SOH (Eq. 17, 19) - formulasi survival/reliability.
+- d4=1: model spesifik - NLMEM (efek tetap+acak) + MLE/SAEM.
+- d5=1: interval kepercayaan 95% & 99,5%, MAE/MAPE, ketidakpastian parametrik via efek acak.
+- d6="": hanya menyebut perencanaan/keputusan pemanfaatan aset, tanpa model keputusan.
+- d7="": objek baterai lithium-ion.
+- d8=1: struktur efek acak/hierarchical lintas-unit; dataset kecil (4 baterai).
+
+KUALITAS (skor 6/10)
+Q1=1; Q2=1; Q3=0,5 (4 baterai, tanpa uji luar); Q4=1 (data NASA publik, persamaan lengkap); Q5=0,5 (metrik + banding kualitatif ke literatur, tanpa baseline independen); Q6=0 (tanpa penanganan censoring); Q7=1 (CI & efek acak); Q8=0. Jumlah 5,0/8 -> 6.
+
+LIMITASI
+Hanya 4 baterai tanpa validasi unit baru; tanpa pemodelan censoring; tanpa model keputusan; domain baterai.
+
+BUKTI (fig/table/eq)
+Eq. (1)-(15) & (17)-(19); Table 1 (parameter), Table 2 (MAE/MAPE), Table 3 (COE); Fig. 5 (SOH pada 70% EOL).

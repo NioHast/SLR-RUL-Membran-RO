@@ -1,0 +1,45 @@
+PAPER 027 - Ghasemzadeh et al. (2026)
+Judul   : Hybrid models, digital twins, and digital shadows for sustainable membrane technologies: A critical review
+Jurnal  : Advanced Membranes | Scopus Q1 (SCImago SJR 2024) | DOI 10.1016/j.advmem.2026.100219
+Pilar   : E. Membrane/RO/Desalination
+Relevansi: Konteks
+
+KARAKTERISTIK STUDI
+Tinjauan kritis yang memisahkan dan mengintegrasikan tiga tingkat digitalisasi membran: model hibrida (fisika+ML), digital shadow (DS, satu arah), dan digital twin (DT, dua arah/loop tertutup). Mencakup desalinasi/pengolahan air, MBR, separasi gas, CMR, dan PEMFC.
+
+METODE
+- Analisis bibliometrik (Scopus 2000-2025) + VOSviewer.
+- Kerangka konseptual: definisi & komponen ML/DS/DT (physical system, virtual model, data integration layer, feedback loop).
+- Sintesis studi kasus per domain (Table 1-5) + peran CFD sebagai penghasil data sintetis dan enabler fisika.
+
+DATA
+Literatur + studi kasus. Enabler: CFD, IoT/sensor, cloud, big data, AI/ML. Contoh angka: soft-sensor fouling <10 %; DSS restorasi RO mengurangi penggantian 50-80 %; CatBoost MBR R2=0,8374; GB decision tree H2 R2=0,87.
+
+TEMUAN UTAMA
+- Hierarki digitalisasi: ML (offline prediktif) -> DS (monitoring) -> DT (kendali adaptif, pemeliharaan prediktif).
+- DS/DT diterapkan pada UF/RO/TFF (soft sensor galat <10 %).
+- DT-DSS restorasi elemen RO (Van Rooij et al.) menyeimbangkan biaya, downtime, risiko.
+- Celah riset: protokol validasi, infrastruktur sensor, arsitektur DT skalabel, dan kuantifikasi ketidakpastian.
+- SGMC memakai SDE untuk menangkap ketidakpastian pada UF.
+
+RELEVANSI KE TESIS
+Memberi kerangka domain untuk sisi KEPUTUSAN PEMELIHARAAN/PENGGANTIAN membran (DSS/DT) dan menempatkan kuantifikasi ketidakpastian sebagai prioritas — relevan bagi arah tesis. Namun ini review tanpa survival/pencensoringan maupun model RUL, sehingga Konteks.
+
+JUSTIFIKASI DIMENSI (d1-d8)
+- d1 = 1: real-time multi-sensor/deret waktu adalah inti DS/DT (tekanan, temperatur, pH, flow, komposisi; soft sensor).
+- d2 = "" : tanpa RUL/ambang kegagalan kuantitatif.
+- d3 = "" : tanpa survival/pencensoringan.
+- d4 = 1: mengulas arsitektur model spesifik (ANN, CNN, SVR, XGBoost/CatBoost, Kalman/particle filter, autoregressive, GA, surrogate ROM).
+- d5 = 1: kuantifikasi ketidakpastian sebagai prioritas; SGMC (SDE) menangkap ketidakpastian.
+- d6 = 1: keputusan pemeliharaan konkret (DT-DSS restorasi/penggantian elemen RO, biaya/downtime/risiko, pemeliharaan prediktif, kendali adaptif).
+- d7 = 1: domain inti membran (RO/desalinasi/UF/MBR/gas separation) + fouling.
+- d8 = "" : keterbatasan data & data sintetis CFD dibahas, tanpa metode small-data/transfer/hierarchical.
+
+KUALITAS (skor 9/10)
+Q1=1; Q2=1; Q3=1; Q4=1; Q5=0,5 (tinjauan konseptual, tanpa eksperimen baru); Q6=N/A; Q7=1 (UQ menjadi tema); Q8=1 (DSS/keputusan pemeliharaan). Jumlah 6,5/7 -> 9.
+
+LIMITASI
+Tinjauan konseptual tanpa validasi empiris; cakupan DS/DT belum merata; tanpa protokol benchmark standar; tanpa survival/RUL.
+
+BUKTI (fig/table/eq)
+Fig. 1-16; Table 1-5; Bagian 7 (kesimpulan & celah riset).

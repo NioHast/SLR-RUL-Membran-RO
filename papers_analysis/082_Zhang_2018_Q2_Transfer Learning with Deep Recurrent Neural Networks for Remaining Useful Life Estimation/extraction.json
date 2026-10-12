@@ -1,0 +1,45 @@
+{
+ "no": 25,
+ "judul": "Transfer Learning with Deep Recurrent Neural Networks for Remaining Useful Life Estimation",
+ "penulis": "Ansi Zhang, Honglei Wang, Shaobo Li, Yuxin Cui, Zhonghao Liu, Guanci Yang, Jianjun Hu",
+ "tahun": 2018,
+ "jurnal": "Applied Sciences",
+ "doi": "10.3390/app8122416",
+ "kuartil": "Scopus Q2 (SCImago SJR Best Quartile)",
+ "pilar": "D. Small-data/Transfer/Hierarchical",
+ "ringkasan": "Makalah mengusulkan algoritma transfer learning berbasis jaringan BLSTM (bi-directional LSTM) untuk estimasi RUL, guna mengatasi kelangkaan data kegagalan pada prognostik berbasis data. Model dilatih pada dataset sumber yang besar namun terkait, lalu di-fine-tune dengan dataset target yang kecil (parameter-transfer). Eksperimen ekstensif (360 kali) pada benchmark C-MAPSS menunjukkan transfer learning umumnya meningkatkan akurasi, kecuali transfer dari kondisi operasi majemuk (6 kondisi) ke tunggal (1 kondisi) yang menyebabkan negative transfer.",
+ "kontribusi": "Memberikan bukti kuat bahwa transfer learning menangani masalah small-data pada RUL - sangat relevan dengan tantangan kecilnya data kegagalan membran; namun tidak memodelkan pencensoringan dan domainnya mesin turbofan.",
+ "temuan_kunci": [
+  "Transfer learning umumnya meningkatkan akurasi RUL, terutama saat data target sedikit (skor membaik hingga 85,12% pada kelompok E2).",
+  "Semakin sedikit data target, semakin besar manfaat transfer learning (E5: 43,19% pada 10 trajektori vs 8,29% pada 60).",
+  "Negative transfer terjadi saat mentransfer dari kondisi operasi majemuk ke tunggal (E3, E9), terkait overfitting akibat perbedaan distribusi sensor.",
+  "Transfer dari kondisi tunggal ke majemuk dan antar kondisi fault memberi manfaat positif."
+ ],
+ "dimensi": {"d1": "1", "d2": "1", "d3": "", "d4": "1", "d5": "", "d6": "", "d7": "", "d8": "1"},
+ "alasan_dimensi": {
+  "d1": "Menggunakan data multivariat deret waktu C-MAPSS: 3 operational settings + 21 nilai sensor per siklus, dengan sliding window sepanjang 30 siklus sebagai sampel input.",
+  "d2": "Target RUL dengan piece-wise linear degradation (batas maksimum RUL 130 siklus) sebagai label.",
+  "d3": "Tidak ada model survival/hazard/Weibull/cure; pencensoringan tidak dimodelkan (data uji yang terpotong tidak diperlakukan sebagai tersensor).",
+  "d4": "Bi-directional LSTM (BLSTM) dengan empat hidden layer (64, 64, flatten, 128) + dropout + regularisasi L2.",
+  "d5": "Tidak mengkuantifikasi ketidakpastian prediksi; hanya melaporkan RMSE dan scoring function PHM 2008 tanpa interval kepercayaan/posterior.",
+  "d6": "Menyinggung maintenance preparation dan penalti skor untuk estimasi RUL yang terlambat, tetapi tidak menyusun keputusan/jadwal pemeliharaan konkret.",
+  "d7": "Objek penelitian adalah mesin turbofan (C-MAPSS), bukan membran/RO/desalinasi.",
+  "d8": "Secara khusus menangani small-data melalui transfer learning (parameter-transfer) untuk mengatasi kelangkaan sampel progres kegagalan."
+ },
+ "relevansi": "Pendukung",
+ "kualitas": {"skor": 9, "rincian": {"Q1": 1, "Q2": 1, "Q3": 1, "Q4": 1, "Q5": 0.5, "Q6": "N/A", "Q7": "N/A", "Q8": "N/A"}, "catatan": "Desain eksperimen sangat ekstensif (360 run, 12 konfigurasi transfer), detail arsitektur & parameter lengkap, data publik. Kelemahan: baseline hanya no-transfer (tanpa perbandingan SOTA lain), data simulasi C-MAPSS, tanpa kuantifikasi ketidakpastian. Q6/Q7/Q8 tidak berlaku."},
+ "data_kuantitatif": {"dataset": "NASA C-MAPSS (FD001-FD004), mesin turbofan", "ukuran": "train 100/260/100/249 trajektori; 21 sensor + 3 setting; window 30 siklus; total 360 eksperimen (10 x 3 x 12)", "metrik": "Scoring function PHM 2008 (S) & RMSE; IMP% mis. E2 85,12% (10 trajektori) dan E5 43,19% (10 trajektori)"},
+ "metode": "Transfer learning parameter-transfer dengan jaringan Bi-directional LSTM (BLSTM); pelatihan pada dataset sumber lalu fine-tuning pada dataset target kecil.",
+ "limitasi": [
+  "Data C-MAPSS adalah simulasi, bukan sistem nyata.",
+  "Baseline hanya tanpa-transfer; tidak dibandingkan dengan metode SOTA lain.",
+  "Negative transfer (majemuk ke tunggal) belum terselesaikan (open problem).",
+  "Tidak ada kuantifikasi ketidakpastian maupun pencensoringan."
+ ],
+ "funding_coi": "Didanai National Natural Science Foundation of China (91746116, 51741101, 61863005), Kementerian Perindustrian dan Informatika, serta proyek Pemerintah Provinsi Guizhou dan Guizhou University; penulis menyatakan tidak ada konflik kepentingan.",
+ "status_inklusi": "diterima",
+ "figur_dibaca": [
+  {"file": "_page_8_Figure_1.jpeg", "isi": "Arsitektur transfer learning BLSTM: model sumber (bagian bersama/bottom layer) dan model target (top layer spesifik tugas) dengan skema parameter-transfer dari dataset sumber besar ke dataset target kecil."}
+ ],
+ "bukti": ["Eq. (1)-(6): skema parameter-transfer", "Table 1: C-MAPSS datasets", "Table 2: 12 konfigurasi eksperimen", "Table 3: hasil Mean Score & RMSE + IMP%", "Figure 2: arsitektur transfer learning", "Figure 8-9: analisis IMP per kondisi kerja"]
+}

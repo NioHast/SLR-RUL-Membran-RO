@@ -1,0 +1,43 @@
+PAPER 043 - Pugalenthi et al. (2022)
+Judul   : Remaining Useful Life Prediction of Lithium-Ion Batteries Using Neural Networks with Adaptive Bayesian Learning
+Jurnal  : Sensors (MDPI) | Scopus Q1 (SCImago SJR Best Quartile) | DOI 10.3390/s22103803
+Pilar   : C. Bayesian & Uncertainty
+Relevansi: Pendukung
+
+KARAKTERISTIK STUDI
+Studi prognostik RUL untuk perangkat elektronik (baterai lithium-ion) dengan tujuan predictive maintenance. Mengangkat dua keterbatasan metode data-driven: kebutuhan data latih besar dan algoritma optimisasi yang terjebak local minima. Solusi: pelatihan NN dengan inferensi Bayesian (particle filter) plus regularisasi bobot.
+
+METODE
+- Framework dua tahap (Fig. 5). Stage A (Adaptive Bayesian Learning): data preprocessing (curve fitting, BIC untuk memilih 3 hidden neuron), particle filter mengestimasi parameter MLP (state transition = model MLP, measurement = g((w,b),k)), weight regularization (resampling MR/StR/SyR + particle roughening dengan Gaussian jitter; ambang ESS mengatur frekuensi resampling). Stage B (Prognosis): MLP dikonfigurasi parameter PF, dilatih Levenberg-Marquardt, memprediksi degradasi sampai EoL, dihitung RUL.
+- Dua kriteria sukses menyaring trace outlier (di luar 2 sigma; tren monotonik salah).
+
+DATA
+CALCE (sel CS, LiCoO2, 1,1 Ah; EoL 0,88 Ah) dan NASA Ames (sel 2,1 Ah, Random Walk; EoL 1 Ah). CALCE: latih CS-36, uji CS-37/CS-38. NASA: latih RW10, uji RW11. 50 repetisi prediksi.
+
+TEMUAN UTAMA
+- SyR mengalahkan MR/StR (RMSE CALCE 0,05; NASA 0,27); particle roughening terbaik (RMSE 0,04 / 0,24), iterasi sukses 94-98%.
+- Roughening mengeliminasi particle impoverishment tetapi 8-10x lebih lambat.
+- Perbandingan dengan Ref.[26] dan [35]: RMSE CALCE 0,040 vs 0,050/0,2698; NASA 0,24 vs 0,367/0,3686.
+- Distribusi posterior parameter dan RUL disajikan (box plot di tiga titik awal).
+
+RELEVANSI KE TESIS
+Pendukung: preseden kuat untuk RUL dengan Bayesian/particle filter dan kuantifikasi ketidakpastian (d5) memakai data deret waktu degradasi. Namun tidak memodelkan penyensoran (SUMBU METODE gagal) dan bukan domain membran (SUMBU DOMAIN gagal). Berguna sebagai rujukan cara melaporkan ketidakpastian prediksi RUL dan regularisasi bobot.
+
+JUSTIFIKASI DIMENSI (per d1-d8)
+- d1 = 1: data deret waktu kapasitas baterai per siklus.
+- d2 = 1: RUL eksplisit + ambang EoL (0,88 Ah / 1 Ah).
+- d3 = "" : PF adalah estimasi keadaan Bayesian; bukan survival/censoring/Weibull/hazard.
+- d4 = 1: MLP + particle filter + resampling + BIC.
+- d5 = 1: distribusi posterior parameter + box plot RUL (varians).
+- d6 = "" : predictive maintenance hanya motivasi.
+- d7 = "" : baterai, bukan membran.
+- d8 = 1: mengatasi kebutuhan data latih besar dan transfer parameter PF antar-perangkat dalam lot.
+
+KUALITAS (skor 8/10)
+Q1=1, Q2=1, Q3=0,5 (hanya 2 baterai uji per dataset), Q4=0,5 (jumlah partikel/ambang ESS tidak lengkap), Q5=1 (banyak varian + 2 karya pembanding + 50 repetisi), Q6=N/A, Q7=1 (posterior & boxplot), Q8=N/A. Jumlah 5,0/6 -> 8.
+
+LIMITASI
+Test set kecil; parameter komputasi tidak lengkap; roughening mahal; tanpa censoring; tanpa keputusan perawatan.
+
+BUKTI
+Fig. 1, 3, 5, 15-16; Table 1-3; Eq. (1)-(12). Fig. 5 (framework) dan Fig. 15 (boxplot) dibuka untuk verifikasi d4/d5.

@@ -1,0 +1,82 @@
+{
+  "no": 36,
+  "judul": "Domain Adaptive Remaining Useful Life Prediction With Transformer",
+  "penulis": "Xinyao Li, Jingjing Li, Lin Zuo, Lei Zhu, Heng Tao Shen",
+  "tahun": 2022,
+  "jurnal": "IEEE Transactions on Instrumentation and Measurement",
+  "doi": "10.1109/TIM.2022.3200667",
+  "kuartil": "Scopus Q1 (ScImago SJR Best Quartile)",
+  "pilar": "D. Small-data/Transfer/Hierarchical",
+  "ringkasan": "Artikel ini mengusulkan metode domain adaptation untuk prediksi RUL dengan menyelaraskan distribusi pada level fitur dan level semantik sekaligus, menggunakan Transformer sebagai tulang punggung. Dua diskriminator domain (D_f untuk fitur, D_y untuk keluaran) dilatih secara adversarial dengan Gradient Reversal Layer. Metode diuji pada C-MAPSS dan N-CMAPSS, mencapai hasil state-of-the-art pada tugas RUL source-only dan cross-domain, dilengkapi kuantifikasi ketidakpastian (95% CI) dan uji online.",
+  "kontribusi": "Mencontohkan transfer learning/domain adaptation untuk RUL lintas kondisi operasi tanpa label target, termasuk kuantifikasi ketidakpastian via Monte Carlo dropout. Relevan ke tesis pada sumbu transfer/small-data (d8) dan ketidakpastian (d5); namun tanpa pemodelan penyensoran/survival dan bukan domain membran—memperjelas celah integrasi survival tersensor dengan backbone Transformer pada membran RO.",
+  "temuan_kunci": [
+    "Pada tugas source-only C-MAPSS, RMSE turun ke 8,67/12,42/9,37/12,41 (FD001-FD004), unggul hingga 31,4%.",
+    "Pada 12 tugas cross-domain C-MAPSS, perbaikan RMSE hingga 63,9% (FD002->FD004), mendekati level target-supervised.",
+    "Pada N-CMAPSS (data penerbangan nyata), domain adaptation menurunkan RMSE dari >30 menjadi umumnya <10 pada 42 tugas.",
+    "Ablation: kombinasi D_f + D_y (semantic alignment) lebih baik daripada hanya D_f (transformer+DANN).",
+    "Kuantifikasi ketidakpastian via Monte Carlo dropout (100 run) menghasilkan 95% CI, mis. RUL 120 -> [115,123] pada tugas FD004->FD002.",
+    "Tugas online menurun akurat namun tetap dapat diterima; waktu inferensi <1 s per sampel."
+  ],
+  "dimensi": {
+    "d1": "1",
+    "d2": "1",
+    "d3": "",
+    "d4": "1",
+    "d5": "1",
+    "d6": "",
+    "d7": "",
+    "d8": "1"
+  },
+  "alasan_dimensi": {
+    "d1": "Input runtun waktu multi-sensor: 24 dimensi sensor C-MAPSS / 38 dimensi N-CMAPSS dengan sliding window (Section IV-B, Eq. 12).",
+    "d2": "RUL didefinisikan eksplisit (RUL_c = N_total - c) + fungsi RUL piecewise dengan batas R_C=130 (CMAPSS) dan 65 (N-CMAPSS) (Section IV-B).",
+    "d3": "Tidak memodelkan data tersensor/survival/hazard; target domain tanpa label ditangani via domain adaptation, bukan model penyensoran.",
+    "d4": "Model spesifik: Transformer (self-attention/multihead), CNN, LSTM/RNN pembanding, DANN/GRL.",
+    "d5": "Mengkuantifikasi ketidakpastian: Monte Carlo dropout (100 run) → 95% CI prediksi (Section IV-I, Tabel VIII, Fig. 8).",
+    "d6": "Tidak ada keputusan pemeliharaan; hanya motivasi umum.",
+    "d7": "Bukan domain membran/RO/desalinasi; objek mesin turbofan/aircraft engine.",
+    "d8": "Inti kontribusi adalah transfer learning/domain adaptation lintas domain tanpa label target (feature-level + semantic-level alignment)."
+  },
+  "relevansi": "Inti-Domain",
+  "kualitas": {
+    "skor": 9,
+    "rincian": {
+      "Q1": "1",
+      "Q2": "1",
+      "Q3": "1",
+      "Q4": "0.5",
+      "Q5": "1",
+      "Q6": "N/A",
+      "Q7": "1",
+      "Q8": "0.5"
+    },
+    "catatan": "RQ dan kontribusi jelas. Metode memadai dan terperinci (Transformer + alignment ganda). Data dua benchmark (C-MAPSS simulasi + N-CMAPSS data nyata) dengan validasi luas (12 tugas CMAPSS + 42 tugas N-CMAPSS) dan ablation. Reproduksibilitas sedang (sebagian hyperparameter di appendix; tanpa kode). Penyensoran N/A. Ketidakpastian dilaporkan via 95% CI. Kaitan keputusan pemeliharaan hanya motivasi."
+  },
+  "data_kuantitatif": {
+    "dataset": "NASA C-MAPSS (FD001-FD004) dan N-CMAPSS (DS01-DS07)",
+    "ukuran": "C-MAPSS: 100/260/100/249 unit; N-CMAPSS: 10/9/15/10/10/10/10 unit; window 70 (CMAPSS), 40 (N-CMAPSS)",
+    "metrik": "RMSE, NASA score, 95% CI, waktu latih/inferensi"
+  },
+  "metode": "Transformer (positional encoding + multihead self-attention encoder) sebagai feature extractor G; predictor P linear; dua diskriminator domain D_f (fitur) dan D_y (semantik) dengan GRL untuk pelatihan adversarial; loss = L_y - alpha*L_d^f - beta*L_d^y; min-max normalization; fungsi RUL piecewise.",
+  "limitasi": [
+    "Tidak memodelkan penyensoran/survival; tidak ada estimasi hazard.",
+    "Domain adaptation kadang mengganggu distribusi yang sudah selaras (mis. DS01->DS03) menyebabkan optimasi negatif kecil.",
+    "Kinerja online menurun dibanding UDA transductif.",
+    "Sebagian hyperparameter di appendix; tanpa kode publik.",
+    "Tidak ada keputusan pemeliharaan eksplisit."
+  ],
+  "funding_coi": "Didanai National Natural Science Foundation of China (Grant 62176042, 62073059), CCF-Baidu Open Fund (2021PP15002000), dan CCF-Tencent Open Fund (RAGR20210107). Tidak ditemukan pernyataan konflik kepentingan.",
+  "status_inklusi": "diterima",
+  "figur_dibaca": [
+    {"file": "figures/_page_2_Figure_2.jpeg", "isi": "Fig. 2 overview model: INPUT (sequence length x feature dim) -> Positional Encoding -> Encoders -> HIDDEN FEATURE -> Predictor P -> OUTPUT; percabangan ke diskriminator D_f (via GRL) dan D_y (via GRL) dengan BCE loss; panah biru 'Update' mengembalikan gradien ke Extractor G."}
+  ],
+  "bukti": [
+    "Abstrak + Kontribusi 1)-3): domain adaptation feature+semantic, Transformer, CI & online.",
+    "Section III-A: definisi masalah RUL & domain adaptif (Eq. sebelum Eq.1).",
+    "Section III-C-E: arsitektur & loss adversarial (Eq. 6-11).",
+    "Section IV-B: fungsi RUL piecewise R_C=130/65, sliding window (Eq. 12).",
+    "Tabel III (source-only), Tabel IV-V (cross-domain RMSE/score), Tabel VI (N-CMAPSS).",
+    "Section IV-I: kuantifikasi ketidakpastian MC dropout, Tabel VIII (95% CI), Fig. 8.",
+    "Section IV-J: uji online, Tabel IX."
+  ]
+}

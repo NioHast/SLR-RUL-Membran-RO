@@ -1,0 +1,129 @@
+PLAN PHASE 5 - ANALISIS MENDALAM PER PAPER (disesuaikan norma SLR SI/SE)
+========================================================================
+Tujuan: baca ISI PENUH tiap paper (dari per_paper/<no>/text.md) -> perbarui korpus
+        (ringkasan, kontribusi, dimensi, tier, KUALITAS, data kuantitatif) + re-cek inklusi.
+
+PRINSIP: memakai norma Kitchenham/SLR-SI/SE, BUKAN norma medis (Cochrane/GRADE).
+
+------------------------------------------------------------
+A. YANG BERLAKU (diambil)
+------------------------------------------------------------
+A1. Form ekstraksi + alasan eksklusi            -> WAJIB
+A2. Penilaian KUALITAS per studi (checklist SE) -> WAJIB
+A3. Ekstraksi ganda/kalibrasi (verifikasi)       -> DIANJURKAN (sampel + pilot)
+A4. Publication bias ringan: catat funding/COI   -> RINGAN
+A7. Sintesis tematik/konsep + pernyataan SWiM     -> WAJIB
+A8. Deskriptif (tahun/pilar/venue/kuartil)        -> OPSIONAL (ringan)
+A9. Tabel karakteristik studi + summary finding   -> WAJIB
+A10. Threats to validity + ketersediaan data/kode -> WAJIB
+
+YANG TIDAK BERLAKU (dinyatakan + alasan):
+- Meta-analisis & heterogenitas kuantitatif (I2, subgroup) -> studi engineering heterogen, tanpa effect size terpool.
+- GRADE (certainty of evidence) -> bukan norma SLR SI/SE.
+- RoB2/ROBINS-I/QUIPS -> alat uji klinis; tidak cocok.
+
+------------------------------------------------------------
+B. OUTPUT PER PAPER
+------------------------------------------------------------
+B1. extraction.json (DIPERBARUI) - field:
+    no, judul, penulis, tahun, jurnal, doi, kuartil, pilar,
+    ringkasan (2-3 kalimat, dari isi penuh),
+    kontribusi (1-2 kalimat ke gap tesis),
+    temuan_kunci (angka/metrik bila ada),
+    dimensi {d1..d8} + alasan_dimensi (bukti/frasa),
+    relevansi (Inti/Pendukung/Konteks),
+    kualitas {skor 0-10, rincian per-butir, catatan},
+    data_kuantitatif (dataset, ukuran, metrik: RMSE/R2/CI),
+    metode, limitasi, funding_coi,
+    status_inklusi (diterima / gugur + alasan),
+    bukti (figur/tabel/rumus kunci),
+    figur_dibaca (daftar figur yang DIBACA + apa yang diambil darinya).
+B2. analysis.txt (DIPERBARUI) - naratif Bahasa Indonesia:
+    karakteristik studi, metode, data, temuan, relevansi ke tesis,
+    justifikasi dimensi, kualitas, limitasi.
+
+------------------------------------------------------------
+C. RUBRIK KUALITAS per studi (checklist SE, 0-10)
+------------------------------------------------------------
+(value 0/0.5/1; total x10/7 ~ skala 0-10)
+Q1 RQ/objektif jelas?
+Q2 Metode & desain dijelaskan memadai?
+Q3 Data & validitas data memadai?
+Q4 Reprodusibilitas (detail cukup untuk diulang)?
+Q5 Evaluasi/validasi cukup (metrik, baseline, uji)?
+Q6 Penanganan censoring/data tidak lengkap (jika relevan)?
+Q7 Pelaporan ketidakpastian (CI/posterior) (jika relevan)?
+Q8 Keterkaitan ke keputusan/perawatan (jika relevan)?
+Catatan: Q6-Q8 boleh "N/A" bila memang tidak relevan -> tidak mengurangi skor.
+
+------------------------------------------------------------
+D. DEFINISI OPERASIONAL DIMENSI (D1-D8) - KETAT + BUKTI WAJIB
+------------------------------------------------------------
+D1 Data/sensor   : memakai data multi-sensor/sinyal deret waktu (bukan sekadar kata 'data').
+D2 Target/failure: mendefinisikan target RUL/kegagalan/ambang (bukan menyebut 'degradasi' saja).
+D3 Censoring     : BENAR-BENAR memodelkan/menangani data tersensor (survival/Weibull/hazard/cure).
+D4 Arsitektur    : memakai model spesifik (LSTM/CNN/Transformer/Bayesian/RF/SVM/GP).
+D5 Uncertainty   : mengkuantifikasi ketidakpastian (CI/posterior/interval).
+D6 Keputusan     : mengusulkan/menganalisis KEPUTUSAN perawatan (jadwal/biaya/DSS) - bukan sekadar kata 'maintenance'.
+D7 Domain RO     : objek membran/RO/desainalisasi/fouling.
+D8 Skala data    : secara khusus menangani data kecil/transfer/hierarkis/all-censored.
+Aturan: tiap centang "1" WAJIB disertai alasan/bukti; jika tidak -> "".
+
+TINGKAT RELEVANSI (Opsi C: SATU tier Inti + sub-tag Metode/Domain):
+- Inti-Metode        : RUL + survival/censoring/Weibull/hazard (SUMBU METODE), domain apa pun.
+- Inti-Domain        : RUL + membran/RO/desalinasi/small-data (SUMBU DOMAIN).
+- Inti-Metode+Domain : kena KEDUANYA -> paling dekat irisan gap (paling inti).
+- Pendukung          : metode RUL/survival umum tanpa kedua sumbu di atas.
+- Konteks            : DSS/IS/konteks umum.
+Aturan field `relevansi`: nilai dasar Inti/Pendukung/Konteks + sub-tag (Metode/Domain/Metode+Domain) untuk Inti.
+Tujuan sub-tag: menunjukkan banyak Inti-Metode vs sedikit Inti-Domain, dan irisan (Metode+Domain) yang hampir kosong = inti gap tesis.
+
+KRITERIA INKLUSI (full-text): studi primer yang membahas RUL/prognostik/survival/censoring,
+atau predictive maintenance domain membran/air; ada data/metode; jurnal (bukan editorial).
+Jika tak memenuhi -> status_inklusi = "gugur + alasan" (dicatat di PRISMA).
+
+------------------------------------------------------------
+E. METODE (paralel)
+------------------------------------------------------------
+E1. PILOT 5 paper (1 agen) -> kalibrasi rubrik; kamu review; kunci rubrik.
+E2. WAVE paralel: bagi 101 paper -> ~10-13 kelompok (8-10 paper/agen); 3-4 agen per wave.
+    Tiap agen: baca text.md -> tulis extraction.json + analysis.txt (template + rubrik).
+E3. Ekstraksi/verifikasi ganda pada SAMPEL (~15-20 paper): 2 agen independen -> rekonsiliasi (konsistensi).
+E4. Merge -> update corpus_a.json.
+
+DELIVERABLES YANG AKAN MEMUAT SUB-TAG (ditulis saat eksekusi, bukan sekarang):
+- SLR_Korpus.xlsx: kolom baru "Relevansi" (Inti-Metode/Inti-Domain/Inti-Metode+Domain/Pendukung/Konteks) + legenda.
+- SLR_Laporan.docx/pdf & SLR_Artikel_Jurnal: sebutkan taksonomi tier + sub-tag (bagian metode/hasil).
+- SLR_Presentasi.html: slide sebaran tier (Inti-Metode vs Inti-Domain vs irisan).
+- SUBSTITUTION_LOG / FULLTEXT log: catat tier per paper.
+
+------------------------------------------------------------
+E5. PEMBACAAN FIGUR (SELEKTIF, multimodal)
+------------------------------------------------------------
+Prinsip: TEKS = sumber utama; FIGUR dibaca HANYA bila perlu (bukan semua).
+WAJIB dibaca (minimal) untuk:
+ - Diagram ARSITEKTUR model (verifikasi metode/ d4).
+ - GRAFIK hasil kunci (kurva RUL, CI, confusion, ablation) yang datanya HANYA di figur.
+ - FLOWCHART/framework alur metodologi.
+ - Paper ber-tier INTI (Inti-Metode+Domain & Inti-Domain).
+Cara: buka file figures/*.jpeg via tool baca-gambar (multimodal) -> catat:
+ - field `figur_dibaca`: [{"file":"...","isi":"<apa yang diambil>"}]
+ - field `bukti`: figur/tabel/rumus yang menopang klaim.
+Batas: TARGET ~1-5 figur PENTING per paper (bukan semua). Jika teks/caption sudah cukup -> boleh tidak buka figur (ditandai kosong).
+
+------------------------------------------------------------
+F. ANALISIS AGREGAT (setelah semua)
+------------------------------------------------------------
+F1. Tabel karakteristik studi (domain, metode, dataset, metrik, kualitas).
+F2. Sintesis TEMATIK (coding per tema/pilar) + pernyataan SWiM (sintesis tanpa meta-analisis).
+F3. Deskriptif: tren tahun, sebaran pilar/kuartil/venue.
+F4. Threats to validity + ketersediaan data/kode.
+F5. PRISMA diperbarui (eksklusi full-text + alasan) + FULLTEXT_SCREENING_LOG.txt.
+F6. Rebuild deliverables: SLR_Korpus.xlsx, laporan, artikel, presentasi, draft.
+
+------------------------------------------------------------
+G. QA + RISIKO
+------------------------------------------------------------
+- QA: spot-check akurasi, konsistensi angka, bebas em dash, format docx.
+- Risiko: inkonsistensi antar-agen -> kendali rubrik + pilot + sampel ganda.
+- Beban token besar -> bertahap per wave + checkpoint.

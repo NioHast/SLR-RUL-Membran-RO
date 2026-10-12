@@ -1,0 +1,9 @@
+SUMBER FULL-TEXT (Open Access)
+============================
+Judul   : Mechanism-aligned machine learning for membrane fouling prediction and process control in pressure-driven water treatment membranes: A review
+DOI     : 10.1016/j.jwpe.2026.110543
+Status  : hybrid (Open Access)
+Lisensi : cc-by-nc-nd
+
+Catatan : Open Access berlisensi Creative Commons; boleh didistribusikan ulang DENGAN ATRIBUSI
+kepada penulis/penerbit asli. Diverifikasi via Unpaywall (https://unpaywall.org).

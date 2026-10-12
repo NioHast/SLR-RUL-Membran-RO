@@ -1,0 +1,16 @@
+LOG FULL-TEXT SCREENING (Phase 5) - FINAL
+====================================================================
+Korpus: 101 artikel. Full-text screening: 0 gugur.
+
+Sebelumnya 3 artikel (no 10, 69, 81) sempat GUGUR karena PDF yang terunduh SALAH
+(dokumen mismatch). PDF yang BENAR (MDPI, Open Access) sudah diperbaiki dan ketiganya
+DITERIMA kembali:
+- 010 Maulana 2023 (Machines, 10.3390/machines11020163) -> Inti-Domain, kualitas 9.
+- 069 Bopape 2021 (Membranes, 10.3390/membranes11010054) -> Konteks, kualitas 7.
+- 081 Zhang 2018 (Entropy, 10.3390/e20120944) -> Inti-Metode, kualitas 4.
+
+PRISMA final:
+- Diidentifikasi (unik): 694
+- Layak (full-record): 101
+- Dikeluarkan (full-text): 0
+- INCLUDED: 101

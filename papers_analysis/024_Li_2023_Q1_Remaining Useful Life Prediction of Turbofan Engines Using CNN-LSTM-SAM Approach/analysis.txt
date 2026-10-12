@@ -1,0 +1,52 @@
+PAPER 50 — Li et al. (2023)
+Judul: Remaining Useful Life Prediction of Turbofan Engines Using CNN-LSTM-SAM Approach
+Jurnal: IEEE Sensors Journal | Q1 (SCImago SJR Best Quartile) | DOI 10.1109/JSEN.2023.3261874
+Pilar: B. Deep Learning RUL | Relevansi: Pendukung | Skor kualitas: 9/10
+
+KARAKTERISTIK STUDI
+Studi RUL prediction turbofan engine berbasis deep learning fusi. Fokus pada mode multi-operating point (MOP) di mana karakteristik degradasi bergantung waktu dan titik operasi sehingga sangat non-linear. Kritik terhadap mekanisme attention input (AM) yang bobotnya fluktuatif; mengusulkan self-attention pada unit hidden (SAM).
+
+METODE
+- CLS = CNN (1-D, kernel 1x3) + LSTM + Self-Attention Mechanism (SAM).
+- CNN: dua lapisan konvolusi + max-pooling + fully connected untuk fitur spasial & supresi noise.
+- LSTM: empat lapisan, mengekstrak fitur temporal (menangani gradient vanishing/exploding).
+- SAM: menghitung bobot alpha_i = softmax(e_i), e_i = sigma(W h_i + b), lalu C = sum alpha_i h_i; membobot unit hidden (bukan input).
+- Pelatihan: BP + Adam, loss MSE; normalisasi min-max [-1,1]; sliding window W=30.
+- Parameter: epoch 150, batch 256, dropout 0,1, hidden LSTM 50/100/150/200, SAM 200.
+
+DATA
+NASA C-MAPSS FD001-FD004 (train 100/260/100/249 engine; test 100/259/100/248). FD002 & FD004 = mode MOP (6 operating point); FD001 & FD003 = SOP. Pelabelan dua tahap: RUL konstan di ambang 125 siklus lalu degradasi linear.
+
+TEMUAN UTAMA
+- Unggul di MOP: RMSE turun 19,0% (FD002) dan 9,3% (FD004) vs hasil terbaik; score turun 22,5% dan 28,5%.
+- Rata-rata RMSE -6,2%, score -23,2%.
+- RMSE CLS: FD001 12,56 / FD002 15,25 / FD003 13,77 / FD004 18,63.
+- SAM lebih stabil & konvergen daripada AM yang fluktuatif.
+- >90% error dalam [-20,20]; error lebih besar di awal operasi, menyusut saat RUL rendah.
+- Komputasi CLS hanya 82% waktu LSTM (tidak menambah beban signifikan).
+
+RELEVANSI KE TESIS
+Memberikan baseline arsitektur deep learning (CNN-LSTM-attention) point-estimate untuk RUL dari data multi-sensor. Menunjukkan celah yang tesis coba isi: tidak ada censoring dan tidak ada kuantifikasi ketidakpastian. Posisi: Pendukung.
+
+JUSTIFIKASI DIMENSI
+- d1=1: multi-sensor time series (21 sensor; dim 16/24/17/24) dengan sliding window.
+- d2=1: RUL eksplisit dua tahap dengan ambang 125 siklus; failure threshold acuan.
+- d3="": tidak ada data tersensor/survival/Weibull/hazard/cure.
+- d4=1: CNN-LSTM-SAM (CLS) model spesifik.
+- d5="": hanya point estimate (RMSE/score/R2); tanpa CI/posterior/interval.
+- d6="": tanpa analisis keputusan maintenance (hanya klaim kualitatif).
+- d7="": domain turbofan, bukan membran/RO/desalinasi/fouling.
+- d8="": bukan small-data/transfer/hierarchical/all-censored; data lengkap.
+Bukti kunci: "RUL threshold is set as 125"; "RMSE ... reduced by 19.0% and 9.3%".
+
+KUALITAS (9/10)
+Q1 jelas (1); Q2 memadai + ablasi lapisan/batch (1); Q3 dataset publik 4 subset (1); Q4 parameter & lingkungan dijelaskan tanpa kode (0,5); Q5 evaluasi lengkap (RMSE/score/R2/boxplot/komparasi) (1); Q6-Q8 N/A. Skor = round(4.5/5*10) = 9.
+
+LIMITASI
+Point estimate tanpa ketidakpastian; tanpa censoring; tanpa model keputusan maintenance; kalah pada mode SOP; arsitektur kompleks.
+
+BUKTI (kutipan)
+- "a self-AM (SAM)-based CNN-LSTM fusion algorithm with optimized weights assigning is proposed" (Introduction).
+- "compared with the best existing results, the RMSE of our approach is reduced by 19.0% and 9.3% ... score ... 22.5% and 28.5%" (Comparisons).
+- "the RUL threshold is set as 125" (Label Adding).
+- "more than 90% of the errors are concentrated in [-20, 20]" (Results Discussion).

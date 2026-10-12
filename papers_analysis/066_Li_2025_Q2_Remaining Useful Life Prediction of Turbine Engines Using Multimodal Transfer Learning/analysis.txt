@@ -1,0 +1,47 @@
+PAPER 52 — Li & Yang (2025)
+Judul : Remaining Useful Life Prediction of Turbine Engines Using Multimodal Transfer Learning
+Jurnal: Machines (MDPI) | Scopus Q2 | DOI 10.3390/machines13090789 | Pilar: D. Small-data/Transfer/Hierarchical
+
+KARAKTERISTIK STUDI
+Mengusulkan DMFR (Deep Multimodal Fine-tuning Regression), kerangka RUL yang memadukan multimodal (deret waktu + citra recurrence plot) dengan transfer learning dua tahap. Fokus pada dua tantangan: generalisasi di bawah distribution gap dan keterbatasan data single-modal pada skenario small-sample/cross-condition. Dievaluasi pada simulator turbofan NASA C-MAPSS.
+
+METODE
+- Branch Transformer (4 encoder, 8 head) mengekstraksi fitur temporal dari sinyal deret waktu 30-dimensi.
+- Branch CNN (4 conv, filter 16/32/64/128) mengekstraksi fitur spasial dari recurrence plot 30x30 yang dibentuk dari vektor fitur.
+- Fusion layer (2 FC) menggabungkan fitur kedua modalitas -> regresi RUL (MSE loss).
+- Transfer dua tahap: pre-training terawasi terpisah di source domain (CNN & Transformer), lalu fine-tuning bersama di target domain dengan bobot yang ditransfer.
+- Sliding window 30 langkah; 14 sensor terpilih; min-max normalization.
+
+DATA
+NASA C-MAPSS turbofan: empat subset FD001-FD004 dengan kompleksitas OC (1/6) dan FM (1/2) berbeda. Train 100/260/100/249; Test 100/259/100/248. Didefinisikan 12 tugas transfer lintas kondisi (mis. FD001->FD002). Perbandingan baseline memakai split 70/15/15.
+
+TEMUAN UTAMA
+- DMFR terbaik di semua target domain; FD001 RMSE 0,233 (9,8% lebih rendah dari TCN); reduksi RMSE rata-rata ~10,5% pada FD003.
+- Modalitas citra RP mengungguli modalitas temporal pada skenario single-modal.
+- Metode multimodal > single-modal; DMFR mengungguli multimodal CNN/Transformer murni.
+- Melaporkan 95% CI dan standar deviasi antar-run (stabilitas).
+- RUL = segmented linear dengan R_early = 125 siklus.
+
+RELEVANSI KE TESIS
+Inti-Domain. Mengisi sumbu small-data/transfer pada RUL, sangat relevan bagi tesis RUL membran yang menghadapi keterbatasan data berlabel dan pergeseran kondisi operasi (umpan, kualitas air). Menunjukkan bahwa transfer learning adalah jalur untuk generalisasi lintas membran/plant. Namun tidak menyentuh survival/censoring, sehingga celah utama tesis tetap terbuka.
+
+JUSTIFIKASI DIMENSI
+- d1 = "1": input multi-sensor deret waktu (30-dim: 3 ops + 21 sensor + 6 heat encoding; 14 sensor terpilih; sliding window 30).
+- d2 = "1": RUL didefinisikan sebagai siklus operasi tersisa sebelum gagal; segmented linear RUL dengan R_early=125; metrik Score C-MAPSS.
+- d3 = "": tidak ada survival/Weibull/hazard; trajektori uji terpotong sebelum gagal tidak diperlakukan sebagai censored.
+- d4 = "1": CNN, Transformer, DMFR, GRU/LSTM/RNN/TCN.
+- d5 = "1": 95% confidence interval (Figure 4) + standar deviasi antar-run (Table 3, Figure 5).
+- d6 = "": tidak ada keputusan maintenance konkret.
+- d7 = "": domain turbofan, bukan membran/RO/desalinasi.
+- d8 = "1": fokus small-sample + transfer learning dua tahap untuk cross-condition.
+
+KUALITAS (skor 8/10)
+Q1=1, Q2=1, Q3=1 (C-MAPSS publik, 12 tugas), Q4=0,5 (data on request, tanpa kode), Q5=1 (RMSE/MAE/R2/Score, multi-task, benchmark), Q6=N/A (tak ada censoring), Q7=1 (CI 95% + std), Q8=0 (tak ada keputusan maintenance). Skor = 5,5/7*10 ≈ 8.
+
+LIMITASI
+Tidak menangani censoring; tidak ada keputusan maintenance/biaya; kode tidak tersedia; evaluasi pada simulator; angka RMSE 0,233 tampak beda skala dari Table 3.
+
+BUKTI
+- 'a key challenge in current research is how to effectively fuse multimodal data and leverage transfer learning to address RUL prediction in small-sample and cross-condition scenarios.'
+- 'the orange-colored shaded area represents the 95% confidence interval calculated based on multiple prediction results.'
+- 'the test dataset consists of time-series data that end at a specific point prior to system failure.'

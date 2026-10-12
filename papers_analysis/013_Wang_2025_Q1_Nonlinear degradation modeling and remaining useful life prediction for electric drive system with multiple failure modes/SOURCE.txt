@@ -1,0 +1,9 @@
+SUMBER FULL-TEXT (Open Access)
+============================
+Judul   : Nonlinear degradation modeling and remaining useful life prediction for electric drive system with multiple failure modes
+DOI     : 10.1038/s41598-025-22866-7
+Status  : gold (Open Access)
+Lisensi : cc-by-nc-nd, cc-by-sa
+
+Catatan : Open Access berlisensi Creative Commons; boleh didistribusikan ulang DENGAN ATRIBUSI
+kepada penulis/penerbit asli. Diverifikasi via Unpaywall (https://unpaywall.org).

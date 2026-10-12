@@ -1,0 +1,81 @@
+{
+  "no": 40,
+  "judul": "A deep learning-based remaining useful life prediction approach for bearings",
+  "penulis": "Cheng Cheng, Guijun Ma, Yong Zhang, Mingyang Sun, Fei Teng, Han Ding, Ye Yuan",
+  "tahun": 2020,
+  "jurnal": "IEEE/ASME Transactions on Mechatronics",
+  "doi": "10.1109/TMECH.2020.2971503",
+  "kuartil": "Scopus Q1 (ScImago SJR Best Quartile)",
+  "pilar": "B. Deep Learning RUL",
+  "ringkasan": "Artikel ini mengusulkan kerangka data-driven untuk prediksi RUL rolling element bearing (REB) dengan deep CNN. Getaran mentah diproses memakai Hilbert-Huang Transform untuk menyusun degradation energy indicator (DEI) nonlinier baru sebagai label latih; CNN 6 lapis dilatih untuk memetakan getaran mentah ke DEI, lalu ε-SVR memforecast evolusi DEI hingga melewati failure threshold. Metode divalidasi pada platform PRONOSTIA dan mengungguli delapan metode publikasi.",
+  "kontribusi": "Memperkenalkan indikator degradasi nonlinier (DEI) berbasis frekuensi alami komponen bearing dan framework HHT+CNN+ε-SVR yang menetapkan failure threshold konsisten antar-bearing. Relevan ke tesis sebagai pembanding rekayasa indikator/fitur untuk RUL, namun tanpa survival/penyensoran dan bukan domain membran.",
+  "temuan_kunci": [
+    "DEI nonlinier jauh lebih efektif daripada label degradasi waktu linear (C1): Er% proposed -0,29%/~6,8%/-1,37% vs C1 91,15%/49,07%/19,11%.",
+    "Skor terbaik dibanding 8 metode: S_mean=0,87, MAE=46,2, NRMSE=0,05.",
+    "Tanpa CNN (C2, DEI diekstraksi manual) galat membesar dan komputasi lambat (~2 s per periode sampling), dengan DEI berisik melewati FT sebelum waktunya.",
+    "CNN yang dilatih pada bearing1 dapat digeneralisasi ke bearing2 (beban 4200 N, 1600 rpm) tanpa mengubah hyperparameter/arsitektur, hanya fine-tune C SVR (Er% 5,75% dan 1,55%).",
+    "Failure threshold ditetapkan dari nilai DEI maksimum bearing latih (L_ft=0,9756) dan berlaku konsisten untuk bearing uji."
+  ],
+  "dimensi": {
+    "d1": "1",
+    "d2": "1",
+    "d3": "",
+    "d4": "1",
+    "d5": "",
+    "d6": "",
+    "d7": "",
+    "d8": ""
+  },
+  "alasan_dimensi": {
+    "d1": "Input adalah runtun waktu getaran mentah (2560 pengukuran per unit rekaman, 25,6 kHz) dari accelerometer (Section II-A, Eq. 1).",
+    "d2": "RUL/time-to-failure didefinisikan eksplisit; failure threshold FT dari DEI maksimum bearing latih (L_ft=0,9756); RUL = U x tau (Section II-C).",
+    "d3": "Tidak memodelkan data tersensor/survival/hazard.",
+    "d4": "Model spesifik: CNN 6 lapis (2 conv + 2 maxpool + FC + regresi) dan epsilon-SVR (kernel RBF); ekstraksi DEI via HHT (EMD + Hilbert transform).",
+    "d5": "Tidak ada kuantifikasi ketidakpastian; hanya titik estimasi RUL dan metrik galat (Er%, ETA, MAE, NRMSE).",
+    "d6": "Tidak ada model keputusan pemeliharaan; hanya menyebut reliabilitas/keselamatan sistem.",
+    "d7": "Bukan domain membran/RO/desalinasi; objek rolling element bearing.",
+    "d8": "Klaim generalisasi lintas bearing/kondisi operasi (transfer tanpa ubah hyperparameter) bersifat robustness, bukan metode small-data/transfer learning/hierarchical/all-censored."
+  },
+  "relevansi": "Pendukung",
+  "kualitas": {
+    "skor": 6,
+    "rincian": {
+      "Q1": "1",
+      "Q2": "1",
+      "Q3": "0.5",
+      "Q4": "0.5",
+      "Q5": "1",
+      "Q6": "N/A",
+      "Q7": "0",
+      "Q8": "0.5"
+    },
+    "catatan": "RQ dan kontribusi jelas. Metode memadai (HHT + CNN + ε-SVR) dengan arsitektur rinci. Data PRONOSTIA/FEMTO standar namun jumlah bearing uji sedikit (3 pada bearing1 + 2 pada bearing2), membatasi validitas statistik. Reproduksibilitas sedang (arsitektur & hyperparameter diberi, tanpa kode). Evaluasi kuat (Er%, ETA, S_mean, MAE, NRMSE; 8 metode pembanding + 2 metode uji). Penyensoran N/A. Tidak ada pelaporan ketidakpastian (Q7=0). Kaitan keputusan pemeliharaan hanya motivasi."
+  },
+  "data_kuantitatif": {
+    "dataset": "PRONOSTIA (FEMTO-ST) accelerated bearing degradation platform",
+    "ukuran": "Bearing1: train bearing1_2 (N=871 unit); test bearing1_4/5/6; Bearing2: train bearing2_2; test bearing2_4/6; 2 accelerometer (horizontal & vertikal), sampling 25,6 kHz, 0,1 s tiap tau=10 s (2560 sampel)",
+    "metrik": "Relative percentage error (Er%), ETA, average score S_mean, MAE, NRMSE"
+  },
+  "metode": "Framework 3 tahap: (1) ekstraksi DEI dari getaran mentah via EMD + Hilbert transform + marginal Hilbert spectrum pada frekuensi f_inner/f_outer/f_ball (DEI = maksimum MHS, dinormalisasi); (2) CNN 6 lapis (Conv1 64 filter kernel 1x100/stride 50, Maxpool 1x2/2, Conv2 64 filter kernel 1x2/1, Maxpool 1x2/2, Flatten, FC1 100, output sigmoid) dilatih memetakan getaran mentah -> DEI (loss MSE, Adam lr 1e-5); (3) ε-SVR (kernel RBF, C=5,09 via grid search) memforecast DEI sampai failure threshold via sliding window (l=50, s=1).",
+  "limitasi": [
+    "Jumlah bearing uji sangat sedikit (5 unit), validitas statistik terbatas.",
+    "Tidak memodelkan penyensoran/survival; tanpa estimasi ketidakpastian.",
+    "Failure threshold bergantung pada bearing latih dan asumsi kondisi operasi sama.",
+    "Ekstraksi DEI tanpa CNN (C2) memerlukan komputasi berat.",
+    "Tidak ada keputusan pemeliharaan."
+  ],
+  "funding_coi": "Didanai National Natural Science Foundation of China [Grant 91748112] dan Primary Research & Development Plan of Jiangsu Province [Grant BE2017002]. Tidak ditemukan pernyataan konflik kepentingan.",
+  "status_inklusi": "diterima",
+  "figur_dibaca": [
+    {"file": "figures/_page_3_Figure_1.jpeg", "isi": "Fig. 2 kerangka RUL data-driven 3 tahap: (1) ekstraksi DEI (Training data -> EMD/IMF -> Hilbert transform -> Marginal Hilbert Spectrum -> DEI) sebagai label; (2) Model training CNN (input getaran mentah, label DEI) -> DEI estimation; (3) RUL prediction (Test data -> DEI estimation -> SVR prediction -> RUL)."},
+    {"file": "figures/_page_4_Figure_1.jpeg", "isi": "Fig. 3 arsitektur CNN: Input 1x2560x1 -> Conv 1x50x64 -> Maxpool 1x25x64 -> Conv 1x24x64 -> Maxpool 1x12x64 -> FC 1x1x768 -> FC 1x1x100 -> Output 1x1x1 (label DEI); CNN pada bearing latih, lalu diterapkan ke bearing uji (L_test)."}
+  ],
+  "bukti": [
+    "Abstrak + Kontribusi 1)-4): DEI nonlinier, generalisasi CNN, indikator terintegrasi, failure threshold konsisten.",
+    "Section II-A: ekstraksi DEI via EMD/HT/MHS (Eq. 1-9), normalisasi (Eq. 10-11).",
+    "Section II-B: CNN (Eq. 12-14, Algorithm 1), Table III (parameter CNN).",
+    "Section II-C: ε-SVR forecasting, FT (Section II-C, Algorithm 2).",
+    "Table V (proposed vs C1/C2), Table VI (perbandingan 8 metode: S_mean 0,87, MAE 46,2, NRMSE 0,05).",
+    "Fig. 6/8 (DEI), Fig. 9 (RUL prediction), Fig. 10 (DEI: HHT vs CNN)."
+  ]
+}

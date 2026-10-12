@@ -1,0 +1,48 @@
+{
+ "no": 75,
+ "judul": "Multiform Informed Machine Learning Based on Piecewise and Weibull for Engine Remaining Useful Life Prediction",
+ "penulis": "Shuang Zhou, Yunan Yao, Aihua Liu, Fan Wang, Lu Chen, Ruolan Xiong",
+ "tahun": 2023,
+ "jurnal": "Sensors",
+ "doi": "10.3390/s23125669",
+ "kuartil": "Scopus Q1 (SCImago SJR Best Quartile)",
+ "pilar": "B. Deep Learning RUL",
+ "ringkasan": "Studi mengusulkan informed machine learning (IML) multiform untuk prediksi RUL aero-engine dengan mengintegrasikan dua bentuk pengetahuan domain dari rekayasa keandalan: (1) Piecewise RUL yang dipakai untuk menetapkan label data latih, dan (2) fungsi distribusi kumulatif Weibull yang diintegrasikan ke loss function (Weibull-combined loss). Model LSTM sederhana dilatih pada C-MAPSS; integrasi kedua pengetahuan menurunkan RMSE paling besar (ablation) dan model Weibull-RMSLE-Comb paling stabil, mengalahkan metode SOTA (MSTformer) pada kondisi operasi kompleks FD002/FD004.",
+ "kontribusi": "Menunjukkan cara menyuntikkan pengetahuan keandalan (Weibull CDF sebagai loss, label Piecewise) ke dalam pipeline DL untuk RUL - relevan bagi tesis karena memakai distribusi Weibull/reliability sebagai pengetahuan domain dan mengklaim membantu keterbatasan data; tetapi tidak memodelkan data tersensor dan domainnya bukan membran.",
+ "temuan_kunci": [
+  "Ablation pada FD002: RMSE turun dari 27,46 (None) menjadi 14,63 (Piecewise saja) dan 23,39 (Weibull saja); kombinasi keduanya terbaik 13,13.",
+  "Weibull-RMSLE-Comb adalah model terbaik pada FD001, FD003, FD004 dan paling stabil pada FD002 (rentang RMSE tersempit).",
+  "Rata-rata RMSE model 14,57 dan Score 923 pada FD002/FD004, mengalahkan MSTformer (14,76 / 1056; RMSE -1,29%, Score -12,59%).",
+  "RULmax optimal ~125 untuk FD001/FD003 dan ~130 untuk FD002/FD004 (Piecewise); parameter Weibull domain beta=2, eta=90.",
+  "Model lebih konservatif (prediksi lebih awal) karena pengetahuan reliability, menurunkan risiko prediksi terlambat."
+ ],
+ "dimensi": {"d1": "1", "d2": "1", "d3": "", "d4": "1", "d5": "", "d6": "", "d7": "", "d8": ""},
+ "alasan_dimensi": {
+  "d1": "Menggunakan 21 sensor C-MAPSS (24 fitur setelah praproses) sebagai deret waktu multivariat; operasi multi-kondisi dikenali via K-means clustering lalu dinormalisasi, dengan time window (panjang 30).",
+  "d2": "Mendefinisikan RUL dengan Piecewise (RULmax sebagai ambang awal degradasi, lalu linear) dan ambang batas RULmax (Eq. 2); RUL = selisih siklus maksimum dan siklus sekarang.",
+  "d3": "Tidak memodelkan data tersensor: C-MAPSS adalah data run-to-failure tanpa indikator censoring. Weibull CDF dipakai sebagai loss/regularisasi keandalan (fungsi peluruhan), bukan model waktu-hidup dengan pencensoringan.",
+  "d4": "Model spesifik: LSTM (3 hidden layer, 100 neuron) sebagai tulang punggung, dilatih dengan Weibull-combined loss (varian MSE/RMSE/RMSLE).",
+  "d5": "Tidak melaporkan ketidakpastian prediksi RUL. Table 1 memberi 95% confidence limit hanya untuk estimasi parameter Weibull (beta, eta); boxplot RMSE menggambarkan stabilitas 15 ulangan, bukan interval prediktif RUL.",
+  "d6": "Memotivasi PHM/predictive maintenance dan penurunan biaya pemeliharaan serta prediksi konservatif demi keselamatan, tetapi tanpa analisis/model keputusan pemeliharaan konkret.",
+  "d7": "Objek penelitian adalah aero-engine (turbofan), bukan membran/RO/desalinasi.",
+  "d8": "Tidak ada skema small-data/transfer/hierarchical/all-censored; IML diklaim membantu keterbatasan data, tetapi eksperimen memakai C-MAPSS lengkap dan klaim data sparse hanya disebut sebagai pekerjaan masa depan."
+ },
+ "relevansi": "Inti-Metode",
+ "kualitas": {"skor": 8, "rincian": {"Q1": 1, "Q2": 1, "Q3": 1, "Q4": 0.5, "Q5": 1, "Q6": "N/A", "Q7": 0.5, "Q8": 0.5}, "catatan": "Desain IML jelas dengan ablation, analisis pengaruh tiap pengetahuan, 15 ulangan, dua metrik (RMSE + Score), dan perbandingan SOTA. Dataset C-MAPSS publik. Kelemahan: tidak ada ketidakpastian prediksi RUL, tanpa pemodelan censoring, dan tidak ada pernyataan ketersediaan kode. Kode arsitektur cukup sederhana (LSTM). Q6 tidak berlaku."},
+ "data_kuantitatif": {"dataset": "NASA C-MAPSS turbofan engine degradation (4 sub-dataset FD001-FD004)", "ukuran": "FD001: 100 latih/100 uji; FD002: 260/259; FD003: 100/100; FD004: 249/248; 21 sensor; window 30; split latih/validasi 9:1; 15 ulangan", "metrik": "FD002/FD004 rata-rata RMSE 14,57 & Score 923 (vs MSTformer 14,76/1056); FD002 RMSE 14,03 Score 876; FD004 RMSE 15,10 Score 970; ablation FD002 RMSE: None 27,46; Piecewise 14,63; Weibull 23,39; keduanya 13,13; parameter Weibull beta=2, eta=90"},
+ "metode": "Informed Machine Learning multiform: pengetahuan rekayasa keandalan (scientific knowledge) direpresentasikan sebagai (1) Piecewise RUL (label) dan (2) Weibull CDF (loss). Integrasi: label setting (training data) + Weibull-combined loss function (learning algorithm) (Eq. 3-5, Tabel 2-3). Backbone: LSTM; praproses K-means condition recognition + min-max normalisasi + sliding window; optimizer Adam, lr 0,0002, dropout 0,5.",
+ "limitasi": [
+  "Data C-MAPSS adalah simulasi, bukan data degradasi mesin riil.",
+  "Tidak ada kuantifikasi ketidakpastian prediksi RUL (hanya CI parameter Weibull).",
+  "Tidak menangani data tersensor.",
+  "Klaim membantu keterbatasan data belum dibuktikan pada dataset kecil (hanya masa depan).",
+  "Tidak ada pernyataan ketersediaan kode."
+ ],
+ "funding_coi": "Tidak dijelaskan secara eksplisit dalam cuplikan teks; penulis tidak menyatakan konflik kepentingan (artikel MDPI open access).",
+ "status_inklusi": "diterima",
+ "figur_dibaca": [
+  {"file": "_page_9_Figure_2.jpeg", "isi": "Framework IML multiform: (kiri) knowledge source/representation (bathtub curve, Piecewise RUL, Weibull CDF)/integration; (tengah) knowledge-informed model (praproses clustering+normalisasi, label setting, LSTM, loss function); (kanan) RUL prediction dari data uji mentah."},
+  {"file": "_page_14_Figure_1.jpeg", "isi": "Ablation study pada FD002: boxplot RMSE untuk konfigurasi None (27,46), Piecewise (14,63), Weibull (23,39), dan Piecewise+Weibull (13,13) - kombinasi pengetahuan memberi penurunan RMSE terbesar."}
+ ],
+ "bukti": ["Eq. (1): Weibull CDF", "Eq. (2): Piecewise RUL label", "Eq. (3)-(5): knowledge-based loss & Weibull loss", "Table 1: estimasi parameter Weibull + 95% CI", "Table 2-3: Weibull loss & loss functions diuji", "Table 4: detail C-MAPSS", "Table 5-6: parameter knowledge & ML", "Table 7: perbandingan SOTA", "Fig. 6 (framework), Fig. 11 (ablation), Fig. 12-13 (analisis Piecewise & Weibull), Fig. 14 (prediksi RUL)"]
+}

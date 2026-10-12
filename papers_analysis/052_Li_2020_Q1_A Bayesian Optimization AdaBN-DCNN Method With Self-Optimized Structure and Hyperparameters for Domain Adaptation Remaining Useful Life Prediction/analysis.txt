@@ -1,0 +1,48 @@
+ANALISIS PAPER 031 — Li & He (2020), IEEE Access
+Judul: A Bayesian Optimization AdaBN-DCNN Method With Self-Optimized Structure and Hyperparameters for Domain Adaptation Remaining Useful Life Prediction
+DOI: 10.1109/ACCESS.2020.2976595 | Kuartil: Scopus Q1 | Pilar indeks: D. Small-data/Transfer/Hierarchical
+
+KARAKTERISTIK STUDI
+Studi prognostik (PHM) berbasis pembelajaran mendalam untuk prediksi Remaining Useful Life (RUL) mesin. Berlatar domain teknik mesin (turbofan), bukan membran/desalinasi. Termasuk klaster small-data/transfer karena fokus pada adaptasi domain (domain adaptation) dan efisiensi pemilihan model. Ditulis sebagai artikel IEEE Access (akses terbuka) dengan validasi pada benchmark publik C-MAPSS.
+
+METODE
+Kerangka = DCNN (lapisan konvolusi + pooling + dua fully-connected) yang dilengkapi:
+1) Bayesian optimization berbasis Gaussian Process (GP) dengan acquisition function (LCB, PI, EI) untuk memilih struktur jaringan (kedalaman 1-3) dan hyperparameter (initial learning rate, momentum, batchsize, L2) secara otomatis;
+2) Adaptive Batch Normalization (AdaBN): saat domain uji berbeda, hanya scale factor gamma dan offset beta pada unit BN yang di-fine-tune (bukan melatih ulang seluruh bobot);
+3) Pra-pemrosesan: pemilihan 14 sinyal sensor bertren, sliding time window, z-score normalization; fungsi RUL piecewise-linear.
+Pelatihan: SGD with momentum, LR drop period 10 / factor 0.5, max 40 epoch.
+
+DATA
+NASA C-MAPSS, 4 sub-dataset simulasi run-to-failure mesin turbofan: FD001 (1 kondisi, 1 mode kegagalan), FD002 (6 kondisi), FD003 (2 mode), FD004 (6 kondisi, 2 mode). Jumlah engine latih/uji: 100/100, 260/259, 100/100, 249/248. Jumlah sampel latih 17.731 / 48.559 / 21.220 / 57.016. RUL diukur dalam siklus; plateau RUL=125 (threshold life).
+
+TEMUAN UTAMA
+- Bayesian optimization unggul atas grid search (48 kombinasi, E_RMSE min 12.56) dan random search (E_RMSE min 12.32); BO mencapai E_RMSE 11.94 (FD001) dengan iterasi lebih sedikit dan lebih stabil.
+- Hasil 4 sub-dataset: E_RMSE FD001=11.94, FD002=19.29, FD003=12.31, FD004=22.14 (Tabel 7); mengungguli CNN, LSTM, MODBNE, BLSTM, BiLSTM, DCNN, DAG (Tabel 8) pada hampir semua sel.
+- AdaBN memperbaiki prediksi lintas domain secara drastis: pada 4 kasus (FD002->FD001, FD002->FD003, FD004->FD001, FD004->FD003) E_RMSE turun ~10x; pada 4 kasus lain turun ~2x. Model yang dilatih domain kompleks (FD002/FD004) lebih baik beradaptasi ke domain sederhana.
+- Distribusi galat FD001: 69% engine galat dalam [-10,10], 89% dalam [-20,20].
+
+RELEVANSI KE TESIS
+Relevan sebagai pembanding metodologis pada sumbu transfer/adaptasi domain dan optimasi model RUL. Tesis menargetkan prediksi RUL membran RO melalui survival analysis + deep learning dengan data tersensor; paper ini menunjukkan cara menangani pergeseran domain tanpa pemodelan penyensoran sama sekali. Karena itu ia memperjelas celah: mekanisme adaptasi domain (AdaBN) belum dipadukan dengan model survival untuk data tersensor, khususnya pada domain membran/desalinasi.
+
+JUSTIFIKASI DIMENSI (d1-d8)
+- d1 = "1": input multi-sensor runtun waktu (14 sinyal C-MAPSS, sliding TW) — bukti: Tabel 5, Fig. 3, Eq. 39.
+- d2 = "1": RUL didefinisikan eksplisit + fungsi RUL piecewise-linear + titik Fault/threshold 125 — bukti: Fig. 7b, Eq. 40-41.
+- d3 = "": tidak memodelkan data tersensor/survival; semua unit C-MAPSS adalah run-to-failure penuh.
+- d4 = "1": model spesifik DCNN + Bayesian optimization (GP) + AdaBN — bukti: Fig. 5, Eq. 26-37.
+- d5 = "": tidak ada kuantifikasi ketidakpastian RUL; CI 95% GP hanya untuk pencarian hyperparameter; error band = distribusi galat.
+- d6 = "": tidak ada model keputusan pemeliharaan; 'predictive maintenance' hanya motivasi.
+- d7 = "": domain turbofan, bukan membran/RO/desalinasi.
+- d8 = "1": transfer/adaptasi domain (AdaBN) untuk menghindari pelatihan ulang — bukti: Tabel 11-12, Fig. 14.
+
+KUALITAS (skor 8/10)
+Q1=1 RQ jelas; Q2=1 metode memadai & dijelaskan rinci; Q3=1 data benchmark mapan + validasi 4 sub-dataset; Q4=0.5 hyperparameter dilaporkan namun tanpa kode/pengaturan lengkap; Q5=1 evaluasi E_RMSE + E_score + perbandingan luas; Q6=N/A tak ada penyensoran; Q7=0.5 hanya error band/histogram, tanpa interval prediktif; Q8=0.5 tautan ke keputusan pemeliharaan hanya level pernyataan. Applicable = 7, jumlah = 5.5 -> skor = round(5.5/7*10) = 8.
+
+LIMITASI
+Data hanya simulasi C-MAPSS; tidak ada pemodelan penyensoran maupun ketidakpastian RUL; rentang hyperparameter ditentukan manual; tidak ada keputusan pemeliharaan eksplisit.
+
+BUKTI
+- Abstrak + Kontribusi (1)-(2).
+- Tabel 4 (deskripsi C-MAPSS), Tabel 5 (21 sensor), Tabel 6/9/10 (BO vs grid vs random).
+- Tabel 7 (BO terbaik 4 dataset), Tabel 8 (perbandingan metode).
+- Tabel 11-12 + Fig. 14 (cross-domain AdaBN), Fig. 7 (RUL piecewise-linear, threshold 125).
+- Fig. 5 (arsitektur AdaBN-DCNN).

@@ -1,0 +1,210 @@
+CATATAN KEPUTUSAN & PROSES PENGERJAAN
+Tugas 1 (Rancangan Riset SI) & Tugas 2 (Systematic Literature Review)
+==============================================================================
+Disusun otomatis sebagai log transparansi: apa yang diputuskan, atas dasar apa,
+dan apa batasannya. Simpan bersama berkas keluaran lain.
+
+
+============================================================
+BAGIAN A. KEPUTUSAN UTAMA (hasil konfirmasi dengan pemilik tugas)
+============================================================
+K1. Topik SLR = mengikuti Tugas 1 (RUL / predictive maintenance / survival analysis).
+K2. Peran: dikerjakan end-to-end oleh asisten, pemilik tugas mereview.
+K3. Akses jurnal: memakai metadata + abstrak terbuka (OpenAlex/Crossref).
+    Full-text berbayar TIDAK diambil; TIDAK memakai kredensial pemilik tugas.
+K4. Korpus: 50+ jurnal internasional (Scopus) + rujukan pendukung nasional.
+K5. Tugas 1: objek = unit desalinasi air payau (BWRO) UNDIP Teluk Awur, Jepara;
+    metode Gao et al. (2025) DIKOREKSI (event proxy + prior), bukan diterapkan apa adanya.
+K6. C-MAPSS = HANYA benchmark/validasi metode (replikasi FD001), bukan data latih model membran.
+K7. Bahasa: Indonesia (istilah teknis Inggris).
+K8. Jenjang: S2 (Magister), dengan target tambahan publikasi Scopus.
+K9. Keluaran: Tugas1 .txt (+2 lampiran); SLR .xlsx + .docx + .txt.
+
+============================================================
+BAGIAN B. KOREKSI ILMIAH YANG DILAKUKAN (dan alasannya)
+============================================================
+B1. Klaim lama "model akurat walau hanya data tersensor" diperbaiki.
+    Alasan: tanpa satu pun kegagalan teramati (d_i = 0 untuk semua i),
+    likelihood Weibull degenerat -> skala lambda TIDAK teridentifikasi.
+    Solusi: pengandaian kunci shape k + prior proper pada lambda
+    (Drent, Kapodistria & Boxma, 2020). Ditulis sebagai syarat eksplisit
+    pada Persamaan 6 dan selalu dilekatkan pada setiap klaim akurasi.
+B2. Objek digeser dari mesin turbin gas sintetis (C-MAPSS) ke membran RO nyata.
+B3. Endpoint gagal didefinisikan konkret (proxy): DeltaP +15%, salt passage +10%,
+    FRR <= 70% (ASTM D4516) -> pseudo-failure, bukan kerusakan fisik total.
+B4. Ditambah lapis keputusan (DSS) berbasis ekspektasi biaya per satuan waktu
+    operasi -> menutup catatan evaluasi pada artikel sumber (manfaat ekonomi belum dibahas).
+B5. Konvensi tanda penalti loss dibuat eksplisit (alpha > 0 menghukum k_i < 1),
+    karena artikel sumber menyebut alpha sebagai konstanta negatif (berpotensi ambigu).
+
+============================================================
+BAGIAN C. CARA KERJA TUGAS 2 (SLR)
+============================================================
+C1. Kerangka: Kitchenham & Charters (2007) + PRISMA 2020 (Page dkk., 2021)
+    + konsep-sintesis Webster & Watson (2002) + snowballing Wohlin (2014).
+C2. Pengumpulan data: OpenAlex/Crossref (title+abstract search, type=article,
+    has_doi=true), 24 query (metodologis + domain).
+    - Record unik terkumpul: 694 (setelah dedup lintas-query).
+    - Disaring (memiliki abstrak, relevan, non-medis): 485 kandidat.
+    - Korpus inti terpilih: 72 artikel (semua berabstrak), pilar A-G tercakup.
+C3. Klasifikasi: setiap artikel diberi 1 pilar utama (A-G), ringkasan temuan,
+    kontribusi terhadap gap, dan tag matriks konsep D1-D8.
+C4. Sintesis: concept-centric (Webster & Watson) + perumusan gap.
+
+============================================================
+BAGIAN D. ANGK A & KETERBATASAN (WAJIB DISAMPAIKAN TERBUKA)
+============================================================
+D1. Klasifikasi "Scopus" pada kolom korpus bersifat SEMENTARA
+    ("Jurnal internasional (verifikasi Scopus)"). Verifikasi resmi ada di laman Scopus/SJR.
+D2. Ringkasan & kontribusi disusun dari ABSTRAK (bukan full-text). Untuk sebagian paper,
+    detail mungkin berkurang; verifikasi manual dianjurkan sebelum publikasi.
+D3. Korpus 72 artikel ini adalah POOL AWAL yang kuat; untuk publikasi Scopus,
+    disarankan memperluas dengan pencarian langsung di Scopus/IEEE (kata kunci siap pakai
+    ada di SLR_Protocol.txt) dan menambah sitasi snowballing.
+D4. Pilar F (DSS/IS) dan G (konteks Indonesia) relatif tipis di korpus
+    -> justru menegaskan celah yang menjadi kontribusi tesis; bisa diperkuat pada revisi.
+D5. Angka plant BWRO Teluk Awur (200.000 L/hari nominal vs ~20.000 L/hari aktual,
+    operasi siang hari) berasal dari sumber publik (Kompas, Katadata, DSTP UNDIP);
+    instrumentasi/data logging TIDAK terdokumentasi publik -> status ASUMSI.
+
+============================================================
+BAGIAN E. ASUMSI KERJA YANG WAJIB DIVERIFIKASI (blok go/no-go)
+============================================================
+E1. Plant mencatat TMP/DeltaP, laju aliran permeat, konduktivitas/TDS, suhu, pH.
+E2. Operasi pagi-sore (perkiraan 08.00-17.00).
+E3. Ada catatan perawatan (tanggal CIP & penggantian membran).
+E4. Ada armada kecil modul membran (untuk pengetahuan populasi/Bayesian).
+Bila E1-E3 tidak terpenuhi, penetapan (T_i, d_i) tidak sahih dan rancangan
+harus disesuaikan (lihat Draft_Permintaan_Data_DSTP.txt).
+
+============================================================
+BAGIAN F. REFERENSI KUNCI YANG DIVERIFIKASI (Crossref/OpenAlex)
+============================================================
+F1. Gao, Y., Li, S., Wang, D., Mao, J., Ouyang, L. (2025). IEEE TASE. DOI 10.1109/TASE.2025.3640217.
+F2. Alshraideh dkk. (2026). Chemical Engineering Journal Advances 26:101217. DOI 10.1016/j.ceja.2026.101217.
+F3. Noot, Martin & Birmelé (2025). IJPHM 16(2). DOI 10.36001/ijphm.2025.v16i2.4260.
+F4. Drent, Kapodistria & Boxma (2020). Operations Research Letters 48(6):827-834. DOI 10.1016/j.orl.2020.10.005.
+F5. Li, Taylor & Sy (2001). Statistics & Probability Letters 54(4):389-395. DOI 10.1016/S0167-7152(01)00105-5.
+F6. Hashimoto & Takizawa (2021). Membranes 11(11):800. DOI 10.3390/membranes11110800.
+F7. Putri, Susanto, Setiawan, Christwardana & Widiasa (2025). Desalination and Water Treatment:101359. DOI 10.1016/j.dwt.2025.101359.
+
+============================================================
+BAGIAN G. LANGKAH SELANJUTNYA (rekomendasi)
+============================================================
+G1. Kirim Draft_Permintaan_Data_DSTP.txt ke DSTP/Prof. Widiasa -> cek E1-E4.
+G2. Perluas korpus di Scopus/IEEE memakai search string di SLR_Protocol.txt.
+G3. Verifikasi status Scopus tiap jurnal & lengkapi kolom Klasifikasi.
+G4. Perbarui ringkasan dari abstrak -> full-text untuk artikel inti (Gao, Alshraideh, Noot).
+G5. Susun protokol/preregistrasi (PRISMA-P) bila diarahkan pembimbing.
+
+==============================================================================
+Akhir catatan.
+
+============================================================
+ADDENDUM (revisi terbaru)
+============================================================
+H1. Identitas pemilik tugas diisi: Muhammad Nio Hastungkoro (NIM 30000226410017).
+    CATATAN: NIM yang diberikan (30000226410017) berbeda dari nama file asli
+    (300002261410017). Mohon dicek; mudah diperbarui di kedua dokumen.
+H2. Verifikasi Scopus + kuartil DILAKUKAN memakai dataset SCImago/SJR 2024
+    (turunan Scopus; ISSN-matched).
+    Hasil: 106/118 terkonfirmasi terindeks Scopus ->
+      Q1=43, Q2=37, Q3=14, Q4=6, dan 6 terindeks tanpa kuartil terhitung.
+      12 artikel TIDAK terverifikasi di Scopus (umumnya prosiding/jurnal non-Scopus).
+    Keterbatasan: kuartil dihitung dari peringkat SJR per bidang 2024 (perkiraan),
+    bukan nilai resmi "SJR Best Quartile" per kategori Scopus. Verifikasi final
+    di laman Scopus/SCImago dianjurkan.
+H3. Basis fitur ringkasan/kontribusi: ABSTRAK (bukan full-text). Lihat penjelasan
+    pada jawaban; ekstraksi full-text dianjurkan untuk artikel inti.
+
+============================================================
+ADDENDUM 2 (kebijakan kuartil: tanpa Q4)
+============================================================
+Kebijakan: korpus tidak memuat jurnal Q4 (maksimum Q3).
+Tindakan: 3 artikel Q4 DIGANTI dengan artikel Q1-Q3 yang relevan:
+  - no23 (J. Environmental & Earth Sciences, Q4) -> "Predictive Modeling of Membrane
+    Fouling in Domestic Wastewater MBR Using Machine Learning" (Water Environment
+    Research, Q2, 2025; DOI 10.1002/wer.70205)
+  - no61 (Communications on Applied Nonlinear Analysis, Q4) -> "Integrating Survival
+    Analysis with Bayesian Statistics to Forecast the RUL of a Centrifugal Pump..."
+    (Energies, Q1, 2023; DOI 10.3390/en16093707)
+  - no68 (Journal of Petroleum Technology, Q4) -> "Harnessing ML for transmembrane
+    pressure prediction in MBR systems during textile wastewater treatment"
+    (Desalination and Water Treatment, Q3, 2025; DOI 10.1016/j.dwt.2025.101238)
+Hasil: total tetap 118 artikel; TIDAK ADA Q4.
+Sebaran kuartil final: Q1=53, Q2=34, Q3=16, Scopus tanpa kuartil=3, belum terverifikasi=12.
+12 artikel "Belum terverifikasi" (kemungkinan prosiding/non-Scopus, atau jurnal
+baru/jurnal Indonesia) BELUM dihapus, menunggu keputusan pemilik tugas.
+
+============================================================
+ADDENDUM 3 (pembersihan korpus: tanpa prosiding/non-Scopus/<SINTA2)
+============================================================
+Kebijakan baru:
+ (a) Hapus SEMUA prosiding;
+ (b) Hapus jurnal yang TIDAK terindeks Scopus atau Q4 (diverifikasi dulu);
+ (c) Paper jurnal nasional wajib minimal SINTA 2, jika tidak -> hapus.
+
+VERIFIKASI yang dilakukan:
+ - Prosiding dideteksi dari tipe SCImago ("conference and proceedings") + nama
+   (Proceedings/Procedia/Conference). CATATAN: dua entri ber-nama "Proceedings..."
+   ternyata JURNAL dan DIPERTAHANKAN (bukan prosiding):
+     * "Proceedings of Engineering and Technology Innovation" (PETI) = JURNAL,
+       Scopus sejak 2020, Q3 (Scopus 2023) / Q2 (SJR 2025).
+     * "Proceedings of the Institution of Mechanical Engineers Part J" = JURNAL, Q2.
+ - Non-Scopus diverifikasi via SCImago 2022 + panel SJR 1999-2025 + Scopus title list 2021.
+ - SINTA dicek via sinta.kemdiktisaintek.go.id:
+     * Reka Buana = SINTA 3 (< SINTA 2) -> DIHAPUS.
+     * Jurnal Pendidikan IPA Indonesia = SINTA 1 (Scopus) -> DIPERTAHANKAN.
+     * Energy Materials and Product Design (Unram) = tidak terakreditasi SINTA 2 -> DIHAPUS.
+     * Journal of Applied Membrane Science & Technology (UTM) = hanya MyCite, non-Scopus -> DIHAPUS.
+
+12 ARTIKEL YANG DIHAPUS:
+ no5 IJMR; no6 J. Geoscience & Env. Protection; no20 Proc. Water Environment
+ Federation (WEF); no26 Vibroengineering PROCEDIA; no35 J. Applied Membrane Sci.
+ & Tech.; no62 Reka Buana (SINTA 3); no86 Procedia Manufacturing; no89 Scientia;
+ no90 (jurnal DOAJ/Cina); no111 Korean Inst. Smart Media; no116 Asian J. Social &
+ Humanities; no117 Energy Materials and Product Design.
+
+HASIL AKHIR: korpus = 106 artikel. TIDAK ADA prosiding, TIDAK ADA non-Scopus,
+TIDAK ADA Q4. Sebaran kuartil: Q1=53, Q2=34, Q3=16, Scopus tanpa kuartil=3.
+Tersisa 3 jurnal Scopus yang kuartilnya belum tersedia di snapshot (Machine Learning
+with Applications; Transactions of the ASABE; Cleaner Water) -> tetap (Scopus, bukan Q4),
+kuartil resmni dapat dicek di Scopus/SCImago.
+
+ANGKA BARU untuk semua dokumen: total 106; pilar A=21,B=28,C=14,D=11,E=26,F=5,G=1;
+dimensi d1=93,d2=90,d3=12,d4=100,d5=29,d6=32,d7=28,d8=32.
+
+============================================================
+ADDENDUM 4 (verifikasi 3 jurnal "kuartil tak tersedia")
+============================================================
+ - Machine Learning with Applications (no9) -> Scopus Q1 (verified; SJR 1.225, coverage 2020+). DIPERTAHANKAN.
+ - Cleaner Water -> Scopus Q2 (verified; coverage 2024+). DIPERTAHANKAN.
+ - Transactions of the ASABE -> DISCONTINUED dari Scopus (coverage 2006-2021; berganti
+   nama menjadi "Journal of the ASABE" sejak 2022). DIHAPUS.
+HASIL: korpus final = 105 artikel. Q1=54, Q2=35, Q3=16. TIDAK ADA Q4/non-Scopus/prosiding.
+Angka final dokumen: total 105; pilar B=28,E=25,A=21,C=14,D=11,F=5,G=1;
+dimensi d1=93,d2=90,d3=12,d4=100,d5=29,d6=32,d7=27,d8=32.
+
+============================================================
+ADDENDUM 5 (penggantian 1 paper karena paywall)
+============================================================
+Paper No.20 lama ("Predictive Modeling of Membrane Fouling in Domestic Wastewater
+MBR Using ML", Water Environment Research, Q2) tidak dapat diakses (paywall) ->
+DIGANTI dengan: "Physics-informed machine learning for cross-study prediction of
+oil-water membrane fouling" (Scientific Reports, Q1 2026; DOI 10.1038/s41598-026-54120-z)
+yang OPEN ACCESS. Korpus tetap 105; Q4 tetap 0.
+File terkait diperbarui: SLR_Korpus.xlsx, full_text/ (PDF 020_Alves_2026.pdf, README.txt,
+DAFTAR_CLOSED.txt, fulltext_report.json), source_code/data/ + classify_scopus.py
+(override terverifikasi MLWA=Q1, Cleaner Water=Q2).
+
+============================================================
+ADDENDUM 6 (Phase 5 - analisis full-text 101 paper)
+============================================================
+- Phase 5: seluruh 101 paper dibaca ISI PENUH (dari text.md Marker) via subagen paralel,
+  mengisi extraction.json + analysis.txt per paper (rubrik kualitas Q1-Q8, dimensi ketat,
+  tier Opsi C, figur_dibaca selektif).
+- Temuan kunci: Inti-Metode+Domain (irisan metode x domain) HANYA 2 paper -> gap kuat.
+  Sebaran tier: Inti-Metode 31, Inti-Domain 19, Pendukung 32, Konteks 17, Inti-Metode+Domain 2.
+- Dimensi (full-text): D4=90, D1=87, D2=83, D5=50, D8=38, D6=33, D3=28, D7=24.
+- Korpus final: 101 artikel. Kolom baru di SLR_Korpus.xlsx: Relevansi + Kualitas.
+- 3 PDF mismatch (010,069,081) diperbaiki (unduh ulang MDPI OA) -> diterima kembali.

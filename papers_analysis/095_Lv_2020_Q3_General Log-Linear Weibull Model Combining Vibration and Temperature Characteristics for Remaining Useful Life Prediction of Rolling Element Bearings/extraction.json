@@ -1,0 +1,82 @@
+{
+ "no": 65,
+ "judul": "General Log-Linear Weibull Model Combining Vibration and Temperature Characteristics for Remaining Useful Life Prediction of Rolling Element Bearings",
+ "penulis": "Mingzhu Lv, Shixun Liu, Xiaoming Su, Changzheng Chen",
+ "tahun": 2020,
+ "jurnal": "Shock and Vibration",
+ "doi": "10.1155/2020/8829823",
+ "kuartil": "Scopus Q3 (Scimago SJR Best Quartile)",
+ "pilar": "A. Survival Analysis & Censored Data",
+ "ringkasan": "Studi membangun model general log-linear Weibull (GLL-Weibull) multivariat yang menggabungkan fitur getaran (RRMS) dan suhu relatif sebagai kovariat internal untuk memprediksi RUL bantalan gelinding. Kedua sinyal difuzzifikasi (operator 'excessive vibrations' dan 'overheated bearing') lalu parameter model diestimasi dengan maximum likelihood estimation (MLE) yang secara eksplisit memasukkan sampel tersuspensi (sensor) ke fungsi likelihood. Validasi pada PRONOSTIA dan bantalan HSS turbin angin nyata menunjukkan akurasi superior (MAPE rata-rata 10,76% vs SVM 26,73% dan CNN 11,68%).",
+ "kontribusi": "Buku teks inti untuk tesis: menunjukkan secara konkret bagaimana model survival (Weibull dengan kovariat) dan data tersuspensi diintegrasikan untuk RUL, termasuk estimasi parameter MLE dan PDF RUL. Menjadi acuan langsung untuk memadukan informasi getaran+suhu (analog multi-sensor) dalam hazard model.",
+ "temuan_kunci": [
+  "GLL-Weibull dengan kovariat getaran+suhu mengungguli LRM, SVM, KF, dan CNN pada dataset PRONOSTIA (RMSE rata-rata 0,81 vs CNN 1,03).",
+  "Fungsi likelihood MLE memuat suku kegagalan (n) dan suku tersuspensi (m) secara eksplisit (Eq.7-8) -> pemodelan data tersensor nyata.",
+  "PDF RUL menyempit seiring bertambahnya data monitoring; prediksi konvergen ke nilai sebenarnya (RUL 2192 h pada periode awal HSS bearing).",
+  "Kovariat getaran dominan dibanding suhu terhadap umur bantalan (koefisien a1 > a2).",
+  "Kriteria alpha-lambda menunjukkan akurasi dalam batas alpha=20% hampir di semua kasus."
+ ],
+ "dimensi": {
+  "d1": "1",
+  "d2": "1",
+  "d3": "1",
+  "d4": "1",
+  "d5": "1",
+  "d6": "1",
+  "d7": "",
+  "d8": "1"
+ },
+ "alasan_dimensi": {
+  "d1": "Menggabungkan dua sinyal kondisi (getaran dan suhu) sebagai deret waktu sepanjang hidup bantalan; fitur RRMS dan suhu relatif dihaluskan dengan moving average 7 titik.",
+  "d2": "RUL didefinisikan via reliabilitas bersyarat R(t|t0) dan titik waktu saat mencapai critical conditional reliability (mis. 95% failure probability).",
+  "d3": "Pemodelan data tersensor eksplisit: likelihood MLE memuat produk densitas kegagalan dan produk reliabilitas sampel tersuspensi (n failure, m suspension) - Weibull accelerated failure time dengan kovariat.",
+  "d4": "Model spesifik: General Log-Linear Weibull (GLL-Weibull) dengan parameter a0, a1, a2, beta, diestimasi MLE (Newton-Raphson); dibandingkan SVM/CNN/KF/LRM.",
+  "d5": "Kuantifikasi ketidakpastian: fungsi reliabilitas, PDF RUL, interval/kriteria alpha-lambda, dan batas kepercayaan.",
+  "d6": "Keputusan pemeliharaan: diagram alir berakhir pada 'Maintenance decision'; operator fuzzy menyediakan early warning (0,5-0,8) dan 'near failure' (>0,8).",
+  "d7": "Bukan membran/RO/desalination; objek bantalan gelinding (PRONOSTIA dan HSS turbin angin).",
+  "d8": "Small-data: hanya enam rekaman kegagalan bantalan untuk training/validasi dengan leave-one-out cross-validation; penulis menekankan akurasi dengan sedikit riwayat monitoring."
+ },
+ "relevansi": "Inti-Metode",
+ "kualitas": {
+  "skor": 9,
+  "rincian": {
+   "Q1": 1,
+   "Q2": 1,
+   "Q3": 1,
+   "Q4": 0.5,
+   "Q5": 1,
+   "Q6": 1,
+   "Q7": 1,
+   "Q8": 1
+  },
+  "catatan": "RQ dan metode sangat jelas. Validasi pada dua dataset (PRONOSTIA + bantalan HSS turbin angin nyata) dengan perbandingan LRM/SVM/KF/CNN (Q3=1). Reproduksibilitas sedang (persamaan lengkap & parameter tabel, namun data/kode tidak sepenuhnya terbuka) (Q4=0,5). Evaluasi kuat (RMSE/MAPE + alpha-lambda). Penanganan penyensoran (suspension) eksplisit (Q6=1). Pelaporan ketidakpastian (PDF RUL) dan tautan ke keputusan maintenance kuat. Paper ini adalah rujukan metode paling langsung untuk sumbu survival tesis."
+ },
+ "data_kuantitatif": {
+  "dataset": "PRONOSTIA (FEMTO-ST) accelerated ageing bantalan (OC1/OC2/OC3) dan bantalan high-speed shaft (HSS) turbin angin 2 MW nyata (Cina Timur Laut), 50 hari, 97.656 Hz.",
+  "ukuran": "6 rekaman kegagalan bantalan (PRONOSTIA, leave-one-out) + 50 hari SCADA (7 periode 168 jam); 20 titik prediksi per 5% rentang waktu.",
+  "metrik": "RMSE & MAPE (rata-rata 0,81/10,76% vs CNN 1,03/11,68%, SVM 3,21/26,73%, LRM 15,24/44,85%); alpha-lambda akurasi (alpha=20%)."
+ },
+ "metode": "Model GLL-Weibull (CDF F(t,x) = 1 - exp(-(t/exp(a0+sum ai xi))^beta)); ekstraksi RRMS getaran dan tren suhu relatif; fuzzifikasi (operator disjunctive-probabilistic); estimasi parameter via maximum likelihood + Newton-Raphson; RUL dari reliabilitas bersyarat; metrik RMSE/MAPE dan alpha-lambda.",
+ "limitasi": [
+  "Data pelatihan kecil (enam rekaman bantalan) walau divalidasi leave-one-out.",
+  "Deteksi fault lemah lewat suhu kurang efektif; getaran berfluktuasi besar.",
+  "Ketidakpastian parameter lebih besar pada tahap awal (data sedikit).",
+  "Error besar pada periode monitoring awal (RMSE 1160 h di periode 1)."
+ ],
+ "funding_coi": "Penulis menyatakan tidak ada konflik kepentingan (Conflicts of Interest). Tidak ada pernyataan pendanaan spesifik pada teks.",
+ "status_inklusi": "diterima",
+ "figur_dibaca": [
+  {"file": "_page_2_Figure_2.jpeg", "isi": "Kurva bathtub kegagalan: tiga tahap (early failure/Product quality, occasional/Deterioration accumulation & Defect formation, fatigue/ Aggravation); sumbu 'Failure probability' vs 'Service time' (tanpa skala numerik)."},
+  {"file": "_page_6_Figure_2.jpeg", "isi": "Diagram blok dua tahap: OFFLINE (latih/validasi dari bantalan gagal: getaran->RRMS & suhu->relatif -> smoothing -> fuzzy -> estimasi parameter GLL-Weibull) dan ONLINE (bantalan servis -> RUL via GLL-Weibull -> Maintenance decision), dihubungkan 'Optimum structure'."},
+  {"file": "_page_11_Figure_2.jpeg", "isi": "Plot RUL(%) vs Time (10s) dua subplot (e),(f) dengan garis Predicted RUL, Actual RUL, dan interval kepercayaan 20% (merah putus-putus); prediksi menurun dari ~36 ke ~6, interval melebar saat RUL turun."},
+  {"file": "_page_13_Figure_4.jpeg", "isi": "Distribusi PDF RUL HSS bearing (sumbu 'Probability density' x10^-5 vs 'Time (h)' x10^3, puncak ~2,0x10^-5 ~2000 h); garis merah putus-putus menandai 'Predictive result: 2192h'."}
+ ],
+ "bukti": [
+  "Abstract: 'a novel general log-linear Weibull (GLL-Weibull) model is constructed by considering vibration and temperature condition monitoring signals'.",
+  "Eq.7: 'L(beta, eta') = prod f(t_i) prod R(t_j) ... i is the failure time, j is the suspension time, n ... failure samples, and m ... suspension samples'.",
+  "Sec. 2.2.2: 'the fuzzy operator ... Early warning ... 0.5 to 0.8 ... Near failure ... greater than 0.8'.",
+  "Sec. 3: 'Then, the maintenance decision is made by the user.'",
+  "Sec. 4.1.3/Table 4: 'the presented approach provides a superior prediction precision and lower computational cost than other approaches' (avg RMSE 0,81, MAPE 10,76%).",
+  "Fig.12: 'the RUL time of the HSS bearing after the initial monitoring time range is 2192 h for about 91 days'."
+ ]
+}

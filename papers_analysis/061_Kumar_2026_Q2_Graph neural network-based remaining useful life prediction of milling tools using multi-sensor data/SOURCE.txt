@@ -1,0 +1,9 @@
+SUMBER FULL-TEXT (Open Access)
+============================
+Judul   : Graph neural network-based remaining useful life prediction of milling tools using multi-sensor data
+DOI     : 10.1007/s42452-026-08390-x
+Status  : gold (Open Access)
+Lisensi : cc-by-nc-nd, cc-by-sa
+
+Catatan : Open Access berlisensi Creative Commons; boleh didistribusikan ulang DENGAN ATRIBUSI
+kepada penulis/penerbit asli. Diverifikasi via Unpaywall (https://unpaywall.org).

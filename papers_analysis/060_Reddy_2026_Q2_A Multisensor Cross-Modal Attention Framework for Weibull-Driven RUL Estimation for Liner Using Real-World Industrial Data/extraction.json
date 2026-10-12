@@ -1,0 +1,45 @@
+{
+ "no": 18,
+ "judul": "A Multisensor Cross-Modal Attention Framework for Weibull-Driven RUL Estimation for Liner Using Real-World Industrial Data",
+ "penulis": "Hari Vilas Reddy, Rantu Buragohain, Karan Nathwani",
+ "tahun": 2026,
+ "jurnal": "IEEE Sensors Letters",
+ "doi": "10.1109/LSENS.2026.3673123",
+ "kuartil": "Scopus Q2 (SCImago SJR Best Quartile)",
+ "pilar": "A. Survival Analysis & Censored Data",
+ "ringkasan": "Studi mengusulkan CMA-WFT (cross-modal attention-Weibull fusion transformer), arsitektur untuk estimasi RUL pada liner press industri dengan menggabungkan encoder temporal per-modalitas, cross-modal attention, dan head survival Weibull parametrik. Setiap modalitas (vibrasi, temperatur, gap/displacement) dikodekan terpisah lalu digabung via cross-modal attention; head Weibull memprediksi parameter shape (k) dan scale (lambda) sehingga menghasilkan estimasi RUL titik sekaligus kurva reliabilitas, dan menangani pengamatan tersensor kanan secara alami. Validasi pada data sintetis, data industri nyata (gear-press), dan benchmark ATE (turbofan); CMA-WFT mengalahkan RF, SVM, RNN-Weibull, dan LSTM-Weibull (akurasi RT 84% vs 72%).",
+ "kontribusi": "Memberi contoh integrasi multisensor + transformer + survival Weibull yang menangani data tersensor kanan sekaligus mengkuantifikasi ketidakpastian (kurva reliabilitas) - sangat dekat dengan kebutuhan metode tesis, meski domainnya liner press/turbofan (bukan membran).",
+ "temuan_kunci": [
+  "CMA-WFT menggabungkan encoder per-modalitas dan cross-modal attention untuk memodelkan ketergantungan antar-sensor (vibrasi, temperatur, gap).",
+  "Head Weibull (k=softplus, lambda=exp) dilatih dengan censored Weibull negative log-likelihood, memungkinkan estimasi RUL probabilistik dan penanganan sampel tersensor kanan.",
+  "Sensor gap proximity menjadi indikator degradasi fisik yang interpretatif: gap tinggi sebelum kegagalan, turun setelah penggantian liner.",
+  "CMA-WFT mengungguli baseline pada tiga dataset (RT 84%, Synthetic 85%, ATE 87%) melampaui LSTM-Weibull (72/76/81%), RNN-Weibull (71/72/80%), SVM (62/65/69%), RF (55/60/67%)."
+ ],
+ "dimensi": {"d1": "1", "d2": "1", "d3": "1", "d4": "1", "d5": "1", "d6": "", "d7": "", "d8": "1"},
+ "alasan_dimensi": {
+  "d1": "Memakai tiga aliran sensor deret waktu (vibrasi, temperatur, gap/displacement) pada 1 Hz, disegmentasi menjadi window 120 s dengan stride 12 s.",
+  "d2": "Mendefinisikan target T (time-to-next-failure) untuk kasus tak-tersensor dan indikator censoring Delta=0 bila mesin beroperasi melewati horizon observasi.",
+  "d3": "ACTUALLY menangani data tersensor kanan: indikator censoring Delta, loss censored Weibull negative log-likelihood, dan head Weibull parametrik (shape & scale) untuk time-to-failure.",
+  "d4": "Model spesifik: cross-modal attention Transformer (CMA-WFT) dengan encoder temporal per-modalitas; baseline LSTM, RNN-Weibull, SVM, RF.",
+  "d5": "Mengkuantifikasi ketidakpastian via distribusi Weibull: prediksi parameter (k, lambda), kurva reliabilitas/survival, median dan expected life.",
+  "d6": "Menyebut manfaat untuk perawatan proaktif dan 'optimized maintenance planning', serta menunjukkan validasi efektivitas maintenance via gap, tetapi tidak menganalisis keputusan pemeliharaan spesifik (jadwal/biaya/DSS).",
+  "d7": "Domain adalah liner press industri (gear manufacturing) dan benchmark turbofan ATE; bukan membran/RO/desalinasi/fouling.",
+  "d8": "Menangani sampel tersensor kanan, pembelajaran data-efficient pada dataset riil kecil (4 siklus kehidupan liner), serta validasi lintas dataset (sintetis -> riil -> ATE) yang mencerminkan transfer/generalisasi."
+ },
+ "relevansi": "Inti-Metode",
+ "kualitas": {"skor": 8, "rincian": {"Q1": 1, "Q2": 1, "Q3": 0.5, "Q4": 0.5, "Q5": 0.5, "Q6": 1, "Q7": 1, "Q8": 0.5}, "catatan": "Metode kuat dan relevan (multisensor + transformer + censored Weibull + uncertainty). Keterbatasan: format letter membuat detail terbatas; dataset riil kecil (4 siklus); metrik dominan akurasi (%) tanpa CI/uji statistik; kode tidak publik; keputusan pemeliharaan hanya konseptual."},
+ "data_kuantitatif": {"dataset": "Data sintetis multisensor; data industri nyata (liner press gear-manufacturing, sensor vibrasi/temperatur/gap pada 1 Hz); benchmark ATE (aircraft turbofan engine)", "ukuran": "Window 120 s, stride 12 s; data riil 4 siklus kehidupan liner; ATE multivariate time-series", "metrik": "Akurasi RUL (%) - CMA-WFT: RT 84, Synthetic 85, ATE 87; LSTM-Weibull 72/76/81; RNN-Weibull 71/72/80; SVM 62/65/69; RF 55/60/67"},
+ "metode": "CMA-WFT: encoder temporal per-modalitas (vibrasi, gap, temperatur) + positional encoding (sinusoidal/learnable/exponential decay/cumulative age) + cross-modal attention (2 head) + MLP + head Weibull parametrik; dilatih dengan censored Weibull NLL (AdamW, lr 3e-4, 600 epoch).",
+ "limitasi": [
+  "Format letter: detail arsitektur, validasi, dan uji statistik terbatas.",
+  "Dataset riil kecil (4 siklus kehidupan liner); generalisasi perlu diuji lebih luas.",
+  "Metrik dominan akurasi (%) tanpa interval kepercayaan/uji signifikansi.",
+  "Kode tidak dipublikasikan; keputusan pemeliharaan tidak dianalisis."
+ ],
+ "funding_coi": "Tidak ada pernyataan pendanaan/konflik kepentingan eksplisit pada teks; IEEE Sensors Letters, © 2026 IEEE.",
+ "status_inklusi": "diterima",
+ "figur_dibaca": [
+  {"file": "_page_3_Figure_2.jpeg", "isi": "Fig. 6 - empat subplot kurva reliabilitas/Weibull (probabilitas 0-1 vs waktu, 2021) untuk empat siklus kehidupan liner: (a) siklus panjang, (b) sedang, (c)(d) siklus pendek; kurva menurun monoton menuju end-of-life dengan marker prediksi (segitiga kuning = CMA, lingkaran merah = LSTM) dan referensi."}
+ ],
+ "bukti": ["Eq. CMA: softmax(QK^T/sqrt(d))V", "Head Weibull: k=softplus(W_k z+b_k), lambda=exp(W_lambda z+b_lambda)", "Loss: censored Weibull NLL", "Fig. 2 (konsep), Fig. 3 (sensor), Fig. 4-5 (gap/temp/vibration)", "Fig. 6 (kurva reliabilitas per siklus)", "Table 1 (akurasi lintas dataset)"]
+}

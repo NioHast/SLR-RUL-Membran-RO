@@ -1,0 +1,48 @@
+{
+ "no": 47,
+ "judul": "Remaining Useful Life Prognosis Based on Ensemble Long Short-Term Memory Neural Network",
+ "penulis": "Yiwei Cheng, Jun Wu, Haiping Zhu, Siu Wing Or, Xinyu Shao",
+ "tahun": 2020,
+ "jurnal": "IEEE Transactions on Instrumentation and Measurement",
+ "doi": "10.1109/TIM.2020.3031113",
+ "kuartil": "Scopus Q1 (SCImago SJR Best Quartile)",
+ "pilar": "B. Deep Learning RUL",
+ "ringkasan": "Studi mengusulkan ELSTMNN (Ensemble Long Short-Term Memory Neural Network) untuk prognosis RUL: sejumlah LSTMNN dilatih paralel, masing-masing pada data satu unit peralatan, lalu digabung memakai Bayesian Inference Algorithm (BIA) yang memfit distribusi normal prediksi dan memilih RUL dengan probabilitas tertinggi. Diuji pada C-MAPSS FD001 dan FD003; ELSTMNN mencapai MScore 5,71 (deviasi 0,19) dan RMSE 18,22 (deviasi 1,38) pada FD001, terbaik dibanding ANN, SVR, RVR, DCNN, ELM, EKF, ESKF, DLSTMNN, dan mengalahkan bagging secara signifikan (p=0,0029).",
+ "kontribusi": "Menunjukkan ensemble LSTM + inferensi Bayesian yang memfit distribusi prediksi (prior/posterior) sebagai cara mengkuantifikasi ketidakpastian RUL dan meningkatkan generalisasi lintas-unit, relevan bagi dimensi ketidakpastian tesis; namun tidak memodelkan penyensoran/survival dan bukan domain membran, sehingga Pendukung.",
+ "temuan_kunci": [
+  "ELSTMNN FD001: MScore 5,71 (dev 0,19), RMSE 18,22 (dev 1,38) rata-rata 10 run, mengalahkan DCNN (18,45), DLSTMNN (22,65), ELM, EKF (26,05), ESKF (18,98).",
+  "BIA memfit distribusi normal prediksi (N(mu,sigma^2)) dan memilih modus sebagai RUL optimal; Q-Q plot dan uji Lilliefors (p>0,05) memvalidasi asumsi normal.",
+  "BIA mengalahkan bagging secara signifikan (uji ANOVA p=0,0029).",
+  "Performa meningkat dengan bertambahnya jumlah LSTMNN M (20/50/80/100).",
+  "Seleksi sensor memakai indeks monotonicity dan correlation (SC>0,75); smoothing eksponensial alpha=0,25.",
+  "FD003: ELSTMNN MScore 8,39/RMSE 23,21, mengungguli EBPNN, EMBPNN, EVRNN, EGRUNN."
+ ],
+ "dimensi": {"d1": "1", "d2": "1", "d3": "", "d4": "1", "d5": "1", "d6": "", "d7": "", "d8": ""},
+ "alasan_dimensi": {
+  "d1": "Memakai data multisensor deret waktu C-MAPSS (21 sensor on-board) yang diproses (seleksi sensor, exponential smoothing) sebagai input sekuensial LSTMNN.",
+  "d2": "Mendefinisikan target RUL eksplisit dengan label RUL antara 0 dan 1 per waktu, dan set uji dihentikan sebelum kegagalan engine.",
+  "d3": "Tidak memodelkan data tersensor/survival/Weibull/hazard; BIA adalah estimasi Bayes empiris atas distribusi prediksi, bukan analisis survival dengan censoring.",
+  "d4": "Memakai arsitektur spesifik: sejumlah LSTMNN (LSTM dengan forget/input/output gate), optimizer SGD, ensemble via BIA; baseline ensemble EBPNN/EMBPNN/EVRNN/EGRUNN.",
+  "d5": "Mengkuantifikasi ketidakpastian: BIA mengestimasi distribusi prior/posterior N(mu^BIA, V^BIA) dari prediksi; distribusi dan variannya ditampilkan (Fig. 6) serta divalidasi Q-Q dan uji Lilliefors.",
+  "d6": "Menyebut RUL prognosis penting untuk maintenance cost dan RAM, tetapi tidak mengusulkan/menganalisis keputusan atau jadwal perawatan.",
+  "d7": "Objek penelitian adalah turbofan engine (C-MAPSS), bukan membran/RO/desalinasi.",
+  "d8": "Tidak menangani small-data/transfer/hierarchical/all-censored; ensemble dirancang untuk generalisasi lintas-unit, bukan skenario transfer/data kecil eksplisit."
+ },
+ "relevansi": "Pendukung",
+ "kualitas": {"skor": 9, "rincian": {"Q1": 1, "Q2": 1, "Q3": 1, "Q4": 0.5, "Q5": 1, "Q6": "N/A", "Q7": 1, "Q8": "N/A"}, "catatan": "Metode ensembel dan BIA dijelaskan rinci dengan derivasi prior/posterior, validasi distribusi (Q-Q, Lilliefors), 10 run berulang, banyak pembanding SOTA, analisis pengaruh M, dan uji signifikansi vs bagging. Kekurangan: kode tidak dibagikan (reproduksibilitas parsial) dan hanya kondisi operasi tunggal (FD001/FD003). Q6/Q8 tidak berlaku."},
+ "data_kuantitatif": {"dataset": "NASA C-MAPSS turbofan engine (FD001 dan FD003, kondisi operasi tunggal)", "ukuran": "100 engine latih + 100 engine uji per dataset; 21 sensor (sebagian terseleksi SC>0,75); ELSTMNN 80 LSTMNN; 25 sel hidden; dropout 0,2; 1000 epoch; batch 10; 10 run", "metrik": "FD001: MScore 5,71 (dev 0,19), RMSE 18,22 (dev 1,38); FD003: MScore 8,39, RMSE 23,21; DDCNN 18,45; DLSTMNN 22,65; ESKF 18,98; uji ANOVA BIA vs bagging p=0,0029"},
+ "metode": "Preprocessing: exponential smoothing (alpha=0,25) + seleksi sensor (monotonicity z, correlation r, composite SC=0,5|z+r|). Ensembel: M LSTMNN dilatih paralel (tiap unit satu dataset), digabung BIA: estimasi prior N(mu_pi, sigma_pi^2) via maximum likelihood lalu posterior N(mu^BIA, V^BIA) (Morris empirical Bayes); RUL optimal = modus distribusi. Loss MSE, optimizer SGD.",
+ "limitasi": [
+  "Hanya kondisi operasi tunggal (FD001, FD003); kondisi jamak belum diuji.",
+  "Kode/model tidak dilampirkan (reproduksibilitas parsial).",
+  "Waktu pelatihan ELSTMNN lebih lama dibanding model lain.",
+  "Tidak menangani censoring/survival; ensemble, bukan transfer learning eksplisit."
+ ],
+ "funding_coi": "Didanai National Key R&D Program of China (2018YFB1702300), NSFC (51875225), RGC HKSAR (R5020-18), dan ITC HKSAR (K-BBY1); tidak ada pernyataan konflik kepentingan.",
+ "status_inklusi": "diterima",
+ "figur_dibaca": [
+  {"file": "figures/_page_2_Figure_2.jpeg", "isi": "Struktur multiple LSTMNN: (a) banyak LSTMNN paralel menghasilkan R_t^(i)..R_t^(k), (b) individual LSTMNN (input X_t^(1..N), hidden H^(1..k)), (c) sel LSTM dengan gate input/forget/output, sigmoid/tanh, cell state; mengonfirmasi d4."},
+  {"file": "figures/_page_6_Figure_4.jpeg", "isi": "Distribusi probabilitas RUL terprediksi hasil fit BIA pada tiap ~10% umur: kurva Gaussian per waktu, garis putus-putus menandai modus (RUL optimal), distribusi bergeser ke RUL rendah seiring waktu; lebar kurva menunjukkan sebaran (menopang d5)."}
+ ],
+ "bukti": ["Fig. 1: struktur multiple LSTMNN", "Fig. 5: SC seleksi sensor", "Fig. 6: distribusi RUL hasil BIA", "Fig. 8: Q-Q plot", "Fig. 12: performa vs M", "Fig. 13: BIA vs bagging", "Table II: p-value uji Lilliefors", "Table III: perbandingan SOTA", "Table V: perbandingan 5 model ensembel", "Eq. (1)-(27)"]
+}

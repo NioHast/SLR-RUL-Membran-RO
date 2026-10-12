@@ -1,0 +1,46 @@
+{
+ "no": 16,
+ "judul": "Mechanism-aligned machine learning for membrane fouling prediction and process control in pressure-driven water treatment membranes: A review",
+ "penulis": "Xin Yang, Jundong Zhao, Junzhao Zhuang, Songlin Guan, Chunbo Wang, Kenglin Huang, Lele Liu, Yunan Gao",
+ "tahun": 2026,
+ "jurnal": "Journal of Water Process Engineering",
+ "doi": "10.1016/j.jwpe.2026.110543",
+ "kuartil": "Scopus Q1 (SCImago SJR Best Quartile)",
+ "pilar": "E. Membrane/RO/Desalination",
+ "ringkasan": "Tinjauan kritis yang mengembangkan kerangka machine learning selaras-mekanisme (mechanism-aligned) untuk prediksi fouling dan kontrol proses pada membran UF, NF, dan RO. Kerangka menghubungkan mekanisme fouling dominan dengan struktur data, arsitektur model, dan aksi kontrol: GRU untuk sinyal hidraulik frekuensi tinggi UF (regulasi fluks, backwash), XGBoost terregularisasi untuk variabel kualitas air multikolinear NF (dosis koagulan, pH), dan CNN-GRU-SHAP untuk biofouling/scaling RO yang heterogen spasial (antiscalant, pH, pembersihan tertarget, biocide). Tinjauan juga membahas benchmarking, noise SCADA, kelangkaan data, fallback control, edge deployment, dan interpretabilitas operator.",
+ "kontribusi": "Menghubungkan prediksi fouling (termasuk target seperti 'probability of crossing a cleaning threshold' dan 'expected time to CIP') dengan aksi kontrol/pemeliharaan pada membran RO - sangat relevan untuk konteks domain tesis; namun tidak memakai survival analysis/censoring dan tidak memprediksi RUL secara eksplisit.",
+ "temuan_kunci": [
+  "Kerangka mechanism-to-control: mekanisme fouling ->signature data ->pemilihan model ->output ->aksi kontrol terjaga (safeguarded).",
+  "GRU cocok untuk UF (cake-layer cepat, sinyal TMP/flux frekuensi tinggi); XGBoost terregularisasi untuk NF (DOM-cation multikolinear); CNN-GRU-SHAP untuk RO (biofouling/scaling heterogen + OCT/hyperspectral).",
+  "Target prediksi dinyatakan sebagai endpoint relevan plant: kenaikan TMP, kehilangan permeabilitas, probabilitas melewati ambang cleaning, expected time to CIP.",
+  "Peringatan penting: R2>0.98/RMSE reduction ~90% tidak cukup; validasi harus kronologis/rolling/cross-site, dan ketidakpastian dilaporkan (ensemble/quantile/CI); fallback ke XGBoost/rule-based saat data sparse."
+ ],
+ "dimensi": {"d1": "1", "d2": "1", "d3": "", "d4": "1", "d5": "", "d6": "1", "d7": "1", "d8": ""},
+ "alasan_dimensi": {
+  "d1": "Membahas input multi-sensor deret waktu: TMP/flux/turbidity untuk UF, DOC/UV254/pH/Ca-Mg untuk NF, serta ΔP/salt passage/pH/recovery + citra OCT/hyperspectral untuk RO; interval sampling 1s-15min.",
+  "d2": "Mendefinisikan target prediksi berupa ambang kegagalan operasional: primary fouling warning threshold (+5-20 kPa TMP; flux -5-20%), cleaning threshold, 'expected time to CIP', dan warning score modul (Table 1).",
+  "d3": "Tidak memodelkan data tersensor; tidak ada survival/hazard/Weibull/cure. Fokus pada prediksi fouling dan kontrol, bukan time-to-event dengan censoring.",
+  "d4": "Menggunakan model spesifik: GRU, XGBoost terregularisasi, dan hybrid CNN-GRU (dengan SHAP); juga membahas PINN/Transformer sebagai arah masa depan.",
+  "d5": "Membahas kebutuhan pelaporan ketidakpastian (ensemble, quantile regression, CI) dan 'uncertainty check' sebagai safeguard, tetapi tidak mengkuantifikasi ketidakpastian pada data primer (review).",
+  "d6": "Menganalisis keputusan pemeliharaan/proses konkret: penjadwalan backwash, CIP, dosis antiscalant/koagulan, koreksi pH, biocide zoning, inspeksi modul, dengan safeguards dan batas operator.",
+  "d7": "Objek membran pressure-driven UF/NF/RO untuk pengolahan air; fokus fouling (cake, scaling, biofouling).",
+  "d8": "Membahas data sparsity/kelangkaan data dan federated learning (transfer lintas plant) sebagai arah masa depan, serta fallback control saat data sparse; namun tidak mengimplementasikan metode small-data/transfer/hierarchical secara substantif."
+ },
+ "relevansi": "Konteks",
+ "kualitas": {"skor": 9, "rincian": {"Q1": 1, "Q2": 1, "Q3": 1, "Q4": 1, "Q5": 1, "Q6": "N/A", "Q7": 0.5, "Q8": 1}, "catatan": "Tinjauan berkualitas tinggi dengan prosedur pencarian transparan (1822 record ->274 artikel) dan kerangka mechanism-to-control yang operasional. Q4=1 karena protokol pencarian jelas. Q7=0,5 (ketidakpastian hanya direkomendasikan, tidak diukur). Domain membran/RO sangat relevan, tetapi tidak memakai RUL/survival."},
+ "data_kuantitatif": {"dataset": "Tinjauan (tidak ada data primer); sintesis 274 publikasi dari Scopus, WoS, ScienceDirect, Google Scholar, IEEE Xplore, PubMed", "ukuran": "1822 record awal ->1863 sebelum dedup ->1361 screening ->484 full-text ->274 artikel final", "metrik": "R2, RMSE, threshold TMP/flux, warning threshold, offline training time (0,01-48 h), inference latency (2-200 ms)"},
+ "metode": "Critical narrative review dengan prosedur pencarian transparan; kerangka mechanism-aligned menghubungkan mekanisme fouling, signature data, arsitektur model (GRU/XGBoost/CNN-GRU-SHAP), dan aksi kontrol; pembahasan XAI, benchmark, SCADA noise, fallback control, edge deployment.",
+ "limitasi": [
+  "Bukan meta-analisis; tidak mempool effect size dan tidak ada eksperimen baru.",
+  "Tidak membahas data tersensor/survival analysis maupun prediksi RUL langsung.",
+  "Pemetaan model-proses bersifat panduan representatif, bukan aturan baku.",
+  "Dataset publik membran yang terstandar masih langka, membatasi perbandingan adil."
+ ],
+ "funding_coi": "Tidak ada pernyataan pendanaan/konflik kepentingan yang eksplisit pada teks yang dibaca; Elsevier all rights reserved.",
+ "status_inklusi": "diterima",
+ "figur_dibaca": [
+  {"file": "_page_3_Figure_2.jpeg", "isi": "Fig. 1 - skema fouling UF/NF/RO: (a) UF pembentukan cake-layer dinamis (pore blocking ->cake reversibel ->cake terkompaksi ->TMP naik/flux turun); (b) NF adsorpsi DOM + charge shielding (gel layer, cation bridging, Donnan exclusion melemah); (c) RO biofouling terlokalisasi (bakteri, EPS/eDNA) + scaling (kristal CaSO4/CaCO3) ->kenaikan ΔP & salt passage."},
+  {"file": "_page_5_Figure_2.jpeg", "isi": "Fig. 2 - lintasan mechanism-to-control (5 kolom: mekanisme->signature data->model->output->aksi) untuk UF (GRU), NF (XGBoost), RO (CNN-GRU-SHAP); footer safeguards: batas plant, constraint manufacturer, uncertainty check, operator override."}
+ ],
+ "bukti": ["Table 1: rentang operasional kuantitatif, ambang peringatan, metrik deployment", "Table 2: perbandingan dengan tinjauan sebelumnya", "Fig. 1 (skema fouling UF/NF/RO)", "Fig. 2 (mechanism-to-control pathway)", "Fig. 3 (workflow deployment)", "Fig. 4 (XAI closed-loop control)", "Fig. 5 (roadmap PINN/digital twin)"]
+}

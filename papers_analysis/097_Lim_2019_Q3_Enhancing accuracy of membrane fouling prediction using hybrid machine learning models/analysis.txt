@@ -1,0 +1,45 @@
+PAPER 028 - Lim et al. (2019)
+Judul   : Enhancing accuracy of membrane fouling prediction using hybrid machine learning models
+Jurnal  : Desalination and Water Treatment | Scopus Q3 (SCImago SJR Best Quartile) | DOI 10.5004/dwt.2019.23444
+Pilar   : E. Membrane/RO/Desalination
+Relevansi: Inti-Domain
+
+KARAKTERISTIK STUDI
+Memprediksi resistansi membran (indikator fouling) pada proses SWRO dengan model machine learning hibrida (Kalman filter + ANN/SVM), memakai data pabrik Fujairah selama 18 bulan. Bertujuan menyesuaikan jadwal pembersihan/penggantian membran.
+
+METODE
+- Kalman filter menapis derau data operasional; hasilnya dipakai melatih ANN atau SVM (dirangkai seri) -> KF-ANN, KF-SVM.
+- Resistansi membran dari teori transport: R_tot(t) = (dp - dpi)/v(t) (Eq. 3) dan model resistance-in-series (Eq. 1-2).
+- ANN: 3 lapis (D input, M hidden, K output), MSE (Eq. 9-11). SVM: regresi dengan kernel (Eq. 12-15).
+- Evaluasi NSE dan R2; peramalan 7 dan 14 hari.
+
+DATA
+522 catatan harian (Jan 2005-Jun 2006), 8 input (T, Qb, Qp, Pf, Pb, Pp, Cf, Cp), output resistansi membran. Temperatur 23-36 C; TDS umpan 34.920-39.538 mg/L; recovery ~43 %.
+
+TEMUAN UTAMA
+- Hybrid > single: NSE uji ANN 0,45 -> KF-ANN 0,63; SVM 0,46 -> KF-SVM 0,72.
+- KF-SVM terbaik (R2 uji 0,82; NSE uji 0,72) dan stabil saat horizon peramalan digandakan.
+- Model fouling klasik hanya memprediksi tren naik, bukan nilai aktual.
+- Berguna untuk early warning dan penyesuaian jadwal pembersihan/penggantian.
+
+RELEVANSI KE TESIS
+Inti domain: prediksi degradasi membran (resistansi/fouling) SWRO + keputusan pemeliharaan (jadwal cleaning/replacement). Namun tidak ada RUL formal, survival, atau pencensoringan, sehingga menyumbang domain + maintenance, bukan metode survival. Diklasifikasikan Inti-Domain.
+
+JUSTIFIKASI DIMENSI (d1-d8)
+- d1 = 1: data operasional multivariat deret waktu 8 parameter selama 18 bulan (522 catatan), peramalan 7/14 hari.
+- d2 = "" : resistansi membran adalah indikator tak langsung, tanpa ambang kegagalan/RUL.
+- d3 = "" : tanpa survival/hazard/Weibull/cure; tanpa pencensoringan.
+- d4 = 1: ANN dan SVM (SVR) + Kalman filter.
+- d5 = "" : tanpa interval/posterior.
+- d6 = 1: penyesuaian jadwal pembersihan/penggantian + sistem peringatan dini.
+- d7 = 1: membran SWRO (fouling).
+- d8 = "" : 522 catatan satu pabrik, tanpa small-data/transfer/hierarchical/censoring.
+
+KUALITAS (skor 8/10)
+Q1=1; Q2=1; Q3=1 (data nyata 18 bulan, indikator fouling berbasis fisika); Q4=0,5 (data tidak publik); Q5=0,5 (tanpa validasi silang/eksternal); Q6=N/A; Q7=N/A; Q8=1 (jadwal pembersihan/penggantian + early warning). Jumlah 5/6 -> 8.
+
+LIMITASI
+Satu pabrik; tanpa validasi silang; tanpa ketidakpastian; resistansi hanya indikator tak langsung; tanpa RUL/survival/censoring.
+
+BUKTI (fig/table/eq)
+Table 1-2; Eq. (1)-(15); Fig. 1 (struktur ANN/SVM); Fig. 2-5 (hasil KF, peramalan, perbandingan).

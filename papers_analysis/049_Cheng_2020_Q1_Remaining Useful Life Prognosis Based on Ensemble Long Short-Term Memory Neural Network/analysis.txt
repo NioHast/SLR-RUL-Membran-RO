@@ -1,0 +1,45 @@
+PAPER 047 - Cheng et al. (2020)
+Judul   : Remaining Useful Life Prognosis Based on Ensemble Long Short-Term Memory Neural Network
+Jurnal  : IEEE Transactions on Instrumentation and Measurement | Scopus Q1 (SCImago SJR Best Quartile) | DOI 10.1109/TIM.2020.3031113
+Pilar   : B. Deep Learning RUL
+Relevansi: Pendukung
+
+KARAKTERISTIK STUDI
+Studi pengembangan metode prognosis RUL untuk peralatan industri (turbofan engine) guna meningkatkan reliability, availability, dan maintenance cost. Mengusulkan ELSTMNN: ensemble LSTM yang digabung dengan Bayesian Inference Algorithm (BIA) untuk inferensi RUL optimal.
+
+METODE
+- Preprocessing: exponential smoothing (alpha=0,25) untuk menghilangkan singular point dan menekan fluktuasi; seleksi sensor via monotonicity (z), correlation (r), dan composite index SC=0,5|z+r| (ambang 0,75).
+- ELSTMNN: M LSTMNN dilatih paralel, masing-masing pada dataset satu unit peralatan. BIA: estimasi prior N(mu_pi, sigma_pi^2) via maximum likelihood (Eq. 9-11), lalu posterior N(mu^BIA, V^BIA) (Morris empirical Bayes, Eq. 12-19). RUL optimal = modus distribusi.
+- Hyperparameter: 80 LSTMNN, 25 sel hidden, dropout 0,2, 1000 epoch, batch 10, loss MSE, optimizer SGD.
+
+DATA
+NASA C-MAPSS FD001 dan FD003 (kondisi operasi tunggal), 100 engine latih + 100 engine uji, 21 sensor. 10 run berulang.
+
+TEMUAN UTAMA
+- FD001: MScore 5,71 (dev 0,19), RMSE 18,22 (dev 1,38), terbaik vs ANN, RVR, SVR, DCNN, ELM, DSE, RKRLS, SVM, EESN, EKF, ESKF, DLSTMNN.
+- Validasi normalitas prediksi: Q-Q plot + uji Lilliefors (p>0,05).
+- BIA mengalahkan bagging secara signifikan (uji ANOVA p=0,0029).
+- Performa meningkat dengan M yang lebih besar.
+- FD003: MScore 8,39, RMSE 23,21, mengungguli EBPNN/EMBPNN/EVRNN/EGRUNN.
+
+RELEVANSI KE TESIS
+Pendukung: contoh ensemble LSTM + inferensi Bayesian yang memfit distribusi prediksi untuk mengkuantifikasi ketidakpastian (d5), berguna bagi tesis dalam aspek ketidakpastian RUL. Namun tidak memodelkan penyensoran/survival (SUMBU METODE gagal) dan bukan domain membran (SUMBU DOMAIN gagal).
+
+JUSTIFIKASI DIMENSI (per d1-d8)
+- d1 = 1: data multisensor deret waktu C-MAPSS (21 sensor).
+- d2 = 1: target RUL eksplisit (label 0-1); set uji dihentikan sebelum failure.
+- d3 = "" : BIA = Bayes empiris distribusi prediksi; bukan survival/censoring.
+- d4 = 1: sejumlah LSTMNN + ensemble BIA (+ baseline ensemble lain).
+- d5 = 1: distribusi prior/posterior dengan varian V^BIA; divalidasi Q-Q/Lilliefors.
+- d6 = "" : maintenance cost/RAM hanya motivasi.
+- d7 = "" : objek turbofan engine.
+- d8 = "" : tanpa small-data/transfer/hierarchical eksplisit.
+
+KUALITAS (skor 9/10)
+Q1=1, Q2=1, Q3=1 (benchmark publik, 10 run, banyak pembanding), Q4=0,5 (kode tidak dibagikan), Q5=1 (RMSE+MScore, ablation M, perbandingan ensemble, uji signifikansi), Q6=N/A, Q7=1 (posterior/varians + uji normalitas), Q8=N/A. Jumlah 5,5/6 -> 9.
+
+LIMITASI
+Hanya kondisi operasi tunggal; kode tidak tersedia; pelatihan mahal; tanpa censoring.
+
+BUKTI
+Fig. 1, 5, 6, 8, 12, 13; Table II, III, V; Eq. (1)-(27). Fig. 1 (arsitektur) dan Fig. 6 (distribusi BIA) dibuka untuk verifikasi d4/d5.

@@ -1,0 +1,15 @@
+{
+ "id": "muhammadnioh/slr-fix3-marker",
+ "title": "SLR Fix3 Marker",
+ "code_file": "fix3.ipynb",
+ "language": "python",
+ "kernel_type": "notebook",
+ "is_private": true,
+ "enable_gpu": true,
+ "enable_internet": true,
+ "dataset_sources": [
+  "muhammadnioh/slr-fix3-pdfs"
+ ],
+ "competition_sources": [],
+ "kernel_sources": []
+}

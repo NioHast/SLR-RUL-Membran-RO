@@ -1,0 +1,71 @@
+PAPER 83: Prediction of Remaining Useful Life of Aero-engines Based on CNN-LSTM-Attention
+Penulis: Sizhe Deng, Jian Zhou (2024) | International Journal of Computational Intelligence Systems (Springer) | Scopus Q2 (SCImago SJR Best Quartile) | DOI 10.1007/s44196-024-00639-w
+Pilar: B. Deep Learning RUL | Relevansi: Pendukung
+
+1. KARAKTERISTIK STUDI
+- Jenis: penelitian metode (deep learning) + validasi eksperimen pada benchmark publik; artikel jurnal Q2.
+- Domain aplikasi: mesin pesawat (aero-engine/turbofan) pada dataset NASA C-MAPSS; BUKAN membran/RO/desalinasi.
+- Tujuan: meningkatkan akurasi prediksi RUL mesin pesawat dengan menggabungkan CNN (ekstraksi fitur lokal), LSTM (ketergantungan temporal), dan self-attention (pembobotan fitur penting).
+- Posisi terhadap tesis: metode DL RUL point-prediction murni; tanpa survival analysis, tanpa data tersensor, tanpa domain membran -> tier Pendukung.
+
+2. METODE
+- Praproses: standardisasi fitur; perhitungan label RUL dengan model piecewise linear berambang 100 (RUL > 100 dikap 100, lalu menurun linear); sliding window 40 (diuji 30/35/40/45) dengan langkah 1.
+- Arsitektur: CNN 1D (36 kernel, ukuran [3 1], aktivasi ReLU) mengekstraksi fitur lokal; LSTM 1 layer (hidden 64) memodelkan dependensi temporal; self-attention (32 neuron; Q/K/V + softmax) membobot fitur.
+- Regularisasi: Dropout 0.8 dan early stopping (validasi menentukan kapan berhenti).
+- Evaluasi: ablasi komponen (CNN, LSTM, CNN-LSTM) dan perbandingan dengan BP, GRU, CNN-GRU, DCNN, TCNN; metrik RMSE dan MAPE.
+
+3. DATA
+- Dataset: NASA C-MAPSS, empat subset FD001-FD004 (turbofan).
+- Karakteristik subset (Table 4): FD001 (1 kondisi operasi, 1 mode kegagalan), FD002 (6 kondisi, 1 mode), FD003 (1 kondisi, 2 mode), FD004 (6 kondisi, 2 mode).
+- FD002 memuat 3 parameter kondisi operasi (ketinggian, Mach, thrust lever angle) dan 21 parameter pemantauan kinerja per siklus mesin.
+- Tidak ada data tersensor; semua unit diamati sampai kegagalan (run-to-failure), split latih/validasi/uji.
+
+4. TEMUAN UTAMA
+- Model usulan: RMSE 15.977 (FD001), 14.452 (FD002), 13.907 (FD003), 16.637 (FD004); MAPE 0.161/0.139/0.115/0.130. Terbaik pada FD003, terendah pada FD004.
+- Ablasi (FD002): CNN 21.574; LSTM 18.730; CNN-LSTM 17.879; CNN-LSTM-Attention 14.452 -> attention menurunkan RMSE ~3.427 vs CNN-LSTM.
+- Perbandingan (FD002): BP 21.868; GRU 21.762; CNN-GRU 17.863; DCNN 19.826; TCNN 18.217 -> model usulan terbaik.
+- Sliding window: RMSE menurun dari ~20,3 (window 25) ke ~14,2 (window 45); dipilih 40 dengan pertimbangan kehilangan informasi.
+- Prediksi fluktuatif di fase awal, konvergen di fase degradasi (Fig. 7 & 8).
+
+5. RELEVANSI KE TESIS
+- Sebagai baseline non-survival: menunjukkan puncak akurasi arsitektur DL RUL (CNN+LSTM+attention) pada data lengkap, tetapi tidak menyentuh tiga sumbu inti tesis: censoring, ketidakpastian, dan keputusan pemeliharaan.
+- Gap yang diperkuat: (a) tidak ada model survival/hazard/Weibull di metode; (b) tidak ada interval/posterior; (c) tidak ada DSS/penjadwalan; (d) domain bukan membran/RO.
+- Aset metodologis: blok CNN-LSTM + self-attention dapat dipakai sebagai encoder deret waktu untuk data operasional membran, dengan mengganti fungsi loss regresi menjadi likelihood survival (mis. discrete-time hazard) agar dapat menangani label tersensor.
+
+6. JUSTIFIKASI DIMENSI (d1-d8)
+- d1 = 1: data deret waktu multi-sensor C-MAPSS (21 parameter kinerja + 3 parameter kondisi operasi; "21 performance monitoring parameters" pada FD002); diproses sliding window.
+- d2 = 1: RUL didefinisikan eksplisit dengan ambang 100 ("set the RUL to 100 as a threshold value") dan model piecewise linear (Fig. 5).
+- d3 = "" : tidak ada survival/Weibull/hazard/cure di metode; Weibull hanya dikutip di tinjauan pustaka.
+- d4 = 1: CNN-LSTM-Attention (CNN 1D 36 kernel; LSTM hidden 64; self-attention 32 neuron).
+- d5 = "" : hanya RMSE/MAPE (point prediction); tanpa CI/posterior/interval.
+- d6 = "" : 'maintenance' hanya motivasi ("optimizing maintenance decisions", "reducing operating costs"); tidak ada model keputusan.
+- d7 = "" : objek aero-engine/turbofan, bukan membran/RO/desalinasi.
+- d8 = "" : tidak ada transfer/hierarchical/all-censored; dataset benchmark lengkap.
+
+7. KUALITAS (SKOR 8/10)
+- Q1 = 1: tujuan jelas (tingkatkan akurasi RUL aero-engine via CNN-LSTM-Attention).
+- Q2 = 1: metode memadai; arsitektur dijelaskan dengan Eq. (1)-(7), flowchart Fig. 3, dan hyperparameter Table 3.
+- Q3 = 1: dataset benchmark publik C-MAPSS; protokol latih/validasi/uji standar; empat subset dan label RUL.
+- Q4 = 0,5: hyperparameter lengkap dan data publik, tetapi tanpa kode/repositori, optimizer/learning rate/framework tidak dilaporkan, dan pernyataan ketersediaan data keliru ('No datasets were generated or analyzed').
+- Q5 = 1: evaluasi memadai (RMSE & MAPE; ablasi 3 baseline; perbandingan 5 model lain pada FD002).
+- Q6 = N/A (tidak menangani censoring); Q7 = N/A (tidak melaporkan ketidakpastian); Q8 = 0,5 (RUL dikaitkan kualitatif dengan keputusan pemeliharaan/biaya, tanpa model keputusan).
+- Perhitungan: (1 + 1 + 1 + 0,5 + 1 + 0,5) / 6 x 10 = 8.
+
+8. LIMITASI
+- Tidak memodelkan data tersensor/survival analysis (Weibull hanya di tinjauan pustaka).
+- Tanpa kuantifikasi ketidakpastian (hanya RMSE & MAPE).
+- Tidak ada keputusan pemeliharaan konkret (jadwal/biaya/DSS).
+- Reproduksibilitas terbatas: tanpa kode; optimizer, learning rate, framework tidak dilaporkan.
+- Pernyataan ketersediaan data tidak konsisten dengan penggunaan C-MAPSS.
+- Prediksi fluktuatif pada fase awal operasi.
+- Domain aero-engine, bukan membran/RO.
+
+9. BUKTI
+- Fig. 2 (_page_4_Picture_19.jpeg): arsitektur CNN-LSTM-Attention.
+- Fig. 3 (_page_5_Figure_4.jpeg): flowchart metodologi tiga tahap.
+- Fig. 5: segmentasi RUL piecewise linear berambang 100.
+- Fig. 6 (_page_7_Picture_9.jpeg): error vs ukuran sliding window (data hanya di figur).
+- Fig. 7 (_page_8_Figure_9.jpeg) & Fig. 8 (_page_9_Figure_5.jpeg): RUL aktual vs prediksi pada FD002.
+- Table 3: hyperparameter (attention neuron 32; dropout 0.8).
+- Table 4: RMSE/MAPE per subset (FD001-FD004).
+- Eq. (1)-(7): CNN, LSTM, attention.

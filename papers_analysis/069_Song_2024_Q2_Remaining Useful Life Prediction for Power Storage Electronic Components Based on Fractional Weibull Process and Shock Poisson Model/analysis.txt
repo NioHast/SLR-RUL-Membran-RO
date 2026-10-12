@@ -1,0 +1,48 @@
+PAPER 071 - Song et al. (2024)
+Judul   : Remaining Useful Life Prediction for Power Storage Electronic Components Based on Fractional Weibull Process and Shock Poisson Model
+Jurnal  : Fractal and Fractional | Scopus Q2 (SCImago SJR Best Quartile) | DOI 10.3390/fractalfract8080485
+Pilar   : A. Survival Analysis & Censored Data
+Relevansi: Inti-Metode  (RUL + proses stokastik berbasis Weibull dan failure threshold; tanpa pencensoringan)
+
+KARAKTERISTIK STUDI
+Memprediksi RUL komponen penyimpanan daya (baterai LiFePO4 dan superkapasitor) pada sistem hybrid power storage. Motivasi: dua mode kegagalan independen, yaitu steady degradation (akibat stres listrik/termal) dan random shock (akibat gangguan daya mendadak). Menggunakan model degradation-threshold-shock (DTS) dan secara eksplisit mendefinisikan RUL sebagai waktu first-passage melewati ambang kegagalan. Diposisikan sebagai alternatif stokastik terhadap model deep learning yang kurang interpretable.
+
+METODE
+- Model degradasi: X(t) = X(0) + gamma*int Phi(s)ds + eta*fWp(t) + sum(NHCP shock) (Eq. 5-6).
+- Steady degradation: fractional Weibull process (fWp) dengan distribusi fractional Weibull (Eq. 4: shape k, scale lambda, fractal parameter delta) untuk menangkap long-range dependence + heavy tail.
+- Shock: non-homogeneous compound Poisson process (NHCP) berintensitas naik H(t)=kappa*t (Eq. 13), dengan slope kappa diestimasi dari jumlah shock S = 1/2 kappa t*^2 (Eq. 14).
+- Drift & diffusion coefficient diperbarui sebagai Gaussian white noise (gamma_t ~ N(1,sigma_gamma^2), eta_t ~ N(1,sigma_eta^2)).
+- Pemisahan data steady vs shock via prinsip three-sigma (asumsi semi-Gaussian).
+- Estimasi parameter shape k dan scale lambda via maximum likelihood (Eq. 10-11); fractal parameter delta via uji goodness-of-fitting (RMSE).
+- RUL via Monte Carlo first-passage; mode sebagai titik prediksi.
+
+DATA
+Data degradasi LIB LiFePO4 (IFP-1665130-10 Ah) dan superkapasitor Maxwell BCAP3000 (2,7 V/3,0 Wh) pada suhu ruang, sampling 1 s; dua protokol operasi: DST (dynamic stress test) dan UDDS (urban dynamometer driving schedule). Data publik (Wang et al., Data in Brief 2017). Waktu mencapai FT: superkapasitor DST 1664 s dan LIB DST 7469 s; superkapasitor UDDS 995 s dan LIB UDDS 313 s. Health indicator: tegangan (LIB), kapasitansi (superkapasitor). FT: 95% tegangan maksimum (LIB), 80% kapasitansi rated (superkapasitor).
+
+TEMUAN UTAMA
+- Proposed (fWp+NHCP) unggul: superkapasitor DST RMSE 7,216 / SOA 0,8132 vs CNN 14,852 / 0,5784 dan EMD-GRU 12,769 / 0,7231.
+- LIB UDDS: proposed RMSE 8,421 / SOA 0,7968 vs DTS-BM 13,847 / 0,6125 dan adaptive FBM 14,639 / 0,5263.
+- Data degradasi nyata bersifat fraktal: Hurst 0,9522/0,7375 (long-range dependence), kurtosis 11,79/6,81 (heavy tail).
+- Model stokastik interpretable (Monte Carlo) mengalahkan deep learning yang tidak punya representasi stokastik.
+
+RELEVANSI KE TESIS
+Relevan sebagai preseden metode untuk pilar A: pemodelan kegagalan berbasis waktu (first-passage melewati threshold) dan distribusi Weibull. Namun, tidak ada pemodelan data tersensor (tidak ada indikator censoring/fungsi survival), dan objeknya komponen penyimpanan daya, bukan membran RO. Karena itu diberi tier Inti-Metode (RUL + Weibull/failure-threshold) dengan catatan deviasi dari definisi survival analysis yang ketat. Berguna untuk memahami formulasi failure-time stokastik yang akan dibandingkan dengan pendekatan survival analysis + DL pada tesis.
+
+JUSTIFIKASI DIMENSI (per d1-d8)
+- d1 = 1: sinyal tegangan & arus deret waktu (sampling 1 s) pada dua protokol.
+- d2 = 1: RUL didefinisikan sebagai first-passage time terhadap FT (Eq. 9); FT 95% tegangan / 80% kapasitansi.
+- d3 = "" : tidak ada survival/hazard/censoring/cure; Weibull dipakai sebagai distribusi increment degradasi, bukan distribusi waktu-hidup.
+- d4 = 1: model spesifik DTS (fWp + NHCP); baseline CNN, EMD-GRU, DTS-BM, adaptive FBM.
+- d5 = "" : hanya mode point-prediction + std metrik galat; tanpa CI/posterior/interval.
+- d6 = 1: analisis penentuan komponen rentan yang memicu penjadwalan maintenance & preventive maintenance (tanpa model jadwal/biaya formal).
+- d7 = "" : objek baterai/superkapasitor, bukan membran.
+- d8 = "" : satu unit komponen per protokol; tanpa small-data/transfer/hierarchical.
+
+KUALITAS (skor 8/10)
+Q1=1 (rumusan jelas); Q2=1 (desain DTS + estimasi MLE + Monte Carlo memadai); Q3=0,5 (data publik & dua protokol, tetapi satu unit per protokol tanpa pengulangan); Q4=1 (parameter & data publik terperinci); Q5=1 (empat metrik + empat baseline); Q6=N/A (tidak ada pemodelan censoring); Q7=0,5 (std dilaporkan, tanpa interval prediktif); Q8=0,5 (motivasi maintenance tanpa model keputusan). Total 7 item berlaku, jumlah 5,5 -> 8.
+
+LIMITASI
+Satu unit per protokol; tanpa pencensoringan; tanpa interval ketidakpastian; tanpa pembahasan konvergensi Monte Carlo; domain bukan membran.
+
+BUKTI (fig/table/eq)
+Eq. (1),(4),(5),(6),(9),(10)-(14); Table 1-6; Fig. 5 (flowchart), Fig. 12 (FT LIB), Fig. 16 (distribusi RUL).

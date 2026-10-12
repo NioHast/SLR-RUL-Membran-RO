@@ -1,0 +1,79 @@
+{
+ "no": 64,
+ "judul": "Remaining useful life prediction for lithium-ion batteries using particle filter and artificial neural network",
+ "penulis": "Wei Qin, Huichun Lv, Chengliang Liu, Datta Nirmalya, Peyman Jahanshahi",
+ "tahun": 2019,
+ "jurnal": "Industrial Management & Data Systems",
+ "doi": "10.1108/imds-03-2019-0195",
+ "kuartil": "Scopus Q1 (Scimago SJR Best Quartile)",
+ "pilar": "C. Bayesian & Uncertainty",
+ "ringkasan": "Studi mengusulkan model fusi untuk RUL baterai lithium-ion: particle filter (PF) sebagai inti dengan model double-exponential sebagai persamaan keadaan dan artificial neural network (ANN) sebagai persamaan observasi. PF memperbarui distribusi posterior parameter secara online sehingga RUL beserta PDF-nya dapat diestimasi; akurasi meningkat seiring bertambahnya siklus (error 17 siklus pada siklus ke-70 turun menjadi 2 siklus pada siklus ke-90).",
+ "kontribusi": "Menunjukkan estimasi RUL berbasis Bayesian state estimation (particle filter) yang memberi ekspresi ketidakpastian (PDF), sekaligus mengatasi data kecil lewat koreksi posterior. Relevan bagi tesis sebagai contoh estimasi RUL probabilistik dengan data terbatas, meski tanpa penyensoran eksplisit dan bukan domain membran.",
+ "temuan_kunci": [
+  "Fusi PF + double-exponential + ANN menghasilkan kurva degradasi SOH yang baik dan RUL dengan ekspresi ketidakpastian (PDF).",
+  "Akurasi RUL meningkat seiring siklus: RUL error 17 siklus (siklus 70) turun menjadi 2 siklus (siklus 90).",
+  "Ambang gagal baterai ditetapkan SOH = 0,7 (70% kapasitas awal); paper lain menyebut 80% di latar, tetapi eksperimen memakai 0,7.",
+  "Data kecil menjadi kendala; koreksi posterior PF mengurangi overfitting ANN.",
+  "Sistem memicu peringatan penggantian baterai saat RUL mendekati ambang."
+ ],
+ "dimensi": {
+  "d1": "1",
+  "d2": "1",
+  "d3": "",
+  "d4": "1",
+  "d5": "1",
+  "d6": "1",
+  "d7": "",
+  "d8": "1"
+ },
+ "alasan_dimensi": {
+  "d1": "Data berupa deret waktu siklus charge-discharge baterai (tegangan, arus, suhu, waktu) dan sistem state space Markov waktu diskrit; input ANN multivariabel (cutoff voltage, suhu, ambient temp, voltage drop time).",
+  "d2": "RUL dan kegagalan didefinisikan eksplisit: ambang SOH = 0,7 sebagai failure threshold; RUL sebagai siklus sebelum kapasitas mencapai ambang.",
+  "d3": "Tidak ada pemodelan data tersensor (tidak ada survival/Weibull/hazard/cure); hanya state space + PF.",
+  "d4": "Model spesifik: particle filter (Bayesian state estimation) + artificial neural network (ANN) + model double-exponential.",
+  "d5": "Kuantifikasi ketidakpastian eksplisit: distribusi posterior parameter dan PDF/histogram RUL dari partikel.",
+  "d6": "Ada keputusan pemeliharaan: peringatan penggantian baterai (BMS) saat RUL mendekati ambang, plus kerangka risk assessment.",
+  "d7": "Bukan membran/RO/desalination; objek baterai lithium-ion.",
+  "d8": "Small-data: penulis menyatakan 'the battery data set belongs to a small sample' dan mengandalkan koreksi posterior untuk mengurangi overfitting; hanya 4 sel (B5,B6,B7,B18)."
+ },
+ "relevansi": "Pendukung",
+ "kualitas": {
+  "skor": 8,
+  "rincian": {
+   "Q1": 1,
+   "Q2": 1,
+   "Q3": 0.5,
+   "Q4": 0.5,
+   "Q5": 0.5,
+   "Q6": "N/A",
+   "Q7": 1,
+   "Q8": 1
+  },
+  "catatan": "RQ dan metode jelas (fusi PF+ANN). Data adalah dataset publik NASA tetapi sangat kecil dan lingkungan eksperimen sederhana; validitas eksternal terbatas (Q3=0,5). Reproduksibilitas sedang (parameter diberi, dataset publik, arsitektur ANN tidak rinci). Evaluasi menunjukkan error besar pada siklus awal/70 (17 siklus) sehingga skor evaluasi 0,5. Penyensoran tidak relevan. Pelaporan ketidakpastian (PDF RUL) dan tautan ke keputusan (peringatan penggantian) kuat."
+ },
+ "data_kuantitatif": {
+  "dataset": "NASA Ames PCoE (uji di Idaho National Lab), baterai 18650 2 Ah: B5, B6, B7, B18; charge 1,5 A sampai 4,2 V, discharge 2 A sampai 2,7/2,5/2,2/2,5 V.",
+  "ukuran": "4 baterai; B5 train / B6 test; titik prediksi pada siklus ke-50, 70, dan 90; 30 siklus awal untuk inisialisasi parameter.",
+  "metrik": "RUL error (siklus 50, 70, 90); kesalahan SOH dalam +/-5%; histogram/PDF RUL."
+ },
+ "metode": "Particle filter (importance resampling) dengan model double-exponential (Q_k = a e^(bk) + c e^(dk)) sebagai persamaan keadaan; ANN tiga lapis (optimizer Adam) sebagai persamaan observasi untuk memprediksi SOH; posterior parameter diekstrapolasi ke ambang SOH=0,7 untuk RUL dan PDF.",
+ "limitasi": [
+  "Kesalahan model ANN sebagai persamaan observasi menambah error RUL.",
+  "Lingkungan eksperimen sederhana, berbeda jauh dari operasi nyata baterai.",
+  "Data sangat kecil; parameter awal harus diperoleh dari uji offline.",
+  "Distribusi RUL apakah Gaussian belum dikonfirmasi."
+ ],
+ "funding_coi": "Tidak ada pernyataan pendanaan eksplisit pada teks. Tidak ada pernyataan konflik kepentingan yang terlihat.",
+ "status_inklusi": "diterima",
+ "figur_dibaca": [
+  {"file": "_page_6_Figure_2.jpeg", "isi": "Flow chart metode prediksi empat bagian: preprocessing data, penentuan parameter model, estimasi SOH, dan prediksi RUL (dengan update bobot partikel)."}
+ ],
+ "bukti": [
+  "Abstract: 'The particle filter (PF) algorithm is taken as the core, and the double-exponential model is used as the state equation and the artificial neural network is used as the observation equation'.",
+  "Sec. 2.3: 'the failure threshold of the lithium battery is set to 70 percent of the factory capacity, that is, the SOH is equal to 0.7'.",
+  "Sec. 3.2.2: 'The expected value of RUL is 21 cycles ... the true RUL is 38 cycles, and the error is 17 cycles' (siklus 70).",
+  "Sec. 3.2.2: 'The expected value of RUL is 16 cycles ... the true RUL is 18 cycles, and the error is 2 cycles' (siklus 90).",
+  "Sec. 2.3 (catatan): 'the battery data set belongs to a small sample ... the posterior state parameters will correct the predictive value'.",
+  "Sec. 4: 'When the predicted value of the battery RUL is close to the life threshold, the system will prompt the user to replace the battery'."
+ ]
+}

@@ -1,0 +1,45 @@
+PAPER 004 - Al-Dahidi et al. (2016)
+Judul   : Remaining useful life estimation in heterogeneous fleets working under variable operating conditions
+Jurnal  : Reliability Engineering & System Safety | Scopus Q1 | DOI 10.1016/j.ress.2016.07.019
+Pilar   : A. Survival Analysis & Censored Data
+Relevansi: Inti-Metode (Weibull diskrit + right-censored + uncertainty; tanpa DL, domain non-membran)
+
+KARAKTERISTIK STUDI
+Pendekatan prognostik data-driven untuk RUL peralatan dalam fleet heterogen dengan kondisi operasi bervariasi. Tujuan: memanfaatkan data fleet (termasuk trajektori tak lengkap) untuk memperbaiki akurasi dan mengeksplisitkan ketidakpastian prediksi.
+
+METODE
+- Fase 1: unsupervised ensemble clustering (CSPA + Spectral Clustering + Fuzzy C-Means; validitas Davies-Bouldin, index Silhouette) mengidentifikasi state degradasi.
+- Fase 2: MLE parameter distribusi Weibull diskrit transisi state, dengan indikator censoring delta (Eq. 1); CI parameter via Fisher Information Matrix.
+- Fase 3: direct Monte Carlo simulation untuk distribusi RUL (mean + persentil 10/90).
+- Verifikasi monotonisitas via monotonicity PPI (Eq. 2). Baseline: fuzzy similarity-based approach.
+
+DATA
+Kasus I: fleet kapasitor elektrolit aluminium (model fisika) - 100 latih (20 lengkap + 80 tak lengkap), 50 uji, Z=2 (ESR, temperatur). Kasus II: 260 trajektori turbofan C-MAPSS - 50 latih, 150 uji, Z=24 (15 dipakai).
+
+TEMUAN UTAMA
+- Trajektori run-to-failure tak lengkap (right-censored) meningkatkan akurasi RUL.
+- Interval prediksi menyempit seiring umur; Coverage Rate >= 0,8.
+- Mengalahkan fuzzy similarity: turbofan RMSE 18,87 vs 21,96; alpha-lambda 0,41 vs 0,15; AI 0,36 vs 0,49.
+- Monotonicity PPI 0,71 (kapasitor) dan 0,996 (turbofan).
+
+RELEVANSI KE TESIS
+Sangat relevan pada poros survival/Weibull: likelihood dengan censoring delta, distribusi Weibull diskrit untuk transisi state, kuantifikasi ketidakpastian (FIM + persentil), dan strategi fleet/hierarchical. Namun tanpa deep learning dan domainnya bukan membran (kapasitor/turbofan), sehingga Inti-Metode.
+
+JUSTIFIKASI DIMENSI (d1-d8)
+- d1=1: data multi-sinyal deret waktu (Z=2 kapasitor; Z=24/15 turbofan).
+- d2=1: mendefinisikan RUL + ambang kegagalan (ESR>200%); state gagal absorbing.
+- d3=1: Weibull diskrit (Eq. 1) + right-censored eksplisit via delta dalam log-likelihood.
+- d4=1: semi-Markov diskrit + ensemble clustering (CSPA/Spectral/FCM) + Monte Carlo.
+- d5=1: CI parameter (FIM) + interval prediksi RUL (persentil 10/90) + CR/PI.
+- d6="": hanya menyebut penjadwalan pemeliharaan secara proaktif, tanpa model keputusan.
+- d7="": objek kapasitor & turbofan.
+- d8=1: fleet heterogen + trajektori right-censored (pooling/hierarchical, data tak lengkap).
+
+KUALITAS (skor 8/10)
+Q1=1; Q2=1; Q3=0,5 (data artifisial/simulasi); Q4=0,5 (metode rinci, sebagian data simulasi); Q5=1 (lima metrik + baseline); Q6=1 (censoring inti); Q7=1 (CI + interval prediksi); Q8=0,5 (diskusi keputusan tanpa model). Jumlah 6,5/8 -> 8.
+
+LIMITASI
+Data kapasitor artifisial, turbofan dari simulator C-MAPSS; tak ada data lapangan; tanpa model keputusan; tanpa DL.
+
+BUKTI (fig/table/eq)
+Eq. (1)-(2); Fig. 2 (sketsa 3 fase); Fig. 10/19 (RUL + persentil 10/90); Table 1 (kombinasi trajektori); Table 3 (metrik vs fuzzy similarity).

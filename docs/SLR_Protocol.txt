@@ -1,0 +1,456 @@
+================================================================================
+PROTOKOL SYSTEMATIC LITERATURE REVIEW (SLR)
+Prediksi Remaining Useful Life (RUL) Membran BWRO dengan Survival Analysis
+dan Deep Learning pada Kondisi Small-Data / Tanpa Kegagalan Teramati
+================================================================================
+Program Studi Magister (S2) Sistem Informasi
+Studi Kasus: Instalasi BWRO (Brackish Water Reverse Osmosis) UNDIP Teluk Awur,
+Kabupaten Jepara, Jawa Tengah
+Versi  : 1.0 (draft siap pakai)
+Disusun mengikuti: Kitchenham & Charters (2007); PRISMA 2020 (Page et al., 2021);
+Webster & Watson (2002); Wohlin (2014); Okoli (2015)
+================================================================================
+
+--------------------------------------------------------------------------------
+BAGIAN 1. LATAR BELAKANG & URGENSI ILMIAH
+--------------------------------------------------------------------------------
+
+Membran reverse osmosis (RO) pada instalasi BWRO UNDIP Teluk Awur mengalami
+penurunan performa (fluks menurun, salt passage meningkat, differential pressure
+naik) akibat fouling, scaling, dan degradasi material. Namun, karena praktik
+operasional melakukan pencucian (CIP) dan penggantian membran secara PREVENTIF
+sebelum kegagalan fisik benar-benar terjadi, data historis yang tersedia SANGAT
+didominasi oleh observasi yang belum mencapai kegagalan -> memicu masalah data
+tersensor (right-censored) dan bahkan kondisi all-censored (tanpa satu pun
+event kegagalan teramati). Kondisi ini membuat metode machine learning
+konvensional (regresi supervised) tidak dapat dilatih secara langsung.
+
+Survival analysis (time-to-event) secara teoretis dirancang justru untuk
+menangani data tersensor, sedangkan deep learning (LSTM/Transformer) dan
+pendekatan Bayesian berpotensi menangkap pola temporal non-linear sekaligus
+mengkuantifikasi ketidakpastian (uncertainty quantification). Pertanyaan
+ilmiahnya: bagaimana kedua keluarga metode ini saling melengkapi untuk prediksi
+RUL membran ketika data kecil dan tidak ada kegagalan teramati.
+
+SLR ini urgent karena:
+(a) Topik persilangan (survival analysis + deep learning RUL + domain
+    desalinasi/BWRO + small-data/all-censored + DSS pemeliharaan) belum dipetakan
+    secara sistematis, sehingga celah riset (research gap) belum terdefinisi rapi.
+(b) Pemilihan metode dan justifikasi metodologis tesis membutuhkan bukti
+    terstruktur, bukan anekdotal, agar dapat dipertanggungjawabkan secara ilmiah.
+(c) Praktik preventif (servicing sebelum failure) menciptakan 'proxy event'
+    (mis. ambang performa sebagai event semu) yang perlu dasar literatur kuat
+    agar valid secara statistik.
+(d) Hasil SLR menjadi landasan concept matrix dan penentuan kontribusi/novelty
+    tesis S2 Sistem Informasi.
+
+--------------------------------------------------------------------------------
+BAGIAN 2. RESEARCH QUESTIONS (RQ)
+--------------------------------------------------------------------------------
+
+RQ1. Bagaimana metode survival analysis menangani data tersensor (censored)
+     pada prediksi RUL?
+RQ2. Bagaimana deep learning (LSTM/Transformer/Bayesian) meningkatkan prediksi
+     RUL dan kuantifikasi ketidakpastian?
+RQ3. Kendala apa yang muncul pada kondisi data kecil (small-data) / tanpa
+     kegagalan (all-censored) dan solusinya?
+RQ4. Bagaimana hasil prediksi RUL digunakan dalam sistem pendukung keputusan
+     perawatan (DSS/CMMS)?
+
+Pemetaan RQ ke pilar concept matrix (lihat Bagian 9):
+  RQ1 -> Pilar A (D3, D6)
+  RQ2 -> Pilar B & C (D4, D5)
+  RQ3 -> Pilar D (D1, D8)
+  RQ4 -> Pilar F (D6) + Pilar G (konteks Indonesia)
+
+--------------------------------------------------------------------------------
+BAGIAN 3. PICOC
+--------------------------------------------------------------------------------
+
+P - Population / Problem
+    Membran RO / instalasi desalinasi (khususnya BWRO) dan komponen industri
+    lain yang dipelihara secara preventif, dengan data historis tersensor dan
+    jumlah kegagalan teramati sedikit atau nol.
+I - Intervention
+    Metode prediksi RUL: survival analysis (Cox, Weibull/AFT, frailty,
+    discrete-time), deep learning (LSTM, Transformer, Bayesian neural network),
+    serta hibrida deep survival learning.
+C - Comparison
+    Pendekatan pembanding: regresi/ML konvensional (RF, XGBoost, SVR), model
+    empiris/fisika, atau jadwal pemeliharaan preventif waktu-tetap; juga
+    perbandingan antar-metode survival dan antar-arsitektur deep learning.
+O - Outcome
+    Akurasi/kalibrasi prediksi RUL (RMSE, MAE, C-index, sksurv metrics),
+    kuantifikasi ketidakpastian (interval prediksi / confidence), interpretasi
+    hazard, dan relevansi keputusan pemeliharaan (biaya/uptime/risiko).
+C - Context
+    Domain: desalinasi & pengolahan air, predictive maintenance, Industrial
+    Internet of Things / sensor. Konteks lokal: instalasi BWRO kampus di
+    Indonesia (UNDIP Teluk Awur), lingkungan sistem informasi (DSS/CMMS).
+
+Tabel 3.1 Sinonim Kata Kunci (dipakai menyusun Boolean search)
+--------------------------------------------------------------------------------
+| Konsep          | Sinonim / Istilah Terkait                                    |
+--------------------------------------------------------------------------------
+| RUL             | remaining useful life, RUL, useful life prediction,             |
+|                 | prognostics, lifetime prediction, time-to-failure             |
+| Survival anal.  | survival analysis, time-to-event, censored data, censoring,   |
+|                 | right-censored, Cox proportional hazards, Weibull, AFT,       |
+|                 | hazard model, frailty model, discrete-time survival          |
+| Deep learning   | deep learning, neural network, LSTM, GRU, Transformer,        |
+|                 | sequence model, attention, deep survival model                |
+| Bayesian/uncert | Bayesian, Bayesian neural network, uncertainty quantification,|
+|                 | probabilistic prediction, confidence interval, calibration    |
+| Small-data      | small data, few-shot, limited data, data scarcity,            |
+|                 | transfer learning, hierarchical model, all-censored,          |
+|                 | zero-failure, semi-supervised, data augmentation             |
+| Domain          | reverse osmosis, RO membrane, BWRO, desalination, membrane    |
+|                 | fouling, scaling, water treatment, brackish water             |
+| Pemeliharaan    | predictive maintenance, condition monitoring, PdM, CMMS,      |
+|                 | decision support system, DSS, maintenance scheduling          |
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+BAGIAN 4. SEARCH STRATEGY & READY-TO-PASTE BOOLEAN STRINGS
+--------------------------------------------------------------------------------
+
+4.1 Basis data
+    Primer    : Scopus
+    Sekunder  : IEEE Xplore, ScienceDirect, ACM Digital Library (ACM DL),
+                AIS eLibrary, Web of Science (WoS)
+    Nasional  : Garuda (garuda.kemdikbud.go.id) & SINTA (sinta.kemdikbud.go.id)
+    Pelengkap : Snowballing (Wohlin 2014) - backward + forward citation chasing
+    Mesin lain: Google Scholar (hanya untuk snowballing & pelacakan lengkap,
+                BUKAN sumber pencacahan utama).
+
+4.2 Aturan sintaks
+    - Truncation: gunakan * (mis. prognostic*, censor*, predict*).
+    - Frasa multi-kata: apit dengan tanda kutip " ".
+    - Pengelompokan: gunakan tanda kurung ( ).
+    - Operator: AND, OR (Scopus & WoS mengabaikan NOT secara aman; prioritaskan AND/OR).
+    - Field code Scopus: TITLE-ABS-KEY(...). WoS: TS=(...).
+    - Field code IEEE Xplore: "All Metadata":... .
+
+4.3 String Scopus - A (METODOLOGIS: SDM + survival + DL/Bayesian)
+--------------------------------------------------------------------------------
+TITLE-ABS-KEY(
+  ( "remaining useful life" OR "RUL" OR prognostics OR "useful life prediction"
+    OR "time-to-failure" OR "life prediction" )
+  AND
+  ( "survival analysis" OR "time-to-event" OR "censored data" OR censor*
+    OR "Cox" OR "proportional hazards" OR "Weibull" OR "accelerated failure time"
+    OR "hazard model" OR "frailty" )
+  AND
+  ( "deep learning" OR "neural network" OR "LSTM" OR "GRU" OR "transformer"
+    OR "attention" OR "Bayesian" OR "uncertainty quantification" )
+)
+--------------------------------------------------------------------------------
+
+4.4 String Scopus - B (DOMAIN: desalinasi/RO + RUL/predictive maintenance)
+--------------------------------------------------------------------------------
+TITLE-ABS-KEY(
+  ( "reverse osmosis" OR "RO membrane" OR "membrane" OR "BWRO" OR desalination
+    OR "brackish water" OR "water treatment" OR "membrane fouling" OR scaling )
+  AND
+  ( "remaining useful life" OR "RUL" OR prognostics OR "life prediction"
+    OR "predictive maintenance" OR "condition monitoring" OR "performance degradation" )
+)
+--------------------------------------------------------------------------------
+
+4.5 String IEEE Xplore (All Metadata)
+--------------------------------------------------------------------------------
+( "All Metadata":"remaining useful life" OR "All Metadata":"RUL"
+  OR "All Metadata":prognostics OR "All Metadata":"life prediction" )
+AND
+( "All Metadata":"survival analysis" OR "All Metadata":"censored"
+  OR "All Metadata":"Cox" OR "All Metadata":"Weibull" )
+AND
+( "All Metadata":"deep learning" OR "All Metadata":"LSTM"
+  OR "All Metadata":"transformer" OR "All Metadata":"Bayesian")
+--------------------------------------------------------------------------------
+
+4.6 String ScienceDirect (Advanced Search, Title/Abstract/Keywords)
+--------------------------------------------------------------------------------
+( ("remaining useful life" OR RUL OR prognostics OR "life prediction")
+  AND ("survival analysis" OR censored OR "Cox" OR Weibull)
+  AND ("deep learning" OR LSTM OR transformer OR Bayesian) )
+--------------------------------------------------------------------------------
+
+4.7 Snowballing (Wohlin 2014)
+    - Backward snowballing: telusuri daftar referensi tiap paper inti untuk
+      menemukan sumber seminal (Cox, Weibull, deep survival).
+    - Forward snowballing: gunakan "Cited by" Scopus/Google Scholar pada paper
+      inti untuk menemukan karya lanjutan.
+    - Iterasi sampai tidak ada paper relevan baru (saturasi), catat tiap iterasi.
+
+4.8 Rentang tahun & pembatasan awal
+    - Tahun utama: 2015 - 2026 (fokus perkembangan deep learning & Bayesian).
+    - Landmark/seminal (sebelum 2015, mis. Cox 1972) boleh disitir sebagai
+      rujukan konseptual bila muncul via snowballing, tetapi tidak masuk hitungan
+      50+ paper inti kecuali sangat relevan.
+    - Bahasa: Inggris (internasional) + Indonesia (nasional).
+
+--------------------------------------------------------------------------------
+BAGIAN 5. INCLUSION & EXCLUSION CRITERIA
+--------------------------------------------------------------------------------
+
+5.1 Inclusion Criteria (IC) - harus terpenuhi semua
+IC1. Jenis sumber: artikel jurnal bereputasi (peer-reviewed), proceeding
+     konferensi bergengsi, atau review; termasuk sumber nasional terindeks
+     SINTA (min. S2) untuk konteks Indonesia.
+IC2. Rentang tahun: 2015 - 2026 (kecuali landmark/seminal via snowballing).
+IC3. Bahasa: Inggris atau Indonesia.
+IC4. Fokus isi minimal salah satu:
+     (a) survival analysis/time-to-event untuk prediksi masa pakai; atau
+     (b) deep learning / Bayesian untuk RUL/prediksi degradasi; atau
+     (c) penanganan data kecil (small-data/few-shot/transfer/hierarchical);
+     (d) domain desalinasi/RO/membran; atau
+     (e) integrasi prediksi ke DSS/CMMS pemeliharaan.
+IC5. Relevan menjawab minimal satu RQ (RQ1-RQ4).
+IC6. Tersedia akses full-text (open access atau via langganan institusi).
+
+5.2 Exclusion Criteria (EC) - minimal salah satu terpenuhi -> dikeluarkan
+EC1. Bukan peer-reviewed / bukan sumber ilmiah (blog, berita, whitepaper vendor).
+EC2. Di luar rentang tahun 2015-2026 (tanpa alasan snowballing).
+EC3. Tidak berbahasa Inggris atau Indonesia.
+EC4. Hanya menyebut RUL/survival sebagai istilah tanpa metode/analisis substantif.
+EC5. Domain di luar cakupan (mis. RUL baterai/Aeroengine MURNI tanpa aspek
+     metodologis survival/data kecil yang bisa ditransfer -> diprioritaskan
+     dikeluarkan bila TIDAK memberi kontribusi metodologis/kontekstual).
+EC6. Tidak ada abstrak / metadata tidak lengkap / tidak bisa diakses.
+EC7. Duplikat (versi sama dari sumber berbeda) - lihat Bagian 6.
+
+--------------------------------------------------------------------------------
+BAGIAN 6. SCREENING PROCEDURE & PRISMA 2020 FLOW
+--------------------------------------------------------------------------------
+
+6.1 Tahapan screening
+  Tahap 0. Deduplikasi
+      - Gabungkan seluruh hasil dari semua basis data ke Zotero.
+      - Gunakan fitur "Duplicate Items" + pemeriksaan manual DOI/judul.
+      - Catat: jumlah record awal -> jumlah setelah dedup.
+  Tahap 1. Screening Judul & Abstrak (title/abstract screening)
+      - Terapkan IC/EC secara cepat melalui judul + abstrak.
+      - Kelola dengan Rayyan atau Parsifal (blind screening 2 reviewer bila ada).
+      - Kriteria lolos: minimal satu fokus IC4 + relevan satu RQ.
+  Tahap 2. Full-text screening
+      - Baca full-text, terapkan IC/EC lengkap.
+      - Catat alasan eksklusi per paper (EC1-EC7) untuk PRISMA.
+  Tahap 3. Snowballing
+      - Backward + forward dari paper inti (Wohlin 2014).
+      - Ulangi Tahap 1-2 untuk paper hasil snowballing.
+  Tahap 4. Quality appraisal (Bagian 7) -> tentukan set korpus final.
+
+6.2 Kerangka PRISMA 2020 (outline dengan placeholder jumlah)
+--------------------------------------------------------------------------------
+IDENTIFICATION
+  Records identified:
+    - Scopus ................................ [ n = __ ]
+    - IEEE Xplore ........................... [ n = __ ]
+    - ScienceDirect ......................... [ n = __ ]
+    - ACM DL ................................ [ n = __ ]
+    - AIS eLibrary .......................... [ n = __ ]
+    - Web of Science ........................ [ n = __ ]
+    - Garuda / SINTA (nasional) ............. [ n = __ ]
+    - Snowballing (backward + forward) ...... [ n = __ ]
+  Records removed before screening:
+    - Duplicates ............................ [ n = __ ]
+    - Excluded by automation/tools .......... [ n = __ ]
+  Records after duplicates removed .......... [ n = __ ]
+
+SCREENING
+  Records screened (title/abstract) ......... [ n = __ ]
+  Records excluded .......................... [ n = __ ]
+     (alasan: EC1 __ ; EC2 __ ; EC3 __ ; EC4 __ ; EC5 __ )
+  Reports sought for retrieval/full-text ..... [ n = __ ]
+  Reports not retrieved (no access) ......... [ n = __ ]
+  Reports assessed for eligibility .......... [ n = __ ]
+  Reports excluded (dengan alasan) .......... [ n = __ ]
+     (EC1 __ ; EC4 __ ; EC5 __ ; EC6 __ ; duplikat __ )
+
+INCLUDED
+  Studies included in qualitative synthesis ... [ n = __ ] (target >= 50 Scopus)
+  Studies included in concept matrix (W&W) ... [ n = __ ]
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+BAGIAN 7. QUALITY APPRAISAL (Checklist Penilaian Kualitas)
+--------------------------------------------------------------------------------
+Skala tiap butir: Ya (1) / Sebagian (0.5) / Tidak (0). Ambang lolos: skor >= 6.0
+dari 10 (atau rata-rata >= 0.6). Digunakan untuk menimbang bobot sintesis.
+
+QA1. Apakah tujuan/pertanyaan penelitian dinyatakan jelas?
+QA2. Apakah desain penelitian/metodologi dijelaskan memadai dan dapat direplikasi?
+QA3. Apakah sumber data (dataset/sensor/ground truth) dan konteks domain dijelaskan?
+QA4. Apakah penanganan data tersensor (censoring) dinyatakan eksplisit?
+QA5. Apakah metrik evaluasi prediksi RUL/survival dilaporkan dengan jelas?
+QA6. Apakah ketidakpastian (uncertainty) diukur/dilaporkan (bila relevan)?
+QA7. Apakah perbandingan dengan baseline/pembanding dilakukan?
+QA8. Apakah keterbatasan (limitations) dan ancaman validitas dibahas?
+QA9. Apakah kontribusi terhadap praktik pemeliharaan/DSS dibahas (bila relevan)?
+QA10. Apakah penelitian dapat ditelusuri (peer-reviewed, DOI/venue jelas)?
+
+--------------------------------------------------------------------------------
+BAGIAN 8. DATA EXTRACTION FORM (Kolom Tabel Korpus)
+--------------------------------------------------------------------------------
+Tabel ekstraksi data memuat kolom berikut (satu baris per paper terkualifikasi):
+
+| No | Pilar/Tema | Judul | Penulis | Tahun | Jurnal/Venue | Klasifikasi (Q/Scopus) |
+| Link/DOI | Ringkasan Temuan | Kontribusi terhadap Research Gap |
+
+Definisi tiap kolom:
+  - No            : nomor urut korpus (1..N).
+  - Pilar/Tema    : pilar A-G (Bagian 9) yang paling dominan.
+  - Judul         : judul asli paper.
+  - Penulis       : penulis utama + et al.
+  - Tahun         : tahun publikasi.
+  - Jurnal/Venue  : nama jurnal/proceeding + penerbit.
+  - Klasifikasi   : kuartil Jurnal (Q1-Q4) / indeks Scopus / SINTA (S1-S6).
+  - Link/DOI      : URL atau DOI (bila ada); nasional: tautan Garuda.
+  - Ringkasan Temuan : 1-3 kalimat temuan utama yang relevan dengan RQ.
+  - Kontribusi terhadap Research Gap : bagaimana paper ini mengisi/menyingkap
+    celah, dan kaitannya dengan posisi tesis (SDM membran BWRO small-data).
+
+Catatan pengisian:
+  - Sel kolom Pilar WAJIB mengacu ke 7 pilar pada Bagian 9.
+  - Isi Ringkasan Temuan dengan kalimat sendiri (bukan copy-paste) untuk
+    menghindari plagiarisme dan memudahkan sintesis.
+  - Sertakan kolom tambahan opsional "Skor QA (Bagian 7)" bila diperlukan.
+
+--------------------------------------------------------------------------------
+BAGIAN 9. SYNTHESIS METHOD: WEBSTER & WATSON (2002) CONCEPT MATRIX
+--------------------------------------------------------------------------------
+
+9.1 Pendekatan
+    Sintesis dilakukan dengan concept matrix (Webster & Watson, 2002):
+    - Baris  = paper dalam korpus final.
+    - Kolom  = 7 pilar (A-G) dan/atau 8 dimensi konsep (D1-D8).
+    - Sel     = penanda kontribusi paper pada pilar/dimensi tsb (isi kode/bukti).
+    - Tujuan  : menemukan pola, kesenjangan, dan posisi kontribusi tesis.
+
+9.2 Tujuh (7) Pilar / Tema Korpus
+    A. Survival analysis & censored data
+       (Cox, AFT/Weibull, frailty, discrete-time; penanganan censoring)
+    B. Deep-learning RUL
+       (LSTM/GRU, Transformer, CNN, sequence/attention untuk RUL)
+    C. Bayesian & uncertainty
+       (Bayesian NN, probabilistic, uncertainty quantification, kalibrasi)
+    D. Small-data / few-shot / transfer / hierarchical
+       (data terbatas, transfer learning, model hierarkis, all-censored)
+    E. Domain membran/RO/desalinasi
+       (RO/BWRO, membrane fouling, scaling, kualitas air, CIP)
+    F. DSS & predictive maintenance dalam Sistem Informasi
+       (DSS, CMMS, predictive maintenance, penjadwalan, keputusan)
+    G. Konteks Indonesia
+       (instalasi/air/energi/kebijakan; sumber Garuda/SINTA)
+
+9.3 Delapan (8) Dimensi Konsep (kolom analitis)
+    D1. Data / Sensor
+        (jenis sinyal, frekuensi sampling, sensor tekanan/konduktivitas/flow)
+    D2. Target / Definisi Kegagalan
+        (definisi event vs proxy event, ambang degradasi, ground truth)
+    D3. Censoring Handling
+        (right/interval/left censoring, all-censored, teknik penanganan)
+    D4. Model Architecture
+        (arsitektur: Cox/Weibull vs LSTM/Transformer/Bayesian hibrida)
+    D5. Uncertainty
+        (kuantifikasi ketidakpastian, interval prediksi, kalibrasi)
+    D6. Decision Output
+        (bentuk keluaran keputusan: RUL, probabilitas, jadwal, biaya/risiko)
+    D7. Domain
+        (desalinasi/RO vs domain lain: air, energi, manufaktur)
+    D8. Data Scale
+        (besar vs kecil; jumlah event; rasio event/total observasi)
+
+9.4 Template Concept Matrix (Webster & Watson 2002)
+--------------------------------------------------------------------------------
+| Paper (No) | Pilar | D1 | D2 | D3 | D4 | D5 | D6 | D7 | D8 | RQ terkait |
+|------------|-------|----|----|----|----|----|----|----|----|------------|
+| 1          | __    | X  |    | X  | X  |    |    | X  | X  | RQ1, RQ3   |
+| 2          | __    |    | X  |    | X  | X  | X  | X  |    | RQ2, RQ4   |
+| ...        | ...   | ...| ...| ...| ...| ...| ...| ...| ...| ...        |
+--------------------------------------------------------------------------------
+Keterangan: Tandai X (membahas) atau kosong. Untuk sintesis lanjutan, isi sel
+dengan kode bukti singkat (mis. "LSTM+Weibull", "small-data, 12 event").
+
+9.5 Output sintesis
+    - Peta pola antar pilar/dimensi -> identifikasi research gap (mis. minim
+      penelitian SDM + deep learning pada membran BWRO dengan all-censored).
+    - Dasar justifikasi novelty & penentuan metode tesis.
+    - Ringkasan narratif per RQ yang didukung bukti dari matriks.
+
+--------------------------------------------------------------------------------
+BAGIAN 10. TOOLS & TIMELINE
+--------------------------------------------------------------------------------
+
+10.1 Tools
+    - Zotero          : manajemen referensi & deduplikasi; plugin + ekspor RIS/BibTeX.
+    - Rayyan / Parsifal : screening judul-abstrak & full-text (blind 2 reviewer).
+    - VOSviewer       : analisis & visualisasi co-occurrence keyword / co-citation
+                        (memetakan klaster tema).
+    - Excel / Spreadsheet : (1) tabel korpus Bagian 8; (2) concept matrix Bagian 9;
+                            (3) log PRISMA; (4) rekap skor quality appraisal.
+    - Google Scholar / Scopus "Cited by" : forward snowballing (Wohlin 2014).
+
+10.2 Timeline (perkiraan, dapat disesuaikan)
+--------------------------------------------------------------------------------
+| Minggu | Aktivitas                                                        |
+|--------|------------------------------------------------------------------|
+| 1      | Finalisasi protokol; uji coba (pilot) string pencarian.          |
+| 2      | Pencarian penuh di Scopus, IEEE Xplore, ScienceDirect, ACM,      |
+|        | AIS, WoS, Garuda/SINTA; ekspor ke Zotero; deduplikasi.           |
+| 3      | Screening judul-abstrak (Rayyan/Parsifal).                       |
+| 4      | Full-text screening; catat alasan eksklusi (PRISMA).             |
+| 5      | Snowballing backward + forward; tambahkan hasil relevan.         |
+| 6      | Quality appraisal (Bagian 7); finalisasi korpus (>= 50 Scopus).  |
+| 7      | Data extraction (Bagian 8) & concept matrix (Bagian 9).          |
+| 8      | Analisis VOSviewer; sintesis per RQ; identifikasi research gap.  |
+| 9      | Penulisan bab SLR; penyuntingan & konsistensi sitasi.            |
+| 10     | Review akhir (PRISMA diagram final, lampiran, proofread).        |
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+BAGIAN 11. FRAMEWORK REFERENCES (Nama + Tahun)
+--------------------------------------------------------------------------------
+1. Kitchenham, B., & Charters, S. (2007). Guidelines for performing Systematic
+   Literature Reviews in Software Engineering. (Pedoman utama prosedur SLR:
+   protokol, RQ, strategi pencarian, seleksi, ekstraksi, sintesis.)
+2. Page, M. J., et al. (2021). The PRISMA 2020 statement: an updated guideline
+   for reporting systematic reviews. (Kerangka pelaporan alur identifikasi,
+   screening, dan inklusi - Bagian 6.)
+3. Webster, J., & Watson, R. T. (2002). Analyzing the past to prepare for the
+   future: Writing a literature review. MIS Quarterly. (Metode concept matrix
+   untuk sintesis - Bagian 9.)
+4. Wohlin, C. (2014). Guidelines for snowballing in systematic literature
+   studies and a replication in software engineering. (Prosedur backward &
+   forward snowballing - Bagian 4.7 dan 6.1.)
+5. Okoli, C. (2015). A guide to conducting a standalone systematic literature
+   review. Communications of the AIS. (Panduan praktis SLR standalone pada
+   ranah Sistem Informasi - pelengkap metodologi.)
+
+Catatan: Referensi framework di atas cukup dikutip dengan Nama + Tahun (DOI
+tidak diperlukan di dalam protokol ini).
+
+================================================================================
+AKHIR PROTOKOL
+================================================================================
+
+====================================================================
+PEMBARUAN PRISMA (setelah full-text screening, Phase 5)
+====================================================================
+Diidentifikasi (unik)           : 694
+Disaring judul/abstrak          : ~485
+Layak (full-record)             : 101
+Dikeluarkan (full-text)         : 3  (isi tidak sesuai metadata / dokumen salah)
+INCLUDED (final)                : 98
+Lihat FULLTEXT_SCREENING_LOG.txt untuk rincian 3 eksklusi.
+
+====================================================================
+PEMBARUAN PRISMA FINAL (Phase 5, setelah 3 PDF diperbaiki)
+====================================================================
+Diidentifikasi (unik)           : 694
+Disaring judul/abstrak          : ~485
+Layak (full-record)             : 101
+Dikeluarkan (full-text)         : 0  (3 mismatch PDF sudah diperbaiki & diterima)
+INCLUDED (final)                : 101
+Lihat FULLTEXT_SCREENING_LOG.txt.

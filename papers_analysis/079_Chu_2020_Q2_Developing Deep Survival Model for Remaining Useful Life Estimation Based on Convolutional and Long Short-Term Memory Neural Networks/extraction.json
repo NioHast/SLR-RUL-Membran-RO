@@ -1,0 +1,50 @@
+{
+  "no": 95,
+  "judul": "Developing Deep Survival Model for Remaining Useful Life Estimation Based on Convolutional and Long Short-Term Memory Neural Networks",
+  "penulis": "Chia-Hua Chu, Chia-Jung Lee, Hsiang-Yuan Yeh",
+  "tahun": 2020,
+  "jurnal": "Wireless Communications and Mobile Computing (Hindawi)",
+  "doi": "10.1155/2020/8814658",
+  "kuartil": "Scopus Q2 (ScImago SJR Best Quartile)",
+  "pilar": "A. Survival Analysis & Censored Data",
+  "ringkasan": "Studi mengusulkan model deep survival terintegrasi yang menggabungkan 1D temporal convolution dan LSTM untuk mengekstraksi pola tersembunyi dari data sensor deret waktu, lalu memakai regresi (MSE) dan analisis survival berbasis distribusi Weibull diskrit untuk mengestimasi RUL sekaligus probabilitas kegagalan. Dievaluasi pada dataset simulasi degradasi turbofan NASA CMAPSS (FD001-FD004). Model menghasilkan kurva survival Kaplan-Meier dengan interval kepercayaan dan mengklaim performa unggul pada kondisi operasi kompleks (FD002 dan FD004).",
+  "kontribusi": "Preseden langsung integrasi deep learning (CNN+LSTM) dengan distibusi Weibull diskrit dan log-likelihood tersensor untuk RUL: menunjukkan cara lulusan jaringan menghasilkan parameter alpha/beta Weibull dan kurva survival ber-CI, sangat dekat dengan kebutuhan tesis; namun domainnya turbofan dan bukan membran/RO.",
+  "temuan_kunci": [
+    "Model CNN+LSTM dengan loss Weibull mencapai RMSE terendah pada FD002 (15,15) dan skor terbaik pada FD002 serta unggul pada skor FD004 (3,67e4).",
+    "Pada R2, loss Weibull lebih baik/lebih explainable daripada regresi (mis. FD001 TW=90: Weibull R2=0,94 vs regresi 0,87), menandakan tren degradasi turbofan lebih mirip distribusi Weibull.",
+    "Analisis survival memberi kurva Kaplan-Meier lebih halus dan berinterval kepercayaan, sedangkan regresi konsisten hanya di tahap akhir dan varians besar di tahap awal.",
+    "Waktu pengamatan (time window) memengaruhi performa; TW besar umumnya memperbaiki akurasi namun dengan turun-naik pada metrik skor.",
+    "Model memprediksi probabilitas kegagalan (bukan hanya satu nilai RUL), memberi referensi kapan dan seberapa sering penggantian harus dilakukan."
+  ],
+  "dimensi": {"d1": "1", "d2": "1", "d3": "1", "d4": "1", "d5": "1", "d6": "", "d7": "", "d8": ""},
+  "alasan_dimensi": {
+    "d1": "Memakai 21 pengukuran sensor turbofan (plus 3 operational settings) sebagai deret waktu dan data sekuensial lewat sliding time window.",
+    "d2": "Mendefinisikan RUL sebagai durasi dari siklus saat ini ke saat mesin butuh perbaikan/penggantian, serta probabilitas kegagalan dengan event indicator (0/1) pada tiap siklus.",
+    "d3": "Benar-benar memodelkan data waktu-ke-peristiwa dengan distribusi Weibull diskrit (PMF Eq 10) dan log-likelihood Weibull diskrit yang memakai indikator event u, yaitu penanganan data tersensor; juga membangun kurva survival Kaplan-Meier.",
+    "d4": "Menggunakan model spesifik: 1D temporal convolutional layer (CNN) + LSTM + fully connected, dengan output parameter Weibull (alpha eksponensial, beta softplus); dibanding MLP, SVR, RVR, DBN, RNN, BiLSTM, DAG.",
+    "d5": "Melaporkan kurva survival Kaplan-Meier dengan confidence interval dan probabilitas kegagalan per siklus, bukan hanya nilai RUL tunggal.",
+    "d6": "Menyebut CBM dan pentingnya penjadwalan pemeliharaan serta memberi 'referensi' kapan/seberapa sering penggantian dilakukan, tetapi tidak menyusun atau menganalisis model keputusan pemeliharaan konkret.",
+    "d7": "Objek penelitian adalah mesin turbofan (CMAPSS), bukan membran/RO/desalinasi.",
+    "d8": "Tidak ada penanganan data terbatas/transfer/hierarki/all-censored; data latih besar dan berlabel; transfer learning hanya disebut sebagai saran riset lanjutan."
+  },
+  "relevansi": "Inti-Metode",
+  "kualitas": {"skor": 9, "rincian": {"Q1": 1, "Q2": 1, "Q3": 1, "Q4": 0.5, "Q5": 1, "Q6": 1, "Q7": 1, "Q8": 0.5}, "catatan": "RQ jelas dan metode memadai (arsitektur CNN+LSTM, persamaan LSTM, PMF Weibull diskrit, log-likelihood tersensor) diuji pada dataset publik NASA CMAPSS yang standar. Evaluasi lengkap: RMSE, skor asimetris, MAE, R2, lintas TW dan lintas empat subset, plus analisis survival ber-CI. Kelemahan: tidak ada kode publik dan detail hyperparameter/arsitektur tidak sepenuhnya eksplisit (Q4=0,5); kaitan ke keputusan pemeliharaan hanya berupa referensi tanpa model keputusan (Q8=0,5)."},
+  "data_kuantitatif": {"dataset": "NASA CMAPSS (Commercial Modular Aero-Propulsion System Simulation) turbofan degradation: FD001-FD004 dengan 1/6 kondisi operasi dan 1/2 fault mode", "ukuran": "FD001 100/100, FD002 260/259, FD003 100/100, FD004 249/248 mesin (train/test); 26 kolom (unit, cycle, 3 operational settings, 21 sensor); split 80% latih/20% validasi", "metrik": "RMSE, score (asimetris), MAE, R2; contoh CNN+LSTM w/regression: FD002 RMSE 15,15 skor 1,08e3; CNN+LSTM w/Weibull: FD002 RMSE 15,77, FD004 skor 3,67e4; RMSE terendah vs SOTA pada FD002 (turun 5,19) dan skor turun 1,75e3"},
+  "metode": "(1) Min-max normalisasi; (2) sliding time window (TW) membentuk sampel sekuensial m x k; (3) 1D temporal convolution (conv+maxpool+ReLU) untuk fitur; (4) dua lapisan LSTM dengan gate input/forget/output; (5) fully connected + dropout; dua kepala loss: regresi (linear activation, MSE) dan survival (output alpha=exp, beta=softplus, loss log-likelihood Weibull diskrit dengan event indicator); (6) prediksi RUL dan probabilitas kegagalan, kurva survival Kaplan-Meier.",
+  "limitasi": [
+    "Bergantung pada asumsi distribusi Weibull diskrit dua parameter yang mungkin tidak cocok untuk semua proses degradasi.",
+    "Memerlukan data berlabel besar (run-to-failure) yang sulit diperoleh pada sistem baru; GAN/augmentasi disarankan sebagai riset lanjutan.",
+    "Perbedaan kondisi & fault mode antar-subset membutuhkan transfer learning agar stabil.",
+    "Tidak memodelkan keputusan pemeliharaan secara eksplisit.",
+    "Domain turbofan simulasi, bukan membran/RO."
+  ],
+  "funding_coi": "Penulis menyatakan tidak ada konflik kepentingan (Conflicts of Interest). Data tersedia publik di NASA Prognostic Data Repository (turbofan engine degradation).",
+  "status_inklusi": "diterima",
+  "figur_dibaca": [
+    {"file": "_page_3_Figure_3.jpeg", "isi": "Workflow dua fase: training (normalisasi -> sequence generation -> temporal convolution x2 -> LSTM x2 -> FC+dropout -> dua kepala: log-likelihood Weibull diskrit dan regresi) dan testing (prediksi RUL dan probabilitas kegagalan)."},
+    {"file": "_page_3_Figure_5.jpeg", "isi": "Ilustrasi sliding time window: matriks X(n) (siklus x k sensor) dipecah menjadi blok m x k (TW x jumlah sensor) bergerak sepanjang siklus hidup."},
+    {"file": "_page_7_Figure_3.jpeg", "isi": "Kurva Kaplan-Meier 'all engines' untuk FD001-FD004: garis True vs Predict dengan pita interval kepercayaan; FD001/FD002/FD004 menurun mulus, FD003 punya plateau di ekor ekstrapolasi."},
+    {"file": "_page_7_Figure_5.jpeg", "isi": "Perbandingan untuk engine ID 58 FD001: (a) kurva Kaplan-Meier Weibull dengan CI yang halus, (b) estimasi RUL via regresi linear yang berfluktuasi dan menyimpang di tahap awal."}
+  ],
+  "bukti": ["Eq (1): sliding time window", "Eq (2)-(3): temporal convolution 1D", "Eq (4)-(9): persamaan gate LSTM", "Eq (10): PMF Weibull diskrit", "Eq (11)-(12): log-likelihood Weibull diskrit dengan indikator event u", "Eq (13)-(15): RMSE, skor, MAE", "Tabel 1: deskripsi CMAPSS", "Tabel 2: perbandingan SOTA", "Tabel 3-6: hasil per TW per subdataset (MAE/RMSE/R2/score, regresi vs Weibull)", "Fig 4-8: kurva survival Kaplan-Meier dan estimasi RUL"]
+}

@@ -1,0 +1,18 @@
+{
+ "database": "OpenAlex (Crossref metadata), title+abstract search, type=article, has_doi=true",
+ "queries_used": 24,
+ "records_identified_unique": 694,
+ "records_with_english_language": 694,
+ "records_screened": 485,
+ "included_core_corpus": 72,
+ "pillar_coverage": {
+  "A": 19,
+  "B": 53,
+  "C": 21,
+  "D": 7,
+  "E": 24,
+  "F": 33,
+  "G": 5
+ },
+ "with_abstract": 72
+}

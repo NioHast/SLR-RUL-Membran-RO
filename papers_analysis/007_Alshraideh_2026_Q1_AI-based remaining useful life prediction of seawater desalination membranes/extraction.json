@@ -1,0 +1,46 @@
+{
+ "no": 11,
+ "judul": "AI-based remaining useful life prediction of seawater desalination membranes",
+ "penulis": "Hussam Alshraideh, Fajer Al Ali, Mahmoud Awad, Amani Al-Othman",
+ "tahun": 2026,
+ "jurnal": "Chemical Engineering Journal Advances",
+ "doi": "10.1016/j.ceja.2026.101217",
+ "kuartil": "Scopus Q1 (SCImago SJR Best Quartile)",
+ "pilar": "E. Membrane/RO/Desalination",
+ "ringkasan": "Studi mengusulkan model prediktif berbasis AI untuk mengestimasi RUL membran reverse osmosis (RO), didefinisikan sebagai volume air (m3) yang dapat diproduksi hingga membran mencapai ambang kinerja yang memicu clean-in-place (CIP). Model memakai 20 parameter operasional mentah (SDI, suhu, kecepatan pompa, tekanan, konduktivitas, turbiditas) ditambah 14 fitur turunan dari 2999 catatan harian (Jan 2021 - Agu 2025) sebuah pabrik desalinasi RO di UAE. Random Forest terbaik (R2=0,984; RMSE=0,136; MAE=0,0997) mengalahkan XGBoost (0,977), CART (0,936), dan LR (0,655); SHAP mengidentifikasi SDI maksimum, suhu maksimum, usia membran, dan kecepatan pompa PX sebagai prediktor utama.",
+ "kontribusi": "Menjadi salah satu dari sangat sedikit studi yang memprediksi langsung RUL membran RO/desalinasi dengan data operasional pabrik nyata dan mengaitkannya dengan penjadwalan CIP - inti domain tesis; namun tidak memakai survival analysis maupun penanganan data tersensor.",
+ "temuan_kunci": [
+  "RUL membran RO dapat diprediksi sangat akurat dengan Random Forest (R2=0,984; RMSE=0,136; MAE=0,0997) menggunakan parameter operasional penuh, bukan hanya data produksi historis.",
+  "Model ensemble (RF, XGBoost) mengalahkan model klasik (LR, CART) dan transformer deret waktu tanpa parameter operasional (R2=0,718), menunjukkan pentingnya parameter operasional.",
+  "SHAP: SDI maksimum, suhu maksimum, usia membran, kecepatan pompa pressure-exchange, dan permeate average adalah prediktor RUL teratas; SDI/suhu/usia/kecepatan PX berhubungan negatif dengan RUL.",
+  "Model ringan dapat diintegrasikan ke SCADA sebagai 'day-to-day industrial decision support system' untuk mengoptimalkan penjadwalan CIP dan mengurangi biaya pemeliharaan."
+ ],
+ "dimensi": {"d1": "1", "d2": "1", "d3": "", "d4": "1", "d5": "", "d6": "1", "d7": "1", "d8": ""},
+ "alasan_dimensi": {
+  "d1": "Memakai 20 fitur sensor/laboratorium harian (Total Feed, HP Pump, PX LP Inlet/Outlet, Permeate Avg, Permeate Condty, Feed Pressure, Pump Speed HP/PX, DAF Flow, DP DMF/Cartridge, Feed Water Condty/SDI/Temp, turbiditas SW_in/DMF) sebagai deret waktu + 14 fitur turunan (min/max/mean sejak CIP terakhir).",
+  "d2": "Mendefinisikan RUL = jumlah air (m3) yang dapat diproduksi hingga CIP berikutnya, yaitu ambang kinerja yang memicu tindakan pemeliharaan; juga mendefinisikan 'Age' sebagai m3 terproduksi sejak CIP terakhir.",
+  "d3": "Tidak ada model survival/hazard/Weibull/cure; data tersensor tidak dimodelkan (regresi machine learning murni dengan label RUL lengkap).",
+  "d4": "Empat model ML spesifik: Random Forest (terbaik), XGBoost, Decision Tree (CART), dan Linear Regression; plus baseline deep learning transformer deret waktu dengan attention.",
+  "d5": "Tidak melaporkan interval kepercayaan/posterior untuk prediksi RUL; hanya R2/RMSE/MAE dan plot densitas galat prediksi (Fig. 5).",
+  "d6": "Menganalisis keputusan pemeliharaan konkret: mengoptimalkan jadwal clean-in-place (CIP) dan menyediakan 'day-to-day industrial decision support system' yang dapat berjalan di SCADA; CIP adalah tindakan pemeliharaan nyata dengan implikasi biaya.",
+  "d7": "Objek penelitian adalah membran Reverse Osmosis (RO) pada pabrik desalinasi air laut; fokus pada fouling dan ambang CIP.",
+  "d8": "Mengakui keterbatasan data ('due to the limited data') dan memilih memodelkan seluruh pressure vessel sebagai satu unit, tetapi tidak menerapkan small-data/transfer learning/hierarchical; dataset berukuran 2999 baris."
+ },
+ "relevansi": "Inti-Domain",
+ "kualitas": {"skor": 8, "rincian": {"Q1": 1, "Q2": 1, "Q3": 1, "Q4": 0.5, "Q5": 1, "Q6": "N/A", "Q7": "N/A", "Q8": 0.5}, "catatan": "Satu-satunya studi domain membran/RO dengan target RUL langsung; evaluasi model kuat (4 ML + transformer baseline, tuning CV, SHAP). Kelemahan: data satu pabrik (tidak publik), tanpa kuantifikasi ketidakpastian maupun analisis survival/censoring, dan RUL diagregasi level pressure-vessel. Q6/Q7 tidak berlaku karena tidak ada data tersensor."},
+ "data_kuantitatif": {"dataset": "Data operasional harian pabrik desalinasi RO lokal UAE (1 Januari 2021 - 31 Agustus 2025)", "ukuran": "2999 instance x 34 atribut (20 mentah + 14 turunan); split 70% latih / 30% uji", "metrik": "RF R2=0,984, RMSE=0,136, MAE=0,0997; XGBoost R2=0,977; CART 0,936; LR 0,655; Transformer R2=0,718, MAE 0,102, RMSE 0,227"},
+ "metode": "Machine learning regresi: Random Forest (terbaik), XGBoost, Decision Tree (CART), Linear Regression; hyperparameter tuning via 10-fold cross-validation + grid search; interpretasi variable importance RF dan SHAP global/lokal; baseline deep learning transformer deret waktu dengan attention (64 heads, head size 4).",
+ "limitasi": [
+  "Data dari satu pabrik RO; generalisasi terbatas dan data tidak publik (on request).",
+  "RUL diagregasi pada level pressure vessel (satu blok), bukan per membran; heterogenitas posisi membran (leading vs trailing) tidak dimodelkan.",
+  "Tidak ada kuantifikasi ketidakpastian prediksi (interval/CI).",
+  "Tidak menggunakan survival analysis/penanganan data tersensor."
+ ],
+ "funding_coi": "Article processing charges didanai Office of Research, American University of Sharjah (program open access OAP26); penulis menyatakan tidak ada konflik kepentingan.",
+ "status_inklusi": "diterima",
+ "figur_dibaca": [
+  {"file": "_page_8_Figure_3.jpeg", "isi": "Fig. 4 - scatter plot actual vs predicted RUL untuk Random Forest; titik-titik rapat mengikuti garis diagonal merah (y=x) dengan sedikit sebaran di nilai RUL tinggi, mengonfirmasi akurasi prediksi tinggi."},
+  {"file": "_page_9_Figure_4.jpeg", "isi": "Fig. 7 - bar chart SHAP global (mean |SHAP value|); peringkat teratas MaxFeed_Water_Temp, MaxFeed_Water_SDI, AgeM3, Pump Speed PX, Permeate Avg; sisanya <15.000."}
+ ],
+ "bukti": ["Table 2: deskripsi 20 atribut operasional", "Table 3: 14 fitur turunan (definisi RUL & Age)", "Table 4: statistik deskriptif", "Table 6: kinerja model (R2/RMSE/MAE)", "Fig. 4: actual vs predicted RUL (RF)", "Fig. 7-8: SHAP global & lokal", "Fig. 9: transformer baseline"]
+}

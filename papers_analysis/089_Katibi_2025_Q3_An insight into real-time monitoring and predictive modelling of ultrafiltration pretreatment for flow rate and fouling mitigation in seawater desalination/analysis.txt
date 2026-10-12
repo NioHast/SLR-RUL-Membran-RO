@@ -1,0 +1,44 @@
+PAPER 021 - Katibi et al. (2025)
+Judul   : An insight into real-time monitoring and predictive modelling of ultrafiltration pretreatment for flow rate and fouling mitigation in seawater desalination
+Jurnal  : Desalination and Water Treatment | Scopus Q3 (SCImago SJR Best Quartile) | DOI 10.1016/j.dwt.2025.101386
+Pilar   : E. Membrane/RO/Desalination
+Relevansi: Inti-Domain
+
+KARAKTERISTIK STUDI
+Studi lapangan pada sistem ultrafiltrasi (UF) yang berfungsi sebagai pretreatment pabrik desalinasi air laut (Tanjung Bin, Johor, Malaysia). Tujuan: prediksi real-time laju alir dan resistansi membran (indikator fouling) serta optimalisasi backwash adaptif. Fokus pada subsistem UF, bukan membran RO langsung, meski RO berada hilir.
+
+METODE
+- Empat model regresi ML di MATLAB 2022a: Tree Regression (TR), Ensemble Learning (bagged Random Forest, ENS), Feedforward Neural Network (NN, ReLU, Adam), Gaussian Process Regression (GPR, kernel squared-exponential + ARD, sparse pseudo-input).
+- Hyperparameter via grid search + 5-fold cross-validation; evaluasi RMSE, MSE, MAE, R2.
+- Model diintegrasikan ke kendali real-time (NI cRIO-9022) untuk menyesuaikan frekuensi backwash, TMP, dan siklus filtrasi.
+
+DATA
+Data operasional kontinu 426 hari (3,7 x 10^6 sampel pada 1 Hz) dengan parameter laju alir, TMP, pH, temperatur, ORP, turbiditas. Pabrik: 3 modul UF PES hollow-fiber (masing-masing 50 m2), TMP normal 0,5-1,5 bar, flow 5-15 L/min, pH 7,5-8,2, temperatur 11,2-25,6 C.
+
+TEMUAN UTAMA
+- ENS & TR terbaik: R2=0,99; RMSE 3,08 dan 3,27 L/min. NN R2=0,98 (RMSE 4,69); GPR R2=0,97 (RMSE 5,98).
+- GPR memberi interval kepercayaan 95 % untuk keputusan sadar-risiko.
+- Kendali backwash adaptif: ekskursi TMP -18 %, frekuensi backwash 6 h -> 8 h, energi 4,5-5,0 MWh/tahun, biaya pemeliharaan ~12 % (USD 3000-3500 per UF train).
+- Model stabil lintas waktu/temperatur/tekanan/ORP/pH; error terbesar pada transisi filtrasi-backwash.
+
+RELEVANSI KE TESIS
+Sangat relevan pada sisi DOMAIN (membran/desalinasi/fouling) dan sisi KEPUTUSAN PEMELIHARAAN (penjadwalan backwash, biaya), tetapi tidak menyentuh inti metode tesis (RUL/survival/pencensoringan). Karena domain inti terpenuhi tanpa survival, diklasifikasikan Inti-Domain.
+
+JUSTIFIKASI DIMENSI (d1-d8)
+- d1 = 1: multivariat deret waktu (laju alir, TMP, pH, T, ORP, turbiditas) dicuplik 1 Hz selama 426 hari; prediksi pada jendela 15.000 s.
+- d2 = 1: menetapkan ambang operasional kritis (backwash saat TMP > 1,4 bar atau resistansi menyimpang dari baseline).
+- d3 = "" : tidak ada survival/hazard/Weibull/cure; tanpa pencensoringan.
+- d4 = 1: TR, ENS (Random Forest), NN, GPR.
+- d5 = 1: GPR menghasilkan batas kepercayaan 95 % (interval).
+- d6 = 1: analisis keputusan pemeliharaan konkret (jadwal backwash, penghematan energi/biaya).
+- d7 = 1: membran UF pada pabrik desalinasi air laut (fouling).
+- d8 = "" : dataset besar, tanpa small-data/transfer/hierarchical/censoring.
+
+KUALITAS (skor 9/10)
+Q1=1; Q2=1; Q3=1 (data lapangan 426 hari); Q4=0,5 (data tidak publik, kode tidak dibagikan); Q5=1 (metrik lengkap, CV, analisis residu); Q6=N/A; Q7=1 (interval GPR); Q8=1 (analisis biaya/jadwal). Jumlah 6,5/7 -> 9. Tidak ada validasi eksternal dan R2 ~0,99 berisiko overfitting.
+
+LIMITASI
+Fokus UF bukan RO; akurasi sangat tinggi berpotensi overfitting; data tidak publik; tanpa RUL/survival/pencensoringan.
+
+BUKTI (fig/table/eq)
+Table 1 (metrik 9 model); Table 2 (kinerja lintas variabel); Fig. 1 (skema UF-RO); Fig. 2 (flowchart ML); Fig. 3-7 (prediksi, scatter, residu); Bagian 3.1 & 4 (biaya/energi).

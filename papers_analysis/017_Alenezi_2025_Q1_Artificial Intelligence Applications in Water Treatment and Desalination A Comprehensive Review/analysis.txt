@@ -1,0 +1,45 @@
+ANALISIS PAPER 033 — Alenezi & Alabaiadly (2025), Water (MDPI)
+Judul: Artificial Intelligence Applications in Water Treatment and Desalination: A Comprehensive Review
+DOI: 10.3390/w17081169 | Kuartil: Scopus Q1 | Pilar indeks: E. Membrane/RO/Desalination
+
+KARAKTERISTIK STUDI
+Artikel tinjauan (review) komprehensif, bukan studi primer. RQ eksplisit: "bagaimana AI digunakan di desalinasi dan apa hasilnya?" Meninjau machine learning, neural network, dan genetic algorithm pada pengolahan air dan desalinasi, mencakup prediksi, optimasi proses, deteksi fault, dan pemeliharaan prediktif. Konteks domain kuat pada RO/membran/fouling. Karena tidak mengusulkan model RUL/survival, tier-nya Konteks.
+
+METODE
+Tinjauan naratif dengan kerangka analitik tiga area (teknik AI, outcome, konteks). Penelusuran pada Google Scholar/Scopus/Web of Science dengan kata kunci ("ML in desalination", dsb.), menyaring ~1200 sumber menjadi 150 artikel peer-review. Sintesis tematik + asesmen kritis metodologi. Tidak memakai protokol sistematis/PRISMA penuh.
+
+DATA
+Tidak ada dataset primer. Angka-angka diambil dari studi yang ditinjau (R, R^2, RMSE, MAE, MSE; klaim penghematan energi/biaya %). Tabel domain membandingkan SWRO/ADD/MSF (energi kWh/m3, CO2 kg/m3) dan penggunaan AI di fasilitas air (Saudi, USA, China).
+
+TEMUAN UTAMA
+- Klaim abstrak: AI meningkatkan kualitas air, menurunkan konsumsi energi hingga ~50%, dan mengaktifkan pemeliharaan prediktif yang menekan downtime.
+- Desalinasi cenderung memakai AI untuk pemeliharaan prediktif dan manajemen energi, sedangkan pengolahan air untuk optimasi proses/kimia.
+- Prediksi membran RO (kapan dibersihkan/diganti), deteksi fouling, dan optimasi tekanan → memperpanjang umur membran (klaim ~20%).
+- Tantangan berulang: keterbatasan data berkualitas (overfitting pada dataset kecil), biaya komputasi, dan model "black box" yang sulit diinterpretasi; studi umumnya skala kecil/jangka pendek.
+
+RELEVANSI KE TESIS
+Konteks domain: membenarkan pentingnya prediksi kegagalan/fouling membran dan pemeliharaan prediktif di desalinasi, serta menegaskan kelangkaan data sebagai hambatan utama. Celah yang ditimbulkan: tinjauan ini tidak membahas pemodelan penyensoran/survival untuk RUL membran, sementara banyak data operasi bersifat tersensor (membran belum gagal saat pengamatan berakhir). Tesis mengisi celah tersebut.
+
+JUSTIFIKASI DIMENSI (d1-d8)
+- d1 = "": membahas data sensor/pemantauan real-time dari literatur, tetapi tidak menggunakan runtun waktu multi-sensor sendiri.
+- d2 = "": tidak mendefinisikan RUL/failure/threshold kuantitatif; hanya prediksi perawatan membran secara kualitatif.
+- d3 = "": tidak ada pemodelan tersensor/survival/hazard.
+- d4 = "": meninjau banyak model spesifik (ANN, SVM, RF, GA, DT, LSTM) tetapi tidak membangun/menerapkannya sendiri.
+- d5 = "": tanpa kuantifikasi ketidakpastian prediksi.
+- d6 = "1": analisis substantif keputusan pemeliharaan (Predictive Maintenance 4.0, penjadwalan proaktif, dampak biaya/downtime) — Section 4.2.3, Tabel 7.
+- d7 = "1": domain inti desalinasi/RO/membran/fouling — Section 4.1.1, 4.2.1, 4.2.3.
+- d8 = "": kelangkaan data disorot sebagai tantangan, bukan penerapan metode small-data/transfer/hierarchical.
+
+KUALITAS (skor 7/10)
+Q1=1 (RQ eksplisit); Q2=0.5 (metode tinjauan dijelaskan namun tidak sistematis penuh); Q3=0.5 (bergantung sumber sekunder heterogen, sebagian klaim angka kurang dirujuk); Q4=0.5 (strategi pencarian sebagian dijelaskan); Q5=0.5 (sintesis outcome tanpa appraisal formal); Q6=N/A; Q7=N/A; Q8=1 (kaitan keputusan pemeliharaan kuat). Applicable = 6, jumlah = 4.0 -> skor = round(4.0/6*10) = 7.
+
+LIMITASI
+Tinjauan naratif tanpa protokol sistematis; tanpa model/eksperimen; sumber heterogen; klaim kuantitatif sebagian kurang ketat; tidak mencakup pemodelan penyensoran untuk RUL membran; data hanya atas permintaan.
+
+BUKTI
+- Abstrak (klaim 50% energi, predictive maintenance).
+- Section 1.2 (RQ), 2.1 (proses tinjauan 1200->150), 2.4 (asesmen kritis).
+- Section 3.1.1 (ML prediksi fouling), 4.2.1 (predictive modeling membran), 4.2.3 (fault detection & maintenance, PdM 4.0).
+- Tabel 1-8 (ringkasan performa model, sistem desalinasi, penggunaan AI).
+- Section 7 (kesimpulan; seruan model low-data).
+- Fig. 1 (alur tinjauan), Fig. 7 (alur deteksi fault).

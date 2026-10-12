@@ -1,0 +1,46 @@
+{
+ "no": 23,
+ "judul": "Predictive Modeling of Brackish Surface Water Quality for Reverse Osmosis Desalination Plants Using Advanced Machine Learning Techniques",
+ "penulis": "Cherki Lahlou, Belaid Bouikhalene, Jamaa Bengourram, Hassan Latrache, Radouane El Amri",
+ "tahun": 2025,
+ "jurnal": "Science & Technology Asia",
+ "doi": "10.14456/scitechasia.2025.79",
+ "kuartil": "Scopus Q3 (SCImago SJR Best Quartile)",
+ "pilar": "E. Membrane/RO/Desalination",
+ "ringkasan": "Studi mengembangkan kerangka machine learning untuk memprediksi Water Quality Index (WQI) dan mengklasifikasikan kategori kualitas air (WQC: Excellent/Good/Poor/Unsuitable) pada air permukaan payau yang menjadi umpan pabrik demineralisasi RO (MAROC CENTRAL, Maroko). Dari 10.000 sampel dan 11 parameter fisikokimia, MLP terbaik untuk regresi WQI (R2=98,19 %; MAE=0,0182) dan XGBoost terbaik untuk klasifikasi WQC (akurasi 99,84 %). WQC dikaitkan dengan indikator kinerja RO (feed rate, tekanan, dP, permeate flow, energi).",
+ "kontribusi": "Menyumbang konteks domain RO/desalinasi berupa pemantauan kualitas air umpan berbasis ML yang mendukung operasi dan pemeliharaan; target prediksi adalah kualitas air (bukan degradasi/RUL membran), sehingga hanya bersifat pendukung.",
+ "temuan_kunci": [
+  "MLP mengungguli kNN dan RF untuk WQI: R2=0,9819 (train), MAE=0,0182, MSE=0,0043.",
+  "XGBoost terbaik untuk WQC: akurasi 99,84 % (train), 100 % (test), 99,73 % (validasi); DT dan SVM sedikit di bawahnya (SVM 99,13 %).",
+  "Kategori WQC berkorelasi dengan kinerja RO: 'Excellent' -> permeate flow & feed rate tertinggi, 'Unacceptable' -> dP dan konsumsi energi meningkat.",
+  "SDI, oksidabilitas, turbiditas, dan besi total berbobot terbesar dalam WQI (indikator potensi fouling/scaling)."
+ ],
+ "dimensi": {"d1": "1", "d2": "", "d3": "", "d4": "1", "d5": "", "d6": "1", "d7": "1", "d8": ""},
+ "alasan_dimensi": {
+  "d1": "Menggunakan 11 parameter fisikokimia (SDI, pH, turbiditas, ORP, klorida, besi, konduktivitas, alkalinitas, kalsium, oksidabilitas, temperatur) dari sensor real-time SCADA (Modbus-TCP/IP) dan analisis laboratorium; WQI divisualkan sebagai deret waktu (Fig. 9).",
+  "d2": "Tidak mendefinisikan RUL/kegagalan membran; WQC hanya mengklasifikasikan kualitas air umpan (Excellent/Good/Poor/Unsuitable), bukan status degradasi membran.",
+  "d3": "Tidak ada model survival/hazard/Weibull/cure dan tidak ada pencensoringan.",
+  "d4": "Enam model spesifik: k-NN, Random Forest, MLP (regresi WQI); Decision Tree, XGBoost, SVM (klasifikasi WQC).",
+  "d5": "Tidak melaporkan interval kepercayaan/posterior; hanya MAE/MSE/R2 (regresi) dan accuracy/precision/recall/F1 (klasifikasi).",
+  "d6": "Kategori WQC dirancang sebagai tindakan yang dapat dieksekusi (membrane cleaning, penyesuaian tekanan, regulasi aliran) dan menyebut pemeliharaan preventif; menyediakan kategori pendukung keputusan operasional.",
+  "d7": "Konteknya pabrik demineralisasi air payau dengan membran mikrofiltrasi dan RO; parameter difokuskan pada potensi fouling/scaling membran.",
+  "d8": "Dataset besar (10.000 sampel); augmentasi/resampling hanya untuk menyeimbangkan kelas, bukan skenario small-data/transfer/hierarchical."
+ },
+ "relevansi": "Pendukung",
+ "kualitas": {"skor": 8, "rincian": {"Q1": 1, "Q2": 1, "Q3": 0.5, "Q4": 0.5, "Q5": 1, "Q6": "N/A", "Q7": "N/A", "Q8": 0.5}, "catatan": "Studi domain yang jelas, memakai 10.000 sampel dan pemisahan 70/15/15, metrik regresi & klasifikasi lengkap, serta membandingkan dengan literatur. Kelemahan: target WQI/WQC (bukan degradasi/RUL membran), tanpa kuantifikasi ketidakpastian, satu pabrik, dan augmentasi kelas berpotensi menggelembungkan metrik. Q6/Q7 tidak berlaku."},
+ "data_kuantitatif": {"dataset": "Data inlet pabrik demineralisasi MAROC CENTRAL (Kasba Tadla, Maroko), 11 parameter fisikokimia", "ukuran": "10.000 sampel x 11 parameter; split 70 % latih / 15 % uji / 15 % validasi", "metrik": "MLP WQI R2=0,9819 MAE=0,0182 MSE=0,0043; XGBoost WQC akurasi 99,84 % (train)/100 % (test)/99,73 % (valid); SVM 99,13 %; DT 99,67 %"},
+ "metode": "Regresi WQI (k-NN, RF, MLP) dan klasifikasi WQC (DT, XGBoost, SVM) dengan grid search; normalisasi min-max ke [0,1;0,9]; WQI dihitung via agregasi terbobot parameter; evaluasi MAE/MSE/R2 dan accuracy/precision/recall/F1.",
+ "limitasi": [
+  "Target prediksi adalah kualitas air umpan, bukan RUL/degradasi membran.",
+  "Tidak ada kuantifikasi ketidakpastian.",
+  "Satu pabrik; augmentasi/resampling kelas dapat menggelembungkan metrik (akurasi hampir sempurna).",
+  "Tidak ada stempel waktu eksplisit; tidak ada survival/pencensoringan."
+ ],
+ "funding_coi": "Tidak ada pernyataan pendanaan khusus; penulis mengucapkan terima kasih kepada tim laboratorium pabrik MAROC CENTRAL. Tidak ada pernyataan konflik kepentingan yang dilaporkan.",
+ "status_inklusi": "diterima",
+ "figur_dibaca": [
+  {"file": "_page_2_Picture_4.jpeg", "isi": "Flowchart metodologi 4 tahap: Study Area -> Data Pre-processing (EDA, normalisasi, split 70/15/15) -> ML Algorithms (WQI: k-NN/XGBoost/MLP; WQC: DT/SVM/XGBoost; evaluasi MAE/MSE/R2 & F1/accuracy/recall/precision/MCC) -> Final Prediction."},
+  {"file": "_page_8_Figure_7.jpeg", "isi": "Lima boxplot kinerja RO vs kategori WQC (Poor/Excellent/Good/Unacceptable): feed rate, dP, feed pressure, permeate flow, konsumsi energi; 'Excellent' terkait permeate flow/feed rate tertinggi, 'Unacceptable' terkait dP & energi tertinggi."}
+ ],
+ "bukti": ["Table 1: parameter & teknik pengukuran", "Table 2: grid search", "Table 3: statistik data", "Table 4: bobot & batas WQI", "Table 5: rumus metrik", "Table 6: kinerja WQI (MLP terbaik)", "Table 7: kinerja WQC (XGBoost terbaik)", "Table 8: perbandingan literatur", "Fig. 1: metodologi", "Fig. 6: WQC vs kinerja RO", "Fig. 9-11: time series, scatter, confusion matrix"]
+}

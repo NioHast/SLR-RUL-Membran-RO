@@ -1,0 +1,45 @@
+ANALISIS PAPER 034 — Wang, Chen, Zhao & Xiang (2024), IEEE Internet of Things Journal
+Judul: Predictive Maintenance Scheduling for Aircraft Engines Based on Remaining Useful Life Prediction
+DOI: 10.1109/JIOT.2024.3376715 | Kuartil: Scopus Q1 | Pilar indeks: F. DSS & Predictive Maintenance (IS)
+
+KARAKTERISTIK STUDI
+Studi sistem informasi/manajemen pemeliharaan (pilar F). Menggabungkan prediksi RUL berbasis deep learning dengan penjadwalan pemeliharaan prediktif multi-unit. Domain: mesin pesawat (C-MAPSS/PHM08). Berlatar industri penerbangan; menyoroti bahwa biaya pemeliharaan ~10,5% biaya operasional maskapai.
+
+METODE
+1) Prediksi RUL: ensemble BO-CNN-Bi-LSTM-AM — 1-D CNN mengekstraksi fitur lokal, Bi-LSTM menangkap dependensi waktu dua arah, attention memberi bobot pada time step/fitur penting; hyperparameter (jumlah neuron CNN/Bi-LSTM, dropout, aktivasi, learning rate) dioptimasi Bayes (Gaussian process + EI/acquisition). Input 14 sensor, time window 30, loss MSE, optimizer Adam; label RUL piecewise-linear elbow 125.
+2) Keputusan pemeliharaan: Maintenance=1 jika RUL_hat <= Δt (ambang alarm sesuai siklus misi).
+3) Penjadwalan: MILP (minimize C_max = waktu penyelesaian pemeliharaan maksimum) dengan kendala penugasan mesin ke pusat perawatan, urutan, prioritas berdasarkan RUL (RUL kecil = prioritas tinggi), dan waktu penyelesaian yang mempertimbangkan RUL prediktif (Eq. 25). Diselesaikan CPLEX 12.80.
+
+DATA
+C-MAPSS FD001-FD004 (jumlah sampel latih 20.631/53.759/24.720/61.249) dan PHM08 (218 mesin; 174 latih/44 uji). Untuk studi penjadwalan, waktu perawatan dan waktu kedatangan dibangkitkan acak (perawatan ~[1,2], kedatangan ~[0.5,1]).
+
+TEMUAN UTAMA
+- RUL: model mengungguli CNN, LSTM, Bi-LSTM-ED, BDL, IMDSSN, SCTA-LSTM; pada FD001-FD004 perbaikan RMSE 5,86%/7,71%/7,62%/19,51% vs metode [27]; pada PHM08 RMSE 41,33 (terbaik).
+- Akurasi lebih tinggi saat RUL kecil (fitur kegagalan lebih jelas).
+- Penjadwalan: dengan Δt=10, 6 mesin perlu dirawat; obj MILP 9,71 (3 pusat) vs MILP-1 3,46 — MILP memanfaatkan RUL lebih baik meski waktu penyelesaian lebih tinggi; rencana berbeda antar-model.
+- CPLEX menyelesaikan hingga 20 mesin dengan cepat (mis. 3 pusat 178 s).
+
+RELEVANSI KE TESIS
+Relevan pada lapisan keputusan pemeliharaan (d6): menunjukkan bagaimana RUL diterjemahkan menjadi ambang alarm dan jadwal optimal. Namun tidak menyentuh penyensoran/survival maupun domain membran, sehingga menjadi pembanding "RUL -> DSS" tanpa komponen survival tersensor. Celah yang ditegaskan: integrasi survival/penyensoran dengan keputusan pemeliharaan pada membran RO masih terbuka.
+
+JUSTIFIKASI DIMENSI (d1-d8)
+- d1 = "1": multi-sensor time series (14 sensor, window 30) — Section IV-A, Tabel II-III.
+- d2 = "1": RUL eksplisit + ambang alarm Δt (Eq. 12) + label piecewise-linear elbow 125.
+- d3 = "": tidak ada pemodelan tersensor/survival/hazard; Weibull hanya disebut sebagai literatur.
+- d4 = "1": CNN, Bi-LSTM, attention, Bayesian optimization.
+- d5 = "": tidak ada kuantifikasi ketidakpastian RUL; Fig. 5 adalah histogram bin RUL.
+- d6 = "1": keputusan pemeliharaan konkret (ambang alarm + MILP penjadwalan) — Eq. 12-31.
+- d7 = "": domain mesin pesawat, bukan membran/RO.
+- d8 = "": tanpa small-data/transfer/hierarchical.
+
+KUALITAS (skor 7/10)
+Q1=1; Q2=1; Q3=1 (dua benchmark, data RUL valid); Q4=0.5 (model & hyperparameter lengkap, tanpa kode); Q5=0.5 (evaluasi RUL solid, tetapi evaluasi penjadwalan memakai waktu acak sintetis dan skala kecil); Q6=N/A; Q7=0 (tidak ada pelaporan ketidakpastian RUL); Q8=1 (keputusan pemeliharaan kuat). Applicable = 7, jumlah = 5.0 -> skor = round(5.0/7*10) = 7.
+
+LIMITASI
+Data penjadwalan sintetis; skala uji kecil (<=20 mesin); tanpa pemodelan penyensoran/ketidakpastian; optimasi single-objective; belum ada DSS terintegrasi.
+
+BUKTI
+- Abstrak + Kontribusi 1)-3).
+- Eq. 12 (ambang pemeliharaan), Eq. 13-31 (MILP), Eq. 32-33 (RMSE/score).
+- Tabel I (C-MAPSS), III-IV (hyperparameter BO), V-VI (perbandingan RUL), VII-XI (penjadwalan).
+- Fig. 1 (arsitektur), Fig. 4-5 (hasil RUL & distribusi).

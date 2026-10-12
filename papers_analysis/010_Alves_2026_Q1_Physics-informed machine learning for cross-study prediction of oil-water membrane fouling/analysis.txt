@@ -1,0 +1,46 @@
+PAPER 030 - Alves et al. (2026)
+Judul   : Physics-informed machine learning for cross-study prediction of oil-water membrane fouling
+Jurnal  : Scientific Reports | Scopus Q1 (ScImago SJR Best Quartile) | DOI 10.1038/s41598-026-54120-z
+Pilar   : E. Membrane/RO/Desalination
+Relevansi: Inti-Domain
+
+KARAKTERISTIK STUDI
+Menggabungkan model fisik reduced-order (ROM finite-element: transport adveksi-difusi-Darcy + resistansi fouling) dengan ML yang memetakan metadata eksperimen ke deskriptor kurva penurunan fluks, untuk mengevaluasi transferabilitas lintas-studi pada fouling membran oil-water.
+
+METODE
+- Tahap fisik: model transport dan resistansi fouling; bentuk fungsional (power-law, exponensial, logistik, hybrid).
+- Abstraksi ROM: deskriptor kanonik kurva (J_inf^n, t_50, J_0', AUC) + PCA.
+- Integrasi ML: regresi/klasifikasi (MiniRocket vs shape features), SHAP, segmentasi waktu S1-S6.
+- Validasi: GroupKFold (dalam-studi) dan publication holdout (antar-studi), kalibrasi, validasi laboratorium. Pelaporan interval prediksi & CI 95 %.
+
+DATA
+112 dataset dari literatur (berbagai membran/material, minyak, kondisi operasi). Fokus MF/UF oil-water.
+
+TEMUAN UTAMA
+- ROM mereproduksi trajektori fluks R2 ~0,95; bentuk hybrid (eksponensial awal + relaksasi aljabar akhir) paling sering terbaik.
+- MAE naik ~2x dari grouped CV ke publication holdout (early 0,079 -> 0,15; late 0,14 -> 0,32) -> cross-study generalization penalty.
+- Porosity dominan; crossflow/pressure di tahap awal, porosity/permeance di tahap akhir.
+- Prediction interval & kalibrasi dilaporkan; plateau pada 10-12 parameter metadata.
+- Validasi lab tubular R2=0,98 (dead-end).
+
+RELEVANSI KE TESIS
+Inti domain (fouling membran) sekaligus menyentuh sumbu transfer lintas-studi/domain shift (relevan bagi small-data). Menegaskan bahwa keterbatasan data dan konsistensi metadata — bukan kapasitas model — membatasi prediksi. Tidak memakai survival/pencensoringan maupun RUL formal, dan berfokus MF/UF oil-water. Diklasifikasikan Inti-Domain.
+
+JUSTIFIKASI DIMENSI (d1-d8)
+- d1 = 1: trajektori fluks terhadap waktu; segmentasi waktu S1-S6.
+- d2 = "" : tanpa RUL/ambang kegagalan.
+- d3 = "" : tanpa survival/pencensoringan.
+- d4 = 1: regresi/klasifikasi ML (MiniRocket, shape descriptors, PCA, SHAP) di atas ROM FEM.
+- d5 = 1: prediction-interval reliability, CI 95 % macro-F1, error bar ketidakpastian.
+- d6 = "" : implikasi pada desain eksperimen/pelaporan data, bukan keputusan pemeliharaan.
+- d7 = 1: fouling membran oil-water (MF/UF).
+- d8 = 1: transferabilitas lintas-studi (domain shift) diuji dengan grouped CV & publication holdout.
+
+KUALITAS (skor 9/10)
+Q1=1; Q2=1; Q3=1 (112 dataset + validasi lab); Q4=1 (pipeline Python & ROM dijelaskan); Q5=1 (grouped CV + holdout + kalibrasi + validasi lab); Q6=N/A; Q7=1 (interval/CI); Q8=0,5 (implikasi proses/desain, bukan keputusan pemeliharaan formal). Jumlah 6,5/7 -> 9.
+
+LIMITASI
+Cross-study variability & metadata membatasi transfer; MF/UF (bukan RO); validasi lab dead-end; class imbalance/label noise.
+
+BUKTI (fig/table/eq)
+Fig. 1 (ROM R2), Fig. 2 (korelasi), Fig. 3-4 (kinerja & importance), Fig. 5 (cross-study), Fig. 6 (kalibrasi/NRMSE/SHAP), Fig. 8 (validasi lab + checklist), Fig. 9 (kerangka).

@@ -1,0 +1,45 @@
+PAPER 54 — Abuhabib et al. (2026)
+Judul : Applying machine learning and AI for nanofiltration membranes water applications: a review
+Jurnal: Water Science & Technology | Scopus Q2 | DOI 10.2166/wst.2026.234 | Pilar: E. Membrane/RO/Desalination
+
+KARAKTERISTIK STUDI
+Review penerapan ML/AI pada membran nanofiltrasi (NF) untuk aplikasi air/desalinasi, berbasis analisis 100 publikasi NF-ML dalam 10 tahun terakhir. Tiga domain: optimasi fabrikasi, prediksi kinerja, serta diagnosis/mitigasi fouling. Menyoroti keterbatasan model mekanistik (solution-diffusion, Donnan) dalam menghadapi matriks air heterogen.
+
+METODE
+Review sistematis-naratif: pencarian Web of Science/Scopus (keyword NF, membrane, desalination, wastewater, ML, ANN, DL, modelling); taksonomi supervised/unsupervised/RL; analisis komparatif model (data kecil vs besar, akurasi, interpretabilitas); roadmap alur ML untuk NF; perbandingan ML vs model mekanistik/matematis.
+
+DATA
+Tanpa dataset primer. Mengompilasi studi: pilot NF/RO seawater, NF-CCr, fabrikasi PA-based NF, dsb. Variabel khas: permeability (Lp), selectivity (1/S0), rejection (NaCl, PFOS, micropollutant), flux decline, TMP, fouling thickness.
+
+TEMUAN UTAMA
+- ML menangkap hubungan non-linear (flux/rejection/fouling) yang sulit dimodelkan mekanistik.
+- Tree-based ensemble (RF/XGBoost) + shallow ANN dominan untuk data tabular kecil-menengah; DL (LSTM/CNN) unggul untuk dinamika temporal & citra.
+- Abdu (2025): CNN NF/RO prediksi flux/salt rejection/energy dengan R2 > 0,95, adaptif terhadap salinitas.
+- Deep RL men-jadwalkan pembersihan & optimasi tekanan -> predictive maintenance; digital twin untuk keputusan otonom.
+- Tantangan: dataset kecil/heterogen single-lab, kurang validasi eksternal, data leakage, kuantifikasi ketidakpastian jarang.
+- Transfer learning & hybrid physics-ML direkomendasikan.
+
+RELEVANSI KE TESIS
+Konteks. Paper ini adalah review domain membran dengan penekanan pada ML prediktif dan fouling — sangat dekat dengan objek tesis (RUL membran/RO). Meski tidak membahas RUL/survival, ia menyediakan: (i) taksonomi algoritma yang dapat diadopsi, (ii) penegasan kelangkaan data sebagai hambatan (mendukung arah small-data/transfer tesis), dan (iii) kaitan eksplisit ke predictive maintenance. Tetap tidak mengisi celah inti tesis: pemodelan data tersensor.
+
+JUSTIFIKASI DIMENSI
+- d1 = "1": data deret waktu multi-sensor (LSTM flux decline/fouling vs waktu; TMP evolution; data pilot conductivity/flow/recovery).
+- d2 = "": tidak ada definisi RUL/ambang kegagalan formal.
+- d3 = "": tidak ada survival/Weibull/hazard/censoring.
+- d4 = "1": RF, XGBoost/LightGBM/CatBoost/GBR, SVM/SVR, ANN, CNN, RNN/LSTM/GRU, ANFIS, RVM, deep RL, VAE/GAN.
+- d5 = "1": LSTM-CSA + Monte Carlo 'quantifying uncertainty' (Abba 2023); review menandai 'scarce uncertainty quantification' sebagai kelemahan.
+- d6 = "1": predictive maintenance, penjadwalan pembersihan via RL, digital twin/autonomous decision.
+- d7 = "1": domain inti NF/RO/desalinasi + fouling.
+- d8 = "1": kelangkaan/heterogenitas data, data augmentation, rekomendasi transfer learning & hybrid physics-ML.
+
+KUALITAS (skor 8/10)
+Q1=1, Q2=1, Q3=0,5 (review tanpa data primer), Q4=0,5, Q5=0,5 (evaluasi lintas-studi), Q6=N/A (tak ada censoring), Q7=1 (uncertainty dibahas), Q8=1 (predictive maintenance). Skor = 5,5/7*10 ≈ 8.
+
+LIMITASI
+Bukan studi primer; tidak mendefinisikan RUL dan tanpa survival/censoring; mayoritas studi yang direview skala lab/pilot; validasi eksternal & data leakage; uncertainty quantification jarang.
+
+BUKTI
+- 'assessing the integration of ML and AI across three critical domains: fabrication optimisation, performance prediction, and fouling diagnosis and mitigation, through the analysis of 100 NF-ML publications.'
+- '...scarce uncertainty quantification.'
+- 'utilising DL time-series models to predict fouling events days or weeks in advance... extending membrane lifespan.'
+- 'transfer learning pre-training DL models on large general datasets and fine-tuning them for NF applications could be an effective strategy to overcome small datasets.'

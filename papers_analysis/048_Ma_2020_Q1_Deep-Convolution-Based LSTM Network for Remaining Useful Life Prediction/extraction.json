@@ -1,0 +1,47 @@
+{
+ "no": 45,
+ "judul": "Deep-Convolution-Based LSTM Network for Remaining Useful Life Prediction",
+ "penulis": "Meng Ma, Zhu Mao",
+ "tahun": 2020,
+ "jurnal": "IEEE Transactions on Industrial Informatics",
+ "doi": "10.1109/TII.2020.2991796",
+ "kuartil": "Scopus Q1 (SCImago SJR Best Quartile)",
+ "pilar": "B. Deep Learning RUL",
+ "ringkasan": "Studi mengusulkan jaringan CLSTM (convolution-based LSTM) untuk prediksi RUL bantalan (bearing), dengan operasi konvolusi pada transisi input-to-state dan state-to-state LSTM sehingga menangkap informasi time-frequency dan temporal sekaligus. Input berupa fitur time-frequency (STFT) dari sinyal vibrasi run-to-failure, diproses arsitektur encoding-forecasting berlapis dua CLSTM. Pada dua uji run-to-failure, CLSTM mengalahkan deep CNN dan deep LSTM (RMSE 29,7/10,8 menit vs 47,9/18,2 dan 40,7/15,6).",
+ "kontribusi": "Preseden arsitektur deep learning RUL (convolutional LSTM) dengan data vibrasi run-to-failure nyata dan pembanding deep CNN/LSTM, berguna bagi tesis sebagai rujukan metode prediksi RUL; namun tidak menangani penyensoran/survival dan bukan domain membran, sehingga Pendukung.",
+ "temuan_kunci": [
+  "CLSTM mengonvolusi transisi input-to-state dan state-to-state LSTM, berbeda dari penyambungan seri CNN-LSTM biasa.",
+  "RMSE/MAE: Bearing A 29,7/23,5 menit; Bearing B 10,8/6,0 menit; mengungguli deep CNN (47,9/18,2) dan deep LSTM (40,7/15,6).",
+  "Fitur time-frequency (STFT) memberi informasi lebih daripada fitur statistik time/frequency saja.",
+  "Hyperparameter: input 6x165x41, hidden unit 110 (grid search 60-120), filter 5x4, 2 layer CLSTM, batch 10, Adam lr 0,001, konvergen setelah 50 epoch.",
+  "Keterbatasan: waktu pelatihan CLSTM lebih lama akibat operasi konvolusi."
+ ],
+ "dimensi": {"d1": "1", "d2": "1", "d3": "", "d4": "1", "d5": "", "d6": "", "d7": "", "d8": ""},
+ "alasan_dimensi": {
+  "d1": "Memakai sinyal vibrasi deret waktu (sampling 20.480 Hz, tiap set 32.768 titik, setiap 5 menit) dari uji run-to-failure bearing, ditambah 4 sensor termokopel suhu; input model adalah fitur time-frequency berurutan.",
+  "d2": "Mendefinisikan target RUL eksplisit dan ambang kegagalan bearing: uji dihentikan ketika suhu melampaui ambang tertentu yang menandai kegagalan bantalan uji (run-to-failure).",
+  "d3": "Tidak memodelkan data tersensor/survival/Weibull/hazard; RUL dilabeli langsung dari siklus hidup penuh bearing.",
+  "d4": "Memakai arsitektur spesifik CLSTM (operasi konvolusi pada gate/transition LSTM) yang ditumpuk dua lapis dengan fully-connected ReLU dan regresi linear; optimizer Adam; STFT untuk time-frequency.",
+  "d5": "Tidak mengkuantifikasi ketidakpastian prediksi (tanpa CI/interval/posterior); hanya RMSE dan MAE titik.",
+  "d6": "Menyebut 'decisions on which component needs to be replaced when' dan waktu untuk maintenance/logistical scheduling, tetapi tidak mengusulkan/menganalisis model keputusan atau jadwal formal.",
+  "d7": "Objek penelitian adalah bantalan (bearing) mesin rotasi, bukan membran/RO/desalinasi.",
+  "d8": "Tidak menangani small-data/transfer/hierarchical/all-censored; hanya dua bearing uji tanpa skema transfer atau penanganan data kecil khusus."
+ },
+ "relevansi": "Pendukung",
+ "kualitas": {"skor": 7, "rincian": {"Q1": 1, "Q2": 1, "Q3": 0.5, "Q4": 1, "Q5": 0.5, "Q6": "N/A", "Q7": 0, "Q8": "N/A"}, "catatan": "Ide CLSTM dijelaskan rinci (persamaan gate dengan konvolusi, gradient, hyperparameter lengkap) dan divalidasi pada data vibrasi run-to-failure nyata. Kelemahan: hanya 2 bearing uji dengan test set kecil (100/50 titik) dan hanya 2 baseline (CNN, LSTM); tanpa kuantifikasi ketidakpastian. Q6/Q8 tidak berlaku."},
+ "data_kuantitatif": {"dataset": "Uji run-to-failure dua bantalan (Bearing A dan B) pada test rig University of Massachusetts Lowell; sinyal vibrasi (20.480 Hz)", "ukuran": "Bearing A: 4071 dataset (test 100 terakhir, train 301 terakhir); Bearing B: 763 dataset (test 50, train 207); input 6x165x41; time window l=6", "metrik": "RMSE/MAE (menit): CLSTM 29,7/23,5 (A) dan 10,8/6,0 (B); deep CNN 47,9/40,1 dan 18,2/12,6; deep LSTM 40,7/35,2 dan 15,6/9,7"},
+ "metode": "Pipeline: STFT sinyal vibrasi -> fitur time-frequency (matriks 2D) -> CLSTM (LSTM dengan operasi konvolusi pada input-to-state dan state-to-state) -> dua layer CLSTM bertumpuk -> flatten -> fully-connected ReLU -> regresi linear RUL; loss MSE, optimizer Adam (lr 0,001), BPTT.",
+ "limitasi": [
+  "Hanya dua bearing uji dengan test set kecil (100/50 titik data).",
+  "Baseline terbatas (hanya deep CNN dan deep LSTM), tanpa pembanding SOTA luas.",
+  "Waktu pelatihan lebih lama akibat operasi konvolusi.",
+  "Tidak ada kuantifikasi ketidakpastian; tidak menangani censoring/small-data."
+ ],
+ "funding_coi": "Didukung Air Force Office of Scientific Research (Award FA95501810491); tidak ada pernyataan konflik kepentingan.",
+ "status_inklusi": "diterima",
+ "figur_dibaca": [
+  {"file": "figures/_page_3_Picture_2.jpeg", "isi": "Struktur CLSTM time-unfolded: hidden state H1-H3 dan input/state feature map S1-S3 sebagai matriks 2D, dengan koneksi konvolusi input-to-state dan state-to-state (recurrent); mengonfirmasi d4 (konvolusi pada transisi LSTM) meski gate tidak dilabeli."},
+  {"file": "figures/_page_4_Figure_2.jpeg", "isi": "Arsitektur deep CLSTM untuk RUL: input time-frequency features (tumpukan spektrogram dalam time window) -> CLSTM1 -> CLSTM2 -> fully connected (ReLU) -> output RUL; mengonfirmasi d4."}
+ ],
+ "bukti": ["Fig. 1: struktur LSTM", "Fig. 2: struktur CLSTM", "Fig. 3: deep CLSTM untuk RUL", "Table I: parameter bearing", "Table II: fitur statistik", "Table III: hasil RUL (RMSE/MAE 3 model)", "Eq. (1)-(27)"]
+}

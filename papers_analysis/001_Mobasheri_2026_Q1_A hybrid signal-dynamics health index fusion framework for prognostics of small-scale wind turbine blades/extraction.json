@@ -1,0 +1,49 @@
+{
+  "no": 99,
+  "judul": "A hybrid signal-dynamics health index fusion framework for prognostics of small-scale wind turbine blades",
+  "penulis": "Parisa Mobasheri, Ali Aranizadeh, Behrooz Vahidi",
+  "tahun": 2026,
+  "jurnal": "Scientific Reports",
+  "doi": "10.1038/s41598-026-63408-z",
+  "kuartil": "Scopus Q1 (ScImago SJR Best Quartile)",
+  "pilar": "A. Survival Analysis & Censored Data",
+  "ringkasan": "Studi mengusulkan kerangka condition monitoring dan prognostik untuk blade small-scale wind turbine (SSWT) dengan menggabungkan fitur signal-based (time/frequency domain) dan properti dinamika struktur (natural frequency, mode shape curvature, transmissibility). Tiga Health Index (PCA-based, Mahalanobis, autoencoder) difusi menjadi Combined Health Index (CHI) berbobot entropy. RUL diestimasi dengan pemodelan degradasi berbasis Weibull dan prediksi sekuensial LSTM/GRU, divalidasi pada tiga kondisi blade: healthy (C), degradasi global (L), dan degradasi lokal (R).",
+  "kontribusi": "Menunjukkan pola fusi HI multi-indikator + estimasi RUL ganda (Weibull statistis + LSTM data-driven) dengan pelaporan interval bootstrap - berguna sebagai contoh strateji prognostik hybrid; namun pemodelan Weibull dangkal (tanpa pencensoringan) dan domainnya blade turbin angin, bukan membran/RO.",
+  "temuan_kunci": [
+    "CHI memisahkan kondisi C < R < L dengan CV 0,042 (vs PCA 0,089, AE 0,124, MD 0,067) dan SNR 23,8 dB, lebih robust dari HI tunggal.",
+    "Transmissibility adalah indikator dominan; natural frequency sensitif ke degradasi global (L), curvature ke degradasi lokal (R).",
+    "Frekuensi puncak turun pada L (225,97 Hz vs 252 Hz C) dan sedikit naik pada R (256,99 Hz).",
+    "RUL: C ~ tak hingga (Weibull)/50 langkah (LSTM); L 0,62 (Weibull)/21 langkah (LSTM); R 0,72 (Weibull)/8 langkah (LSTM) - degradasi lokal (R) paling cepat.",
+    "Uji ANOVA signifikan (p<0,01), Tukey HSD antar-pasangan p<0,05; 95% bootstrap CI: C=[0;0,02], L=[0,72;0,89], R=[0,68;0,85]."
+  ],
+  "dimensi": {"d1": "1", "d2": "1", "d3": "1", "d4": "1", "d5": "1", "d6": "", "d7": "", "d8": ""},
+  "alasan_dimensi": {
+    "d1": "Memakai sensor multi-saluran deret waktu: 24 strain gauge + 8 akselerometer (sampling 2 kHz) pada blade turbin.",
+    "d2": "Mendefinisikan RUL secara eksplisit sebagai RUL = min{tau | HI(t+tau) >= theta} dengan failure threshold theta.",
+    "d3": "Memakai pemodelan degradasi berbasis Weibull (model degradasi eksponensial HI(t)=alpha e^{beta t}+eps, lalu parameter Weibull scale/shape dan RUL, Tabel 6) - Weibull benar-benar diterapkan untuk estimasi RUL, meski tanpa pencensoringan.",
+    "d4": "Model spesifik: autoencoder (HI), LSTM/GRU (prediksi sekuens), plus PCA dan Mahalanobis; dibanding CNN dan BiLSTM.",
+    "d5": "Melaporkan interval kepercayaan 95% bootstrap, coefficient of variation (CV), SNR, dan VIF untuk menilai keandalan/ketidakpastian HI.",
+    "d6": "Membahas predictive maintenance, pengurangan downtime, dan biaya, tetapi tidak menyusun atau menganalisis model keputusan pemeliharaan konkret.",
+    "d7": "Objek penelitian adalah blade turbin angin skala kecil, bukan membran/RO/desalinasi.",
+    "d8": "Tidak ada penanganan transfer/hierarki/all-censored, dan small-data bukan fokus metodologis (hanya keterbatasan data eksperimen tiga kondisi)."
+  },
+  "relevansi": "Inti-Metode",
+  "kualitas": {"skor": 6, "rincian": {"Q1": 1, "Q2": 0.5, "Q3": 0.5, "Q4": 0.5, "Q5": 0.5, "Q6": 0.5, "Q7": 0.5, "Q8": 0.5}, "catatan": "Kerangka lengkap (praproses, ekstraksi fitur multi-domain, PCA/t-SNE, fusi HI, Weibull+LSTM) dan validasi statistik rapi (silhouette 0.82, Davies-Bouldin 0.41, ANOVA, Tukey HSD, bootstrap CI, CV/SNR/VIF). Kelemahan: RUL divalidasi pada lintasan sintetis dari hanya tiga kondisi diskrit (bukan degradasi gradual nyata); 'LSTM-inspired' tidak dispesifikasikan rinci; pemodelan Weibull dangkal tanpa pencensoringan (Q6=0,5); data hanya on request. Q7=0,5 karena CI dilaporkan untuk HI, bukan untuk RUL. Q8=0,5 karena kaitan pemeliharaan hanya motivasional."},
+  "data_kuantitatif": {"dataset": "Eksperimen pada SSWT 1,5/5,0 kW (IEC 61400-2), rotor 5 m; 24 strain gauge + 8 akselerometer; tiga kondisi: healthy (C), global degradation (L), localized (R)", "ukuran": "3 kondisi diskrit; lintasan degradasi disintesis via monotonic cubic spline interpolation 50 langkah waktu; fitur diekstraksi multi-saluran", "metrik": "CHI CV 0,042, SNR 23,8 dB; silhouette 0,82; Davies-Bouldin 0,41; ANOVA p<0,01, Tukey p<0,05; bootstrap CI 95% C=[0;0,02]/L=[0,72;0,89]/R=[0,68;0,85]; RUL RMSE L=0,08, R=0,11; MAE L=0,06, R=0,09; bobot CHI w=[0,32;0,28;0,40]"},
+  "metode": "(1) Praproses: band-pass filter (0,5-400 Hz), normalisasi z-score, wavelet denoising (Daubechies-4, SURE/minimax); (2) ekstraksi fitur time domain (mean, RMS, skewness, kurtosis), frequency domain (peak freq, spectral energy), dan dinamika (natural frequency, mode shape curvature, transmissibility); (3) reduksi dimensi PCA/t-SNE; (4) HI: PCA-based, Mahalanobis distance, autoencoder reconstruction error; (5) CHI = jumlah berbobot HI (entropy weighting, w=[0,32;0,28;0,40]); (6) RUL: model degradasi eksponensial + Weibull (scale/shape) dan prediksi LSTM/GRU; metrik RMSE/MAE, validasi ANOVA/Tukey/bootstrap.",
+  "limitasi": [
+    "Hanya tiga kondisi diskrit (C, L, R) tanpa tahap degradasi gradual; lintasan RUL disintesis.",
+    "Parameter autoencoder sensitif; RUL divalidasi di laboratorium terkontrol.",
+    "Tidak ada pencensoringan/survival analysis sejati (Weibull hanya untuk RUL point).",
+    "Fitur 'LSTM-inspired' tidak dispesifikasikan rinci; tanpa kode; data on request.",
+    "Domain blade turbin angin, bukan membran/RO."
+  ],
+  "funding_coi": "Penulis menyatakan tidak menerima dana spesifik untuk pekerjaan ini dan tidak ada konflik kepentingan. Dataset tersedia dari penulis atas permintaan.",
+  "status_inklusi": "diterima",
+  "figur_dibaca": [
+    {"file": "_page_19_Figure_2.jpeg", "isi": "Flowchart metode: Data Acquisition (24 strain gauge + 8 accelerometer; kondisi C/L/R) -> Preprocessing (band-pass, normalisasi, wavelet) -> Feature Extraction (time/frequency/dynamic) -> Dimensionality Reduction (PCA, t-SNE) -> HI Construction (PCA, Mahalanobis, Autoencoder) -> CHI Fusion -> RUL Estimation (Weibull + LSTM/GRU) -> Validation."},
+    {"file": "_page_28_Figure_1.jpeg", "isi": "Sinyal degradasi: kondisi C (biru) stabil ~1,0 sepanjang 50 langkah; L (merah) dan R (magenta) menurun; R turun paling cepat."},
+    {"file": "_page_28_Figure_5.jpeg", "isi": "Estimasi RUL: (a) Weibull - C tak hingga, L 0,6191, R 0,7218 (unit sembarang); (b) LSTM - C 50, L 21, R 8 langkah, menunjukkan degradasi lokal (R) paling cepat menurunkan umur."}
+  ],
+  "bukti": ["Eq (11)-(13): fitur time domain (RMS, skewness, kurtosis)", "Eq (14)-(15): DFT & spectral energy", "Eq (22)-(24): HI PCA/Mahalanobis/AE", "Eq (25)-(26): CHI fusion berbobot", "Eq (27)-(28): model degradasi eksponensial & definisi RUL", "Eq (29): prediksi RUL LSTM/GRU", "Tabel 3: fitur akselerasi antar kondisi", "Tabel 4: nilai HI antar kondisi", "Tabel 5: CHI lintas metode", "Tabel 6: parameter Weibull & RUL"]
+}

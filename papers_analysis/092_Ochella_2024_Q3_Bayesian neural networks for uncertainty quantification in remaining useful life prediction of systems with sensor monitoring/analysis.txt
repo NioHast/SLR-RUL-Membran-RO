@@ -1,0 +1,52 @@
+PAPER 48 — Ochella et al. (2024)
+Judul: Bayesian neural networks for uncertainty quantification in remaining useful life prediction of systems with sensor monitoring
+Jurnal: Advances in Mechanical Engineering | Q3 (SCImago SJR Best Quartile) | DOI 10.1177/16878132241239802
+Pilar: C. Bayesian & Uncertainty | Relevansi: Pendukung | Skor kualitas: 8/10
+
+KARAKTERISTIK STUDI
+Studi prognostik (PHM) yang menargetkan prediksi RUL probabilistik (distribusi), bukan point estimate. Berangkat dari gap: mayoritas algoritma RUL hanya memberi titik tunggal dan mengabaikan ketidakpastian aleatorik (data/noise) maupun epistemik (model/hyperparameter).
+
+METODE
+- Deep Bayesian Neural Network (BNN) dengan Monte Carlo (MC) dropout sebagai aproksimasi variational inference yang murah komputasi.
+- Loss = negative log likelihood (TensorFlow Probability), softplus mengikat parameter varians agar positif.
+- Output layer dua node: mean RUL dan informasi varians (menangkap aleatorik + epistemik).
+- Tuning hyperparameter memakai Hyperband (Keras Tuner): 992 unit tiap hidden layer, dropout 0,1, learning rate 0,001 Adam, epoch optimal 83.
+- Prediksi: T=1000 forward pass stokastik; mean RUL = rata-rata, CI 95% dari kuantil 0,025 dan 0,975.
+- RUL dimodelkan mengikuti kurva P-F (capping 125 siklus), bukan garis lurus.
+- Implementasi: TensorFlow 2.6.0 + TensorFlow Probability 0.13.0; praproses di MATLAB.
+
+DATA
+NASA C-MAPSS FD001: 100 unit turbofan run-to-failure, 3 setelan operasi + 21 sensor. Tujuh sensor varians-nol dibuang; 12 sensor terpilih lewat fitness (prognosability+trendability+monotonicity) ambang 2,0. Latih/validasi 85/15.
+
+TEMUAN UTAMA
+- BNN+MC dropout memberi mean RUL + credible interval 95% tanpa asumsi eksplisit distribusi RUL benar.
+- Coverage: 24 dari 39 unit (RUL<=60) benar-benar berada dalam batas prediksi pada level 95%.
+- RMSE mean RUL 38,94 siklus (lebih tinggi dari CNN 18,45, LSTM 16,14, dll.) karena BNN dioptimasi pada NLL, bukan MSE.
+- Rata-rata CI 38,78 siklus; pita ketidakpastian menyempit saat mendekati end-of-life.
+- Trajektori RUL menunjukkan plateau lalu membengkok saat fault terdeteksi sensor.
+
+RELEVANSI KE TESIS
+Mendukung sisi "deep learning + uncertainty quantification" tesis: menunjukkan cara menghasilkan distribusi RUL (mean + interval) sebagai input keputusan maintenance. Namun domainnya turbofan (bukan membran), tidak ada survival/censoring/Weibull, dan tidak ada model keputusan maintenance formal. Posisi: Pendukung.
+
+JUSTIFIKASI DIMENSI
+- d1=1: data time-series multi-sensor (21 sensor + 3 setting, per siklus per unit).
+- d2=1: RUL didefinisikan eksplisit (waktu sebelum melewati failure threshold) dan dimodelkan via kurva P-F.
+- d3="": tidak memodelkan data tersensor; tanpa survival/Weibull/hazard/cure. Kata Weibull hanya di rujukan.
+- d4=1: model spesifik BNN + MC dropout (TensorFlow/TFP).
+- d5=1: credible interval 95% + pelaporan coverage.
+- d6="": tidak ada analisis keputusan maintenance (jadwal/biaya/DSS); hanya klaim kualitatif.
+- d7="": domain turbofan, bukan membran/RO/desalinasi/fouling.
+- d8="": dataset lengkap standar; bukan small-data/transfer/hierarchical/all-censored.
+Bukti kunci: "the average CI obtained ... is 38.78 cycles"; "24 units falls completely within the range of the RUL prediction"; "The author(s) received no financial support".
+
+KUALITAS (8/10)
+Q1 RQ jelas (1); Q2 metode memadai (1); Q3 data publik & valid (1); Q4 reproducible sebagian (hyperparameter & versi dijelaskan, tanpa kode) (0,5); Q5 evaluasi kurang tepat (RMSE vs NLL, diakui penulis) namun coverage dilaporkan (0,5); Q6 N/A; Q7 pelaporan ketidakpastian kuat (1); Q8 tautan maintenance hanya kualitatif (0,5). Skor = round(5.5/7*10) = 8.
+
+LIMITASI
+RMSE tidak sebanding (NLL vs MSE); asumsi implisit posterior Gaussian; tanpa model keputusan maintenance; beban komputasi besar (GPU); metrik BNN belum baku; tidak menangani censoring.
+
+BUKTI (kutipan)
+- "the method can produce highly accurate predictions for RUL distribution parameters in safety critical components" (Abstract).
+- "This fills the gap in earlier heuristic approaches that only attempt to achieve uncertainty quantification by making several, repeated point estimations" (Introduction).
+- "Out of the 39 engine units with RULt>=60, the ground truth RUL for 24 units falls completely within the range of the RUL prediction along with the uncertainty bounds" (Prediction results).
+- "The author(s) received no financial support..." (Funding declaration).

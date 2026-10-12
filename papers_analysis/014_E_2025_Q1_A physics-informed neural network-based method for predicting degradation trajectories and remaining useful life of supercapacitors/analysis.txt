@@ -1,0 +1,51 @@
+PAPER 80 | no=80 | Relevansi: Inti-Domain | Skor kualitas: 9/10 | Dimensi: d1,d2,d4,d5,d8
+Judul: A physics-informed neural network-based method for predicting degradation trajectories and remaining useful life of supercapacitors
+Penulis: Lixin E, Jun Wang, Ruixin Yang, Chenxu Wang, Hailong Li, Rui Xiong (2025)
+Jurnal: Green Energy and Intelligent Transportation | Scopus Q1 (SCImago SJR 2024) | DOI 10.1016/j.geits.2025.100291
+
+KARAKTERISTIK STUDI
+Studi prognostik RUL pada supercapacitor dengan pendekatan hybrid physics-informed neural network (PINN). Berangkat dari keterbatasan model-based (terlalu menyederhanakan proses) dan data-driven (butuh data besar, black-box), penulis menggabungkan keduanya: LSTM sebagai backbone dan persamaan penuaan empiris sebagai kendala fisik dalam loss.
+
+METODE
+- Arsitektur PINN berbasis LSTM (2 lapis, 128 & 256 neuron); input nomor siklus, output SOH.
+- Loss_total = Loss_data + Loss_physics; Loss_physics berasal dari SOH = A·ln(cycle) + B, dengan A,B di-update bersama parameter jaringan.
+- Bobot penyeimbang lambda dioptimasi via Bayesian optimization (surrogate Gaussian process).
+- Min-Max normalisasi; optimizer Adam; dropout 0,2; 5000 epoch; learning-rate decay.
+
+DATA
+- 113 supercapacitor komersial elektroda karbon (dataset Ref.[10]); 10.000 siklus charge-discharge, 4 batch kondisi.
+- Ambang gagal: kapasitansi turun ke 90% nilai awal (0,90 F).
+- Tiga rezim training: 100/300/500 siklus (1-5% rentang hidup) untuk menguji kemampuan few-shot.
+- Metrik: RMSE, MAE, MAPE (SOH dan RUL).
+
+TEMUAN UTAMA
+- RMSE trajektori 3 mF (500 siklus training) dan 5,7 mF (100 siklus); RMSE RUL 269,4 siklus (500) dan 790,8 siklus (100).
+- Mengalahkan LSTM (RMSE RUL 1.993,9) dan OLS (3.273,3); reduksi RMSE hingga 85-94,6%.
+- lambda optimal turun dari 4,116 (100 siklus) menjadi 1,09 (500 siklus): regulasi fisika mengompensasi kelangkaan data.
+
+RELEVANSI KE TESIS
+Relevan sebagai contoh "Inti-Domain" pada sumbu small-data: menunjukkan bahwa integrasi pengetahuan fisika dapat menekan kebutuhan data — penting untuk RUL membran RO/desalinasi yang trajektori degradasinya langka. Namun tidak menyentuh inti metodologis tesis (survival analysis/data tersensor) maupun domain membran. Nilai transfer: kerangka PINN + optimasi bobot loss bisa diadaptasi untuk model degradasi fouling membran.
+
+JUSTIFIKASI DIMENSI
+- d1=1: data kapasitas-vs-siklus adalah deret waktu; input model adalah indeks waktu (nomor siklus).
+- d2=1: ambang gagal eksplisit — SOH = 90% kapasitas awal (0,90 F); RUL dihitung via iterasi sampai ambang.
+- d3="": tidak ada data tersensor/survival/Weibull/hazard/cure; semua unit diamati sampai gagal.
+- d4=1: model spesifik LSTM + Bayesian optimization (Gaussian process).
+- d5=1: Bayesian optimization memodelkan ketidakpastian sigma(M) via surrogate GP (bukan interval kredibel RUL).
+- d6="": hanya menyebut predictive maintenance secara retoris; tidak ada model keputusan.
+- d7="": domain supercapacitor, bukan membran/RO.
+- d8=1: skema few-shot (training 1-5% siklus hidup) dan diskusi eksplisit skenario data langka.
+
+KUALITAS (9/10)
+Q1=1 (RQ jelas); Q2=1 (metode sesuai, ablasi PINN vs LSTM vs OLS); Q3=1 (dataset 113 unit, tiga rezim data); Q4=1 (parameter, environment Python/Torch, data on request); Q5=1 (RMSE/MAE/MAPE + baseline + perbandingan model mutakhir); Q6=N/A (tidak ada censoring); Q7=0,5 (ketidakpastian hanya pada surrogate BO); Q8=N/A (tanpa keputusan pemeliharaan). skor = round(5,5/6×10) = 9.
+
+LIMITASI
+- Bukan domain membran; hasil belum tentu transfer langsung.
+- Tanpa penanganan data tersensor dan tanpa interval prediksi RUL.
+- Ketergantungan pada persamaan penuaan empiris yang mungkin tidak berlaku untuk fouling membran.
+
+BUKTI
+- "a RMSE of 269 cycles (the average cycle life is 5180 cycles) for the RUL".
+- "The failure of a supercapacitor is defined as when its capacitance decreases to 90% of its initial value (0.90 F)".
+- "when 500 cycles are used for training, the average RMSE ... is 269.4 cycles ... 1,993.9 for the LSTM ... 3,273.3 for the OLS".
+Gambar dibaca: _page_4_Figure_17.jpeg (kerangka PINN), _page_10_Figure_11.jpeg (radar error RUL).

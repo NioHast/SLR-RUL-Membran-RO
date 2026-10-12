@@ -1,0 +1,48 @@
+PAPER 57 — Kapuria & Cole (2023)
+Judul : Integrating Survival Analysis with Bayesian Statistics to Forecast the Remaining Useful Life of a Centrifugal Pump Conditional to Multiple Fault Types
+Jurnal: Energies (MDPI) | Scopus Q1 | DOI 10.3390/en16093707 | Pilar: A. Survival Analysis & Censored Data
+
+KARAKTERISTIK STUDI
+Menggabungkan analisis survival dengan Bayesian network untuk memprediksi RUL pompa sentrifugal (feedwater NPP) secara probabilistik dan terkondisi pada tipe fault (normal, kavitasi, poros bengkok). Fokus pada reduksi biaya O&M melalui prediksi RUL yang dapat dipakai dalam kerangka keputusan maintenance.
+
+METODE
+- Bayesian network (GeNIe/SMILE): node akar Bent Shaft & Cavitation -> fitur getaran (crest factor, kurtosis, skewness) -> Pump RUL; CPT dipelajari dengan EM (parameter learning).
+- Analisis getaran: FFT, fitur crest factor, skewness, kurtosis; didiskretisasi untuk node.
+- Survival analysis: Kaplan-Meier + model Weibull per tipe fault (lifelines); S(t)=exp[-(t/λ)^ρ].
+- Data: simulasi model fisika pompa (massa-pegas-peredam) untuk mode normal/abnormal; data lifetime sintetis 100 pompa run-to-failure.
+- Validasi: studi kasus kavitasi (data uji terpisah) dengan evidence getaran berbentuk distribusi.
+
+DATA
+Pompa sentrifugal feedwater single-stage, 1747 kW, 6000 gpm @ 1300 psi, 3560 rpm, impeller 0,46 m. Data getaran sintetis dan data lifetime sintetis 100 pompa. Fitur didiskretisasi (Tabel 2-4).
+
+TEMUAN UTAMA
+- Weibull: cavitation λ=225,03, ρ=4,41; bent shaft λ=276,82, ρ=2,93.
+- Median life: kavitasi ~200 siklus; poros bengkok ~220 siklus.
+- Diagnosis probabilistik: studi kasus 95,8% kavitasi (tidak deterministik).
+- RUL terkondisi: dengan 95,8% kavitasi, peluang survival melewati 450 siklus hanya ~4%.
+- Kurva RUL mengikuti profil kavitasi dengan deviasi akibat ketidakpastian.
+
+RELEVANSI KE TESIS
+Inti-Metode. Ini contoh langsung integrasi survival analysis + Bayesian inference untuk RUL terkondisi pada tipe fault - sangat selaras dengan tesis yang ingin mengondisikan RUL membran pada mode fouling. Menunjukkan bagaimana ketidakpastian probabilistik (posterior) menjadi keluaran yang dapat dipakai keputusan maintenance. Tidak menyentuh domain membran, tetapi pola metodologis (survival per-mode + Bayesian conditioning) dapat dipetakan satu-ke-satu ke data membran.
+
+JUSTIFIKASI DIMENSI
+- d1 = "1": data getaran/sensor sepanjang siklus operasi; fitur per sampel 10.000 titik.
+- d2 = "1": RUL didefinisikan formal (umur impeller, ambang kegagalan, survival function).
+- d3 = "1": pemodelan waktu-ke-event (Kaplan-Meier, Weibull) dan klaim robust terhadap 'incomplete data sets'.
+- d4 = "1": Bayesian network + Weibull + Kaplan-Meier.
+- d5 = "1": output probabilistik/posterior, CPT, distribusi survival (95,8% kavitasi; survival 4% melewati 450 siklus).
+- d6 = "1": keputusan maintenance/O&M, penjadwalan, asset management.
+- d7 = "": domain pompa sentrifugal, bukan membran/RO.
+- d8 = "": bukan small-data/transfer/hierarchical/all-censored metodologis; data lifetime sintetis lengkap.
+
+KUALITAS (skor 8/10)
+Q1=1, Q2=1, Q3=0,5 (data sintetis), Q4=0,5 (proprietary tools, data tidak publik), Q5=0,5 (satu studi kasus, tanpa metrik akurasi menyeluruh), Q6=1 (kerangka survival), Q7=1 (probabilistik/posterior), Q8=1 (maintenance). Skor = 6,5/8*10 ≈ 8.
+
+LIMITASI
+Data sintetis; validasi terbatas; fault dimodelkan biner; data/tools tidak publik; bukan domain membran.
+
+BUKTI
+- 'we integrate survival analysis with Bayesian statistics to forecast the health of the pump conditional to its current state... for the purpose of predictive maintenance.'
+- 'Survival analysis is suitable for machine forecasting because it can provide acceptable estimates even with incomplete data sets.'
+- 'The resulting λ and ρ values for the cavitation Weibull model are 225.03 and 4.41'; bent shaft '276.82 and 2.93.'
+- '95.8% likelihood of cavitation' and '4% likelihood of survival past 450 operational cycles.'

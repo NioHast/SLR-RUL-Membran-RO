@@ -1,0 +1,27 @@
+LAPORAN PHASE 0-4 (Pipeline Full-Text di Kaggle)
+========================================================
+Sumber kode: source_code/kaggle_phases/ (phase0_pilot_kernel, phase1_full_kernel, make_kernel.py, phase2_*.py)
+
+PHASE 1 - SKALA (SELESAI):
+- Dataset: muhammadnioh/slr-corpus-pdfs (101 PDF, 340 MB).
+- Kernel: muhammadnioh/slr-corpus-marker (GPU T4, internet ON, marker-pdf==1.10.2).
+- Hasil: 101/101 markdown (OK:101, ERR:0), 2023 figur JPEG, output 94 MB, waktu ~5,5 jam.
+- Orkestrasi penuh dari WSL via kaggle CLI.
+
+PHASE 2 - UPDATE KORPUS (SELESAI):
+- 101 folder per_paper/<no>_<Penulis>_<tahun>/ dibangun (paper.pdf, text.md, figures/, meta.json,
+  extraction.json, analysis.txt).
+- _INDEX.csv dibuat.
+- CATATAN: ekstraksi dimensi otomatis (heuristik kata kunci) terlalu longgar -> DIBATALKAN;
+  dimensi korpus resmi tetap memakai penilaian manual sebelumnya.
+
+PHASE 3 - REBUILD DELIVERABLES (SELESAI):
+- SLR_Korpus.xlsx, SLR_Laporan.docx/pdf, SLR_Artikel_Jurnal.docx/pdf, SLR_Draft.txt diregenerasi (101 paper).
+
+PHASE 4 - QA (SELESAI):
+- 101 folder, semua punya paper.pdf + text.md; 2023 figur; xlsx 101 baris; bebas em dash.
+
+KENDALA & SOLUSI:
+- marker-pdf 2.0.0 butuh Docker/vLLM (gagal) -> pin marker-pdf==1.10.2.
+- Folder output 3-digit ("001") vs str(no) -> perbaiki format "%03d".
+- Heuristik dimensi noisy -> tidak dipakai untuk korpus.

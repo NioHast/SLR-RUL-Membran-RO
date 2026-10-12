@@ -1,0 +1,1226 @@
+{
+ "10.1016/j.ymssp.2012.02.015": {
+  "no": 1,
+  "judul": "Machine performance degradation assessment and remaining useful life prediction using proportional hazard model and support vector machine",
+  "is_oa": true,
+  "oa_status": "green",
+  "licenses": [],
+  "has_pdf": true,
+  "include_fulltext": false,
+  "reason": "OA tanpa lisensi jelas (bronze/other-oa)"
+ },
+ "10.1155/2014/807693": {
+  "no": 2,
+  "judul": "Thermal Cycling Life Prediction of Sn-3.0Ag-0.5Cu Solder Joint Using Type-I Censored Data",
+  "is_oa": true,
+  "oa_status": "gold",
+  "licenses": [
+   "cc-by",
+   "cc-by-sa"
+  ],
+  "has_pdf": true,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.3390/batteries3040032": {
+  "no": 3,
+  "judul": "Statistical Characterization of the State-of-Health of Lithium-Ion Batteries with Weibull Distribution Function, A Consideration of Random Effect Model in Charge Capacity Decay Estimation",
+  "is_oa": true,
+  "oa_status": "gold",
+  "licenses": [
+   "cc-by",
+   "cc-by-sa"
+  ],
+  "has_pdf": true,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.1016/j.ress.2016.07.019": {
+  "no": 4,
+  "judul": "Remaining useful life estimation in heterogeneous fleets working under variable operating conditions",
+  "is_oa": true,
+  "oa_status": "green",
+  "licenses": [
+   "other-oa"
+  ],
+  "has_pdf": true,
+  "include_fulltext": false,
+  "reason": "OA tanpa lisensi jelas (bronze/other-oa)"
+ },
+ "10.3390/s26092592": {
+  "no": 5,
+  "judul": "Interval Prediction of Remaining Useful Life Based on Uncertainty Quantification with Bayesian Convolutional Neural Networks Featuring Dual-Output Units",
+  "is_oa": true,
+  "oa_status": "gold",
+  "licenses": [
+   "cc-by",
+   "cc-by-sa"
+  ],
+  "has_pdf": true,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.36001/ijphm.2015.v6i4.2319": {
+  "no": 6,
+  "judul": "Uncertainty in Prognostics and Systems Health Management",
+  "is_oa": true,
+  "oa_status": "gold",
+  "licenses": [
+   "cc-by-sa",
+   "other-oa"
+  ],
+  "has_pdf": true,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.1049/cim2.12021": {
+  "no": 7,
+  "judul": "A comprehensive framework from real‐time prognostics to maintenance decisions",
+  "is_oa": true,
+  "oa_status": "gold",
+  "licenses": [
+   "cc-by",
+   "cc-by-sa",
+   "other-oa"
+  ],
+  "has_pdf": true,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.3390/s22124549": {
+  "no": 8,
+  "judul": "Remaining Useful Life Prediction Method for Bearings Based on LSTM with Uncertainty Quantification",
+  "is_oa": true,
+  "oa_status": "gold",
+  "licenses": [
+   "cc-by",
+   "cc-by-sa"
+  ],
+  "has_pdf": true,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.1038/s41598-026-65271-4": {
+  "no": 9,
+  "judul": "Survival-analysis-guided machine learning for failure and remaining-useful-life prediction in railway compressor",
+  "is_oa": true,
+  "oa_status": "gold",
+  "licenses": [
+   "cc-by-nc-nd"
+  ],
+  "has_pdf": true,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.1016/j.ceja.2026.101217": {
+  "no": 10,
+  "judul": "AI-based remaining useful life prediction of seawater desalination membranes",
+  "is_oa": true,
+  "oa_status": "gold",
+  "licenses": [
+   "cc-by-nc-nd",
+   "cc-by-sa"
+  ],
+  "has_pdf": false,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.1109/tase.2025.3640217": {
+  "no": 11,
+  "judul": "A Neural Network-Based Survival Analysis Model Considering Censored Data for Failure Prediction",
+  "is_oa": false,
+  "oa_status": "closed",
+  "licenses": [],
+  "has_pdf": false,
+  "include_fulltext": false,
+  "reason": "closed"
+ },
+ "10.36001/ijphm.2025.v16i2.4260": {
+  "no": 12,
+  "judul": "LSTM and Transformers based methods for Remaining Useful Life Prediction considering Censored Data",
+  "is_oa": true,
+  "oa_status": "gold",
+  "licenses": [
+   "cc-by",
+   "cc-by-sa",
+   "other-oa"
+  ],
+  "has_pdf": true,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.3390/s26061915": {
+  "no": 13,
+  "judul": "Survival Models for Predictive Maintenance and Remaining Useful Life in Sensor-Enabled Smart Energy Networks: A Review",
+  "is_oa": true,
+  "oa_status": "gold",
+  "licenses": [
+   "cc-by",
+   "cc-by-sa"
+  ],
+  "has_pdf": true,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.1007/s13201-018-0821-8": {
+  "no": 14,
+  "judul": "Design and development of reverse osmosis (RO) plant status monitoring system for early fault prediction and predictive maintenance",
+  "is_oa": true,
+  "oa_status": "gold",
+  "licenses": [
+   "cc-by",
+   "cc-by-sa"
+  ],
+  "has_pdf": true,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.1016/j.jwpe.2026.110543": {
+  "no": 15,
+  "judul": "Mechanism-aligned machine learning for membrane fouling prediction and process control in pressure-driven water treatment membranes: A review",
+  "is_oa": true,
+  "oa_status": "hybrid",
+  "licenses": [
+   "cc-by-nc-nd"
+  ],
+  "has_pdf": false,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.46604/peti.2025.15348": {
+  "no": 16,
+  "judul": "Improved CNN-LSTM Bearing Remaining Useful Life Prediction Based on the Weibull Loss Function",
+  "is_oa": true,
+  "oa_status": "gold",
+  "licenses": [
+   "cc-by-nc"
+  ],
+  "has_pdf": true,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.1109/lsens.2026.3673123": {
+  "no": 17,
+  "judul": "A Multisensor Cross-Modal Attention Framework for Weibull-Driven RUL Estimation for Liner Using Real-World Industrial Data",
+  "is_oa": false,
+  "oa_status": "closed",
+  "licenses": [],
+  "has_pdf": false,
+  "include_fulltext": false,
+  "reason": "closed"
+ },
+ "10.1016/j.mlwa.2023.100475": {
+  "no": 18,
+  "judul": "Intelligent framework for coagulant dosing optimization in an industrial-scale seawater reverse osmosis desalination plant",
+  "is_oa": true,
+  "oa_status": "gold",
+  "licenses": [
+   "cc-by-nc-nd",
+   "cc-by-sa"
+  ],
+  "has_pdf": false,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.1007/s00521-022-07667-7": {
+  "no": 19,
+  "judul": "Weibull recurrent neural networks for failure prognosis using histogram data",
+  "is_oa": true,
+  "oa_status": "hybrid",
+  "licenses": [
+   "cc-by"
+  ],
+  "has_pdf": true,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.1016/j.dwt.2025.101386": {
+  "no": 20,
+  "judul": "An insight into real-time monitoring and predictive modelling of ultrafiltration pretreatment for flow rate and fouling mitigation in seawater desalination",
+  "is_oa": true,
+  "oa_status": "gold",
+  "licenses": [
+   "cc-by",
+   "cc-by-sa"
+  ],
+  "has_pdf": true,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.3390/eng7030106": {
+  "no": 21,
+  "judul": "Prediction of Reverse Osmosis Membrane Fouling Using Machine Learning: MLR, ANN, and SVM at a Seawater Desalination Plant",
+  "is_oa": true,
+  "oa_status": "gold",
+  "licenses": [
+   "cc-by",
+   "cc-by-sa"
+  ],
+  "has_pdf": true,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.14456/scitechasia.2025.79": {
+  "no": 22,
+  "judul": "Predictive Modeling of Brackish Surface Water Quality for Reverse Osmosis Desalination Plants Using Advanced Machine Learning Techniques",
+  "is_oa": null,
+  "oa_status": null,
+  "licenses": [],
+  "has_pdf": false,
+  "include_fulltext": false,
+  "reason": "closed"
+ },
+ "10.3390/separations10020134": {
+  "no": 23,
+  "judul": "Multiscale Analysis of Permeable and Impermeable Wall Models for Seawater Reverse Osmosis Desalination",
+  "is_oa": true,
+  "oa_status": "gold",
+  "licenses": [
+   "cc-by",
+   "cc-by-sa"
+  ],
+  "has_pdf": true,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.3390/app8122416": {
+  "no": 24,
+  "judul": "Transfer Learning with Deep Recurrent Neural Networks for Remaining Useful Life Estimation",
+  "is_oa": true,
+  "oa_status": "gold",
+  "licenses": [
+   "cc-by",
+   "cc-by-sa"
+  ],
+  "has_pdf": false,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.1016/j.jwpe.2024.106532": {
+  "no": 25,
+  "judul": "Applications of artificial intelligence for membrane separation: A review",
+  "is_oa": true,
+  "oa_status": "hybrid",
+  "licenses": [
+   "cc-by"
+  ],
+  "has_pdf": false,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.1016/j.advmem.2026.100219": {
+  "no": 26,
+  "judul": "Hybrid models, digital twins, and digital shadows for sustainable membrane technologies: A critical review",
+  "is_oa": true,
+  "oa_status": "gold",
+  "licenses": [
+   "cc-by-nc-nd",
+   "cc-by-sa"
+  ],
+  "has_pdf": false,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.5004/dwt.2019.23444": {
+  "no": 27,
+  "judul": "Enhancing accuracy of membrane fouling prediction using hybrid machine learning models",
+  "is_oa": true,
+  "oa_status": "hybrid",
+  "licenses": [
+   "cc-by-nc-nd"
+  ],
+  "has_pdf": true,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.1038/s41598-022-12572-z": {
+  "no": 28,
+  "judul": "Prognostic modeling of predictive maintenance with survival analysis for mobile work equipment",
+  "is_oa": true,
+  "oa_status": "gold",
+  "licenses": [
+   "cc-by",
+   "cc-by-sa"
+  ],
+  "has_pdf": true,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.1038/s41598-026-54120-z": {
+  "no": 29,
+  "judul": "Physics-informed machine learning for cross-study prediction of oil–water membrane fouling",
+  "is_oa": true,
+  "oa_status": "gold",
+  "licenses": [
+   "cc-by-nc-nd"
+  ],
+  "has_pdf": true,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.1109/access.2020.2976595": {
+  "no": 30,
+  "judul": "A Bayesian Optimization AdaBN-DCNN Method With Self-Optimized Structure and Hyperparameters for Domain Adaptation Remaining Useful Life Prediction",
+  "is_oa": true,
+  "oa_status": "gold",
+  "licenses": [
+   "cc-by",
+   "cc-by-sa"
+  ],
+  "has_pdf": true,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.1109/access.2022.3226780": {
+  "no": 31,
+  "judul": "Data-Efficient Estimation of Remaining Useful Life for Machinery With a Limited Number of Run-to-Failure Training Sequences",
+  "is_oa": true,
+  "oa_status": "gold",
+  "licenses": [
+   "cc-by",
+   "cc-by-sa"
+  ],
+  "has_pdf": true,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.3390/w17081169": {
+  "no": 32,
+  "judul": "Artificial Intelligence Applications in Water Treatment and Desalination: A Comprehensive Review",
+  "is_oa": true,
+  "oa_status": "gold",
+  "licenses": [
+   "cc-by"
+  ],
+  "has_pdf": true,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.1109/jiot.2024.3376715": {
+  "no": 33,
+  "judul": "Predictive Maintenance Scheduling for Aircraft Engines Based on Remaining Useful Life Prediction",
+  "is_oa": false,
+  "oa_status": "closed",
+  "licenses": [],
+  "has_pdf": false,
+  "include_fulltext": false,
+  "reason": "closed"
+ },
+ "10.1109/tnnls.2020.2977132": {
+  "no": 34,
+  "judul": "A Neural Network-Based Joint Prognostic Model for Data Fusion and Remaining Useful Life Prediction",
+  "is_oa": false,
+  "oa_status": "closed",
+  "licenses": [],
+  "has_pdf": false,
+  "include_fulltext": false,
+  "reason": "closed"
+ },
+ "10.1109/tim.2022.3200667": {
+  "no": 35,
+  "judul": "Domain Adaptive Remaining Useful Life Prediction With Transformer",
+  "is_oa": false,
+  "oa_status": "closed",
+  "licenses": [],
+  "has_pdf": false,
+  "include_fulltext": false,
+  "reason": "closed"
+ },
+ "10.1109/tte.2022.3161140": {
+  "no": 36,
+  "judul": "A Bayesian Mixture Neural Network for Remaining Useful Life Prediction of Lithium-Ion Batteries",
+  "is_oa": false,
+  "oa_status": "closed",
+  "licenses": [],
+  "has_pdf": false,
+  "include_fulltext": false,
+  "reason": "closed"
+ },
+ "10.1007/s42979-025-04291-9": {
+  "no": 37,
+  "judul": "Survival Analysis-Based System for Predictive Maintenance Optimization",
+  "is_oa": true,
+  "oa_status": "hybrid",
+  "licenses": [
+   "cc-by"
+  ],
+  "has_pdf": true,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.1109/access.2019.2919566": {
+  "no": 38,
+  "judul": "A Directed Acyclic Graph Network Combined With CNN and LSTM for Remaining Useful Life Prediction",
+  "is_oa": true,
+  "oa_status": "gold",
+  "licenses": [
+   "cc-by",
+   "cc-by-sa"
+  ],
+  "has_pdf": true,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.1109/tmech.2020.2971503": {
+  "no": 39,
+  "judul": "A Deep Learning-Based Remaining Useful Life Prediction Approach for Bearings",
+  "is_oa": true,
+  "oa_status": "green",
+  "licenses": [],
+  "has_pdf": true,
+  "include_fulltext": false,
+  "reason": "OA tanpa lisensi jelas (bronze/other-oa)"
+ },
+ "10.15294/jpii.v9i3.23310": {
+  "no": 40,
+  "judul": "Treatment of Coal Mine Acid Water Using Nf270 Membrane as Environmentally Friendly Technology",
+  "is_oa": true,
+  "oa_status": "gold",
+  "licenses": [
+   "cc-by",
+   "cc-by-sa"
+  ],
+  "has_pdf": true,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.3390/electronics10030285": {
+  "no": 41,
+  "judul": "A Genetic Algorithm Optimized RNN-LSTM Model for Remaining Useful Life Prediction of Turbofan Engine",
+  "is_oa": true,
+  "oa_status": "gold",
+  "licenses": [
+   "cc-by"
+  ],
+  "has_pdf": true,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.3390/s22103803": {
+  "no": 42,
+  "judul": "Remaining Useful Life Prediction of Lithium-Ion Batteries Using Neural Networks with Adaptive Bayesian Learning",
+  "is_oa": true,
+  "oa_status": "gold",
+  "licenses": [
+   "cc-by",
+   "cc-by-sa"
+  ],
+  "has_pdf": true,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.1109/jsen.2021.3109623": {
+  "no": 43,
+  "judul": "A Novel Cap-LSTM Model for Remaining Useful Life Prediction",
+  "is_oa": false,
+  "oa_status": "closed",
+  "licenses": [],
+  "has_pdf": false,
+  "include_fulltext": false,
+  "reason": "closed"
+ },
+ "10.1109/tii.2020.2991796": {
+  "no": 44,
+  "judul": "Deep-Convolution-Based LSTM Network for Remaining Useful Life Prediction",
+  "is_oa": false,
+  "oa_status": "closed",
+  "licenses": [],
+  "has_pdf": false,
+  "include_fulltext": false,
+  "reason": "closed"
+ },
+ "10.1109/tim.2022.3167778": {
+  "no": 45,
+  "judul": "Bi-LSTM-Based Two-Stream Network for Machine Remaining Useful Life Prediction",
+  "is_oa": false,
+  "oa_status": "closed",
+  "licenses": [],
+  "has_pdf": false,
+  "include_fulltext": false,
+  "reason": "closed"
+ },
+ "10.1109/tim.2020.3031113": {
+  "no": 46,
+  "judul": "Remaining Useful Life Prognosis Based on Ensemble Long Short-Term Memory Neural Network",
+  "is_oa": false,
+  "oa_status": "closed",
+  "licenses": [],
+  "has_pdf": false,
+  "include_fulltext": false,
+  "reason": "closed"
+ },
+ "10.1177/16878132241239802": {
+  "no": 47,
+  "judul": "Bayesian neural networks for uncertainty quantification in remaining useful life prediction of systems with sensor monitoring",
+  "is_oa": true,
+  "oa_status": "gold",
+  "licenses": [
+   "cc-by",
+   "cc-by-sa"
+  ],
+  "has_pdf": true,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.36001/ijphm.2019.v10i4.2612": {
+  "no": 48,
+  "judul": "Data-driven Prognostics with Predictive Uncertainty Estimation using Ensemble of Deep Ordinal Regression Models",
+  "is_oa": true,
+  "oa_status": "gold",
+  "licenses": [
+   "cc-by"
+  ],
+  "has_pdf": true,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.1109/jsen.2023.3261874": {
+  "no": 49,
+  "judul": "Remaining Useful Life Prediction of Turbofan Engines Using CNN-LSTM-SAM Approach",
+  "is_oa": false,
+  "oa_status": "closed",
+  "licenses": [],
+  "has_pdf": false,
+  "include_fulltext": false,
+  "reason": "closed"
+ },
+ "10.3390/batteries10030106": {
+  "no": 50,
+  "judul": "Hybrid Neural Networks for Enhanced Predictions of Remaining Useful Life in Lithium-Ion Batteries",
+  "is_oa": true,
+  "oa_status": "gold",
+  "licenses": [
+   "cc-by",
+   "cc-by-sa"
+  ],
+  "has_pdf": true,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.3390/machines13090789": {
+  "no": 51,
+  "judul": "Remaining Useful Life Prediction of Turbine Engines Using Multimodal Transfer Learning",
+  "is_oa": true,
+  "oa_status": "gold",
+  "licenses": [
+   "cc-by",
+   "cc-by-sa"
+  ],
+  "has_pdf": true,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.3390/environments10070127": {
+  "no": 52,
+  "judul": "Machine Learning Implementation in Membrane Bioreactor Systems: Progress, Challenges, and Future Perspectives: A Review",
+  "is_oa": true,
+  "oa_status": "gold",
+  "licenses": [
+   "cc-by"
+  ],
+  "has_pdf": true,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.2166/wst.2026.234": {
+  "no": 53,
+  "judul": "Applying machine learning and AI for nanofiltration membranes water applications: a review",
+  "is_oa": true,
+  "oa_status": "gold",
+  "licenses": [
+   "cc-by"
+  ],
+  "has_pdf": true,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.56294/dm20251102": {
+  "no": 54,
+  "judul": "Reliable prediction of industrial components Remaining Useful Life using Cox and Weibull models: A Comparative Study",
+  "is_oa": true,
+  "oa_status": "gold",
+  "licenses": [
+   "cc-by"
+  ],
+  "has_pdf": false,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.1007/s42452-026-08390-x": {
+  "no": 55,
+  "judul": "Graph neural network-based remaining useful life prediction of milling tools using multi-sensor data",
+  "is_oa": true,
+  "oa_status": "gold",
+  "licenses": [
+   "cc-by-nc-nd",
+   "cc-by-sa"
+  ],
+  "has_pdf": false,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.3390/en16093707": {
+  "no": 56,
+  "judul": "Integrating Survival Analysis with Bayesian Statistics to Forecast the Remaining Useful Life of a Centrifugal Pump Conditional to Multiple Fault Types",
+  "is_oa": true,
+  "oa_status": "gold",
+  "licenses": [
+   "cc-by",
+   "cc-by-sa"
+  ],
+  "has_pdf": true,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.1109/access.2020.3010066": {
+  "no": 57,
+  "judul": "Attention-Based LSTM Network for Rotatory Machine Remaining Useful Life Prediction",
+  "is_oa": true,
+  "oa_status": "gold",
+  "licenses": [
+   "cc-by",
+   "cc-by-sa"
+  ],
+  "has_pdf": true,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.1155/2017/8927937": {
+  "no": 58,
+  "judul": "Remaining Useful Life Prediction of Bearing with Vibration Signals Based on a Novel Indicator",
+  "is_oa": true,
+  "oa_status": "gold",
+  "licenses": [
+   "cc-by",
+   "cc-by-sa"
+  ],
+  "has_pdf": true,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.1016/j.rineng.2022.100611": {
+  "no": 59,
+  "judul": "Cellulose acetate from palm oil bunch waste for forward osmosis membrane in desalination of brackish water",
+  "is_oa": true,
+  "oa_status": "gold",
+  "licenses": [
+   "cc-by-nc-nd",
+   "cc-by-sa"
+  ],
+  "has_pdf": true,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.1016/j.dwt.2025.101238": {
+  "no": 60,
+  "judul": "Harnessing machine learning for transmembrane pressure prediction in MBR systems during textile wastewater treatment",
+  "is_oa": true,
+  "oa_status": "gold",
+  "licenses": [
+   "cc-by",
+   "cc-by-sa"
+  ],
+  "has_pdf": false,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.1109/jsen.2024.3402660": {
+  "no": 61,
+  "judul": "Remaining Useful Life Prediction of Wind Turbine Main-Bearing Based on LSTM Optimized Network",
+  "is_oa": false,
+  "oa_status": "closed",
+  "licenses": [],
+  "has_pdf": false,
+  "include_fulltext": false,
+  "reason": "closed"
+ },
+ "10.1016/j.inffus.2025.102972": {
+  "no": 62,
+  "judul": "Counterfactual explanations for remaining useful life estimation within a Bayesian framework",
+  "is_oa": true,
+  "oa_status": "hybrid",
+  "licenses": [
+   "cc-by"
+  ],
+  "has_pdf": false,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.1108/imds-03-2019-0195": {
+  "no": 63,
+  "judul": "Remaining useful life prediction for lithium-ion batteries using particle filter and artificial neural network",
+  "is_oa": false,
+  "oa_status": "closed",
+  "licenses": [],
+  "has_pdf": false,
+  "include_fulltext": false,
+  "reason": "closed"
+ },
+ "10.1155/2020/8829823": {
+  "no": 64,
+  "judul": "General Log-Linear Weibull Model Combining Vibration and Temperature Characteristics for Remaining Useful Life Prediction of Rolling Element Bearings",
+  "is_oa": true,
+  "oa_status": "gold",
+  "licenses": [
+   "cc-by",
+   "cc-by-sa"
+  ],
+  "has_pdf": true,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.1109/tec.2021.3116423": {
+  "no": 65,
+  "judul": "A Semi-Supervised Deep Transfer Learning Approach for Rolling-Element Bearing Remaining Useful Life Prediction",
+  "is_oa": false,
+  "oa_status": "closed",
+  "licenses": [],
+  "has_pdf": false,
+  "include_fulltext": false,
+  "reason": "closed"
+ },
+ "10.1016/j.jmsy.2020.11.005": {
+  "no": 66,
+  "judul": "Utilizing uncertainty information in remaining useful life estimation via Bayesian neural networks and Hamiltonian Monte Carlo",
+  "is_oa": true,
+  "oa_status": "hybrid",
+  "licenses": [
+   "cc-by"
+  ],
+  "has_pdf": true,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.3390/en15238918": {
+  "no": 67,
+  "judul": "Prediction of Remaining Useful Life of Lithium Batteries Based on WOA-VMD and LSTM",
+  "is_oa": true,
+  "oa_status": "gold",
+  "licenses": [
+   "cc-by",
+   "cc-by-sa"
+  ],
+  "has_pdf": true,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.1109/tim.2026.3684677": {
+  "no": 68,
+  "judul": "Multisensor Time Series Forecasting-Based Augmentation Framework for Remaining Useful Life Prediction of Aero Engines",
+  "is_oa": false,
+  "oa_status": "closed",
+  "licenses": [],
+  "has_pdf": false,
+  "include_fulltext": false,
+  "reason": "closed"
+ },
+ "10.3390/fractalfract8080485": {
+  "no": 69,
+  "judul": "Remaining Useful Life Prediction for Power Storage Electronic Components Based on Fractional Weibull Process and Shock Poisson Model",
+  "is_oa": true,
+  "oa_status": "gold",
+  "licenses": [
+   "cc-by",
+   "cc-by-sa"
+  ],
+  "has_pdf": true,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.36001/ijphm.2022.v13i1.3072": {
+  "no": 70,
+  "judul": "Remaining Useful Life Prognosis of Aircraft Brakes",
+  "is_oa": true,
+  "oa_status": "gold",
+  "licenses": [
+   "cc-by",
+   "cc-by-sa",
+   "other-oa"
+  ],
+  "has_pdf": true,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.5829/ije.2023.36.04a.09": {
+  "no": 71,
+  "judul": "Graphene Based Membrane Modified Silica Nanoparticles for Seawater Desalination and Wastewater Treatment: Salt Rejection and Dyes",
+  "is_oa": true,
+  "oa_status": "gold",
+  "licenses": [
+   "cc-by"
+  ],
+  "has_pdf": true,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.1109/tii.2021.3078193": {
+  "no": 72,
+  "judul": "Bayesian Convolutional Neural Networks for Remaining Useful Life Prognostics of Solenoid Valves With Uncertainty Estimations",
+  "is_oa": true,
+  "oa_status": "hybrid",
+  "licenses": [
+   "cc-by"
+  ],
+  "has_pdf": true,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.3390/s23125669": {
+  "no": 73,
+  "judul": "Multiform Informed Machine Learning Based on Piecewise and Weibull for Engine Remaining Useful Life Prediction",
+  "is_oa": true,
+  "oa_status": "gold",
+  "licenses": [
+   "cc-by",
+   "cc-by-sa"
+  ],
+  "has_pdf": true,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.1109/tim.2021.3055788": {
+  "no": 74,
+  "judul": "Degradation-Aware Remaining Useful Life Prediction With LSTM Autoencoder",
+  "is_oa": false,
+  "oa_status": "closed",
+  "licenses": [],
+  "has_pdf": false,
+  "include_fulltext": false,
+  "reason": "closed"
+ },
+ "10.1016/j.dss.2019.113100": {
+  "no": 75,
+  "judul": "Forecasting remaining useful life: Interpretable deep learning approach via variational Bayesian inferences",
+  "is_oa": true,
+  "oa_status": "hybrid",
+  "licenses": [
+   "cc-by"
+  ],
+  "has_pdf": true,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.1299/jamdsm.2025jamdsm0044": {
+  "no": 76,
+  "judul": "A physical knowledge-guided and data-driven framework for remaining useful life prediction (The case of turbofan engines)",
+  "is_oa": true,
+  "oa_status": "gold",
+  "licenses": [
+   "cc-by-nc-nd",
+   "cc-by-sa"
+  ],
+  "has_pdf": true,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.48084/etasr.15186": {
+  "no": 77,
+  "judul": "Machine Learning for Covariate-Driven Changes in Weibull Scale Parameter",
+  "is_oa": true,
+  "oa_status": "gold",
+  "licenses": [
+   "cc-by"
+  ],
+  "has_pdf": true,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.1016/j.geits.2025.100291": {
+  "no": 78,
+  "judul": "A physics-informed neural network-based method for predicting degradation trajectories and remaining useful life of supercapacitors",
+  "is_oa": true,
+  "oa_status": "gold",
+  "licenses": [
+   "cc-by",
+   "cc-by-sa",
+   "other-oa"
+  ],
+  "has_pdf": false,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.3390/s25020554": {
+  "no": 79,
+  "judul": "Remaining Useful Life Prediction of Rolling Bearings Based on CBAM-CNN-LSTM",
+  "is_oa": true,
+  "oa_status": "gold",
+  "licenses": [
+   "cc-by",
+   "cc-by-sa"
+  ],
+  "has_pdf": true,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.1007/s44196-024-00639-w": {
+  "no": 80,
+  "judul": "Prediction of Remaining Useful Life of Aero-engines Based on CNN-LSTM-Attention",
+  "is_oa": true,
+  "oa_status": "gold",
+  "licenses": [
+   "cc-by",
+   "cc-by-sa"
+  ],
+  "has_pdf": true,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.1109/tia.2022.3170525": {
+  "no": 81,
+  "judul": "Probabilistic Modeling of Li-Ion Battery Remaining Useful Life",
+  "is_oa": false,
+  "oa_status": "closed",
+  "licenses": [],
+  "has_pdf": false,
+  "include_fulltext": false,
+  "reason": "closed"
+ },
+ "10.1016/j.jwpe.2024.106479": {
+  "no": 82,
+  "judul": "Optimizing silt density index prediction in water treatment systems using pressure-based gradient boosting hybridized with Salp Swarm Algorithm",
+  "is_oa": true,
+  "oa_status": "hybrid",
+  "licenses": [
+   "cc-by"
+  ],
+  "has_pdf": false,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.3390/sym14061111": {
+  "no": 83,
+  "judul": "Research on Prediction Method of Gear Pump Remaining Useful Life Based on DCAE and Bi-LSTM",
+  "is_oa": true,
+  "oa_status": "gold",
+  "licenses": [
+   "cc-by",
+   "cc-by-sa"
+  ],
+  "has_pdf": true,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.33263/briac142.029": {
+  "no": 84,
+  "judul": "Mesoporous CA/PEG Membrane-Modified TiO2 Nanoparticles with Improved Desalination Performance",
+  "is_oa": true,
+  "oa_status": "gold",
+  "licenses": [
+   "other-oa"
+  ],
+  "has_pdf": true,
+  "include_fulltext": false,
+  "reason": "OA tanpa lisensi jelas (bronze/other-oa)"
+ },
+ "10.1109/tii.2020.3008223": {
+  "no": 85,
+  "judul": "A Data-Driven Auto-CNN-LSTM Prediction Model for Lithium-Ion Battery Remaining Useful Life",
+  "is_oa": false,
+  "oa_status": "closed",
+  "licenses": [],
+  "has_pdf": false,
+  "include_fulltext": false,
+  "reason": "closed"
+ },
+ "10.1109/tim.2019.2917735": {
+  "no": 86,
+  "judul": "Predicting Remaining Useful Life of Rolling Bearings Based on Deep Feature Representation and Transfer Learning",
+  "is_oa": false,
+  "oa_status": "closed",
+  "licenses": [],
+  "has_pdf": false,
+  "include_fulltext": false,
+  "reason": "closed"
+ },
+ "10.1109/access.2021.3073945": {
+  "no": 87,
+  "judul": "A Framework for Predicting Remaining Useful Life Curve of Rolling Bearings Under Defect Progression Based on Neural Network and Bayesian Method",
+  "is_oa": true,
+  "oa_status": "gold",
+  "licenses": [
+   "cc-by-nc-nd",
+   "cc-by-sa"
+  ],
+  "has_pdf": true,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.3390/pr13082352": {
+  "no": 88,
+  "judul": "Predictive Framework for Membrane Fouling in Full-Scale Membrane Bioreactors (MBRs): Integrating AI-Driven Feature Engineering and Explainable AI (XAI)",
+  "is_oa": true,
+  "oa_status": "gold",
+  "licenses": [
+   "cc-by"
+  ],
+  "has_pdf": true,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.1002/qre.70386": {
+  "no": 89,
+  "judul": "Weibull Variational Autoencoder for Remaining Useful Life Prediction",
+  "is_oa": true,
+  "oa_status": "hybrid",
+  "licenses": [
+   "cc-by-nc-nd"
+  ],
+  "has_pdf": true,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.1038/s41598-026-42910-4": {
+  "no": 90,
+  "judul": "A two-stage framework for cost-sensitive predictive maintenance using deep learning, GANs, and risk-aware clustering",
+  "is_oa": true,
+  "oa_status": "gold",
+  "licenses": [
+   "cc-by",
+   "cc-by-sa"
+  ],
+  "has_pdf": true,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.1016/j.asoc.2022.109630": {
+  "no": 91,
+  "judul": "Remaining useful life prediction of rolling bearing under limited data based on adaptive time-series feature window and multi-step ahead strategy",
+  "is_oa": true,
+  "oa_status": "hybrid",
+  "licenses": [
+   "cc-by-nc-nd"
+  ],
+  "has_pdf": false,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.1155/2020/8814658": {
+  "no": 92,
+  "judul": "Developing Deep Survival Model for Remaining Useful Life Estimation Based on Convolutional and Long Short-Term Memory Neural Networks",
+  "is_oa": true,
+  "oa_status": "hybrid",
+  "licenses": [
+   "cc-by"
+  ],
+  "has_pdf": true,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.1016/j.clwat.2024.100041": {
+  "no": 93,
+  "judul": "Bio-inspired MXene membranes for enhanced separation and anti-fouling in oil-in-water emulsions: SHAP explainability ML",
+  "is_oa": true,
+  "oa_status": "gold",
+  "licenses": [
+   "cc-by-nc",
+   "cc-by-sa"
+  ],
+  "has_pdf": false,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.1109/access.2020.3001013": {
+  "no": 94,
+  "judul": "Remaining Useful Life Prediction Based on the Bayesian Regularized Radial Basis Function Neural Network for an External Gear Pump",
+  "is_oa": true,
+  "oa_status": "gold",
+  "licenses": [
+   "cc-by",
+   "cc-by-sa"
+  ],
+  "has_pdf": true,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.1038/s41598-025-22866-7": {
+  "no": 95,
+  "judul": "Nonlinear degradation modeling and remaining useful life prediction for electric drive system with multiple failure modes",
+  "is_oa": true,
+  "oa_status": "gold",
+  "licenses": [
+   "cc-by-nc-nd",
+   "cc-by-sa"
+  ],
+  "has_pdf": true,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.1038/s41598-026-63408-z": {
+  "no": 96,
+  "judul": "A hybrid signal-dynamics health index fusion framework for prognostics of small-scale wind turbine blades",
+  "is_oa": true,
+  "oa_status": "gold",
+  "licenses": [
+   "cc-by-nc-nd"
+  ],
+  "has_pdf": true,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.1371/journal.pone.0236128": {
+  "no": 97,
+  "judul": "Prediction of remaining useful life (RUL) of Komatsu excavator under reliability analysis in the Weibull-frailty model",
+  "is_oa": true,
+  "oa_status": "gold",
+  "licenses": [
+   "cc-by",
+   "cc-by-sa",
+   "other-oa"
+  ],
+  "has_pdf": true,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.1016/j.ress.2026.113080": {
+  "no": 98,
+  "judul": "Modeling dependent degradation data considering inherent causal relationships for reliability analysis and remaining useful life prediction",
+  "is_oa": true,
+  "oa_status": "green",
+  "licenses": [
+   "cc-by"
+  ],
+  "has_pdf": true,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.3390/machines11020163": {
+  "no": 99,
+  "judul": "Explainable Data-Driven Method Combined with Bayesian Filtering for Remaining Useful Lifetime Prediction of Aircraft Engines Using NASA CMAPSS Datasets",
+  "is_oa": true,
+  "oa_status": "gold",
+  "licenses": [
+   "cc-by",
+   "cc-by-sa"
+  ],
+  "has_pdf": true,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.3390/membranes11010054": {
+  "no": 100,
+  "judul": "Numerical Modelling Assisted Design of a Compact Ultrafiltration (UF) Flat Sheet Membrane Module",
+  "is_oa": true,
+  "oa_status": "gold",
+  "licenses": [
+   "cc-by",
+   "cc-by-sa",
+   "other-oa"
+  ],
+  "has_pdf": true,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ },
+ "10.3390/e20120944": {
+  "no": 101,
+  "judul": "Bearing Remaining Useful Life Prediction Based on Naive Bayes and Weibull Distributions",
+  "is_oa": true,
+  "oa_status": "gold",
+  "licenses": [
+   "cc-by",
+   "cc-by-sa"
+  ],
+  "has_pdf": false,
+  "include_fulltext": true,
+  "reason": "OA + lisensi Creative Commons"
+ }
+}

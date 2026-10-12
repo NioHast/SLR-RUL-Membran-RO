@@ -1,0 +1,49 @@
+ANALISIS PAPER 037 — Zhang, Liu & Su (2022), IEEE Transactions on Transportation Electrification
+Judul: A Bayesian Mixture Neural Network for Remaining Useful Life Prediction of Lithium-Ion Batteries
+DOI: 10.1109/TTE.2022.3161140 | Kuartil: Scopus Q1 | Pilar indeks: C. Bayesian & Uncertainty
+
+KARAKTERISTIK STUDI
+Studi metodologis probabilistik untuk RUL baterai lithium-ion. Menonjolkan tiga tantangan: data tidak seimbang antar tahap degradasi, keterbatasan data, dan ketidakpastian kondisi operasi. Domain: baterai Li-ion (BMS). Klaster "Pendukung": metode RUL umum dengan fokus Bayesian & ketidakpastian, tanpa penyensoran/survival maupun domain membran.
+
+METODE
+- Representasi: Q-GAF mengubah sekuens kapasitas retensi 1-D menjadi citra temporal 2-D (mempertahankan dependensi temporal, menyoroti capacity regeneration).
+- BMNN (Bayesian Mixture Neural Network):
+  1) BCNN (Conv2DFlipout 64 filter, kernel 3, max-pool 2) mengekstraksi fitur citra temporal.
+  2) B-LSTM (LSTMFlipout 32 cell) mempelajari korelasi antara inducemen degradasi (I_c, I_d, U, T, N) dan kapasitas.
+  3) Variational Bayesian NN menggabungkan keduanya → distribusi posterior.
+- Bayesian inference via Bayes by Backprop (variational inference, KL divergence), Flipout estimator.
+- Output: mean distribusi = RUL prediksi; variance = CI; loss = KL + negative log-likelihood + score function (penalti estimasi lag).
+
+DATA
+Empat dataset baterai: NASA PCoE, CALCE, MIT (APR18650M1A), Cavendish. Masing-masing 3 sel validasi, total 12. Karakteristik beragam: capacity regeneration (NASA/CALCE), fast charging (MIT), temperatur variabel (Cavendish). RUL = t_EoL - t_c; EOL = 80% kapasitas awal.
+
+TEMUAN UTAMA
+- Q-GAF + BMNN: AE <10 siklus, RAE <0,07 untuk semua 12 baterai; jauh lebih baik daripada BMNN tanpa Q-GAF dan LSTM konvensional.
+- Perbandingan state-of-the-art (BCNN, variational LSTM, EMD+GPR+LSTM, FT+TF+LSTM, CNN, LSTM): BMNN unggul pada R^2 dan MAE; R^2 >0,9 di semua dataset.
+- 90%/95% CI (pdf) umumnya mencakup RUL sebenarnya; ketidakpastian membesar mendekati EOL.
+- Efisiensi: input 10-20 siklus cukup untuk degradasi halus; untuk noise/regeneration tinggi, input lebih panjang & output lebih pendek lebih akurat.
+
+RELEVANSI KE TESIS
+Pendukung metodologis pada sumbu kuantifikasi ketidakpastian (d5) dan model probabilistik deep learning. Tidak menyentuh penyensoran/survival dan bukan domain membran. Celah: model survival tersensor (yang menangani observasi belum-gagal) belum dipadukan dengan deep learning probabilistik seperti BMNN pada membran RO.
+
+JUSTIFIKASI DIMENSI (d1-d8)
+- d1 = "1": runtun waktu multi-variabel (kapasitas + 5 inducemen degradasi; Eq. 1).
+- d2 = "1": RUL = t_EoL - t_c; EOL = 80% SOH (Eq. 16, 21).
+- d3 = "": tanpa pemodelan tersensor/survival/hazard.
+- d4 = "1": Bayesian CNN, Bayesian LSTM, variational Bayesian NN, Q-GAF.
+- d5 = "1": posterior predictive distribution + CI 90%/95% (Eq. 11-15, Tabel IV, Fig. 7).
+- d6 = "": tanpa keputusan pemeliharaan.
+- d7 = "": domain baterai.
+- d8 = "": tidak menerapkan small-data/transfer/hierarchical khusus (klaim Bayes pada sampel kecil hanya motivasi).
+
+KUALITAS (skor 9/10)
+Q1=1; Q2=1; Q3=1 (empat dataset nyata beragam); Q4=0.5 (konfigurasi layer & epoch diberi, tanpa kode); Q5=1 (AE/RAE/R^2/MAE + banyak pembanding + analisis efisiensi); Q6=N/A; Q7=1 (pdf + CI); Q8=0.5 (motivasi saja). Applicable = 7, jumlah = 6.0 -> skor = round(6.0/7*10) = 9.
+
+LIMITASI
+Tanpa pemodelan penyensoran; akumulasi galat pada horizon panjang; performa menurun dekat EOL; beban komputasi tinggi; tanpa kode; tanpa keputusan pemeliharaan.
+
+BUKTI
+- Abstrak + Kontribusi 1)-4).
+- Eq. 2-4 (Q-GAF), Eq. 5-8 & Algorithm 1 (Bayesian NN), Eq. 9-10 (BCNN/B-LSTM), Eq. 11-15 (posterior predictive/loss).
+- Eq. 16 (RUL), Eq. 21 (SOH), metrik Eq. 17-20.
+- Tabel I-VII, Fig. 2 (struktur), Fig. 7 (hasil + pdf), Fig. 8-10 (perbandingan & efisiensi).

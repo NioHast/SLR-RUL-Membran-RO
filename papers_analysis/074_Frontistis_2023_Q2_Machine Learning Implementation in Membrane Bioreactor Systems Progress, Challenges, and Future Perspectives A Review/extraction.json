@@ -1,0 +1,83 @@
+{
+  "no": 53,
+  "judul": "Machine Learning Implementation in Membrane Bioreactor Systems: Progress, Challenges, and Future Perspectives: A Review",
+  "penulis": "Zacharias Frontistis, Grigoris Lykogiannis, Anastasios Sarmpanis",
+  "tahun": 2023,
+  "jurnal": "Environments (MDPI)",
+  "doi": "10.3390/environments10070127",
+  "kuartil": "Scopus Q2 (SCImago SJR Best Quartile)",
+  "pilar": "E. Membrane/RO/Desalination",
+  "ringkasan": "Review kritis penerapan machine learning pada sistem membrane bioreactor (MBR) untuk pengolahan air limbah lanjut. Membahas algoritma ML (ANN, SVM, RF, RL, PLSR, ANFIS, DL), aplikasinya untuk prediksi fouling membran (TMP/flux), kontrol dan optimasi, serta deteksi dini kegagalan, sekaligus mengidentifikasi tantangan data quality, interpretabilitas, dan transferabilitas. Menutup dengan rekomendasi integrasi big data/IoT dan model hybrid.",
+  "kontribusi": "Memetakan lanskap penerapan ML pada domain membran/desalinasi (fouling, TMP, kontrol) dan secara eksplisit menandai transferabilitas, keterbatasan data berlabel, dan interpretabilitas sebagai celah riset - ketiganya concern langsung tesis pada RUL membran.",
+  "temuan_kunci": [
+    "Fouling membran adalah tantangan utama MBR; ML (ANN/SVM/RF) efektif memprediksi TMP dan laju fouling untuk merancang strategi pembersihan yang lebih baik",
+    "Deep learning (mis. DenseNet, LSTM) dan RF mencapai akurasi tinggi pada prediksi kualitas efluen dan TMP (RF terbaik pada data 80.000 titik/4 tahun)",
+    "Reinforcement learning (DQN) dapat menurunkan konsumsi energi aerasi ~34% tanpa menurunkan kualitas efluen",
+    "Tiga tantangan implementasi: kualitas/kuantitas data, interpretabilitas (black box), dan adaptabilitas terhadap perubahan kondisi influen",
+    "Transfer learning / domain adaptation / meta-learning direkomendasikan untuk meningkatkan generalisasi lintas sistem MBR",
+    "Integrasi ML dengan IoT dan sensor canggih memungkinkan kontrol real-time"
+  ],
+  "dimensi": {
+    "d1": "1",
+    "d2": "",
+    "d3": "",
+    "d4": "1",
+    "d5": "1",
+    "d6": "1",
+    "d7": "1",
+    "d8": "1"
+  },
+  "alasan_dimensi": {
+    "d1": "Data monitoring MBR berupa deret waktu multi-sensor: TMP, DO, pH, temperatur, MLSS, flux, COD, serta data operasi 462 hari / 114 hari / 4 tahun yang menjadi variabel input model.",
+    "d2": "Tidak mendefinisikan RUL/failure threshold secara formal. Membahas laju fouling, kenaikan TMP, dan masa pakai membran, tetapi tidak ada definisi RUL atau ambang kegagalan yang dioperasionalkan.",
+    "d3": "Tidak memodelkan data tersensor; tidak ada survival/Weibull/hazard.",
+    "d4": "Membahas dan membandingkan model spesifik: ANN, SVM/SVR, random forest, PLSR, ANFIS, LSTM, DenseNet, deep Q-network, serta metode unsupervised (PCA, fuzzy clustering).",
+    "d5": "Membahas analisis ketidakpastian: Kulesha et al. melaporkan cross-validation dengan 'low uncertainty'; Kovacs et al. melakukan 'membrane fouling prediction and uncertainty analysis'.",
+    "d6": "Secara eksplisit menganalisis keputusan operasional/maintenance: prediksi fouling untuk merancang jadwal pembersihan, kontrol dan optimasi berbasis ML (Table 2: conventional, rule-based, ML-based, hybrid control), serta penghematan energi aerasi 34% via DQN.",
+    "d7": "Domain inti: membrane bioreactor / membran / fouling pada pengolahan air dan desalinasi (referensi Desalination, J. Memb. Sci.).",
+    "d8": "Menjadikan transferabilitas, keterbatasan data berlabel, dan generalisasi lintas sistem sebagai tantangan inti, serta merekomendasikan transfer learning/domain adaptation/meta-learning."
+  },
+  "relevansi": "Konteks",
+  "kualitas": {
+    "skor": 8,
+    "rincian": {
+      "Q1": 1,
+      "Q2": 1,
+      "Q3": 0.5,
+      "Q4": 0.5,
+      "Q5": 0.5,
+      "Q6": "N/A",
+      "Q7": 1,
+      "Q8": 1
+    },
+    "catatan": "Review terstruktur dengan RQ jelas, metode sintesis memadai, dan pembahasan evaluasi/cross-validation serta ketidakpastian. Tanpa dataset primer (Q3 0,5) dan tanpa artefak reproduksibilitas (Q4 0,5). Tidak menangani censoring (N/A). Kuat pada keterkaitan keputusan maintenance/kontrol (Q8=1). Skor = 5,5/7*10 ≈ 8."
+  },
+  "data_kuantitatif": {
+    "dataset": "Review (tanpa dataset primer); mengompilasi studi MBR: dataset pilot 462 hari (BR UNIT), 4 tahun/80.000 titik (full-scale), 1 tahun operasi 2 AnMBR, dsb.",
+    "ukuran": "Bervariasi antar studi yang direview (mis. 80.000 titik data TMP; 114 hari; 4 tahun)",
+    "metrik": "R2 (mis. 0,71; 0,85), RMSE (TFC 0,2527; CTA 0,1230 vs ANN 0,4049/0,1449), akurasi (DenseNet 97,44%), penghematan energi aeration 34%, detection rate 100%"
+  },
+  "metode": "Review kritis/sintesis naratif literatur ML pada MBR: taksonomi supervised/unsupervised/reinforcement learning; pembahasan preprocessing, evaluasi model, studi kasus aplikasi (fouling, kontrol, fault detection), dan tantangan implementasi.",
+  "limitasi": [
+    "Bukan studi primer; tanpa data eksperimen sendiri",
+    "Tidak mendefinisikan RUL secara formal dan tidak menyentuh analisis survival/censoring",
+    "Interpretabilitas model (black-box) masih menjadi hambatan adopsi yang belum terselesaikan",
+    "Kualitas dan kuantitas data MBR sering terbatas (missing, noisy, bias)",
+    "Transferabilitas lintas desain MBR/kondisi operasi masih rendah"
+  ],
+  "funding_coi": "Dibiayai bersama oleh European Regional Development Fund (EU) dan dana nasional Yunani melalui Operational Program Competitiveness, Entrepreneurship, and Innovation (CREATE-INNOVATE), proyek T2EDK-04824 'ECO-MBR'. Penulis menyatakan tidak ada konflik kepentingan.",
+  "status_inklusi": "diterima",
+  "figur_dibaca": [
+    {
+      "file": "_page_11_Figure_4.jpeg",
+      "isi": "Figure 1 'ML implementation in MBR: challenges and opportunities': dua kolom yang dipetakan - Tantangan (interpretabilitas & transparansi; kualitas & kuantitas data; generalisasi & transferabilitas; integrasi ke sistem kontrol eksisting; kebijakan & regulasi) vs Peluang (optimasi & kontrol proses; analisis data & prediksi lebih baik; dukungan pengambilan keputusan; desain MBR baru & sistem hybrid; integrasi teknologi baru)."
+    }
+  ],
+  "bukti": [
+    "Abstract: 'The review focuses on implementing ML algorithms to enhance the prediction of membrane fouling... predict faults early, thereby enabling the development of novel cleaning strategies.'",
+    "Challenges: '(i) data quality and availability, (ii) model interpretability, and (iii) adaptability to changes in process conditions'.",
+    "Transferability: 'Adaptation of technologies such as transfer learning, domain adaptation, and meta-learning... could enhance the generalizability and transferability of ML models in MBR applications.'",
+    "RL energy saving: 'the application of the deep Q-network (DQN) algorithm successfully reduced energy consumption for aeration by approximately 34%'.",
+    "Uncertainty example: 'Kulesha et al... Cross-validation conducted by the researchers demonstrated low uncertainty' and Kovacs et al. 'Membrane fouling prediction and uncertainty analysis using machine learning'."
+  ]
+}

@@ -1,0 +1,83 @@
+{
+ "no": 78,
+ "judul": "A physical knowledge-guided and data-driven framework for remaining useful life prediction (The case of turbofan engines)",
+ "penulis": "Haiyang Zheng, Xinqin Gao, Gangcheng Jing, Xueqi Yang, Jiarong Qiu, Mingshun Yang",
+ "tahun": 2025,
+ "jurnal": "Journal of Advanced Mechanical Design, Systems, and Manufacturing (JAMDSM)",
+ "doi": "10.1299/jamdsm.2025jamdsm0044",
+ "kuartil": "Scopus Q3 (SCImago SJR Best Quartile)",
+ "pilar": "A. Survival Analysis & Censored Data",
+ "ringkasan": "Paper mengusulkan kerangka hybrid PhyMix-UQ-RUL untuk prediksi RUL dan kuantifikasi ketidakpastian, dengan memperluas WTTE-RNN (Weibull Time-To-Event RNN) memakai multi-scale dilated CNN (MsDCNN), LSTM, dan gated degradation stage regularization (GDSR). GDSR membatasi parameter bentuk Weibull (beta) sesuai teori bathtub curve dan loss dual-regularization menjaga kesesuaian fisik. Divalidasi pada C-MAPSS (FD001-FD004) dan N-CMAPSS DS02, model memberi prediksi kompetitif sekaligus prediksi interval dan kurva survival.",
+ "kontribusi": "Sangat dekat dengan inti tesis: memakai WTTE-RNN berbasis survival/Weibull dengan loss log-likelihood yang menangani status kegagalan (censoring), sekaligus mengkuantifikasi ketidakpastian (PI, PDF, kurva survival). Memberi blueprint metodologis untuk menggabungkan deep learning + survival + uncertainty, meski domainnya turbofan, bukan membran.",
+ "temuan_kunci": [
+  "WTTE-RNN diperluas dengan MsDCNN + LSTM + channel attention; langsung mempelajari parameter distribusi Weibull (alpha, beta) untuk RUL dan ketidakpastian sekaligus.",
+  "Loss WTTE berbasis maximum likelihood dengan indikator u_t (1 jika waktu gagal) sehingga menangani waktu-ke-kejadian secara langsung.",
+  "Performa C-MAPSS: RMSE 13,73/14,50/14,54/17,14 (FD001-FD004); rata-rata RMSE 14,48, Score 614, MAE 11,40, R2 0,87.",
+  "PI 90% Unit 42 menyempit dari ~117 siklus (awal) menjadi ~33 siklus (72,2% reduksi); RUL sebenarnya 27 berada dalam PI [13,0; 45,5].",
+  "Kurva survival Unit 42 menunjukkan ~80% peluang belum gagal pada rentang 0-60 siklus.",
+  "GDSR membatasi beta per tahap bathtub: early [0,1-1,0], mid [0,9-1,1], late [1,0-beta_max]."
+ ],
+ "dimensi": {
+  "d1": "1",
+  "d2": "1",
+  "d3": "1",
+  "d4": "1",
+  "d5": "1",
+  "d6": "",
+  "d7": "",
+  "d8": ""
+ },
+ "alasan_dimensi": {
+  "d1": "Input berupa data time-series multivariat sensor (C-MAPSS 26 dimensi, 14 sensor terpilih; N-CMAPSS 14 sensor) dengan sliding-expanding window.",
+  "d2": "RUL dilabeli eksplisit (piecewise linear, cap 125 siklus); WTTE memodelkan waktu-ke-kejadian kegagalan.",
+  "d3": "WTTE-RNN adalah kerangka survival analysis berbasis distribusi Weibull; loss log-likelihood memakai indikator u_t (1 = waktu gagal, 0 = belum gagal) sehingga secara eksplisit menangani status kegagalan/censoring time-to-event.",
+  "d4": "Model spesifik: MsDCNN + LSTM + channel attention + WTTE-RNN + GDSR (mengeluarkan parameter Weibull alpha, beta).",
+  "d5": "Kuantifikasi ketidakpastian kuat: distribusi Weibull, prediction interval [10%,90%], PDF dinamis, dan kurva survival.",
+  "d6": "Tidak mengusulkan/menganalisis keputusan maintenance formal (jadwal/biaya/DSS); hanya menyatakan kegunaan untuk perencanaan inspeksi/threshold secara kualitatif.",
+  "d7": "Domain turbofan engine, bukan membran/RO/desalinasi/fouling.",
+  "d8": "Bukan small-data/transfer/hierarchical/all-censored sebagai fokus; validasi generalisasi pada N-CMAPSS DS02 (9 unit) tetapi pelatihan utama memakai C-MAPSS lengkap."
+ },
+ "relevansi": "Inti-Metode",
+ "kualitas": {
+  "skor": 9,
+  "rincian": {
+   "Q1": 1,
+   "Q2": 1,
+   "Q3": 1,
+   "Q4": 0.5,
+   "Q5": 1,
+   "Q6": 1,
+   "Q7": 1,
+   "Q8": 0.5
+  },
+  "catatan": "Q1-Q2 jelas dan memadai; Q3 dua dataset (C-MAPSS + N-CMAPSS), split berbasis unit, diulang 10 kali; Q4 hyperparameter & arsitektur rinci tetapi tanpa kode; Q5 evaluasi lengkap (RMSE/MAE/R2/Score, baseline, analisis sensitivitas, generalisasi); Q6 penanganan time-to-event/censoring via loss WTTE (u_t); Q7 pelaporan ketidakpastian kuat (PI/PDF/survival); Q8 hanya tautan kualitatif ke maintenance. Skor = round(7/8*10) = 9."
+ },
+ "data_kuantitatif": {
+  "dataset": "NASA C-MAPSS (FD001-FD004) dan N-CMAPSS (DS02)",
+  "ukuran": "C-MAPSS 26 dimensi/14 sensor terpilih, window 40-125, batch 256, 150 epoch; N-CMAPSS DS02 9 unit (6 train: 2,5,10,16,18,20; 3 test: 11,14,15), downsample 100, RUL cap 88",
+  "metrik": "C-MAPSS RMSE 13,73/14,50/14,54/17,14 (avg 14,48); MAE 11,40; R2 0,87; Score 234/689/385/1148 (avg 614); PI 90% Unit 42: 117 -> 33 siklus; N-CMAPSS Unit 11 RMSE 4,35 Score 2891"
+ },
+ "metode": "PhyMix-UQ-RUL: WTTE-RNN (survival Weibull) + multi-scale dilated CNN (kernel 3/5/7, dilation 1/2/3) + channel attention + LSTM (256 unit) + GDSR (bathtub-curve constraint pada beta) + dual regularization loss (global + stage-adaptive); Keras Tuner, Adam, early stopping",
+ "limitasi": [
+  "Analisis PI/uncertainty mendalam hanya pada satu unit (Unit 42), belum semua unit.",
+  "Akurasi tidak selalu terbaik pada subset SOP (FD001) dibanding beberapa baseline.",
+  "Tidak ada model keputusan maintenance formal (hanya referensi kualitatif).",
+  "Kurang efektif untuk sistem dengan sensing diskontinu atau kondisi operasi sangat dinamis.",
+  "Tanpa ketersediaan kode."
+ ],
+ "funding_coi": "Dukungan: Science and Technology Plan Project of Yulin City (2023-CXY-206), Key R&D Projects of Shaanxi Province (2024CY2-GJHX-16), dan Doctoral Dissertation Innovation Fund of Xi'an University of Technology (BC202603). Tidak ditemukan pernyataan konflik kepentingan eksplisit.",
+ "status_inklusi": "diterima",
+ "figur_dibaca": [
+  {"file": "_page_3_Figure_4.jpeg", "isi": "Struktur PhyMix-UQ-RUL: Input Data -> Multi-scale CNN (Conv1 kernel=3/dil=1, Conv2 kernel=5/dil=2, Conv3 kernel=7/dil=3, lalu Add) -> Degradation Stage Gate (Early/Mid/Late Stage Gate -> Stage Fusion) -> LSTM -> output Alpha (skala Weibull) dan Beta (bentuk Weibull)."},
+  {"file": "_page_11_Figure_5.jpeg", "isi": "Prediksi RUL dengan prediction interval: sumbu X Sample Index, sumbu kiri RUL (0-175), sumbu kanan PI Width (0-600). True RUL (hitam) turun dari ~125 ke ~25; Predicted RUL (merah putus); pita 90% PI melebar di awal lalu menyempit; bar PI Width mengecil seiring waktu."},
+  {"file": "_page_12_Figure_1.jpeg", "isi": "Kurva survival: sumbu X cycles (0-250), sumbu Y survival probability (0-1). Kurva median (merah) turun dari 1 ke ~0,5 pada ~95-100 siklus, mendekati 0 ~175; family kurva (biru) sangat lebar, menunjukkan rentang ketidakpastian survival dari parameter alpha/beta."}
+ ],
+ "bukti": [
+  "'WTTE-RNN is a probabilistic prediction framework developed for survival analysis' (2.2.1).",
+  "'u_t indicates whether time t is the actual failure time. Specifically, u_t = 1 if t is the actual failure time; otherwise, u_t = 0' (Eq. 1) — indikator kegagalan/censoring.",
+  "'outputs complete produces full probabilistic information, including confidence intervals and probability density functions' (2.2.1).",
+  "'the 90% PI width reaching about 117 cycles ... intervals narrow to around 33 cycles, representing a 72.2% reduction' (Discussion).",
+  "'the last sample's true RUL (27 cycles) was contained within the predicted 90% PI [13.0, 45.5]' (Discussion).",
+  "'the median survival curve shows that in the 0 to 60 time range, Test Unit 42 has approximately an 80% probability of not failing' (Discussion)."
+ ]
+}

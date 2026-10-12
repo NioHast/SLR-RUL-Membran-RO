@@ -1,0 +1,82 @@
+{
+  "no": 32,
+  "judul": "Data-Efficient Estimation of Remaining Useful Life for Machinery With a Limited Number of Run-to-Failure Training Sequences",
+  "penulis": "German Sternharz, Ayman Elhalwagy, Tatiana Kalganova",
+  "tahun": 2022,
+  "jurnal": "IEEE Access",
+  "doi": "10.1109/ACCESS.2022.3226780",
+  "kuartil": "Scopus Q1 (SCImago SJR Best Quartile)",
+  "pilar": "D. Small-data/Transfer/Hierarchical",
+  "ringkasan": "Studi ini mengusulkan metodologi prediksi RUL yang hemat data: terlebih dahulu memodelkan deviasi kondisi mesin dari keadaan sehat dan rusak memakai Mahalanobis Distance (MD) atau LSTM Autoencoder (AE), lalu menghitung Health Index (HI) dan mendeteksi awal degradasi, sebelum memprediksi RUL dengan SVR, LSTM, atau regresi polinomial kuadratik. Tujuannya mengatasi kelangkaan runtun run-to-failure. Validasi pada dua dataset terbuka (C-MAPSS turbofan dan FEMTO bearing) menunjukkan perbaikan generalisasi pada data latih terbatas.",
+  "kontribusi": "Mendemonstrasikan strategi RUL yang efisien data lewat representasi ulang fitur menjadi HI dan deteksi awal degradasi (unit-specific), bukan sekadar mengandalkan banyak runtun lengkap. Relevan ke tesis sebagai analogi 'reduksi dimensi + deteksi onset' pada rezim data kecil, tetapi tetap tanpa pemodelan penyensoran, sehingga memperjelas celah bahwa data tersensor + survival belum dieksplorasi untuk HI/RUL membran.",
+  "temuan_kunci": [
+    "Pada data latih sangat terbatas (<20% runtun), MD-LSTM mengalahkan baseline LSTM; pada FD004 dengan 5% data, RMSE turun 19,2% (32,8 vs 40,6).",
+    "HI berbasis AE memberi akurasi prediksi lebih tinggi daripada HI berbasis MD, namun kebutuhan komputasi jauh lebih besar; MD-SVR memangkas waktu latih hingga 8,9% dari baseline pada set penuh.",
+    "Deteksi awal degradasi memungkinkan penolakan prediksi RUL yang tidak bermakna pada fase sehat (unit-specific, bukan relabel konstan 125).",
+    "Pada FEMTO, perbandingan kurang konklusif karena jumlah runtun sedikit dan fitur saling berkorelasi.",
+    "Pelaporan variansi 30 kali latih/uji mengungkap bahwa sebagian publikasi C-MAPSS melaporkan satu kali evaluasi sehingga bias optimistis."
+  ],
+  "dimensi": {
+    "d1": "1",
+    "d2": "1",
+    "d3": "",
+    "d4": "1",
+    "d5": "",
+    "d6": "",
+    "d7": "",
+    "d8": "1"
+  },
+  "alasan_dimensi": {
+    "d1": "Input multi-sensor runtun waktu: C-MAPSS 21 sensor (Tabel 3) dengan rolling window; FEMTO fitur statistik dari accelerometer 2 arah (Tabel 6).",
+    "d2": "RUL didefinisikan eksplisit (RUL=abs(max(t)-t)) dan awal degradasi dideteksi via threshold 3 standar deviasi + toleransi 5 sampel (Section IV-B-1, Fig. 13).",
+    "d3": "Tidak memodelkan data tersensor/survival; meski membahas satu metode SVM yang mengeluarkan survival probability di Related Work, metodologi sendiri bukan model survival/hazard/Weibull.",
+    "d4": "Model spesifik: LSTM NN, LSTM Autoencoder, Support Vector Regression (RBF), Mahalanobis Distance, regresi polinomial kuadratik.",
+    "d5": "Tidak ada interval/posterior RUL: variansi yang dilaporkan adalah sebaran RMSE empiris lintas 30 pengulangan, bukan kuantifikasi ketidakpastian prediktif.",
+    "d6": "Motivasi pemeliharaan prediktif disebut, tetapi tidak ada model keputusan/jadwal/biaya pemeliharaan.",
+    "d7": "Bukan domain membran/RO/desalinasi; objek turbofan (C-MAPSS) dan bearing (FEMTO).",
+    "d8": "Inti studi adalah rezim small-data: prediksi RUL dari jumlah runtun run-to-failure yang terbatas (5%-100%), termasuk efisiensi data dan green AI."
+  },
+  "relevansi": "Inti-Domain",
+  "kualitas": {
+    "skor": 8,
+    "rincian": {
+      "Q1": "1",
+      "Q2": "1",
+      "Q3": "1",
+      "Q4": "0.5",
+      "Q5": "1",
+      "Q6": "N/A",
+      "Q7": "0.5",
+      "Q8": "0.5"
+    },
+    "catatan": "RQ tajam (efisiensi data). Metode jelas dan variasi lengkap (5 konfigurasi). Data dua benchmark terbuka; protokol 30 pengulangan dan uji signifikansi memperkuat validitas. Reproduksibilitas baik dari tabel hyperparameter namun tanpa kode. Penyensoran tidak relevan (N/A). Ketidakpastian dilaporkan sebagai variansi/box-whisker empiris, bukan interval prediktif. Tautan keputusan pemeliharaan hanya motivasi."
+  },
+  "data_kuantitatif": {
+    "dataset": "NASA C-MAPSS (FD001-FD004) dan FEMTO-ST IEEE PHM 2012 Bearing Degradation",
+    "ukuran": "C-MAPSS: FD001 100/100, FD002 260/259, FD003 100/100, FD004 249/248 train/test; FEMTO: 6 train (run-to-failure) dan 11 test",
+    "metrik": "RMSE (siklus/menit), variansi/std RMSE, durasi latih relatif (%), p-value"
+  },
+  "metode": "HI generation via Mahalanobis Distance atau LSTM Autoencoder (deviasi dari kondisi sehat X_h dan rusak X_f) + optimasi subset fitur dengan Genetic Algorithm; deteksi degradasi berbasis threshold; prediksi RUL dengan SVR (RBF), LSTM, atau polynomial LS; pembanding baseline LSTM langsung dari fitur mentah.",
+  "limitasi": [
+    "Tidak memodelkan penyensoran/survival; mengasumsikan data train run-to-failure penuh (walau jumlah runtun sedikit).",
+    "FEMTO terlalu kecil sehingga perbandingan tidak konklusif.",
+    "Memerlukan data kondisi sehat dan rusak (binary) sebagai fondasi model deviasi.",
+    "MD-QPoly punya galat tertinggi meski tanpa data latih.",
+    "Tidak ada kuantifikasi ketidakpastian prediktif formal."
+  ],
+  "funding_coi": "Didanai sebagian oleh Engineering and Physical Sciences Research Council (EPSRC). Tidak ditemukan pernyataan konflik kepentingan eksplisit.",
+  "status_inklusi": "diterima",
+  "figur_dibaca": [
+    {"file": "figures/_page_5_Figure_11.jpeg", "isi": "Fig. 3 overview metodologi 3 tahap: (IV-A) Health model & Fault model dari X_h/X_f -> d_h & d_f; (IV-B) HI = d_f/(d_h+d_f) -> Degradation detection; (IV-C) Prediction model -> RUL."},
+    {"file": "figures/_page_11_Figure_12.jpeg", "isi": "Fig. 13 HI berbasis MD (sumbu HI 0-1, siklus 0-350): HI ~0.9-0.95 stabil sampai 'degradation start' ~siklus 180, lalu turun ke ~0.2 pada siklus ~330."},
+    {"file": "figures/_page_14_Figure_2.jpeg", "isi": "Fig. 20 box-whisker RMSE vs % runtun latih (0,5,10,15,20,35,50,75,100): RMSE turun seiring data bertambah; 0% (MD-QPoly) ~36; pada 100% AE-SVR terendah ~16; penanda signifikansi * / **."}
+  ],
+  "bukti": [
+    "Abstrak: metodologi HI + deteksi degradasi untuk data terbatas; perbaikan 6,5%-19,2% pada 5% data.",
+    "Kontribusi (4 butir): metodologi baru, HI berbasis MD/AE, variasi implementasi, dua dataset terbuka.",
+    "Tabel 1: konfigurasi metode (LSTM baseline, MD-QPoly, MD-SVR, AE-SVR, MD-LSTM).",
+    "Eq. 12-14: formulasi deviasi AE & HI rasio; Section IV-B-1: threshold deteksi degradasi.",
+    "Tabel 5: RMSE rata-rata/std seluruh dataset C-MAPSS (mis. FD004 5%: 32,8 vs 40,6).",
+    "Fig. 20-24 & Tabel 8: hasil dan signifikansi; Fig. 21: durasi latih relatif."
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "no": 100,
+  "judul": "Prediction of remaining useful life (RUL) of Komatsu excavator under reliability analysis in the Weibull-frailty model",
+  "penulis": "Awat Ghomghaleh, Reza Khaloukakaie, Mohammad Ataei, Abbas Barabadi, Ali Nouri Qarahasanlou, Omeid Rahmani, Amin Beiranvand Pour",
+  "tahun": 2020,
+  "jurnal": "PLoS ONE",
+  "doi": "10.1371/journal.pone.0236128",
+  "kuartil": "Scopus Q1 (ScImago SJR Best Quartile)",
+  "pilar": "A. Survival Analysis & Censored Data",
+  "ringkasan": "Studi memprediksi RUL excavator Komatsu PC-1250 di tambang tembaga Sungun memakai analisis keandalan dalam model Weibull-frailty. Data time between failures (TBF) dari 80 jam operasional dimodelkan dengan dua pendekatan: model klasik-eksponensial dan model Weibull-frailty yang menyertakan frailty (faktor risiko tak teramati/heterogenitas). Model dipilih lewat uji GOF (AIC/BIC) dan uji heterogenitas likelihood ratio, lalu RUL dihitung dari mean residual life (MRL).",
+  "kontribusi": "Preseden langsung penggunaan model survival frailty (Weibull + random effect untuk heterogenitas tak teramati) dalam menghitung RUL, lengkap dengan penanganan data tersensor (suspended data) dan uji GOF/heterogenitas - klop dengan kerangka survival tesis; tetapi tidak memakai deep learning dan domainnya excavator tambang, bukan membran.",
+  "temuan_kunci": [
+    "Uji heterogenitas LR menghasilkan R=3,96 dan p-value=0,023, menandakan adanya heterogenitas tak teramati (frailty) yang signifikan.",
+    "Pada model klasik, fungsi eksponensial terpilih (AIC 169,44); pada model frailty, Weibull-frailty terbaik (AIC 169,48; BIC 175,7612).",
+    "Parameter Weibull-frailty: alpha (p) = 2,817; beta = 30,565; theta (varians gamma/frailty) = 3,575.",
+    "Reliabilitas model frailty lebih baik daripada model klasik pada reliabilitas > 80%, dan RUL model frailty meningkat koheren dengan waktu operasional (1.232 jam pada t0=0, naik sampai 2.907,8 jam pada t0=80).",
+    "Model klasik-eksponensial memberi RUL ~99,60 jam yang hampir konstan (memori-less, pola sinusoidal)."
+  ],
+  "dimensi": {"d1": "", "d2": "1", "d3": "1", "d4": "", "d5": "1", "d6": "", "d7": "", "d8": "1"},
+  "alasan_dimensi": {
+    "d1": "Data bukan sinyal sensor deret waktu; datanya adalah waktu antar-kegagalan (TBF) dari catatan pemeliharaan, sehingga tidak memenuhi 'multi-sensor/time-series'.",
+    "d2": "Mendefinisikan kegagalan (ketidakmampuan menjalankan fungsi) dan RUL sebagai mean residual life L(t0)=E(T-t|T>=t) dan MTTF(t0).",
+    "d3": "Benar-benar memodelkan waktu-ke-kegagalan dengan model survival: reliabilitas R(t), hazard lambda(t), Weibull, dan frailty; data dibagi menjadi completed failure data dan suspended (censored) data, dan likelihood frailty (Eq 25) diestimasi.",
+    "d4": "Tidak memakai model ML/DL spesifik dari daftar (LSTM/CNN/Transformer/Bayesian/RF/SVM/GP); modelnya adalah Weibull-frailty statistik (hazard/reliability).",
+    "d5": "Melaporkan interval kepercayaan 95% untuk parameter model (lambda, p, theta, alpha, beta) dari estimasi (Tabel 2-5), memberi kuantifikasi ketidakpastian parameter.",
+    "d6": "Menyatakan hasil dapat dipakai untuk perawatan, rencana perbaikan preventif, dan interval penggantian suku cadang, tetapi tidak menyusun/menganalisis model keputusan pemeliharaan konkret.",
+    "d7": "Objek penelitian adalah excavator tambang, bukan membran/RO/desalinasi.",
+    "d8": "Model frailty menyertakan efek acak (frailty) untuk heterogenitas tak teramati - struktur efek-acak/hierarki - dan analisis menangani data suspended/tersensor pada sampel kecil (80 jam operasional)."
+  },
+  "relevansi": "Inti-Metode",
+  "kualitas": {"skor": 7, "rincian": {"Q1": 1, "Q2": 1, "Q3": 0.5, "Q4": 0.5, "Q5": 0.5, "Q6": 1, "Q7": 0.5, "Q8": 0.5}, "catatan": "Kerangka reliabilitas/survival jelas dengan derivasi RUL (MRL) lengkap, uji heterogenitas (LR), GOF (AIC/BIC), dan pemilihan model. Kelemahan: data lapangan kecil (80 jam, satu unit) tanpa validasi silang; parameter dan estimasi memakai STATA tanpa detail lengkap; CI dilaporkan hanya untuk parameter, bukan RUL (Q7=0,5); RUL frailty naik seiring waktu (interpretasi fisik debatable). Q6=1 karena data tersensor (suspended) ditangani dalam analisis survival."},
+  "data_kuantitatif": {"dataset": "Data historis excavator Komatsu PC-1250 di tambang tembaga Sungun (Iran), Feb-Sep 2018; TBF dari catatan pemeliharaan (maintenance/mechanics group, laporan harian, wawancara, observasi langsung); ditambah data cuaca (S2)", "ukuran": "80 jam operasional (8 bulan rekaman); dua kategori data: completed failure dan suspended", "metrik": "R: 3,96 (p=0,023); AIC/BIC klasik eksponensial 169,44/171,533; Weibull-frailty 169,48/175,7612; alpha=2,817, beta=30,565, theta=3,575; RUL klasik ~99,60 jam; RUL frailty 1.232,04 -> 2.907,8 jam (t0=0->80)"},
+  "metode": "Kerangka lima langkah: (1) menentukan batas sistem; (2) identifikasi mekanisme kegagalan & pengumpulan data (TBF/TTF/TBM/TTR); (3) uji homogenitas/frailty, analisis reliabilitas, uji GOF (AIC, BIC); (4) penentuan parameter model dan laju reliabilitas; (5) estimasi RUL. Model: R(x)=1-F(t); hazard lambda(t|alpha)=alpha*lambda(t) (frailty); reliabilitas bersyarat R(t|alpha)={R(t)}^alpha; reliabilitas non-kondisional R_theta(t)=[1-theta ln R(t)]^{-1/theta} dengan g(alpha) gamma; RUL=MRL(t0)=int_{t0}^{inf} R(t)dt / R(t0). Estimasi via STATA (Weibull-frailty MLE).",
+  "limitasi": [
+    "Data lapangan kecil (80 jam; satu excavator) tanpa validasi silang.",
+    "RUL frailty meningkat seiring waktu operasional (implikasi 'sistem membaik') yang secara fisik debatable.",
+    "Tidak ada model ML/DL; tidak ada kuantifikasi ketidakpastian prediksi RUL (hanya CI parameter).",
+    "Domain excavator tambang, bukan membran/RO.",
+    "Keputusan pemeliharaan hanya disinggung, tidak dimodelkan."
+  ],
+  "funding_coi": "Didukung sebagian oleh Technical Office of the Sungun Copper Mine (Ahar, Iran); tidak ada dana eksternal lain. Penulis menyatakan tidak ada konflik kepentingan. Data tersedia dalam manuskrip dan Supporting Information.",
+  "status_inklusi": "diterima",
+  "figur_dibaca": [
+    {"file": "_page_7_Figure_2.jpeg", "isi": "Kerangka konseptual lima langkah: Step 1 batas sistem; Step 2 identifikasi mekanisme kegagalan & pengumpulan data; Step 3 uji homogenitas -> cabang ke model reliabilitas frailty (tidak homogen) atau model klasik (homogen), lalu uji GOF AIC/BIC; Step 4 fitting model & parameter + laju reliabilitas; Step 5 estimasi RUL."},
+    {"file": "_page_11_Figure_2.jpeg", "isi": "Kurva reliabilitas vs waktu analisis: model Eksponensial (biru) vs Weibull-Frailty (merah). Frailty lebih tinggi pada reliabilitas >80%, menyilang di sekitar 20% dan berbeda di ekor."},
+    {"file": "_page_13_Figure_2.jpeg", "isi": "Plot RUL model Weibull-frailty vs waktu operasional (0-80 jam): RUL meningkat dari ~1.232 jam ke ~2.908 jam (pola koheren/monoton naik)."}
+  ],
+  "bukti": ["Eq (1): reliabilitas R(x)=1-F(t)", "Eq (3)-(7): frailty, reliabilitas bersyarat & non-kondisional, g(alpha) gamma", "Eq (8)-(24): derivasi MRL/RUL", "Eq (25)-(26): uji heterogenitas LR (R=3,96)", "Eq (27)-(28): AIC/BIC", "Eq (33)-(37): reliabilitas & RUL kedua model", "Tabel 1: GOF AIC/BIC", "Tabel 5: parameter Weibull-frailty", "Tabel 6-7: nilai RUL"]
+}

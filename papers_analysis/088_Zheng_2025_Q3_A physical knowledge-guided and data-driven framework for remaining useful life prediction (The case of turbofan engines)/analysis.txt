@@ -1,0 +1,53 @@
+PAPER 78 — Zheng et al. (2025)
+Judul: A physical knowledge-guided and data-driven framework for remaining useful life prediction (The case of turbofan engines)
+Jurnal: Journal of Advanced Mechanical Design, Systems, and Manufacturing (JAMDSM) | Q3 (SCImago SJR Best Quartile) | DOI 10.1299/jamdsm.2025jamdsm0044
+Pilar: A. Survival Analysis & Censored Data | Relevansi: Inti-Metode | Skor kualitas: 9/10
+
+KARAKTERISTIK STUDI
+Studi hybrid physics-informed + data-driven untuk RUL turbofan. Mengidentifikasi dua celah: (1) integrasi pengetahuan fisik yang terbatas dan (2) kurangnya kuantifikasi ketidakpastian pada model data-driven. Mengusulkan kerangka PhyMix-UQ-RUL yang memperluas WTTE-RNN (survival analysis) dengan regulasi berbasis teori bathtub curve.
+
+METODE
+- Basis: WTTE-RNN (Weibull Time-To-Event RNN) — kerangka survival analysis yang memetakan data sensor ke parameter distribusi Weibull (alpha skala, beta bentuk) dan memakai loss maximum likelihood.
+- Loss log-likelihood WTTE memakai indikator u_t (1 = waktu gagal; 0 = belum gagal/censored) → penanganan time-to-event langsung.
+- MsDCNN: tiga cabang dilated convolution paralel (kernel 3/5/7, dilation 1/2/3) + channel attention (GAP+FC+softmax) untuk fusi multi-skala.
+- LSTM (256 unit) memodelkan tren degradasi jangka panjang.
+- GDSR: threshold dinamis (tau_low, tau_high via lightweight NN) membagi tiga tahap degradasi (early/mid/late), lalu membatasi beta Weibull sesuai bathtub curve (early [0,1-1,0]; mid [0,9-1,1]; late [1,0-beta_max]).
+- Loss total = log-likelihood + regularisasi global (std/mean beta) + regularisasi stage-adaptive.
+- Pelatihan: Keras Tuner, Adam, lr 0,0005, dropout 0,35, batch 256, 10 repeat dengan seed tetap.
+
+DATA
+C-MAPSS FD001-FD004 (26 dimensi, 14 sensor terpilih, cap RUL 125, window 40-125). N-CMAPSS DS02 (9 unit: 6 train/3 test, downsample 100, cap RUL 88).
+
+TEMUAN UTAMA
+- C-MAPSS: RMSE 13,73/14,50/14,54/17,14 (avg 14,48), MAE 11,40, R2 0,87, Score avg 614. Turun ~14% RMSE dan >30% Score dari CNN-WTTE-RNN.
+- N-CMAPSS Unit 11 RMSE 4,35/Score 2891 (terbaik); Score terendah di semua unit uji.
+- Kuantifikasi ketidakpastian: PI 90% Unit 42 menyempit dari ~117 ke ~33 siklus (reduksi 72,2%); RUL aktual 27 ada dalam PI [13,0; 45,5].
+- Kurva survival Unit 42: ~80% peluang belum gagal pada rentang 0-60 siklus.
+- beta kecil saat alpha kecil (dekat gagal) → keyakinan meningkat mendekati kegagalan.
+- GDSR dan regularisasi menstabilkan parameter dan menjaga konsistensi fisik.
+
+RELEVANSI KE TESIS
+Paling dekat dengan sumbu metode inti tesis: RUL + survival/Weibull + kuantifikasi ketidakpastian lewat deep learning, plus penanganan status kegagalan (censoring) melalui loss WTTE. Menunjukkan bagaimana menggabungkan deep learning dengan survival analysis dan output distribusi — pola yang dapat diadaptasi untuk RUL membran. Domain tetap turbofan (bukan membran). Posisi: Inti-Metode.
+
+JUSTIFIKASI DIMENSI
+- d1=1: time-series multivariat sensor (C-MAPSS 26 dim/14 sensor; N-CMAPSS 14 sensor).
+- d2=1: RUL dilabeli eksplisit (piecewise linear, cap 125); WTTE memodelkan waktu-ke-kejadian.
+- d3=1: WTTE-RNN = survival analysis berbasis Weibull; loss log-likelihood dengan indikator u_t (menangani status kegagalan/censoring). Bukan sekadar kata.
+- d4=1: MsDCNN + LSTM + channel attention + WTTE-RNN + GDSR.
+- d5=1: distribusi Weibull, prediction interval [10%,90%], PDF, kurva survival.
+- d6="": tanpa model keputusan maintenance formal (hanya klaim kualitatif inspeksi/threshold).
+- d7="": domain turbofan, bukan membran/RO/desalinasi/fouling.
+- d8="": generalisasi di N-CMAPSS, tetapi bukan fokus small-data/transfer/hierarchical/all-censored.
+Bukti kunci: "WTTE-RNN is a probabilistic prediction framework developed for survival analysis"; "u_t = 1 if t is the actual failure time; otherwise, u_t = 0"; "90% PI width ... 117 cycles ... narrow to around 33 cycles ... 72.2% reduction".
+
+KUALITAS (9/10)
+Q1 jelas (1); Q2 memadai (1); Q3 dua dataset + repeat + split per unit (1); Q4 tanpa kode (0,5); Q5 evaluasi lengkap + sensitivitas + generalisasi (1); Q6 penanganan time-to-event via WTTE (1); Q7 pelaporan ketidakpastian kuat (1); Q8 tautan maintenance kualitatif (0,5). Skor = round(7/8*10) = 9.
+
+LIMITASI
+Analisis PI hanya satu unit (Unit 42); tidak selalu terbaik pada FD001/SOP; tanpa model keputusan maintenance formal; kurang cocok untuk sensing diskontinu/kondisi sangat dinamis; tanpa kode.
+
+BUKTI (kutipan)
+- "WTTE-RNN is a probabilistic prediction framework developed for survival analysis" (2.2.1).
+- "u_t indicates whether time t is the actual failure time ... u_t = 1 ... otherwise, u_t = 0" (Eq. 1).
+- "the 90% PI width reaching about 117 cycles ... intervals narrow to around 33 cycles, representing a 72.2% reduction" (Discussion).
+- "the last sample's true RUL (27 cycles) was contained within the predicted 90% PI [13.0, 45.5]" (Discussion).

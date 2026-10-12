@@ -1,0 +1,81 @@
+{
+ "no": 59,
+ "judul": "Remaining Useful Life Prediction of Bearing with Vibration Signals Based on a Novel Indicator",
+ "penulis": "Bo Wu, Wei Li, Ming-quan Qiu",
+ "tahun": 2017,
+ "jurnal": "Shock and Vibration (Hindawi)",
+ "doi": "10.1155/2017/8927937",
+ "kuartil": "Scopus Q2 (SCImago SJR Best Quartile)",
+ "pilar": "A. Survival Analysis & Censored Data",
+ "ringkasan": "Paper mengembangkan metode hybrid untuk prediksi RUL bearing yang menggabungkan generalized Weibull failure rate function (WFRF) dengan radial basis function (RBF) neural network. Sebuah indikator baru, power value pada sensitive frequency band (SFB), diusulkan untuk melacak degradasi; deret indikator difit dengan generalized WFRF untuk meredam noise, lalu RBF memprediksi life percentage dan RUL. Divalidasi pada dataset bearing IMS dengan akurasi hingga 99,42%.",
+ "kontribusi": "Memberi preseden penggunaan fungsi hazard keluarga Weibull sebagai model degradasi untuk RUL (sumbu metode survival), relevan dengan tesis yang memakai survival analysis. Namun tidak menangani data tersensor secara eksplisit dan tidak mengkuantifikasi ketidakpastian, sehingga gap utama tetap terbuka.",
+ "temuan_kunci": [
+  "Indikator SFB (power pada pita frekuensi sensitif 3000-5000 Hz) paling sensitif (Monometrik tertinggi, kriteria Cri terbesar) dibanding RMS, kurtosis, skewness, peak-peak, variance, AADFSH, PC1.",
+  "Generalized WFRF memfit deret SFB power dan meredam fluktuasi; parameter hasil estimasi H=0,0083, K=1,32e-9, alpha=220, beta=16,09.",
+  "RBF neural network memprediksi life percentage; MSE test 2,45e-15.",
+  "Akurasi prediksi RUL 99,28% (Dataset 2 Bearing 1) dan 99,42% (Dataset 1 Bearing 3), mengalahkan tiga metode pembanding.",
+  "Indikator kurang sensitif sebelum life percentage ~60%, tetapi prediksi akurat di tahap akhir lebih penting."
+ ],
+ "dimensi": {
+  "d1": "1",
+  "d2": "1",
+  "d3": "1",
+  "d4": "1",
+  "d5": "",
+  "d6": "",
+  "d7": "",
+  "d8": ""
+ },
+ "alasan_dimensi": {
+  "d1": "Menggunakan sinyal getaran deret waktu (FFT per segmen, 984-2156 observasi) sebagai input runtun waktu pengukuran kondisi.",
+  "d2": "RUL didefinisikan eksplisit lewat life percentage p (0-1); failure terjadi saat p=100% dan RUL dihitung t_tilde = t/p - t.",
+  "d3": "Menggunakan generalized Weibull failure rate function (WFRF) sebagai model inti: z(t)=beta/alpha*((t-gamma)/alpha)^(beta-1) dan bentuk umum z_hat(t)=H+K*(beta/alpha^beta)*t^(beta-1) digunakan untuk memfit deret degradasi (model hazard berbasis Weibull). Tidak ada likelihood censoring eksplisit karena semua data run-to-failure.",
+  "d4": "Model spesifik: Radial Basis Function (RBF) neural network (Gaussian hidden layer) untuk prediksi life percentage.",
+  "d5": "Tidak mengkuantifikasi ketidakpastian; hanya akurasi dan MSE point prediction. Tidak ada CI/posterior/interval.",
+  "d6": "Tidak menganalisis keputusan maintenance (jadwal/biaya/DSS); hanya motivasi umum terkait downtime dan biaya maintenance.",
+  "d7": "Domain bearing/komponen rotasi, bukan membran/RO/desalinasi/fouling.",
+  "d8": "Bukan small-data/transfer/hierarchical/all-censored; memakai dataset run-to-failure IMS lengkap (satu bearing per analisis)."
+ },
+ "relevansi": "Inti-Metode",
+ "kualitas": {
+  "skor": 9,
+  "rincian": {
+   "Q1": 1,
+   "Q2": 1,
+   "Q3": 1,
+   "Q4": 0.5,
+   "Q5": 1,
+   "Q6": "N/A",
+   "Q7": "N/A",
+   "Q8": "N/A"
+  },
+  "catatan": "Q1 RQ jelas (prediksi RUL bearing); Q2 metode dijelaskan lengkap (formulasi WFRF, RBF, prosedur); Q3 dataset IMS publik dengan dua bearing berbeda fault; Q4 parameter (H/K/alpha/beta) dan arsitektur dijelaskan tetapi tanpa kode; Q5 evaluasi membandingkan akurasi dengan tiga penelitian lain + MSE. Q6-Q8 N/A (tanpa data tersensor, tanpa ketidakpastian, tanpa keputusan maintenance). Skor = round(4.5/5*10) = 9."
+ },
+ "data_kuantitatif": {
+  "dataset": "IMS (Center for Intelligent Maintenance Systems, University of Cincinnati) bearing dataset",
+  "ukuran": "Dataset 2 Bearing 1 (984 inspeksi, outer race) dan Dataset 1 Bearing 3 (2156 inspeksi, inner race); 500 pasang latih + 100 pasang uji",
+  "metrik": "Akurasi RUL 99,28% dan 99,42%; MSE test 2,45e-15; parameter WFRF H=0,0083, K=1,32e-9, alpha=220, beta=16,09; SFB = [3000, 5000] Hz"
+ },
+ "metode": "Hybrid: indikator SFB power -> fitting dengan generalized Weibull failure rate function (WFRF, nonlinear least squares) -> RBF neural network (input t_i, t_{i-1}, z_i, z_{i-1}; output life percentage) -> RUL = t/p - t",
+ "limitasi": [
+  "Tidak mengkuantifikasi ketidakpastian prediksi.",
+  "Tidak menangani data tersensor (semua run-to-failure).",
+  "Indikator SFB tidak sensitif pada tahap awal (sebelum ~60% life).",
+  "Tidak ada model keputusan maintenance formal.",
+  "Bergantung pada pemilihan pita frekuensi sensitif secara manual."
+ ],
+ "funding_coi": "Dana: National Key R&D Program of China (2016YFC0802908), National Natural Science Foundation of China (no. 51475455), dan PAPD Jiangsu. Penulis menyatakan tidak ada konflik kepentingan.",
+ "status_inklusi": "diterima",
+ "figur_dibaca": [
+  {"file": "_page_3_Figure_2.jpeg", "isi": "Flowchart prosedur: kotak Training (sinyal getaran -> FFT -> tentukan SFB & hitung power -> fit deret dengan generalized WFRF & bangun set latih RBF -> latih RBF) dan kotak Prediction (fit deret sampai waktu sekarang -> prediksi life percentage -> hitung RUL -> loop bila ada inspeksi baru)."},
+  {"file": "_page_8_Figure_2.jpeg", "isi": "Grafik performa (a) pelatihan (500 titik) dan (b) pengujian (100 titik): sumbu Y life percentage 0-1,2, sumbu X selected data; nilai aktual (+) dan prediksi (bulat) hampir berimpit, menunjukkan akurasi RBF."},
+  {"file": "_page_7_Figure_2.jpeg", "isi": "Deret SFB power value (biru) vs nilai fitted WFRF (hijau): sumbu Y power 0-0,7, sumbu X time 0-1000; SFB naik tajam mendekati akhir hidup, kurva fitted lebih halus/monoton."}
+ ],
+ "bukti": [
+  "'a method combining the generalized Weibull failure rate function (WFRF) and radial basis function (RBF) neural network is developed' (Abstract).",
+  "'The results showed that the proposed method provided a more accurate prediction' (Conclusion).",
+  "Table 3: parameter WFRF H=0.0083, K=1.32e-9, alpha=220, beta=16.09.",
+  "Table 4: akurasi 99.28% dan 99.42% vs metode pembanding 95.9-99.02%.",
+  "'The authors declare that there are no conflicts of interest' (Conflicts of Interest)."
+ ]
+}

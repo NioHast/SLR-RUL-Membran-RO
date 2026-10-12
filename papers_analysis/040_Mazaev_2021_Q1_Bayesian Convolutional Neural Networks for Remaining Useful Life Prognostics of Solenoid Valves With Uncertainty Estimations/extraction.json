@@ -1,0 +1,48 @@
+{
+ "no": 74,
+ "judul": "Bayesian Convolutional Neural Networks for Remaining Useful Life Prognostics of Solenoid Valves With Uncertainty Estimations",
+ "penulis": "Ganjour Mazaev, Guillaume Crevecoeur, Sofie Van Hoecke",
+ "tahun": 2021,
+ "jurnal": "IEEE Transactions on Industrial Informatics",
+ "doi": "10.1109/tii.2021.3078193",
+ "kuartil": "Scopus Q1 (SCImago SJR Best Quartile)",
+ "pilar": "C. Bayesian & Uncertainty",
+ "ringkasan": "Studi menggunakan Bayesian Convolutional Neural Networks (BCNN) untuk memprediksi RUL solenoid valve (SV) langsung dari representasi citra sinyal arus, diperkaya dua fitur fisik (shading ring force dan Coulomb friction) dari model elektromekanis. Dua arsitektur Bayesian dibandingkan: MC dropout dan mean-field variational inference (MFVI) yang memprediksi mean dan standar deviasi distribusi Gaussian terpangkas secara eksplisit. Hasil pada 48 valve uji dipercepat menunjukkan model BCNN MFVI memberi estimasi ketidakpastian (credible interval 90%) yang terkalibrasi baik, dan menurunkan MAE RUL ~40% dibanding metode deep/feature-based sebelumnya.",
+ "kontribusi": "Menunjukkan pembangunan kuantifikasi ketidakpastian yang terkalibrasi (credible interval, calibration curve) dalam RUL berbasis DL - relevan bagi pilar C (Bayesian & Uncertainty) pada tesis; namun tidak memodelkan data tersensor dan domainnya solenoid valve, bukan membran.",
+ "temuan_kunci": [
+  "Semua CNN yang diusulkan mengalahkan baseline deep/feature-based (~40% penurunan MAE RUL, p~0); misalnya BCNN MFVI only-physics MAE rata-rata 51,1 vs AdaNet 82,7 dan GBRT 97,6 (pada MAE 70% degradasi, terbaik BCNN MC Dropout with physics 36,9).",
+  "Menambahkan fitur fisik menurunkan MAE RUL ~20% (p<0,01) untuk FCNN dan BCNN.",
+  "BCNN MFVI terkalibrasi baik (mendekati garis ideal), sedangkan MC dropout secara signifikan meremehkan ketidakpastian.",
+  "Menambahkan sinyal arus di samping fitur fisik tidak memberi keuntungan performa (p>0,05).",
+  "Terdapat 8 dari 48 valve yang tidak mencapai EOL (implisit tersensor) dan dikecualikan dari analisis; hanya 40 valve yang dipakai."
+ ],
+ "dimensi": {"d1": "1", "d2": "1", "d3": "", "d4": "1", "d5": "1", "d6": "", "d7": "", "d8": ""},
+ "alasan_dimensi": {
+  "d1": "Data deret waktu multi-sensor: sinyal arus SV direpresentasikan sebagai citra [200x30] (30 akuisisi per jam), ditambah sensor suhu, tekanan, dan thermal mass flow; dua fitur fisik (gaya) ditambahkan per akuisisi.",
+  "d2": "RUL diprediksi dari sinyal faulty pertama hingga EOL; EOL didefinisikan secara eksplisit (plunger macet, lonjakan suhu permukaan, penurunan aliran outlet) dan RUL dimodelkan sebagai fungsi piece-wise linear.",
+  "d3": "Tidak memodelkan data tersensor: tidak ada survival/hazard/Weibull/cure. Meskipun 8 dari 48 valve tidak mencapai EOL (right-censored) dan dikecualikan dari 40 valve yang dianalisis, pencensoringan tidak diakomodasi dalam model.",
+  "d4": "Model spesifik: Bayesian CNN dengan MC dropout dan mean-field variational inference (MFVI, Flipout); baseline FCNN dan metode feature-based (AdaNet, linear regression, GBRT).",
+  "d5": "Kuantifikasi ketidakpastian eksplisit: distribusi prediktif RUL (Gaussian terpangkas/truncated), credible interval 90%, dan evaluasi kalibrasi via calibration curves.",
+  "d6": "Menyebut pentingnya 'prognostic decision-making', strategi pemeliharaan optimal, dan penurunan biaya operasional, tetapi tanpa analisis/model keputusan pemeliharaan konkret (jadwal/biaya/DSS).",
+  "d7": "Objek penelitian bukan membran/RO/desalinasi, melainkan solenoid valve pada sistem industri.",
+  "d8": "Dataset 1487 citra dari 40 valve dengan leave-one-out cross validation, tetapi tidak menerapkan small-data/transfer/hierarchical/all-censored secara metodologis."
+ },
+ "relevansi": "Pendukung",
+ "kualitas": {"skor": 9, "rincian": {"Q1": 1, "Q2": 1, "Q3": 1, "Q4": 0.5, "Q5": 1, "Q6": "N/A", "Q7": 1, "Q8": 0.5}, "catatan": "Sangat kuat: arsitektur BCNN MFVI (mean+std eksplisit), evaluasi kalibrasi (calibration curves), perbandingan 12 konfigurasi + 3 baseline, leave-one-out CV, dan uji-t berpasangan dengan uji normalitas Shapiro-Wilk. Kelemahan: data eksperimen industri tidak publik; tidak ada pemodelan censoring (8 valve non-EOL dikecualikan); tanpa model keputusan pemeliharaan. Q6 tidak berlaku."},
+ "data_kuantitatif": {"dataset": "Setup uji umur dipercepat: 48 solenoid valve (Burkert Type 6014, direct acting 3/2 way) diswitch 1 Hz selama 6 minggu hingga EOL; sinyal arus, suhu, tekanan, thermal mass flow", "ukuran": "1487 citra berlabel (tiap citra 30 akuisisi x sinyal 200 nilai = [200x30], diperluas [202x30]); 40 valve (40 mencapai EOL) dievaluasi; leave-one-out CV (35 latih / 4 validasi / 1 uji)", "metrik": "BCNN MC Dropout + fitur fisik MAE 51,8 (rata-rata) / 36,9 (70% degradasi); BCNN MFVI truncated Gaussian only physics 51,1; FCNN no physics 69,5; baseline AdaNet 82,7, Linear regression 76,6, GBRT 97,6 (MAE pada 70% degradasi)"},
+ "metode": "Bayesian CNN untuk RUL langsung dari citra sinyal arus + 2 fitur fisik (shading ring force, Coulomb friction). Arsitektur MFVI memprediksi mean dan std distribusi Gaussian terpangkas; pelatihan via variational inference (ELBO, Flipout, prior N(0,1)). Pembanding: MC dropout (dropout 0,2 aktif saat inferensi, 40 forward passes) dan FCNN. Optimizer Adam, lr 0,001, batch 64, early stopping (patience 8). Evaluasi: MAE per valve, calibration curves, occlusion feature attribution, paired t-test.",
+ "limitasi": [
+  "Data eksperimen industri tidak publik (dapat direproduksi hanya sebagian).",
+  "8 dari 48 valve tidak mencapai EOL dan dikecualikan; pencensoringan tidak dimodelkan.",
+  "Implementasi MFVI bergantung pada parameter heuristik window (30/17 akuisisi).",
+  "Tanpa model keputusan pemeliharaan (jadwal/biaya).",
+  "Domain solenoid valve, bukan membran/RO."
+ ],
+ "funding_coi": "Didukung Research Foundation - Flanders (FWO) (grant doktoral 1S88020N), Flanders Make, dan imec melalui proyek Flanders Make ICON MODA; tidak ada pernyataan konflik kepentingan.",
+ "status_inklusi": "diterima",
+ "figur_dibaca": [
+  {"file": "_page_5_Figure_2.jpeg", "isi": "Perbandingan tiga arsitektur: (a) FCNN menghasilkan prediksi titik tunggal RUL; (b) BCNN dengan MC dropout (dropout diaktifkan saat inferensi) membentuk distribusi; (c) BCNN MFVI dengan layer Flipout yang memprediksi mean (mu_hat_RUL) dan std (sigma_hat_RUL) distribusi Gaussian terpangkas."},
+  {"file": "_page_8_Figure_8.jpeg", "isi": "Calibration curves RUL untuk BCNN: kurva MFVI (garis penuh) dekat dengan garis ideal, sedangkan MC dropout (garis titik) meremehkan ketidakpastian; Gaussian non-truncated juga under-estimate."}
+ ],
+ "bukti": ["Eq. (1): teorema Bayes posterior bobot", "Eq. (2): ekspektasi prediktif", "Eq. (3)-(5): ELBO/VI & objektif minibatch", "Table I: sensor per pengukuran", "Table II: MAE rata-rata & MAE 70% degradasi semua konfigurasi + baseline", "Fig. 1 (setup), Fig. 2 (evolusi sinyal arus & EOL), Fig. 3 (representasi citra & fitur fisik), Fig. 4 (arsitektur), Fig. 5-7 (hasil RUL), Fig. 8 (kalibrasi), Fig. 9 (feature attribution)"]
+}

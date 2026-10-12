@@ -1,0 +1,43 @@
+PAPER 046 - Jin et al. (2022)
+Judul   : Bi-LSTM-Based Two-Stream Network for Machine Remaining Useful Life Prediction
+Jurnal  : IEEE Transactions on Instrumentation and Measurement | Scopus Q1 (SCImago SJR Best Quartile) | DOI 10.1109/TIM.2022.3167778
+Pilar   : B. Deep Learning RUL
+Relevansi: Pendukung
+
+KARAKTERISTIK STUDI
+Studi pengembangan metode RUL untuk mesin (aircraft engine) dalam PHM. Kontribusi: (1) handcrafted feature flows (HFFs) untuk menekan noise sinyal mentah dan menyediakan informasi sekuensial; (2) jaringan dua-stream berbasis Bi-LSTM yang menggabungkan stream sinyal mentah dan stream HFF, dengan tiga metode fusi.
+
+METODE
+- HFF: hitung amplitude average (Eq. 1) dan koefisien tren dari model polinomial linear (Eq. 2-3) pada panjang temporal t=2..T, lalu konkatenasi (Eq. 4-5) menjadi X tilde di R^{(T-1)x2C}.
+- Dua stream (Raw & HFF), masing-masing dua Bi-LSTM (hidden 16, 32) + dua FC sebagai decoder. Fusi: late (rata-rata prediksi), concatenation (gabung fitur), addition (jumlah element-wise). Regressor menghasilkan RUL.
+- Min-max normalisasi, label RUL piecewise (max 125), window 30, dropout 0,2, batch 10, 50 epoch, 5-fold CV, PyTorch.
+
+DATA
+NASA C-MAPSS FD001-FD004, 21 sensor (14 dipakai) + setting operasi. Trajektori latih/uji: 100/100, 260/259, 100/100, 248/249.
+
+TEMUAN UTAMA
+- Fusi addition terbaik: RMSE/Score FD001 11,96/206,33; FD002 14,48/726,82; FD003 13,41/223,36; FD004 15,11/892,39.
+- Mengungguli 8 SOTA (HDNN, CNN-LSTM, BLCNN, DCNN, BiLSTM-ED, LSTM-BS, ATS2S, CNN-BiLSTM) pada sebagian besar subset, terutama FD002/FD004.
+- Ablation: late fusion unggul di FD001/FD003, concatenation di FD002/FD004.
+
+RELEVANSI KE TESIS
+Pendukung: contoh metode RUL deep learning (Bi-LSTM multi-stream + rekayasa fitur) dengan evaluasi menyeluruh. Tidak ada survival/penyensoran dan bukan domain membran. Berguna untuk lanskap metode RUL dan protokol evaluasi (RMSE + Score).
+
+JUSTIFIKASI DIMENSI (per d1-d8)
+- d1 = 1: data deret waktu multisensor C-MAPSS + setting operasi.
+- d2 = 1: target RUL eksplisit (piecewise linear max 125).
+- d3 = "" : tanpa survival/censoring.
+- d4 = 1: Bi-LSTM dua lapis + HFF + tiga metode fusi.
+- d5 = "" : tanpa ketidakpastian.
+- d6 = "" : maintenance hanya framing.
+- d7 = "" : objek aircraft engine.
+- d8 = "" : tanpa small-data/transfer.
+
+KUALITAS (skor 8/10)
+Q1=1, Q2=1, Q3=1 (benchmark publik, 5-fold, 8+ SOTA, ablation), Q4=0,5 (kode tidak dibagikan), Q5=1, Q6=N/A, Q7=0, Q8=N/A. Jumlah 4,5/6 -> 8 (dibulatkan).
+
+LIMITASI
+Kode tidak tersedia; tanpa ketidakpastian; hanya simulasi turbofan; tanpa censoring.
+
+BUKTI
+Fig. 1-3, 5; Table I-III; Eq. (1)-(13). Fig. 2 (overview) dan Fig. 5 (fusi) dibuka untuk verifikasi d4.

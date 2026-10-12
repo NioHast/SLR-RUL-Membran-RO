@@ -1,0 +1,50 @@
+{
+  "no": 90,
+  "judul": "A Framework for Predicting Remaining Useful Life Curve of Rolling Bearings Under Defect Progression Based on Neural Network and Bayesian Method",
+  "penulis": "Masashi Kitai, Takuji Kobayashi, Hiroki Fujiwara, Ryoji Tani, Masayuki Numao, Ken-ichi Fukui",
+  "tahun": 2021,
+  "jurnal": "IEEE Access",
+  "doi": "10.1109/ACCESS.2021.3073945",
+  "kuartil": "Scopus Q1 (SCImago SJR Best Quartile)",
+  "pilar": "C. Bayesian & Uncertainty",
+  "ringkasan": "Studi mengusulkan kerangka prediksi kurva RUL bantalan gelinding pada kondisi defek yang terus berkembang, dengan menekankan perbedaan individual antar-bantalan dan fluktuasi fitur vibrasi di tahap defek lanjut. Kerangka ini menggabungkan Feature Fusion Network (FFN) berbasis CNN (memakai spektrogram vibrasi saat ini dan masa lalu serta Degradation Index Vector) dengan Hierarchical Bayesian Regression (HBR) yang menghasilkan kurva RUL monoton beserta distribusi posterior. Dievaluasi lewat leave-one-bearing-out CV pada 33 sampel bantalan, akurasi R2 median meningkat dan variasi antar-sampel menyusut.",
+  "kontribusi": "Menunjukkan bagaimana regresi Bayesian hierarkis dapat menghasilkan kurva RUL monoton beserta interval kredibel per-unit sekaligus menyerap perbedaan individual antar-unit - sebuah pola probabilistic RUL yang relevan bila tesis ingin melaporkan ketidakpastian prediksi; namun tidak memakai survival/Weibull/hazard dan tidak menangani data tersensor.",
+  "temuan_kunci": [
+    "Normalisasi min-max RUL/DS menaikkan R2 median dari 0,82 ke 0,93 dan menekan variasi antar-sampel.",
+    "Menambah Degradation Index Vector (kondisi degradasi masa lalu) meningkatkan R2 tahap lanjut sekitar 0,6 dibanding CNN murni (median S_Late: FFN 0,534 vs CNN -0,106).",
+    "Jumlah kondisi masa lalu optimal berbeda: m=1 untuk tahap awal (S_Early median 0,821), m=3 untuk tahap akhir (S_Late median 0,571).",
+    "Kerangka FFN+HBR memberi R2 median tahap akhir 0,12 lebih tinggi daripada FFN tanpa HBR; HBR menekan variasi dan menjamin monotonisitas kurva RUL.",
+    "Dibanding metode HBR pembanding [13], error absolut kerangka usulan lebih kecil rata-rata 4,6 jam; pada rasio data 20% error median turun ~8,5 jam (~32% perbaikan)."
+  ],
+  "dimensi": {"d1": "1", "d2": "1", "d3": "", "d4": "1", "d5": "1", "d6": "", "d7": "", "d8": "1"},
+  "alasan_dimensi": {
+    "d1": "Memakai sinyal akselerasi vibrasi dua arah (vertikal dan horizontal) sebagai deret waktu, diubah menjadi spektrogram (STFT, 128x128, sampling 50 kHz, 20 detik/pengukuran).",
+    "d2": "Mendefinisikan RUL sebagai selisih waktu operasi menuju batas operasional (defect size mencapai 12 mm), dengan tahapan evaluasi S_Early/S_Late/S_All berbasis batas pertumbuhan defek.",
+    "d3": "Tidak ada model survival/Weibull/hazard/cure maupun penanganan eksplisit data tersensor; Weibull hanya disebut sebagai konsep L10 life pada konsep TBM, bukan dimodelkan.",
+    "d4": "Memakai Feature Fusion Network (CNN + fully-connected Degradation Index Vector) digabung Hierarchical Bayesian Regression; pembanding RF dan CNN.",
+    "d5": "HBR menghasilkan distribusi posterior kurva RUL dan interval kredibel 50% serta 95% yang menyempit seiring bertambahnya pengukuran.",
+    "d6": "Menyebut perlunya rencana pemeliharaan, TBM, dan CBM serta biaya perawatan, tetapi tidak menyusun atau menganalisis model keputusan pemeliharaan konkret (jadwal/biaya/DSS).",
+    "d7": "Objek penelitian adalah bantalan gelinding (rolling bearing), bukan membran/RO/desalinasi.",
+    "d8": "Memakai model hierarki Bayesian (Hierarchical Bayesian Regression) untuk menyerap perbedaan individual antar-bantalan; data eksperimen relatif kecil (33 sampel) dan dievaluasi lewat leave-one-bearing-out cross-validation."
+  },
+  "relevansi": "Pendukung",
+  "kualitas": {"skor": 8, "rincian": {"Q1": 1, "Q2": 1, "Q3": 0.5, "Q4": 0.5, "Q5": 0.5, "Q6": "N/A", "Q7": 1, "Q8": "N/A"}, "catatan": "RQ dan metode dijelaskan rinci (arsitektur FFN, persamaan DIV, persamaan HBR (3)-(10), skema STFT) serta diuji melawan beberapa pembanding (RF, CNN, RF+HBR, CNN+HBR, metode HBR [13]). Kelemahan: data eksperimen sendiri dan tidak publik (33 sampel), tanpa uji signifikansi/CI atas metrik R2, tanpa kode. Q6 tidak berlaku (tanpa survival/pencensoringan); Q8 tidak berlaku (motivasi pemeliharaan ada, tetapi tanpa model keputusan)."},
+  "data_kuantitatif": {"dataset": "Data eksperimen sendiri: bantalan rol silindris tipe NU224, kecepatan 500 rpm, beban radial 90 kN; vibrasi vertikal+horizontal, sampling 50 kHz, 20 detik; defek flaking pada inner ring", "ukuran": "33 sampel bantalan, 51-129 snapshot per sampel; STFT data length 4 s, window 0,02 s, frekuensi 0-8000 Hz", "metrik": "R2 (median/rata-rata/std, leave-one-bearing-out CV); median R2 normalisasi RUL 0,82->0,93; S_Late median FFN m=3 = 0,571; error absolut vs metode [13] rata-rata -4,6 jam, pada 20% data -8,5 jam (~32%)"},
+  "metode": "Kerangka dua tahap: (1) FFN berbasis CNN yang memakai spektrogram vibrasi (CNN Unit 1 untuk fitur konvolusi, CNN Unit 2 untuk memprediksi RUL/DS ternormalisasi masa lalu) dan Degradation Index Vector (vid) yang divektorikan; Fusion Unit menggabungkan fitur konvolusi dan fitur DIV; (2) Hierarchical Bayesian Regression (Level 1 Student-t, Level 2 Normal/Lognormal/Half-Cauchy, Level 3 hyperprior) dengan inferensi posterior via MCMC untuk kurva RUL dan interval kredibel.",
+  "limitasi": [
+    "Data eksperimen sendiri, tidak publik, hanya 33 bantalan.",
+    "Tidak menangani data tersensor maupun survival analysis/Weibull/hazard.",
+    "Tidak ada uji signifikansi statistik atau interval pada metrik evaluasi R2.",
+    "Objek bantalan gelinding, bukan membran/RO; degradasi diukur lewat defect size yang sulit diukur saat operasi.",
+    "Metode pembanding [13] hanya bisa dibandingkan lewat error absolut karena biaya komputasi."
+  ],
+  "funding_coi": "Didukung NTN Next Generation Research Alliance Laboratories dan NTN Corporation (Advanced Technology R&D Center) serta Osaka University; sebagian penulis berafiliasi industri (NTN), namun tidak ada pernyataan konflik kepentingan eksplisit dalam teks yang diekstraksi.",
+  "status_inklusi": "diterima",
+  "figur_dibaca": [
+    {"file": "_page_3_Figure_2.jpeg", "isi": "Alur kerangka usulan: Vibrasi -> Spektrogram -> dua cabang Feature Fusion Network (A untuk RUL, B untuk Defect Size) -> nilai prediksi -> Hierarchical Bayesian Regression -> kurva RUL & distribusi posterior."},
+    {"file": "_page_4_Figure_2.jpeg", "isi": "Arsitektur Feature Fusion Network (FFN): dua CNN Unit (present & present+past spectrogram), pembentukan Degradation Index Vector (vid) dari nilai ternormalisasi, DIV Unit, lalu Fusion Unit yang menggabungkan f_conv dan f_div menjadi objective variable."},
+    {"file": "_page_5_Figure_2.jpeg", "isi": "Konsep Hierarchical Bayesian Regression: kurva RUL rata-rata (garis putus-putus) dengan area translusen sebagai distribusi posterior RUL, panah efek parameter individual delta_i yang menggeser kurva antar-bantalan."},
+    {"file": "_page_8_Figure_12.jpeg", "isi": "Boxplot R2 kerangka usulan: RF+HBR, CNN+HBR, FFN (w/o HBR), dan FFN+HBR pada S_Early, S_Late, S_All; FFN+HBR memiliki median dan rata-rata tertinggi pada S_Late dengan variasi terkecil."}
+  ],
+  "bukti": ["Eq (1)-(2): min-max normalization dan Degradation Index Vector", "Eq (3)-(10): persamaan regresi HBR dan distribusi prior berjenjang (Student-t, Normal, Lognormal, Half-Cauchy, Exponential)", "Eq (11): koefisien determinasi R2", "Fig 3: variasi RUL antar 33 sampel", "Fig 12: kurva RUL + interval kredibel 50%/95%", "Tabel 3: parameter arsitektur FFN", "Tabel 4: efek jumlah kondisi degradasi masa lalu (m) terhadap R2"]
+}

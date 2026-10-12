@@ -1,0 +1,46 @@
+{
+ "no": 8,
+ "judul": "Remaining Useful Life Prediction Method for Bearings Based on LSTM with Uncertainty Quantification",
+ "penulis": "Jinsong Yang, Yizhen Peng, Jingsong Xie, Pengxi Wang",
+ "tahun": 2022,
+ "jurnal": "Sensors",
+ "doi": "10.3390/s22124549",
+ "kuartil": "Scopus Q1 (Scimago SJR Best Quartile)",
+ "pilar": "B. Deep Learning RUL",
+ "ringkasan": "Makalah mengusulkan metode prediksi RUL bearing berbasis LSTM dengan kuantifikasi ketidakpastian. Fitur degradasi disaring memakai indeks evaluasi komprehensif (korelasi, monotonisitas, robustness), lalu dropout diterapkan pada LSTM untuk memperoleh aproksimasi Bayesian (epistemic uncertainty), dan estimasi kernel density nonparametrik menghasilkan distribusi RUL. Hasil pada PHM2012 menunjukkan RMSE 0,0567 dan MAE 0,0385, lebih baik daripada LSTM fitur acak, CNN, dan adaptive Kalman filter.",
+ "kontribusi": "Menunjukkan kuantifikasi ketidakpastian (dropout + kernel density) dalam prediksi RUL berbasis LSTM - relevan bagi komponen deep learning + ketidakpastian tesis, tetapi tidak memodelkan data tersensor dan domainnya bearing, bukan membran.",
+ "temuan_kunci": [
+  "Indeks evaluasi komprehensif Ce = 0,2Corr + 0,5Mon + 0,3Rob (Eq. 6) efektif menyaring fitur; penyaringan menurunkan RMSE dari 0,2463 (fitur acak) ke 0,0567.",
+  "Dropout + nonparametric kernel density estimation menghasilkan distribusi kernel RUL dan interval kepercayaan 95%.",
+  "Kinerja terbaik dan ketidakpastian terkecil pada tahap degradasi stabil (stadium kedua).",
+  "LSTM (RMSE 0,0567) mengungguli CNN (0,1613) dan adaptive Kalman filter (0,0775)."
+ ],
+ "dimensi": {"d1": "1", "d2": "1", "d3": "", "d4": "1", "d5": "1", "d6": "", "d7": "", "d8": ""},
+ "alasan_dimensi": {
+  "d1": "Sinyal akselerasi horizontal & vertikal (25,6 kHz, durasi 0,1 s) serta suhu; diekstraksi 52 fitur alternatif (time-domain + wavelet packet energy) sebagai input deret waktu.",
+  "d2": "Target RUL dengan label menurun linear terhadap waktu; jaringan memprediksi RUL dari data degradasi.",
+  "d3": "Tidak memodelkan data tersensor: tidak ada survival/Weibull/hazard/cure. Dropout hanya aproksimasi Bayesian untuk ketidakpastian, bukan pencensoringan.",
+  "d4": "Model spesifik: LSTM (2 layer) + fully connected + dropout, dengan dropout sebagai aproksimasi variasional Bayesian.",
+  "d5": "Kuantifikasi ketidakpastian epistemic via dropout, distribusi RUL via KDE, dan interval kepercayaan 95% (Fig. 8).",
+  "d6": "Menyebut 'uncertainty-based decisions' dan basis pengambilan keputusan, tetapi tidak menyusun keputusan/jadwal pemeliharaan konkret.",
+  "d7": "Objek adalah deep-groove ball bearing, bukan membran/RO/desalinasi.",
+  "d8": "Tidak menangani small-data/transfer/hierarchical; memakai subset PHM2012 (Bearing1_1 & 1_2 untuk latih)."
+ },
+ "relevansi": "Pendukung",
+ "kualitas": {"skor": 6, "rincian": {"Q1": 1, "Q2": 1, "Q3": 0.5, "Q4": 0.5, "Q5": 1, "Q6": 0, "Q7": 1, "Q8": 0}, "catatan": "Detail arsitektur/hyperparameter baik dan evaluasi pembanding (fitur acak, CNN, Kalman) kuat. Kelemahan: hanya satu bearing uji (Bearing1_3) pada satu kondisi, performa buruk pada tahap awal/akhir, tanpa pencensoringan, dan tanpa model keputusan. Jumlah 5,0/8 -> 6."},
+ "data_kuantitatif": {"dataset": "PHM2012 (FEMTO-ST); latih Bearing1_1 & Bearing1_2, uji Bearing1_3", "ukuran": "2803 titik sampling/bearing; time window 25 -> 2779 sampel; 9 fitur terpilih dari 52 alternatif", "metrik": "RMSE 0,0567; MAE 0,0385; pembanding: LSTM fitur acak RMSE 0,2463, CNN 0,1613, adaptive Kalman 0,0775; interval kepercayaan 95%"},
+ "metode": "LSTM + dropout (aproksimasi Bayesian) + nonparametric kernel density estimation; penyaringan fitur via indeks komprehensif Ce (korelasi+monotonisitas+robustness).",
+ "limitasi": [
+  "Hanya satu bearing uji pada satu kondisi operasi.",
+  "Kinerja prediksi buruk pada tahap awal (sehat) dan tahap akhir (kegagalan mendadak).",
+  "Tidak memodelkan data tersensor; interval ketidakpastian ilustratif via KDE.",
+  "Jumlah layer/parameter LSTM ditentukan empiris (grid search)."
+ ],
+ "funding_coi": "Tidak menerima dana eksternal (This research received no external funding); penulis menyatakan tidak ada konflik kepentingan.",
+ "status_inklusi": "diterima",
+ "figur_dibaca": [
+  {"file": "_page_3_Figure_2.jpeg", "isi": "Fig. 2 diagram alir prediksi RUL: Preprocessing (raw bearing data -> feature set -> evaluasi & penyaringan -> normalisasi -> konstruksi sampel -> split), Model training -> RUL point estimation, Prediction of RUL (model terlatih 'Keep Dropout work') -> RUL probability estimation, lalu Result evaluation."},
+  {"file": "_page_10_Figure_2.jpeg", "isi": "Fig. 7 hasil prediksi RUL bearing (sumbu x Sample 0-2200, y RUL 0-1): Real RUL (biru), Point estimation (merah, berosilasi mengikuti), Distribution range (band hijau melebar di akhir)."}
+ ],
+ "bukti": ["Eq. (6): indeks evaluasi komprehensif Ce", "Table 2: struktur model LSTM", "Table 7: perbandingan metode (RMSE/MAE)", "Fig. 8: interval kepercayaan 95%", "Fig. 9-11: distribusi kernel density RUL per stadium", "Fig. 12-13: perbandingan metode"]
+}

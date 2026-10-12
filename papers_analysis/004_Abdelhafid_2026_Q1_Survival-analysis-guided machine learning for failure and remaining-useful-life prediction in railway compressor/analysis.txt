@@ -1,0 +1,47 @@
+PAPER 009 - Hamdi Alaoui et al. (2026)
+Judul   : Survival-analysis-guided machine learning for failure and remaining-useful-life prediction in railway compressor
+Jurnal  : Scientific Reports | Scopus Q1 | DOI 10.1038/s41598-026-65271-4
+Pilar   : A. Survival Analysis & Censored Data
+Relevansi: Inti-Metode (Cox-PH survival + ML untuk kegagalan & RUL; domain kompresor kereta)
+
+KARAKTERISTIK STUDI
+Kerangka predictive maintenance yang dapat diinterpretasi: Cox proportional hazards (Cox-PH) dipakai sebagai lapisan seleksi fitur terarah (supervised) yang variabel signifikannya diteruskan ke empat algoritma ML/DL (ANN, RF, XGBoost, LSTM). Divalidasi pada dataset riil MetroPT-3 (kompresor udara kereta), dua tugas: klasifikasi event kegagalan dan regresi proxy RUL.
+
+METODE
+- Cox-PH: waktu operasi (elapsed cycles), event = kegagalan dilaporkan operator; C-index 0,79; kontribusi relatif variabel dihitung (Table 1).
+- Baseline reduksi dimensi: PCA (dibanding Cox-PH pada jumlah variabel sama).
+- Empat model ML/DL dievaluasi: ANN/MLP, Random Forest, XGBoost, LSTM.
+- Proxy RUL: proxy_RUL(t)=t_event-t dihitung per siklus operasi (dibatasi dua event berurutan), di-reset tiap maintenance; metodologi anti-leakage (split kronologis 80/20).
+- Evaluasi: klasifikasi (accuracy, ROC-AUC, PR-AUC, F1, precision, sensitivity, specificity); regresi (MAE, RMSE, R^2).
+
+DATA
+MetroPT-3 (UCI): multivariat (tekanan TP2/TP3/H1/DVP/reservoir, suhu oli, arus motor, sensor logika), 1 Hz; versi tereduksi 65536 baris; split kronologis 80/20.
+
+TEMUAN UTAMA
+- Cox-PH > PCA: event F1 0,770 vs 0,599 (AUC 0,974 vs 0,941); proxy RUL R^2 0,81 vs 0,69.
+- Faktor risiko dominan: suhu oli (~29,7%), DV_pressure, Reservoirs, TP3 (~17% masing-masing).
+- LSTM terbaik untuk deteksi event (ROC-AUC 0,961; sensitivitas 0,951; spesifisitas 0,945), tetap baik dengan 4 variabel Cox.
+- Untuk proxy RUL, pohon nonlinier lebih robust (XGBoost R^2 0,40 full variabel); LSTM R^2 negatif karena reset/diskontinuitas.
+- Cox-guided reduction menaikkan deteksi event namun menurunkan regresi RUL (trade-off task-dependent).
+
+RELEVANSI KE TESIS
+Sangat relevan: kombinasi Cox-PH survival analysis (hazard/censoring) dengan deep learning untuk kegagalan dan RUL, plus implikasi kebijakan keputusan pemeliharaan. Persis pola "survival-guided ML" yang dicari tesis. Namun domainnya kompresor kereta (bukan membran/RO), tanpa Weibull eksplisit, dan tanpa interval ketidakpastian.
+
+JUSTIFIKASI DIMENSI (d1-d8)
+- d1=1: dataset multivariat deret waktu (tekanan, suhu, arus, sensor digital), 1 Hz.
+- d2=1: event kegagalan biner + target proxy RUL.
+- d3=1: Cox-PH survival model; censored observations dinyatakan; partial likelihood menangani censoring.
+- d4=1: Cox-PH, ANN, RF, XGBoost, LSTM.
+- d5="": hanya C-index; tanpa CI/posterior/interval prediksi RUL.
+- d6=1: kebijakan alarm dua-tingkat, threshold sensitivitas/spesifisitas, penjadwalan jendela pemeliharaan & prioritas aset.
+- d7="": objek kompresor udara kereta.
+- d8=1: pelabelan kegagalan terbatas, observasi tersensor, dataset kecil; rekomendasi data augmentation.
+
+KUALITAS (skor 9/10)
+Q1=1; Q2=1; Q3=0,5 (data riil publik, namun target proxy RUL artifisial & naskah in-press); Q4=1 (pipeline & split dijelaskan, data publik); Q5=1 (banyak metrik + baseline PCA + dua skenario variabel); Q6=1 (Cox-PH + censoring); Q7=0,5 (C-index saja, tanpa interval); Q8=1 (implikasi keputusan konkret). Jumlah 7,0/8 -> 9.
+
+LIMITASI
+Proxy RUL artifisial (R^2 rendah); naskah in-press (unedited); tanpa interval ketidakpastian; trade-off Cox reduction pada regresi.
+
+BUKTI (fig/table/eq)
+Table 1-6; bagian 'Practical implications for railway compressor maintenance'; C-index 0,79.

@@ -1,0 +1,77 @@
+{
+ "no": 60,
+ "judul": "Cellulose acetate from palm oil bunch waste for forward osmosis membrane in desalination of brackish water",
+ "penulis": "Saiful, Sharmila Hasima, Nurul Kamila, Rahmi",
+ "tahun": 2022,
+ "jurnal": "Results in Engineering",
+ "doi": "10.1016/j.rineng.2022.100611",
+ "kuartil": "Scopus Q2 (SCImago SJR Best Quartile)",
+ "pilar": "E. Membrane/RO/Desalination",
+ "ringkasan": "Paper mengembangkan membran forward osmosis (FO) berbasis selulosa asetat yang disintesis dari limbah tandan buah kosong kelapa sawit (POEFB) untuk desalinasi air payau, sebagai alternatif pasokan air darurat. Membran difabrikasi dengan metode phase inversion, dikarakterisasi (FTIR, SEM, porositas, swelling, sudut kontak, sifat mekanik), dan diuji pada modul FO dengan draw solution sukrosa. Membran menghasilkan fluks air 2,22 L/m2h (1 M) hingga 4,2 L/m2h (2 M) dengan rejeksi garam 96% dan kualitas air memenuhi baku mutu air minum.",
+ "kontribusi": "Memberi konteks domain membran/desalinasi (bahan dan kinerja membran) tanpa menyentuh RUL, censoring, atau prediksi. Relevan hanya sebagai latar domain tesis: menunjukkan objek membran dan tantangan fouling/kinerja yang menjadi sasaran prediksi RUL, tetapi tidak memberi kontribusi metode.",
+ "temuan_kunci": [
+  "Sintesis selulosa asetat dari POEFB berhasil (selulosa diasetat; kadar asetil 36,17%, derajat substitusi 2,15).",
+  "Membran FO CA-POEFB memiliki porositas 15% dan derajat swelling 39%.",
+  "Sifat mekanik: kuat tarik 35 MPa, elongasi 36%; sudut kontak 66 derajat (hidrofilik).",
+  "Fluks air 2,22 L/m2h pada 1 M sukrosa (1 jam); meningkat hingga 4,2 L/m2h pada 2 M sukrosa.",
+  "Rejeksi garam hingga 96%; pH, salinitas, TDS, dan konduktivitas produk memenuhi standar air minum Permenkes 492/2010 dan WHO."
+ ],
+ "dimensi": {
+  "d1": "",
+  "d2": "",
+  "d3": "",
+  "d4": "",
+  "d5": "",
+  "d6": "",
+  "d7": "1",
+  "d8": ""
+ },
+ "alasan_dimensi": {
+  "d1": "Bukan data multi-sensor deret waktu; ini karakterisasi material dan kinerja membran (bukan sinyal sensor berderet waktu).",
+  "d2": "Tidak mendefinisikan RUL/kegagalan/ambang prediktif; hanya mengukur kinerja membran (flux/rejeksi).",
+  "d3": "Tidak ada pemodelan data tersensor/survival/Weibull/hazard/cure.",
+  "d4": "Tidak memakai model prediktif spesifik (LSTM/CNN/Transformer/Bayesian/RF/SVM/GP); hanya karakterisasi eksperimental.",
+  "d5": "Tidak mengkuantifikasi ketidakpastian prediksi (tidak ada CI/posterior/interval).",
+  "d6": "Tidak mengusulkan/menganalisis keputusan maintenance (jadwal/biaya/DSS).",
+  "d7": "Objek adalah membran forward osmosis untuk desalinasi air payau (membran/desalinasi/fouling menjadi konteks), sesuai domain tesis.",
+  "d8": "Tidak menangani small-data/transfer/hierarchical/all-censored."
+ },
+ "relevansi": "Konteks",
+ "kualitas": {
+  "skor": 9,
+  "rincian": {
+   "Q1": 1,
+   "Q2": 1,
+   "Q3": 1,
+   "Q4": 0.5,
+   "Q5": 1,
+   "Q6": "N/A",
+   "Q7": "N/A",
+   "Q8": "N/A"
+  },
+  "catatan": "Q1 tujuan jelas (fabrikasi & uji membran FO); Q2 prosedur eksperimen memadai dan rinci; Q3 validitas data eksperimen kuat, dibandingkan dengan baku mutu air minum dan membran komersial; Q4 prosedur rinci tetapi tanpa kode/data repositori; Q5 evaluasi memadai (FTIR, SEM, flux, rejeksi, kualitas air, tabel komparasi membran). Q6-Q8 N/A (tidak relevan). Skor = round(4.5/5*10) = 9, namun sebagai paper domain (tanpa RUL/metode prediktif) kontribusinya ke gap tesis rendah."
+ },
+ "data_kuantitatif": {
+  "dataset": "Air payau Krueng Cut, Aceh Besar; limbah POEFB PT. KTS, Aceh Barat (bahan); draw solution sukrosa",
+  "ukuran": "Membran CA-POEFB luas 0,036 m2, tebal 0,145 mm; uji FO 6 jam variasi sukrosa 0,5-2 M",
+  "metrik": "Fluks air 2,22-4,2 L/m2h; rejeksi garam 96%; porositas 15%; swelling 39%; kuat tarik 35 MPa; elongasi 36%; sudut kontak 66 derajat; TDS produk 56-93 mg/L"
+ },
+ "metode": "Eksperimental: isolasi selulosa POEFB (alkalisasi, hidrolisis asam HCl 5 M, bleaching NaOCl/CH3COOH) -> sintesis selulosa asetat (aktivasi, asetilasi, hidrolisis) -> fabrikasi membran phase inversion -> karakterisasi FTIR/SEM/swelling/porositas/sudut kontak/tensile -> uji FO desalinasi air payau",
+ "limitasi": [
+  "Tidak ada prediksi RUL/degradasi membran maupun model machine learning.",
+  "Tidak menangani data tersensor/survival.",
+  "Uji kinerja skala laboratorium (6 jam), belum jangka panjang.",
+  "Fluks air masih relatif rendah dibanding sebagian membran komersial.",
+  "Tidak menganalisis fouling secara kuantitatif.",
+  "Tanpa ketersediaan data/kode."
+ ],
+ "funding_coi": "Dukungan finansial Syiah Kuala University melalui 2021 H-Index Research Scheme [No. 307/UN11.2.1/PT.01.03/PNBP/2021]. Penulis menyatakan tidak ada konflik kepentingan.",
+ "status_inklusi": "diterima",
+ "figur_dibaca": [],
+ "bukti": [
+  "'The Cellulose diacetate FO membrane has a water flux value of 2.2 L/m2 hour and a rejection factor of 96% using 1 M sucrose as a draw solution' (Abstract).",
+  "'the cellulose acetate membrane for the purification process of brackish water because it is able to hold total dissolved substances' (Quality of water FO product).",
+  "Table 1: perbandingan fluks (4,2 L/m2h) dan rejeksi (96%) dengan membran CTA/TFC.",
+  "'The authors declare that they have no known competing financial interests' (Declaration of competing interest)."
+ ]
+}

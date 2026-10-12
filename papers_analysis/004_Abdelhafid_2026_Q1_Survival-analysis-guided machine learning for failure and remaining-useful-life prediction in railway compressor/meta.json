@@ -1,0 +1,1795 @@
+{
+  "table_of_contents": [
+    {
+      "title": "Article in Press",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          43.53652392947103,
+          70.2939453125
+        ],
+        [
+          153.12846347607052,
+          70.2939453125
+        ],
+        [
+          153.12846347607052,
+          85.7431640625
+        ],
+        [
+          43.53652392947103,
+          85.7431640625
+        ]
+      ]
+    },
+    {
+      "title": "Survival-analysis-guided machine learning for failure and remaining-useful-life prediction in railway compressor",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          43.53652392947103,
+          121.46161137440758
+        ],
+        [
+          482.6549118387909,
+          121.46161137440758
+        ],
+        [
+          482.6549118387909,
+          207.40576171875
+        ],
+        [
+          43.53652392947103,
+          207.40576171875
+        ]
+      ]
+    },
+    {
+      "title": "Abdelhafid Hamdi Alaoui, Anwar Meddaoui & Adil Hachmoud",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          213.9294710327456,
+          260.91753554502367
+        ],
+        [
+          447.37531486146094,
+          260.91753554502367
+        ],
+        [
+          447.37531486146094,
+          270.6644549763033
+        ],
+        [
+          213.9294710327456,
+          270.6644549763033
+        ]
+      ]
+    },
+    {
+      "title": "ARTICLE IN PRESS",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          239.361328125,
+          8.5078125
+        ],
+        [
+          370.248046875,
+          8.5078125
+        ],
+        [
+          370.248046875,
+          20.8828125
+        ],
+        [
+          239.361328125,
+          20.8828125
+        ]
+      ]
+    },
+    {
+      "title": "Survival-analysis-guided machine learning for failure and remaining-useful-\nlife prediction in railway compressor.",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          70.224609375,
+          73.4765625
+        ],
+        [
+          529.5,
+          73.4765625
+        ],
+        [
+          529.5,
+          105.9609375
+        ],
+        [
+          70.224609375,
+          105.9609375
+        ]
+      ]
+    },
+    {
+      "title": "Abstract",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          71.25,
+          276.0
+        ],
+        [
+          118.5,
+          276.0
+        ],
+        [
+          118.5,
+          285.75
+        ],
+        [
+          71.25,
+          285.75
+        ]
+      ]
+    },
+    {
+      "title": "1. Introduction",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          89.25,
+          626.25
+        ],
+        [
+          174.75,
+          626.25
+        ],
+        [
+          174.75,
+          635.765625
+        ],
+        [
+          89.25,
+          635.765625
+        ]
+      ]
+    },
+    {
+      "title": "ARTICLE IN PRESS",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          239.361328125,
+          8.89453125
+        ],
+        [
+          369.052734375,
+          8.89453125
+        ],
+        [
+          369.052734375,
+          20.49609375
+        ],
+        [
+          239.361328125,
+          20.49609375
+        ]
+      ]
+    },
+    {
+      "title": "\u2022 Stages of maintenance maturity",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          72.0,
+          186.75
+        ],
+        [
+          251.25,
+          186.75
+        ],
+        [
+          251.25,
+          198.0
+        ],
+        [
+          72.0,
+          198.0
+        ]
+      ]
+    },
+    {
+      "title": "\u2022 Predictive maintenance",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          72.0,
+          669.75
+        ],
+        [
+          207.75,
+          669.75
+        ],
+        [
+          207.75,
+          680.25
+        ],
+        [
+          72.0,
+          680.25
+        ]
+      ]
+    },
+    {
+      "title": "ARTICLE IN PRESS",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          239.361328125,
+          8.89453125
+        ],
+        [
+          370.248046875,
+          8.89453125
+        ],
+        [
+          370.248046875,
+          20.49609375
+        ],
+        [
+          239.361328125,
+          20.49609375
+        ]
+      ]
+    },
+    {
+      "title": "\u2022 Importance of proxy failure methods for identifying potential failures",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          89.349609375,
+          282.0
+        ],
+        [
+          442.5,
+          282.0
+        ],
+        [
+          442.5,
+          293.1328125
+        ],
+        [
+          89.349609375,
+          293.1328125
+        ]
+      ]
+    },
+    {
+      "title": "\u2022 Statistical models for maintenance prediction",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          68.1328125,
+          681.0
+        ],
+        [
+          320.25,
+          681.0
+        ],
+        [
+          320.25,
+          690.75
+        ],
+        [
+          68.1328125,
+          690.75
+        ]
+      ]
+    },
+    {
+      "title": "ARTICLE IN PRESS",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          239.361328125,
+          8.89453125
+        ],
+        [
+          370.248046875,
+          8.89453125
+        ],
+        [
+          370.248046875,
+          20.49609375
+        ],
+        [
+          239.361328125,
+          20.49609375
+        ]
+      ]
+    },
+    {
+      "title": "\u2022 ML models for maintenance prediction",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          74.109375,
+          313.5
+        ],
+        [
+          295.5,
+          313.5
+        ],
+        [
+          295.5,
+          324.84375
+        ],
+        [
+          74.109375,
+          324.84375
+        ]
+      ]
+    },
+    {
+      "title": "\u2022 Deep Learning (DL) and predictive maintenance",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          74.25,
+          569.25
+        ],
+        [
+          343.5,
+          569.25
+        ],
+        [
+          343.5,
+          580.5
+        ],
+        [
+          74.25,
+          580.5
+        ]
+      ]
+    },
+    {
+      "title": "ARTICLE IN PRESS",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          239.66015625,
+          8.89453125
+        ],
+        [
+          369.94921875,
+          8.89453125
+        ],
+        [
+          369.94921875,
+          20.49609375
+        ],
+        [
+          239.66015625,
+          20.49609375
+        ]
+      ]
+    },
+    {
+      "title": "Contributions of this work",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          74.109375,
+          169.5
+        ],
+        [
+          231.0,
+          169.5
+        ],
+        [
+          231.0,
+          180.0
+        ],
+        [
+          74.109375,
+          180.0
+        ]
+      ]
+    },
+    {
+      "title": "2. The proposed framework",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          89.05078125,
+          517.5
+        ],
+        [
+          240.75,
+          517.5
+        ],
+        [
+          240.75,
+          528.75
+        ],
+        [
+          89.05078125,
+          528.75
+        ]
+      ]
+    },
+    {
+      "title": "ARTICLE IN PRESS",
+      "heading_level": null,
+      "page_id": 6,
+      "polygon": [
+        [
+          238.46484375,
+          8.12109375
+        ],
+        [
+          369.94921875,
+          8.12109375
+        ],
+        [
+          369.94921875,
+          19.72265625
+        ],
+        [
+          238.46484375,
+          19.72265625
+        ]
+      ]
+    },
+    {
+      "title": "\u2022 The proposed approach",
+      "heading_level": null,
+      "page_id": 6,
+      "polygon": [
+        [
+          90.24609375,
+          135.73828125
+        ],
+        [
+          231.75,
+          135.73828125
+        ],
+        [
+          231.75,
+          147.33984375
+        ],
+        [
+          90.24609375,
+          147.33984375
+        ]
+      ]
+    },
+    {
+      "title": "3. Case study:",
+      "heading_level": null,
+      "page_id": 6,
+      "polygon": [
+        [
+          89.25,
+          702.66796875
+        ],
+        [
+          168.75,
+          702.66796875
+        ],
+        [
+          168.75,
+          713.25
+        ],
+        [
+          89.25,
+          713.25
+        ]
+      ]
+    },
+    {
+      "title": "ARTICLE IN PRESS",
+      "heading_level": null,
+      "page_id": 7,
+      "polygon": [
+        [
+          238.763671875,
+          8.5078125
+        ],
+        [
+          369.650390625,
+          8.5078125
+        ],
+        [
+          369.650390625,
+          20.8828125
+        ],
+        [
+          238.763671875,
+          20.8828125
+        ]
+      ]
+    },
+    {
+      "title": "Context and available data",
+      "heading_level": null,
+      "page_id": 7,
+      "polygon": [
+        [
+          89.349609375,
+          74.25
+        ],
+        [
+          246.75,
+          74.25
+        ],
+        [
+          246.75,
+          84.0
+        ],
+        [
+          89.349609375,
+          84.0
+        ]
+      ]
+    },
+    {
+      "title": "\u2022 Dataset used:",
+      "heading_level": null,
+      "page_id": 7,
+      "polygon": [
+        [
+          89.349609375,
+          171.75
+        ],
+        [
+          177.75,
+          171.75
+        ],
+        [
+          177.75,
+          181.5
+        ],
+        [
+          89.349609375,
+          181.5
+        ]
+      ]
+    },
+    {
+      "title": "\u2022 Failure event and Proxy RUL",
+      "heading_level": null,
+      "page_id": 7,
+      "polygon": [
+        [
+          90.24609375,
+          576.75
+        ],
+        [
+          264.75,
+          576.75
+        ],
+        [
+          264.75,
+          587.8125
+        ],
+        [
+          90.24609375,
+          587.8125
+        ]
+      ]
+    },
+    {
+      "title": "ARTICLE IN PRESS",
+      "heading_level": null,
+      "page_id": 8,
+      "polygon": [
+        [
+          239.958984375,
+          8.89453125
+        ],
+        [
+          369.650390625,
+          8.89453125
+        ],
+        [
+          369.650390625,
+          20.49609375
+        ],
+        [
+          239.958984375,
+          20.49609375
+        ]
+      ]
+    },
+    {
+      "title": "\u2022 Rationale and limitations of the proxy RUL",
+      "heading_level": null,
+      "page_id": 8,
+      "polygon": [
+        [
+          89.05078125,
+          360.75
+        ],
+        [
+          330.75,
+          360.75
+        ],
+        [
+          330.75,
+          372.41015625
+        ],
+        [
+          89.05078125,
+          372.41015625
+        ]
+      ]
+    },
+    {
+      "title": "Experimental setup",
+      "heading_level": null,
+      "page_id": 8,
+      "polygon": [
+        [
+          89.947265625,
+          585.0
+        ],
+        [
+          209.25,
+          585.0
+        ],
+        [
+          209.25,
+          595.546875
+        ],
+        [
+          89.947265625,
+          595.546875
+        ]
+      ]
+    },
+    {
+      "title": "ARTICLE IN PRESS",
+      "heading_level": null,
+      "page_id": 9,
+      "polygon": [
+        [
+          239.361328125,
+          8.89453125
+        ],
+        [
+          370.248046875,
+          8.89453125
+        ],
+        [
+          370.248046875,
+          20.49609375
+        ],
+        [
+          239.361328125,
+          20.49609375
+        ]
+      ]
+    },
+    {
+      "title": "\u2022 Variable reduction using Cox-PH",
+      "heading_level": null,
+      "page_id": 9,
+      "polygon": [
+        [
+          89.947265625,
+          264.75
+        ],
+        [
+          282.0,
+          264.75
+        ],
+        [
+          282.0,
+          277.27734375
+        ],
+        [
+          89.947265625,
+          277.27734375
+        ]
+      ]
+    },
+    {
+      "title": "ARTICLE IN PRESS",
+      "heading_level": null,
+      "page_id": 10,
+      "polygon": [
+        [
+          239.66015625,
+          8.89453125
+        ],
+        [
+          369.94921875,
+          8.89453125
+        ],
+        [
+          369.94921875,
+          20.49609375
+        ],
+        [
+          239.66015625,
+          20.49609375
+        ]
+      ]
+    },
+    {
+      "title": "\u2022 Accuracy of statistical models",
+      "heading_level": null,
+      "page_id": 10,
+      "polygon": [
+        [
+          87.556640625,
+          181.5
+        ],
+        [
+          262.5,
+          181.5
+        ],
+        [
+          262.5,
+          192.5859375
+        ],
+        [
+          87.556640625,
+          192.5859375
+        ]
+      ]
+    },
+    {
+      "title": "ARTICLE IN PRESS",
+      "heading_level": null,
+      "page_id": 11,
+      "polygon": [
+        [
+          239.0625,
+          8.89453125
+        ],
+        [
+          369.3515625,
+          8.89453125
+        ],
+        [
+          369.3515625,
+          20.49609375
+        ],
+        [
+          239.0625,
+          20.49609375
+        ]
+      ]
+    },
+    {
+      "title": "4. Prediction accuracy of failures and RUL:",
+      "heading_level": null,
+      "page_id": 11,
+      "polygon": [
+        [
+          88.154296875,
+          360.0
+        ],
+        [
+          321.0,
+          360.0
+        ],
+        [
+          321.0,
+          371.25
+        ],
+        [
+          88.154296875,
+          371.25
+        ]
+      ]
+    },
+    {
+      "title": "\u2022 Failure prediction",
+      "heading_level": null,
+      "page_id": 11,
+      "polygon": [
+        [
+          89.05078125,
+          457.5
+        ],
+        [
+          202.5,
+          457.5
+        ],
+        [
+          202.5,
+          468.0
+        ],
+        [
+          89.05078125,
+          468.0
+        ]
+      ]
+    },
+    {
+      "title": "ARTICLE IN PRESS",
+      "heading_level": null,
+      "page_id": 12,
+      "polygon": [
+        [
+          238.166015625,
+          8.12109375
+        ],
+        [
+          370.248046875,
+          8.12109375
+        ],
+        [
+          370.248046875,
+          19.72265625
+        ],
+        [
+          238.166015625,
+          19.72265625
+        ]
+      ]
+    },
+    {
+      "title": "\u2022 RUL prediction:",
+      "heading_level": null,
+      "page_id": 12,
+      "polygon": [
+        [
+          89.349609375,
+          266.8359375
+        ],
+        [
+          194.25,
+          266.8359375
+        ],
+        [
+          194.25,
+          277.6640625
+        ],
+        [
+          89.349609375,
+          277.6640625
+        ]
+      ]
+    },
+    {
+      "title": "ARTICLE IN PRESS",
+      "heading_level": null,
+      "page_id": 13,
+      "polygon": [
+        [
+          239.361328125,
+          8.12109375
+        ],
+        [
+          369.052734375,
+          8.12109375
+        ],
+        [
+          369.052734375,
+          19.72265625
+        ],
+        [
+          239.361328125,
+          19.72265625
+        ]
+      ]
+    },
+    {
+      "title": "\u2022 Practical implications for railway compressor maintenance",
+      "heading_level": null,
+      "page_id": 13,
+      "polygon": [
+        [
+          89.349609375,
+          293.25
+        ],
+        [
+          412.5,
+          293.25
+        ],
+        [
+          412.5,
+          305.12109375
+        ],
+        [
+          89.349609375,
+          305.12109375
+        ]
+      ]
+    },
+    {
+      "title": "5. Conclusion",
+      "heading_level": null,
+      "page_id": 13,
+      "polygon": [
+        [
+          88.751953125,
+          547.98046875
+        ],
+        [
+          166.5,
+          547.98046875
+        ],
+        [
+          166.5,
+          558.0
+        ],
+        [
+          88.751953125,
+          558.0
+        ]
+      ]
+    },
+    {
+      "title": "ARTICLE IN PRESS",
+      "heading_level": null,
+      "page_id": 14,
+      "polygon": [
+        [
+          239.0625,
+          7.734375
+        ],
+        [
+          369.3515625,
+          7.734375
+        ],
+        [
+          369.3515625,
+          20.109375
+        ],
+        [
+          239.0625,
+          20.109375
+        ]
+      ]
+    },
+    {
+      "title": "References:",
+      "heading_level": null,
+      "page_id": 14,
+      "polygon": [
+        [
+          70.5,
+          303.1875
+        ],
+        [
+          133.5,
+          303.1875
+        ],
+        [
+          133.5,
+          313.5
+        ],
+        [
+          70.5,
+          313.5
+        ]
+      ]
+    },
+    {
+      "title": "ARTICLE IN PRESS",
+      "heading_level": null,
+      "page_id": 15,
+      "polygon": [
+        [
+          239.0625,
+          8.12109375
+        ],
+        [
+          369.3515625,
+          8.12109375
+        ],
+        [
+          369.3515625,
+          19.72265625
+        ],
+        [
+          239.0625,
+          19.72265625
+        ]
+      ]
+    },
+    {
+      "title": "Statements & Declarations ETHICAL APPROVAL:",
+      "heading_level": null,
+      "page_id": 15,
+      "polygon": [
+        [
+          70.5,
+          469.5
+        ],
+        [
+          199.5,
+          469.5
+        ],
+        [
+          199.5,
+          492.0
+        ],
+        [
+          70.5,
+          492.0
+        ]
+      ]
+    },
+    {
+      "title": "Funding:",
+      "heading_level": null,
+      "page_id": 15,
+      "polygon": [
+        [
+          70.5,
+          519.75
+        ],
+        [
+          120.0,
+          520.5
+        ],
+        [
+          120.0,
+          530.25
+        ],
+        [
+          70.5,
+          529.8046875
+        ]
+      ]
+    },
+    {
+      "title": "Data availability:",
+      "heading_level": null,
+      "page_id": 15,
+      "polygon": [
+        [
+          70.5,
+          558.75
+        ],
+        [
+          155.25,
+          558.75
+        ],
+        [
+          155.25,
+          568.5
+        ],
+        [
+          70.5,
+          568.5
+        ]
+      ]
+    },
+    {
+      "title": "Conflicts of Interest:",
+      "heading_level": null,
+      "page_id": 15,
+      "polygon": [
+        [
+          70.5,
+          621.75
+        ],
+        [
+          170.25,
+          621.75
+        ],
+        [
+          170.25,
+          631.5
+        ],
+        [
+          70.5,
+          631.5
+        ]
+      ]
+    },
+    {
+      "title": "Author Contributions:",
+      "heading_level": null,
+      "page_id": 15,
+      "polygon": [
+        [
+          71.25,
+          659.25
+        ],
+        [
+          180.75,
+          659.25
+        ],
+        [
+          180.75,
+          669.75
+        ],
+        [
+          71.25,
+          669.75
+        ]
+      ]
+    },
+    {
+      "title": "",
+      "heading_level": null,
+      "page_id": 16,
+      "polygon": [
+        [
+          238.166015625,
+          9.28125
+        ],
+        [
+          370.248046875,
+          9.28125
+        ],
+        [
+          370.248046875,
+          20.109375
+        ],
+        [
+          238.166015625,
+          20.109375
+        ]
+      ]
+    }
+  ],
+  "page_stats": [
+    {
+      "page_id": 0,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          40
+        ],
+        [
+          "Span",
+          16
+        ],
+        [
+          "Text",
+          7
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "PageHeader",
+          2
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 1,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          60
+        ],
+        [
+          "Span",
+          38
+        ],
+        [
+          "Text",
+          13
+        ],
+        [
+          "SectionHeader",
+          4
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 2,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          45
+        ],
+        [
+          "Span",
+          7
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "Text",
+          3
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 3,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          49
+        ],
+        [
+          "Span",
+          9
+        ],
+        [
+          "Text",
+          6
+        ],
+        [
+          "SectionHeader",
+          3
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 4,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          47
+        ],
+        [
+          "Span",
+          7
+        ],
+        [
+          "Text",
+          4
+        ],
+        [
+          "SectionHeader",
+          3
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 5,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          44
+        ],
+        [
+          "Span",
+          26
+        ],
+        [
+          "Text",
+          4
+        ],
+        [
+          "SectionHeader",
+          3
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 6,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          47
+        ],
+        [
+          "Span",
+          11
+        ],
+        [
+          "ListItem",
+          5
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "Text",
+          2
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 7,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          57
+        ],
+        [
+          "Span",
+          21
+        ],
+        [
+          "ListItem",
+          7
+        ],
+        [
+          "Text",
+          6
+        ],
+        [
+          "SectionHeader",
+          4
+        ],
+        [
+          "ListGroup",
+          2
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 8,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          49
+        ],
+        [
+          "Span",
+          9
+        ],
+        [
+          "Text",
+          6
+        ],
+        [
+          "SectionHeader",
+          3
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 9,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "TableCell",
+          68
+        ],
+        [
+          "Line",
+          29
+        ],
+        [
+          "Span",
+          6
+        ],
+        [
+          "Text",
+          3
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "Table",
+          2
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "TableGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 10,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "TableCell",
+          42
+        ],
+        [
+          "Line",
+          37
+        ],
+        [
+          "Span",
+          24
+        ],
+        [
+          "Table",
+          3
+        ],
+        [
+          "Caption",
+          3
+        ],
+        [
+          "Text",
+          3
+        ],
+        [
+          "TableGroup",
+          3
+        ],
+        [
+          "SectionHeader",
+          2
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 11,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          50
+        ],
+        [
+          "Span",
+          10
+        ],
+        [
+          "Text",
+          7
+        ],
+        [
+          "SectionHeader",
+          3
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 12,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "TableCell",
+          129
+        ],
+        [
+          "Line",
+          31
+        ],
+        [
+          "Span",
+          7
+        ],
+        [
+          "Text",
+          4
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "Table",
+          2
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "TableGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 13,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          46
+        ],
+        [
+          "TableCell",
+          15
+        ],
+        [
+          "Span",
+          12
+        ],
+        [
+          "Text",
+          4
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "TableGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 14,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          58
+        ],
+        [
+          "Span",
+          15
+        ],
+        [
+          "ListItem",
+          10
+        ],
+        [
+          "Text",
+          3
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 15,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          64
+        ],
+        [
+          "Span",
+          23
+        ],
+        [
+          "ListItem",
+          9
+        ],
+        [
+          "SectionHeader",
+          6
+        ],
+        [
+          "Text",
+          6
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 16,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          6
+        ],
+        [
+          "Line",
+          3
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "Text",
+          1
+        ],
+        [
+          "Picture",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    }
+  ],
+  "debug_data_path": "debug_data/009"
+}

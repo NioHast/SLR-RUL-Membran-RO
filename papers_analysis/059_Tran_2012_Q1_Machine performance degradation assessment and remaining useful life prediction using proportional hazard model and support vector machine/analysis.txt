@@ -1,0 +1,44 @@
+PAPER 001 - Tran et al. (2012)
+Judul   : Machine performance degradation assessment and remaining useful life prediction using proportional hazard model and support vector machine
+Jurnal  : Mechanical Systems and Signal Processing | Scopus Q1 | DOI 10.1016/j.ymssp.2012.02.015
+Pilar   : A. Survival Analysis & Censored Data
+Relevansi: Inti-Metode (RUL + survival/censoring/Cox hazard; domain mesin, bukan membran)
+
+KARAKTERISTIK STUDI
+Metode tiga tahap untuk menilai degradasi kinerja mesin dan memprediksi RUL, dibangun hanya dari data operasi normal. Diposisikan sebagai alat prognostik untuk condition-based maintenance (CBM). Studi kasus pada kompresor low methane (wet screw) pabrik petrokimia (motor 440 kW, 3565 rpm), satu unit dengan satu event kegagalan.
+
+METODE
+- Tahap 1: model identifikasi ARMA(p,q) dari data normal; indeks degradasi = RMS residual (Eq. 16); ambang failure ditetapkan operator (0,004). ARMA(4,3) untuk peak, ARMA(6,5) untuk envelope.
+- Tahap 2: Cox proportional hazard model semi-parametrik lambda(t|z)=lambda0(t)exp(beta^T z) (Eq. 2); estimasi via partial likelihood dengan indikator censoring delta_i dan risk set (Eq. 3-5); survival S(t|z)=S0(t)^exp(beta^T z) (Eq. 8).
+- Tahap 3: SVM/support vector regression Gaussian kernel dengan multi-step ahead direct prediction untuk meramal fungsi survival lalu RUL.
+
+DATA
+Dua fitur vibrasi (peak & envelope acceleration) kovariat z1(t), z2(t), Agustus-November 2005, 1200 titik/record (~6 jam/record). Dipakai 308 titik sebelum kerusakan (300 normal + 8 degradasi); 150 titik untuk identifikasi.
+
+TEMUAN UTAMA
+- Data tersensor biner (0/1) dari ambang batas dapat membangun Cox PHM.
+- RUL prediksi 96 jam vs aktual 84 jam, akurasi 87,5%; koreksi lag rata-rata diklaim menaikkan akurasi ke 100%.
+- Peak acceleration lebih efektif daripada envelope untuk indeks degradasi.
+- Hanya butuh data operasi normal untuk model identifikasi.
+
+RELEVANSI KE TESIS
+Preseden metodologis terkuat pilar A: survival analysis (Cox PHM) + machine learning untuk RUL dengan pencensoringan eksplisit. Namun domainnya bukan membran/RO dan bukan skenario small-data, sehingga hanya Inti-Metode. Berguna sebagai rujukan cara mengonstruksi data tersensor dan penggunaan partial likelihood dalam RUL.
+
+JUSTIFIKASI DIMENSI (d1-d8)
+- d1=1: kovariat deret waktu multi-saluran (peak & envelope acceleration), 1200 titik/record.
+- d2=1: target RUL eksplisit + ambang kegagalan 0,004 + fungsi survival S(t|z).
+- d3=1: membangun data tersensor (seri 0/1); partial likelihood memuat delta_i dan risk set (Eq. 3-5).
+- d4=1: Cox PHM + ARMA + SVM/SVR (Gaussian kernel).
+- d5="": tidak ada interval kepercayaan/posterior; hanya RMSE & akurasi titik.
+- d6="": keputusan pemeliharaan hanya disebut sepintas, tanpa model jadwal/biaya/DSS.
+- d7="": objek kompresor, bukan membran/RO/desalinasi.
+- d8="": tidak ada strategi small-data/transfer/hierarchical; satu unit mesin.
+
+KUALITAS (skor 6/10)
+Q1=1 (tujuan jelas), Q2=1 (desain tiga tahap memadai), Q3=0,5 (satu unit, satu event), Q4=0,5 (parameter cukup, data privat), Q5=0,5 (metrik ada, tanpa baseline), Q6=0,5 (pencensoringan ada namun hanya satu event), Q7=0 (tidak ada ketidakpastian), Q8=0,5 (diskusi keputusan tanpa model). Jumlah 4,5/8 -> 6.
+
+LIMITASI
+Satu unit mesin satu kegagalan; tanpa pembanding; lag prediksi multi-langkah; tanpa interval ketidakpastian.
+
+BUKTI (fig/table/eq)
+Eq. (2)-(5); Eq. (16); Fig. 1 (skema 3 tahap); Fig. 6 (indeks degradasi); Fig. 8 (fungsi survival); Fig. 9-10 (prediksi RUL); Table 1.

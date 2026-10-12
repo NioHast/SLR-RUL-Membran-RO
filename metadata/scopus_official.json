@@ -1,0 +1,799 @@
+{
+ "10.1109/access.2019.2919566": {
+  "title": "IEEE Access",
+  "sjr": "0,926",
+  "q": "Q1",
+  "cov": "2013-2022",
+  "area": "Computer Science; Engineering; Materials Science",
+  "type": "journal"
+ },
+ "10.1109/tmech.2020.2971503": {
+  "title": "IEEE/ASME Transactions on Mechatronics",
+  "sjr": "2,069",
+  "q": "Q1",
+  "cov": "1996-2022",
+  "area": "Computer Science; Engineering",
+  "type": "journal"
+ },
+ "10.3390/app8122416": {
+  "title": "Applied Sciences (Switzerland)",
+  "sjr": "0,492",
+  "q": "Q2",
+  "cov": "2011-2022",
+  "area": "Chemical Engineering; Computer Science; Engineering; Materials Science; Physics and Astronomy",
+  "type": "journal"
+ },
+ "10.3390/electronics10030285": {
+  "title": "Electronics (Switzerland)",
+  "sjr": "0,628",
+  "q": "Q2",
+  "cov": "2012-2022",
+  "area": "Computer Science; Engineering",
+  "type": "journal"
+ },
+ "10.1109/jiot.2024.3376715": {
+  "title": "IEEE Internet of Things Journal",
+  "sjr": "3,747",
+  "q": "Q1",
+  "cov": "2014-2022",
+  "area": "Computer Science; Decision Sciences",
+  "type": "journal"
+ },
+ "10.1109/tnnls.2020.2977132": {
+  "title": "IEEE Transactions on Neural Networks and Learning Systems",
+  "sjr": "3,447",
+  "q": "Q1",
+  "cov": "2012-2022",
+  "area": "Computer Science",
+  "type": "journal"
+ },
+ "10.1109/tim.2022.3200667": {
+  "title": "IEEE Transactions on Instrumentation and Measurement",
+  "sjr": "1,397",
+  "q": "Q1",
+  "cov": "1963-2022",
+  "area": "Engineering; Physics and Astronomy",
+  "type": "journal"
+ },
+ "10.1109/tte.2022.3161140": {
+  "title": "IEEE Transactions on Transportation Electrification",
+  "sjr": "2,487",
+  "q": "Q1",
+  "cov": "2015-2022",
+  "area": "Energy; Engineering; Social Sciences",
+  "type": "journal"
+ },
+ "10.1109/jsen.2021.3109623": {
+  "title": "IEEE Sensors Journal",
+  "sjr": "0,987",
+  "q": "Q1",
+  "cov": "2001-2022",
+  "area": "Engineering; Physics and Astronomy",
+  "type": "journal"
+ },
+ "10.1016/j.jwpe.2024.106532": {
+  "title": "Journal of Water Process Engineering",
+  "sjr": "1,144",
+  "q": "Q1",
+  "cov": "2014-2022",
+  "area": "Biochemistry, Genetics and Molecular Biology; Chemical Engineering; Engineering; Environmental Science",
+  "type": "journal"
+ },
+ "10.3390/w17081169": {
+  "title": "Water (Switzerland)",
+  "sjr": "0,723",
+  "q": "Q1",
+  "cov": "2009-2022",
+  "area": "Agricultural and Biological Sciences; Biochemistry, Genetics and Molecular Biology; Environmental Science; Social Sciences",
+  "type": "journal"
+ },
+ "10.5004/dwt.2019.23444": {
+  "title": "Desalination and Water Treatment",
+  "sjr": "0,267",
+  "q": "Q3",
+  "cov": "2009-2022",
+  "area": "Engineering; Environmental Science",
+  "type": "journal"
+ },
+ "10.30564/jees.v7i6.8630": {
+  "title": "Journal of Environmental and Earth Sciences",
+  "sjr": "0,170",
+  "q": "Q4",
+  "cov": "2019-2022",
+  "area": "Earth and Planetary Sciences; Environmental Science",
+  "type": "journal"
+ },
+ "10.1016/j.advmem.2026.100219": null,
+ "10.1109/access.2020.2976595": {
+  "title": "IEEE Access",
+  "sjr": "0,926",
+  "q": "Q1",
+  "cov": "2013-2022",
+  "area": "Computer Science; Engineering; Materials Science",
+  "type": "journal"
+ },
+ "10.21595/vp.2019.20617": {
+  "title": "Vibroengineering Procedia",
+  "sjr": "0,165",
+  "q": "-",
+  "cov": "2013-2022",
+  "area": "Engineering; Materials Science; Multidisciplinary",
+  "type": "conference and proceedings"
+ },
+ "10.3390/s22103803": {
+  "title": "Sensors",
+  "sjr": "0,764",
+  "q": "Q1",
+  "cov": "2001-2022",
+  "area": "Biochemistry, Genetics and Molecular Biology; Chemistry; Computer Science; Engineering; Medicine; Physics and Astronomy",
+  "type": "journal"
+ },
+ "10.1038/s41598-022-12572-z": {
+  "title": "Scientific Reports",
+  "sjr": "0,973",
+  "q": "Q1",
+  "cov": "2011-2022",
+  "area": "Multidisciplinary",
+  "type": "journal"
+ },
+ "10.4236/gep.2021.97004": null,
+ "10.1016/j.mlwa.2023.100475": null,
+ "10.1109/access.2022.3226780": {
+  "title": "IEEE Access",
+  "sjr": "0,926",
+  "q": "Q1",
+  "cov": "2013-2022",
+  "area": "Computer Science; Engineering; Materials Science",
+  "type": "journal"
+ },
+ "10.1177/14759217251333056": {
+  "title": "Structural Health Monitoring",
+  "sjr": "1,877",
+  "q": "Q1",
+  "cov": "2002-2022",
+  "area": "Biochemistry, Genetics and Molecular Biology; Engineering",
+  "type": "journal"
+ },
+ "10.1016/j.dwt.2025.101386": {
+  "title": "Desalination and Water Treatment",
+  "sjr": "0,267",
+  "q": "Q3",
+  "cov": "2009-2022",
+  "area": "Engineering; Environmental Science",
+  "type": "journal"
+ },
+ "10.1007/s42979-025-04291-9": {
+  "title": "SN Computer Science",
+  "sjr": "0,600",
+  "q": "Q2",
+  "cov": "2020-2022",
+  "area": "Computer Science",
+  "type": "journal"
+ },
+ "10.3390/eng7030106": null,
+ "10.1007/s13201-018-0821-8": {
+  "title": "Applied Water Science",
+  "sjr": "0,974",
+  "q": "Q1",
+  "cov": "2011-2022",
+  "area": "Environmental Science",
+  "type": "journal"
+ },
+ "10.1007/s00521-022-07667-7": {
+  "title": "Neural Computing and Applications",
+  "sjr": "1,169",
+  "q": "Q1",
+  "cov": "1993-2022",
+  "area": "Computer Science",
+  "type": "journal"
+ },
+ "10.36001/ijphm.2025.v16i2.4260": {
+  "title": "International Journal of Prognostics and Health Management",
+  "sjr": "0,389",
+  "q": "Q2",
+  "cov": "2010-2022",
+  "area": "Computer Science; Energy; Engineering",
+  "type": "journal"
+ },
+ "10.3390/separations10020134": {
+  "title": "Separations",
+  "sjr": "0,371",
+  "q": "Q3",
+  "cov": "2016-2022",
+  "area": "Chemical Engineering; Chemistry",
+  "type": "journal"
+ },
+ "10.15294/jpii.v9i3.23310": {
+  "title": "Jurnal Pendidikan IPA Indonesia",
+  "sjr": "0,356",
+  "q": "Q3",
+  "cov": "2012-2022",
+  "area": "Social Sciences",
+  "type": "journal"
+ },
+ "10.1109/tase.2025.3640217": {
+  "title": "IEEE Transactions on Automation Science and Engineering",
+  "sjr": "1,968",
+  "q": "Q1",
+  "cov": "2004-2022",
+  "area": "Engineering",
+  "type": "journal"
+ },
+ "10.1109/lsens.2026.3673123": {
+  "title": "IEEE Sensors Letters",
+  "sjr": "0,644",
+  "q": "Q2",
+  "cov": "2019-2022",
+  "area": "Engineering; Physics and Astronomy",
+  "type": "journal"
+ },
+ "10.3390/s26061915": {
+  "title": "Sensors",
+  "sjr": "0,764",
+  "q": "Q1",
+  "cov": "2001-2022",
+  "area": "Biochemistry, Genetics and Molecular Biology; Chemistry; Computer Science; Engineering; Medicine; Physics and Astronomy",
+  "type": "journal"
+ },
+ "10.2175/193864711802713513": null,
+ "10.36948/ijfmr.2023.v05i05.6214": null,
+ "10.14456/scitechasia.2025.79": {
+  "title": "Science and Technology Asia",
+  "sjr": "0,152",
+  "q": "Q3",
+  "cov": "2018-2022",
+  "area": "Agricultural and Biological Sciences; Mathematics; Multidisciplinary",
+  "type": "journal"
+ },
+ "10.46604/peti.2025.15348": null,
+ "10.1016/j.ceja.2026.101217": {
+  "title": "Chemical Engineering Journal Advances",
+  "sjr": "0,918",
+  "q": "Q1",
+  "cov": "2020-2022",
+  "area": "Chemical Engineering; Chemistry; Engineering; Environmental Science",
+  "type": "journal"
+ },
+ "10.1016/j.jwpe.2026.110543": {
+  "title": "Journal of Water Process Engineering",
+  "sjr": "1,144",
+  "q": "Q1",
+  "cov": "2014-2022",
+  "area": "Biochemistry, Genetics and Molecular Biology; Chemical Engineering; Engineering; Environmental Science",
+  "type": "journal"
+ },
+ "10.11113/jamst.v30n2.348": null,
+ "10.1109/tii.2020.2991796": {
+  "title": "IEEE Transactions on Industrial Informatics",
+  "sjr": "4,002",
+  "q": "Q1",
+  "cov": "2005-2022",
+  "area": "Computer Science; Engineering",
+  "type": "journal"
+ },
+ "10.1016/j.jom.2007.01.021": {
+  "title": "Journal of Operations Management",
+  "sjr": "3,679",
+  "q": "Q1",
+  "cov": "1980-1991, 1993-2022",
+  "area": "Business, Management and Accounting; Computer Science; Decision Sciences; Engineering",
+  "type": "journal"
+ },
+ "10.1109/tim.2022.3167778": {
+  "title": "IEEE Transactions on Instrumentation and Measurement",
+  "sjr": "1,397",
+  "q": "Q1",
+  "cov": "1963-2022",
+  "area": "Engineering; Physics and Astronomy",
+  "type": "journal"
+ },
+ "10.1109/access.2020.3010066": {
+  "title": "IEEE Access",
+  "sjr": "0,926",
+  "q": "Q1",
+  "cov": "2013-2022",
+  "area": "Computer Science; Engineering; Materials Science",
+  "type": "journal"
+ },
+ "10.1109/tim.2020.3031113": {
+  "title": "IEEE Transactions on Instrumentation and Measurement",
+  "sjr": "1,397",
+  "q": "Q1",
+  "cov": "1963-2022",
+  "area": "Engineering; Physics and Astronomy",
+  "type": "journal"
+ },
+ "10.1016/j.jmsy.2020.11.005": {
+  "title": "Journal of Manufacturing Systems",
+  "sjr": "2,742",
+  "q": "Q1",
+  "cov": "1982-2022",
+  "area": "Computer Science; Engineering",
+  "type": "journal"
+ },
+ "10.1109/jsen.2023.3261874": {
+  "title": "IEEE Sensors Journal",
+  "sjr": "0,987",
+  "q": "Q1",
+  "cov": "2001-2022",
+  "area": "Engineering; Physics and Astronomy",
+  "type": "journal"
+ },
+ "10.1002/stc.2811": {
+  "title": "Structural Control and Health Monitoring",
+  "sjr": "1,755",
+  "q": "Q1",
+  "cov": "2004-2022",
+  "area": "Engineering",
+  "type": "journal"
+ },
+ "10.1002/er.7548": {
+  "title": "International Journal of Energy Research",
+  "sjr": "0,807",
+  "q": "Q1",
+  "cov": "1977-2022",
+  "area": "Energy",
+  "type": "journal"
+ },
+ "10.1108/imds-03-2019-0195": {
+  "title": "Industrial Management and Data Systems",
+  "sjr": "1,219",
+  "q": "Q1",
+  "cov": "1980-2022",
+  "area": "Business, Management and Accounting; Computer Science; Engineering",
+  "type": "journal"
+ },
+ "10.3390/environments10070127": {
+  "title": "Environments - MDPI",
+  "sjr": "0,656",
+  "q": "Q2",
+  "cov": "2014-2022",
+  "area": "Agricultural and Biological Sciences; Energy; Environmental Science",
+  "type": "journal"
+ },
+ "10.1109/tec.2021.3116423": {
+  "title": "IEEE Transactions on Energy Conversion",
+  "sjr": "2,038",
+  "q": "Q1",
+  "cov": "1986-2022",
+  "area": "Energy; Engineering",
+  "type": "journal"
+ },
+ "10.1002/qre.3308": {
+  "title": "Quality and Reliability Engineering International",
+  "sjr": "0,790",
+  "q": "Q2",
+  "cov": "1985-2022",
+  "area": "Decision Sciences; Engineering",
+  "type": "journal"
+ },
+ "10.1177/16878132241239802": {
+  "title": "Advances in Mechanical Engineering",
+  "sjr": "0,380",
+  "q": "Q3",
+  "cov": "2009-2022",
+  "area": "Engineering",
+  "type": "journal"
+ },
+ "10.3390/batteries10030106": {
+  "title": "Batteries",
+  "sjr": "0,763",
+  "q": "Q2",
+  "cov": "2015-2022",
+  "area": "Chemistry; Energy; Engineering",
+  "type": "journal"
+ },
+ "10.1109/jsen.2024.3402660": {
+  "title": "IEEE Sensors Journal",
+  "sjr": "0,987",
+  "q": "Q1",
+  "cov": "2001-2022",
+  "area": "Engineering; Physics and Astronomy",
+  "type": "journal"
+ },
+ "10.1016/j.inffus.2025.102972": {
+  "title": "Information Fusion",
+  "sjr": "4,756",
+  "q": "Q1",
+  "cov": "2000-2023",
+  "area": "Computer Science",
+  "type": "journal"
+ },
+ "10.1155/2017/8927937": {
+  "title": "Shock and Vibration",
+  "sjr": "0,347",
+  "q": "Q3",
+  "cov": "1975, 1993-2022",
+  "area": "Earth and Planetary Sciences; Engineering; Physics and Astronomy",
+  "type": "journal"
+ },
+ "10.3390/en15238918": {
+  "title": "Energies",
+  "sjr": "0,632",
+  "q": "Q1",
+  "cov": "1975-1976, 2008-2022",
+  "area": "Energy; Engineering; Mathematics",
+  "type": "journal"
+ },
+ "10.1016/j.rineng.2022.100611": {
+  "title": "Results in Engineering",
+  "sjr": "0,592",
+  "q": "Q2",
+  "cov": "2019-2022",
+  "area": "Engineering",
+  "type": "journal"
+ },
+ "10.1002/qre.3151": {
+  "title": "Quality and Reliability Engineering International",
+  "sjr": "0,790",
+  "q": "Q2",
+  "cov": "1985-2022",
+  "area": "Decision Sciences; Engineering",
+  "type": "journal"
+ },
+ "10.1115/1.4052838": {
+  "title": "Journal of Computing and Information Science in Engineering",
+  "sjr": "0,687",
+  "q": "Q2",
+  "cov": "2001-2023",
+  "area": "Computer Science; Engineering",
+  "type": "journal"
+ },
+ "10.1784/insi.2020.62.12.710": {
+  "title": "Insight: Non-Destructive Testing and Condition Monitoring",
+  "sjr": "0,245",
+  "q": "Q3",
+  "cov": "1994-2022",
+  "area": "Engineering; Materials Science",
+  "type": "journal"
+ },
+ "10.3390/fractalfract8080485": {
+  "title": "Fractal and Fractional",
+  "sjr": "0,627",
+  "q": "Q2",
+  "cov": "2017-2022",
+  "area": "Mathematics; Physics and Astronomy",
+  "type": "journal"
+ },
+ "10.2166/wst.2026.234": {
+  "title": "Water Science and Technology",
+  "sjr": "0,548",
+  "q": "Q2",
+  "cov": "1970, 1980-2022",
+  "area": "Environmental Science",
+  "type": "journal"
+ },
+ "10.1115/1.4001580": {
+  "title": "Journal of Manufacturing Science and Engineering",
+  "sjr": "1,046",
+  "q": "Q1",
+  "cov": "1960-2022",
+  "area": "Computer Science; Engineering",
+  "type": "journal"
+ },
+ "10.1115/1.4051314": {
+  "title": "Journal of Nondestructive Evaluation, Diagnostics and Prognostics of Engineering Systems",
+  "sjr": "0,368",
+  "q": "Q2",
+  "cov": "2018-2023",
+  "area": "Engineering",
+  "type": "journal"
+ },
+ "10.3390/membranes11010054": {
+  "title": "Membranes",
+  "sjr": "0,489",
+  "q": "Q2",
+  "cov": "2010-2022",
+  "area": "Chemical Engineering",
+  "type": "journal"
+ },
+ "10.36001/ijphm.2019.v10i4.2612": {
+  "title": "International Journal of Prognostics and Health Management",
+  "sjr": "0,389",
+  "q": "Q2",
+  "cov": "2010-2022",
+  "area": "Computer Science; Energy; Engineering",
+  "type": "journal"
+ },
+ "10.1155/2020/8829823": {
+  "title": "Shock and Vibration",
+  "sjr": "0,347",
+  "q": "Q3",
+  "cov": "1975, 1993-2022",
+  "area": "Earth and Planetary Sciences; Engineering; Physics and Astronomy",
+  "type": "journal"
+ },
+ "10.3390/machines13090789": {
+  "title": "Machines",
+  "sjr": "0,449",
+  "q": "Q2",
+  "cov": "2013-2022",
+  "area": "Computer Science; Engineering; Mathematics",
+  "type": "journal"
+ },
+ "10.1021/acs.est.5c15320": {
+  "title": "Environmental Science &amp; Technology",
+  "sjr": "3,123",
+  "q": "Q1",
+  "cov": "1958, 1967-2022",
+  "area": "Chemistry; Environmental Science; Medicine",
+  "type": "journal"
+ },
+ "10.3103/s0146411623010030": {
+  "title": "Automatic Control and Computer Sciences",
+  "sjr": "0,289",
+  "q": "Q3",
+  "cov": "1973-2022",
+  "area": "Computer Science; Engineering",
+  "type": "journal"
+ },
+ "10.1088/1361-6501/ae0e3e": {
+  "title": "Measurement Science and Technology",
+  "sjr": "0,478",
+  "q": "Q2",
+  "cov": "1990-2022",
+  "area": "Engineering; Mathematics; Physics and Astronomy",
+  "type": "journal"
+ },
+ "10.1109/tim.2026.3684677": {
+  "title": "IEEE Transactions on Instrumentation and Measurement",
+  "sjr": "1,397",
+  "q": "Q1",
+  "cov": "1963-2022",
+  "area": "Engineering; Physics and Astronomy",
+  "type": "journal"
+ },
+ "10.2118/1221-0054-jpt": {
+  "title": "JPT, Journal of Petroleum Technology",
+  "sjr": "0,135",
+  "q": "Q4",
+  "cov": "1969-2012, 2014-2022",
+  "area": "Business, Management and Accounting; Energy",
+  "type": "journal"
+ },
+ "10.33366/rekabuana.v10i1.6651": null,
+ "10.56294/dm20251102": null,
+ "10.1007/s42452-026-08390-x": null,
+ "10.52783/cana.v32.6568": {
+  "title": "Communications on Applied Nonlinear Analysis",
+  "sjr": "0,157",
+  "q": "Q4",
+  "cov": "2008-2022",
+  "area": "Mathematics",
+  "type": "journal"
+ },
+ "10.1109/tii.2020.3008223": {
+  "title": "IEEE Transactions on Industrial Informatics",
+  "sjr": "4,002",
+  "q": "Q1",
+  "cov": "2005-2022",
+  "area": "Computer Science; Engineering",
+  "type": "journal"
+ },
+ "10.1109/tim.2019.2917735": {
+  "title": "IEEE Transactions on Instrumentation and Measurement",
+  "sjr": "1,397",
+  "q": "Q1",
+  "cov": "1963-2022",
+  "area": "Engineering; Physics and Astronomy",
+  "type": "journal"
+ },
+ "10.1016/j.promfg.2020.06.015": null,
+ "10.1109/tim.2021.3055788": {
+  "title": "IEEE Transactions on Instrumentation and Measurement",
+  "sjr": "1,397",
+  "q": "Q1",
+  "cov": "1963-2022",
+  "area": "Engineering; Physics and Astronomy",
+  "type": "journal"
+ },
+ "10.1016/j.dss.2019.113100": {
+  "title": "Decision Support Systems",
+  "sjr": "2,076",
+  "q": "Q1",
+  "cov": "1985-2022",
+  "area": "Arts and Humanities; Business, Management and Accounting; Computer Science; Decision Sciences; Psychology",
+  "type": "journal"
+ },
+ "10.1007/s44196-024-00639-w": {
+  "title": "International Journal of Computational Intelligence Systems",
+  "sjr": "0,554",
+  "q": "Q2",
+  "cov": "2008-2022",
+  "area": "Computer Science; Mathematics",
+  "type": "journal"
+ },
+ "10.1109/tii.2021.3078193": {
+  "title": "IEEE Transactions on Industrial Informatics",
+  "sjr": "4,002",
+  "q": "Q1",
+  "cov": "2005-2022",
+  "area": "Computer Science; Engineering",
+  "type": "journal"
+ },
+ "10.1021/acs.est.4c12835": {
+  "title": "Environmental Science &amp; Technology",
+  "sjr": "3,123",
+  "q": "Q1",
+  "cov": "1958, 1967-2022",
+  "area": "Chemistry; Environmental Science; Medicine",
+  "type": "journal"
+ },
+ "10.1016/j.geits.2025.100291": null,
+ "10.1016/j.asoc.2022.109630": {
+  "title": "Applied Soft Computing Journal",
+  "sjr": "1,882",
+  "q": "Q1",
+  "cov": "2001-2022",
+  "area": "Computer Science",
+  "type": "journal"
+ },
+ "10.3390/s25020554": {
+  "title": "Sensors",
+  "sjr": "0,764",
+  "q": "Q1",
+  "cov": "2001-2022",
+  "area": "Biochemistry, Genetics and Molecular Biology; Chemistry; Computer Science; Engineering; Medicine; Physics and Astronomy",
+  "type": "journal"
+ },
+ "10.1088/1361-6501/ad006d": {
+  "title": "Measurement Science and Technology",
+  "sjr": "0,478",
+  "q": "Q2",
+  "cov": "1990-2022",
+  "area": "Engineering; Mathematics; Physics and Astronomy",
+  "type": "journal"
+ },
+ "10.1016/j.jwpe.2024.106479": {
+  "title": "Journal of Water Process Engineering",
+  "sjr": "1,144",
+  "q": "Q1",
+  "cov": "2014-2022",
+  "area": "Biochemistry, Genetics and Molecular Biology; Chemical Engineering; Engineering; Environmental Science",
+  "type": "journal"
+ },
+ "10.3390/pr13082352": {
+  "title": "Processes",
+  "sjr": "0,529",
+  "q": "Q2",
+  "cov": "2013-2022",
+  "area": "Chemical Engineering",
+  "type": "journal"
+ },
+ "10.3390/e20120944": {
+  "title": "Entropy",
+  "sjr": "0,541",
+  "q": "Q2",
+  "cov": "1999-2022",
+  "area": "Computer Science; Engineering; Mathematics; Physics and Astronomy",
+  "type": "journal"
+ },
+ "10.1115/1.4050886": {
+  "title": "Journal of Electrochemical Energy Conversion and Storage",
+  "sjr": "0,437",
+  "q": "Q2",
+  "cov": "2016-2023",
+  "area": "Energy; Engineering; Materials Science",
+  "type": "journal"
+ },
+ "10.1109/tia.2022.3170525": {
+  "title": "IEEE Transactions on Industry Applications",
+  "sjr": "1,777",
+  "q": "Q1",
+  "cov": "1970-2022",
+  "area": "Engineering",
+  "type": "journal"
+ },
+ "10.1177/1350650119874560": {
+  "title": "Proceedings of the Institution of Mechanical Engineers, Part J: Journal of Engineering Tribology",
+  "sjr": "0,436",
+  "q": "Q2",
+  "cov": "1994-2022",
+  "area": "Engineering; Materials Science; Physics and Astronomy",
+  "type": "journal"
+ },
+ "10.36001/ijphm.2022.v13i1.3072": {
+  "title": "International Journal of Prognostics and Health Management",
+  "sjr": "0,389",
+  "q": "Q2",
+  "cov": "2010-2022",
+  "area": "Computer Science; Energy; Engineering",
+  "type": "journal"
+ },
+ "10.3390/sym14061111": {
+  "title": "Symmetry",
+  "sjr": "0,483",
+  "q": "Q2",
+  "cov": "2009-2022",
+  "area": "Chemistry; Computer Science; Mathematics; Physics and Astronomy",
+  "type": "journal"
+ },
+ "10.1109/access.2021.3073945": {
+  "title": "IEEE Access",
+  "sjr": "0,926",
+  "q": "Q1",
+  "cov": "2013-2022",
+  "area": "Computer Science; Engineering; Materials Science",
+  "type": "journal"
+ },
+ "10.1155/2020/8814658": {
+  "title": "Wireless Communications and Mobile Computing",
+  "sjr": "0,445",
+  "q": "Q2",
+  "cov": "2001-2022",
+  "area": "Computer Science; Engineering",
+  "type": "journal"
+ },
+ "10.1016/j.clwat.2024.100041": null,
+ "10.5829/ije.2023.36.04a.09": {
+  "title": "International Journal of Engineering, Transactions A: Basics",
+  "sjr": "0,303",
+  "q": "Q2",
+  "cov": "2004-2022",
+  "area": "Engineering",
+  "type": "journal"
+ },
+ "10.13031/trans.56.10021": null,
+ "10.3390/s23125669": {
+  "title": "Sensors",
+  "sjr": "0,764",
+  "q": "Q1",
+  "cov": "2001-2022",
+  "area": "Biochemistry, Genetics and Molecular Biology; Chemistry; Computer Science; Engineering; Medicine; Physics and Astronomy",
+  "type": "journal"
+ },
+ "10.1002/qre.3757": {
+  "title": "Quality and Reliability Engineering International",
+  "sjr": "0,790",
+  "q": "Q2",
+  "cov": "1985-2022",
+  "area": "Decision Sciences; Engineering",
+  "type": "journal"
+ },
+ "10.1080/00986445.2025.2611396": {
+  "title": "Chemical Engineering Communications",
+  "sjr": "0,431",
+  "q": "Q2",
+  "cov": "1973-1976, 1978-2022",
+  "area": "Chemical Engineering; Chemistry",
+  "type": "journal"
+ },
+ "10.33263/briac142.029": {
+  "title": "Biointerface Research in Applied Chemistry",
+  "sjr": "0,336",
+  "q": "Q3",
+  "cov": "2016-2023",
+  "area": "Biochemistry, Genetics and Molecular Biology",
+  "type": "journal"
+ },
+ "10.59888/ajosh.v3i7.549": null,
+ "10.29303/empd.v3i2.5429": null,
+ "10.1299/jamdsm.2025jamdsm0044": {
+  "title": "Journal of Advanced Mechanical Design, Systems and Manufacturing",
+  "sjr": "0,284",
+  "q": "Q3",
+  "cov": "2010-2022",
+  "area": "Engineering",
+  "type": "journal"
+ },
+ "10.59324/stss.2026.3(1).09": null,
+ "10.30693/smj.2026.15.1.30": null,
+ "10.48084/etasr.15186": null,
+ "10.1038/s41598-026-42910-4": {
+  "title": "Scientific Reports",
+  "sjr": "0,973",
+  "q": "Q1",
+  "cov": "2011-2022",
+  "area": "Multidisciplinary",
+  "type": "journal"
+ },
+ "10.19965/j.cnki.iwt.2024-0719": null,
+ "10.1002/qre.70386": {
+  "title": "Quality and Reliability Engineering International",
+  "sjr": "0,790",
+  "q": "Q2",
+  "cov": "1985-2022",
+  "area": "Decision Sciences; Engineering",
+  "type": "journal"
+ }
+}

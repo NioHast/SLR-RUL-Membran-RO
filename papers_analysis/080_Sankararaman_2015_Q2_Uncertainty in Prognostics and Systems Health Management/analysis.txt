@@ -1,0 +1,47 @@
+PAPER 006 - Sankararaman & Goebel (IJPHM 2015; folder: 006_Sankararaman_2020)
+Judul   : Uncertainty in Prognostics and Systems Health Management
+Jurnal  : International Journal of Prognostics and Health Management | Scopus Q2 | DOI 10.36001/ijphm.2015.v6i4.2319
+Pilar   : C. Bayesian & Uncertainty
+Relevansi: Pendukung (kerangka konseptual kuantifikasi ketidakpastian RUL; tanpa survival/censoring empiris)
+Catatan : Slug folder/index menulis 2020, namun DOI dan volume menandakan tahun 2015 (IJPHM vol.6 no.4); tahun dicatat = 2015.
+
+KARAKTERISTIK STUDI
+Ulasan/konseptual mengenai ketidakpastian pada prognostik dan systems health management. Membedakan testing-based vs condition-based health management dan menegaskan prediksi RUL dipandang sebagai masalah propagasi ketidakpastian.
+
+METODE
+- Empat aktivitas: representasi/interpretasi, kuantifikasi, propagasi, manajemen ketidakpastian.
+- Frequentist (CI) vs Bayesian (distribusi posterior) untuk waktu-ke-gagal; likelihood L(mu,sigma) (Eq. 1-2) dan predictive PDF (Eq. 3).
+- Definisi RUL via threshold: r = inf{n : x(n) < l} (Eq. 6); model ilustratif x(k+1)=a.x(k)+b (Eq. 5, 7-9).
+- Propagasi: Monte Carlo (5000 sampel), Latin hypercube, FORM/SORM, unscented transform.
+- Analisis sensitivitas global: first-order & total-effects index (Eq. 13-14).
+
+DATA
+Tanpa data nyata; contoh numerik sintetis (10 waktu-ke-gagal; model degradasi linear; UAV power system).
+
+TEMUAN UTAMA
+- RUL tidak bisa dihitung analitis bahkan untuk model linear + threshold sederhana + satu variabel Gaussian; distribusinya non-parametrik.
+- Distribusi RUL tidak boleh diasumsikan (mis. Gaussian); harus dihitung via propagasi ketidakpastian.
+- Hanya interpretasi Bayesian yang cocok untuk condition-based monitoring (tak ada true variability).
+- Laju degradasi (a) adalah kontributor dominan ketidakpastian RUL (indeks first-order 0,92 vs x(0) 0,025).
+
+RELEVANSI KE TESIS
+Landasan konseptual pilar C: mengapa RUL harus dipandang distribusi dan bagaimana mengkuantifikasi/memanajemen ketidakpastian. Berguna untuk pembenaran metodologis tesis. Namun bukan studi empiris, tidak menangani data tersensor, dan tanpa model keputusan; karena itu Pendukung.
+
+JUSTIFIKASI DIMENSI (d1-d8)
+- d1="": tanpa dataset multi-sensor; contoh sintetis.
+- d2=1: mendefinisikan RUL, EOL threshold, dan waktu-ke-gagal.
+- d3="": tidak memodelkan censoring secara terapan (hanya sebut interval data konseptual).
+- d4="": ulasan konseptual; tanpa model ML/DL spesifik yang diterapkan.
+- d5=1: inti artikel - CI/posterior, propagasi, analisis sensitivitas.
+- d6="": membahas manajemen ketidakpastian untuk keputusan, tanpa model formal.
+- d7="": bukan membran/RO.
+- d8="": tanpa strategi small-data/transfer/hierarchical.
+
+KUALITAS (skor 6/10)
+Q1=1; Q2=1; Q3=0,5 (sintetis, tanpa validasi empiris); Q4=0,5 (tanpa dataset); Q5=0,5 (contoh numerik, tanpa validasi eksternal); Q6=0 (tanpa censoring); Q7=1; Q8=0,5 (diskusi keputusan). Jumlah 5,0/8 -> 6.
+
+LIMITASI
+Bukan studi empiris; sintetis; tanpa censoring terapan; tanpa model keputusan; manajemen ketidakpastian masih agenda riset.
+
+BUKTI (fig/table/eq)
+Eq. (1)-(3), (6)-(9), (12)-(14); Table 1 (indeks sensitivitas); Fig. 5 (sumber ketidakpastian); Fig. 6-7 (PDF RUL).

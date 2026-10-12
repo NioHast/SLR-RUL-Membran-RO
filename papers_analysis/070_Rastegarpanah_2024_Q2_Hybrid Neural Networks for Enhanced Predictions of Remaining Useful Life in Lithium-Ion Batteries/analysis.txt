@@ -1,0 +1,47 @@
+PAPER 51 — Rastegarpanah et al. (2024)
+Judul : Hybrid Neural Networks for Enhanced Predictions of Remaining Useful Life in Lithium-Ion Batteries
+Jurnal: Batteries (MDPI) | Scopus Q2 | DOI 10.3390/batteries10030106 | Pilar: B. Deep Learning RUL
+
+KARAKTERISTIK STUDI
+Studi data-driven RUL untuk baterai lithium-ion (LIB) pada konteks kendaraan listrik (EV) dan daur ulang baterai. Membandingkan dua arsitektur hybrid deep learning: CLDNN (CNN+LSTM+DNN) dan Temporal Transformer (Transformer+LSTM), keduanya dioptimasi dengan Bayesian hyperparameter tuning. Tidak menyentuh survival analysis/censoring maupun domain membran/RO.
+
+METODE
+- CLDNN: lapisan konvolusi (ekstraksi fitur spasial) + LSTM (dependensi temporal) + DNN (regresi), ~1,5 juta parameter.
+- Temporal Transformer: multi-head self-attention + LSTM + feed-forward network, ~3,9 juta parameter.
+- Preprocessing: interpolasi linear (Qdlin, Tdlin), moving average window 15, penghapusan outlier (cubic spline), PCA, standardisasi sampling 1000 entri/siklus.
+- Stratified random sampling agar tiap batch baterai terwakili.
+- Hyperparameter tuning: Bayesian optimization (Keras Tuner), 100 trial x 10 epoch, objektif meminimumkan validation MAE.
+
+DATA
+Dataset Toyota Research Institute (TRI): 124 sel komersial LFP/graphite, 1,1 Ah, 3,3 V, disiklus cepat hingga gagal pada 30 °C. Fitur: voltase, arus, temperatur, internal resistance, discharge capacity/time. Umur 150-2300 siklus. Label RUL = jumlah siklus tersisa hingga kapasitas 80% nilai awal, dievaluasi tiap 100 siklus.
+
+TEMUAN UTAMA
+- CLDNN: MAE 84,012; MAPE 25,676%; RMSE 0,8218; MSE 0,6754.
+- Temporal Transformer: MAE 85,134; MAPE 28,7932%.
+- Perbaikan MAPE 4,01-7,12% vs Auto-CNN-LSTM, ATCMN, Deep CNN.
+- Waktu inferensi rendah (15,5-16,7 ms) -> layak real-time BMS.
+- Model terbaik butuh dua sifat: menangani data sparse dan mempelajari relasi temporal+spasial.
+
+RELEVANSI KE TESIS
+Pendukung. Studi ini adalah contoh kuat deep learning RUL non-censored pada domain energi. Bagi tesis RUL membran dengan survival + censoring, paper ini menunjukkan state-of-the-art arsitektur DL (CNN-LSTM, Transformer-LSTM) yang dapat menjadi komponen prediktif, sekaligus memperlihatkan celah yang tesis isi: tidak ada penanganan data tersensor dan tidak ada kuantifikasi ketidakpastian.
+
+JUSTIFIKASI DIMENSI
+- d1 = "1": bukti input multi-sensor deret waktu (voltase, arus, temperatur, IR, Qdlin, Tdlin) diratakan 1000 entri/siklus.
+- d2 = "1": bukti RUL didefinisikan sebagai siklus tersisa hingga kapasitas 80% (EOL) dan dihitung sebagai target 'remaining cycles'.
+- d3 = "": tidak ada survival/Weibull/hazard/censoring; semua sel diamati hingga gagal.
+- d4 = "1": model spesifik bernama (CLDNN, Transformer-LSTM, CNN, LSTM).
+- d5 = "": tidak ada CI/posterior/interval prediksi; Bayesian hanya untuk HPO.
+- d6 = "": tidak ada keputusan maintenance konkret (jadwal/biaya/DSS), hanya klaim manfaat BMS/recycling.
+- d7 = "": domain baterai, bukan membran/RO/desalinasi/fouling.
+- d8 = "": bukan small-data/transfer/hierarchical/all-censored (dataset besar).
+
+KUALITAS (skor 6/10)
+Q1=1 (RQ jelas), Q2=1 (metode mumpuni), Q3=1 (data publik + validasi), Q4=0,5 (dataset publik tapi kode tidak dibagikan), Q5=1 (metrik lengkap + benchmarking), Q6=N/A (tak ada censoring), Q7=0 (tak ada uncertainty), Q8=0 (tak ada keputusan maintenance). Skor = 4,5/7*10 ≈ 6.
+
+LIMITASI
+Satu kimia baterai saja; tanpa survival/censoring; tanpa interval kepercayaan; belum validasi lapangan; kode tidak tersedia.
+
+BUKTI
+- 'The CLDNN model... achieved... MAE of 84.012 and... MAPE of 25.676.'
+- '...lifetimes, defined by the cycle count at which the capacity declined to 80% of its initial value, varied from 150 to 2300 cycles.'
+- '...improvements in mean absolute percentage error (MAPE), which ranged from 4.01% to 7.12%.'

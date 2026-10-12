@@ -1,0 +1,46 @@
+{
+ "no": 19,
+ "judul": "Intelligent framework for coagulant dosing optimization in an industrial-scale seawater reverse osmosis desalination plant",
+ "penulis": "Muhammad Ghifari Ridwan, Thomas Altmann, Ahmed Yousry, Ratul Das",
+ "tahun": 2023,
+ "jurnal": "Machine Learning with Applications",
+ "doi": "10.1016/j.mlwa.2023.100475",
+ "kuartil": "Scopus Q1 (SCImago SJR Best Quartile)",
+ "pilar": "E. Membrane/RO/Desalination",
+ "ringkasan": "Studi mengembangkan kerangka inteligent berbasis Artificial Neural Network (ANN) untuk mengoptimalkan dosis koagulan (FeCl3) pada plant SWRO skala industri (216.000 m3/hari, Arab Saudi). Model memprediksi Silt Density Index (SDI) air terfiltrasi setelah dosing kimia dari parameter operasional (pH, turbidity, SDI, laju dosing FeCl3/polimer) yang diperkaya via feature engineering (lag/diff). ANN (10-256-128-64-64-1) mencapai akurasi 95% dan mengalahkan decision tree, random forest, dan linear regression. Setelah diterapkan selama satu tahun, konsumsi koagulan turun 11,7% (penghematan 325.000 SAR), terutama pada musim dingin.",
+ "kontribusi": "Memberi contoh pengendalian fouling/pra-perlakuan membran RO yang terhubung langsung ke penghematan biaya operasional nyata - konteks kuat domain desalinasi untuk tesis; namun bukan prediksi RUL, tanpa survival analysis, dan tanpa data tersensor.",
+ "temuan_kunci": [
+  "ANN (input 10 fitur: SDI/pH/turbidity/referensi waktu + lag/diff FeCl3) memprediksi SDI pasca-dosing dengan akurasi 95,33% (MAE 0,15; MSE 0,047).",
+  "ANN jauh mengungguli random forest (R2=0,57), decision tree (0,49), dan linear regression (0,49).",
+  "Implementasi industri selama satu tahun menurunkan konsumsi koagulan 11,7%, menghemat 325.000 SAR; penghematan terbesar pada musim dingin (Nov-Apr).",
+  "SDI dipakai sebagai indikator kualitas filtrate yang andal untuk keputusan dosing, berbeda dari model sebelumnya yang jarang memakai SDI."
+ ],
+ "dimensi": {"d1": "1", "d2": "", "d3": "", "d4": "1", "d5": "", "d6": "1", "d7": "1", "d8": ""},
+ "alasan_dimensi": {
+  "d1": "Menggunakan data operasional multi-parameter: turbidity, pH, SDI sebelum/sesudah cartridge filter, laju dosing FeCl3 dan polimer; diperkaya fitur lag/diff deret waktu (next/prev/diff).",
+  "d2": "Tidak mendefinisikan RUL atau peristiwa kegagalan; target prediksi adalah nilai SDI kontinu (indikator kualitas filtrate), bukan waktu-ke-kegagalan. Ada spesifikasi operasional SDI<4 tetapi bukan definisi RUL/kegagalan.",
+  "d3": "Tidak ada model survival/hazard/Weibull/cure maupun penanganan data tersensor.",
+  "d4": "Menggunakan ANN (MLP dense) spesifik dengan arsitektur dioptimalkan; dibandingkan decision tree, random forest, linear regression.",
+  "d5": "Tidak mengkuantifikasi ketidakpastian prediksi (tanpa CI/posterior); hanya R2/MSE/MAE.",
+  "d6": "Menganalisis keputusan operasional/pemeliharaan konkret: optimasi dosis koagulan, DSS untuk operator, dan kuantifikasi penghematan biaya operasional (11,7%, 325.000 SAR/tahun).",
+  "d7": "Objek plant seawater reverse osmosis (SWRO) skala industri; fokus pra-perlakuan dan pengendalian fouling membran.",
+  "d8": "Dataset industri besar (9261 nilai/parameter, 3 tahun) - bukan skenario small-data/transfer/hierarchical/censoring."
+ },
+ "relevansi": "Konteks",
+ "kualitas": {"skor": 9, "rincian": {"Q1": 1, "Q2": 1, "Q3": 1, "Q4": 0.5, "Q5": 1, "Q6": "N/A", "Q7": "N/A", "Q8": 1}, "catatan": "Studi industri kuat: data 3 tahun, arsitektur dioptimalkan, perbandingan beberapa model, dan dampak ekonomi nyata terverifikasi (penghematan biaya). Kelemahan: data tidak publik (on request), tanpa kuantifikasi ketidakpastian, dan target bukan RUL/survival."},
+ "data_kuantitatif": {"dataset": "Data operasional plant SWRO skala industri 216.000 m3/hari di Arab Saudi (ACWA Power), 3 tahun", "ukuran": "9261 nilai per parameter; split 90% latih / 10% uji; 10 fitur input", "metrik": "ANN R2=0,95 (akurasi 95,33%), MAE=0,15, MSE=0,047; RF R2=0,57 (MSE 0,074); DT & LR R2=0,49; pengurangan koagulan 11,7%, hemat 325.000 SAR/tahun"},
+ "metode": "ANN feed-forward (dense) 10-256-128-64-64-1, aktivasi ReLU + output linear, loss MSE, optimizer Adam, 500 epoch, batch 50; feature engineering (lag/diff) + seleksi fitur korelasi Pearson; baseline decision tree, random forest, linear regression.",
+ "limitasi": [
+  "Data tidak publik (on request) - reproducibility terbatas.",
+  "Tidak ada kuantifikasi ketidakpastian prediksi.",
+  "Target adalah SDI (kualitas filtrate), bukan RUL/kegagalan membran.",
+  "Tidak memakai survival analysis/censoring."
+ ],
+ "funding_coi": "Penulis berafiliasi ACWA Power; tidak ada pernyataan pendanaan khusus; penulis menyatakan tidak ada konflik kepentingan. Data tersedia atas permintaan.",
+ "status_inklusi": "diterima",
+ "figur_dibaca": [
+  {"file": "_page_4_Figure_4.jpeg", "isi": "Fig. 3 - skema arsitektur ANN dense: Input [10] -> Hidden [256] -> [128] -> [64] -> [64] -> Output [1], fully connected, dengan elipsis menandakan node terpotong."},
+  {"file": "_page_6_Figure_4.jpeg", "isi": "Fig. 7 - bar chart konsumsi FeCl3 per bulan tanpa AI (oranye) vs dengan AI (hijau) + garis penghematan biaya (SAR, sumbu kanan); konsumsi dengan AI selalu lebih rendah; puncak penghematan ~67.000 SAR (April), terendah ~1.000 SAR (Sep)."}
+ ],
+ "bukti": ["Table 1: data parameter input", "Table 2: ringkasan arsitektur ANN", "Table 3: perbandingan model (R2/MSE)", "Table 4: harga FeCl3", "Fig. 3 (arsitektur ANN)", "Fig. 4 (actual vs predicted SDI)", "Fig. 7 (konsumsi & penghematan)"]
+}

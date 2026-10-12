@@ -1,0 +1,38 @@
+PAPER 91: Predictive Framework for Membrane Fouling in Full-Scale Membrane Bioreactors (MBRs)
+Penulis: Jie Liang, Sangyoup Lee, Xianghao Ren, Yingjie Guo, Jeonghyun Park, Sung-Gwan Park, Ji-Yeon Kim, Moon-Hyun Hwang (2025)
+Jurnal: Processes | Scopus Q2 (SCImago SJR Best Quartile) | DOI 10.3390/pr13082352
+Pilar: E. Membrane/RO/Desalination | Relevansi: Inti-Domain | Skor kualitas: 8/10
+
+KARAKTERISTIK STUDI
+Studi primer berbasis data lapangan yang mengembangkan kerangka prediktif dan analitik untuk fouling membran pada membrane bioreactor (MBR) skala penuh yang mengolah limbah industri makanan di Beijing (kapasitas 150 m3/hari). Fokusnya bukan RUL, melainkan prediksi indikator kesehatan membran (specific flux) dengan penekanan pada interpretabilitas (XAI) dan kemampuan bekerja pada data kecil dan bising.
+
+METODE
+Target diubah dari TMP menjadi specific flux (flux/TMP) yang setara permeabilitas, dan COD removal efficiency ditambahkan sebagai fitur kinerja biologis. Preprocessing memakai robust scaling (median/IQR) dan moving average 5 hari untuk menangkap sifat kumulatif fouling. Model yang dibandingkan: regresi Linear, Ridge, Lasso, ElasticNet versus XGBoost dan CatBoost (gradient boosting). Evaluasi memakai R2, MAE, MAPE, MSE, RMSE dengan validasi silang lima lipat untuk tuning dan early stopping. Interpretasi memakai built-in importance, permutation importance, dan SHAP.
+
+DATA
+Data operasional harian selama 194 hari (satu MBR). Fitur: F/M, SV30, SVI, MLSS, DO, pH, suhu, COD RM, flux, TMP. Pembagian data kronologis 80% latih (155 catatan) dan 20% uji (39 catatan).
+
+TEMUAN UTAMA
+CatBoost terbaik pada semua kasus. Dengan robust scaling dan moving average 5 hari, CatBoost mencapai R2 = 0,8374, RMSE = 0,0054. Pada uji 20%: R2 = 0,7712, RMSE = 0,0064, MAE = 0,0054, MAPE 0,11%. Moving average menaikkan R2 lebih dari 10% dibanding data mentah. SHAP menempatkan F/M_MA5 (26,17%), F/M (13,23%), MLSS (10,04%), dan pH_MA5 (7,19%) sebagai prediktor dominan. Penulis mengaitkan hasil ini dengan keputusan operasional proaktif dan penjadwalan pencucian berbasis ambang TMP (naik >30% dari baseline atau >60 kPa).
+
+RELEVANSI KE TESIS
+Kuat pada sumbu domain: objek membran/MBR/fouling, data lapangan realistis, dan penanganan kondisi data kecil. Memberi preseden bahwa gradient boosting + feature engineering temporal efektif untuk degradasi membran, dan bahwa metode ini dinyatakan dapat ditransfer ke RO. Namun tidak ada RUL eksplisit, survival analysis, maupun kuantifikasi ketidakpastian, sehingga tidak menjembatani sumbu metode tesis (survival + data tersensor).
+
+JUSTIFIKASI DIMENSI
+d1 = 1: data multi-sensor deret waktu 194 hari.
+d2 = 1: mendefinisikan ambang perawatan (TMP naik >30% atau >60 kPa).
+d3 = "": tidak ada survival/hazard/Weibull/cure maupun data tersensor.
+d4 = 1: memakai model spesifik (CatBoost, XGBoost, regresi).
+d5 = "": tidak melaporkan CI/posterior; penulis menyatakan uji-t/CI tidak berlaku untuk satu deret waktu.
+d6 = 1: menganalisis keputusan perawatan (penjadwalan pencucian, kontrol F/M dan MLSS).
+d7 = 1: domain fouling membran MBR, transfer dinyatakan ke RO.
+d8 = 1: menangani data kecil (194 catatan, satu pabrik) secara eksplisit dengan CV dan kontrol overfitting.
+
+KUALITAS (8/10)
+Q1 = 1 (RQ jelas), Q2 = 1 (metode rinci), Q3 = 0,5 (satu pabrik, 194 catatan, tanpa peristiwa ekstrem), Q4 = 0,5 (data tidak publik, tanpa kode), Q5 = 0,5 (metrik lengkap tetapi final hanya satu split), Q6 = N/A, Q7 = N/A, Q8 = 1 (kaitan keputusan perawatan). Total 4,5/6 berlaku = 7,5 dibulatkan 8.
+
+LIMITASI
+Data satu pabrik dan tidak publik; dataset kecil tanpa peristiwa fouling parah/pencucian; tanpa kuantifikasi ketidakpastian; tanpa survival/pencensoringan; resolusi harian menyembunyikan fluktuasi intra-hari.
+
+BUKTI
+Tabel 4-7 (kinerja model), Tabel 8-9 (robust scaling dan moving average), Tabel 10 dan Fig 7 (SHAP), Fig 5 (actual vs predicted specific flux), Eq (2) moving average, Eq (9) Shapley.

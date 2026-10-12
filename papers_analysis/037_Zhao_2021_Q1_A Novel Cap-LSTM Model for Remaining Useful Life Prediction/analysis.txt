@@ -1,0 +1,43 @@
+PAPER 044 - Zhao et al. (2021)
+Judul   : A Novel Cap-LSTM Model for Remaining Useful Life Prediction
+Jurnal  : IEEE Sensors Journal | Scopus Q1 (SCImago SJR Best Quartile) | DOI 10.1109/JSEN.2021.3109623
+Pilar   : B. Deep Learning RUL
+Relevansi: Pendukung
+
+KARAKTERISTIK STUDI
+Studi pengembangan model prediksi RUL berbasis deep learning untuk turbofan engine, diposisikan dalam PHM untuk mengurangi biaya perawatan dan meningkatkan keandalan. Kontribusi utama adalah model hybrid dua kanal Cap-LSTM (capsule network + LSTM) yang mengatasi keterbatasan CNN konvensional.
+
+METODE
+- Dua kanal: (1) kanal capsule (conv 32 filter 3x3 ReLU -> 4 primary capsule -> 10 digit capsule 8-dimensi, dynamic routing 2 iterasi, squash) untuk fitur spasial; (2) kanal LSTM 100 neuron untuk dependensi temporal. Output digabung (concatenate) -> fully-connected 100 -> dropout 0,2 -> regresi RUL.
+- Label RUL piece-wise linear (Eq. 15; knee point c_max-125), sliding time window (TW 30/21/36/18), z-score, MSE loss, Adam (lr 0,001), L2 0,0001, early stopping 20 epoch, maks 1000 epoch.
+
+DATA
+NASA C-MAPSS FD001-FD004, 21 sensor (14 dipakai). Train/test trajectory 100/100, 260/259, 100/100, 249/248. Split train 90% / valid 10%.
+
+TEMUAN UTAMA
+- RMSE Cap-LSTM 12,27/17,79/12,55/22,05 (FD001-FD004), terbaik vs 8 model (MLP, SVR, RVR, CNN, MODBNE, LSTM, BiLSTM, CNN+FNN).
+- Score terendah (2,60e2 ... 4,57e3).
+- Ablation: lebih baik dari Capsule saja dan LSTM saja.
+- Window lebih panjang lebih baik dalam batas tertentu; dropout 0,2 optimal; Adam terbaik.
+
+RELEVANSI KE TESIS
+Pendukung: pembanding metode RUL deep learning yang tervalidasi pada benchmark publik dengan evaluasi berlapis. Namun tidak ada survival/penyensoran (SUMBU METODE gagal) dan bukan domain membran (SUMBU DOMAIN gagal). Berguna untuk rujukan arsitektur hybrid dan protokol evaluasi (RMSE + Score).
+
+JUSTIFIKASI DIMENSI (per d1-d8)
+- d1 = 1: data multisensor deret waktu C-MAPSS (14 sensor, input 3D cycle x sensor).
+- d2 = 1: target RUL eksplisit + fungsi piece-wise linear + knee point.
+- d3 = "" : tidak ada survival/Weibull/hazard; label RUL diketahui dari simulasi.
+- d4 = 1: Capsule Network + LSTM.
+- d5 = "" : tanpa CI/posterior; disebut sebagai future work.
+- d6 = "" : scheduling maintenance hanya motivasi.
+- d7 = "" : objek turbofan engine.
+- d8 = "" : tidak ada small-data/transfer.
+
+KUALITAS (skor 8/10)
+Q1=1, Q2=1, Q3=1, Q4=1, Q5=1, Q6=N/A, Q7=0 (tanpa ketidakpastian), Q8=N/A. Jumlah 5,0/6 -> 8.
+
+LIMITASI
+Tanpa kuantifikasi ketidakpastian; hanya domain simulasi turbofan; tanpa censoring; kode tidak dilampirkan.
+
+BUKTI
+Fig. 1, 3, 4, 6; Table I-VI; Eq. (1)-(17). Fig. 3 (arsitektur) dan Fig. 4 (flowchart) dibuka untuk verifikasi d4.

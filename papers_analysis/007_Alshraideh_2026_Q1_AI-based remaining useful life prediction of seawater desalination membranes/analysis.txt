@@ -1,0 +1,45 @@
+PAPER 011 - Alshraideh et al. (2026)
+Judul   : AI-based remaining useful life prediction of seawater desalination membranes
+Jurnal  : Chemical Engineering Journal Advances | Scopus Q1 (SCImago SJR Best Quartile) | DOI 10.1016/j.ceja.2026.101217
+Pilar   : E. Membrane/RO/Desalination
+Relevansi: Inti-Domain  (RUL + membran/RO; tanpa survival analysis/pencensoringan)
+
+KARAKTERISTIK STUDI
+Salah satu dari sangat sedikit studi yang memprediksi RUL membran RO. RUL didefinisikan sebagai volume air (m3) sampai membran mencapai ambang kinerja yang memicu clean-in-place (CIP). Kebaruan: menggabungkan fitur operasional penuh (bukan hanya data produksi historis) dengan hasil laboratorium, memakai data pabrik desalinasi RO nyata di UAE.
+
+METODE
+- Empat model ML: Linear Regression (baseline), Decision Tree (CART), XGBoost, Random Forest.
+- Tuning hyperparameter via 10-fold cross-validation + grid search (Table 5).
+- Interpretasi variable importance (RF) dan SHAP global/lokal.
+- Baseline deep learning: time-series transformer dengan attention (64 heads, head size 4) hanya dengan data RUL deret waktu (tanpa parameter operasional).
+
+DATA
+Data operasional harian pabrik desalinasi RO UAE, 2999 instance x 34 atribut (20 mentah + 14 turunan), 1 Jan 2021 - 31 Agu 2025. Fitur: aliran, tekanan, kecepatan pompa HP/PX, konduktivitas permeate/feed, SDI, suhu, turbiditas; fitur turunan min/max/mean sejak CIP terakhir + Age (m3) + RUL. Split 70/30.
+
+TEMUAN UTAMA
+- RF terbaik: R2=0,984, RMSE=0,136, MAE=0,0997 (uji); XGBoost 0,977; CART 0,936; LR 0,655.
+- Transformer tanpa parameter operasional hanya R2=0,718 -> pentingnya parameter operasional.
+- SHAP: MaxFeed_Water_Temp, MaxFeed_Water_SDI, AgeM3, Pump Speed PX (negatif terhadap RUL), Permeate Avg (positif).
+- Model ringan, dapat dijalankan pada SCADA untuk decision support harian dan optimasi jadwal CIP.
+
+RELEVANSI KE TESIS
+Paling relevan secara domain: memprediksi RUL membran RO/desalinasi nyata dan mengaitkannya dengan penjadwalan CIP (pemeliharaan). Namun tidak memakai survival analysis/pencensoringan dan tidak menangani ketidakpastian - dua komponen inti metode tesis. Tier: Inti-Domain (RUL + membran/RO). Berguna sebagai tolok ukur performa RUL berbasis ML pada membran.
+
+JUSTIFIKASI DIMENSI (per d1-d8)
+- d1 = 1: 20 fitur sensor/lab deret waktu harian + 14 turunan.
+- d2 = 1: RUL = volume air (m3) hingga CIP (ambang kinerja); Age didefinisikan sebagai m3 sejak CIP terakhir.
+- d3 = "" : tidak ada survival/hazard/Weibull/cure; tanpa pencensoringan.
+- d4 = 1: RF/XGBoost/CART/LR (+ baseline transformer).
+- d5 = "" : tanpa interval/posterior; hanya R2/RMSE/MAE dan densitas galat.
+- d6 = 1: mengoptimalkan penjadwalan CIP; menyediakan DSS operasional (SCADA).
+- d7 = 1: objek membran RO desalinasi air laut.
+- d8 = "" : mengakui limited data tetapi tanpa transfer/hierarchical/small-data eksplisit.
+
+KUALITAS (skor 8/10)
+Q1=1; Q2=1; Q3=1; Q4=0,5 (data satu pabrik, tidak publik); Q5=1 (4 model + transformer, CV, SHAP); Q6=N/A; Q7=N/A; Q8=0,5 (diskusi CIP/DSS tanpa model penjadwalan eksplisit). Jumlah aplikabel 5/6 -> 8.
+
+LIMITASI
+Satu pabrik; RUL level pressure-vessel bukan per membran; tanpa ketidakpastian; tanpa survival/censoring.
+
+BUKTI (fig/table/eq)
+Table 2, 3 (definisi RUL/Age), 4, 6; Fig. 4 (actual vs predicted RF); Fig. 7-8 (SHAP); Fig. 9 (transformer).

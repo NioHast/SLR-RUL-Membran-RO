@@ -1,0 +1,49 @@
+{
+ "no": 72,
+ "judul": "Remaining Useful Life Prognosis of Aircraft Brakes",
+ "penulis": "Athanasios Oikonomou, Nick Eleftheroglou, Floris Freeman, Theodoros Loutas, Dimitrios Zarouchas",
+ "tahun": 2022,
+ "jurnal": "International Journal of Prognostics and Health Management",
+ "doi": "10.36001/ijphm.2022.v13i1.3072",
+ "kuartil": "Scopus Q2 (ScImago SJR Best Quartile)",
+ "pilar": "C. Bayesian & Uncertainty",
+ "ringkasan": "Studi mengevaluasi tiga metodologi prognostik probabilistik data-driven untuk estimasi Remaining Useful Life (dalam satuan remaining flights) sistem rem pesawat komersial yang dipantau ketebalannya secara kontinu: Bayesian Linear Regression (BLR), Non-Homogeneous Hidden Semi Markov Model (NHHSMM), dan Bootstrapped Artificial Neural Network (BNN). Dataset riil (blind) dari armada wide-body sebuah maskapai Eropa berisi 27 riwayat degradasi lengkap, dan model diuji via skema leave-two-out termasuk tiga brake outlier. BNN paling unggul (MAPE <10%, CI tersempit, Prognostic Horizon 0,75) dan bahkan model paling sederhana pun membutuhkan kuantifikasi ketidakpastian untuk menangani stochasticity dan outlier.",
+ "kontribusi": "Menunjukkan pentingnya kuantifikasi ketidakpastian (interval kepercayaan) dalam prognostik RUL pada dataset riil kecil, dan bahwa model reliabilitas semi-Markov (NHHSMM) maupun Bayesian (BLR) dapat dibandingkan secara langsung - relevan bagi pilar C (Bayesian & Uncertainty) pada tesis; namun tidak memodelkan data tersensor (riwayat tidak lengkap justru dibuang) dan domainnya rem pesawat, bukan membran.",
+ "temuan_kunci": [
+  "BNN mengungguli BLR dan NHHSMM: rata-rata RMSE 21,20 / MAPE 5,27 / CICP 0,83 / CRA 0,92 / PH 0,75; menang di hampir semua brake termasuk outlier.",
+  "BLR memiliki coverage probability tertinggi (CICP 0,97) tetapi CI terlebar (MCIW 133,33), sehingga gagal menangani outlier; BNN CI tersempit (MCIW 79,46).",
+  "NHHSMM (MCIW 125,10) kesulitan di awal umur operasional karena pemilihan jumlah state diskrit (N=4), namun baik menjelang end-of-life.",
+  "Semua model konvergen ke ground truth saat mendekati akhir umur; lebar CI menyusut seiring bertambahnya waktu operasi.",
+  "Dari 56 riwayat, hanya 27 lengkap yang dipakai; 29 riwayat tidak lengkap (implisit tersensor) justru dikecualikan."
+ ],
+ "dimensi": {"d1": "1", "d2": "1", "d3": "", "d4": "1", "d5": "1", "d6": "1", "d7": "", "d8": ""},
+ "alasan_dimensi": {
+  "d1": "Data deret waktu per brake: jumlah flight yang telah dilakukan (performed flights, sebagai variabel waktu) dan bacaan sensor persentase ketebalan cakram karbon yang dipantau kontinu per flight; smoothing moving average 6 flight.",
+  "d2": "Mendefinisikan RUL = remaining useful flights sebelum penggantian, dengan failure threshold saat sensor mencapai 0% ketebalan cakram; target prediksi adalah time-to-replacement.",
+  "d3": "Tidak memodelkan data tersensor. NHHSMM adalah model reliabilitas tersembunyi (hidden semi-Markov) dengan fungsi conditional reliability, tetapi tidak ada indikator censoring/right-censoring; 29 riwayat degradasi tidak lengkap dikecualikan sepenuhnya (bukan diperlakukan sebagai data tersensor).",
+  "d4": "Tiga model spesifik: Bayesian Linear Regression (BLR, dengan hyperprior Gamma), Non-Homogeneous Hidden Semi Markov Model (NHHSMM), dan Bootstrapped ANN (200 ANN satu hidden layer 20 neuron, Adam, ReLU).",
+  "d5": "Kuantifikasi ketidakpastian eksplisit: 95% confidence interval via BLR posterior, CDF RUL NHHSMM (Eq. 3-4), dan bootstrap BNN (Eq. 8-10); dievaluasi dengan CICP dan MCIW.",
+  "d6": "Menganalisis keputusan pemeliharaan: membandingkan TBM vs CBM, menyatakan estimasi RUL real-time sebagai input kritis manajemen pemeliharaan untuk 'decision making on when maintenance should be performed' dan menghilangkan inspeksi visual manual; tanpa model penjadwalan/biaya kuantitatif.",
+  "d7": "Objek penelitian bukan membran/RO/desalinasi, melainkan sistem rem cakram karbon pesawat.",
+  "d8": "Dataset kecil (27 riwayat lengkap: 16 latih, leave-two-out, 11 uji termasuk 3 outlier) tetapi tidak ada metode transfer/hierarchical/small-data eksplisit; outlier diprediksi tanpa pelatihan khusus."
+ },
+ "relevansi": "Inti-Metode",
+ "kualitas": {"skor": 8, "rincian": {"Q1": 1, "Q2": 1, "Q3": 0.5, "Q4": 0.5, "Q5": 1, "Q6": "N/A", "Q7": 1, "Q8": 0.5}, "catatan": "Desain perbandingan tiga model kuat, kuantifikasi ketidakpastian lengkap (95% CI, CICP, MCIW) dan evaluasi metrik prognostik standar (RMSE, MAPE, PH, CRA). Kelemahan: data riil proprietary (tidak publik), sample kecil, dan tidak memodelkan riwayat tidak lengkap sebagai data tersensor. Q6 tidak berlaku karena tidak ada pemodelan kelangsungan/censoring."},
+ "data_kuantitatif": {"dataset": "Dataset riil (blind) armada wide-body maskapai Eropa: ketebalan cakram karbon rem (% dari ketebalan awal) per flight, 8 brake/aircraft", "ukuran": "56 riwayat brake; 27 riwayat lengkap (24 dari 8 brake-set 3 aircraft + 3 outlier); 16 latih / leave-two-out; 11 uji", "metrik": "Rata-rata: BNN RMSE 21,20, MAPE 5,27, CICP 0,83, MCIW 79,46, CRA 0,92, PH 0,75; NHHSMM RMSE 29,27, MAPE 7,91, CICP 0,84, MCIW 125,10, CRA 0,83, PH 0,69; BLR RMSE 25,86, MAPE 6,87, CICP 0,97, MCIW 133,33, CRA 0,88, PH 0,70"},
+ "metode": "Tiga metodologi prognostik data-driven probabilistic: (1) Bayesian Linear Regression dengan hyperprior Gamma (implementasi scikit-learn 0,23,2, algoritma Tipping 2001); (2) Non-Homogeneous Hidden Semi Markov Model dengan MLE parameter (Moghaddass & Zuo 2014) dan conditional reliability untuk RUL; (3) Bootstrapped ANN (B=200 ANN, resampling with replacement) untuk mean + variance prediksi dan CI (1-a)%. Praporses: moving average 6-flight, definisi failure threshold pada sensor 0%.",
+ "limitasi": [
+  "Dataset riil proprietary dan relatif kecil (27 riwayat lengkap).",
+  "29 riwayat degradasi tidak lengkap dikecualikan, bukan diproses sebagai data tersensor.",
+  "NHHSMM bergantung pada pemilihan jumlah state diskrit N (dipilih N=4) dan buruk di awal umur.",
+  "Tidak ada model keputusan pemeliharaan kuantitatif (jadwal/biaya).",
+  "Metrik dihitung dengan mengabaikan 25% pertama umur."
+ ],
+ "funding_coi": "Didanai program riset dan inovasi European Union's Horizon 2020 ReMAP (Grant Agreement 769288); tidak ada pernyataan konflik kepentingan.",
+ "status_inklusi": "diterima",
+ "figur_dibaca": [
+  {"file": "_page_2_Figure_7.jpeg", "isi": "Flowchart konsep & metodologi: aircraft brakes -> degradation histories -> pelatihan model data-driven -> prognostik RUL pada sensor data tak terlihat -> maintenance management (CBM)."},
+  {"file": "_page_5_Picture_11.jpeg", "isi": "Skema bootstrapping ANN untuk kuantifikasi ketidakpastian: dataset dipartisi menjadi B subset (D1..DN), masing-masing melatih ANN, output digabung untuk y_mean dan sigma_y_mean."},
+  {"file": "_page_6_Figure_1.jpeg", "isi": "Hasil prognostik dengan 95% CI untuk Brake #3, #6, #8: ground truth vs mean prediction BNN/NHHSMM/BLR; BNN punya CI tersempit, NHHSMM/BLR lebih lebar; semua mean konvergen ke ground truth mendekati end-of-life."}
+ ],
+ "bukti": ["Eq. (1): moving average 6-flight & definisi RUL", "Eq. (2): MLE parameter NHHSMM", "Eq. (3)-(4): mean RUL & CDF (conditional reliability)", "Eq. (5)-(10): error decomposition & CI bootstrap ANN", "Eq. (11)-(16): metrik CICP, MCIW, RMSE, MAPE, PH, CRA", "Table 1: struktur data sensor braka", "Table 2: metrik performa semua brake & rata-rata", "Fig. 1, 4, 5, 6"]
+}

@@ -1,0 +1,952 @@
+{
+  "table_of_contents": [
+    {
+      "title": "Results in Engineering",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          229.0959930419922,
+          85.29296875
+        ],
+        [
+          372.5097351074219,
+          85.29296875
+        ],
+        [
+          372.5097351074219,
+          100.76190185546875
+        ],
+        [
+          229.0959930419922,
+          100.76190185546875
+        ]
+      ]
+    },
+    {
+      "title": "Cellulose acetate from palm oil bunch waste for forward osmosis membrane \nin desalination of brackish water",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          37.58740234375,
+          167.484375
+        ],
+        [
+          487.8968200683594,
+          167.484375
+        ],
+        [
+          487.8968200683594,
+          198.19647216796875
+        ],
+        [
+          37.58740234375,
+          198.19647216796875
+        ]
+      ]
+    },
+    {
+      "title": "ARTICLE INFO",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          36.376953125,
+          261.6943359375
+        ],
+        [
+          120.90568542480469,
+          261.6943359375
+        ],
+        [
+          120.90568542480469,
+          270.83941650390625
+        ],
+        [
+          36.376953125,
+          270.83941650390625
+        ]
+      ]
+    },
+    {
+      "title": "ABSTRACT",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          201.673828125,
+          262.08203125
+        ],
+        [
+          263.930419921875,
+          262.08203125
+        ],
+        [
+          263.930419921875,
+          270.83941650390625
+        ],
+        [
+          201.673828125,
+          270.83941650390625
+        ]
+      ]
+    },
+    {
+      "title": "1. Introduction",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          36.0859375,
+          434.60644531249994
+        ],
+        [
+          100.17181396484375,
+          434.60644531249994
+        ],
+        [
+          100.17181396484375,
+          445.09698486328125
+        ],
+        [
+          36.0859375,
+          445.09698486328125
+        ]
+      ]
+    },
+    {
+      "title": "2. Experimental",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          36.376953125,
+          400.4892578125
+        ],
+        [
+          102.88165283203125,
+          400.4892578125
+        ],
+        [
+          102.88165283203125,
+          410.39837646484375
+        ],
+        [
+          36.376953125,
+          410.39837646484375
+        ]
+      ]
+    },
+    {
+      "title": "2.1. Equipment and chemicals",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          36.958984375,
+          421.037109375
+        ],
+        [
+          143.32911682128906,
+          421.037109375
+        ],
+        [
+          143.32911682128906,
+          431.3175048828125
+        ],
+        [
+          36.958984375,
+          431.3175048828125
+        ]
+      ]
+    },
+    {
+      "title": "2.2. Experimental procedures",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          36.376953125,
+          649.3896484375
+        ],
+        [
+          140.26620483398438,
+          649.3896484375
+        ],
+        [
+          140.26620483398438,
+          659.1642761230469
+        ],
+        [
+          36.376953125,
+          659.1642761230469
+        ]
+      ]
+    },
+    {
+      "title": "2.2.1. Celulluse isolation",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          36.66796875,
+          669.162109375
+        ],
+        [
+          125.31588745117188,
+          669.162109375
+        ],
+        [
+          125.31588745117188,
+          680.0842590332031
+        ],
+        [
+          36.66796875,
+          680.0842590332031
+        ]
+      ]
+    },
+    {
+      "title": "2.2.2. Synthesis cellulose acetate",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          306.439453125,
+          327.21484375
+        ],
+        [
+          420.95843505859375,
+          327.21484375
+        ],
+        [
+          420.95843505859375,
+          337.2669677734375
+        ],
+        [
+          306.439453125,
+          337.2669677734375
+        ]
+      ]
+    },
+    {
+      "title": "2.2.3. Preparation of cellulose acetate membrane",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          306.1484375,
+          495.08691406249994
+        ],
+        [
+          475.98956298828125,
+          495.08691406249994
+        ],
+        [
+          475.98956298828125,
+          504.6231384277344
+        ],
+        [
+          306.1484375,
+          504.6231384277344
+        ]
+      ]
+    },
+    {
+      "title": "2.2.4. Membrane characterizations",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          305.857421875,
+          650.9404296875
+        ],
+        [
+          428.5682678222656,
+          650.9404296875
+        ],
+        [
+          428.5682678222656,
+          661.5480346679688
+        ],
+        [
+          305.857421875,
+          661.5480346679688
+        ]
+      ]
+    },
+    {
+      "title": "2.2.5. FO experiment",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          36.03022670025189,
+          418.7109375
+        ],
+        [
+          112.59445843828715,
+          418.7109375
+        ],
+        [
+          112.59445843828715,
+          428.01562499999994
+        ],
+        [
+          36.03022670025189,
+          428.01562499999994
+        ]
+      ]
+    },
+    {
+      "title": "3. Results and discussion",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          304.7556675062972,
+          172.13671875
+        ],
+        [
+          405.34005037783373,
+          172.13671875
+        ],
+        [
+          405.34005037783373,
+          179.94334277620396
+        ],
+        [
+          304.7556675062972,
+          179.94334277620396
+        ]
+      ]
+    },
+    {
+      "title": "3.1. Characterization of synthesized cellulose and cellulose acetate extract",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          304.7556675062972,
+          192.68932955618507
+        ],
+        [
+          532.9471032745591,
+          192.68932955618507
+        ],
+        [
+          532.9471032745591,
+          210.68366383380547
+        ],
+        [
+          304.7556675062972,
+          210.68366383380547
+        ]
+      ]
+    },
+    {
+      "title": "3.2. The cellulose acetate membrane preparation and characterization",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          306.439453125,
+          352.802734375
+        ],
+        [
+          546.2009887695312,
+          352.802734375
+        ],
+        [
+          546.2009887695312,
+          363.572998046875
+        ],
+        [
+          306.439453125,
+          363.572998046875
+        ]
+      ]
+    },
+    {
+      "title": "3.3. The cellulose acetate membrane FO application",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          36.66796875,
+          220.21093749999997
+        ],
+        [
+          216.20193481445312,
+          220.21093749999997
+        ],
+        [
+          216.20193481445312,
+          229.4940185546875
+        ],
+        [
+          36.66796875,
+          229.4940185546875
+        ]
+      ]
+    },
+    {
+      "title": "3.4. Quality of water FO product",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          306.1484375,
+          178.33984375
+        ],
+        [
+          422.5711364746094,
+          178.33984375
+        ],
+        [
+          422.5711364746094,
+          187.6568603515625
+        ],
+        [
+          306.1484375,
+          187.6568603515625
+        ]
+      ]
+    },
+    {
+      "title": "4. Conclusions",
+      "heading_level": null,
+      "page_id": 6,
+      "polygon": [
+        [
+          35.794921875,
+          451.66503906249994
+        ],
+        [
+          97.85252380371094,
+          451.66503906249994
+        ],
+        [
+          97.85252380371094,
+          461.6510314941406
+        ],
+        [
+          35.794921875,
+          461.6510314941406
+        ]
+      ]
+    },
+    {
+      "title": "Author contributions",
+      "heading_level": null,
+      "page_id": 6,
+      "polygon": [
+        [
+          35.50390625,
+          600.5400390625
+        ],
+        [
+          120.3763427734375,
+          600.5400390625
+        ],
+        [
+          120.3763427734375,
+          610.0720825195312
+        ],
+        [
+          35.50390625,
+          610.0720825195312
+        ]
+      ]
+    },
+    {
+      "title": "Declaration of competing interest",
+      "heading_level": null,
+      "page_id": 6,
+      "polygon": [
+        [
+          36.66796875,
+          691.6484375
+        ],
+        [
+          168.51097106933594,
+          691.6484375
+        ],
+        [
+          168.51097106933594,
+          702.0271148681641
+        ],
+        [
+          36.66796875,
+          702.0271148681641
+        ]
+      ]
+    },
+    {
+      "title": "Acknowledgments",
+      "heading_level": null,
+      "page_id": 6,
+      "polygon": [
+        [
+          304.984375,
+          397.3876953125
+        ],
+        [
+          378.5557861328125,
+          397.3876953125
+        ],
+        [
+          378.5557861328125,
+          407.39801025390625
+        ],
+        [
+          304.984375,
+          407.39801025390625
+        ]
+      ]
+    },
+    {
+      "title": "References",
+      "heading_level": null,
+      "page_id": 6,
+      "polygon": [
+        [
+          305.56640625,
+          459.41894531249994
+        ],
+        [
+          350.1423645019531,
+          459.41894531249994
+        ],
+        [
+          350.1423645019531,
+          470.1561584472656
+        ],
+        [
+          305.56640625,
+          470.1561584472656
+        ]
+      ]
+    }
+  ],
+  "page_stats": [
+    {
+      "page_id": 0,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          193
+        ],
+        [
+          "Line",
+          77
+        ],
+        [
+          "Text",
+          11
+        ],
+        [
+          "SectionHeader",
+          5
+        ],
+        [
+          "PageFooter",
+          3
+        ],
+        [
+          "Picture",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "Footnote",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 1,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          291
+        ],
+        [
+          "Line",
+          120
+        ],
+        [
+          "Text",
+          12
+        ],
+        [
+          "SectionHeader",
+          7
+        ],
+        [
+          "PageHeader",
+          2
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 2,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          132
+        ],
+        [
+          "Span",
+          70
+        ],
+        [
+          "Text",
+          15
+        ],
+        [
+          "Equation",
+          4
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "PageHeader",
+          2
+        ],
+        [
+          "Picture",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "PictureGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 3,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          67
+        ],
+        [
+          "Line",
+          29
+        ],
+        [
+          "Figure",
+          3
+        ],
+        [
+          "Caption",
+          3
+        ],
+        [
+          "PageHeader",
+          2
+        ],
+        [
+          "Picture",
+          2
+        ],
+        [
+          "FigureGroup",
+          2
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "Text",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "PictureGroup",
+          1
+        ],
+        [
+          "Reference",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 4,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          217
+        ],
+        [
+          "Line",
+          98
+        ],
+        [
+          "Text",
+          9
+        ],
+        [
+          "PageHeader",
+          2
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "Figure",
+          2
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 5,
+      "text_extraction_method": "surya",
+      "block_counts": [
+        [
+          "Line",
+          117
+        ],
+        [
+          "Span",
+          32
+        ],
+        [
+          "Text",
+          5
+        ],
+        [
+          "Figure",
+          4
+        ],
+        [
+          "Caption",
+          3
+        ],
+        [
+          "FigureGroup",
+          3
+        ],
+        [
+          "PageHeader",
+          2
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "Reference",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 6,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          257
+        ],
+        [
+          "Line",
+          94
+        ],
+        [
+          "TableCell",
+          76
+        ],
+        [
+          "ListItem",
+          10
+        ],
+        [
+          "Text",
+          5
+        ],
+        [
+          "SectionHeader",
+          5
+        ],
+        [
+          "PageHeader",
+          2
+        ],
+        [
+          "Figure",
+          2
+        ],
+        [
+          "Caption",
+          2
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ],
+        [
+          "TableGroup",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ],
+        [
+          "Reference",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    },
+    {
+      "page_id": 7,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          313
+        ],
+        [
+          "Line",
+          95
+        ],
+        [
+          "ListItem",
+          25
+        ],
+        [
+          "PageHeader",
+          2
+        ],
+        [
+          "ListGroup",
+          2
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "Reference",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0,
+        "previous_text": "",
+        "previous_type": "",
+        "previous_order": 0
+      }
+    }
+  ],
+  "debug_data_path": "debug_data/060"
+}

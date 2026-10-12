@@ -1,0 +1,48 @@
+{
+  "no": 92,
+  "judul": "Weibull Variational Autoencoder for Remaining Useful Life Prediction",
+  "penulis": "JunWoo Yu, Yoojin Jang, Kwanghui Shin, Jinsoo Jeong, Yong Soo Kim",
+  "tahun": 2026,
+  "jurnal": "Quality and Reliability Engineering International",
+  "doi": "10.1002/qre.70386",
+  "kuartil": "Scopus Q2 (SCImago SJR Best Quartile)",
+  "pilar": "C. Bayesian & Uncertainty",
+  "ringkasan": "Studi mengusulkan Weibull Variational Autoencoder (WVAE) untuk prediksi RUL, yaitu VAE yang latent space-nya mengikuti distribusi Weibull sehingga bisa mempelajari bentuk dan skala distribusi kegagalan langsung dari riwayat kegagalan. Fungsi loss gabungan MSE ditambah negative log-likelihood Weibull menjaga akurasi titik sekaligus kesetiaan distribusi, sementara Monte Carlo Dropout memberi interval kepercayaan 95%. Validasi pada data simulasi (tiga tipe kegagalan: infant mortality, random, wear-out, dengan tiga tingkat noise) dan dataset lapangan Backblaze hard drive menunjukkan WVAE konsisten dengan distribusi kegagalan historis dan mengalahkan baseline pada CRPS.",
+  "kontribusi": "Menyatukan model berbasis distribusi Weibull dengan arsitektur deep generative untuk RUL, tepat pada sumbu metode tesis (survival/Weibull + kuantifikasi ketidakpastian), namun sengaja mengabaikan observasi tersensor (right-censored) dan domainnya bukan membran.",
+  "temuan_kunci": [
+    "WVAE memakai reparameterization berbasis inverse-CDF Weibull: z = eta(-ln(1-epsilon))^(1/beta) (Eq. 15).",
+    "Loss gabungan MSE + NLL Weibull dengan hyperparameter lambda = 0,01 terpilih (PICP tertinggi pada rentang yang diuji, variation CRPS hanya 1,4%).",
+    "Pada simulasi, WVAE mencapai CRPS terendah di semua dataset pada MPIW tetap 480 (mis. wear-out sigma=50 CRPS=183 vs VAE 269; PICP=0,578).",
+    "Pada Backblaze, estimasi parameter Weibull (beta, eta) dengan CI 95% sebagian besar konsisten dengan MLE klasik; WVAE unggul PICP pada 5 dari 6 model drive.",
+    "PICP rendah secara absolut menunjukkan interval belum terkalibrasi pada skenario noise tinggi; data tersensor (drive yang belum gagal) dikecualikan."
+  ],
+  "dimensi": {"d1": "1", "d2": "1", "d3": "1", "d4": "1", "d5": "1", "d6": "", "d7": "", "d8": ""},
+  "alasan_dimensi": {
+    "d1": "Input adalah deret waktu riwayat kegagalan X = {x1,...,xM} per produk yang diproses encoder 1D-CNN; data Backblaze berupa snapshot SMART harian (power-on time).",
+    "d2": "Mendefinisikan target berupa waktu kegagalan (failure time) untuk prediksi RUL, dengan parameter Weibull (shape beta, scale eta) sebagai keluaran model.",
+    "d3": "Memodelkan distribusi waktu kegagalan secara eksplisit dengan Weibull di latent space dan NLL Weibull (Eq. 12, 17); ini pemodelan survival/Weibull nyata, meski observasi tersensor dikecualikan.",
+    "d4": "Memakai model spesifik WVAE (VAE + 1D-CNN) dan membandingkannya dengan LSTM, 1D-CNN, MLP, VAE, dan PAE-NMF.",
+    "d5": "Mengkuantifikasi ketidakpastian via Monte Carlo Dropout (100 forward pass), interval kepercayaan 95% (Eq. 19), dan metrik PICP, MPIW, serta CRPS.",
+    "d6": "Menyebut pengurangan biaya pemeliharaan dan memberi personel pemeliharaan dasar mempercayai prediksi, tetapi tidak menyusun/menganalisis keputusan perawatan konkret (jadwal/biaya/DSS).",
+    "d7": "Objek penelitian adalah sistem mekanis umum, data simulasi, dan hard disk drive (Backblaze), bukan membran/RO/desalinasi.",
+    "d8": "Tidak menangani small-data/transfer/hierarkis; justru mengecualikan observasi tersensor (drives tanpa kegagalan) dan memakai ribuan sampel simulasi."
+  },
+  "relevansi": "Inti-Metode",
+  "kualitas": {"skor": 9, "rincian": {"Q1": 1, "Q2": 1, "Q3": 1, "Q4": 1, "Q5": 1, "Q6": 0, "Q7": 1, "Q8": "N/A"}, "catatan": "RQ jelas, metode rinci (arsitektur Tabel 5, hyperparameter Tabel 6, analisis sensitivitas lambda), evaluasi kuat (lima baseline, metrik probabilistik, 10 pengulangan) dan validasi pada dataset lapangan Backblaze. Kelemahan utama: meski memodelkan Weibull, observasi right-censored sengaja dikecualikan (Q6 = 0) dan hasil pada noise tinggi belum terkalibrasi. Q8 tidak berlaku karena tidak ada analisis keputusan perawatan konkret."},
+  "data_kuantitatif": {"dataset": "Data simulasi Weibull (9 kondisi: shape 0,8/1,0/2,5 x noise 50/100/150) dan dataset lapangan Backblaze Drive Stats 2025 (6 model HDD terpilih)", "ukuran": "2.700 deret waktu simulasi (300 per kondisi); Backblaze: ST12000NM0008 n=479, TOSHIBA MG07ACA14TA n=432, HGST HUH721212ALN604 n=393, TOSHIBA MG08ACA16TA n=361, HGST HUH721212ALE604 n=356, TOSHIBA MG08ACA16TEY n=318; split 70%/80% input/target", "metrik": "CRPS (mis. wear-out sigma=50: WVAE 183 vs VAE 269), PICP (wear-out sigma=50: 0,578 vs 0,390), MPIW tetap 480; Backblaze PICP mis. HGST ALN604 0,980; waktu per epoch WVAE 0,0681 s vs PAE-NMF 0,0718 s"},
+  "metode": "Weibull Variational Autoencoder (encoder/decoder 1D-CNN, latent Weibull via inverse-CDF reparameterization), loss gabungan MSE + negative log-likelihood Weibull (lambda=0,01, delta=50), inferensi Monte Carlo Dropout untuk interval kepercayaan; baseline LSTM, 1D-CNN, MLP, VAE, PAE-NMF.",
+  "limitasi": [
+    "Observasi right-censored (unit yang belum gagal) dikecualikan; penulis menargetkan perluasan ke data warranty sebagai kerja masa depan.",
+    "Asumsi satu mode kegagalan Weibull gagal pada model drive dengan distribusi bimodal (TOSHIBA MG08ACA16TEY).",
+    "Interval kepercayaan belum terkalibrasi pada noise tinggi (PICP jauh di bawah tingkat nominal pada beberapa simulasi).",
+    "Evaluasi utama pada data simulasi; data dan kode tidak tersedia publik."
+  ],
+  "funding_coi": "Penulis menyatakan tidak ada pendanaan untuk dilaporkan (The author has nothing to report); tidak ada pernyataan konflik kepentingan yang dilaporkan.",
+  "status_inklusi": "diterima",
+  "figur_dibaca": [
+    {"file": "_page_5_Figure_1.jpeg", "isi": "Diagram arsitektur WVAE: encoder (conv+dropout+pooling) menuju flatten/fully-connected yang mengeluarkan parameter beta dan eta; sampling eps~U(0,1) dengan rumus Z = eta(-ln(1-eps))^(1/beta); decoder konvolusional menghasilkan output."},
+    {"file": "_page_10_Figure_3.jpeg", "isi": "Perbandingan PDF waktu kegagalan aktual vs enam model (WVAE, VAE, PAE-NMF, MLP, LSTM, 1D-CNN) pada data infant mortality noise 150; VAE/PAE-NMF memusat di nol, WVAE lebih mengikuti bentuk distribusi."},
+    {"file": "_page_17_Figure_3.jpeg", "isi": "PDF waktu kegagalan WVAE vs aktual pada enam model HDD Backblaze; panel (f) TOSHIBA MG08ACA16TEY memperlihatkan dua puncak (mode ganda) yang tidak ditangkap asumsi Weibull tunggal."}
+  ],
+  "bukti": ["Eq (12): KL divergence tertutup antar dua Weibull", "Eq (15): reparameterization inverse-CDF Weibull", "Eq (17): loss MSE + NLL Weibull", "Tabel 2-3: sensitivitas lambda (PICP/CRPS dan estimasi beta)", "Tabel 5: arsitektur WVAE", "Tabel 7-8: estimasi parameter dengan CI 95% dan kinerja vs baseline", "Tabel 11-12: hasil Backblaze dan perbandingan MLE klasik"]
+}

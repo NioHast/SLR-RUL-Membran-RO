@@ -1,0 +1,46 @@
+PAPER 100 - Ghomghaleh et al. (2020)
+Judul   : Prediction of remaining useful life (RUL) of Komatsu excavator under reliability analysis in the Weibull-frailty model
+Jurnal  : PLoS ONE | Scopus Q1 (ScImago SJR Best Quartile) | DOI 10.1371/journal.pone.0236128
+Pilar   : A. Survival Analysis & Censored Data
+Relevansi: Inti-Metode (RUL + survival/Weibull/hazard/frailty + data tersensor; domain excavator tambang)
+
+KARAKTERISTIK STUDI
+Memprediksi RUL excavator Komatsu PC-1250 di tambang tembaga Sungun memakai analisis keandalan dua model: klasik-eksponensial dan Weibull-frailty. Model frailty menambahkan faktor risiko tak teramati (heterogenitas) yang tidak tertangkap model klasik. Data adalah TBF dari catatan pemeliharaan selama 80 jam operasional; data dibagi menjadi completed failure dan suspended (tersensor). RUL dihitung dari mean residual life (MRL).
+
+METODE
+- Reliabilitas: R(x)=1-F(t); hazard lambda(t); MTTF.
+- Frailty: lambda(t|alpha)=alpha*lambda(t); reliabilitas bersyarat R(t|alpha)={R(t)}^alpha; reliabilitas non-kondisional R_theta(t)=[1-theta ln R(t)]^{-1/theta} dengan g(alpha) berdistribusi gamma (mean 1, varians theta).
+- RUL = MRL(t0) = int_{t0}^{inf} R(t) dt / R(t0).
+- Uji heterogenitas: likelihood ratio (R=3,96; p=0,023), tolak H0 (tidak ada heterogenitas).
+- GOF: AIC & BIC (Eq 27-28); estimasi parameter via STATA (Weibull-frailty MLE).
+
+DATA
+Data historis excavator Komatsu PC-1250 (tambang Sungun, Iran), Feb-Sep 2018; TBF dari catatan pemeliharaan + data cuaca. 80 jam operasional. Dua kategori: completed failure dan suspended data. Data di Supporting Information.
+
+TEMUAN UTAMA
+- Heterogenitas signifikan (R=3,96; p=0,023).
+- Model klasik terbaik: eksponensial (AIC 169,44/BIC 171,533); model frailty terbaik: Weibull-frailty (AIC 169,48/BIC 175,7612).
+- Parameter Weibull-frailty: alpha=2,817; beta=30,565; theta=3,575.
+- Reliabilitas frailty > klasik untuk reliabilitas > 80%; RUL frailty meningkat (1.232->2.908 jam) sedangkan klasik ~99,60 jam konstan.
+
+RELEVANSI KE TESIS
+Inti-Metode. Ini contoh langsung model survival yang menghitung RUL dengan hazard/Weibull dan frailty (efek acak untuk heterogenitas tak teramati), menangani data tersensor (suspended data), serta memakai uji GOF/heterogenitas untuk pemilihan model - selaras dengan sumbu survival tesis. Namun tidak ada deep learning/ML dan domainnya excavator tambang (bukan membran/RO). Jadi masuk Inti-Metode karena sumbu RUL + survival/Weibull/hazard.
+
+JUSTIFIKASI DIMENSI (d1-d8)
+- d1 = "": data adalah waktu antar-kegagalan (TBF), bukan sinyal sensor deret waktu multi-saluran.
+- d2 = 1: definisi kegagalan dan RUL (MRL) eksplisit.
+- d3 = 1: memodelkan waktu-ke-kegagalan dengan reliabilitas/hazard/Weibull/frailty; data tersensor (suspended) ditangani; likelihood frailty diestimasi.
+- d4 = "": tidak ada model ML/DL dari daftar (LSTM/CNN/Bayesian/RF/SVM/GP); ini model survival statistik murni.
+- d5 = 1: interval kepercayaan 95% parameter dilaporkan (Tabel 2-5).
+- d6 = "": menyebut penggunaan untuk perawatan/rencana penggantian, tanpa model keputusan konkret.
+- d7 = "": domain excavator tambang, bukan membran/RO/desalinasi.
+- d8 = 1: efek acak frailty (heterogenitas tak teramati) = struktur efek-acak/hierarki, dan analisis menangani data tersensor pada sampel kecil.
+
+KUALITAS (skor 7/10)
+Q1=1; Q2=1 (kerangka survival/reliability baku & derivasi MRL lengkap); Q3=0,5 (data lapangan kecil, satu unit, tanpa validasi silang); Q4=0,5 (metode dijelaskan tetapi estimasi STATA tanpa detail); Q5=0,5 (AIC/BIC + LR + perbandingan dua model, tanpa cross-validation); Q6=1 (data tersensor/suspended ditangani); Q7=0,5 (CI parameter saja, bukan RUL); Q8=0,5 (kaitan pemeliharaan hanya kualitatif). Total = 5,5/8 -> 6,875 -> dibulatkan 7.
+
+LIMITASI
+Data kecil (80 jam, 1 unit); RUL frailty naik seiring waktu (interpretasi fisik debatable); tanpa ML/DL; ketidakpastian RUL tidak dikuantifikasi; domain excavator tambang; keputusan pemeliharaan tidak dimodelkan.
+
+BUKTI (fig/tabel/persamaan)
+Eq (1) reliabilitas; Eq (3)-(7) frailty & gamma; Eq (8)-(24) MRL/RUL; Eq (25)-(26) LR test; Eq (27)-(28) AIC/BIC; Eq (33)-(37) reliabilitas & RUL; Tabel 1 GOF; Tabel 5 parameter; Tabel 6-7 RUL. Figure dibaca: _page_7_Figure_2 (kerangka 5 langkah), _page_11_Figure_2 (reliabilitas klasik vs frailty), _page_13_Figure_2 (RUL frailty).

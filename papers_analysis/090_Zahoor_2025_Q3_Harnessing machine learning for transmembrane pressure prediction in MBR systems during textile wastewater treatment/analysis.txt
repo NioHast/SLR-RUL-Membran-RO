@@ -1,0 +1,54 @@
+PAPER 61: Harnessing machine learning for transmembrane pressure prediction in MBR systems during textile wastewater treatment
+Penulis: Onaira Zahoor, Sher Jamal Khan, Muhammad Usama, Henry J. Tanudjaja, Noreddine Ghaffour, Muhammad Saqib Nawaz (2025)
+Jurnal: Desalination and Water Treatment | Scopus Q3 | DOI 10.1016/j.dwt.2025.101238 | Pilar: E. Membrane/RO/Desalination
+
+KARAKTERISTIK STUDI
+Studi aplikatif domain membran: memprediksi transmembrane pressure (TMP) pada Membrane Bioreactor (MBR) skala bench yang mengolah air limbah tekstil sintetik. TMP dipakai sebagai proksi langsung proses fouling membran. Fokusnya bukan RUL, melainkan pemodelan regresi ML + interpretasi parameter lumpur.
+
+METODE
+Tiga model regresi: Random Forest (RFR), Support Vector Regression (SVR), dan Lasso (L1R). Seleksi variabel memakai effect size >=0,3 dan signifikansi <0,001 -> lima predictor: B_Car, MLSS, SOUR, DSVI, PSD. Split data kronologis 80/20 (46 train / 12 test) untuk menghormati autokorelasi. Grid search untuk hyperparameter (ntree=500, mtry=2, cost=1, gamma=0,1, lambda via CV). Analisis partial dependence (PDP) untuk interpretasi mekanistik dan deteksi bias nilai ekstrem.
+
+DATA
+MBR acrylic 16 L, membran hollow fiber PVDF 0,1 mikron (0,2 m2), HRT 12 jam, SRT 30 hari, aerasi kontinu. Data 60 hari (tiga siklus membran 19-21 hari), 58 observasi harian, 60 dataset (5 input + 1 output) = 360 titik data. Membran fouling pada ambang TMP 30 kPa.
+
+TEMUAN UTAMA
+- RFR terbaik: R2 0,95 (train) / 0,83-0,86 (test); RMSE 1,75 kPa / 3,3 kPa. SVR: R2 0,87/0,74. L1R: R2 0,81/0,69.
+- B_Car (bound EPS karbohidrat) paling penting (korelasi 0,83; kenaikan MSE ~60%), lalu DSVI (0,76), MLSS (0,58), SOUR (0,62), PSD terlemah.
+- Ambang DSVI ~68-70 mL/g memicu kenaikan TMP tajam; TMP naik dengan B_Car 24-32 mg/L.
+- RF/Lasso lebih akurat pada nilai ekstrem; SVR cenderung konservatif.
+- Interval prediksi 80% disediakan (bootstrap); grid search mengukur ketidakpastian hyperparameter.
+
+RELEVANSI KE TESIS
+Inti-Domain. Sangat relevan pada sumbu domain (membran/fouling, small-data, ketidakpastian prediksi), tetapi belum menyentuh sumbu metode inti tesis: tidak ada RUL, survival analysis, atau pemodelan data tersensor. Berguna sebagai bukti bahwa proksi degradasi (TMP) dapat dimodelkan ML dengan data kecil, dan sebagai pembanding bahwa literatur membran jarang memformalkan waktu-ke-gagal secara survival.
+
+JUSTIFIKASI DIMENSI
+- d1=1 (multi-sensor/time-series): deret waktu harian TMP + 5 parameter; autokorelasi lag-1 = 0,745; split kronologis.
+- d2=1 (definisi RUL/failure/threshold): ambang TMP 30 kPa; 'membrane fouled every 19-21 days'.
+- d3="" : tidak ada model data tersensor (tidak ada survival/Weibull/hazard/cure).
+- d4=1 (model spesifik): RF, SVR, Lasso (Eq.1-3).
+- d5=1 (ketidakpastian): interval prediksi 80% + analisis ketidakpastian hyperparameter.
+- d6=1 (keputusan pemeliharaan): 'decision-support framework', 'adaptive cleaning plan'.
+- d7=1 (membran/RO/fouling): MBR membran PVDF, fokus fouling/TMP.
+- d8=1 (small-data): 58 observasi, satu sistem bench; keterbatasan data diakui.
+
+KUALITAS (skor 8)
+Q1=1 (RQ jelas); Q2=0,5 (metode memadai tapi terbatas model klasik & data sangat kecil); Q3=0,5 (validitas satu sistem bench, tanpa replikasi); Q4=0,5 (hyperparameter jelas, data tidak publik); Q5=1 (evaluasi train/test + perbandingan literatur + interval); Q6=N/A (penyensoran tidak relevan); Q7=1 (interval prediksi dilaporkan); Q8=1 (decision-support terdokumentasi). Sum applicable 5,5/7 -> 7,86 ~ 8.
+
+LIMITASI
+Data sangat kecil; hanya model ML klasik (tanpa temporal/survival); tidak memprediksi RUL; kondisi operasi tunggal.
+
+FUNDING/COI
+Tidak ada dana spesifik; hanya dukungan teknis lab NUST. Penulis menyatakan tidak ada konflik kepentingan.
+
+BUKTI
+- "The random forest model attained an R2 of 0.95 and 0.86 and RMSE values of 1.75 kPa and 3.3 kPa..." (Abstract)
+- "The membrane was functional till the TMP reached 30 kPa..." (Sec. 2.3)
+- "lag-one autocorrelation coefficient of 0.745" (Sec. 3)
+- "Grid search was employed to quantify hyperparameter uncertainty" (Sec. 3.5)
+- "The PDPs provide a decision-support framework for optimizing MBR operations" (Sec. 4.1.1)
+- "an adaptive cleaning plan can take place to mitigate severe fouling and prolong membrane operational time" (Sec. 3.6)
+
+FIGUR DIBACA
+- _page_4_Figure_12.jpeg: schematic RF/SVM/Lasso.
+- _page_6_Figure_10.jpeg: actual vs predicted TMP dengan interval.
+- _page_7_Figure_2.jpeg: enam PDP heatmap TMP.

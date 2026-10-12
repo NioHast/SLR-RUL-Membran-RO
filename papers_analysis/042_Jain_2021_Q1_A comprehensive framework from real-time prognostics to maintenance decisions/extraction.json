@@ -1,0 +1,46 @@
+{
+ "no": 7,
+ "judul": "A comprehensive framework from real-time prognostics to maintenance decisions",
+ "penulis": "Amit Kumar Jain, Maharshi Dhada, Marco Perez Hernandez, Manuel Herrera, Ajith Kumar Parlikad",
+ "tahun": 2021,
+ "jurnal": "IET Collaborative Intelligent Manufacturing",
+ "doi": "10.1049/cim2.12021",
+ "kuartil": "Scopus Q1 (Scimago SJR Best Quartile)",
+ "pilar": "F. DSS & Predictive Maintenance (IS)",
+ "ringkasan": "Studi mengusulkan sistem dukungan pemeliharaan komprehensif yang menggabungkan modul prognostik berbasis survival theory (Weibull time-to-event recurrent neural network, WTTE-RNN) dengan model perencanaan predictive maintenance (PdM) berbasis trade-off biaya corrective maintenance dan waktu/umur yang hilang. Model WTTE-RNN memprediksi parameter distribusi kegagalan Weibull, lalu waktu optimal penggantian prediktif (OPdR) dioptimasi dari parameter biaya operasional dan pemeliharaan. Divalidasi pada studi kasus perencanaan pemeliharaan cutting tool di lingkungan manufaktur dengan analisis sensitivitas sistematis.",
+ "kontribusi": "Sangat relevan ke tesis: menggabungkan survival theory (Weibull/hazard/censoring) dengan deep learning (RNN) untuk RUL, DAN menutup celah sampai keputusan pemeliharaan biaya-optimal. Namun domainnya cutting tool, bukan membran/RO.",
+ "temuan_kunci": [
+  "WTTE-RNN memodelkan distribusi kegagalan Weibull (shape theta, scale eta) via loss log-likelihood (Eq. 1-2) dan mampu menganalisis data tersensor maupun tak tersensor.",
+  "Ketidakpastian prediksi (variansi) menurun seiring waktu; waktu pemeliharaan optimal semakin mendekati RUL karena risiko keputusan salah berkurang.",
+  "Model PdM mentrade-off biaya corrective replacement (Eq. 4) dan predictive replacement termasuk biaya kehilangan sisa umur CLRUL (Eq. 5-6).",
+  "Analisis sensitivitas menunjukkan [ETC](PdM) paling sensitif terhadap biaya tetap PdR (CFPdR)."
+ ],
+ "dimensi": {"d1": "1", "d2": "1", "d3": "1", "d4": "1", "d5": "1", "d6": "1", "d7": "", "d8": ""},
+ "alasan_dimensi": {
+  "d1": "Input vektor multivariat data sensor real-time; data gaya potong diukur tiap 0,07 jam dengan 4 fitur statistik + waktu (total 6 fitur) sebagai deret waktu.",
+  "d2": "Memprediksi RUL/waktu-ke-gagal dan distribusi probabilitas kegagalan; meta = eta.Gamma(1+1/theta) sebagai RUL.",
+  "d3": "WTTE-RNN memakai survival analysis berbasis Weibull: cumulative hazard Lambda(t)=(t/eta)^theta (Eq. sistem), loss log-likelihood dengan langkah hazard d(t); secara eksplisit mampu menangani data censored dan uncensored.",
+  "d4": "Model spesifik: Weibull time-to-event recurrent neural network (WTTE-RNN) dengan lapisan LSTM.",
+  "d5": "Output berupa distribusi probabilitas kegagalan (bukan titik); variansi/ketidakpastian dihitung dan dianalisis per time step (PDF pada Fig. 3-5).",
+  "d6": "Menyusun model keputusan pemeliharaan konkret: optimasi waktu predictive replacement (OPdR) meminimalkan biaya total per satuan waktu [ETC](PdM) dengan parameter biaya (downtime, lost production, labour, fixed cost, lost remaining life).",
+  "d7": "Objek adalah cutting tool pada CNC milling, bukan membran/RO/desalinasi.",
+  "d8": "Dataset kecil (6 cutting tools; 4 latih, 2 uji), namun tidak menerapkan transfer/hierarchical secara eksplisit; bias induktif Weibull tidak diklaim sebagai strategi small-data."
+ },
+ "relevansi": "Inti-Metode",
+ "kualitas": {"skor": 8, "rincian": {"Q1": 1, "Q2": 1, "Q3": 0.5, "Q4": 0.5, "Q5": 0.5, "Q6": 1, "Q7": 1, "Q8": 1}, "catatan": "Kombinasi survival + DL + model keputusan biaya lengkap dan analisis sensitivitas. Kelemahan: dataset sangat kecil (6 tool), tanpa pembanding metode prognostik lain, dan basis data berasal dari repositori IIT Indore. Jumlah 6,5/8 -> 8."},
+ "data_kuantitatif": {"dataset": "Cutting tool degradation dataset (IIT Indore reliability & prognostics repository); CNC milling machine, sinyal gaya potong arah feed", "ukuran": "6 cutting tool identik (4 latih, 2 uji); pengukuran tiap 0,07 jam; 4 fitur statistik + waktu; arsitektur RNN 15-10-20-10-5 (15 = LSTM)", "metrik": "MAE 1,14/0,41; precision 1,37/0,51; correlation 0,81/0,91; Spearman 0,86/0,88; RMSE 0,01/0,15; [ETC](PdM) base 1008,86; OPdR 3,59-4,86 h"},
+ "metode": "WTTE-RNN (Weibull time-to-event RNN dengan LSTM) memprediksi parameter distribusi kegagalan Weibull (theta, eta) via loss log-likelihood; model PdM mengoptimasi waktu predictive replacement dari trade-off biaya corrective vs predictive replacement (termasuk lost remaining life), plus analisis sensitivitas.",
+ "limitasi": [
+  "Dataset sangat kecil (6 cutting tool, satu kondisi operasi).",
+  "Tidak ada pembanding dengan metode prognostik lain selain lintas model internal.",
+  "Parameter biaya bergantung asumsi historis satu fasilitas.",
+  "Tanpa validasi pada domain lain; proof of concept."
+ ],
+ "funding_coi": "Didukung EPSRC (EP/R004935/1), Royal Academy of Engineering (IAPP 18-10/31), BT, dan IIT Indore; tidak ada pernyataan konflik kepentingan.",
+ "status_inklusi": "diterima",
+ "figur_dibaca": [
+  {"file": "_page_5_Figure_2.jpeg", "isi": "Fig. 3 PDF waktu kegagalan pada T1 dan T2 untuk test asset ID I (sumbu x waktu jam 0-10, y PDF 0-0,8): f(T1) lebar (puncak ~5 jam, densitas ~0,28), f(T2) lebih sempit & tajam (puncak ~3 jam, densitas ~0,63) - variansi turun seiring waktu."},
+  {"file": "_page_5_Figure_8.jpeg", "isi": "Fig. 6 RUL vs waktu optimal predictive replacement untuk T1-T8 (ID I): keduanya turun bersama; RUL selalu di atas OPdR; konvergen mendekati 0 pada langkah terakhir."}
+ ],
+ "bukti": ["Eq. (1)-(2): loss log-likelihood WTTE-RNN", "Cumulative hazard Lambda(t)=(t/eta)^theta", "Eq. (3)-(6): model biaya CR/PdR dan CLRUL", "Table 1: metrik performa prognostik", "Table 3: hasil per time step (eta, theta, variance, RUL, OPdR)", "Fig. 3-7: PDF, RUL vs OPdR", "Fig. 8 + Table 4-5: analisis sensitivitas"]
+}

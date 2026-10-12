@@ -1,0 +1,44 @@
+PAPER 007 - Jain et al. (2021)
+Judul   : A comprehensive framework from real-time prognostics to maintenance decisions
+Jurnal  : IET Collaborative Intelligent Manufacturing | Scopus Q1 | DOI 10.1049/cim2.12021
+Pilar   : F. DSS & Predictive Maintenance (IS)
+Relevansi: Inti-Metode (survival/Weibull + RNN + keputusan pemeliharaan; domain cutting tool)
+
+KARAKTERISTIK STUDI
+Sistem dukungan pemeliharaan komprehensif: modul prognostik real-time berbasis survival theory (WTTE-RNN) digabung model perencanaan predictive maintenance (PdM) biaya-optimal. Studi kasus pada cutting tool CNC milling. Fokus pada dampak informasi prognostik tidak sempurna terhadap keputusan pemeliharaan.
+
+METODE
+- Prognostik: WTTE-RNN = survival theory (Weibull) + RNN/LSTM. Output (theta, eta) distribusi Weibull; loss log-likelihood (Eq. 1-2); cumulative hazard Lambda(t)=(t/eta)^theta; menangani data censored & uncensored; memprediksi distribusi kegagalan, bukan hanya titik RUL.
+- PdM planning: optimasi waktu predictive replacement (OPdR) meminimalkan [ETC](PdM)=(E[(C_CR)_FAD]+E[C_PdR])/E_T (Eq. 3). Biaya CR (Eq. 4) dan PdR termasuk CLRUL=(C_A/A_L).eta.Gamma(1+1/theta) (Eq. 5-6).
+- Analisis sensitivitas sistematis (+/-10%, +/-20%).
+
+DATA
+Cutting tool degradation dataset (IIT Indore). 6 tool identik; 4 latih, 2 uji; gaya potong arah feed tiap 0,07 jam; 4 fitur statistik (avg force, RMS, signal power, max force) + waktu.
+
+TEMUAN UTAMA
+- WTTE-RNN menganalisis data censored & uncensored dan memberi distribusi kegagalan.
+- Variansi prediksi turun seiring waktu; OPdR mendekati RUL saat ketidakpastian berkurang.
+- [ETC](PdM) paling sensitif terhadap biaya tetap PdR (CFPdR).
+- Metrik prognostik baik: MAE 0,41-1,14; correlation 0,81-0,91; RMSE 0,01-0,15.
+
+RELEVANSI KE TESIS
+Sangat relevan: kombinasi survival/Weibull + deep learning (RNN) untuk RUL dengan penanganan censoring, sekaligus menjembatani ke keputusan pemeliharaan biaya-optimal. Ini contoh utuh "survival analysis + DL + DSS". Namun domainnya cutting tool, bukan membran/RO, sehingga Inti-Metode.
+
+JUSTIFIKASI DIMENSI (d1-d8)
+- d1=1: input vektor multivariat sensor real-time; 6 fitur deret waktu.
+- d2=1: memprediksi RUL/waktu-ke-gagal + distribusi kegagalan.
+- d3=1: survival analysis Weibull (cumulative hazard) dengan log-likelihood; eksplisit menangani censored & uncensored.
+- d4=1: WTTE-RNN (LSTM).
+- d5=1: output distribusi probabilitas kegagalan + variansi per time step.
+- d6=1: model keputusan pemeliharaan konkret (optimasi OPdR dengan parameter biaya).
+- d7="": objek cutting tool.
+- d8="": dataset kecil tetapi tanpa transfer/hierarchical eksplisit.
+
+KUALITAS (skor 8/10)
+Q1=1; Q2=1; Q3=0,5 (6 tool, satu kondisi); Q4=0,5 (arsitektur rinci, data dari repositori); Q5=0,5 (metrik lengkap + sensitivitas, tanpa pembanding metode); Q6=1 (censoring ditangani); Q7=1 (distribusi + variansi); Q8=1 (model keputusan biaya). Jumlah 6,5/8 -> 8.
+
+LIMITASI
+Dataset sangat kecil; tanpa pembanding eksternal; parameter biaya satu fasilitas; proof of concept.
+
+BUKTI (fig/table/eq)
+Eq. (1)-(2); cumulative hazard; Eq. (3)-(6); Table 1; Table 3; Fig. 3-7; Fig. 8 + Table 4-5.

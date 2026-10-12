@@ -9,7 +9,7 @@
 ## Global
 - **Language:** Bahasa Indonesia, with English technical terms kept in English. **No em dash (`—`)**; use `:` or `,`.
 - **Numbers:** always read the real counts from `metadata/corpus_a.json`; never hardcode stale totals.
-- **No external images** that could fail to load (offline-safe). Prefer tables, CSS/Chart.js bars.
+- **No external images** that could fail to load (offline-safe). Prefer tables and CSS bars.
 - **Citations:** author-year; include DOI where available.
 
 ## DOCX - report (`SLR_Laporan.docx`)

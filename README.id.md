@@ -30,6 +30,12 @@ Inti-Metode+Domain / Pendukung / Konteks).
 - Korpus: **101 artikel** (Q1/Q2/Q3). Dimensi censoring (D3) dibahas 28 artikel.
 - **Irisan metode x domain (Inti-Metode+Domain) hanya 2 artikel** -> gap penelitian nyata.
 
+## Prasyarat
+- **Python 3.12+** (paket dipatok di `requirements.txt`; versi di `.python-version`).
+- Pasang paket Python: `pip install -r requirements.txt`.
+- **Dependensi sistem (bukan pip):** LibreOffice (`soffice`, DOCX->PDF), Pandoc, Ghostscript (`gs`, untuk Camelot).
+- **Kaggle CLI + API token** untuk tahap ekstraksi full-text (token tidak disimpan di repo ini).
+
 ## Cara Menjalankan Ulang (reproducible)
 1. `pipeline/1_search_and_select/`: panen metadata (OpenAlex/Crossref) -> `metadata/`.
 2. `pipeline/3_journal_classification/`: klasifikasi kuartil (SCImago) + `mirror_data/`.

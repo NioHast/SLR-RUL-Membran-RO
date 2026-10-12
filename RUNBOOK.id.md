@@ -21,12 +21,18 @@ Panduan menjalankan ulang SELURUH pipeline SLR dari nol. Menjelaskan urutan lang
 ```
 
 ## Prasyarat
-- **Python 3** + paket: `openpyxl`, `python-docx`, `beautifulsoup4`, `lxml`, `pdfplumber`, `PyMuPDF`, `camelot-py`, `kaggle`.
+- **Python 3.12+** (diuji dengan 3.12.3; lihat `.python-version`).
+- **Paket Python** (versi dipatok di `requirements.txt`):
   ```
-  pip install --break-system-packages openpyxl python-docx beautifulsoup4 lxml pdfplumber PyMuPDF "camelot-py[cv]" kaggle
+  pip install -r requirements.txt
   ```
-- **LibreOffice** (headless) untuk konversi DOCX -> PDF.
-- **Akun Kaggle + API token** (untuk tahap 6): simpan di `~/.kaggle/access_token` dan set `export KAGGLE_API_TOKEN=$(cat ~/.kaggle/access_token)`. **Token tidak disimpan di repo ini.**
+  (setara: `pip install openpyxl python-docx beautifulsoup4 lxml pdfplumber PyMuPDF "camelot-py[cv]" kaggle`)
+- **Dependensi sistem (BUKAN pip):**
+  - **LibreOffice** (`soffice`) - konversi DOCX -> PDF.
+  - **Pandoc** - konversi dokumen/equation.
+  - **Ghostscript** (`gs`) - syarat **Camelot** (ekstraksi tabel).
+- **Kaggle CLI + API token** (tahap 6): `kaggle` ada di `requirements.txt`; simpan token di `~/.kaggle/access_token` dan `export KAGGLE_API_TOKEN=$(cat ~/.kaggle/access_token)`. **Token tidak disimpan di repo ini.**
+  - Di Kaggle, `marker-pdf==1.10.2` diinstal di dalam kernel (bukan lokal).
 - **Catatan penting:** sebagian skrip memakai **path absolut** (mis. `BASE="/tmp/opencode/slr"`). Ubah ke lokasi kerjamu sendiri. Jalankan sesuai README di tiap subfolder.
 
 ## Langkah

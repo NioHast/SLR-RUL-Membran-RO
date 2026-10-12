@@ -30,6 +30,12 @@ Core-Method+Domain / Supporting / Context).
 - Corpus: **101 articles** (Q1/Q2/Q3). The censoring dimension (D3) is discussed by 28 articles.
 - **Method x domain intersection (Core-Method+Domain) is only 2 articles** -> a real research gap.
 
+## Requirements
+- **Python 3.12+** (packages pinned in `requirements.txt`; version in `.python-version`).
+- Install Python packages: `pip install -r requirements.txt`.
+- **System dependencies (not pip):** LibreOffice (`soffice`, DOCX->PDF), Pandoc, Ghostscript (`gs`, for Camelot).
+- **Kaggle CLI + API token** for the full-text extraction stage (token is not stored in this repo).
+
 ## How to Reproduce
 1. `pipeline/1_search_and_select/`: harvest metadata (OpenAlex/Crossref) -> `metadata/`.
 2. `pipeline/3_journal_classification/`: quartile classification (SCImago) + `mirror_data/`.

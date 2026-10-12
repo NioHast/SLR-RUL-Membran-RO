@@ -21,12 +21,18 @@ the **interdependencies between folders** (`pipeline/`, `metadata/`, `mirror_dat
 ```
 
 ## Prerequisites
-- **Python 3** + packages: `openpyxl`, `python-docx`, `beautifulsoup4`, `lxml`, `pdfplumber`, `PyMuPDF`, `camelot-py`, `kaggle`.
+- **Python 3.12+** (tested with 3.12.3; see `.python-version`).
+- **Python packages** (pinned in `requirements.txt`):
   ```
-  pip install --break-system-packages openpyxl python-docx beautifulsoup4 lxml pdfplumber PyMuPDF "camelot-py[cv]" kaggle
+  pip install -r requirements.txt
   ```
-- **LibreOffice** (headless) for DOCX -> PDF conversion.
-- **Kaggle account + API token** (for stage 6): store it in `~/.kaggle/access_token` and set `export KAGGLE_API_TOKEN=$(cat ~/.kaggle/access_token)`. **The token is not stored in this repo.**
+  (equivalently: `pip install openpyxl python-docx beautifulsoup4 lxml pdfplumber PyMuPDF "camelot-py[cv]" kaggle`)
+- **System dependencies (NOT pip):**
+  - **LibreOffice** (`soffice`) - DOCX -> PDF conversion.
+  - **Pandoc** - document/equation conversion.
+  - **Ghostscript** (`gs`) - required by **Camelot** (table extraction).
+- **Kaggle CLI + API token** (stage 6): install `kaggle` (in `requirements.txt`); store the token in `~/.kaggle/access_token` and `export KAGGLE_API_TOKEN=$(cat ~/.kaggle/access_token)`. **The token is not stored in this repo.**
+  - On Kaggle, `marker-pdf==1.10.2` is installed inside the kernel (not locally).
 - **Important note:** some scripts use **absolute paths** (e.g. `BASE="/tmp/opencode/slr"`). Change them to your own working location. Run according to the README in each subfolder.
 
 ## Steps

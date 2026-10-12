@@ -51,8 +51,8 @@ build_article_docx.py  ->  SLR_Artikel_Jurnal.docx
 - `report.md` - template laporan berisi marker (diisi oleh `fill_report.py`).
 - `synthesis.json` - sintesis naratif per dimensi + research gap + teori + konsep.
 - `article.md` - naskah artikel jurnal (dipisah `<!--BODY-->`).
-- `presentation_brief.md` - brief materi presentasi.
 - `assets/` - berkas reveal.js (`reveal.js`, `reveal.css`, `notes.js`) untuk slideshow.
+- Prompt presentasi kini ada di [`../prompts/presentation.md`](../prompts/presentation.md).
 
 > **NOTE:** Skrip di folder ini memakai path **ABSOLUT**. `BASE="/tmp/opencode/slr"`
 > dan `OUT="/home/nioha/Downloads/..."` WAJIB kamu ubah ke lokasi kerjamu sendiri

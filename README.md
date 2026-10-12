@@ -18,6 +18,7 @@ Graduate School, Universitas Diponegoro. Contact: mnioh@students.undip.ac.id
 | `metadata/` | Intermediate data/JSON: master corpus, ISSN & journal quartile mapping, search statistics. |
 | `pipeline/6_fulltext_extraction_kaggle/` | Kaggle kernel code (full-text extraction with Marker on GPU). |
 | `mirror_data/` | SJR/Scopus data (SCImago) used for quartile classification (source: README.md). |
+| `AGENTS.md` | Conventions for AI coding agents. AI-use disclosure: [`docs/AI_USAGE.md`](docs/AI_USAGE.md). |
 
 ## Method (summary)
 Kitchenham & Charters (procedure) + PRISMA 2020 (reporting) + Webster & Watson (concept matrix)
@@ -29,6 +30,11 @@ Core-Method+Domain / Supporting / Context).
 ## Key Findings
 - Corpus: **101 articles** (Q1/Q2/Q3). The censoring dimension (D3) is discussed by 28 articles.
 - **Method x domain intersection (Core-Method+Domain) is only 2 articles** -> a real research gap.
+
+## AI Usage
+Generative AI (LLM) assisted **specific documented stages** (full-text extraction, thematic synthesis,
+drafting, docs). All study-selection and final content decisions were made by the author. Prompt
+templates: [`pipeline/prompts/`](pipeline/prompts/README.md); disclosure: [`docs/AI_USAGE.md`](docs/AI_USAGE.md).
 
 ## Requirements
 - **Python 3.12+** (packages pinned in `requirements.txt`; version in `.python-version`).

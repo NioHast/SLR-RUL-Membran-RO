@@ -18,6 +18,7 @@ Sekolah Pascasarjana, Universitas Diponegoro. Kontak: mnioh@students.undip.ac.id
 | `metadata/` | Data antara/JSON: korpus master, pemetaan ISSN & kuartil jurnal, statistik pencarian. |
 | `pipeline/6_fulltext_extraction_kaggle/` | Kode kernel Kaggle (ekstraksi full-text dengan Marker di GPU). |
 | `mirror_data/` | Data SJR/Scopus (SCImago) yang dipakai untuk klasifikasi kuartil (sumber: README.md). |
+| `AGENTS.md` | Konvensi untuk agen koding AI. Keterbukaan penggunaan AI: [`docs/AI_USAGE.id.md`](docs/AI_USAGE.id.md). |
 
 ## Metode (ringkas)
 Kitchenham & Charters (prosedur) + PRISMA 2020 (pelaporan) + Webster & Watson (matriks konsep)
@@ -29,6 +30,11 @@ Inti-Metode+Domain / Pendukung / Konteks).
 ## Temuan Kunci
 - Korpus: **101 artikel** (Q1/Q2/Q3). Dimensi censoring (D3) dibahas 28 artikel.
 - **Irisan metode x domain (Inti-Metode+Domain) hanya 2 artikel** -> gap penelitian nyata.
+
+## Penggunaan AI
+AI generatif (LLM) membantu pada **tahap tertentu yang terdokumentasi** (ekstraksi full-text, sintesis
+tematik, penulisan draf, dokumen). Semua keputusan seleksi studi & isi akhir dibuat oleh penulis.
+Template prompt: [`pipeline/prompts/`](pipeline/prompts/README.id.md); keterbukaan: [`docs/AI_USAGE.id.md`](docs/AI_USAGE.id.md).
 
 ## Prasyarat
 - **Python 3.12+** (paket dipatok di `requirements.txt`; versi di `.python-version`).

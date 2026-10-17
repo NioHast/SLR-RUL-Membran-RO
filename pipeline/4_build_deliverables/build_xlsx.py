@@ -39,7 +39,7 @@ def load(path):
     return json.load(open(path, encoding="utf-8")) if os.path.exists(path) else []
 
 # --- Load the entire corpus ---
-rows=load(os.path.join(META,"corpus_a.json"))
+rows=[r for r in load(os.path.join(META,"corpus_a.json")) if r.get("included", True)]
 core=load(os.path.join(META,"core_papers.json"))
 
 # order: quartile tier -> newest year -> pillar -> title
@@ -114,7 +114,7 @@ for _r in rows:
     if _k.startswith("Scopus Q"): _qc[_k.split(" (")[0]]+=1
 _qtxt=", ".join(f"{kk.replace('Scopus ','')}={vv}" for kk,vv in sorted(_qc.items()))
 items=[
- ("Target korpus","101 artikel; 52 Inti; 20 core paper"),
+ ("Target korpus","101 assessed; 79 included; 46 Inti; 19 core paper"),
  ("Terkumpul (korpus inti)",f"{len(rows)} artikel (semua memiliki abstrak)"),
  ("Sumber metadata","OpenAlex (agregator Crossref/DOAJ); pencarian title+abstract; type=article; has_doi=true"),
  ("Catatan identifikasi",f"{stats.get('records_identified_unique','?')} record unik setelah dedup; disaring judul/abstrak"),

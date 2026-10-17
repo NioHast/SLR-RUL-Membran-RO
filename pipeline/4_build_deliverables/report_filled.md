@@ -2,7 +2,7 @@
 
 ## Abstrak
 
-Tinjauan literatur sistematis ini memetakan metode prediksi sisa usia pakai (Remaining Useful Life, RUL) berbasis survival analysis dan deep learning, dengan perhatian khusus pada penanganan data tersensor (right-censored) dan keterbatasan data (small-data), serta penerapannya pada domain membran reverse osmosis (RO). Kajian mengikuti panduan Kitchenham dan Charters, pelaporan PRISMA 2020, sintesis concept-centric Webster dan Watson, serta snowballing Wohlin. Pencarian pada OpenAlex (16 query) mengidentifikasi 694 rekaman, yang setelah penyaringan menghasilkan korpus final 101 artikel. Dari korpus tersebut, 52 artikel tergolong Inti (31 Inti-Metode, 19 Inti-Domain, 2 Inti-Metode+Domain) dan 20 artikel ditetapkan sebagai core paper. Temuan utama: dimensi censoring (D3) dibahas 28 artikel, domain RO (D7) dibahas 24 artikel, tetapi irisan keduanya nol artikel. Artinya, belum ada studi yang menangani data tersensor pada domain membran RO. Celah inilah yang menjadi dasar penelitian tesis.
+Tinjauan literatur sistematis ini memetakan metode prediksi sisa usia pakai (Remaining Useful Life, RUL) berbasis survival analysis dan deep learning, dengan perhatian khusus pada penanganan data tersensor (right-censored) dan keterbatasan data (small-data), serta penerapannya pada domain membran reverse osmosis (RO). Kajian mengikuti panduan Kitchenham dan Charters, pelaporan PRISMA 2020, sintesis concept-centric Webster dan Watson, serta snowballing Wohlin. Pencarian pada OpenAlex (16 query) mengidentifikasi 694 rekaman, yang setelah penyaringan menghasilkan 101 artikel yang dinilai kelayakannya, dengan 79 artikel lolos sebagai korpus sintesis. Dari korpus tersebut, 46 artikel tergolong Inti (31 Inti-Metode, 13 Inti-Domain, 2 Inti-Metode+Domain) dan 19 artikel ditetapkan sebagai core paper. Temuan utama: dimensi censoring (D3) dibahas 28 artikel, domain RO (D7) hanya 2 artikel, tetapi irisan keduanya nol artikel. Artinya, belum ada studi yang menangani data tersensor pada domain membran RO. Celah inilah yang menjadi dasar penelitian tesis.
 
 ## 1. Pendahuluan
 
@@ -83,9 +83,9 @@ Tiga ancaman validitas dicatat. Pertama, validitas internal: sebagian besar meto
 
 ### 3.1 Alur PRISMA dan korpus final
 
-Pencarian mengidentifikasi 694 rekaman unik. Sebanyak 209 rekaman tanpa abstrak atau metadata tidak lengkap dikeluarkan sebelum penyaringan, menyisakan 485 rekaman yang disaring pada judul dan abstrak. Dari tahap ini diperoleh 72 artikel yang layak, lalu ditambah 29 artikel dari snowballing dan penggantian Open Access. Seluruh 101 artikel dinilai pada full-text dan tidak ada yang dikeluarkan pada tahap ini.
+Pencarian mengidentifikasi 694 rekaman unik. Sebanyak 209 rekaman tanpa abstrak atau metadata tidak lengkap dikeluarkan sebelum penyaringan, menyisakan 485 rekaman yang disaring pada judul dan abstrak. Dari tahap ini diperoleh 72 artikel yang layak, lalu ditambah 29 artikel dari snowballing dan penggantian Open Access. Seluruh 101 artikel dinilai kelayakannya; 22 artikel dikeluarkan pada tahap eligibilitas (15 topik di luar RUL/prognostik, 6 review, 1 domain) sehingga 79 artikel menjadi korpus sintesis.
 
-{{FIG:fig01_prisma_flow.png|Alur PRISMA 2020 dan komposisi korpus final (n = 101)|13}}
+{{FIG:fig01_prisma_flow.png|Alur PRISMA 2020 dan komposisi korpus final (n = 79 included)|13}}
 
 | Tahap | Jumlah |
 | --- | --- |
@@ -97,14 +97,14 @@ Pencarian mengidentifikasi 694 rekaman unik. Sebanyak 209 rekaman tanpa abstrak 
 | Ditambah: snowballing + pengganti OA | 29 |
 | Dinilai pada full-text | 101 |
 | Dikeluarkan pada full-text | 0 |
-| Termasuk dalam sintesis | 101 |
-| Core paper (skor >= 5.5 atau gap) | 20 |
+| Termasuk dalam sintesis | 79 |
+| Core paper (skor >= 5.5 atau gap) | 19 |
 
 ### 3.2 Sebaran pilar
 
-Korpus terbagi ke dalam tujuh pilar tematik. Pilar survival analysis dan censored data (A) serta deep learning RUL (B) masing-masing mencakup 24 artikel, diikuti domain membran/RO/desalinasi (E) dengan 22 artikel dan Bayesian/uncertainty (C) dengan 15 artikel. Pilar small-data/transfer (D) mencakup 9 artikel, DSS/predictive maintenance (F) 6 artikel, dan konteks Indonesia (G) 1 artikel.
+Korpus terbagi ke dalam tujuh pilar tematik. Pilar survival analysis dan censored data (A) serta deep learning RUL (B) masing-masing mencakup 24 artikel, diikuti Bayesian/uncertainty (C) dengan 15 artikel dan small-data/transfer (D) 9 artikel. Pilar DSS/predictive maintenance (F) mencakup 6 artikel, sedangkan domain membran/RO (E) hanya 1 artikel karena studi domain yang murni fouling/performance dikeluarkan pada gate topik; konteks Indonesia (G) tidak tersisa pada korpus sintesis.
 
-{{FIG:fig07_pillar_distribution.png|Sebaran artikel per pilar A sampai G (n = 101)|14}}
+{{FIG:fig07_pillar_distribution.png|Sebaran artikel per pilar A sampai G (n = 79 included)|14}}
 
 | Pilar/Tema | Jumlah Artikel |
 | --- | --- |
@@ -112,34 +112,33 @@ Korpus terbagi ke dalam tujuh pilar tematik. Pilar survival analysis dan censore
 | B. Deep Learning RUL | 24 |
 | C. Bayesian & Uncertainty | 15 |
 | D. Small-data/Transfer/Hierarchical | 9 |
-| E. Membrane/RO/Desalination | 22 |
+| E. Membrane/RO/Desalination | 1 |
 | F. DSS & Predictive Maintenance (IS) | 6 |
-| G. Konteks Indonesia/Air | 1 |
 
 ### 3.3 Matriks konsep dan sebaran dimensi
 
-Matriks konsep menunjukkan sebaran yang tidak merata. Dimensi arsitektur model (D4) dibahas 90 artikel dan data/sensor (D1) 87 artikel, diikuti target/kegagalan (D2) 83 artikel. Dimensi ketidakpastian (D5) dibahas 50 artikel, skala data (D8) 38 artikel, keputusan/DSS (D6) 33 artikel, censoring (D3) 28 artikel, dan domain RO (D7) 24 artikel. Meskipun D3 bukan dimensi paling tipis secara absolut, D3 justru paling kritis karena merupakan inti persoalan data membran.
+Matriks konsep menunjukkan sebaran yang tidak merata. Dimensi target/kegagalan (D2) dibahas 79 artikel, arsitektur model (D4) 76 artikel, dan data/sensor (D1) 73 artikel. Dimensi ketidakpastian (D5) dibahas 43 artikel, skala data (D8) 31 artikel, censoring (D3) 28 artikel, keputusan/DSS (D6) 21 artikel, dan domain RO (D7) hanya 2 artikel. Meskipun D3 bukan dimensi paling tipis secara absolut, D3 justru paling kritis karena merupakan inti persoalan data membran.
 
-{{FIG:fig08_dimension_coverage.png|Cakupan dimensi konsep D1 sampai D8 (n = 101)|14}}
+{{FIG:fig08_dimension_coverage.png|Cakupan dimensi konsep D1 sampai D8 (n = 79 included)|14}}
 
 | Dimensi Konsep | Jumlah Artikel | / Total |
 | --- | --- | --- |
-| D1 Data/Sensor | 87 | /101 |
-| D2 Target/Failure | 83 | /101 |
-| D3 Censoring | 28 | /101 |
-| D4 Arsitektur Model | 90 | /101 |
-| D5 Ketidakpastian | 50 | /101 |
-| D6 Keputusan/DSS | 33 | /101 |
-| D7 Domain RO/Membran | 24 | /101 |
-| D8 Skala Data | 38 | /101 |
+| D1 Data/Sensor | 73 | /79 |
+| D2 Target/Failure | 79 | /79 |
+| D3 Censoring | 28 | /79 |
+| D4 Arsitektur Model | 76 | /79 |
+| D5 Ketidakpastian | 43 | /79 |
+| D6 Keputusan/DSS | 21 | /79 |
+| D7 Domain RO/Membran | 2 | /79 |
+| D8 Skala Data | 31 | /79 |
 
 {{FIG:fig10_pillar_dimension_heatmap.png|Matriks konsep Webster-Watson: irisan pilar dan dimensi (jumlah artikel)|15}}
 
 ### 3.4 Penentuan paper inti dan core paper
 
-Untuk menjawab kebutuhan praktis tesis, korpus 101 artikel dipilah menjadi basis bukti bertingkat. Sebanyak 52 artikel tergolong Inti (31 Inti-Metode, 19 Inti-Domain, 2 Inti-Metode+Domain), 32 Pendukung, dan 17 Konteks. Dengan rubrik skor 0 sampai 6 (relevansi RQ, kedekatan metodologis, kualitas), ditetapkan 20 core paper yang menjadi sumber utama model.
+Untuk menjawab kebutuhan praktis tesis, korpus 79 artikel dipilah menjadi basis bukti bertingkat. Sebanyak 46 artikel tergolong Inti (31 Inti-Metode, 13 Inti-Domain, 2 Inti-Metode+Domain), 31 Pendukung, dan 2 Konteks. Dengan rubrik skor 0 sampai 6 (relevansi RQ, kedekatan metodologis, kualitas), ditetapkan 19 core paper yang menjadi sumber utama model.
 
-{{FIG:fig09_tier_funnel.png|Penyaringan korpus dan penentuan 20 core paper|13}}
+{{FIG:fig09_tier_funnel.png|Penyaringan korpus dan penentuan 19 core paper|13}}
 
 | No | Tahun | Jurnal | Judul | Tier | Skor |
 | --- | --- | --- | --- | --- | --- |
@@ -152,7 +151,6 @@ Untuk menjawab kebutuhan praktis tesis, korpus 101 artikel dipilah menjadi basis
 | 17 | 2026 | IEEE Sensors Letters | A Multisensor Cross-Modal Attention Framework for Weibull-Driven RUL Estimation  | Inti-Metode | 5.6 |
 | 19 | 2022 | Neural Computing and Applications | Weibull recurrent neural networks for failure prognosis using histogram data | Inti-Metode | 5.6 |
 | 9 | 2026 | Scientific Reports | Survival-analysis-guided machine learning for failure and remaining-useful-life  | Inti-Metode | 5.5 |
-| 29 | 2026 | Scientific Reports | Physics-informed machine learning for cross-study prediction of oil–water membra | Inti-Domain | 5.5 |
 | 35 | 2022 | IEEE Transactions on Instrumentation and | Domain Adaptive Remaining Useful Life Prediction With Transformer | Inti-Domain | 5.5 |
 | 54 | 2025 | Data & Metadata | Reliable prediction of industrial components Remaining Useful Life using Cox and | Inti-Metode | 5.5 |
 | 75 | 2019 | Decision Support Systems | Forecasting remaining useful life: Interpretable deep learning approach via vari | Inti-Metode | 5.5 |
@@ -168,7 +166,7 @@ Untuk menjawab kebutuhan praktis tesis, korpus 101 artikel dipilah menjadi basis
 
 Skor kualitas studi berkisar 4 sampai 9 dari 10, dengan mayoritas berada pada rentang 6 sampai 8. Sebaran ini menunjukkan bahwa korpus cukup matang secara metodologis, tetapi belum merata pada aspek pelaporan ketidakpastian dan penanganan censoring.
 
-{{FIG:fig12_quality_distribution.png|Sebaran skor kualitas studi (n = 101)|12}}
+{{FIG:fig12_quality_distribution.png|Sebaran skor kualitas studi (n = 79 included)|12}}
 
 ### 3.6 Tren publikasi
 
@@ -180,22 +178,22 @@ Publikasi meningkat setelah 2018 seiring meluasnya deep learning untuk prognosti
 
 ### 4.1 Sintesis per dimensi
 
-- **D1 Data/Sensor**: Literatur RUL umumnya memakai data multi-sensor deret waktu (vibrasi, suhu, tekanan, arus). Pada domain membran/RO, sinyal kunci adalah beda tekanan transmembran (TMP/delta-P), laju alir permeate, konduktivitas/TDS, suhu umpan, dan pH. Artinya, sensor yang dibutuhkan tesis ini sudah mapan di literatur. (87/101 artikel)
-- **D2 Target/Failure**: Definisi target terbelah dua: (a) sebagian studi memakai kegagalan fisik (data run-to-failure seperti C-MAPSS/bearing), (b) sebagian mendefinisikan target sebagai ambang performa/health index (soft failure). Untuk membran yang jarang dibiarkan rusak total, pendekatan (b) lebih relevan dan lebih realistis. (83/101 artikel)
-- **D3 Censoring**: Kelompok survival analysis dan sejumlah metode deep learning modern secara eksplisit menangani data tersensor. Namun mayoritas metode DL untuk RUL masih mengabaikan censoring dan dilatih hanya pada data lengkap, sehingga bias. Ini celah metodologis utama. (28/101 artikel)
-- **D4 Arsitektur Model**: Arsitektur didominasi LSTM, CNN-LSTM, dan Transformer untuk deret waktu, serta Bayesian Neural Network untuk probabilistik; pendekatan survival klasik (Cox, Weibull/AFT) tetap dipakai untuk pemodelan waktu-ke-kejadian. (90/101 artikel)
-- **D5 Ketidakpastian**: Model probabilistik/Bayesian menyediakan kuantifikasi ketidakpastian (interval prediksi), sedangkan model deterministik umumnya hanya mengeluarkan satu angka RUL. Untuk keputusan perawatan, ketidakpastian penting. (50/101 artikel)
-- **D6 Keputusan/DSS**: Hanya sebagian kecil studi menghubungkan prediksi RUL ke keputusan perawatan (penjadwalan, biaya). Justru di sinilah kontribusi Sistem Informasi (DSS/CMMS) berada. (33/101 artikel)
-- **D7 Domain RO/Membran**: Domain membran/RO/desalinasi jauh lebih sedikit dibanding mesin/bearing/baterai. Prediksi RUL membran masih tipis; sebagian besar berupa prediksi fouling atau performa, bukan RUL dengan survival analysis. (24/101 artikel)
-- **D8 Skala Data**: Sangat sedikit studi yang secara khusus menangani data kecil (small-data), few-shot, transfer learning, atau kondisi tanpa kegagalan; mayoritas berasumsi armada besar dengan banyak kegagalan teramati. (38/101 artikel)
+- **D1 Data/Sensor**: Literatur RUL umumnya memakai data multi-sensor deret waktu (vibrasi, suhu, tekanan, arus). Pada domain membran/RO, sinyal kunci adalah beda tekanan transmembran (TMP/delta-P), laju alir permeate, konduktivitas/TDS, suhu umpan, dan pH. Artinya, sensor yang dibutuhkan tesis ini sudah mapan di literatur. (73/79 artikel)
+- **D2 Target/Failure**: Definisi target terbelah dua: (a) sebagian studi memakai kegagalan fisik (data run-to-failure seperti C-MAPSS/bearing), (b) sebagian mendefinisikan target sebagai ambang performa/health index (soft failure). Untuk membran yang jarang dibiarkan rusak total, pendekatan (b) lebih relevan dan lebih realistis. (79/79 artikel)
+- **D3 Censoring**: Kelompok survival analysis dan sejumlah metode deep learning modern secara eksplisit menangani data tersensor. Namun mayoritas metode DL untuk RUL masih mengabaikan censoring dan dilatih hanya pada data lengkap, sehingga bias. Ini celah metodologis utama. (28/79 artikel)
+- **D4 Arsitektur Model**: Arsitektur didominasi LSTM, CNN-LSTM, dan Transformer untuk deret waktu, serta Bayesian Neural Network untuk probabilistik; pendekatan survival klasik (Cox, Weibull/AFT) tetap dipakai untuk pemodelan waktu-ke-kejadian. (76/79 artikel)
+- **D5 Ketidakpastian**: Model probabilistik/Bayesian menyediakan kuantifikasi ketidakpastian (interval prediksi), sedangkan model deterministik umumnya hanya mengeluarkan satu angka RUL. Untuk keputusan perawatan, ketidakpastian penting. (43/79 artikel)
+- **D6 Keputusan/DSS**: Hanya sebagian kecil studi menghubungkan prediksi RUL ke keputusan perawatan (penjadwalan, biaya). Justru di sinilah kontribusi Sistem Informasi (DSS/CMMS) berada. (21/79 artikel)
+- **D7 Domain RO/Membran**: Domain membran/RO/desalinasi jauh lebih sedikit dibanding mesin/bearing/baterai. Prediksi RUL membran masih tipis; sebagian besar berupa prediksi fouling atau performa, bukan RUL dengan survival analysis. (2/79 artikel)
+- **D8 Skala Data**: Sangat sedikit studi yang secara khusus menangani data kecil (small-data), few-shot, transfer learning, atau kondisi tanpa kegagalan; mayoritas berasumsi armada besar dengan banyak kegagalan teramati. (31/79 artikel)
 
 ### 4.2 Research gap
 
 Dari 101 artikel yang diekstraksi, tidak satu pun secara simultan menggabungkan: (1) prediksi RUL membran reverse osmosis dengan survival analysis yang sadar-censoring; (2) kondisi data tanpa kegagalan (penggantian preventif sebelum rusak) sehingga censoring mendominasi; (3) skala data kecil pada satu plant pilot; dan (4) integrasi hasilnya ke dalam sistem pendukung keputusan perawatan. Kombinasi inilah yang menjadi kontribusi tesis.
 
-Catatan kuantitatif: D3 dibahas 28 artikel dan D7 dibahas 24 artikel, tetapi irisan D3 dan D7 berjumlah 0 artikel.
+Catatan kuantitatif: D3 dibahas 28 artikel dan D7 dibahas 2 artikel, tetapi irisan D3 dan D7 berjumlah 0 artikel.
 
-Temuan kunci yang memperkuat gap: dari 101 artikel, 28 artikel membahas censoring (D3) dan 24 artikel membahas domain RO (D7), tetapi tidak ada satu pun artikel yang membahas keduanya secara bersamaan. Dengan kata lain, irisan D3 dan D7 berjumlah nol. Ini berarti rezim data yang paling relevan di lapangan, yaitu data tersensor pada membran RO, justru belum pernah diteliti secara langsung.
+Temuan kunci yang memperkuat gap: dari 79 artikel included, 28 artikel membahas censoring (D3) dan 2 artikel membahas domain RO (D7), tetapi tidak ada satu pun artikel yang membahas keduanya secara bersamaan. Dengan kata lain, irisan D3 dan D7 berjumlah nol. Ini berarti rezim data yang paling relevan di lapangan, yaitu data tersensor pada membran RO, justru belum pernah diteliti secara langsung.
 
 ## 5. Diskusi
 
@@ -213,7 +211,7 @@ Tinjauan ini menggunakan OpenAlex sebagai sumber utama, sehingga artikel yang ha
 
 ## 6. Kesimpulan
 
-SLR ini menegaskan adanya celah penelitian yang nyata. Kerangka survival analysis untuk data tersensor dan kapasitas deep learning untuk pemodelan deret waktu telah matang, tetapi konvergensinya pada domain membran reverse osmosis masih sangat terbatas. Dimensi censoring dibahas 28 artikel dan domain RO 24 artikel, namun irisan keduanya nol. Belum ada studi yang secara simultan menggabungkan prediksi RUL membran RO sadar-censoring, kondisi data tanpa kegagalan, skala data kecil, dan integrasi DSS perawatan. Celah inilah yang menjadi dasar penelitian tesis yang diusulkan.
+SLR ini menegaskan adanya celah penelitian yang nyata. Kerangka survival analysis untuk data tersensor dan kapasitas deep learning untuk pemodelan deret waktu telah matang, tetapi konvergensinya pada domain membran reverse osmosis masih sangat terbatas. Dimensi censoring dibahas 28 artikel dan domain RO hanya 2 artikel, namun irisan keduanya nol. Belum ada studi yang secara simultan menggabungkan prediksi RUL membran RO sadar-censoring, kondisi data tanpa kegagalan, skala data kecil, dan integrasi DSS perawatan. Celah inilah yang menjadi dasar penelitian tesis yang diusulkan.
 
 ## Daftar Pustaka
 

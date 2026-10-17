@@ -155,7 +155,8 @@ def fig04_architecture():
 
 def load_corpus():
     with open(CORPUS, encoding="utf-8") as f:
-        return json.load(f)
+        rows = json.load(f)
+    return [r for r in rows if r.get("included", True)]
 
 
 def fig06_censoring():
@@ -246,9 +247,10 @@ def fig09_funnel():
     stages = [
         ("Identified (OpenAlex)", 694),
         ("Screened (title/abstract)", 485),
-        ("Included in synthesis", 101),
-        ("Inti (core evidence)", 52),
-        ("Core papers", 20),
+        ("Assessed for eligibility", 101),
+        ("Included in synthesis", 79),
+        ("Inti (core evidence)", 46),
+        ("Core papers", 19),
     ]
     fig, ax = plt.subplots(figsize=(7.2, 3.3))
     labels = [s[0] for s in stages]

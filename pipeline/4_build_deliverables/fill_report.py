@@ -43,7 +43,7 @@ def md_table(header, rows):
     return "\n".join(out)
 
 
-rows = load(os.path.join(META, "corpus_a.json"), [])
+rows = [r for r in load(os.path.join(META, "corpus_a.json"), []) if r.get("included", True)]
 prisma = load(os.path.join(META, "prisma_flow.json"), {})
 core = load(os.path.join(META, "core_papers.json"), [])
 syn = load(os.path.join(BASE, "synthesis.json"), {})

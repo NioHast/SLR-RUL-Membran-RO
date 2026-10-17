@@ -2,7 +2,7 @@
 
 # SLR: Remaining Useful Life (RUL) Prediction of Reverse Osmosis Membranes with Survival Analysis & Deep Learning
 
-A Systematic Literature Review (SLR) of **101 articles** on RUL prediction for reverse
+A Systematic Literature Review (SLR) of **101 assessed records (79 included)** on RUL prediction for reverse
 osmosis (RO)/desalination membranes, with emphasis on **censored data (right-censored)**
 and **small data scales**, as the basis for a thesis research in Information Systems.
 
@@ -13,7 +13,7 @@ Graduate School, Universitas Diponegoro. Contact: mnioh@students.undip.ac.id
 | Folder | Contents |
 |---|---|
 | `docs/` | Main deliverables: SLR protocol, corpus (Excel), report, journal article, presentation, decision log, diagrams (`figures/`). |
-| `papers_analysis/` | Per-paper analysis results (`extraction.json` + `analysis.txt`) for 101 articles. |
+| `papers_analysis/` | Per-paper analysis results (`extraction.json` + `analysis.txt`) for the included corpus. |
 | `pipeline/` | Pipeline source code (search, journal classification, document building, reference verification). |
 | `metadata/` | Intermediate data/JSON: master corpus, ISSN & journal quartile mapping, search statistics. |
 | `pipeline/6_fulltext_extraction_kaggle/` | Kaggle kernel code (full-text extraction with Marker on GPU). |
@@ -28,7 +28,7 @@ quality rubric, strict-requirement dimensions (D1-D8), and relevance levels (Cor
 Core-Method+Domain / Supporting / Context).
 
 ## Key Findings
-- Corpus: **101 articles** (Q1/Q2/Q3). The censoring dimension (D3) is discussed by 28 articles.
+- Corpus: **101 assessed, 79 included** (Q1/Q2/Q3). Censoring (D3) is discussed by 28 included articles; RO domain (D7) by 2, with **0 overlap**.
 - **Method x domain intersection (Core-Method+Domain) is only 2 articles** -> a real research gap.
 
 ## AI Usage
@@ -52,7 +52,7 @@ templates: [`pipeline/prompts/`](pipeline/prompts/README.md); disclosure: [`docs
 (See the README in each folder. Scripts are repo-relative; adjust output paths if needed.)
 
 ## Copyright Notes (IMPORTANT)
-- **Open Access + Creative Commons license (77 of 101 articles)** -> full-text (`fulltext.pdf`)
+- **Open Access + CC full text for 61 of 79 included (77 of 101 assessed)** -> `full_text.pdf`
   **included** because the license permits redistribution (with **attribution**; see `SOURCE.txt` in each folder).
 - **The rest (24 articles: closed / bronze / unclear license)** -> **analysis results only**
   (`extraction.json`, `analysis.txt`) + **DOI**, since there is no redistribution permission.

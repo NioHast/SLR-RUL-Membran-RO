@@ -4,7 +4,7 @@
 
 Contains the main outputs (final results), not raw data:
 - `SLR_Protocol.txt` - SLR protocol (RQ, PICOC, search string, inclusion/exclusion criteria, quality assessment).
-- `SLR_Korpus.xlsx` - the 101-article corpus for the SLR.
+- `SLR_Korpus.xlsx` - the SLR corpus (101 assessed; 79 included).
 - `SLR_Korpus.xlsx`: sheet "SLR - Korpus Jurnal" (columns: No, Pilar, Judul, Penulis, Tahun, Jurnal, Klasifikasi,
   **Relevansi**, **Kualitas**, DOI, Ringkasan, Kontribusi), "Matriks Konsep (Webster-Watson)",
   "Sintesis & Gap Final", "Peta Teori ke Dimensi", "Konsep Kunci Model", "Ringkasan & Status", "Paper Inti & Skor".

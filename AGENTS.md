@@ -3,7 +3,7 @@
 Guidance for AI coding agents working in this repository.
 
 ## What this is
-A Systematic Literature Review (SLR) of 101 articles on **RUL prediction of reverse-osmosis (RO)
+A Systematic Literature Review (SLR) of 101 assessed records (79 included) on **RUL prediction of reverse-osmosis (RO)
 membranes** (survival analysis + deep learning with censored data). Research artifact; issues/PRs
 may not be monitored. AI-use details: [`docs/AI_USAGE.md`](docs/AI_USAGE.md).
 
@@ -43,7 +43,7 @@ python3 pipeline/5_verify_references/verify_refs.py
 **NOTE:** several scripts use **absolute paths** (`BASE=/tmp/opencode/slr`, `ROOT=/home/nioha/Downloads/SLR`); adjust before running. System deps: LibreOffice (`soffice`), Pandoc, Ghostscript.
 
 ## Data flow
-`metadata/corpus_a.json` is the **master corpus** (101 articles). `phase5_merge.py` writes analysis
+`metadata/corpus_a.json` is the **assessed corpus** (101 records; 79 included). `phase5_merge.py` writes analysis
 results into it; `synthesis.json` + corpus feed the deliverable builders; `open_access_status.json`
 drives which papers get full text.
 

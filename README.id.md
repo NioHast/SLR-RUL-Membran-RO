@@ -2,7 +2,7 @@
 
 # SLR: Prediksi Remaining Useful Life (RUL) Membran Reverse Osmosis dengan Survival Analysis & Deep Learning
 
-Systematic Literature Review (SLR) atas **101 artikel** tentang prediksi RUL membran
+Systematic Literature Review (SLR) atas **101 record yang dinilai (79 included)** tentang prediksi RUL membran
 reverse osmosis (RO)/desalinasi, dengan penekanan pada **data tersensor (right-censored)**
 dan **skala data kecil**, sebagai dasar penelitian tesis di bidang Sistem Informasi.
 
@@ -13,7 +13,7 @@ Sekolah Pascasarjana, Universitas Diponegoro. Kontak: mnioh@students.undip.ac.id
 | Folder | Isi |
 |---|---|
 | `docs/` | Deliverables utama: protokol SLR, korpus (Excel), laporan, artikel jurnal, presentasi, log keputusan, diagram (`figures/`). |
-| `papers_analysis/` | Hasil analisis per paper (`extraction.json` + `analysis.txt`) untuk 101 artikel. |
+| `papers_analysis/` | Hasil analisis per paper (`extraction.json` + `analysis.txt`) untuk korpus included. |
 | `pipeline/` | Kode sumber pipeline (pencarian, klasifikasi jurnal, pembangunan dokumen, verifikasi referensi). |
 | `metadata/` | Data antara/JSON: korpus master, pemetaan ISSN & kuartil jurnal, statistik pencarian. |
 | `pipeline/6_fulltext_extraction_kaggle/` | Kode kernel Kaggle (ekstraksi full-text dengan Marker di GPU). |
@@ -28,7 +28,7 @@ kualitas Q1-Q8, dimensi ketentuan ketat (D1-D8), dan tingkat relevansi (Inti-Met
 Inti-Metode+Domain / Pendukung / Konteks).
 
 ## Temuan Kunci
-- Korpus: **101 artikel** (Q1/Q2/Q3). Dimensi censoring (D3) dibahas 28 artikel.
+- Korpus: **101 dinilai, 79 included** (Q1/Q2/Q3). Censoring (D3) dibahas 28 artikel included; domain RO (D7) 2 artikel, dengan **irisan 0**.
 - **Irisan metode x domain (Inti-Metode+Domain) hanya 2 artikel** -> gap penelitian nyata.
 
 ## Penggunaan AI
@@ -52,7 +52,7 @@ Template prompt: [`pipeline/prompts/`](pipeline/prompts/README.id.md); keterbuka
 (Lihat README di tiap folder. Skrip relatif terhadap repo; sesuaikan path keluaran bila perlu.)
 
 ## Catatan Hak Cipta (PENTING)
-- **Open Access + lisensi Creative Commons (77 dari 101 artikel)** -> full-text (`fulltext.pdf`)
+- **Full-text OA + CC untuk 61 dari 79 included (77 dari 101 yang dinilai)** -> `full_text.pdf`
   **disertakan** karena lisensinya mengizinkan redistribusi (dengan **atribusi**; lihat `SOURCE.txt` tiap folder).
 - **Sisanya (24 artikel: closed / bronze / tanpa lisensi jelas)** -> **hanya hasil analisis**
   (`extraction.json`, `analysis.txt`) + **DOI**, karena tidak ada izin redistribusi.

@@ -217,40 +217,47 @@ AND
     - Tahun utama: 2015 - 2026 (fokus perkembangan deep learning & Bayesian).
     - Landmark/seminal (sebelum 2015, mis. Cox 1972) boleh disitir sebagai
       rujukan konseptual bila muncul via snowballing, tetapi tidak masuk hitungan
-      52 paper Inti / 20 core kecuali sangat relevan.
+      46 paper Inti / 19 core kecuali sangat relevan.
     - Bahasa: Inggris (internasional) + Indonesia (nasional).
 
 --------------------------------------------------------------------------------
-BAGIAN 5. INCLUSION & EXCLUSION CRITERIA
---------------------------------------------------------------------------------
+BAGIAN 5. INCLUSION & EXCLUSION CRITERIA (DITETAPKAN A-PRIORI)
+-------------------------------------------------------------------------------
+5.1 Inclusion Criteria (IC) - harus terpenuhi SEMUA (konjungtif)
+IC1. Jenis sumber: artikel jurnal peer-reviewed atau prosiding konferensi
+     (studi primer). Review/editorial TIDAK dihitung sebagai studi primer
+     (boleh disitir sebagai konteks).
+IC2. Bahasa: Inggris atau Indonesia.
+IC3. Tahun: 2015-2026 (landmark/seminal pra-2015 hanya via snowballing).
+IC4. TOPIK UTAMA (gate topik): RUL / prognostik / survival analysis /
+     degradation-to-failure / predictive maintenance pada aset teknik.
+     TIDAK termasuk: prediksi fouling/performance/water quality, sintesis
+     material membran, optimasi process control, atau review AI generik.
+IC5. KONTRIBUSI: menjawab minimal satu RQ (RQ1 censoring/time-to-event;
+     RQ2 DL/ML + ketidakpastian; RQ3 small-data/transfer; RQ4 DSS/keputusan).
+IC6. BUKTI: abstrak tersedia; ketersediaan full-text dicatat sebagai flag
+     kualitas bukti (tidak otomatis menggugurkan).
 
-5.1 Inclusion Criteria (IC) - harus terpenuhi semua
-IC1. Jenis sumber: artikel jurnal bereputasi (peer-reviewed), proceeding
-     konferensi bergengsi, atau review; termasuk sumber nasional terindeks
-     SINTA (min. S2) untuk konteks Indonesia.
-IC2. Rentang tahun: 2015 - 2026 (kecuali landmark/seminal via snowballing).
-IC3. Bahasa: Inggris atau Indonesia.
-IC4. Fokus isi minimal salah satu:
-     (a) survival analysis/time-to-event untuk prediksi masa pakai; atau
-     (b) deep learning / Bayesian untuk RUL/prediksi degradasi; atau
-     (c) penanganan data kecil (small-data/few-shot/transfer/hierarchical);
-     (d) domain desalinasi/RO/membran; atau
-     (e) integrasi prediksi ke DSS/CMMS pemeliharaan.
-IC5. Relevan menjawab minimal satu RQ (RQ1-RQ4).
-IC6. Tersedia akses full-text (open access atau via langganan institusi).
+5.2 Exclusion Criteria (EC) - salah satu terpenuhi -> dikeluarkan
+EC-T. Topik di luar RUL/prognostik (fouling/performance/water quality/
+      material/process control).
+EC-R. Review/editorial/bukan studi primer.
+EC-D. Domain di luar cakupan aset RO/desalinasi/industri.
+EC-M. Medis/klinis (membran biologis).
+EC-A. Tidak ada abstrak / bukti tidak cukup.
+EC-DUP. Duplikat.
 
-5.2 Exclusion Criteria (EC) - minimal salah satu terpenuhi -> dikeluarkan
-EC1. Bukan peer-reviewed / bukan sumber ilmiah (blog, berita, whitepaper vendor).
-EC2. Di luar rentang tahun 2015-2026 (tanpa alasan snowballing).
-EC3. Tidak berbahasa Inggris atau Indonesia.
-EC4. Hanya menyebut RUL/survival sebagai istilah tanpa metode/analisis substantif.
-EC5. Domain di luar cakupan (mis. RUL baterai/Aeroengine MURNI tanpa aspek
-     metodologis survival/data kecil yang bisa ditransfer -> diprioritaskan
-     dikeluarkan bila TIDAK memberi kontribusi metodologis/kontekstual).
-EC6. Tidak ada abstrak / metadata tidak lengkap / tidak bisa diakses.
-EC7. Duplikat (versi sama dari sumber berbeda) - lihat Bagian 6.
+5.3 Penerapan dan jejak audit
+- Gate topik (IC4) adalah penyaring utama; IC5 memastikan kontribusi RQ.
+- Setiap keputusan dicatat per paper di metadata/eligibility_log.csv
+  (no, doi, tahun, pilar, tier, included, decision, exclusion_code, reason,
+  full_text_available, judul).
+- Skrip: pipeline/1_search_and_select/select_eligibility.py
+- Hasil: 101 assessed -> 22 excluded (EC-T 15, EC-R 6, EC-D 1) -> 79 included.
+- Tidak ada target jumlah: N included adalah OUTPUT dari IC/EC.
 
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+
 BAGIAN 6. SCREENING PROCEDURE & PRISMA 2020 FLOW
 --------------------------------------------------------------------------------
 
@@ -283,21 +290,25 @@ SCREENING
   Records excluded (title/abstract) ..................... n = 413
   Eligible from database search ......................... n = 72
   Added: snowballing + pengganti Open Access ............ n = 29
-  Reports assessed for eligibility (full-text) .......... n = 101
-  Reports excluded at full-text ......................... n = 0
+  Reports assessed for eligibility ...................... n = 101
+  Reports excluded at eligibility ....................... n = 22
+    EC-T topic not RUL/prognostics ...................... 15
+    EC-R review / not primary ........................... 6
+    EC-D domain out of scope ............................ 1
 
 INCLUDED
-  Studies included in synthesis ......................... n = 101
+  Studies included in synthesis ......................... n = 79
     Inti-Metode ......................................... 31
-    Inti-Domain ......................................... 19
+    Inti-Domain ......................................... 13
     Inti-Metode+Domain (kandidat gap) ................... 2
-    Pendukung ........................................... 32
-    Konteks ............................................. 17
-  Core papers (skor >= 5.5 atau Inti-Metode+Domain) ..... n = 20
+    Pendukung ........................................... 31
+    Konteks ............................................. 2
+  Core papers (skor >= 5.5 atau Inti-Metode+Domain) ..... n = 19
+  Full-text available (included) ........................ 61/79
 
 Catatan: angka 209 dan 413 adalah selisih turunan (derived) yang dicatat
-sebagai asumsi; 694/485/72 dari metadata/harvest_stats.json; 101 dan 0 dari
-docs/FULLTEXT_SCREENING_LOG.txt.
+sebagai asumsi; 694/485/72 dari metadata/harvest_stats.json; 101 dari docs/FULLTEXT_SCREENING_LOG.txt; 22/79 dari
+metadata/selection_summary.json dan metadata/eligibility_log.csv.
 -------------------------------------------------------------------------------
 
 BAGIAN 7. QUALITY APPRAISAL (Checklist Penilaian Kualitas)
@@ -331,8 +342,8 @@ Klasifikasi:
   - Support : 4.0 <= total < 5.5.
   - Context : total < 4.0.
 
-Hasil pada korpus ini: 20 core dari 101 artikel (metadata/core_papers.json).
-Uji sensitivitas: menggeser ambang ke 5.0 menghasilkan 28 core; kesimpulan gap
+Hasil pada korpus ini: 19 core dari 79 artikel included (metadata/core_papers.json).
+Uji sensitivitas: menggeser ambang ke 5.0 menghasilkan lebih banyak core; kesimpulan gap
 tidak berubah, karena irisan D3 (censoring) x D7 (RO) tetap 0 artikel.
 
 Catatan metodologis: penetapan core HARUS dilakukan sebelum analisis akhir

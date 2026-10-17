@@ -7,10 +7,11 @@ Berisi keluaran utama (hasil akhir), bukan data mentah:
 - `SLR_Korpus.xlsx` - korpus 101 artikel untuk SLR.
 - `SLR_Korpus.xlsx`: sheet "SLR - Korpus Jurnal" (kolom: No, Pilar, Judul, Penulis, Tahun, Jurnal, Klasifikasi,
   **Relevansi**, **Kualitas**, DOI, Ringkasan, Kontribusi), "Matriks Konsep (Webster-Watson)",
-  "Sintesis & Gap Final", "Peta Teori ke Dimensi", "Konsep Kunci Model", "Ringkasan & Status".
+  "Sintesis & Gap Final", "Peta Teori ke Dimensi", "Konsep Kunci Model", "Ringkasan & Status", "Paper Inti & Skor".
 - `SLR_Laporan.docx` / `.pdf` - laporan SLR lengkap (Times New Roman, margin 4-4-3-3, spasi 1,5).
 - `SLR_Artikel_Jurnal.docx` / `.pdf` - versi artikel jurnal (2 kolom).
 - `SLR_Presentasi.html` + `SLR_Presentasi.pdf` - slide (reveal.js, tema gelap; PDF 16:9 untuk full screen).
+- `figures/` - diagram penting SLR (PNG/SVG) dengan sumber reproducible di `figures/src/`.
 - `SLR_Draft.txt` - laporan versi teks.
 - `Catatan_Keputusan.txt` - log keputusan & asumsi.
 - `SUBSTITUTION_LOG.txt` - log penggantian/eksklusi paper lain (di luar 3 mismatch).

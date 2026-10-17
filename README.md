@@ -12,7 +12,7 @@ Graduate School, Universitas Diponegoro. Contact: mnioh@students.undip.ac.id
 ## Repository Structure
 | Folder | Contents |
 |---|---|
-| `docs/` | Main deliverables: SLR protocol, corpus (Excel), report, journal article, presentation, decision log. |
+| `docs/` | Main deliverables: SLR protocol, corpus (Excel), report, journal article, presentation, decision log, diagrams (`figures/`). |
 | `papers_analysis/` | Per-paper analysis results (`extraction.json` + `analysis.txt`) for 101 articles. |
 | `pipeline/` | Pipeline source code (search, journal classification, document building, reference verification). |
 | `metadata/` | Intermediate data/JSON: master corpus, ISSN & journal quartile mapping, search statistics. |
@@ -47,7 +47,9 @@ templates: [`pipeline/prompts/`](pipeline/prompts/README.md); disclosure: [`docs
 2. `pipeline/3_journal_classification/`: quartile classification (SCImago) + `mirror_data/`.
 3. `pipeline/2_get_fulltext/` + `pipeline/6_fulltext_extraction_kaggle/`: obtain & extract full-text (Marker via Kaggle GPU).
 4. `pipeline/4_build_deliverables/`: build `docs/` (Excel, Word, PDF, presentation).
-(See the README in each folder. Scripts use the absolute path `/tmp/opencode/slr`; adjust as needed.)
+5. `docs/figures/src/build_figures.sh`: rebuild the diagrams (Mermaid + matplotlib).
+6. `pipeline/4_build_deliverables/build_presentation.py`: rebuild the offline deck.
+(See the README in each folder. Scripts are repo-relative; adjust output paths if needed.)
 
 ## Copyright Notes (IMPORTANT)
 - **Open Access + Creative Commons license (77 of 101 articles)** -> full-text (`fulltext.pdf`)

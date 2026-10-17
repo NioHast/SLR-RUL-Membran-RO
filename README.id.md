@@ -12,7 +12,7 @@ Sekolah Pascasarjana, Universitas Diponegoro. Kontak: mnioh@students.undip.ac.id
 ## Struktur Repositori
 | Folder | Isi |
 |---|---|
-| `docs/` | Deliverables utama: protokol SLR, korpus (Excel), laporan, artikel jurnal, presentasi, log keputusan. |
+| `docs/` | Deliverables utama: protokol SLR, korpus (Excel), laporan, artikel jurnal, presentasi, log keputusan, diagram (`figures/`). |
 | `papers_analysis/` | Hasil analisis per paper (`extraction.json` + `analysis.txt`) untuk 101 artikel. |
 | `pipeline/` | Kode sumber pipeline (pencarian, klasifikasi jurnal, pembangunan dokumen, verifikasi referensi). |
 | `metadata/` | Data antara/JSON: korpus master, pemetaan ISSN & kuartil jurnal, statistik pencarian. |
@@ -47,7 +47,9 @@ Template prompt: [`pipeline/prompts/`](pipeline/prompts/README.id.md); keterbuka
 2. `pipeline/3_journal_classification/`: klasifikasi kuartil (SCImago) + `mirror_data/`.
 3. `pipeline/2_get_fulltext/` + `pipeline/6_fulltext_extraction_kaggle/`: peroleh & ekstrak full-text (Marker via Kaggle GPU).
 4. `pipeline/4_build_deliverables/`: bangun `docs/` (Excel, Word, PDF, presentasi).
-(Lihat README di tiap folder. Skrip memakai path absolut `/tmp/opencode/slr`; sesuaikan bila perlu.)
+5. `docs/figures/src/build_figures.sh`: bangun ulang diagram (Mermaid + matplotlib).
+6. `pipeline/4_build_deliverables/build_presentation.py`: bangun ulang deck offline.
+(Lihat README di tiap folder. Skrip relatif terhadap repo; sesuaikan path keluaran bila perlu.)
 
 ## Catatan Hak Cipta (PENTING)
 - **Open Access + lisensi Creative Commons (77 dari 101 artikel)** -> full-text (`fulltext.pdf`)

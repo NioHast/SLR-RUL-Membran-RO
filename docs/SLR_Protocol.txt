@@ -115,13 +115,17 @@ BAGIAN 4. SEARCH STRATEGY & READY-TO-PASTE BOOLEAN STRINGS
 --------------------------------------------------------------------------------
 
 4.1 Basis data
-    Primer    : Scopus
-    Sekunder  : IEEE Xplore, ScienceDirect, ACM Digital Library (ACM DL),
-                AIS eLibrary, Web of Science (WoS)
-    Nasional  : Garuda (garuda.kemdikbud.go.id) & SINTA (sinta.kemdikbud.go.id)
-    Pelengkap : Snowballing (Wohlin 2014) - backward + forward citation chasing
-    Mesin lain: Google Scholar (hanya untuk snowballing & pelacakan lengkap,
-                BUKAN sumber pencacahan utama).
+    Dieksekusi pada korpus ini:
+      - OpenAlex (metadata Crossref/DOAJ), https://api.openalex.org/works
+        - 16 query title+abstract; filter type=article, has_doi=true.
+        - Skrip: pipeline/1_search_and_select/harvest.py
+      - Snowballing Wohlin (2014): backward + forward dari artikel inti.
+    Direncanakan untuk replikasi (BELUM dieksekusi pada korpus ini):
+      - Scopus, IEEE Xplore, ScienceDirect, ACM Digital Library, AIS eLibrary,
+        Web of Science; Garuda & SINTA (nasional).
+    Catatan deviasi (dicatat, bukan disembunyikan):
+      Protokol awal menargetkan Scopus sebagai basis primer, tetapi eksekusi
+      memakai OpenAlex agar dapat direproduksi tanpa langganan institusi.
 
 4.2 Aturan sintaks
     - Truncation: gunakan * (mis. prognostic*, censor*, predict*).
@@ -131,31 +135,57 @@ BAGIAN 4. SEARCH STRATEGY & READY-TO-PASTE BOOLEAN STRINGS
     - Field code Scopus: TITLE-ABS-KEY(...). WoS: TS=(...).
     - Field code IEEE Xplore: "All Metadata":... .
 
-4.3 String Scopus - A (METODOLOGIS: SDM + survival + DL/Bayesian)
---------------------------------------------------------------------------------
+4.3 String Scopus - A (METODOLOGIS: RUL + survival/censoring + DL/Bayesian)
+-------------------------------------------------------------------------------
 TITLE-ABS-KEY(
-  ( "remaining useful life" OR "RUL" OR prognostics OR "useful life prediction"
-    OR "time-to-failure" OR "life prediction" )
+  ( "remaining useful life" OR "remaining-useful-life" OR "RUL" OR prognos*
+    OR "predictive maintenance" OR "prognostics and health management" OR "PHM" )
   AND
-  ( "survival analysis" OR "time-to-event" OR "censored data" OR censor*
-    OR "Cox" OR "proportional hazards" OR "Weibull" OR "accelerated failure time"
-    OR "hazard model" OR "frailty" )
+  ( censor* OR "survival analysis" OR "survival model" OR "time-to-event"
+    OR "Weibull" OR "hazard model" OR "Cox" OR "accelerated failure time" )
   AND
-  ( "deep learning" OR "neural network" OR "LSTM" OR "GRU" OR "transformer"
-    OR "attention" OR "Bayesian" OR "uncertainty quantification" )
+  ( "machine learning" OR "deep learning" OR "neural network" OR LSTM OR GRU
+    OR CNN OR transformer OR attention OR "Bayesian" OR "data-driven" )
 )
---------------------------------------------------------------------------------
+AND PUBYEAR > 2014
+AND ( LIMIT-TO ( DOCTYPE,"ar" ) OR LIMIT-TO ( DOCTYPE,"cp" ) )
+AND ( LIMIT-TO ( LANGUAGE,"English" ) )
+-------------------------------------------------------------------------------
 
 4.4 String Scopus - B (DOMAIN: desalinasi/RO + RUL/predictive maintenance)
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 TITLE-ABS-KEY(
-  ( "reverse osmosis" OR "RO membrane" OR "membrane" OR "BWRO" OR desalination
-    OR "brackish water" OR "water treatment" OR "membrane fouling" OR scaling )
+  ( "reverse osmosis" OR "RO membrane" OR "BWRO" OR desalination
+    OR "brackish water" OR "water treatment" OR "membrane fouling"
+    OR "membrane scaling" )
   AND
-  ( "remaining useful life" OR "RUL" OR prognostics OR "life prediction"
-    OR "predictive maintenance" OR "condition monitoring" OR "performance degradation" )
+  ( "remaining useful life" OR "RUL" OR prognos* OR "predictive maintenance"
+    OR "condition monitoring" OR "performance degradation" )
 )
---------------------------------------------------------------------------------
+AND PUBYEAR > 2014
+-------------------------------------------------------------------------------
+
+4.4b Query yang benar-benar dieksekusi (OpenAlex, 16 query)
+-------------------------------------------------------------------------------
+  1. remaining useful life survival analysis
+  2. remaining useful life censored
+  3. remaining useful life censored data deep learning
+  4. predictive maintenance censored data
+  5. remaining useful life LSTM prediction
+  6. remaining useful life Bayesian neural network
+  7. reverse osmosis membrane remaining useful life
+  8. reverse osmosis membrane fouling prediction machine learning
+  9. membrane fouling prediction machine learning
+ 10. desalination predictive maintenance machine learning
+ 11. remaining useful life few-shot learning
+ 12. remaining useful life transfer learning
+ 13. Weibull degradation remaining useful life
+ 14. membrane replacement prediction
+ 15. water treatment predictive maintenance
+ 16. prognostics health management deep learning censored
+Batas recall: OpenAlex diambil 50 hasil teratas per query (tanpa paginasi);
+filter tahun tidak diterapkan di API (disaring pada tahap screening).
+-------------------------------------------------------------------------------
 
 4.5 String IEEE Xplore (All Metadata)
 --------------------------------------------------------------------------------
@@ -187,7 +217,7 @@ AND
     - Tahun utama: 2015 - 2026 (fokus perkembangan deep learning & Bayesian).
     - Landmark/seminal (sebelum 2015, mis. Cox 1972) boleh disitir sebagai
       rujukan konseptual bila muncul via snowballing, tetapi tidak masuk hitungan
-      50+ paper inti kecuali sangat relevan.
+      52 paper Inti / 20 core kecuali sangat relevan.
     - Bahasa: Inggris (internasional) + Indonesia (nasional).
 
 --------------------------------------------------------------------------------
@@ -241,39 +271,35 @@ BAGIAN 6. SCREENING PROCEDURE & PRISMA 2020 FLOW
       - Ulangi Tahap 1-2 untuk paper hasil snowballing.
   Tahap 4. Quality appraisal (Bagian 7) -> tentukan set korpus final.
 
-6.2 Kerangka PRISMA 2020 (outline dengan placeholder jumlah)
---------------------------------------------------------------------------------
+6.2 Kerangka PRISMA 2020 (angka final; sumber: metadata/prisma_flow.json)
+-------------------------------------------------------------------------------
 IDENTIFICATION
-  Records identified:
-    - Scopus ................................ [ n = __ ]
-    - IEEE Xplore ........................... [ n = __ ]
-    - ScienceDirect ......................... [ n = __ ]
-    - ACM DL ................................ [ n = __ ]
-    - AIS eLibrary .......................... [ n = __ ]
-    - Web of Science ........................ [ n = __ ]
-    - Garuda / SINTA (nasional) ............. [ n = __ ]
-    - Snowballing (backward + forward) ...... [ n = __ ]
-  Records removed before screening:
-    - Duplicates ............................ [ n = __ ]
-    - Excluded by automation/tools .......... [ n = __ ]
-  Records after duplicates removed .......... [ n = __ ]
+  Records identified (OpenAlex, 16 query) ............... n = 694
+  Records removed before screening
+    (tanpa abstrak / metadata tidak lengkap, derived) .... n = 209
+  Records screened (title/abstract) ..................... n = 485
 
 SCREENING
-  Records screened (title/abstract) ......... [ n = __ ]
-  Records excluded .......................... [ n = __ ]
-     (alasan: EC1 __ ; EC2 __ ; EC3 __ ; EC4 __ ; EC5 __ )
-  Reports sought for retrieval/full-text ..... [ n = __ ]
-  Reports not retrieved (no access) ......... [ n = __ ]
-  Reports assessed for eligibility .......... [ n = __ ]
-  Reports excluded (dengan alasan) .......... [ n = __ ]
-     (EC1 __ ; EC4 __ ; EC5 __ ; EC6 __ ; duplikat __ )
+  Records excluded (title/abstract) ..................... n = 413
+  Eligible from database search ......................... n = 72
+  Added: snowballing + pengganti Open Access ............ n = 29
+  Reports assessed for eligibility (full-text) .......... n = 101
+  Reports excluded at full-text ......................... n = 0
 
 INCLUDED
-  Studies included in qualitative synthesis ... [ n = __ ] (target >= 50 Scopus)
-  Studies included in concept matrix (W&W) ... [ n = __ ]
---------------------------------------------------------------------------------
+  Studies included in synthesis ......................... n = 101
+    Inti-Metode ......................................... 31
+    Inti-Domain ......................................... 19
+    Inti-Metode+Domain (kandidat gap) ................... 2
+    Pendukung ........................................... 32
+    Konteks ............................................. 17
+  Core papers (skor >= 5.5 atau Inti-Metode+Domain) ..... n = 20
 
---------------------------------------------------------------------------------
+Catatan: angka 209 dan 413 adalah selisih turunan (derived) yang dicatat
+sebagai asumsi; 694/485/72 dari metadata/harvest_stats.json; 101 dan 0 dari
+docs/FULLTEXT_SCREENING_LOG.txt.
+-------------------------------------------------------------------------------
+
 BAGIAN 7. QUALITY APPRAISAL (Checklist Penilaian Kualitas)
 --------------------------------------------------------------------------------
 Skala tiap butir: Ya (1) / Sebagian (0.5) / Tidak (0). Ambang lolos: skor >= 6.0
@@ -291,6 +317,28 @@ QA9. Apakah kontribusi terhadap praktik pemeliharaan/DSS dibahas (bila relevan)?
 QA10. Apakah penelitian dapat ditelusuri (peer-reviewed, DOI/venue jelas)?
 
 --------------------------------------------------------------------------------
+BAGIAN 7B. PEMILIHAN PAPER INTI (CORE SET)
+-------------------------------------------------------------------------------
+Tidak ada algoritma universal; prosedur berikut ditetapkan A-PRIORI agar
+transparan dan dapat direproduksi. Skor 0-2 per kriteria (total 0-6):
+
+  R1 Relevansi RQ      : 2 = tier Inti*, 1 = Pendukung, 0 = Konteks.
+  R2 Kedekatan metode  : proporsi dimensi D3/D4/D5/D8 yang tercakup x 2.
+  R3 Kualitas          : (skor QA - 4) / 5 x 2   (skor QA 4-9).
+
+Klasifikasi:
+  - Core    : total >= 5.5 ATAU tier Inti-Metode+Domain.
+  - Support : 4.0 <= total < 5.5.
+  - Context : total < 4.0.
+
+Hasil pada korpus ini: 20 core dari 101 artikel (metadata/core_papers.json).
+Uji sensitivitas: menggeser ambang ke 5.0 menghasilkan 28 core; kesimpulan gap
+tidak berubah, karena irisan D3 (censoring) x D7 (RO) tetap 0 artikel.
+
+Catatan metodologis: penetapan core HARUS dilakukan sebelum analisis akhir
+(tidak post-hoc), dan perannya dicatat (metode / domain / pendukung).
+-------------------------------------------------------------------------------
+
 BAGIAN 8. DATA EXTRACTION FORM (Kolom Tabel Korpus)
 --------------------------------------------------------------------------------
 Tabel ekstraksi data memuat kolom berikut (satu baris per paper terkualifikasi):
@@ -434,23 +482,3 @@ tidak diperlukan di dalam protokol ini).
 ================================================================================
 AKHIR PROTOKOL
 ================================================================================
-
-====================================================================
-PEMBARUAN PRISMA (setelah full-text screening, Phase 5)
-====================================================================
-Diidentifikasi (unik)           : 694
-Disaring judul/abstrak          : ~485
-Layak (full-record)             : 101
-Dikeluarkan (full-text)         : 3  (isi tidak sesuai metadata / dokumen salah)
-INCLUDED (final)                : 98
-Lihat FULLTEXT_SCREENING_LOG.txt untuk rincian 3 eksklusi.
-
-====================================================================
-PEMBARUAN PRISMA FINAL (Phase 5, setelah 3 PDF diperbaiki)
-====================================================================
-Diidentifikasi (unik)           : 694
-Disaring judul/abstrak          : ~485
-Layak (full-record)             : 101
-Dikeluarkan (full-text)         : 0  (3 mismatch PDF sudah diperbaiki & diterima)
-INCLUDED (final)                : 101
-Lihat FULLTEXT_SCREENING_LOG.txt.

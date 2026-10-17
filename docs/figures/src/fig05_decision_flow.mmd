@@ -1,0 +1,14 @@
+flowchart LR
+  A["Hitung g(tau | t0)<br/>biaya per satuan waktu"] --> B["tau* = argmin g(tau | t0)"]
+  B --> C{"tau* - t0 &lt;= epsilon?"}
+  C -->|Ya| D["CIP / ganti sekarang"]
+  C -->|Tidak| E{"Aman dalam<br/>horizon H?"}
+  E -->|Ya| F["Lanjutkan operasi<br/>jadwalkan pada tau*"]
+  E -->|Tidak| D
+
+  classDef calc fill:#1F4E78,color:#ffffff,stroke:#1F4E78
+  classDef act fill:#0F766E,color:#ffffff,stroke:#0F766E
+  classDef dec fill:#D97706,color:#ffffff,stroke:#B45309
+  class A,B calc
+  class D,F act
+  class C,E dec

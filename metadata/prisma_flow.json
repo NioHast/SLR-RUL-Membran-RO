@@ -1,0 +1,31 @@
+{
+  "identified": 694,
+  "identified_note": "OpenAlex (metadata Crossref), 16 query, title+abstract, type=article, has_doi=true",
+  "removed_before_screening": 209,
+  "removed_before_screening_note": "tanpa abstrak/metadata tidak lengkap (694 - 485; diturunkan dari harvest_stats)",
+  "screened_title_abstract": 485,
+  "excluded_title_abstract": 413,
+  "eligible_from_databases": 72,
+  "added_snowballing_and_replacements": 29,
+  "added_note": "snowballing Wohlin + pengganti OA (lihat docs/SUBSTITUTION_LOG.txt); 101 - 72 = 29",
+  "fulltext_assessed": 101,
+  "excluded_fulltext": 0,
+  "included": 101,
+  "tiers": {
+    "Inti-Metode": 31,
+    "Inti-Domain": 19,
+    "Inti-Metode+Domain": 2,
+    "Pendukung": 32,
+    "Konteks": 17
+  },
+  "inti_total": 52,
+  "core_total": 20,
+  "core_rule": "skor_total >= 5.5 (maks 6) ATAU tier Inti-Metode+Domain",
+  "score_rule": "RQ relevance (0-2) + methodological proximity (0-2: D3/D4/D5/D8) + quality (0-2)",
+  "assumptions": [
+    "Angka 694, 485, 72 berasal dari metadata/harvest_stats.json.",
+    "Angka 101 adalah korpus final (docs/FULLTEXT_SCREENING_LOG.txt).",
+    "Selisih 209 dan 413 diturunkan (derived) dan dicatat sebagai asumsi.",
+    "0 eksklusi full-text setelah 3 PDF mismatch diperbaiki."
+  ]
+}

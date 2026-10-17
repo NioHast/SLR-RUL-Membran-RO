@@ -1,6 +1,6 @@
 {
  "database": "OpenAlex (Crossref metadata), title+abstract search, type=article, has_doi=true",
- "queries_used": 24,
+ "queries_used": 16,
  "records_identified_unique": 694,
  "records_with_english_language": 694,
  "records_screened": 485,
@@ -14,5 +14,6 @@
   "F": 33,
   "G": 5
  },
- "with_abstract": 72
+ "with_abstract": 72,
+ "queries_used_note": "Corrected: pipeline/1_search_and_select/harvest.py contains 16 queries (an earlier note said 24)."
 }

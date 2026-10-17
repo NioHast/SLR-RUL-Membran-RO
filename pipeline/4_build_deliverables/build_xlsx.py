@@ -29,18 +29,18 @@ from openpyxl import Workbook
 from openpyxl.styles import Font, Alignment, PatternFill, Border, Side
 from openpyxl.utils import get_column_letter
 
-BASE="/tmp/opencode/slr"
-OUT="/home/nioha/Downloads/SLR_Korpus.xlsx"
+BASE = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.abspath(os.path.join(BASE, "..", ".."))
+META = os.path.join(ROOT, "metadata")
+OUT = os.path.join(ROOT, "docs", "SLR_Korpus.xlsx")
 
-def load(fn):
-    """Load the JSON at BASE/fn; return [] if the file does not exist."""
-    p=os.path.join(BASE,fn)
-    return json.load(open(p)) if os.path.exists(p) else []
+def load(path):
+    """Load a JSON file; return [] (or {}) if it does not exist."""
+    return json.load(open(path, encoding="utf-8")) if os.path.exists(path) else []
 
 # --- Load the entire corpus ---
-rows=[]
-for _fp in sorted(glob.glob(os.path.join(BASE,"corpus_*.json"))):
-    rows += json.load(open(_fp))
+rows=load(os.path.join(META,"corpus_a.json"))
+core=load(os.path.join(META,"core_papers.json"))
 
 # order: quartile tier -> newest year -> pillar -> title
 def _tier(r):
@@ -59,7 +59,7 @@ def _is_gao(r):
 # prevent text from being treated as a formula (do not start with "=")
 def _s(v): return (" "+v) if isinstance(v,str) and v.startswith("=") else v
 
-stats=load("harvest_stats.json"); syn=load("synthesis.json")
+stats=load(os.path.join(META,"harvest_stats.json")); syn=load(os.path.join(BASE,"synthesis.json"))
 
 # --- Basic styling ---
 wb=Workbook()
@@ -114,7 +114,7 @@ for _r in rows:
     if _k.startswith("Scopus Q"): _qc[_k.split(" (")[0]]+=1
 _qtxt=", ".join(f"{kk.replace('Scopus ','')}={vv}" for kk,vv in sorted(_qc.items()))
 items=[
- ("Target korpus","50+ jurnal internasional (Scopus) + rujukan pendukung nasional"),
+ ("Target korpus","101 artikel; 52 Inti; 20 core paper"),
  ("Terkumpul (korpus inti)",f"{len(rows)} artikel (semua memiliki abstrak)"),
  ("Sumber metadata","OpenAlex (agregator Crossref/DOAJ); pencarian title+abstract; type=article; has_doi=true"),
  ("Catatan identifikasi",f"{stats.get('records_identified_unique','?')} record unik setelah dedup; disaring judul/abstrak"),
@@ -177,6 +177,23 @@ ws6=wb.create_sheet("Konsep Kunci Model")
 ws6.append(["Konsep","Definisi","Posisi pada Model Penelitian Ini"])
 for row in syn.get("konsep",[]): ws6.append([_s(x) for x in row])
 style_header(ws6,3); autosize(ws6,[28,60,60])
+
+# ---- Sheet 7: Paper Inti & Skor ----
+ws7=wb.create_sheet("Paper Inti & Skor")
+ws7.append(["No","Judul","Penulis","Tahun","Tier","Core","Skor RQ","Skor Metode","Skor Kualitas","Skor Total","Peran"])
+for r in core:
+    ws7.append([r.get("no"),_s(r.get("judul")),_s(r.get("penulis")),r.get("tahun"),
+                _s(r.get("tier")),"YA" if r.get("core") else "",
+                r.get("skor_rq"),r.get("skor_metode"),r.get("skor_kualitas"),
+                r.get("skor_total"),_s(r.get("peran"))])
+style_header(ws7,len(ws7[1])); autosize(ws7,[5,55,24,7,20,7,8,10,11,9,26])
+for row in ws7.iter_rows(min_row=2):
+    for c in row: c.alignment=wrap; c.border=border
+ws7.freeze_panes="A2"
+_r=ws7.max_row+2
+ws7.cell(row=_r,column=1,value="ATURAN").font=Font(bold=True)
+ws7.cell(row=_r+1,column=1,value="Skor total = RQ (0-2) + kedekatan metode D3/D4/D5/D8 (0-2) + kualitas (0-2); maksimum 6.")
+ws7.cell(row=_r+2,column=1,value="Core = skor total >= 5.5 ATAU tier Inti-Metode+Domain.")
 
 wb.save(OUT)
 

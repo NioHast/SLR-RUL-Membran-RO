@@ -1,58 +1,39 @@
 > 🇬🇧 [English](README.md) | 🇮🇩 [Bahasa Indonesia](README.id.md)
 
-# 4_build_deliverables/ - Building Deliverables (Report, Excel, Article)
+# 4_build_deliverables/ - Building Deliverables
 
-This folder turns the corpus data + synthesis into the final deliverables: a Word report,
-an Excel spreadsheet, and a 2-column journal article.
+Turns corpus data + synthesis into the final deliverables. All outputs are written
+into `docs/` (no absolute paths).
 
-## Flow (order of execution)
+## Flow (order)
 
 ```
-fill_report.py  ->  build_docx.py        ->  SLR_Laporan.docx
-      |                                          
- report_filled.md                               
-
-build_xlsx.py          ->  SLR_Korpus.xlsx
-build_article_docx.py  ->  SLR_Artikel_Jurnal.docx
+docs/figures/src/build_figures.sh   -> docs/figures/png/*.png + svg/*.svg
+fill_report.py                      -> report_filled.md
+build_docx.py                       -> docs/SLR_Laporan.docx  (+ PDF via LibreOffice)
+build_xlsx.py                       -> docs/SLR_Korpus.xlsx   (7 sheets)
+build_article_docx.py               -> docs/SLR_Artikel_Jurnal.docx (+ PDF)
+build_presentation.py               -> docs/SLR_Presentasi.html (+ PDF via Chrome)
 ```
 
-1. `fill_report.py` - fill markers in `report.md` -> `report_filled.md`.
-2. `build_docx.py` - `report_filled.md` -> `SLR_Laporan.docx`.
-3. `build_xlsx.py` - corpus + synthesis -> `SLR_Korpus.xlsx`.
-4. `build_article_docx.py` - `article.md` -> `SLR_Artikel_Jurnal.docx`.
+## Scripts
 
-## Script files
+| Script | Purpose | Input -> Output |
+|---|---|---|
+| `fill_report.py` | Fill markers with real numbers from the single source of truth | `metadata/corpus_a.json`, `prisma_flow.json`, `core_papers.json`, `synthesis.json`, `report.md` -> `report_filled.md` |
+| `build_docx.py` | Thesis-style report (TNR 12, margins 4-4-3-3, 1.5 spacing) + figures | `report_filled.md` -> `docs/SLR_Laporan.docx` |
+| `build_xlsx.py` | 7-sheet workbook (adds "Paper Inti & Skor") | corpus + synthesis + core -> `docs/SLR_Korpus.xlsx` |
+| `build_article_docx.py` | 2-column journal article + figures | `article.md` -> `docs/SLR_Artikel_Jurnal.docx` |
+| `build_presentation.py` | Idempotent: embed figures (base64, offline) + sync numbers | `docs/SLR_Presentasi.html` -> rewritten in place |
 
-### `fill_report.py`
-- **Purpose:** Replace HTML markers in `report.md` (`<!-- PRISMA -->`, `<!-- PILAR -->`, `<!-- DIMENSI -->`, `<!-- TABLES -->`, `<!-- SINTESIS -->`, `<!-- GAP -->`) with tables/text containing the actual numbers.
-- **INPUT:** `BASE/corpus_*.json`, `BASE/harvest_stats.json`, `BASE/synthesis.json`, `BASE/report.md`.
-- **OUTPUT:** `BASE/report_filled.md`.
-- **Run:** `python3 fill_report.py`
+## Figure markers
+`report.md` and `article.md` support `{{FIG:file.png|caption|width_cm}}`; files are
+resolved from `docs/figures/png/` and rendered with an automatic `Gambar N.` caption.
+Wide tables and figures in the article span both columns via section breaks.
 
-### `build_xlsx.py`
-- **Purpose:** Build the 6-sheet `SLR_Korpus.xlsx` (Korpus, Ringkasan & Status, Matriks Konsep, Sintesis & Gap, Peta Teori, Konsep Kunci); sort by quartile then year, highlight the reference paper (Gao), D1-D8 checkmark matrix.
-- **INPUT:** `BASE/corpus_*.json`, `BASE/harvest_stats.json`, `BASE/synthesis.json`.
-- **OUTPUT:** `/home/nioha/Downloads/SLR_Korpus.xlsx`.
-- **Run:** `python3 build_xlsx.py`
-
-### `build_docx.py`
-- **Purpose:** Convert the Markdown report into `SLR_Laporan.docx` (Times New Roman 12, margins 4-4-3-3 cm, 1.5 spacing, tables without fill).
-- **INPUT:** `report_filled.md` (fallback `report.md`).
-- **OUTPUT:** `/home/nioha/Downloads/SLR_Laporan.docx`.
-- **Run:** `python3 build_docx.py`
-
-### `build_article_docx.py`
-- **Purpose:** Build the 2-column `.docx` journal article: 1-column front matter, 2-column body (separated by the `<!--BODY-->` marker).
-- **INPUT:** `BASE/article.md`.
-- **OUTPUT:** `/home/nioha/Downloads/SLR_Artikel_Jurnal.docx`.
-- **Run:** `python3 build_article_docx.py`
-
-## Text/data sources (not scripts)
-- `report.md` - report template containing markers (filled by `fill_report.py`).
-- `synthesis.json` - narrative synthesis per dimension + research gap + theory + concepts.
+## Text/data sources
+- `report.md` - report template with markers (filled by `fill_report.py`).
+- `synthesis.json` - narrative synthesis per dimension + gap + theory + concepts.
 - `article.md` - journal article manuscript (separated by `<!--BODY-->`).
-- The presentation prompt now lives in [`../prompts/presentation.md`](../prompts/presentation.md).
-
-> **NOTE:** Scripts in this folder use **ABSOLUTE** paths. `BASE="/tmp/opencode/slr"`
-> and `OUT="/home/nioha/Downloads/..."` MUST be changed to your own location
-> before running.
+- Presentation prompt: [`../prompts/presentation.md`](../prompts/presentation.md).
+- Style contract: [`../prompts/deliverable_style.md`](../prompts/deliverable_style.md).

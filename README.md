@@ -48,7 +48,7 @@ templates: [`pipeline/prompts/`](pipeline/prompts/README.md); disclosure: [`docs
 3. `pipeline/2_get_fulltext/` + `pipeline/6_fulltext_extraction_kaggle/`: obtain & extract full-text (Marker via Kaggle GPU).
 4. `pipeline/4_build_deliverables/`: build `docs/` (Excel, Word, PDF, presentation).
 5. `docs/figures/src/build_figures.sh`: rebuild the diagrams (Mermaid + matplotlib).
-6. `pipeline/4_build_deliverables/build_presentation.py`: rebuild the offline deck.
+6. `pipeline/4_build_deliverables/build_presentation.py`: validate the deck and build its PDF.
 (See the README in each folder. Scripts are repo-relative; adjust output paths if needed.)
 
 ## Copyright Notes (IMPORTANT)

@@ -48,7 +48,7 @@ Template prompt: [`pipeline/prompts/`](pipeline/prompts/README.id.md); keterbuka
 3. `pipeline/2_get_fulltext/` + `pipeline/6_fulltext_extraction_kaggle/`: peroleh & ekstrak full-text (Marker via Kaggle GPU).
 4. `pipeline/4_build_deliverables/`: bangun `docs/` (Excel, Word, PDF, presentasi).
 5. `docs/figures/src/build_figures.sh`: bangun ulang diagram (Mermaid + matplotlib).
-6. `pipeline/4_build_deliverables/build_presentation.py`: bangun ulang deck offline.
+6. `pipeline/4_build_deliverables/build_presentation.py`: validasi deck dan bangun PDF-nya.
 (Lihat README di tiap folder. Skrip relatif terhadap repo; sesuaikan path keluaran bila perlu.)
 
 ## Catatan Hak Cipta (PENTING)

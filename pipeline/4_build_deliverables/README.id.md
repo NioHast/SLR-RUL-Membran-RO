@@ -24,7 +24,7 @@ build_presentation.py               -> docs/SLR_Presentasi.html (+ PDF via Chrom
 | `build_docx.py` | Laporan gaya tesis (TNR 12, margin 4-4-3-3, spasi 1,5) + gambar | `report_filled.md` -> `docs/SLR_Laporan.docx` |
 | `build_xlsx.py` | Workbook 7 sheet (tambah "Paper Inti & Skor") | korpus + sintesis + core -> `docs/SLR_Korpus.xlsx` |
 | `build_article_docx.py` | Artikel jurnal 2 kolom + gambar | `article.md` -> `docs/SLR_Artikel_Jurnal.docx` |
-| `build_presentation.py` | Idempoten: tanam gambar (base64, offline) + sinkron angka | `docs/SLR_Presentasi.html` -> ditulis ulang di tempat |
+| `build_presentation.py` | Validasi (17 slide, offline, angka) + bangun PDF | `docs/SLR_Presentasi.html` -> `docs/SLR_Presentasi.pdf` |
 
 ## Penanda gambar
 `report.md` dan `article.md` mendukung `{{FIG:file.png|caption|width_cm}}`; berkas diambil

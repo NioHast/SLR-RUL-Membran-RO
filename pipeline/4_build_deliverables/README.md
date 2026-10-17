@@ -24,7 +24,7 @@ build_presentation.py               -> docs/SLR_Presentasi.html (+ PDF via Chrom
 | `build_docx.py` | Thesis-style report (TNR 12, margins 4-4-3-3, 1.5 spacing) + figures | `report_filled.md` -> `docs/SLR_Laporan.docx` |
 | `build_xlsx.py` | 7-sheet workbook (adds "Paper Inti & Skor") | corpus + synthesis + core -> `docs/SLR_Korpus.xlsx` |
 | `build_article_docx.py` | 2-column journal article + figures | `article.md` -> `docs/SLR_Artikel_Jurnal.docx` |
-| `build_presentation.py` | Idempotent: embed figures (base64, offline) + sync numbers | `docs/SLR_Presentasi.html` -> rewritten in place |
+| `build_presentation.py` | Validate (17 slides, offline, numbers) + build the PDF | `docs/SLR_Presentasi.html` -> `docs/SLR_Presentasi.pdf` |
 
 ## Figure markers
 `report.md` and `article.md` support `{{FIG:file.png|caption|width_cm}}`; files are

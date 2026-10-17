@@ -27,3 +27,5 @@ bash src/build_figures.sh
 ```
 All data-driven charts read `metadata/corpus_a.json` (single source of truth). The
 Mermaid sources are versioned in `src/` and rendered to `png/` (300 dpi) and `svg/`.
+
+> Note: the presentation deck now uses **native dark-theme visuals** (HTML/CSS/SVG) instead of these PNGs, so it stays fully offline. The PNG/SVG files are used by the report and journal article.

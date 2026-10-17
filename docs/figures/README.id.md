@@ -27,3 +27,5 @@ bash src/build_figures.sh
 ```
 Semua chart berbasis data membaca `metadata/corpus_a.json` (sumber tunggal). Sumber
 Mermaid disimpan di `src/` dan dirender ke `png/` (300 dpi) dan `svg/`.
+
+> Catatan: deck presentasi kini memakai **visual native bertema gelap** (HTML/CSS/SVG), bukan PNG ini, agar tetap sepenuhnya offline. Berkas PNG/SVG dipakai laporan dan artikel jurnal.

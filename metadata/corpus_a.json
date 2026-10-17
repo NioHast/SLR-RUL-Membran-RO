@@ -19,7 +19,9 @@
   "kontribusi": "Preseden metodologis paling langsung untuk kombinasi survival analysis + machine learning pada RUL: Cox PHM yang secara eksplisit memodelkan data tersensor (seri biner 0/1 dari ambang batas) dipadukan dengan SVM. Relevan bagi poros 'survival analysis' tesis, tetapi domainnya mesin kompresor (bukan membran/RO) sehingga tidak menyentuh poros domain.",
   "no": 1,
   "relevansi": "Inti-Metode",
-  "kualitas_skor": 6
+  "kualitas_skor": 6,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "d1": "",
@@ -41,7 +43,9 @@
   "kontribusi": "Memberi contoh lengkap formulasi likelihood untuk data tersensor Tipe-I (indikator delta_i) dengan Weibull pada uji life-test dipercepat - inti metodologis pilar A tesis. Namun tidak ada machine learning, tidak ada RUL probabilistik, dan domainnya elektronik (bukan membran/RO).",
   "no": 2,
   "relevansi": "Inti-Metode",
-  "kualitas_skor": 6
+  "kualitas_skor": 6,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "d1": "",
@@ -63,7 +67,9 @@
   "kontribusi": "Preseden kuat poros survival/Weibull di tesis: pemodelan distribusi waktu-ke-gagal dengan Weibull pada ambang kegagalan, plus penggunaan model efek acak (hierarchical) untuk menangani ketidakpastian lintas-unit. Tidak ada machine learning dan domainnya baterai, bukan membran.",
   "no": 3,
   "relevansi": "Inti-Metode",
-  "kualitas_skor": 6
+  "kualitas_skor": 6,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "d1": "1",
@@ -85,7 +91,9 @@
   "kontribusi": "Sangat relevan ke poros survival/Weibull tesis: pemodelan transisi state dengan distribusi Weibull diskrit dan penanganan eksplisit data right-censored (trajektori run-to-failure tak lengkap) di dalam likelihood, plus kuantifikasi ketidakpastian dan strategi fleet/hierarchical. Namun tanpa deep learning dan domainnya bukan membran.",
   "no": 4,
   "relevansi": "Inti-Metode",
-  "kualitas_skor": 8
+  "kualitas_skor": 8,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "d1": "1",
@@ -107,7 +115,9 @@
   "kontribusi": "Memberikan kerangka probabilistik terpadu untuk memisahkan aleatoric dan epistemic uncertainty pada prediksi RUL - berguna bagi komponen deep learning + kuantifikasi ketidakpastian tesis. Namun tidak menangani data tersensor dan domainnya bearing, bukan membran.",
   "no": 5,
   "relevansi": "Pendukung",
-  "kualitas_skor": 7
+  "kualitas_skor": 7,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "d1": "",
@@ -129,7 +139,9 @@
   "kontribusi": "Kerangka konseptual untuk menginterpretasi, mengkuantifikasi, dan mempropagasi ketidakpastian dalam RUL - relevan sebagai landasan pilar C dan justifikasi mengapa distribusi RUL tidak boleh diasumsikan (mis. Gaussian). Tidak memodelkan data tersensor dan bukan studi empiris domain.",
   "no": 6,
   "relevansi": "Pendukung",
-  "kualitas_skor": 6
+  "kualitas_skor": 6,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "d1": "1",
@@ -151,7 +163,9 @@
   "kontribusi": "Sangat relevan ke tesis: menggabungkan survival theory (Weibull/hazard/censoring) dengan deep learning (RNN) untuk RUL, DAN menutup celah sampai keputusan pemeliharaan biaya-optimal. Namun domainnya cutting tool, bukan membran/RO.",
   "no": 7,
   "relevansi": "Inti-Metode",
-  "kualitas_skor": 8
+  "kualitas_skor": 8,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "d1": "1",
@@ -173,7 +187,9 @@
   "kontribusi": "Menunjukkan kuantifikasi ketidakpastian (dropout + kernel density) dalam prediksi RUL berbasis LSTM - relevan bagi komponen deep learning + ketidakpastian tesis, tetapi tidak memodelkan data tersensor dan domainnya bearing, bukan membran.",
   "no": 8,
   "relevansi": "Pendukung",
-  "kualitas_skor": 6
+  "kualitas_skor": 6,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "d1": "1",
@@ -195,7 +211,9 @@
   "kontribusi": "Sangat relevan ke tesis: menggabungkan Cox-PH survival analysis (hazard/censoring) sebagai lapisan seleksi fitur terarah dengan machine learning (ANN/RF/XGBoost/LSTM) untuk kegagalan dan RUL, ditambah implikasi keputusan pemeliharaan (kebijakan alarm). Namun domainnya kompresor kereta, bukan membran/RO, dan tanpa komponen Weibull eksplisit.",
   "no": 9,
   "relevansi": "Inti-Metode",
-  "kualitas_skor": 9
+  "kualitas_skor": 9,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "no": 10,
@@ -217,7 +235,9 @@
   "d7": "1",
   "d8": "",
   "relevansi": "Inti-Domain",
-  "kualitas_skor": 8
+  "kualitas_skor": 8,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "no": 11,
@@ -239,7 +259,9 @@
   "d7": "",
   "d8": "1",
   "relevansi": "Inti-Metode",
-  "kualitas_skor": 9
+  "kualitas_skor": 9,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "no": 12,
@@ -261,7 +283,9 @@
   "d7": "",
   "d8": "1",
   "relevansi": "Inti-Metode",
-  "kualitas_skor": 9
+  "kualitas_skor": 9,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "no": 13,
@@ -283,7 +307,9 @@
   "d7": "",
   "d8": "1",
   "relevansi": "Inti-Metode",
-  "kualitas_skor": 9
+  "kualitas_skor": 9,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "no": 14,
@@ -305,7 +331,9 @@
   "d7": "1",
   "d8": "",
   "relevansi": "Konteks",
-  "kualitas_skor": 8
+  "kualitas_skor": 8,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "no": 15,
@@ -327,7 +355,9 @@
   "d7": "1",
   "d8": "",
   "relevansi": "Konteks",
-  "kualitas_skor": 9
+  "kualitas_skor": 9,
+  "included": false,
+  "exclusion_reason": "EC-R: Review artikel (bukan studi primer) tentang fouling prediction/control."
  },
  {
   "no": 16,
@@ -349,7 +379,9 @@
   "d7": "",
   "d8": "",
   "relevansi": "Inti-Metode",
-  "kualitas_skor": 8
+  "kualitas_skor": 8,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "no": 17,
@@ -371,7 +403,9 @@
   "d7": "",
   "d8": "1",
   "relevansi": "Inti-Metode",
-  "kualitas_skor": 8
+  "kualitas_skor": 8,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "no": 18,
@@ -393,7 +427,9 @@
   "d7": "1",
   "d8": "",
   "relevansi": "Konteks",
-  "kualitas_skor": 9
+  "kualitas_skor": 9,
+  "included": false,
+  "exclusion_reason": "EC-T: Topik: optimasi dosing koagulan (process control), bukan RUL/prognostik."
  },
  {
   "no": 19,
@@ -415,7 +451,9 @@
   "d7": "",
   "d8": "1",
   "relevansi": "Inti-Metode",
-  "kualitas_skor": 8
+  "kualitas_skor": 8,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "no": 20,
@@ -437,7 +475,9 @@
   "d7": "1",
   "d8": "",
   "relevansi": "Inti-Domain",
-  "kualitas_skor": 9
+  "kualitas_skor": 9,
+  "included": false,
+  "exclusion_reason": "EC-T: Topik: prediksi laju alir/fouling UF (performance prediction), bukan RUL."
  },
  {
   "no": 21,
@@ -459,7 +499,9 @@
   "d7": "1",
   "d8": "1",
   "relevansi": "Inti-Domain",
-  "kualitas_skor": 8
+  "kualitas_skor": 8,
+  "included": false,
+  "exclusion_reason": "EC-T: Topik: prediksi fouling membran (MLR/ANN/SVM), bukan RUL."
  },
  {
   "no": 22,
@@ -481,7 +523,9 @@
   "d7": "1",
   "d8": "",
   "relevansi": "Pendukung",
-  "kualitas_skor": 8
+  "kualitas_skor": 8,
+  "included": false,
+  "exclusion_reason": "EC-T: Topik: prediksi kualitas air umpan, bukan RUL."
  },
  {
   "no": 23,
@@ -503,7 +547,9 @@
   "d7": "1",
   "d8": "",
   "relevansi": "Konteks",
-  "kualitas_skor": 8
+  "kualitas_skor": 8,
+  "included": false,
+  "exclusion_reason": "EC-T: Topik: pemodelan numerik modul membran, bukan RUL."
  },
  {
   "no": 24,
@@ -525,7 +571,9 @@
   "d7": "",
   "d8": "1",
   "relevansi": "Pendukung",
-  "kualitas_skor": 9
+  "kualitas_skor": 9,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "no": 25,
@@ -547,7 +595,9 @@
   "d7": "1",
   "d8": "",
   "relevansi": "Konteks",
-  "kualitas_skor": 9
+  "kualitas_skor": 9,
+  "included": false,
+  "exclusion_reason": "EC-R: Review aplikasi AI untuk separasi membran, bukan studi primer."
  },
  {
   "no": 26,
@@ -569,7 +619,9 @@
   "d7": "1",
   "d8": "",
   "relevansi": "Konteks",
-  "kualitas_skor": 9
+  "kualitas_skor": 9,
+  "included": false,
+  "exclusion_reason": "EC-R: Review hybrid models/digital twin, bukan studi primer."
  },
  {
   "no": 27,
@@ -591,7 +643,9 @@
   "d7": "1",
   "d8": "",
   "relevansi": "Inti-Domain",
-  "kualitas_skor": 8
+  "kualitas_skor": 8,
+  "included": false,
+  "exclusion_reason": "EC-T: Topik: prediksi fouling membran, bukan RUL."
  },
  {
   "no": 28,
@@ -613,7 +667,9 @@
   "d7": "",
   "d8": "",
   "relevansi": "Inti-Metode",
-  "kualitas_skor": 8
+  "kualitas_skor": 8,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "d1": "1",
@@ -635,7 +691,9 @@
   "ringkasan": "Studi menggabungkan model finite-element reduced-order (ROM) transport dan resistansi fouling dengan kerangka data-driven yang memetakan metadata eksperimen ke perilaku penurunan fluks lintas data. Dari 112 dataset (berbagai membran, minyak, kondisi operasi), ROM mereproduksi trajektori fluks dengan R2 rata-rata ~0,95; prediksi tersegmentasi (early/mid/late) memberi MAE 0,079-0,14 pada grouped cross-validation. Validasi publikasi-level (holdout studi tak terlihat) menunjukkan MAE meningkat ~2x, mengungkap 'cross-study generalization penalty': keterbatasan prediksi lebih disebabkan kelengkapan metadata dan variabilitas antar-studi, bukan kapasitas model. Diusulkan checklist metadata minimal untuk model fouling yang reproducible.",
   "kontribusi": "Sangat relevan pada sumbu domain (fouling membran) dan sumbu transfer lintas-studi (small-data/domain shift) tesis, serta menegaskan pentingnya keterwakilan data; tidak memakai survival/pencensoringan dan berfokus pada MF/UF oil-water, bukan RO.",
   "relevansi": "Inti-Domain",
-  "kualitas_skor": 9
+  "kualitas_skor": 9,
+  "included": false,
+  "exclusion_reason": "EC-T: Topik: prediksi fouling oil-water (physics-informed ML), bukan RUL."
  },
  {
   "no": 30,
@@ -657,7 +715,9 @@
   "d7": "",
   "d8": "1",
   "relevansi": "Inti-Domain",
-  "kualitas_skor": 8
+  "kualitas_skor": 8,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "no": 31,
@@ -679,7 +739,9 @@
   "d7": "",
   "d8": "1",
   "relevansi": "Inti-Domain",
-  "kualitas_skor": 8
+  "kualitas_skor": 8,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "no": 32,
@@ -701,7 +763,9 @@
   "d7": "1",
   "d8": "",
   "relevansi": "Konteks",
-  "kualitas_skor": 7
+  "kualitas_skor": 7,
+  "included": false,
+  "exclusion_reason": "EC-R: Review aplikasi AI di water treatment/desalinasi, bukan studi primer."
  },
  {
   "no": 33,
@@ -723,7 +787,9 @@
   "d7": "",
   "d8": "",
   "relevansi": "Konteks",
-  "kualitas_skor": 7
+  "kualitas_skor": 7,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "no": 34,
@@ -745,7 +811,9 @@
   "d7": "",
   "d8": "1",
   "relevansi": "Pendukung",
-  "kualitas_skor": 9
+  "kualitas_skor": 9,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "no": 35,
@@ -767,7 +835,9 @@
   "d7": "",
   "d8": "1",
   "relevansi": "Inti-Domain",
-  "kualitas_skor": 9
+  "kualitas_skor": 9,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "no": 36,
@@ -789,7 +859,9 @@
   "d7": "",
   "d8": "",
   "relevansi": "Pendukung",
-  "kualitas_skor": 9
+  "kualitas_skor": 9,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "no": 37,
@@ -811,7 +883,9 @@
   "d7": "",
   "d8": "",
   "relevansi": "Inti-Metode",
-  "kualitas_skor": 8
+  "kualitas_skor": 8,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "no": 38,
@@ -833,7 +907,9 @@
   "d7": "",
   "d8": "",
   "relevansi": "Pendukung",
-  "kualitas_skor": 7
+  "kualitas_skor": 7,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "no": 39,
@@ -855,7 +931,9 @@
   "d7": "",
   "d8": "",
   "relevansi": "Pendukung",
-  "kualitas_skor": 6
+  "kualitas_skor": 6,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "no": 40,
@@ -877,7 +955,9 @@
   "d7": "1",
   "d8": "",
   "relevansi": "Konteks",
-  "kualitas_skor": 5
+  "kualitas_skor": 5,
+  "included": false,
+  "exclusion_reason": "EC-D: Konteks: pengolahan air asam tambang, di luar fokus aset RO/desalinasi."
  },
  {
   "no": 41,
@@ -899,7 +979,9 @@
   "d7": "",
   "d8": "",
   "relevansi": "Pendukung",
-  "kualitas_skor": 8
+  "kualitas_skor": 8,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "no": 42,
@@ -921,7 +1003,9 @@
   "d7": "",
   "d8": "1",
   "relevansi": "Pendukung",
-  "kualitas_skor": 8
+  "kualitas_skor": 8,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "no": 43,
@@ -943,7 +1027,9 @@
   "d7": "",
   "d8": "",
   "relevansi": "Pendukung",
-  "kualitas_skor": 8
+  "kualitas_skor": 8,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "no": 44,
@@ -965,7 +1051,9 @@
   "d7": "",
   "d8": "",
   "relevansi": "Pendukung",
-  "kualitas_skor": 7
+  "kualitas_skor": 7,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "no": 45,
@@ -987,7 +1075,9 @@
   "d7": "",
   "d8": "",
   "relevansi": "Pendukung",
-  "kualitas_skor": 8
+  "kualitas_skor": 8,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "no": 46,
@@ -1009,7 +1099,9 @@
   "d7": "",
   "d8": "",
   "relevansi": "Pendukung",
-  "kualitas_skor": 9
+  "kualitas_skor": 9,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "no": 47,
@@ -1031,7 +1123,9 @@
   "d7": "",
   "d8": "",
   "relevansi": "Pendukung",
-  "kualitas_skor": 8
+  "kualitas_skor": 8,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "no": 48,
@@ -1053,7 +1147,9 @@
   "d7": "",
   "d8": "1",
   "relevansi": "Inti-Metode",
-  "kualitas_skor": 9
+  "kualitas_skor": 9,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "no": 49,
@@ -1075,7 +1171,9 @@
   "d7": "",
   "d8": "",
   "relevansi": "Pendukung",
-  "kualitas_skor": 9
+  "kualitas_skor": 9,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "no": 50,
@@ -1097,7 +1195,9 @@
   "d7": "",
   "d8": "",
   "relevansi": "Pendukung",
-  "kualitas_skor": 6
+  "kualitas_skor": 6,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "no": 51,
@@ -1119,7 +1219,9 @@
   "d7": "",
   "d8": "1",
   "relevansi": "Inti-Domain",
-  "kualitas_skor": 8
+  "kualitas_skor": 8,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "no": 52,
@@ -1141,7 +1243,9 @@
   "d7": "1",
   "d8": "1",
   "relevansi": "Konteks",
-  "kualitas_skor": 8
+  "kualitas_skor": 8,
+  "included": false,
+  "exclusion_reason": "EC-R: Review ML di MBR, bukan studi primer."
  },
  {
   "no": 53,
@@ -1163,7 +1267,9 @@
   "d7": "1",
   "d8": "1",
   "relevansi": "Konteks",
-  "kualitas_skor": 8
+  "kualitas_skor": 8,
+  "included": false,
+  "exclusion_reason": "EC-R: Review ML/AI untuk nanofiltration, bukan studi primer."
  },
  {
   "no": 54,
@@ -1185,7 +1291,9 @@
   "d7": "",
   "d8": "",
   "relevansi": "Inti-Metode",
-  "kualitas_skor": 9
+  "kualitas_skor": 9,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "no": 55,
@@ -1207,7 +1315,9 @@
   "d7": "",
   "d8": "",
   "relevansi": "Pendukung",
-  "kualitas_skor": 6
+  "kualitas_skor": 6,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "d1": "1",
@@ -1229,7 +1339,9 @@
   "no": 56,
   "klasifikasi": "Scopus Q1 (SCImago SJR Best Quartile)",
   "relevansi": "Inti-Metode",
-  "kualitas_skor": 8
+  "kualitas_skor": 8,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "no": 57,
@@ -1251,7 +1363,9 @@
   "d7": "",
   "d8": "",
   "relevansi": "Pendukung",
-  "kualitas_skor": 9
+  "kualitas_skor": 9,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "no": 58,
@@ -1273,7 +1387,9 @@
   "d7": "",
   "d8": "",
   "relevansi": "Inti-Metode",
-  "kualitas_skor": 9
+  "kualitas_skor": 9,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "no": 59,
@@ -1295,7 +1411,9 @@
   "d7": "1",
   "d8": "",
   "relevansi": "Konteks",
-  "kualitas_skor": 9
+  "kualitas_skor": 9,
+  "included": false,
+  "exclusion_reason": "EC-T: Topik: sintesis material membran (cellulose acetate), bukan RUL."
  },
  {
   "d1": "1",
@@ -1317,7 +1435,9 @@
   "no": 60,
   "klasifikasi": "Scopus Q3 (SCImago SJR Best Quartile)",
   "relevansi": "Inti-Domain",
-  "kualitas_skor": 8
+  "kualitas_skor": 8,
+  "included": false,
+  "exclusion_reason": "EC-T: Topik: prediksi TMP (performance), bukan RUL."
  },
  {
   "no": 61,
@@ -1339,7 +1459,9 @@
   "d7": "",
   "d8": "",
   "relevansi": "Pendukung",
-  "kualitas_skor": 7
+  "kualitas_skor": 7,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "no": 62,
@@ -1361,7 +1483,9 @@
   "d7": "",
   "d8": "",
   "relevansi": "Pendukung",
-  "kualitas_skor": 9
+  "kualitas_skor": 9,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "no": 63,
@@ -1383,7 +1507,9 @@
   "d7": "",
   "d8": "1",
   "relevansi": "Pendukung",
-  "kualitas_skor": 8
+  "kualitas_skor": 8,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "no": 64,
@@ -1405,7 +1531,9 @@
   "d7": "",
   "d8": "1",
   "relevansi": "Inti-Metode",
-  "kualitas_skor": 9
+  "kualitas_skor": 9,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "no": 65,
@@ -1427,7 +1555,9 @@
   "d7": "",
   "d8": "1",
   "relevansi": "Inti-Domain",
-  "kualitas_skor": 6
+  "kualitas_skor": 6,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "no": 66,
@@ -1449,7 +1579,9 @@
   "d7": "",
   "d8": "",
   "relevansi": "Pendukung",
-  "kualitas_skor": 9
+  "kualitas_skor": 9,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "no": 67,
@@ -1471,7 +1603,9 @@
   "d7": "",
   "d8": "",
   "relevansi": "Pendukung",
-  "kualitas_skor": 6
+  "kualitas_skor": 6,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "no": 68,
@@ -1493,7 +1627,9 @@
   "d7": "",
   "d8": "1",
   "relevansi": "Inti-Metode+Domain",
-  "kualitas_skor": 7
+  "kualitas_skor": 7,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "no": 69,
@@ -1515,7 +1651,9 @@
   "d7": "",
   "d8": "",
   "relevansi": "Inti-Metode",
-  "kualitas_skor": 8
+  "kualitas_skor": 8,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "no": 70,
@@ -1537,7 +1675,9 @@
   "d7": "",
   "d8": "",
   "relevansi": "Inti-Metode",
-  "kualitas_skor": 8
+  "kualitas_skor": 8,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "no": 71,
@@ -1559,7 +1699,9 @@
   "d7": "1",
   "d8": "",
   "relevansi": "Konteks",
-  "kualitas_skor": 6
+  "kualitas_skor": 6,
+  "included": false,
+  "exclusion_reason": "EC-T: Topik: modifikasi material membran (graphene/silica), bukan RUL."
  },
  {
   "no": 72,
@@ -1581,7 +1723,9 @@
   "d7": "",
   "d8": "",
   "relevansi": "Pendukung",
-  "kualitas_skor": 9
+  "kualitas_skor": 9,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "no": 73,
@@ -1603,7 +1747,9 @@
   "d7": "",
   "d8": "",
   "relevansi": "Inti-Metode",
-  "kualitas_skor": 8
+  "kualitas_skor": 8,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "no": 74,
@@ -1625,7 +1771,9 @@
   "d7": "",
   "d8": "",
   "relevansi": "Pendukung",
-  "kualitas_skor": 7
+  "kualitas_skor": 7,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "no": 75,
@@ -1647,7 +1795,9 @@
   "d7": "",
   "d8": "",
   "relevansi": "Inti-Metode",
-  "kualitas_skor": 9
+  "kualitas_skor": 9,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "no": 76,
@@ -1669,7 +1819,9 @@
   "d7": "",
   "d8": "",
   "relevansi": "Inti-Metode",
-  "kualitas_skor": 9
+  "kualitas_skor": 9,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "no": 77,
@@ -1691,7 +1843,9 @@
   "d7": "",
   "d8": "",
   "relevansi": "Inti-Metode",
-  "kualitas_skor": 8
+  "kualitas_skor": 8,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "no": 78,
@@ -1713,7 +1867,9 @@
   "d7": "",
   "d8": "1",
   "relevansi": "Inti-Domain",
-  "kualitas_skor": 9
+  "kualitas_skor": 9,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "no": 79,
@@ -1735,7 +1891,9 @@
   "d7": "",
   "d8": "",
   "relevansi": "Pendukung",
-  "kualitas_skor": 7
+  "kualitas_skor": 7,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "no": 80,
@@ -1757,7 +1915,9 @@
   "d7": "",
   "d8": "",
   "relevansi": "Pendukung",
-  "kualitas_skor": 8
+  "kualitas_skor": 8,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "no": 81,
@@ -1779,7 +1939,9 @@
   "d7": "",
   "d8": "1",
   "relevansi": "Inti-Metode+Domain",
-  "kualitas_skor": 6
+  "kualitas_skor": 6,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "no": 82,
@@ -1801,7 +1963,9 @@
   "d7": "1",
   "d8": "",
   "relevansi": "Konteks",
-  "kualitas_skor": 6
+  "kualitas_skor": 6,
+  "included": false,
+  "exclusion_reason": "EC-T: Topik: prediksi silt density index, bukan RUL."
  },
  {
   "no": 83,
@@ -1823,7 +1987,9 @@
   "d7": "",
   "d8": "1",
   "relevansi": "Inti-Domain",
-  "kualitas_skor": 6
+  "kualitas_skor": 6,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "no": 84,
@@ -1845,7 +2011,9 @@
   "d7": "1",
   "d8": "",
   "relevansi": "Konteks",
-  "kualitas_skor": 6
+  "kualitas_skor": 6,
+  "included": false,
+  "exclusion_reason": "EC-T: Topik: modifikasi material membran (CA/PEG/TiO2), bukan RUL."
  },
  {
   "no": 85,
@@ -1867,7 +2035,9 @@
   "d7": "",
   "d8": "1",
   "relevansi": "Inti-Domain",
-  "kualitas_skor": 6
+  "kualitas_skor": 6,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "no": 86,
@@ -1889,7 +2059,9 @@
   "d7": "",
   "d8": "1",
   "relevansi": "Inti-Domain",
-  "kualitas_skor": 8
+  "kualitas_skor": 8,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "no": 87,
@@ -1911,7 +2083,9 @@
   "d7": "",
   "d8": "1",
   "relevansi": "Pendukung",
-  "kualitas_skor": 8
+  "kualitas_skor": 8,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "no": 88,
@@ -1933,7 +2107,9 @@
   "d7": "1",
   "d8": "1",
   "relevansi": "Inti-Domain",
-  "kualitas_skor": 8
+  "kualitas_skor": 8,
+  "included": false,
+  "exclusion_reason": "EC-T: Topik: prediksi fouling MBR, bukan RUL."
  },
  {
   "no": 89,
@@ -1955,7 +2131,9 @@
   "d7": "",
   "d8": "",
   "relevansi": "Inti-Metode",
-  "kualitas_skor": 9
+  "kualitas_skor": 9,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "no": 90,
@@ -1977,7 +2155,9 @@
   "d7": "",
   "d8": "1",
   "relevansi": "Inti-Domain",
-  "kualitas_skor": 8
+  "kualitas_skor": 8,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "no": 91,
@@ -1999,7 +2179,9 @@
   "d7": "",
   "d8": "1",
   "relevansi": "Inti-Domain",
-  "kualitas_skor": 8
+  "kualitas_skor": 8,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "no": 92,
@@ -2021,7 +2203,9 @@
   "d7": "",
   "d8": "",
   "relevansi": "Inti-Metode",
-  "kualitas_skor": 9
+  "kualitas_skor": 9,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "no": 93,
@@ -2043,7 +2227,9 @@
   "d7": "1",
   "d8": "1",
   "relevansi": "Konteks",
-  "kualitas_skor": 4
+  "kualitas_skor": 4,
+  "included": false,
+  "exclusion_reason": "EC-T: Topik: material membran MXene, bukan RUL."
  },
  {
   "d1": "1",
@@ -2065,7 +2251,9 @@
   "kontribusi": "Menunjukkan pemanfaatan Bayesian-regularized neural network untuk RUL plus pemodelan distribusi waktu-kegagalan Weibull dua parameter dengan MLE dan acceleration model - kombinasi jaringan + Weibull yang dekat dengan kerangka tesis, tetapi tanpa pencensoringan eksplisit dan domainnya pompa, bukan membran.",
   "no": 94,
   "relevansi": "Inti-Metode",
-  "kualitas_skor": 5
+  "kualitas_skor": 5,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "d1": "1",
@@ -2087,7 +2275,9 @@
   "kontribusi": "Contoh mutakhir pemodelan degradasi nonlinier + estimasi EM + pembaruan Bayesian yang menghasilkan distribusi RUL dan interval kepercayaan (CIC) per pengguna - pola kuantifikasi ketidakpastian yang berguna bagi tesis; namun tidak memodelkan data tersensor/survival (Weibull/hazard) dan domainnya sistem penggerak listrik, bukan membran.",
   "no": 95,
   "relevansi": "Pendukung",
-  "kualitas_skor": 8
+  "kualitas_skor": 8,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "d1": "1",
@@ -2109,7 +2299,9 @@
   "kontribusi": "Menunjukkan pola fusi HI multi-indikator + estimasi RUL ganda (Weibull statistis + LSTM data-driven) dengan pelaporan interval bootstrap - berguna sebagai contoh strateji prognostik hybrid; namun pemodelan Weibull dangkal (tanpa pencensoringan) dan domainnya blade turbin angin, bukan membran/RO.",
   "no": 96,
   "relevansi": "Inti-Metode",
-  "kualitas_skor": 6
+  "kualitas_skor": 6,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "d1": "",
@@ -2131,7 +2323,9 @@
   "kontribusi": "Preseden langsung penggunaan model survival frailty (Weibull + random effect untuk heterogenitas tak teramati) dalam menghitung RUL, lengkap dengan penanganan data tersensor (suspended data) dan uji GOF/heterogenitas - klop dengan kerangka survival tesis; tetapi tidak memakai deep learning dan domainnya excavator tambang, bukan membran.",
   "no": 97,
   "relevansi": "Inti-Metode",
-  "kualitas_skor": 7
+  "kualitas_skor": 7,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "d1": "1",
@@ -2153,7 +2347,9 @@
   "kontribusi": "Memberikan contoh bagaimana struktur kausalitas eksplisit dapat memperbaiki model degradasi dependen dan akurasi RUL dibanding pendekatan korelasi (kopula/kovarians). Bagi tesis, ini menawarkan alternatif/model acuan pemodelan dependensi multi-indikator yang dapat diadaptasi ke jalur fouling membran, sekaligus memperlihatkan teknik penggabungan prior proses stokastik dengan model pembelajaran.",
   "no": 98,
   "relevansi": "Pendukung",
-  "kualitas_skor": 9
+  "kualitas_skor": 9,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "pilar": "C. Bayesian & Uncertainty",
@@ -2175,7 +2371,9 @@
   "d6": "1",
   "d7": "",
   "d8": "1",
-  "no": 99
+  "no": 99,
+  "included": true,
+  "exclusion_reason": ""
  },
  {
   "pilar": "E. Membrane/RO/Desalination",
@@ -2197,7 +2395,9 @@
   "d6": "",
   "d7": "1",
   "d8": "",
-  "no": 100
+  "no": 100,
+  "included": false,
+  "exclusion_reason": "EC-T: Topik: desain modul UF (pemodelan numerik), bukan RUL."
  },
  {
   "pilar": "A. Survival Analysis & Censored Data",
@@ -2219,6 +2419,8 @@
   "d6": "",
   "d7": "",
   "d8": "",
-  "no": 101
+  "no": 101,
+  "included": true,
+  "exclusion_reason": ""
  }
 ]

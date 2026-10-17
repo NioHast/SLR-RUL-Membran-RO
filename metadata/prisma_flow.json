@@ -10,16 +10,16 @@
   "added_note": "snowballing Wohlin + pengganti OA (lihat docs/SUBSTITUTION_LOG.txt); 101 - 72 = 29",
   "fulltext_assessed": 101,
   "excluded_fulltext": 0,
-  "included": 101,
+  "included": 79,
   "tiers": {
     "Inti-Metode": 31,
-    "Inti-Domain": 19,
+    "Inti-Domain": 13,
     "Inti-Metode+Domain": 2,
-    "Pendukung": 32,
-    "Konteks": 17
+    "Pendukung": 31,
+    "Konteks": 2
   },
-  "inti_total": 52,
-  "core_total": 20,
+  "inti_total": 46,
+  "core_total": 19,
   "core_rule": "skor_total >= 5.5 (maks 6) ATAU tier Inti-Metode+Domain",
   "score_rule": "RQ relevance (0-2) + methodological proximity (0-2: D3/D4/D5/D8) + quality (0-2)",
   "assumptions": [
@@ -27,5 +27,37 @@
     "Angka 101 adalah korpus final (docs/FULLTEXT_SCREENING_LOG.txt).",
     "Selisih 209 dan 413 diturunkan (derived) dan dicatat sebagai asumsi.",
     "0 eksklusi full-text setelah 3 PDF mismatch diperbaiki."
-  ]
+  ],
+  "assessed_for_eligibility": 101,
+  "excluded_at_eligibility": 22,
+  "exclusion_reasons": {
+    "EC-T (topic not RUL/prognostics)": 15,
+    "EC-R (review/not primary)": 6,
+    "EC-D (domain out of scope)": 1
+  },
+  "pillars": {
+    "A": 24,
+    "C": 15,
+    "F": 6,
+    "B": 24,
+    "E": 1,
+    "D": 9
+  },
+  "dims": {
+    "d1": 73,
+    "d2": 79,
+    "d3": 28,
+    "d4": 76,
+    "d5": 43,
+    "d6": 21,
+    "d7": 2,
+    "d8": 31
+  },
+  "gap": {
+    "D3_censoring": 28,
+    "D7_RO": 2,
+    "D3_and_D7": 0
+  },
+  "eligibility_rule": "IC1-IC6 with topic gate; see pipeline/1_search_and_select/select_eligibility.py",
+  "eligibility_log": "metadata/eligibility_log.csv"
 }

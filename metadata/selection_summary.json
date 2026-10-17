@@ -1,0 +1,21 @@
+{
+  "assessed": 101,
+  "excluded": 22,
+  "included": 79,
+  "exclusion_codes": {
+    "EC-R": 6,
+    "EC-T": 15,
+    "EC-D": 1
+  },
+  "tiers_included": {
+    "Inti-Metode": 31,
+    "Pendukung": 31,
+    "Inti-Domain": 13,
+    "Konteks": 2,
+    "Inti-Metode+Domain": 2
+  },
+  "inti_included": 46,
+  "full_text_available_included": 61,
+  "full_text_available_excluded": 16,
+  "criteria": "IC1-IC6 (topic gate: RUL/prognostics only); see docs/SLR_Protocol.txt"
+}

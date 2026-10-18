@@ -92,17 +92,17 @@ Pencarian mengidentifikasi 694 rekaman unik. Sebanyak 209 rekaman tanpa abstrak 
 
 {{TABLE:Tahap PRISMA 2020 dan jumlah record}}
 
-| Tahap PRISMA | Jumlah | Keterangan |
-| --- | --- | --- |
-| Identifikasi (rekaman unik) | 694 | Pencarian OpenAlex, 16 query |
-| Dihapus sebelum penyaringan | 209 | Tanpa abstrak atau metadata tidak lengkap |
-| Disaring (judul/abstrak) | 485 | Kriteria relevansi kata kunci |
-| Dikeluarkan pada judul/abstrak | 413 | Tidak relevan secara topik |
-| Layak dari pencarian basis data | 72 | Artikel berabstrak, 2015 sampai 2026 |
-| Ditambah snowballing dan pengganti OA | 29 | Backward, forward, dan penggantian |
-| Dinilai kelayakannya | 101 | Gate topik dan kontribusi RQ |
-| Dikeluarkan pada eligibilitas | 22 | 15 topik, 6 review, 1 domain |
-| Termasuk dalam sintesis | 79 | Korpus sintesis |
+| Tahap PRISMA | Jumlah |
+| --- | --- |
+| Identifikasi (record unik) | 694 |
+| Dihapus sebelum penyaringan | 209 |
+| Disaring (judul/abstrak) | 485 |
+| Dikeluarkan (judul/abstrak) | 413 |
+| Layak dari pencarian basis data | 72 |
+| Ditambah snowballing dan OA | 29 |
+| Dinilai kelayakannya | 101 |
+| Dikeluarkan (eligibilitas) | 22 |
+| Termasuk dalam sintesis | 79 |
 
 ### 4.2 Sebaran pilar
 
@@ -149,18 +149,18 @@ Untuk menjawab kebutuhan praktis tesis, korpus 79 artikel dipilah menjadi basis 
 
 {{TABLE:Paper inti terpilih (10 dari 19 core paper)}}
 
-| No | Tahun | Jurnal | Judul | Pilar |
-| --- | --- | --- | --- | --- |
-| 11 | 2025 | IEEE Transactions on Automation Science and Engineering | A Neural Network-Based Survival Analysis Model Considering Censored Data | A |
-| 12 | 2025 | International Journal of Prognostics and Health Management | LSTM and Transformers based methods for RUL Prediction considering Censored Data | A |
-| 13 | 2026 | Sensors | Survival Models for Predictive Maintenance and Remaining Useful Life | A |
-| 48 | 2019 | International Journal of Prognostics and Health Management | Data-driven Prognostics with Predictive Uncertainty Estimation | C |
-| 64 | 2020 | Shock and Vibration | General Log-Linear Weibull Model Combining Vibration and Temperature | A |
-| 4 | 2016 | Reliability Engineering & System Safety | Remaining useful life estimation in heterogeneous fleets | D |
-| 17 | 2026 | IEEE Sensors Letters | A Multisensor Cross-Modal Attention Framework for Weibull-Driven RUL | B |
-| 19 | 2022 | Neural Computing and Applications | Weibull recurrent neural networks for failure prognosis | A |
-| 9 | 2026 | Scientific Reports | Survival-analysis-guided machine learning for failure and RUL prediction | A |
-| 35 | 2022 | IEEE Transactions on Instrumentation and Measurement | Domain Adaptive Remaining Useful Life Prediction With Transformer | D |
+| No | Tahun | Judul | Pilar |
+| --- | --- | --- | --- |
+| 11 | 2025 | A Neural Network-Based Survival Analysis Model Considering Censored Data | A |
+| 12 | 2025 | LSTM and Transformers based methods for RUL Prediction considering Censored Data | A |
+| 13 | 2026 | Survival Models for Predictive Maintenance and Remaining Useful Life | A |
+| 48 | 2019 | Data-driven Prognostics with Predictive Uncertainty Estimation | C |
+| 64 | 2020 | General Log-Linear Weibull Model Combining Vibration and Temperature | A |
+| 4 | 2016 | Remaining useful life estimation in heterogeneous fleets | D |
+| 17 | 2026 | A Multisensor Cross-Modal Attention Framework for Weibull-Driven RUL | B |
+| 19 | 2022 | Weibull recurrent neural networks for failure prognosis | A |
+| 9 | 2026 | Survival-analysis-guided machine learning for failure and RUL prediction | A |
+| 35 | 2022 | Domain Adaptive Remaining Useful Life Prediction With Transformer | D |
 
 ### 4.5 Kualitas studi dan tren publikasi
 

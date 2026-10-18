@@ -110,13 +110,15 @@ def add_runs(p, text, size=10, bold=False, italic=False, foreign=True):
 
 
 def para(text, size=10, align=WD_ALIGN_PARAGRAPH.JUSTIFY, bold=False,
-         italic=False, foreign=True):
+         italic=False, foreign=True, indent=True):
     p = doc.add_paragraph()
     p.alignment = align
     pf = p.paragraph_format
     pf.space_before = Pt(0)
     pf.space_after = Pt(0)
     pf.line_spacing = 1.0
+    if indent:
+        pf.first_line_indent = Cm(0.75)
     add_runs(p, text, size, bold, italic, foreign)
     return p
 
@@ -140,7 +142,7 @@ def heading(text, level):
     if level == 2:
         add_runs(p, text, 11, bold=True, italic=False)
     else:
-        add_runs(p, text, 10.5, bold=True, italic=True)
+        add_runs(p, text, 10.5, bold=True, italic=False)
 
 
 def add_figure(name, caption, width_cm):
@@ -156,7 +158,7 @@ def add_figure(name, caption, width_cm):
     p.paragraph_format.space_after = Pt(0)
     p.paragraph_format.line_spacing = 1.0
     p.paragraph_format.keep_with_next = True
-    p.add_run().add_picture(path, width=Cm(float(width_cm)))
+    p.add_run().add_picture(path, width=Cm(min(float(width_cm), 7.9)))
     cap = doc.add_paragraph()
     cap.alignment = WD_ALIGN_PARAGRAPH.CENTER
     cap.paragraph_format.space_before = Pt(0)
@@ -170,15 +172,15 @@ def _set_table_width(t, rows):
     """Fit the table to the 16.8 cm text width, proportional to content length."""
     h0 = str(rows[0][0])
     if h0.startswith("Tahap PRISMA"):
-        widths = [5.6, 2.6, 8.6]
+        widths = [5.4, 2.5]
     elif h0.startswith("Dimensi Konsep"):
-        widths = [9.8, 3.5, 3.5]
+        widths = [4.1, 2.0, 1.8]
     elif len(rows[0]) == 2:
-        widths = [12.0, 4.8]
-    elif len(rows[0]) == 5:
-        widths = [1.2, 1.6, 4.2, 8.2, 1.6]
+        widths = [5.4, 2.5]
+    elif len(rows[0]) == 4:
+        widths = [0.8, 1.2, 5.1, 0.8]
     else:
-        widths = [16.8 / len(rows[0])] * len(rows[0])
+        widths = [7.9 / len(rows[0])] * len(rows[0])
     for j, w in enumerate(widths):
         t.columns[j].width = Cm(w)
         for cell in t.columns[j].cells:
@@ -253,7 +255,7 @@ def add_table(rows, caption):
             p.paragraph_format.space_before = Pt(0)
             p.paragraph_format.space_after = Pt(0)
             p.paragraph_format.line_spacing = 1.0
-            _run(p, str(val), 8.5, bold=(i == 0))
+            _run(p, str(val), 7.2, bold=(i == 0))
     _set_table_width(t, rows)
     _booktabs(t)
     for row in t.rows:
@@ -378,6 +380,12 @@ if os.path.exists(MD):
             else:
                 para(s, 10)
 
+    newsec = doc.add_section(WD_SECTION.CONTINUOUS)
+    newsec.top_margin = sec0.top_margin
+    newsec.bottom_margin = sec0.bottom_margin
+    newsec.left_margin = sec0.left_margin
+    newsec.right_margin = sec0.right_margin
+    set_columns(newsec, 2)
     render_body(body)
 
 doc.save(OUT)

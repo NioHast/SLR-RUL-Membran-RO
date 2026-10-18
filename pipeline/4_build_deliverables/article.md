@@ -88,7 +88,9 @@ Sintesis dilakukan secara concept-centric menggunakan matriks konsep Webster dan
 
 Pencarian mengidentifikasi 694 rekaman unik. Sebanyak 209 rekaman tanpa abstrak atau metadata tidak lengkap dikeluarkan sebelum penyaringan, menyisakan 485 rekaman yang disaring pada judul dan abstrak. Dari tahap ini diperoleh 72 artikel yang layak, lalu ditambah 29 artikel dari snowballing dan penggantian Open Access. Seluruh 101 artikel dinilai kelayakannya; 22 artikel dikeluarkan pada tahap eligibilitas, yaitu 15 karena topik di luar RUL atau prognostik, 6 karena merupakan review, dan 1 karena berada di luar cakupan domain. Dengan demikian, 79 artikel menjadi korpus sintesis.
 
-{{FIG:fig01_prisma_flow.png|Alur PRISMA 2020 dan komposisi korpus final (n = 79 included)|15}}
+{{FIG:fig01_prisma_flow.png|Alur PRISMA 2020 dan komposisi korpus final (n = 79 included)|11}}
+
+{{TABLE:Tahap PRISMA 2020 dan jumlah record}}
 
 | Tahap PRISMA | Jumlah | Keterangan |
 | --- | --- | --- |
@@ -108,6 +110,8 @@ Korpus terbagi ke dalam tujuh pilar tematik. Pilar survival analysis dan censore
 
 {{FIG:fig07_pillar_distribution.png|Sebaran artikel per pilar A sampai G (n = 79)|15}}
 
+{{TABLE:Sebaran artikel per pilar}}
+
 | Pilar/Tema | Jumlah Artikel |
 | --- | --- |
 | A. Survival Analysis dan Censored Data | 24 |
@@ -123,6 +127,8 @@ Korpus terbagi ke dalam tujuh pilar tematik. Pilar survival analysis dan censore
 Matriks konsep menunjukkan sebaran yang tidak merata. Dimensi target dan kegagalan (D2) dibahas 79 artikel, arsitektur model (D4) 76 artikel, dan data atau sensor (D1) 73 artikel. Dimensi ketidakpastian (D5) dibahas 43 artikel, skala data (D8) 31 artikel, censoring (D3) 28 artikel, keputusan atau DSS (D6) 21 artikel, dan domain RO (D7) hanya 2 artikel. Meskipun D3 bukan dimensi paling tipis secara absolut, D3 justru paling kritis karena merupakan inti persoalan data membran. Yang paling penting, tidak ada satu pun artikel yang membahas D3 dan D7 secara bersamaan, sehingga celah metodologisnya bersifat struktural, bukan sekadar peringkat jumlah.
 
 {{FIG:fig08_dimension_coverage.png|Cakupan dimensi konsep D1 sampai D8 (n = 79)|15}}
+
+{{TABLE:Cakupan dimensi konsep D1-D8}}
 
 | Dimensi Konsep | Jumlah Artikel | / Total |
 | --- | --- | --- |
@@ -140,6 +146,8 @@ Matriks konsep menunjukkan sebaran yang tidak merata. Dimensi target dan kegagal
 Untuk menjawab kebutuhan praktis tesis, korpus 79 artikel dipilah menjadi basis bukti bertingkat. Sebanyak 46 artikel tergolong Inti yang terdiri atas 31 Inti-Metode, 13 Inti-Domain, dan 2 Inti-Metode+Domain, 31 Pendukung, dan 2 Konteks. Dengan rubrik skor 0 sampai 6, ditetapkan 19 core paper yang menjadi sumber utama model. Paper inti tersebut mencakup dua tradisi, yaitu statistis dan deep learning, serta domain membran, sehingga menjadi simpul utama bagi penelusuran snowballing dan pembacaan mendalam.
 
 {{FIG:fig09_tier_funnel.png|Penyaringan korpus dan penentuan 19 core paper|14}}
+
+{{TABLE:Paper inti terpilih (10 dari 19 core paper)}}
 
 | No | Tahun | Jurnal | Judul | Pilar |
 | --- | --- | --- | --- | --- |

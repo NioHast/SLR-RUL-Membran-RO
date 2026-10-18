@@ -208,7 +208,7 @@ def fig07_pillar(rows):
     ax.set_xticks(range(len(labels)))
     ax.set_xticklabels([names[k] for k in labels], fontsize=7.5)
     ax.set_ylabel("Jumlah artikel")
-    ax.set_title("Sebaran artikel per pilar (n = 101)", fontsize=10, pad=8)
+    ax.set_title("Sebaran artikel per pilar (n = %d)" % len(rows), fontsize=10, pad=8)
     ax.set_ylim(0, max(vals) + 4)
     ax.grid(axis="x", visible=False)
     save(fig, "fig07_pillar_distribution")
@@ -234,7 +234,7 @@ def fig08_dimension(rows):
     ax.set_xticks(range(len(dims)))
     ax.set_xticklabels([d[1] for d in dims], fontsize=7.5)
     ax.set_ylabel("Jumlah artikel")
-    ax.set_title("Cakupan dimensi konsep D1-D8 (n = 101)", fontsize=10, pad=8)
+    ax.set_title("Cakupan dimensi konsep D1-D8 (n = %d)" % len(rows), fontsize=10, pad=8)
     ax.set_ylim(0, max(vals) + 12)
     ax.grid(axis="x", visible=False)
     ax.annotate("D3 censoring paling tipis relatif\nterhadap kebutuhan domain RO",
@@ -286,7 +286,7 @@ def fig10_heatmap(rows):
     ax.set_yticklabels(pillars, fontsize=8.5)
     ax.set_xlabel("Dimensi konsep")
     ax.set_ylabel("Pilar")
-    ax.set_title("Matriks konsep Webster-Watson: pilar x dimensi (jumlah artikel)", fontsize=9.5, pad=8)
+    ax.set_title("Matriks konsep Webster-Watson: pilar x dimensi (n = %d)" % len(rows), fontsize=9.5, pad=8)
     for i in range(len(pillars)):
         for j in range(len(dims)):
             v = grid[i][j]

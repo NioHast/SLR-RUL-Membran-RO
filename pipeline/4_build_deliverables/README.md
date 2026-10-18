@@ -23,7 +23,7 @@ build_presentation.py               -> docs/SLR_Presentasi.html (+ PDF via Chrom
 | `fill_report.py` | Fill markers with real numbers from the single source of truth | `metadata/corpus_a.json`, `prisma_flow.json`, `core_papers.json`, `synthesis.json`, `report.md` -> `report_filled.md` |
 | `build_docx.py` | Thesis-style report (TNR 12, margins 4-4-3-3, 1.5 spacing) + figures | `report_filled.md` -> `docs/SLR_Laporan.docx` |
 | `build_xlsx.py` | 7-sheet workbook (adds "Paper Inti & Skor") | corpus + synthesis + core -> `docs/SLR_Korpus.xlsx` |
-| `build_article_docx.py` | 2-column journal article + figures | `article.md` -> `docs/SLR_Artikel_Jurnal.docx` |
+| `build_article_docx.py` | single-column journal article + figures | `article.md` -> `docs/SLR_Artikel_Jurnal.docx` |
 | `build_presentation.py` | Validate (17 slides, offline, numbers) + build the PDF | `docs/SLR_Presentasi.html` -> `docs/SLR_Presentasi.pdf` |
 
 ## Figure markers

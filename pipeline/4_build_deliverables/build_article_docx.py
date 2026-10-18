@@ -190,7 +190,14 @@ if os.path.exists(MD):
             r = p.add_run(s.strip("*"))
             r.font.size = Pt(11)
         else:
-            doc.add_paragraph(s)
+            m = re.match(r"^\*\*(Abstrak\.|Abstract\.|Kata kunci:|Keywords:)\*\*\s*(.*)$", s)
+            if m:
+                p = doc.add_paragraph()
+                r1 = p.add_run(m.group(1) + " ")
+                r1.bold = True
+                p.add_run(m.group(2))
+            else:
+                doc.add_paragraph(re.sub(r"\*\*|__|\*|`", "", s))
     newsec = doc.add_section(WD_SECTION.CONTINUOUS)
     newsec.top_margin = sec0.top_margin
     newsec.bottom_margin = sec0.bottom_margin

@@ -48,11 +48,34 @@ _rf = _rpr.get_or_add_rFonts()
 _rf.set(qn("w:eastAsia"), FONT)
 _rf.set(qn("w:cs"), FONT)
 
+def add_page_number(section):
+    footer = section.footer
+    p = footer.paragraphs[0]
+    p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    p.paragraph_format.space_before = Pt(0)
+    p.paragraph_format.space_after = Pt(0)
+    run = p.add_run()
+    fld1 = OxmlElement("w:fldChar")
+    fld1.set(qn("w:fldCharType"), "begin")
+    instr = OxmlElement("w:instrText")
+    instr.set(qn("xml:space"), "preserve")
+    instr.text = " PAGE "
+    fld2 = OxmlElement("w:fldChar")
+    fld2.set(qn("w:fldCharType"), "end")
+    run._r.append(fld1)
+    run._r.append(instr)
+    run._r.append(fld2)
+    run.font.name = FONT
+    run.font.size = Pt(10)
+    run.font.color.rgb = BLACK
+
+
 sec0 = doc.sections[0]
 sec0.top_margin = Inches(0.8)
 sec0.bottom_margin = Inches(0.8)
 sec0.left_margin = Inches(0.8)
 sec0.right_margin = Inches(0.8)
+add_page_number(sec0)
 
 # English / foreign terms italicised in the Indonesian prose (longest first).
 FOREIGN = [
@@ -373,10 +396,10 @@ if os.path.exists(MD):
                 p.paragraph_format.space_before = Pt(0)
                 p.paragraph_format.space_after = Pt(0)
                 p.paragraph_format.line_spacing = 1.0
-                _run(p, label + " ", 10, bold=True)
-                # English abstract/keywords are already English: no foreign italics
                 is_english = label.startswith(("Abstract", "Keywords"))
-                add_runs(p, rest, 10, foreign=not is_english)
+                _run(p, label + " ", 10, bold=True, italic=is_english)
+                # English abstract/keywords: fully italic, no per-word italics
+                add_runs(p, rest, 10, italic=is_english, foreign=not is_english)
             else:
                 para(s, 10)
 

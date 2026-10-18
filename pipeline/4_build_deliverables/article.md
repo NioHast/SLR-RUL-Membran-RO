@@ -66,7 +66,7 @@ Tinjauan ini dipandu oleh empat pertanyaan riset yang telah disebutkan pada Bagi
 
 ### 3.3 Strategi pencarian dan kriteria seleksi
 
-Pencarian hybrid memadukan pencarian basis data dan snowballing [8]. Eksekusi korpus ini menggunakan OpenAlex (metadata Crossref) dengan 16 query title dan abstract, filter type=article dan has_doi=true, serta pengambilan 50 hasil teratas per query. Contoh string Scopus yang disiapkan untuk replikasi disajikan pada blok berikut.
+Pencarian hybrid memadukan pencarian basis data dan snowballing [8]. Eksekusi korpus ini menggunakan OpenAlex (metadata Crossref) dengan 16 query title dan abstract, filter type=article dan has_doi=true, serta pengambilan 50 hasil teratas per query. Pencarian dieksekusi pada Oktober 2026. Contoh string Scopus yang disiapkan untuk replikasi disajikan pada blok berikut.
 
 {{QUERY:Query Scopus (String A, untuk replikasi)}}
 ```
@@ -101,7 +101,7 @@ Sintesis dilakukan secara concept-centric menggunakan matriks konsep Webster dan
 
 ### 4.1 Alur PRISMA dan korpus final
 
-Pencarian mengidentifikasi 694 rekaman unik. Sebanyak 209 rekaman tanpa abstrak atau metadata tidak lengkap dikeluarkan sebelum penyaringan, menyisakan 485 rekaman yang disaring pada judul dan abstrak. Dari tahap ini diperoleh 72 artikel yang layak, lalu ditambah 29 artikel dari snowballing dan penggantian Open Access. Seluruh 101 artikel dinilai kelayakannya; 22 artikel dikeluarkan pada tahap eligibilitas, yaitu 15 karena topik di luar RUL atau prognostik, 6 karena merupakan review, dan 1 karena berada di luar cakupan domain. Dengan demikian, 79 artikel menjadi korpus sintesis.
+Pencarian mengidentifikasi 694 rekaman unik. Sebanyak 209 rekaman tanpa abstrak atau metadata tidak lengkap dikeluarkan sebelum penyaringan, menyisakan 485 rekaman yang disaring pada judul dan abstrak. Dari tahap ini diperoleh 72 artikel yang layak, lalu ditambah 29 artikel dari snowballing dan penggantian Open Access. Seluruh 101 artikel dinilai kelayakannya; 22 artikel dikeluarkan pada tahap eligibilitas, yaitu 15 karena topik di luar RUL atau prognostik, 6 karena merupakan review, dan 1 karena berada di luar cakupan domain. Dengan demikian, 79 artikel menjadi korpus sintesis. Meskipun jendela pencarian adalah 2015 sampai 2026, dua artikel seminal pra-2015 (2012 dan 2014) dimasukkan melalui snowballing karena menjadi rujukan awal model proportional hazard dan data tersensor tipe I.
 
 {{FIG:fig01_prisma_flow.png|Alur PRISMA 2020 dan komposisi korpus final (n = 79 included)|11}}
 
@@ -210,6 +210,17 @@ Secara metodologis, tinjauan ini menawarkan prosedur pemilihan paper inti yang t
 Empat ancaman validitas perlu dicatat. Pertama, ancaman terhadap validitas internal: sebagian besar metode dievaluasi pada dataset benchmark mesin seperti C-MAPSS atau data bearing dengan censoring yang disimulasikan, sehingga performa pada kondisi tersebut belum tentu bertransfer ke karakteristik membran nyata [26], [27]. Kedua, ancaman terhadap validitas konstruk: klasifikasi indeks Scopus dan penentuan pilar maupun dimensi konsep pada korpus bergantung pada penilaian peneliti dan perlu diverifikasi pada laman resmi penerbit.
 
 Ketiga, ancaman terhadap validitas eksternal: karena ringkasan bersumber terutama pada abstrak untuk sebagian korpus, detail metodologis yang halus berpotensi tidak tertangkap. Pada korpus ini, 61 dari 79 artikel included memiliki full-text, sedangkan 18 artikel dinilai dari abstrak. Keempat, ancaman terhadap cakupan pencarian: pencarian menggunakan OpenAlex dengan 16 query dan 50 hasil teratas per query, tanpa paginasi penuh, sehingga artikel yang hanya terindeks di Scopus atau Web of Science berpotensi tidak tertangkap. Keterbatasan ini dicatat sebagai dasar replikasi pada basis data berlangganan dan sebagai agenda pengujian recall pada penelitian lanjutan.
+
+Uji sensitivitas terhadap jendela waktu menunjukkan bahwa kesimpulan gap tidak berubah ketika jendela dipersempit.
+
+{{TABLE:Uji sensitivitas jendela waktu terhadap kesimpulan gap}}
+| Jendela | n | D3 | D7 | D3 x D7 |
+| --- | --- | --- | --- | --- |
+| 2012-2026 | 79 | 28 | 2 | 0 |
+| 2015-2026 | 77 | 26 | 2 | 0 |
+| 2018-2026 | 74 | 23 | 2 | 0 |
+| 2019-2026 | 71 | 22 | 1 | 0 |
+| 2020-2026 | 66 | 20 | 1 | 0 |
 
 ## 6. Kesimpulan
 

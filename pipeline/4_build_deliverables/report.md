@@ -53,7 +53,7 @@ Protokol disusun sebelum pencarian agar proses dapat diaudit dan direproduksi. P
 
 ### 2.3 Strategi pencarian
 
-Pencarian hybrid memadukan pencarian basis data dan snowballing (Wohlin, 2014). Eksekusi korpus ini menggunakan OpenAlex (metadata Crossref) dengan 16 query title+abstract, filter type=article dan has_doi=true, diambil 50 hasil teratas per query. Snowballing backward dan forward diterapkan dari artikel inti. Protokol juga memuat string Scopus untuk replikasi (Lampiran B). Batas recall yang disadari: tanpa paginasi dan tanpa filter tahun di API, sehingga penyaringan tahun dilakukan pada tahap screening.
+Pencarian hybrid memadukan pencarian basis data dan snowballing (Wohlin, 2014). Eksekusi korpus ini menggunakan OpenAlex (metadata Crossref) dengan 16 query title+abstract, filter type=article dan has_doi=true, diambil 50 hasil teratas per query. Pencarian dieksekusi pada Oktober 2026. Snowballing backward dan forward diterapkan dari artikel inti. Protokol juga memuat string Scopus untuk replikasi (Lampiran B). Batas recall yang disadari: tanpa paginasi dan tanpa filter tahun di API, sehingga penyaringan tahun dilakukan pada tahap screening.
 
 ### 2.4 Kriteria inklusi dan eksklusi
 
@@ -83,7 +83,7 @@ Tiga ancaman validitas dicatat. Pertama, validitas internal: sebagian besar meto
 
 ### 3.1 Alur PRISMA dan korpus final
 
-Pencarian mengidentifikasi 694 rekaman unik. Sebanyak 209 rekaman tanpa abstrak atau metadata tidak lengkap dikeluarkan sebelum penyaringan, menyisakan 485 rekaman yang disaring pada judul dan abstrak. Dari tahap ini diperoleh 72 artikel yang layak, lalu ditambah 29 artikel dari snowballing dan penggantian Open Access. Seluruh 101 artikel dinilai kelayakannya; 22 artikel dikeluarkan pada tahap eligibilitas (15 topik di luar RUL/prognostik, 6 review, 1 domain) sehingga 79 artikel menjadi korpus sintesis.
+Pencarian mengidentifikasi 694 rekaman unik. Sebanyak 209 rekaman tanpa abstrak atau metadata tidak lengkap dikeluarkan sebelum penyaringan, menyisakan 485 rekaman yang disaring pada judul dan abstrak. Dari tahap ini diperoleh 72 artikel yang layak, lalu ditambah 29 artikel dari snowballing dan penggantian Open Access. Seluruh 101 artikel dinilai kelayakannya; 22 artikel dikeluarkan pada tahap eligibilitas (15 topik di luar RUL/prognostik, 6 review, 1 domain) sehingga 79 artikel menjadi korpus sintesis. Meskipun jendela pencarian adalah 2015 sampai 2026, dua artikel seminal pra-2015 (2012 dan 2014) dimasukkan melalui snowballing karena menjadi rujukan awal model proportional hazard dan data tersensor tipe I.
 
 {{FIG:fig01_prisma_flow.png|Alur PRISMA 2020 dan komposisi korpus final (n = 79 included)|13}}
 
@@ -152,6 +152,16 @@ Agenda riset ke depan mencakup: definisi endpoint proxy (soft failure) yang stan
 ### 5.3 Keterbatasan tinjauan
 
 Tinjauan ini menggunakan OpenAlex sebagai sumber utama, sehingga artikel yang hanya terindeks di Scopus atau WoS berpotensi tidak tertangkap. Pengambilan 50 hasil teratas per query juga membatasi recall. Selain itu, sebagian ringkasan bersumber dari abstrak. Keterbatasan ini dicatat sebagai ancaman validitas dan menjadi dasar replikasi pada basis data berlangganan.
+
+Uji sensitivitas jendela waktu menunjukkan kesimpulan gap tetap stabil:
+
+| Jendela | n | D3 | D7 | D3 x D7 |
+| --- | --- | --- | --- | --- |
+| 2012-2026 | 79 | 28 | 2 | 0 |
+| 2015-2026 | 77 | 26 | 2 | 0 |
+| 2018-2026 | 74 | 23 | 2 | 0 |
+| 2019-2026 | 71 | 22 | 1 | 0 |
+| 2020-2026 | 66 | 20 | 1 | 0 |
 
 ## 6. Kesimpulan
 

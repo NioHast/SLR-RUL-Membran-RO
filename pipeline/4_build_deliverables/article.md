@@ -68,7 +68,7 @@ Tinjauan ini dipandu oleh empat pertanyaan riset yang telah disebutkan pada Bagi
 
 Pencarian hybrid memadukan pencarian basis data dan snowballing [8]. Eksekusi korpus ini menggunakan OpenAlex (metadata Crossref) dengan 16 query title dan abstract, filter type=article dan has_doi=true, serta pengambilan 50 hasil teratas per query. Pencarian dieksekusi pada Oktober 2026. Contoh string Scopus yang disiapkan untuk replikasi disajikan pada blok berikut.
 
-{{QUERY:Query Scopus (String A, untuk replikasi)}}
+{{QUERY:Query Scopus untuk replikasi (blok RUL, survival, dan deep learning)}}
 ```
 TITLE-ABS-KEY (
   ("remaining useful life" OR "RUL" OR prognos*

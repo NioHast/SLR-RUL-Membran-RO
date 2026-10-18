@@ -66,7 +66,22 @@ Tinjauan ini dipandu oleh empat pertanyaan riset yang telah disebutkan pada Bagi
 
 ### 3.3 Strategi pencarian dan kriteria seleksi
 
-Pencarian hybrid memadukan pencarian basis data dan snowballing [8]. Eksekusi korpus ini menggunakan OpenAlex (metadata Crossref) dengan 16 query title dan abstract, filter type=article dan has_doi=true, serta pengambilan 50 hasil teratas per query. Contoh string Scopus yang disiapkan untuk replikasi adalah sebagai berikut: TITLE-ABS-KEY (("remaining useful life" OR "RUL" OR prognos* OR "predictive maintenance" OR "PHM") AND (censor* OR "survival analysis" OR Weibull OR "time-to-event") AND ("deep learning" OR "neural network" OR LSTM OR transformer OR "Bayesian")) AND PUBYEAR > 2014. Batas recall yang disadari adalah tidak adanya paginasi dan filter tahun di API, sehingga penyaringan tahun dilakukan pada tahap screening.
+Pencarian hybrid memadukan pencarian basis data dan snowballing [8]. Eksekusi korpus ini menggunakan OpenAlex (metadata Crossref) dengan 16 query title dan abstract, filter type=article dan has_doi=true, serta pengambilan 50 hasil teratas per query. Contoh string Scopus yang disiapkan untuk replikasi disajikan pada blok berikut.
+
+{{QUERY:Query Scopus (String A, untuk replikasi)}}
+```
+TITLE-ABS-KEY (
+  ("remaining useful life" OR "RUL" OR prognos*
+   OR "predictive maintenance" OR "PHM")
+  AND (censor* OR "survival analysis"
+   OR Weibull OR "time-to-event")
+  AND ("deep learning" OR "neural network"
+   OR LSTM OR transformer OR "Bayesian")
+)
+AND PUBYEAR > 2014
+```
+
+Database: Scopus. Filter: PUBYEAR > 2014, artikel atau prosiding, bahasa Inggris. String ini disiapkan untuk replikasi dan belum dieksekusi pada korpus ini. Batas recall yang disadari adalah tidak adanya paginasi dan filter tahun di API, sehingga penyaringan tahun dilakukan pada tahap screening.
 
 Kriteria inklusi bersifat konjungtif. IC1 menuntut studi primer peer-reviewed. IC2 menuntut bahasa Inggris atau Indonesia. IC3 menuntut rentang tahun 2015 sampai 2026, dengan karya seminal pra-2015 hanya melalui snowballing. IC4 merupakan gate topik: topik utama harus RUL, prognostik, survival analysis, degradation-to-failure, atau predictive maintenance pada aset teknik. IC5 menuntut kontribusi ke minimal satu RQ. IC6 menuntut ketersediaan abstrak, dengan ketersediaan full-text dicatat sebagai flag kualitas bukti. Studi dieksklusi bila topiknya di luar RUL atau prognostik (EC-T), merupakan review atau bukan studi primer (EC-R), berada di luar cakupan domain (EC-D), bersifat medis atau klinis (EC-M), tidak memiliki abstrak (EC-A), atau duplikat (EC-DUP).
 

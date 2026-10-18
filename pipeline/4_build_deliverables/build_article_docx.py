@@ -102,6 +102,7 @@ FOREIGN_RE = re.compile(
 
 FIG_RE = re.compile(r"^\{\{FIG:([^|]+)\|([^|]*)\|([0-9.]+)\}\}$")
 TABLE_RE = re.compile(r"^\{\{TABLE:(.+)\}\}$")
+QUERY_RE = re.compile(r"^\{\{QUERY:(.+)\}\}$")
 
 fig_no = 0
 table_no = 0
@@ -189,6 +190,52 @@ def add_figure(name, caption, width_cm):
     cap.paragraph_format.line_spacing = 1.0
     _run(cap, "Gambar %d. " % fig_no, 9, bold=True)
     _run(cap, caption, 9)
+
+
+def _query_block(code_lines, caption):
+    if caption:
+        p = doc.add_paragraph()
+        p.alignment = WD_ALIGN_PARAGRAPH.LEFT
+        p.paragraph_format.space_before = Pt(0)
+        p.paragraph_format.space_after = Pt(0)
+        p.paragraph_format.line_spacing = 1.0
+        p.paragraph_format.keep_with_next = True
+        _run(p, caption, 9, bold=True)
+    t = doc.add_table(rows=1, cols=1)
+    t.alignment = WD_TABLE_ALIGNMENT.CENTER
+    t.autofit = False
+    cell = t.cell(0, 0)
+    cell.width = Cm(7.9)
+    t.columns[0].width = Cm(7.9)
+    tcPr = cell._tc.get_or_add_tcPr()
+    shd = OxmlElement("w:shd")
+    shd.set(qn("w:val"), "clear")
+    shd.set(qn("w:fill"), "F2F2F2")
+    tcPr.append(shd)
+    tblPr = t._tbl.tblPr
+    borders = OxmlElement("w:tblBorders")
+    for edge in ("top", "left", "bottom", "right"):
+        e = OxmlElement("w:%s" % edge)
+        e.set(qn("w:val"), "single")
+        e.set(qn("w:sz"), "4")
+        e.set(qn("w:space"), "0")
+        e.set(qn("w:color"), "808080")
+        borders.append(e)
+    tblPr.append(borders)
+    trPr = t.rows[0]._tr.get_or_add_trPr()
+    trPr.append(OxmlElement("w:cantSplit"))
+    p = cell.paragraphs[0]
+    p.alignment = WD_ALIGN_PARAGRAPH.LEFT
+    p.paragraph_format.space_before = Pt(2)
+    p.paragraph_format.space_after = Pt(2)
+    p.paragraph_format.line_spacing = 1.0
+    for idx, line in enumerate(code_lines):
+        r = p.add_run(line)
+        r.font.name = "Courier New"
+        r.font.size = Pt(7.5)
+        r.font.color.rgb = BLACK
+        if idx < len(code_lines) - 1:
+            r.add_break()
 
 
 def _set_table_width(t, rows):
@@ -293,8 +340,30 @@ def render_body(md):
     i = 0
     pending_caption = ""
     in_refs = False
+    in_code = False
+    code_lines = []
+    pending_query = ""
     while i < len(lines):
         ln = lines[i].rstrip()
+        m = QUERY_RE.match(ln.strip())
+        if m:
+            pending_query = m.group(1).strip()
+            i += 1
+            continue
+        if ln.strip().startswith("```"):
+            if not in_code:
+                in_code = True
+                code_lines = []
+            else:
+                _query_block(code_lines, pending_query)
+                in_code = False
+                pending_query = ""
+            i += 1
+            continue
+        if in_code:
+            code_lines.append(ln)
+            i += 1
+            continue
         m = TABLE_RE.match(ln.strip())
         if m:
             pending_caption = m.group(1).strip()

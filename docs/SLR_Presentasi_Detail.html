@@ -387,28 +387,6 @@ AND PUBYEAR &gt; 2014</div>
     <aside class="notes">Tegaskan posisi kontribusi: bukan aplikasi biasa, tetapi menangani rezim censoring-dominan dan data kecil yang belum banyak diuji.</aside>
   </section>
 
-  <!-- 14 ARSITEKTUR -->
-  <section>
-    <div class="kicker">Kerangka Model</div>
-    <h2>Arsitektur Dua Lapis: Prediksi dan Keputusan</h2>
-    <div class="flow" style="margin-top:16px">
-      <div class="flow-row">
-        <div class="flow-box"><b>Sensor BWRO</b>TMP, flow, TDS, suhu, pH</div><div class="flow-arrow">→</div>
-        <div class="flow-box"><b>Normalisasi</b>ASTM D4516</div><div class="flow-arrow">→</div>
-        <div class="flow-box"><b>Data survival</b>(T, d, X)</div><div class="flow-arrow">→</div>
-        <div class="flow-box"><b>LSTM-SURV</b>+ Bayesian</div><div class="flow-arrow">→</div>
-        <div class="flow-box o"><b>Weibull</b>RUL + selang kredibel</div>
-      </div>
-      <div class="flow-row" style="margin-top:10px">
-        <div class="flow-box g"><b>Aturan biaya</b>Persamaan 7</div><div class="flow-arrow">→</div>
-        <div class="flow-box g"><b>τ*</b>waktu optimal</div><div class="flow-arrow">→</div>
-        <div class="flow-box g"><b>CIP / ganti / lanjut</b>rekomendasi DSS</div>
-      </div>
-    </div>
-    <div class="foot">Lapis 1 memprediksi distribusi RUL; Lapis 2 mengubahnya menjadi keputusan perawatan berbasis biaya per satuan waktu operasi.</div>
-    <aside class="notes">Jelaskan dua lapis: prediksi probabilistik lalu keputusan biaya. Sebutkan validasi pada C-MAPSS FD001.</aside>
-  </section>
-
   <!-- 15 KESIMPULAN -->
   <section>
     <div class="kicker">Kesimpulan</div>

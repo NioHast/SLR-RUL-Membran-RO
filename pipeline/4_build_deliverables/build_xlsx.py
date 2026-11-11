@@ -25,6 +25,7 @@ NOTE:
 # Build SLR_Korpus.xlsx from data/corpus_*.json (+ synthesis.json).
 # Features: order Q1->Q2->Q3->SINTA1->SINTA2 then newest year; mark the anchor paper (Gao); check-matrix.
 import json, os, glob
+from collections import Counter
 from openpyxl import Workbook
 from openpyxl.styles import Font, Alignment, PatternFill, Border, Side
 from openpyxl.utils import get_column_letter
@@ -83,25 +84,50 @@ def autosize(ws,widths):
 
 # ---- Sheet 1: Korpus ----
 ws=wb.active; ws.title="SLR - Korpus Jurnal"
-cols=["No","Pilar/Tema","Judul Artikel","Penulis","Tahun","Nama Jurnal","Klasifikasi","Link/DOI","Ringkasan Temuan","Kontribusi terhadap Research Gap"]
+cols=["No","Pilar/Tema","Relevansi","Judul Artikel","Penulis","Tahun","Nama Jurnal","Klasifikasi","Link/DOI","Ringkasan Temuan","Kontribusi terhadap Research Gap"]
 ws.append(cols)
+
+TIER_FILL={"Inti":PatternFill("solid",fgColor="E2EFDA"),
+           "Pendukung":PatternFill("solid",fgColor="FFF2CC"),
+           "Konteks":PatternFill("solid",fgColor="EDEDED")}
+TIER_CELL={"Inti":PatternFill("solid",fgColor="C6EFCE"),
+           "Pendukung":PatternFill("solid",fgColor="FFEB9C"),
+           "Konteks":PatternFill("solid",fgColor="D9D9D9")}
+
+def _tk(v):
+    v=str(v or "")
+    return "Inti" if v.startswith("Inti") else ("Pendukung" if v=="Pendukung" else "Konteks")
+
 for r in rows:
     doi=r.get("doi") or ""
     link=("https://doi.org/"+doi) if doi else ""
-    ws.append([_s(r.get("no")),_s(r.get("pilar")),_s(r.get("judul")),_s(r.get("penulis")),r.get("tahun"),_s(r.get("jurnal")),_s(r.get("klasifikasi")),link,_s(r.get("ringkasan")),_s(r.get("kontribusi"))])
+    ws.append([_s(r.get("no")),_s(r.get("pilar")),_s(r.get("relevansi")),_s(r.get("judul")),_s(r.get("penulis")),r.get("tahun"),_s(r.get("jurnal")),_s(r.get("klasifikasi")),link,_s(r.get("ringkasan")),_s(r.get("kontribusi"))])
+    _t=_tk(r.get("relevansi"))
+    for c in ws[ws.max_row]: c.fill=TIER_FILL[_t]
+    ws.cell(row=ws.max_row,column=3).fill=TIER_CELL[_t]
     if _is_gao(r):
         for c in ws[ws.max_row]: c.fill=PURPLE_ROW
-style_header(ws,len(cols)); autosize(ws,[5,30,52,22,7,30,26,34,60,55])
+        ws.cell(row=ws.max_row,column=3).fill=TIER_CELL[_t]
+style_header(ws,len(cols)); autosize(ws,[5,30,20,52,22,7,30,26,34,60,55])
 for row in ws.iter_rows(min_row=2):
     for c in row: c.alignment=wrap; c.border=border
 ws.freeze_panes="A2"
 # Legend below the corpus table.
 _lr=ws.max_row+2
 ws.cell(row=_lr,column=1,value="LEGENDA").font=Font(bold=True)
-_lc=ws.cell(row=_lr+1,column=1,value="Ungu"); _lc.fill=PURPLE_ROW
-ws.cell(row=_lr+1,column=2,value="paper acuan utama (Gao et al., 2025, IEEE TASE)")
-ws.cell(row=_lr+2,column=1,value="Urutan: Q1 > Q2 > Q3; dalam tier sama, tahun terbaru lebih dulu.")
-ws.cell(row=_lr+3,column=1,value="Klasifikasi kuartil: SCImago 'SJR Best Quartile' (turunan Scopus).")
+_tc=Counter(_tk(r.get("relevansi")) for r in rows)
+_legend=[
+    ("Ungu",PURPLE_ROW,"paper acuan utama (Gao et al., 2025, IEEE TASE)"),
+    ("Inti",TIER_FILL["Inti"],"Inti (%d): Inti-Metode, Inti-Domain, Inti-Metode+Domain" % _tc["Inti"]),
+    ("Pendukung",TIER_FILL["Pendukung"],"Pendukung (%d)" % _tc["Pendukung"]),
+    ("Konteks",TIER_FILL["Konteks"],"Konteks (%d)" % _tc["Konteks"]),
+]
+for _i,(_lab,_fill,_desc) in enumerate(_legend,start=1):
+    _c=ws.cell(row=_lr+_i,column=1,value=_lab); _c.fill=_fill
+    ws.cell(row=_lr+_i,column=2,value=_desc)
+_n=_lr+len(_legend)+2
+ws.cell(row=_n,column=1,value="Urutan: Q1 > Q2 > Q3; dalam tier sama, tahun terbaru lebih dulu.")
+ws.cell(row=_n+1,column=1,value="Klasifikasi kuartil: SCImago 'SJR Best Quartile' (turunan Scopus).")
 
 # ---- Sheet 2: Ringkasan & Status ----
 ws2=wb.create_sheet("Ringkasan & Status")
@@ -180,20 +206,30 @@ style_header(ws6,3); autosize(ws6,[28,60,60])
 
 # ---- Sheet 7: Paper Inti & Skor ----
 ws7=wb.create_sheet("Paper Inti & Skor")
-ws7.append(["No","Judul","Penulis","Tahun","Tier","Core","Skor RQ","Skor Metode","Skor Kualitas","Skor Total","Peran"])
+ws7.append(["No","Judul","Penulis","Tahun","Relevansi","Included","Core","Skor RQ","Skor Metode","Skor Kualitas","Skor Total","Peran"])
 for r in core:
     ws7.append([r.get("no"),_s(r.get("judul")),_s(r.get("penulis")),r.get("tahun"),
-                _s(r.get("tier")),"YA" if r.get("core") else "",
+                _s(r.get("tier")),"YA" if r.get("included") else "TIDAK",
+                "YA" if r.get("core") else "",
                 r.get("skor_rq"),r.get("skor_metode"),r.get("skor_kualitas"),
                 r.get("skor_total"),_s(r.get("peran"))])
-style_header(ws7,len(ws7[1])); autosize(ws7,[5,55,24,7,20,7,8,10,11,9,26])
+style_header(ws7,len(ws7[1])); autosize(ws7,[5,55,24,7,20,9,7,8,10,11,9,26])
 for row in ws7.iter_rows(min_row=2):
     for c in row: c.alignment=wrap; c.border=border
+EXC_FILL=PatternFill("solid",fgColor="F2F2F2")
+for _i,r in enumerate(core,start=2):
+    _t=_tk(r.get("tier"))
+    if r.get("included"):
+        for c in ws7[_i]: c.fill=TIER_FILL[_t]
+        ws7.cell(row=_i,column=5).fill=TIER_CELL[_t]
+    else:
+        for c in ws7[_i]: c.fill=EXC_FILL
 ws7.freeze_panes="A2"
 _r=ws7.max_row+2
 ws7.cell(row=_r,column=1,value="ATURAN").font=Font(bold=True)
 ws7.cell(row=_r+1,column=1,value="Skor total = RQ (0-2) + kedekatan metode D3/D4/D5/D8 (0-2) + kualitas (0-2); maksimum 6.")
 ws7.cell(row=_r+2,column=1,value="Core = skor total >= 5.5 ATAU tier Inti-Metode+Domain.")
+ws7.cell(row=_r+3,column=1,value="Warna: hijau = Inti, kuning = Pendukung, abu = Konteks; abu terang = dieksklusi (tidak masuk 79).")
 
 wb.save(OUT)
 
